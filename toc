@@ -1,0 +1,25 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="CDN" audience="service" href="/docs/infrastructure/cdn/getting-started.html"}
+Content Delivery Network (CDN)
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    about.md
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    how-to-order.md
+    how-to.md
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    faqs.md
+    known-limitations.md
+    getting-help.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    api.md
+    {: .navgroup-end}
