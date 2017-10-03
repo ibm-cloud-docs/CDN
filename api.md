@@ -41,7 +41,7 @@ To get started, here is a recommended API call sequence to follow:
 
 You can use the other APIs after you've followed the previous sequence.
 
-[Example Code is available for each step in this call sequence.](https://console.bluemix.net/docs/infrastructure/CDN/cdn-example-code.md)
+[Example Code is available for each step in this call sequence.](./infrastructure/CDN/cdn-example-code.md)
 
 
 ## API for Vendor
