@@ -24,7 +24,7 @@ Existing CDN customers have access to their accounts through the new CDN portal.
 
 ## Need an account?
 
-Talk to your IBM Cloud sales representative.
+Talk to your IBM Cloud sales representative.  https://www.ibm.com/cloud-computing/bluemix/contact-us 
 
 ## Pricing (shown in USD)
 
