@@ -22,4 +22,5 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="reference"}
     api.md
+    cdn-example-code.md
     {: .navgroup-end}

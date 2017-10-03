@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2017-10-03"
 
 ---
 
@@ -31,45 +31,18 @@ For more information about SLAPI, or about the IBM CDN Service APIs, see the fol
 
 ----
 
+
 To get started, here is a recommended API call sequence to follow:
-* `listVendors` - Provides the list of supported Vendors
-* `placeOrder`  - Creates the CDN account with a given Vendor
+* `listVendors` - Provides the list of supported vendors
+* `verifyOrder` - Verifies whether the order can be placed
+* `placeOrder`  - Creates the CDN account with a given vendor
 * `createDomainMapping` - Creates the CDN Mapping
 * `verifyDomainMapping` - Changes CDN status to _RUNNING_
 
 You can use the other APIs after you've followed the previous sequence.
 
+[Example Code is available for each step in this call sequence.](https://console.bluemix.net/docs/infrastructure/CDN/cdn-example-code.md)
 
-## Code Example of Listing Vendors
-
-The pre-requisite is to download and install the Soap Client from https://github.com/softlayer/softlayer-api-php-client
-
-```
-// Example code to demonstrate CDN Soap API call
-// This code prints the IBM CDN Service supported vendors on the terminal it is run from
-
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
-
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
-
-// Step 3: Initialize SoapClient for the appropriate class. In this case, it is the
-// SoftLayer_Network_CdnMarketplace_Vendor class which defines the listVendors method
-$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
-
-// Step 4: Call the listVendors method and print the vendors
-// When successful the script will display the vendors on the terminal
-try {
-    $vendors = $client->listVendors();
-    print_r($vendors);
-} catch (\Exception $e) {
-    die('Unable to retrieve account information: ' . $e->getMessage());
-}
-```
-{: codeblock}
 
 ## API for Vendor
 ### listVendors

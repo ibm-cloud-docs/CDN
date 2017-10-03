@@ -159,7 +159,23 @@ For the Akamai vendor, only certain port numbers are allowed:
 
 
 ## What URL should be used for access to data under the CDN or Origin Path? 
-The path for a CDN mapping or for the Origin is treated as a directory. So users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
+The path for a CDN mapping or for the origin is treated as a directory. Therefore, users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
 
 Omitting the slash, for example, using `www.example.com/images` will result in a **Page Not Found** error.
 
+## What is the hit ratio? Why is the hit ratio non-zero when total hits are zero?
+Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
+
+```
+((Edge hits - Ingress hits)/Edge hits) * 100
+
+where: 
+Edge hits is defined as "All hits to the edge servers from the end-users"
+Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
+```
+ 
+Because Hit Ratio is calculated at the Account level, not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
+
+## For HTTPS, why can't I connect through a curl command or browser using the Hostname?
+
+Currently HTTPS is supported only through a Wildcard certificate. As a result of this limitation, the connection must be made using CNAME; trying to connect using the Hostname will result in failure.
