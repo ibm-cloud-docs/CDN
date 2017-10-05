@@ -33,11 +33,11 @@ For more information about SLAPI, or about the IBM CDN Service APIs, see the fol
 
 
 To get started, here is a recommended API call sequence to follow:
-* `listVendors` - Provides the list of supported vendors.  [Example code](cdn-example-code.html#example-code-of-listing-vendors)
-* `verifyOrder` - Verifies whether the order can be placed.  [Example code](cdn-example-code.html#example-code-to-verify-order)
-* `placeOrder`  - Creates the CDN account with a given vendor.  [Example code](cdn-example-code.html#example-code-to-place-order)
-* `createDomainMapping` - Creates the CDN Mapping.  [Example code](cdn-example-code.html#example-code-to-create-cdn-or-create-domain-mapping)
-* `verifyDomainMapping` - Changes CDN status to _RUNNING_  [Example code](cdn-example-code.html#example-code-of-verify-domain-mapping)
+* `listVendors` - Provides the list of supported vendors.  [Example code](cdn-example-code.html#one)
+* `verifyOrder` - Verifies whether the order can be placed.  [Example code](cdn-example-code.html#two)
+* `placeOrder`  - Creates the CDN account with a given vendor.  [Example code](cdn-example-code.html#three)
+* `createDomainMapping` - Creates the CDN Mapping.  [Example code](cdn-example-code.html#four)
+* `verifyDomainMapping` - Changes CDN status to _RUNNING_  [Example code](cdn-example-code.html#five)
 
 You can use the other APIs after you've followed the previous sequence.
 
