@@ -95,7 +95,7 @@ After your CDN is running, you can set your content caching time using Time To L
 	
 ## Adding Origin Path details
 
-When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage. 
+When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.  Path is a directory of your choosing.
 
 Note: CDN will make a URL transformation for the origin server. For example, if origin xyz.example.com is added with path /example/\* when a user opens the URL www.example.com/example/* , the CDN edge server will retrieve the content from xyz.example.com/*
 
