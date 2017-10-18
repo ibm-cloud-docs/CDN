@@ -14,6 +14,7 @@ lastupdated: "2017-10-03"
 {:tip: .tip}
 {:download: .download}
 
+
 # API Reference
 
 The {{site.data.keyword.BluSoftlayer_notm}} Application Programming Interface (commonly called the SLAPI), provided by IBM Cloud, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.BluSoftlayer_notm}} backend system.
@@ -33,15 +34,15 @@ For more information about SLAPI, or about the IBM CDN Service APIs, see the fol
 
 
 To get started, here is a recommended API call sequence to follow:
-* `listVendors` - Provides the list of supported vendors.  [Example code](cdn-example-code.html#one)
-* `verifyOrder` - Verifies whether the order can be placed.  [Example code](cdn-example-code.html#two)
-* `placeOrder`  - Creates the CDN account with a given vendor.  [Example code](cdn-example-code.html#three)
-* `createDomainMapping` - Creates the CDN Mapping.  [Example code](cdn-example-code.html#four)
-* `verifyDomainMapping` - Changes CDN status to _RUNNING_  [Example code](cdn-example-code.html#five)
+* `listVendors` - Provides the list of supported vendors
+* `verifyOrder` - Verifies whether the order can be placed
+* `placeOrder`  - Creates the CDN account with a given vendor. Up to 10 CDN Mappings can be created after successful placeOrder call.
+* `createDomainMapping` - Creates the CDN Mapping
+* `verifyDomainMapping` - Changes CDN status to _RUNNING_
 
 You can use the other APIs after you've followed the previous sequence.
 
-[Example Code is available for each step in this call sequence ](cdn-example-code.html)
+[Example Code is available for each step in this call sequence.](./cdn-example-code.html#code-examples-using-the-cdn-api)
 
 
 ## API for Vendor
@@ -50,27 +51,246 @@ This API allows the user to list the supported CDN Vendors. The `vendorName` is 
 
 * **Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
+
+```
+class SoftLayer_Container_Network_CdnMarketplace_Vendor
+{
+    /** 
+     * @var string
+     */
+    public $vendorName;
+    
+    /** 
+     * @var string
+     */
+    public $featureSummary;
+    
+    /**
+     * @var string
+     */
+    public $features;
+    
+    /**
+     * @var string
+     */
+    public $status;
+}
+```
  
 ___
 ## API for an Account
 ### verifyCdnAccountExists
 Checks whether a CDN account exists for the user calling the API, for the given `vendorName`
 
- * **Parameters**: `vendorName`
+ * **Parameters**: `string` `vendorName`
  * **Return**: `true` if account exists, else `false`
 ___
-## API for Domain Mapping
+## API for Domain Mapping  
+### Containers for Domain Mapping:
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Input
+{
+    /**
+     * @var string
+     */
+    public $vendorName;
+
+    /**
+     * @var string
+     */
+    public $oldPath;
+
+    /**
+     * @var string
+     */
+    public $originType;
+    
+    /**
+     * @var string
+     */
+    public $origin;
+    
+    /**
+     * @var int
+     */
+    public $httpPort;
+    
+    /**
+     * @var int
+     */
+    public $httpsPort;
+    
+    /**
+     * @var string
+     */
+    public $status;
+    
+    /** 
+     * @var string
+     */
+    public $path;
+    
+    /**
+     * @var string
+     */
+    public $performanceConfiguration;
+
+    /**
+     * @var string
+     */
+    public $uniqueId;
+    
+    /**
+     * @var string
+     */
+    public $domain;
+    
+    /**
+     * @var string
+     */
+    public $protocol;
+    
+    /**
+     * @var string
+     */
+    public $cname;
+    
+    /**
+     * @var string
+     */
+    public $certificateType;
+   
+    /**
+     * @var string
+     */
+    public $respectHeaders;
+    
+    /**
+     * @var string
+     */
+    public $header;
+    
+    /**
+     * @var string 
+     */
+    public $serveStale;
+
+    /**
+     * @var string
+     */
+    public $bucketName;
+    
+    /**
+     * @var string
+     */
+    public $fileExtension;
+}  
+```  
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping
+{
+    /**
+     * @var string
+     */
+    public $vendorName;
+    
+    /**
+     * @var string 
+     */
+    public $uniqueId;
+    
+    /**
+     * @var string
+     */
+    public $domain;
+   
+    /**
+     * @var string
+     */
+    public $protocol;
+    
+    /** 
+     * @var string
+     */
+    public $originType;
+    
+    /**
+     * @var string
+     */
+    public $originHost;
+    
+    /**
+     * @var int
+     */
+    public $httpPort;
+    
+    /**
+     * @var int
+     */
+    public $httpsPort;
+    
+    /**
+     * @var string
+     */
+    public $cname;
+    
+    /**
+     * @var string
+     */
+    public $performanceConfiguration;
+    
+    /**
+     * @var string
+     */
+    public $certificateType;
+    
+    /**
+     * @var boolean
+     */
+    public $respectHeaders;
+    
+    /**
+     * @var string
+     */
+    public $header;
+    
+    /**
+     * @var boolean
+     */
+    public $serveStale;
+    
+    /**
+     * @var string 
+     */
+    public $status;
+
+    /**
+     * @var string
+     */
+    public $bucketName;
+    
+    /**
+     * @var string
+     */
+    public $fileExtension;
+    
+    /**
+     * @var string
+     */
+    public $path;
+}  
+```
 ### createDomainMapping
 Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.BluSoftlayer_notm}} Account ID of the user. The CDN account must be created using `createCustomerSubAccount` for this API to work. After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
- * **Parameters**:  a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. The collection should include the following items:  `vendorName`, `hostname`, `protocol`, `originType`, `originHost`, `originHostPort`, `respectHeader`, `serveStale`, `cname`, `performanceConfiguration`, `header`, `certificateType`, `path`
+ * **Parameters**:  a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
  * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`. The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to mapping.
 ___ 
 ### deleteDomainMapping
 Deletes the domain mapping based on the `uniqueId`. The domain mapping must be in one of the following states:  _RUNNING_, _STOPPED_, , _DELETED_, _ERROR_, _CNAME\_CONFIGURATION_, or _SSL\_CONFIGURATION_.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: an collection of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___
 ### verifyDomainMapping
 Verifies the status of the CDN, and updates the `status` of the CDN Mapping. When a CDN Mapping is created initially, its status shows as _CNAME Configuration_. At this point, you must update the DNS record to point the CDN Mapping hostname to the CNAME. Check with your DNS provider if you have questions about how the update is done and how long it might take for the change to propagate on the internet. Typically, it should take 15 to 30 minutes. After that time, this `vendorDomainMapping` API must be called to verify whether the CNAME chain is complete. If the CNAME chain is complete, the CDN Mapping status changes to _RUNNING_ status. 
@@ -79,40 +299,65 @@ This API can be called at any time to get the latest CDN mapping status.
 The domain mapping must be in one of the following states: _RUNNING_, _CNAME\_CONFIGURATION_.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: a collection of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___ 
 ### startDomainMapping
 Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain mapping must be in a _STOPPED_ state.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: a collection of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___ 
 ### stopDomainMapping
 Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the domain mapping must be in a _RUNNING_ state.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: a collection of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___ 
 ### updateDomainMapping
-Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields may be changed: `originHost`, `performanceConfiguration`, `header`, `httpPort`, `httpsPort`, `certificateType`, `respectHeader`, `serveStale`, `path`, and if your path's origin type is Object Storage, the `bucketName` and `fileExtension` also may be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
+Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields may be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `serveStale`, and if your path's origin type is Object Storage, the `bucketName` and `fileExtension` also may be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: a collection of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___
 ### listDomainMappings
 Returns a collection of all domains for a particular customer.
 
  * **Parameters**: _none_ 
- * **Return**: a collection of objects of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___ 
 ### listDomainMappingByUniqueId
 Returns a collection with a single domain object based on a CDN's `uniqueId`.
 
  * **Parameters**: `string` `uniqueId`
- * **Return**: a single-object collection of objects of type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
+ * **Return**: a single-object collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 ___
 
-## API for Purge
+## API for Purge 
+### Container class for Purge:
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
+{
+    /**
+     * @var string
+     */
+    public $path;
+    
+    /**
+     * @var string
+     */
+    public $status;
+    
+    /**
+     * @var string
+     */
+    public $saved;
+    
+    /**
+     * @var string
+     */
+    public $date;
+}  
+```  
 ### createPurge
 Creates a purge record and inserts it into the database.
 
@@ -131,7 +376,27 @@ Updates the status of the purge path entry to indicate whether that purge path s
  * **Parameters**: `string` `uniqueId`, `string` `path`, `int` `saved`
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
 ___
-## API for Time to Live
+## API for Time to Live  
+### TimeToLive class variables:  
+```  
+class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
+{
+    /**
+     * @var string
+     */
+    public $path;
+    
+    /**
+     * @var int
+     */
+    public $timeToLive;
+    
+    /**
+     * @var timestamp 
+     */
+    public $createDate;
+} 
+```  
 ### createTimeToLive
 Creates a new `TimeToLive` object and inserts it into the database.
 
@@ -156,7 +421,63 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
  * **Parameters**: `string` `uniqueId`
  * **Return**: an array of objects of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
-## API for Origin
+## API for Origin  
+### Container class for Origin:  
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path  
+{  
+    /**
+     * @var string
+     */
+    public $mappingUniqueId;
+    
+    /**
+     * @var string
+     */
+    public $path;
+    
+    /**
+     * @var string
+     */
+    public $origin;
+    
+    /**
+     * @var string
+     */
+    public $originType;
+    
+    /**
+     * @var int
+     */
+    public $httpPort;
+    
+    /**
+     * @var int
+     */
+    public $httpsPort;
+    
+    /**
+     * @var string
+     */
+    public $status;
+    
+    /**
+     * @var string
+     */
+    public $bucketName;
+    
+    /**
+     * @var string
+     */
+    public $fileExtension;
+    
+    /**
+     * @var string
+     */
+    public $header
+}  
+```  
+
 ### createOriginPath
 Creates an Origin Path for an existing CDN and for a particular customer. The Origin Path can be based on a host server or Object Storage. To create the Origin Path, the domain mapping must be in either a _RUNNING_ or _CNAME\_CONFIGURATION_ state.  
 
@@ -182,7 +503,142 @@ Lists the origin path for an existing mapping, and for a particular customer.
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 ___
 
-## API for Metrics
+## API for Metrics  
+### Container class for Metrics:  
+```  
+class SoftLayer_Container_Network_CdnMarketplace_Metrics  
+{  
+    /**
+     * @var string
+     */
+    public $type;
+    
+    /**
+     * @var string[]
+     */
+    public $names;
+    
+    /**
+     * @var string[]
+     */   
+     public $totals;
+    
+    /**
+     * @var string[]
+     */
+    public $percentage;
+    
+    /**
+     * @var string[]
+     */
+    public $time;
+    
+    /**
+     * @var string[]
+     */
+    public $xaxis;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis1;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis2;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis3;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis4;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis5;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis6;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis7;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis8;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis9;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis10;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis11;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis12;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis13;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis14;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis15;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis16;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis17;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis18;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis19;
+    
+    /**
+     * @var string[]
+     */
+    public $yaxis20;
+}  
+```  
 ### getCustomerUsageMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
