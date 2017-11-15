@@ -16,7 +16,6 @@ lastupdated: "2017-10-03"
 
 # Code Examples Using the CDN API
 
-<a name="one"></a>
 ## Example Code of Listing Vendors
 
 The pre-requisite is to download and install the Soap Client from https://github.com/softlayer/softlayer-api-php-client
@@ -48,7 +47,6 @@ try {
 ```
 {: codeblock}
 
-<a name="two"></a>
 ## Example Code to Verify Order 
 
 ```
@@ -117,7 +115,7 @@ catch (\Exception $e) {
 ```
 {: codeblock}
 
-<a name="three"></a>
+
 ## Example code to Place Order
 
 ```
@@ -187,7 +185,7 @@ catch (\Exception $e) {
 ```
 {: codeblock}
 
-<a name="four"></a>
+
 ## Example code to create CDN or Create Domain Mapping
 
 ```
@@ -227,7 +225,6 @@ try {
     $input->httpPort = 80;
 
     // Specify Options
-    $input->serveStale = true;
     $input->respectHeaders = true;
 
     $cdnMapping = $client->createDomainMapping($input);
@@ -239,7 +236,6 @@ try {
 ```
 {: codeblock}
 
-<a name="five"></a>
 ## Example Code to Verify Domain Mapping
 
 ```

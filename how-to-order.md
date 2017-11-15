@@ -57,7 +57,7 @@ Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be
 6. Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option. (Specifying the **Path** is optional. <validation information>)
 		
   * **The Server Option**: If you select the **Server** option, enter the hostname or IP address of the Origin Server from which data should be cached. 
-      * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server) if you select this option.
+      * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server) if you select this option. If **HTTPS port** is selected, the **Origin Server Address** must be hostname and not IP address.
       * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faq.md) for a list of allowed port numbers.
 
 	   ![Configure origin server](images/new-configure-origin-server.png)

@@ -14,15 +14,15 @@ lastupdated: "2017-09-10"
 {:tip: .tip}
 {:download: .download}
 
-# About CDN
+# About Content Delivery Networks (CDN)
 
-The Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Their web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay. It delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your end-users receive the content with less delay, and it delivers a better overall experience for your customers.
 
-## How does CDN work?
+## How does a CDN work?
 
-CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. 
+A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using IBM Cloud Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
 
-The key features of the IBM CDN offering are:
+The key features of the IBM Cloud Content Delivery Network service include:
 * Host Server and Object Storage support 
 * HTTPS support with wildcard certificate
 * Ability to specify caching behavior at global level and at file level
