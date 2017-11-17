@@ -51,40 +51,49 @@ You can use the other APIs after you've followed the previous sequence.
 ### listVendors
 This API allows the user to list the supported CDN Vendors. The `vendorName` is needed to create a CDN account and get started with ordering your CDN.
 
-* **Parameters** None
+* **Required Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
-The Vendor Container and a usage example can be viewed here: [Vendor Container](vendor-container.html)
+  The Vendor Container and a usage example can be viewed here: [Vendor Container](vendor-container.html)
 
 ----
 ## API for Account
 ### verifyCdnAccountExists
 Checks whether a CDN account exists for the user calling the API, for the given `vendorName`.
 
-* **Parameters**: `vendorName`: Provide the name of a valid CDN provider.
+* **Required Parameters**: `vendorName`: Provide the name of a valid CDN provider.
 * **Return**: `true` if an account exists, else `false`.
 
 ----
 ## API for Domain Mapping
 ### createDomainMapping
-Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.BluSoftlayer_notm}} Account ID of the user. The CDN account must first be created using `createCustomerSubAccount` for this API to work. After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
+Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.BluSoftlayer_notm}} Account ID of the user. The CDN account must first be created using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code Examples](cdn-example-code.html)). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. The complete list of attributes available in the Input Container and their descriptions can be viewed here: [Input Container](input-container.html)
+* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  You can view all of the attributes in the Input Container here:
+  [View the Input Container](input-container.html)
 
-  The following attributes are **required** for this collection:
-    * `vendorName`: A valid vendor must be provided.
-    * `origin`: Provide the Origin address as a string.
-    * `originType`: Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
-    * `domain`: Provide your host name as a string.
-    * `protocol`: Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html) for allowed port numbers.
-
-  The following additional attributes are **required** if you are using Object Storage:
-    * `bucketName`: Unique name of your bucket for S3 Object Storage.
-    * `path`: Path to your S3 Object Store. Usually found in the object store URL or API section of your service.
+  The following attributes are part of the Input Container and may be provided when creating a domain mapping (attributes are optional unless otherwise noted):
+    * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
+    * `origin`: **required** Provide the Origin server address as a string.
+    * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
+    * `domain`: **required** Provide your host name as a string.
+    * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
+    * `path`: Path from which the cached content will be served. Default path is /\*
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information used by the Origin Server
+    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `cname`: Provide an alias to the hostname. Will be generated if one is not provided.
+    * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
+    * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
+    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior. If no `cacheKeyQueryRule` arguments are supplied, it will default to "include-all"
+      * "include-all" - includes all query arguments **default**
+      * "ignore-all" - ignores all query arguments
+      * "ignore: space separated query-args" - ignores those specific query arguments. For example, "ignore: query1 query2"
+      * "include: space separated query-args": includes those specific query arguments. For example, "include: query1 query2"
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
-  The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
+  **NOTE**: The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
 
   [View the Mapping Container](mapping-container.html)
 
@@ -92,9 +101,9 @@ Using the provided inputs, this function creates a domain mapping for the given 
 ### deleteDomainMapping
 Deletes the domain mapping based on the `uniqueId`. The domain mapping must be in one of the following states: _RUNNING_, _STOPPED_, _DELETED_, _ERROR_, _CNAME_CONFIGURATION_, or _SSL_CONFIGURATION_.
 
-* **Parameters**: `uniqueId`: the uniqueId of the mapping to be deleted
+* **Required Parameters**: `uniqueId`: the uniqueId of the mapping to be deleted
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### verifyDomainMapping
@@ -102,100 +111,140 @@ Verifies the status of the CDN, and updates the `status` of the CDN mapping if i
 
 This API can be called at any time to get the latest CDN mapping status. The domain mapping must be in one of the following states: _RUNNING_ or _CNAME_CONFIGURATION_.
 
-* **Parameters**: `uniqueId`: uniqueId of the mapping you want to verify
+* **Required Parameters**: `uniqueId`: uniqueId of the mapping you want to verify
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### startDomainMapping
 Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain mapping must be in a _STOPPED_ state.
 
-* **Parameters**: `uniqueId`: uniqueId of the mapping to be started
+* **Required Parameters**: `uniqueId`: uniqueId of the mapping to be started
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### stopDomainMapping
 Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the domain mapping must be in a _RUNNING_ state.
 
-* **Parameters**: `uniqueId`: uniqueId of the mapping to be stopped
+* **Required Parameters**: `uniqueId`: uniqueId of the mapping to be stopped
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### updateDomainMapping
-Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields may be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, and if your Origin Type is Object Storage, the `bucketName` and `fileExtension` also may be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
+Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields may be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your Origin Type is Object Storage, the `bucketName` and `fileExtension` also may be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
-* **Parameters**: `uniqueId`: uniqueId of the mapping to be updated
+* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  You can view all of the attributes in the Input Container here:
+  [View the Input Container](input-container.html)
+
+  The following attributes are part of the Input Container and are **required** to be provided when updating a domain mapping:
+    * `vendorName`: Provide the name of the CDN provider for this mapping.
+    * `path`: Provide the current path for this mapping
+    * `origin`: Provide the Origin server address as a string.
+    * `originType`: Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
+    * `domain`: Provide your host name.
+    * `protocol`: Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
+    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information used by the Origin Server
+    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `uniqueId`: Generated after the mapping is created.
+    * `cname`: Provide the cname. One was generated when the mapping was created if you did not provide one.
+    * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
+    * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
+    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
+      * `include-all`: Include all query arguments
+      * `ignore-all`: Ignores all query arguments
+      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
 * **Return** a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### listDomainMappings
 Returns a collection of all domain mappings for current customer.
 
-* **Parameters**: None
+* **Required Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ### listDomainMappingByUniqueId
 Returns a collection with a single domain object based on a CDN's `uniqueId`.
 
-* **Parameters**: `uniqueId`: uniqueId of the mapping to be returned
+* **Required Parameters**: `uniqueId`: uniqueId of the mapping to be returned
 * **Return**: a single-object collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-[View the Mapping Container](mapping-container.html)
+  [View the Mapping Container](mapping-container.html)
 
 ----
 ## APIs for Origin
 ### createOriginPath
 Creates an Origin Path for an existing CDN and for a particular customer. The Origin Path can be based on a Host Server or Object Storage. To create the Origin Path, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. The complete list of attributes available in the Input Container and their descriptions can be viewed here: [Input Container](input-container.html)
+* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  You can view all of the attributes in the Input Container here:
+  [View the Input Container](input-container.html)
 
-  The following attributes are **required** for this collection:
-    * `vendorName`: Provide the name of the CDN provider for this mapping
-    * `domainName`: Name of the domain for which the Origin Path is being created
-    * `path`: Path relative to the domain that can be used to reach this origin
-    * `originType`: Type of the Origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`
-    * `origin`: Origin Server address
-
-  The following attributes are **required** if the Origin Type is `HOST_SERVER`:
-    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](./faqs.md) for allowed port numbers
-
-  If the Origin Type is `OBJECT_STORAGE`, `bucketName` must also be provided, along with an optional `fileExtension`.
+  The following attributes are part of the Input Container and may be provided when creating an Origin Path (attributes are optional unless otherwise noted):
+    * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
+    * `origin`: **required** Provide the Origin server address as a string.
+    * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
+    * `domain`: **required** Provide your host name as a string.
+    * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
+    * `path`: Path from which the cached content will be served. Must begin with the mapping path. For example, if the mapping path is `/test`, then your Origin Path may be `/test/media`
+    * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information used by the Origin Server
+    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `uniqueId`: **required** Generated after the mapping is created.
+    * `cname`: Provide an alias to the hostname. If you did not provide a unique cname, one was generated for you when the mapping was created.
+    * `bucketName`: (**required** for Object Storage) Bucket name for your S3 Object Storage.
+    * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
+    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
+      * `include-all`: Include all query arguments
+      * `ignore-all`: Ignores all query arguments
+      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-[View the Origin Path Container](path-container.html)
+  [View the Origin Path Container](path-container.html)
 
 ----
-### updateOrigin
-Updates an existing Origin Path for an existing mapping and for a particular customer. The Origin type cannot be changed. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
+### updateOriginPath
+Updates an existing Origin Path for an existing mapping and for a particular customer. The Origin type cannot be changed with this API. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`, `header` and `cacheKeyQueryRule` arguments. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. The complete list of attributes available in the Input Container and their descriptions can be viewed here: [Input Container](input-container.html)
+* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  You can view all of the attributes in the Input Container here:
+  [View the Input Container](input-container.html)
 
-  The following attributes are **required** for this collection:
-    * `vendorName`: Provide the name of the CDN provider for this mapping
-    * `domainName`: Name of the domain for which the Origin Path is being updated
-    * `path`: Current path, or if being updated, the *new* path
-    * `originType`: Type of the Origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`
-    * `origin`: Origin server address
-
-  The following attributes are **required** if the Origin Type is `HOST_SERVER`:
-    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](./faqs.md) for allowed port numbers
-
-  If the Origin Type is `OBJECT_STORAGE`, `bucketName` must also be provided, along with an optional `fileExtension`.
+  The following attributes are part of the Input Container and may be provided when updating an Origin Path (attributes are optional unless otherwise noted):
+    * `oldPath`: **required** Current path to be changed
+    * `origin`: (**required** if being updated) Provide the Origin server address as a string.
+    * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
+    * `path`: **required** New path to be added. Relative to the mapping path.
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server, if being updated) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `uniqueId`: **required** uniqueId of the mapping to which this Origin belongs
+    * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
+    * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
+    * `cacheKeyQueryRule`: (**required** if being updated) The following options are available to configure Cache Key behavior:
+      * `include-all`: Include all query arguments **Default**
+      * `ignore-all`: Ignores all query arguments
+      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-[View the Origin Path Container](path-container.html)
+  [View the Origin Path Container](path-container.html)
 
 ----
 ### deleteOriginPath
 Deletes and existing Origin Path for an existing CDN, and for a particular customer. To be deleted, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
-* **Parameters**:
+* **Required Parameters**:
   * `uniqueId`: The uniqueId of the mapping to which this Origin Path belongs
   * `path`: Path to be deleted
 
@@ -205,10 +254,11 @@ Deletes and existing Origin Path for an existing CDN, and for a particular custo
 ### listOriginPath
 Lists the Origin Paths for an existing mapping based on the `uniqueId`.
 
-* **Parameters**: `uniqueId` - provide the uniqueid of the mapping for which you want to list Origin Paths.
+* **Required Parameters**:
+  * `uniqueId`: provide the uniqueid of the mapping for which you want to list Origin Paths.
 * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-[View the Origin Path Container](path-container.html)
+  [View the Origin Path Container](path-container.html)
 
 ----
 ## API for Purge
@@ -486,4 +536,4 @@ ___
 Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is 'aggregate' by default.
 
  * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics` 
+ * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
