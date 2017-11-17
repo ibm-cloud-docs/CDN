@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-03"
+lastupdated: "2017-11-17"
 
 ---
 
@@ -87,12 +87,13 @@ Using the provided inputs, this function creates a domain mapping for the given 
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
     * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior. If no `cacheKeyQueryRule` arguments are supplied, it will default to "include-all"
-      * "include-all" - includes all query arguments **default**
-      * "ignore-all" - ignores all query arguments
-      * "ignore: space separated query-args" - ignores those specific query arguments. For example, "ignore: query1 query2"
-      * "include: space separated query-args": includes those specific query arguments. For example, "include: query1 query2"
+      * `include-all` - includes all query arguments **default**
+      * `ignore-all` - ignores all query arguments
+      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
+
   **NOTE**: The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
 
   [View the Mapping Container](mapping-container.html)
@@ -156,11 +157,11 @@ Enables the user to update properties of the mapping identified by the `uniqueId
     * `cname`: Provide the cname. One was generated when the mapping was created if you did not provide one.
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
-    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-      * `include-all`: Include all query arguments
-      * `ignore-all`: Ignores all query arguments
-      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
-      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
+    * `cacheKeyQueryRule`: Cache key behavior rules can only be updated for CDN mappings created _after_ 11/16/17. The following options are available to configure Cache Key behavior:
+      * `include-all` - includes all query arguments **default**
+      * `ignore-all` - ignores all query arguments
+      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
 * **Return** a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
   [View the Mapping Container](mapping-container.html)
 
@@ -204,10 +205,10 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
     * `bucketName`: (**required** for Object Storage) Bucket name for your S3 Object Storage.
     * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
     * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-      * `include-all`: Include all query arguments
-      * `ignore-all`: Ignores all query arguments
-      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
-      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
+      * `include-all` - includes all query arguments **default**
+      * `ignore-all` - ignores all query arguments
+      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
@@ -230,11 +231,11 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
     * `uniqueId`: **required** uniqueId of the mapping to which this Origin belongs
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
-    * `cacheKeyQueryRule`: (**required** if being updated) The following options are available to configure Cache Key behavior:
-      * `include-all`: Include all query arguments **Default**
-      * `ignore-all`: Ignores all query arguments
-      * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
-      * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
+    * `cacheKeyQueryRule`: (**required** if being updated) Cache key behavior rules can only be updated for Origin Paths created _after_ 11/16/17.The following options are available to configure Cache Key behavior:
+      * `include-all` - includes all query arguments **default**
+      * `ignore-all` - ignores all query arguments
+      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
+      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 

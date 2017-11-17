@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2017-11-17"
 
 ---
 
@@ -199,4 +199,8 @@ Currently HTTPS is supported only through a Wildcard certificate. As a result of
 
 ## Why doesn't my hostname load on the browser when choosing IBM Cloud Object Storage (COS) as the origin?
 
-When your IBM Cloud CDN is configured to use IBM COS as the object storage, accessing the website directly will not work. You must specify the complete request path in the browser's address bar (i.e. www.example.com/index.html). This behavior is caused by the index document limitation in IBM COS.
+When your IBM Cloud CDN is configured to use IBM COS as the object storage, accessing the website directly will not work. You must specify the complete request path in the browser's address bar (for example, www.example.com/index.html). This behavior is caused by the index document limitation in IBM COS.
+
+## What is the largest file size that can be delivered via Akamai CDN?
+
+Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response.
