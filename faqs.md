@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-11-17"
+lastupdated: "2017-12-11"
 
 ---
 
@@ -30,7 +30,8 @@ Your account is created during the CDN order process, when you click on **Select
 
 ## What do I do when my CDN is in CNAME_CONFIGURATION Status?
 
-Update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. 
+For HTTP-based CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For HTTPS-based CDN, this DNS update is **NOT** needed.
+
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
 
 ## What will I be billed for?
@@ -53,11 +54,18 @@ After a CDN is created, it takes 48 hours for metrics to appear.
 
 There are a minimum and a maximum number of days for which you can view metrics using IBM Cloud Content Delivery Network with Akamai. Metrics can be gathered for a minimum of 7 days. Metrics can be viewed for a maximum of 90 days. For those using the API, it is recommended to use 89 days as the maximum, to account for any differences in time zones.
 
-## How does the HTTPS wildcard certificate work with this service?
+## Why is the hit ratio non-zero when total hits are zero?
+Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
 
-The wildcard certificate is the most economical way to deliver web content to your end-users securely. To use the wildcard certificate, the customer must use the CNAME hostname as the service's entry point (for example, _https://example.cdnedge.bluemix.net_). After the CDN mapping is enabled for HTTPS using the wildcard certificate, the edge server contacts the Origin Server through HTTPS. If the Origin Server is specified as a hostname, the edge server uses the origin hostname as the Server Name Indication (SNI) header for the Transport Layer Security (TLS) negotiation with the Origin Server, by default. However, if the Origin Server is specified as an IP address, the CDN's hostname will be used as the SNI header. The origin certificate must be signed by a recognized Certificate Authority (CA). 
+```
+((Edge hits - Ingress hits)/Edge hits) * 100
 
-When HTTPS Port is selected, the user can only use the CNAME to access the service.
+where: 
+Edge hits is defined as "All hits to the edge servers from the end-users"
+Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
+```
+ 
+Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
 
 ## If I select `delete` from the CDN's overflow menu, does that delete my account?
 
@@ -70,10 +78,6 @@ Content Caching is done using an _origin pull_ model. Origin Pull is a method by
 ## Is there a maximum value for Time To Live? A minimum?
 
 The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 30 seconds.
-
-## What is the Serve Stale Content option?
-
-If the caching time expires for a content, the edge server will try to fetch the content from the Origin Server. If for some reason the Origin server is down or cannot be contacted, the edge server can serve the stale content, if that option is set, which is what most customers prefer. Currently, IBM Cloud Content Delivery Network can only be configured with this option set to **Yes** as default. Changing the option to **No** will not have any impact, as the **Serve Stale Conent** option will continue to be set to **Yes**.
 
 ## Is there a limit on the number of Origin and TTL entries?
 
@@ -161,29 +165,14 @@ File extensions should be comma separated. For example, the list "txt, jpg, xml"
 Yes. For the Akamai vendor, only the following port numbers are allowed: 
 72, 80-89, 443, 488, 591, 777, 1080, 1088, 1111, 1443, 2080, 7001, 7070, 7612, 7777, 8000-9001, 9090, 9901-9908, 11080-11110, 12900-12949, 20410, and 45002.
 
-
 ## What URL should be used for access to data under the CDN or Origin Path? 
 The path for a CDN mapping or for the origin is treated as a directory. Therefore, users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
 
 Omitting the slash, for example, using `www.example.com/images` will result in a **Page Not Found** error.
 
-## What is the hit ratio? Why is the hit ratio non-zero when total hits are zero?
-Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
-
-```
-((Edge hits - Ingress hits)/Edge hits) * 100
-
-where: 
-Edge hits is defined as "All hits to the edge servers from the end-users"
-Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
-```
- 
-Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
-
 ## For HTTPS, why can't I connect through a curl command or browser using the Hostname?
 
 Currently HTTPS is supported only through a Wildcard certificate. As a result of this limitation, the connection must be made using CNAME; trying to connect using the Hostname will result in failure.
-
 
 ## What should be the expected behavior when loading the CNAME or hostname on your browser for the supported CDN protocols?
 
@@ -204,3 +193,20 @@ When your IBM Cloud CDN is configured to use IBM COS as the object storage, acce
 ## What is the largest file size that can be delivered via Akamai CDN?
 
 Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response.
+
+## What are the rules for Bucket names?
+
+Bucket names:
+  * must be at least 1 character
+  * can be no more than 199 characters long
+  * can contain letters (both uppercase and lowercase letters are allowed), numbers, and hyphens
+  * must **not** be formatted as an IP address (for example, 127.0.0.1)
+  * **cannot** start with a period (.)
+  * can end with a period (.)
+  * Only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
+
+**NOTE**: Although uppercase letters and periods can pass validation, we suggest always using DNS-compliant Bucket names.
+
+## Can compression be enabled on Akamai CDN?
+
+Content Compression is enabled in Akamai CDN by default, for text/html, text/css & application/x-javascript files.
