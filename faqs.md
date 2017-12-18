@@ -206,7 +206,3 @@ Bucket names:
   * Only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
 
 **NOTE**: Although uppercase letters and periods can pass validation, we suggest always using DNS-compliant Bucket names.
-
-## Can compression be enabled on Akamai CDN?
-
-Content Compression is enabled in Akamai CDN by default, for text/html, text/css & application/x-javascript files.

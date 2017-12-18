@@ -34,6 +34,7 @@ The key features of the IBM Cloud Content Delivery Network service include:
   * Host Header support
   * Serve Stale content
   * "Ignore Query Args in Cache Key" feature
+  * Content Compression
 
 
 ## Feature Descriptions
@@ -54,7 +55,7 @@ In certain cases, you may want to deliver certain content from a different Origi
 
 Your IBM Cloud CDN service can be restricted to a particular directory path on the Origin server by providing the path when creating the CDN. An end-user is allowed access only to those contents in that directory path. For example if a CDN www.example.com is created with Path '/videos', it is accessible only via `www.example.com/videos/`.
 
-## Purge cached content
+### Purge cached content
 
 IBM Cloud CDN provides the capability to conveniently and quickly remove, or "purge", the cached content from the Edge servers. At this time, the purge is allowed only for a file path. Currently, the Purge implementation with Akamai purges the file in about 4 minutes. The UI also provides the ability to view your Purge history, and to tag specific Purge paths as Favorites.
 
@@ -99,3 +100,7 @@ When the CDN Edge server receives a user request, and the requested content is n
 Akamai Edge servers cache content on a so-called "Cache Store." To use the content from the "Cache Store," Edge servers use a "Cache Key." Typically, a Cache Key is generated based on a portion of an end-user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content delivered is the same. By default, Akamai uses the query function's arguments to generate the Cache Key, and therefore, to generate a unique Cache Key for each user. This method is not optimal, because it causes the Edge server to contact the Origin server for content that is already cached, but using a different Cache Key. The **Ignore Query Args in Cache Key** feature allows you to specify whether the query args should be ignored when generating a Cache Key. This feature applies to any `create` or `update` of a CDN Mapping configuration, as well as for any `create` or `update` of an Origin path.
 
 **NOTE**: Currently, this feature is available only using the API. Please see the section on [API for Domain Mapping](api.html#api-for-domain-mapping-) for more information about creating or updating a CDN Mapping and [API for Origin ](api.html#api-for-origin-) for creating or updating an Origin Path using our API.
+
+### Content Compression
+
+Content Compression is enabled in Akamai CDN by default, for text/html, text/css, and application/x-javascript files. When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`. 
