@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-12-11"
+lastupdated: "2018-01-15"
 
 ---
 
@@ -35,6 +35,8 @@ The key features of the IBM Cloud Content Delivery Network service include:
   * Serve Stale content
   * "Ignore Query Args in Cache Key" feature
   * Content Compression
+  * Large File Optimization
+  * Byte-Range Requests
 
 
 ## Feature Descriptions
@@ -57,7 +59,7 @@ Your IBM Cloud CDN service can be restricted to a particular directory path on t
 
 ### Purge cached content
 
-IBM Cloud CDN provides the capability to conveniently and quickly remove, or "purge", the cached content from the Edge servers. At this time, the purge is allowed only for a file path. Currently, the Purge implementation with Akamai purges the file in about 4 minutes. The UI also provides the ability to view your Purge history, and to tag specific Purge paths as Favorites.
+IBM Cloud CDN provides the capability to conveniently and quickly remove, or "purge", the cached content from the Edge servers. At this time, the purge is allowed only for a file path. Currently, the Purge implementation with Akamai purges the file in about 5 seconds. The UI also provides the ability to view your Purge history, and to tag specific Purge paths as Favorites.
 
 ### Time to Live (TTL)
 
@@ -103,4 +105,31 @@ Akamai Edge servers cache content on a so-called "Cache Store." To use the conte
 
 ### Content Compression
 
-Content Compression is enabled in Akamai CDN by default, for text/html, text/css, and application/x-javascript files. When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`. 
+Content Compression is enabled in Akamai CDN by default for the following content types:
+* text/html*
+* text/css*
+* text/xml*
+* text/json
+* text/javascript*
+* text/plain*
+* application/x-javascript*
+* application/json 
+* application/xml*  
+
+When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`. 
+
+### Large File Optimization
+
+Large file optimization allows the CDN network to optimize the delivery of content greater than 10MB. This enablement increases performance for large files and reduces latency and download times. Without this feature, the CDN cannot service files greater than 1.8GB in size. This feature allows file downloads greater than 1.8GB up to a maximum of 320GB.
+
+For Large File Optimization to work, byte-range requests **must** be enabled on the origin server. Akamai CDN employs a technique called Partial Object Caching for this optimization. When a large file is requested, the edge server checks whether the file meets the size requirements. This means that files larger than 10MB will be requested from the origin server in chunks. Once the chunk arrives at the edge server, it is cached and immediately served to the user. The next chunk is pre-fetched in parallel by the edge server, thus reducing latency. This process continues until the entire file is retrieved, or the connection is terminated.  
+
+When this feature is enabled, there is a slight performance cost associated with serving content smaller than 10MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new Origin Path in the CDN configuration and enable Large File Optimization for that path.
+
+**NOTE**: This feature is currently available only when using the APIs.  
+
+### Byte-Range Requests
+
+A Byte-Range request is used to retrieve partial content from an origin server. The Range HTTP request header indicates which part of the content the server should return. Several parts can be requested with one range header at once, and the server may send back these ranges in a multipart response. If the server sends back ranges, it responds with a 206 `Partial Content` status.
+
+Byte-Range Requests works differently with Akamai CDN as opposed to accessing it directly from the origin server. When a byte-range request is sent using IBM Cloud CDN with Akamai, the user will receive a 200 response code for the first request, and a 206 response code for all subsequent requests. This is because Akamai edge servers request content from the origin in compressed format. So, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it will go forward to the origin and will request the entire object. In this case the origin serves the object without the content length header to Akamai, and the end user would be served the whole object even though it was a byte-range request. Thus the 200 Status code. On subsequent requests, the edge server has the object in its cache and will serve the 206 status code.
