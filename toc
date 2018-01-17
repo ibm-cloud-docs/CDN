@@ -7,7 +7,7 @@ Content Delivery Network (CDN)
     {: .navgroup id="learn"}
     getting-started.md
     about.md
-    naas-overview.md
+    naas-video.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
