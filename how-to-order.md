@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2018-01-16"
+lastupdated: "2018-01-23"
 
 ---
 
@@ -92,9 +92,11 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
 **Step 7:**
 
-Configure the **Other Options** field: This section contains configuration options for the **Respect Headers** field.
+Configure the **Other Options** field: This section contains configuration options for the **Serve Stale Content** field and the **Respect Headers** field.
     
-   * When the **Respect Headers** option is **On**, the TTL settings defined in header by the Origin will override the default CDN TTL. **Respect Headers** is set to **On** by default, but you must configure this field.  
+   * The **Serve Stale Content** field: **Serve Stale Content** is a Boolean value that indicates whether to serve cached content that has expired, in case the origin server cannot be reached. Because of a current limitation, **Serve Stale Content** functionality is enabled by default, regardless of whether a user sets it to **On** or **Off**.
+   
+   * The **Respect Headers** field: When the **Respect Headers** option is **On**, the TTL settings defined in header by the Origin will override the default CDN TTL. **Respect Headers** is set to **On** by default, but you must configure this field.
    
         ![Other options](images/other-options.png)
 		
