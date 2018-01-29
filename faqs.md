@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-12-11"
+lastupdated: "2018-01-17"
 
 ---
 
@@ -192,7 +192,7 @@ When your IBM Cloud CDN is configured to use IBM COS as the object storage, acce
 
 ## What is the largest file size that can be delivered via Akamai CDN?
 
-Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response.
+Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320GB are possible.
 
 ## What are the rules for Bucket names?
 
@@ -206,3 +206,7 @@ Bucket names:
   * Only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
 
 **NOTE**: Although uppercase letters and periods can pass validation, we suggest always using DNS-compliant Bucket names.
+
+## I received notification that my Origin Certificate is expiring. What do I do now?
+
+Follow the steps outlined in [this](https://community.akamai.com/docs/DOC-7708) article from Akamai.
