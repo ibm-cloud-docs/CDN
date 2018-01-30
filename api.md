@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-11-17"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -199,7 +199,6 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
     * `path`: Path from which the cached content will be served. Must begin with the mapping path. For example, if the mapping path is `/test`, then your Origin Path may be `/test/media`
     * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
-    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
     * `uniqueId`: **required** Generated after the mapping is created.
     * `cname`: Provide an alias to the hostname. If you did not provide a unique cname, one was generated for you when the mapping was created.
     * `bucketName`: (**required** for Object Storage) Bucket name for your S3 Object Storage.

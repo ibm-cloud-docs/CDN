@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2018-01-15"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -50,7 +50,7 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. This tutorial on [How to setup IBM Bluemix Object Storage with CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
 
 ### Support for Multiple Origins with distinct paths
-  
+
 In certain cases, you may want to deliver certain content from a different Origin server. For example, you may want certain photos or videos served from different Origin servers. IBM Cloud CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility regarding how and where the data is stored. The path provided for the Origin server should be unique with respect to the CDN. The Origin server itself does not need to be unique.
 
 ### Path-based CDN mappings
@@ -101,7 +101,7 @@ When the CDN Edge server receives a user request, and the requested content is n
 
 Akamai Edge servers cache content on a so-called "Cache Store." To use the content from the "Cache Store," Edge servers use a "Cache Key." Typically, a Cache Key is generated based on a portion of an end-user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content delivered is the same. By default, Akamai uses the query function's arguments to generate the Cache Key, and therefore, to generate a unique Cache Key for each user. This method is not optimal, because it causes the Edge server to contact the Origin server for content that is already cached, but using a different Cache Key. The **Ignore Query Args in Cache Key** feature allows you to specify whether the query args should be ignored when generating a Cache Key. This feature applies to any `create` or `update` of a CDN Mapping configuration, as well as for any `create` or `update` of an Origin path.
 
-**NOTE**: Currently, this feature is available only using the API. Please see the section on [API for Domain Mapping](api.html#api-for-domain-mapping-) for more information about creating or updating a CDN Mapping and [API for Origin ](api.html#api-for-origin-) for creating or updating an Origin Path using our API.
+**Note:** Cache Key Query Args can be configured from the Settings tab after creation of a CDN mapping. For Origin path, they can be configured during `create` or `update` of an Origin path.
 
 ### Content Compression
 
@@ -113,10 +113,10 @@ Content Compression is enabled in Akamai CDN by default for the following conten
 * text/javascript*
 * text/plain*
 * application/x-javascript*
-* application/json 
+* application/json
 * application/xml*  
 
-When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`. 
+When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
 
 ### Large File Optimization
 
