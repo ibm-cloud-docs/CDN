@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2018-01-26"
+lastupdated: "2018-01-30"
 
 ---
 
@@ -147,13 +147,13 @@ Select the **Origins** tab, then select the **Add Origin** button. This will ope
 **Step 3:**  
 
 You *must* provide a path. The path *must* start with the CDN path as the prefix, if the CDN was created with a path.  
-  For example, if the CDN was created with a path of '/examplePath' the path for the Origin must start with prefix  '/examplePath/'
+  For example, if the CDN was created with a path of `/examplePath` the path for the Origin must start with prefix  `/examplePath/`
 
 **Step 4:**  
 
 Select either **Server** or **Object Storage**.
 
-  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Provide an HTTP port, an HTTPS port, or both, depending on which protocol you selected during CDN creation. If you use an HTTPS port, the Origin server address must be a _hostname_ and not an IP address. 
+  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Provide an HTTP port, an HTTPS port, or both, depending on which protocol you selected during CDN creation. If you use an HTTPS port, the Origin server address must be a _hostname_ and not an IP address.
     * You may also choose Cache Key options from the drop-down menu. The default option is **Include-all**. If **Include specified** or **Ignore specified** is selected, you **must** enter query strings to be included or ignored separated by a space. For example, `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
 
   ![Add origin](images/add-origin-server-all-cache-query.png)   ![Add origin with cache key specified](images/add-origin-server-cache-query-specified.png)
@@ -169,15 +169,13 @@ Note: The Protocol and Port options shown by the UI will match what was selected
 
 Select the **Add** button to add your Origin Path.
 
-  **Note**: When you provide file extensions for an Object Storage origin path, the TTL setting that has the same URL as the origin path will be scoped to include all files that have those specified file extensions. For example, if you create an origin path of "/example" and specify file extensions of "jpg png gif", the TTL value of the TTL path "/example" will have a scope that includes all JPG/PNG/GIF files under the "/example" directory and its sub-directories.
+  **Note**: When you provide file extensions for an Object Storage origin path, the TTL setting that has the same URL as the origin path will be scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
 
 **Step 6:**  
 
 After adding, you can  **Edit** or **Delete** the Origin using the overflow menu options.
 
   ![Edit or delete Origin](images/edit-delete-origin.png)
-
-
 
 ## Purging Cached Content
 
@@ -224,7 +222,7 @@ Select the **Settings** tab. Your CDN configuration details are displayed.
    * HTTP/HTTPS Port
    * Serve Stale Content
    * Respect Headers
-   
+
   For **Object Storage**, following fields can be changed:
    * Endpoint
    * Bucket name
