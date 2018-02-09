@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-30"
+  years: 2017, 2018
+lastupdated: "2018-02-06"
 
 ---
 
@@ -132,33 +132,37 @@ After saving, you can **Edit** or **Delete** the TTL setting using the overflow 
 
 When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.
 
-Note: CDN will make a URL transformation for the origin server. For example, if origin xyz.example.com is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server will retrieve the content from `xyz.example.com/*`.
+Note: CDN will make a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server will retrieve the content from `xyz.example.com/*`.
 
 **Step 1:**  
 
-On the CDN page, select your CDN, which takes you to the **Overview** page.
+On the CDN page, select your CDN, which takes you to the **Overview** page.  
 
 **Step 2:**  
 
 Select the **Origins** tab, then select the **Add Origin** button. This will open a new dialog window where you can configure your Origin.  
 
-   ![Origins add origin](images/add-origin-as-update.png)
+   ![Origins add origin](images/add-origins.png)
 
 **Step 3:**  
 
 You *must* provide a path. The path *must* start with the CDN path as the prefix, if the CDN was created with a path.  
-  For example, if the CDN was created with a path of `/examplePath` the path for the Origin must start with prefix  `/examplePath/`
+  For example, if the CDN was created with a path of `/examplePath` the path for the Origin must start with prefix  `/examplePath/`. You may optionally provide a host header.  
+  
+   ![Origins add origin](images/add-origin-path.png)
 
 **Step 4:**  
 
 Select either **Server** or **Object Storage**.
 
-  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Provide an HTTP port, an HTTPS port, or both, depending on which protocol you selected during CDN creation. If you use an HTTPS port, the Origin server address must be a _hostname_ and not an IP address.
+  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Provide an HTTP port, an HTTPS port, or both, depending on which protocol you selected during CDN creation. If you use an HTTPS port, the Origin server address must be a _hostname_ and not an IP address.  
+  
     * You may also choose Cache Key options from the drop-down menu. The default option is **Include-all**. If **Include specified** or **Ignore specified** is selected, you **must** enter query strings to be included or ignored separated by a space. For example, `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
 
   ![Add origin](images/add-origin-server-all-cache-query.png)   ![Add origin with cache key specified](images/add-origin-server-cache-query-specified.png)
 
-  * If you selected **Object Storage**, provide the Endpoint, Bucket name, and HTTPS port. Optionally, specify the file extensions that can be used in the CDN service. If nothing is specified, all file extensions are allowed.
+  * If you selected **Object Storage**, provide the Endpoint, Bucket name, and HTTPS port. Optionally, specify the file extensions that can be used in the CDN service. If nothing is specified, all file extensions are allowed.  
+  
     * You may also choose Cache Key options from the drop-down menu. The default option is **Include-all**. If **Include specified** or **Ignore specified** is selected, you **must** enter query strings to be included or ignored separated by a space. For example, `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
 
   ![Add origin COS with cache key](images/add-origin-cos-cq-default.png)  ![Add origin COS with specific cache key](images/add-origin-cq-include-specified.png)
@@ -217,19 +221,23 @@ Select the **Settings** tab. Your CDN configuration details are displayed.
 
    ![Settings tab](images/settings-tab.png)
 
-  For **Server**, following fields can be changed:
+  For **Server**, the following fields can be changed:
+   * Host header
    * Origin server address
    * HTTP/HTTPS Port
    * Serve Stale Content
    * Respect Headers
+   * Cache-query
 
-  For **Object Storage**, following fields can be changed:
+  For **Object Storage**, the following fields can be changed:
+   * Host header
    * Endpoint
    * Bucket name
    * HTTPS Port
    * Allowed file extensions
    * Serve Stale Content
    * Respect Headers
+   * Cache-query
 
 **Step 3:**  
 

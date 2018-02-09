@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-23"
+  years: 2017,2018
+lastupdated: "2018-02-06"
 
 ---
 
@@ -59,47 +59,51 @@ Click on the **CDN Tile**, which takes you to the Vendor Selection screen.
 
 From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm your selected options, then click **Start Provision** at the bottom right of your screen, to start the provisioning process.  
        ![Select CDN provider](images/Vendor_Select_And_Provision.png)
-	
+
 **Step 5:**
 
 Fill out the **Configure Name** field:  
 
   * Specify the **Hostname** (**required**), which serves as the primary identifier for your CDN (for example, _example.testingcdn.net_).  
   * Optionally, you may provide a custom **CNAME** (such as _myfirstcdn.cdnedge.bluemix.net_). If no CNAME is provided, one will be created for you. <validation information to be included here>  
-    
+
        ![Configure Name](images/configure-hostname-cname.png)  
-       
-    **Note**: Use of an inappropriate CNAME may lead to termination of services. 
+
+    **Note**: Use of an inappropriate CNAME may lead to termination of services.
 
 **Step 6:**
 
-Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option. (Specifying the **Path** is optional. <validation information>)
-		
-  * **The Server Option**: If you select the **Server** option, enter the hostname or IP address of the Origin Server from which data should be cached. 
+Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
+
+   * Specify the **Host header** (optional). If one is not provided, it will default to the **Hostname**. Please see the feature description for [Host header support](about.html#host-header-support-) for more information about the Host header.  
+   
+   * Provide a **Path** (optional). The Path should be relative to the **Hostname**. 
+   
+      ![Configure Origin](images/configure-origin.png)  
+
+  * **The Server Option**: If you select the **Server** option, enter the hostname or IP address of the Origin Server from which data should be cached.
       * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server) if you select this option. If **HTTPS port** is selected, the **Origin Server Address** must be hostname and not IP address.
       * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faq.md) for a list of allowed port numbers.
 
-	     ![Configure origin server](images/new-configure-origin-server.png)
-		
+	     ![Configure origin server](images/configure-origin-server.png)
+
   * **The Object Storage Option**: If you select the **Object Storage** option, you must provide the following information:
       * the **Endpoint** from which to fetch the Object,
       * the name of the **Bucket** in which your content is stored, and
       * the **HTTPS port**.
       * You also may specify the file extensions, separated by commas, that can be used in the CDN service.(If no file name extensions are specified, all file extensions are allowed.)
       * You must set the **Access Control List** (ACL) for each **Object** in your **Bucket** to "public-read".
-		
-	     ![Configure object storage](images/new-configure-origin-object-storage.png)
+
+	     ![Configure object storage](images/configure-origin-object-storage.png)
 
 **Step 7:**
 
-Configure the **Other Options** field: This section contains configuration options for the **Serve Stale Content** field and the **Respect Headers** field.
-    
-   * The **Serve Stale Content** field: **Serve Stale Content** is a Boolean value that indicates whether to serve cached content that has expired, in case the origin server cannot be reached. Because of a current limitation, **Serve Stale Content** functionality is enabled by default, regardless of whether a user sets it to **On** or **Off**.
-   
-   * The **Respect Headers** field: When the **Respect Headers** option is **On**, the TTL settings defined in header by the Origin will override the default CDN TTL. **Respect Headers** is set to **On** by default, but you must configure this field.
-   
+Configure the **Other Options** field: This section contains configuration options for the **Respect Headers** field.
+
+   * When the **Respect Headers** option is **On**, the TTL settings defined in header by the Origin will override the default CDN TTL. **Respect Headers** is set to **On** by default, but you must configure this field.  
+
         ![Other options](images/other-options.png)
-		
+
 **Step 8:**
 
 Select the **Create** button in the bottom right corner to create your CDN.

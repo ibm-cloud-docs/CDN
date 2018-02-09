@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-17"
+  years: 2017, 2018
+lastupdated: "2018-02-08"
 
 ---
 
@@ -210,3 +210,11 @@ Bucket names:
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 
 Follow the steps outlined in [this](https://community.akamai.com/docs/DOC-7708) article from Akamai.
+
+## What is a Byte-range request, and how does it work with Akamai CDN?
+
+A Byte-Range request is used to retrieve partial content from an origin server. The Range HTTP request header indicates which part of the content the server should return. Several parts can be requested with one range header at once, and the server may send back these ranges in a multipart response. If the server sends back ranges, it responds with a 206 (Partial Content) status.
+
+When a byte-range request is sent using IBM Cloud CDN with Akamai, the user may receive a 200 (OK) response code for the first request, and a 206 response code for all subsequent requests. This is because Akamai edge servers request content from the origin in compressed format. So, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it will go forward to the origin and will request the entire object. In this case, the origin serves the object without the content length header to Akamai, and the end user would be served the whole object even though it was a byte-range request. Thus the 200 Status code. On subsequent requests, the edge server has the object in its cache and will serve the 206 status code.
+
+One way to ensure a 206 response, even for the first byte-range request, is to disable `Transfer-Encoding: chunked` on your origin server.
