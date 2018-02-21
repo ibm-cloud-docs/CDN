@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2018-02-12"
 
 ---
 
@@ -218,3 +218,7 @@ A Byte-Range request is used to retrieve partial content from an origin server. 
 When a byte-range request is sent using IBM Cloud CDN with Akamai, the user may receive a 200 (OK) response code for the first request, and a 206 response code for all subsequent requests. This is because Akamai edge servers request content from the origin in compressed format. So, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it will go forward to the origin and will request the entire object. In this case, the origin serves the object without the content length header to Akamai, and the end user would be served the whole object even though it was a byte-range request. Thus the 200 Status code. On subsequent requests, the edge server has the object in its cache and will serve the 206 status code.
 
 One way to ensure a 206 response, even for the first byte-range request, is to disable `Transfer-Encoding: chunked` on your origin server.
+
+## What security is included with IBM CDN solution with Akamai?
+
+By using the distributed Akamai platform, you get unparalleled scale and resiliency with more than 240,000 servers in over 130 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
