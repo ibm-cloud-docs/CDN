@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-02-22"
 
 ---
 
@@ -79,16 +79,17 @@ If the action was successful, a dialog box appears in the upper right corner of 
 
 **Step 4:**  
 
-This will change the Status to 'CNAME Configuration'
+This step changes the Status to 'CNAME Configuration'
 
 **Step 5:**  
 
-Click 'Get Status' from Overflow menu. This will change the status to 'Running'. And CDN will become operational.
+Click 'Get Status' from Overflow menu. This step changes the status to 'Running'. Your CDN becomes operational.
 
 ## Deleting CDN
 
-To delete a CDN follow the steps below:
-**NOTE**: Selecting `Delete` from the overflow menu only deletes the CDN; it will not delete your account.
+To delete a CDN follow these steps:
+
+**NOTE**: Selecting `Delete` from the overflow menu only deletes the CDN; it does not delete your account.
 
 **Step 1:**  
 
@@ -98,11 +99,11 @@ Click 'Delete' from the overflow menu.
 
 **Step 2:**  
 
-A larger dialog window appears, asking to confirm that you want to delete. Click **Delete** to Proceed
+A larger dialog window appears, asking to confirm that you want to delete. Click **Delete** to proceed.
 
 **Step 3:**  
 
-This will change the status to 'Deleting'. Click 'Get Status' from overflow menu. This will remove the row from the CDN list.
+This step changes the status to 'Deleting'. Click 'Get Status' from the overflow menu, and remove the row from the CDN list.
 
 ## Setting content caching time using "Time To Live"
 
@@ -110,7 +111,7 @@ After your CDN is running, you can set your content caching time using Time To L
 
 **Step 1:**  
 
-On the CDN page, select your CDN, which will take you to the **Overview** page.
+On the CDN page, select your CDN, which takes you to the **Overview** page.
 
 **Step 2:**  
 
@@ -120,11 +121,11 @@ You can adjust the time using the arrows or by entering a new time. The time val
 
 **Step 3:**
 
-After saving, you can **Edit** or **Delete** the TTL setting using the overflow menu options. (**NOTE**: The Path for TTL cannot be changed. If the Mapping path is changed, the TTL path will update automatically.)
+After saving, you can **Edit** or **Delete** the TTL setting using the overflow menu options. (**NOTE**: The Path for TTL cannot be changed. If the Mapping path is changed, the TTL path is updated automatically.)
 
   ![Edit or delete ttl](images/edit-delete-ttl-setting.png)  
 
-  * When the content matches multiple rules, the most recently added configuration will take precedence.
+  * When the content matches multiple rules, the most recently added configuration takes precedence.
 
   * TTL values can be set only for a specific file name or directory. Regular expressions are not supported, because they may create unpredictable behavior.
 
@@ -132,7 +133,7 @@ After saving, you can **Edit** or **Delete** the TTL setting using the overflow 
 
 When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.
 
-Note: CDN will make a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server will retrieve the content from `xyz.example.com/*`.
+**Note:** The CDN makes a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server retrieves the content from `xyz.example.com/*`.
 
 **Step 1:**  
 
@@ -140,7 +141,7 @@ On the CDN page, select your CDN, which takes you to the **Overview** page.
 
 **Step 2:**  
 
-Select the **Origins** tab, then select the **Add Origin** button. This will open a new dialog window where you can configure your Origin.  
+Select the **Origins** tab, then select the **Add Origin** button. This step opens a new dialog window, where you can configure your Origin.  
 
    ![Origins add origin](images/add-origins.png)
 
@@ -155,25 +156,31 @@ You *must* provide a path. The path *must* start with the CDN path as the prefix
 
 Select either **Server** or **Object Storage**.
 
-  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Provide an HTTP port, an HTTPS port, or both, depending on which protocol you selected during CDN creation. If you use an HTTPS port, the Origin server address must be a _hostname_ and not an IP address.  
+  * If you selected **Server**, enter the Origin server address as IPv4 address or the _hostname_. It is recommended to provide the hostname and provide a Fully Qualified Domain Name (FQDN). Depending on which protocol you selected during CDN creation, also provide an HTTP port, an HTTPS port, or both. If you use an HTTPS port, the Origin server address **must** be a _hostname_ and not an IP address.
   
-    * You may also choose Cache Key options from the drop-down menu. The default option is **Include-all**. If **Include specified** or **Ignore specified** is selected, you **must** enter query strings to be included or ignored separated by a space. For example, `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
+       ![Add origin server](images/add-origin-server-default.pg)
 
-  ![Add origin](images/add-origin-server-all-cache-query.png)   ![Add origin with cache key specified](images/add-origin-server-cache-query-specified.png)
-
-  * If you selected **Object Storage**, provide the Endpoint, Bucket name, and HTTPS port. Optionally, specify the file extensions that can be used in the CDN service. If nothing is specified, all file extensions are allowed.  
+  * If you selected **Object Storage**, provide the Endpoint, Bucket name, and HTTPS port. Optionally, specify the file extensions that can be used in the CDN service. If nothing is specified, all file extensions are allowed.
   
-    * You may also choose Cache Key options from the drop-down menu. The default option is **Include-all**. If **Include specified** or **Ignore specified** is selected, you **must** enter query strings to be included or ignored separated by a space. For example, `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
+       ![Add origin object storage](images/add-origin-object-storage.png)
 
-  ![Add origin COS with cache key](images/add-origin-cos-cq-default.png)  ![Add origin COS with specific cache key](images/add-origin-cq-include-specified.png)
-
-Note: The Protocol and Port options shown by the UI will match what was selected during ordering the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option will be shown as part of Add Origin.
+  * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
+  
+    * Choose **Optimization** options from the drop-down menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for ![Large file optimization](about.html#large-file-optimization-) and ![Video on Demand](about.html#video-on-demand-) provide further information.
+    
+        ![Performance configuration options](images/performance-config-options.png)
+    
+    * Choose **Cache Key** options from the drop-down menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](about.html#ignore-query-args-in-cache-key-feature) in the feature description.
+    
+        ![Cache key options](images/cache-key-options.png)
+    
+**NOTE**: The Protocol and Port options shown by the UI will match what was selected when you ordered the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option is shown as part of Add Origin.
 
 **Step 5:**  
 
 Select the **Add** button to add your Origin Path.
 
-  **Note**: When you provide file extensions for an Object Storage origin path, the TTL setting that has the same URL as the origin path will be scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
+  **Note**: When you provide file extensions for an Object Storage origin path, the TTL setting with the same URL as the origin path is scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and you specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
 
 **Step 6:**  
 
@@ -197,7 +204,7 @@ Select the **Purge** tab.
 
 **Step 3:**  
 
-Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is only allowed for a single file at this time.
+Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time.
 
 **Step 4:**  
 
@@ -227,6 +234,7 @@ Select the **Settings** tab. Your CDN configuration details are displayed.
    * HTTP/HTTPS Port
    * Serve Stale Content
    * Respect Headers
+   * Optimization options
    * Cache-query
 
   For **Object Storage**, the following fields can be changed:
@@ -237,6 +245,7 @@ Select the **Settings** tab. Your CDN configuration details are displayed.
    * Allowed file extensions
    * Serve Stale Content
    * Respect Headers
+   * Optimization options
    * Cache-query
 
 **Step 3:**  

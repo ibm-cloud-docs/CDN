@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-02-22"
 
 ---
 
@@ -20,7 +20,7 @@ A Content Delivery Network (CDN) is a collection of edge servers that are distri
 
 ## How does a CDN work?
 
-A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using IBM Cloud Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
+A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using IBM Cloud Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
 
 The key features of the IBM Cloud Content Delivery Network service include:
   * Host Server Origin support
@@ -36,8 +36,7 @@ The key features of the IBM Cloud Content Delivery Network service include:
   * "Ignore Query Args in Cache Key" feature
   * Content Compression
   * Large File Optimization
-  * Byte-Range Requests
-
+  * Video on Demand
 
 ## Feature Descriptions
 
@@ -87,8 +86,6 @@ As an industry best practice, Akamai only trusts the root certificates and not t
 
 The Edge server uses the Host Header when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. If Host Header input is not provided, the service uses the Origin Server Hostname as default HTTP Host Header if the Origin Server is specified as Hostname (rather than as an IP address). If Host header is not provided as input AND the Origin Server is provided as an IP address, the CDN Hostname (also called the CDN Domain Name) is used as the default HTTP Host Header.
 
-**NOTE**: Providing a specific Host Header as an input is currently only available using the API. Please see the section on [API for Domain Mapping](api.html#api-for-domain-mapping-) for more information about creating a CDN Mapping using our API.
-
 ### Respect Headers
 
 The Respect Headers option allows the HTTP Header configuration in the Origin to override the CDN configuration. This feature is ON by default, but can be turned OFF.
@@ -126,10 +123,8 @@ For Large File Optimization to work, byte-range requests **must** be enabled on 
 
 When this feature is enabled, there is a slight performance cost associated with serving content smaller than 10MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new Origin Path in the CDN configuration and enable Large File Optimization for that path.
 
-**NOTE**: This feature is currently available only when using the APIs.  
+### Video on Demand
 
-### Byte-Range Requests
+**Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not. 
 
-A Byte-Range request is used to retrieve partial content from an origin server. The Range HTTP request header indicates which part of the content the server should return. Several parts can be requested with one range header at once, and the server may send back these ranges in a multipart response. If the server sends back ranges, it responds with a 206 `Partial Content` status.
-
-Byte-Range Requests works differently with Akamai CDN as opposed to accessing it directly from the origin server. When a byte-range request is sent using IBM Cloud CDN with Akamai, the user will receive a 200 response code for the first request, and a 206 response code for all subsequent requests. This is because Akamai edge servers request content from the origin in compressed format. So, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it will go forward to the origin and will request the entire object. In this case the origin serves the object without the content length header to Akamai, and the end user would be served the whole object even though it was a byte-range request. Thus the 200 Status code. On subsequent requests, the edge server has the object in its cache and will serve the 206 status code.
+**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the drop-down menu under **Optimize for** on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
