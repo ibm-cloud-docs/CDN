@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-22"
+lastupdated: "2018-03-23"
 
 ---
 
@@ -80,7 +80,7 @@ The wildcard certificate is the most economical way to deliver web content to yo
 
 When using the wildcard certificate, an end-user **only** has access to the service using the CNAME. For example, if the domain is `example.com` and the CNAME is `example.cdnedge.bluemix.net`, your CDN service is **only** accessible through `https://example.cdnedge.bluemix.net`. Please refer to the [FAQ](faqs.html#what-should-be-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-cdn-protocols-) to understand the implications of using HTTPS with Wildcard Certificate.
 
-As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates, because the set of intermediary certificates that is trusted changes frequently. For security purposes, Akamai only includes root Certificate Authorities in the Akamai trust store. Therefore, the Origin must send the entire certificate chain including the leaf certificate and all the intermediate certificates (not including the Root Certificate) as part of SSL handshake with the Edge Server.
+As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates, because the set of intermediary certificates that is trusted changes frequently. For security purposes, Akamai only includes root Certificate Authorities in the Akamai trust store. Therefore, the Origin must send the entire certificate chain including the leaf certificate and all the intermediate certificates (not including the Root Certificate) as part of SSL handshake with the Edge Server. You can find the Akamai trusted certificates [here](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
 
 ### Host Header support
 
@@ -111,7 +111,7 @@ Content Compression is enabled in Akamai CDN by default for the following conten
 * text/plain*
 * application/x-javascript*
 * application/json
-* application/xml*  
+* application/xml*
 
 When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
 
@@ -125,6 +125,6 @@ When this feature is enabled, there is a slight performance cost associated with
 
 ### Video on Demand
 
-**Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not. 
+**Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
 **Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the drop-down menu under **Optimize for** on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
