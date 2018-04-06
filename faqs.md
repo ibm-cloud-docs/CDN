@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-12"
+lastupdated: "2018-03-29"
 
 ---
 
@@ -91,7 +91,7 @@ Yes, you can have a limit of 10 CDNs per account.
 
 Yes, Firefox and Chrome are the recommended browsers. It is recommended that you use their latest versions with your IBM Cloud Content Delivery Network.
 
-## What is the purpose of providing a Path when creating my CDN?
+## What is the purpose of providing a path when creating my CDN?
 
 If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin Server.
 
@@ -144,15 +144,38 @@ IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is design
 
 **NOTE:** Creating an IBM Cloud CDN using an IPv6 address as the Origin Server Address is not supported.
 
-## When creating a CDN, what are the rules to follow for specifying the Hostname input string?
+## What are the rules for the Hostname?
+The `Hostname` input string **must**:
+  * consist of alphanumeric characters
+  * be less that 512 characters
+  * end with a valid top-level domain name
+  * must **not** end in 'cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
-The `Hostname` input string should be alphanumeric, ending with a valid top-level domain name, and less than 512 characters in length. Also, do not create a hostname that ends in 'cdnedge.bluemix.net, because that ending is used for CNames.
+## What are the custom CNAME naming conventions?
+The `CNAME` input string must adhere to the following rules:
+  * **must** be unique (it cannot be in use by any other IBM Cloud CDN)
+  * less than 64 alphanumeric characters
+  * special characters `! @ # $ % ^ & *` are **not** allowed
+  * underscores `_` are **not** allowed
+  * periods `.` are **not** allowed
+  * dashes `-` are allowed, but the CNAME cannot begin or end with a dash
 
-## When creating a CDN, what are the rules to follow for making the CNAME input string?
-The `CNAME` input string should be alphanumeric, less than 64 characters, and unique. (It cannot be in use by any other IBM CDN.)
+## What are the rules for Bucket names?
+Bucket names:
+  * must be at least 1 character
+  * can be no more than 199 characters long
+  * can contain letters (both uppercase and lowercase letters are allowed), numbers, and hyphens
+  * must **not** be formatted as an IP address (for example, 127.0.0.1)
+  * **cannot** start with a period (.)
+  * can end with a period (.)
+  * Only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
 
-## When creating a CDN, what are the rules to follow for specifying the Path string for the Origin?
-For **Create CDN**, the path string is optional. If provided, the path must begin with a '/' and it must be less than 1000 characters in length
+**NOTE**: Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
+
+## What are the rules for the Path string for the Origin?
+The Path is optional when creating your CDN. However, if provided, the Path **must**:
+  * be less than 1000 characters in length
+  * begin with '/'
 
 ## For the **Add Origin** command, are there any rules to follow for the Path string?
 For **Add Origin**, the path is mandatory. Also if your CDN was created with a path, the path for **Add Origin** must start with the CDN path as the prefix. For example, if the CDN path was specified as `/storage`, to invoke **Add Origin** with a path called `/examplePath`, the path provided would be `/storage/examplePath`'.
@@ -188,28 +211,15 @@ Currently HTTPS is supported only through a Wildcard certificate. As a result of
 
 ## Why doesn't my hostname load on the browser when choosing IBM Cloud Object Storage (COS) as the origin?
 
-When your IBM Cloud CDN is configured to use IBM COS as the object storage, accessing the website directly will not work. You must specify the complete request path in the browser's address bar (for example, www.example.com/index.html). This behavior is caused by the index document limitation in IBM COS.
+When your IBM Cloud CDN is configured to use IBM COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
 
 ## What is the largest file size that can be delivered via Akamai CDN?
 
 Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320GB are possible.
 
-## What are the rules for Bucket names?
-
-Bucket names:
-  * must be at least 1 character
-  * can be no more than 199 characters long
-  * can contain letters (both uppercase and lowercase letters are allowed), numbers, and hyphens
-  * must **not** be formatted as an IP address (for example, 127.0.0.1)
-  * **cannot** start with a period (.)
-  * can end with a period (.)
-  * Only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
-
-**NOTE**: Although uppercase letters and periods can pass validation, we suggest always using DNS-compliant Bucket names.
-
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 
-Follow the steps outlined in [this](https://community.akamai.com/docs/DOC-7708) article from Akamai.
+Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708) from Akamai.
 
 ## What is a Byte-range request, and how does it work with Akamai CDN?
 
