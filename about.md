@@ -46,7 +46,7 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 
 ### Object Storage Origin support
 
-IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. This tutorial on [How to setup IBM Bluemix Object Storage with CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
+IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the _endpoint_, the _Bucket name_, _protocol_, and _port_. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access. This tutorial on [How to set up IBM Bluemix Object Storage with CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
 
 ### Support for Multiple Origins with distinct paths
 

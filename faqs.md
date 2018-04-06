@@ -147,9 +147,11 @@ IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is design
 ## What are the rules for the Hostname?
 The `Hostname` input string **must**:
   * consist of alphanumeric characters
-  * be less that 512 characters
+  * be less than 254 characters
   * end with a valid top-level domain name
   * must **not** end in 'cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
+
+Please refer to RFC 1035, section 2.3.4 for more details.
 
 ## What are the custom CNAME naming conventions?
 The `CNAME` input string must adhere to the following rules:
