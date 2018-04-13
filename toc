@@ -18,6 +18,7 @@ Content Delivery Network (CDN)
     {: .navgroup id="help"}
     faqs.md
     known-limitations.md
+    edge-servers.md
     getting-help.md
     {: .navgroup-end}
 

@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-06"
+  years: 2017, 2018
+lastupdated: "2018-04-09"
 
 
 ---
@@ -31,7 +31,7 @@ lastupdated: "2017-09-06"
 # Getting help and support 
 {: #gettinghelp}
 
-Last updated: 5 September 2017
+Last updated: 9 April 2018
 {: .last-updated}
 
 If you have problems or questions when using CDN, you can get help by searching for information or by asking questions through one of the forums listed below. You can also open a support ticket.
@@ -39,9 +39,9 @@ If you have problems or questions when using CDN, you can get help by searching 
 
 When using the forums to ask a question, tag your question so that it is seen by the {{site.data.keyword.Bluemix_notm}} development teams.
 
-* If you have technical questions about CDN, post your question on [Stack Overflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} and tag your question with "ibm-bluemix" and "cdn".
+* If you have technical questions about CDN, post your question on [Stack Overflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} and tag your question with "cdn" and "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
-* For questions about the service and getting started instructions, use the [IBM developerWorks dW Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} forum. Include the  "cdn" and "bluemix" tags.
+* For questions about the service and getting started instructions, use the [IBM developerWorks dW Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} forum. Include the  "cdn" and "ibm-cloud" tags.
 
 See [Getting help](https://console.bluemix.net/docs/support/index.html#getting-help) for more details about using the forums.
 
