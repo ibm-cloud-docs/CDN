@@ -1,13 +1,13 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-12"
+  years: 2017, 2018
+lastupdated: "2018-04-20"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:new_window: target="-blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -36,14 +36,15 @@ Existing CDN customers have access to their accounts through the new [IBM Cloud 
 
 IBM Cloud Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
 
-**NOTE:** Pricing is shown per GB of usage.
+**NOTE:** Pricing is shown per GB of monthly usage.
 
 You can scroll sideways to see the full geographic table prior to getting started using this service.
 
-|Per Month| NA | EMEA | APAC | JAPAN | LATAM | Australasia | India |
+|Per Month| [North America](north-america-region.html) | [Europe, Middle East, Africa](emea-region.html) | [Asia](asia-region.html) | Japan | [South America](south-america-region.html) | Australia, New Zealand | India |
 |-------|-----|-----|-----|-----|-----|----|-----|
 |First 10 TB| 0.085 | 0.085 | 0.14 | 0.14 | 0.25 | 0.14 | 0.17 |
 |10 - 250 TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |
 |250 - 500 TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
 |500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
 |\>3 PB| 0.02 | 0.02 | 0.06 | 0.06 | 0.125 | 0.085 | 0.085 |
+* select a region to see countries/territories in that region
