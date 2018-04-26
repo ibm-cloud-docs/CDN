@@ -21,3 +21,5 @@ Las limitaciones siguientes corresponden al nuevo servicio de CDN para el provee
 * Actualmente no se admite la depuración de contenido a nivel de directorio o de varios archivos.
 * Actualmente se permite un límite de 10 CDN en una cuenta de {{site.data.keyword.BluSoftlayer_notm}} determinada.
 * El límite del número total de orígenes y entradas de TTL es de 75 por cada CDN.
+* La opción Proporcionar contenido obsoleto siempre estará **Activar**, incluso si la CDN se ha creado con **Desactivar** 
+* Si la CDN se ha creado con **Servidor** y **Puerto HTTP**, el origen sólo puede añadirse con la opción **Servidor**.

@@ -6,20 +6,23 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="learn"}
     getting-started.md
-    overview-of-features.md
-    how-to-order.md
+    about.md
+    naas-video.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
+    how-to-order.md
     how-to.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
     faqs.md
     known-limitations.md
+    edge-servers.md
     getting-help.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
     api.md
+    cdn-example-code.md
     {: .navgroup-end}

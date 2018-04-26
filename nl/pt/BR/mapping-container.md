@@ -1,0 +1,80 @@
+---
+
+copyright:
+  years: 2017
+lastupdated: "2017-11-16"
+
+---
+
+{:shortdesc: .shortdesc}
+{:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}  
+
+# Contêiner de mapeamento  
+A coleção `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` contém os atributos
+utilizados pelas nossas APIs de mapeamento. Cada uma das APIs de mapeamento retorna uma coleção desse tipo.
+
+classe `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
+
+* `vendorName`: o nome de um provedor válido do IBM Cloud CDN.
+* `uniqueId`: um identificador de 10 dígitos, gerado pelo sistema, que é exclusivo para cada mapeamento. Gerada quando um mapeamento é criado.
+* `domain`: nome do CDN primário. Também referido como `nome do host`.
+* `protocol`: protocolo usado para configurar os serviços. Ele pode ser HTTP, HTTPS ou uma combinação dos
+dois, HTTP_AND_HTTPS.
+* `originType`: O tipo de Host de origem, atualmente 'HOST_SERVER' ou 'OBJECT_STORAGE'.
+* `originHost`: endereço do servidor de origem (ou o nome do host ou o endereço IPv4 do servidor de origem),
+que é o terminal do qual buscar conteúdo ou o nome do depósito em que o conteúdo é armazenado. Ele deve ser menor que 511 caracteres.
+* `httpPort`: número da porta usada para o protocolo HTTP. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Veja as [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
+* `httpsPort`: número da porta usada para o protocolo HTTPS. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Consulte as [Perguntas frequentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
+* `cname`: registro de nome canônico que cria um alias do nome do host. Ele pode ser fornecido pelo usuário ou gerado pelo sistema. Se for fornecido pelo usuário, ele deverá ter menos que 64 caracteres alfanuméricos e deve ser exclusivo. Se não fornecido, um será gerado quando o mapeamento for criado.
+* `respectHeaders`: um Valor booleano que, se configurado como 'true', fará as configurações do TTL na Origem substituírem as configurações do TTL do CDN.
+* `header`: especifica as informações do cabeçalho do Host usadas pelo Servidor de origem.
+* `status`: o status do mapeamento. O status pode ser CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED ou ERROR.
+* `bucketName`: nome do depósito para seu armazenamento de objetos S3.
+* `fileExtension`: extensões do arquivo que podem ser armazenadas em cache.
+* `path`: o caminho para o seu armazenamento de objetos S3. Normalmente localizado na seção de API ou URL do armazenamento de objetos do seu serviço.
+* `cacheKeyQueryRule`: as opções a seguir estão disponíveis para configurar o comportamento da Chave de cache:
+  * `include-all`: inclui todos os argumentos de consulta **Padrão**
+  * `ignore-all`: ignore todos os argumentos de consulta
+  * `ignore: space separated query-args`: ignora esses argumentos de consulta específicos. Por exemplo, "ignore: query1 query2"
+  * `include: space separated query-args`: inclui esses argumentos de consulta específicos. Por exemplo, "include: query1 query2"
+
+De nota em particular é o `uniqueId`, que é gerado quando um mapeamento é criado e é usado como um parâmetro
+para chamadas API subsequentes.
+
+Por exemplo, essa chamada para `listDomainMappingByUniqueid`  
+```php  
+$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');
+```
+
+retornará um objeto semelhante a esse:
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+                    [vendorName] => akamai
+                    [uniqueId] => 750352919747xxx
+                    [domain] => test.testingcdn.net
+                    [protocol] => HTTP_AND_HTTPS
+                    [originType] => HOST_SERVER
+                    [originHost] => test.testingcdn.net
+                    [httpPort] => 80
+                    [httpsPort] => 443
+                    [cname] => test.cdnedge.bluemix.net
+                    [performanceConfiguration] =>
+                    [certificateType] =>
+                    [respectHeaders] => 1
+                    [header] =>
+                    [status] => RUNNING
+                    [bucketName] =>
+                    [fileExtension] =>
+                    [path] => /
+                    [cacheKeyQueryRule] => include-all
+                )
+```
+
+

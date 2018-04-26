@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-06"
+  years: 2017, 2018
+lastupdated: "2018-04-09"
 
 
 ---
@@ -31,18 +31,18 @@ lastupdated: "2017-09-06"
 # Hilfe und Unterstützung anfordern 
 {: #gettinghelp}
 
-Letzte Aktualisierung: 5. September 2017
+Letzte Aktualisierung: 9. April 2018
 {: .last-updated}
 
 Bei Problemen oder Fragen im Umgang mit CDN können Sie nach Informationen suchen oder Fragen in einem der unten aufgeführten Foren stellen. Sie haben auch die Möglichkeit, ein Support-Ticket zu öffnen.
 {:shortdesc}
 
 Wenn Sie eine Frage über die Foren stellen, kennzeichnen Sie Ihre Frage, damit sie von den {{site.data.keyword.Bluemix_notm}}-Entwicklerteams gesehen wird.
-<!--Insert the appropriate Stack Overflow tag for your service for <block-storage> in URL and text below:  -->
-* Wenn Sie technische Fragen zu CDN haben, reichen Sie Ihre Frage bei [Stack Overflow ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://stackoverflow.com/search?q=network-security-groups+ibm-bluemix){:new_window} ein und versehen Sie sie mit den Tags "ibm-bluemix" und "cdn".
-<!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
-* Bei Fragen zu dem Service und zu Anweisungen für den Einstieg verwenden Sie das Forum [IBM developerWorks dW Answers ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Geben Sie die Tags  "cdn" und "bluemix" an.
 
-Weitere Details zur Nutzung der Foren finden Sie unter [Hilfe anfordern](https://console.bluemix.net/docs/support/index.html#getting-help): 
+* Wenn Sie technische Fragen zu CDN haben, reichen Sie Ihre Frage bei [Stack Overflow ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} ein und versehen Sie sie mit den Tags "cdn" und "ibm-cloud".
+<!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
+* Bei Fragen zu dem Service und zu Anweisungen für den Einstieg verwenden Sie das Forum [IBM developerWorks dW Answers ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Schließen Sie die Tags "cdn" und "ibm-cloud" ein.
+
+Weitere Details zur Nutzung der Foren finden Sie unter [Hilfe anfordern](https://console.bluemix.net/docs/support/index.html#getting-help):
 
 Weitere Informationen zum Öffnen eines IBM Support-Tickets oder zu Supportebenen und zur Priorität von Tickets finden Sie unter [Support kontaktieren](https://console.bluemix.net/docs/support/index.html#contacting-support).

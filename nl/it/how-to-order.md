@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-10"
+  years: 2017,2018
+lastupdated: "2018-02-06"
 
 ---
 
@@ -14,66 +14,96 @@ lastupdated: "2017-09-10"
 {:tip: .tip}
 {:download: .download}
 
-# Come ordinare un CDN
+# Ordina una CDN
 
-Qui troverai le informazioni su come ordinare un CDN (Content Delivery Network). Puoi ordinare il tuo CDN dal [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/) o dal [Portale del catalogo Bluemix](https://www.ibm.com/cloud-computing/bluemix/).
+Qui troverai le informazioni su come ordinare una CDN (Content Delivery Network). La tua CDN può essere ordinata dal [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/) o dal [Portale Bluemix](https://www.ibm.com/cloud-computing/bluemix/).
 
 ## Dal Portale del cliente:
 
-1. Per iniziare, accedi al [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/) utilizzando le tue credenziali univoche.
+**Passo 1:**
 
-2. Dalla barra di navigazione nella parte superiore dello schermo, seleziona **Rete -> CDN**.
+Per iniziare, accedi al [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/) utilizzando le tue credenziali univoche.
+
+**Passo 2:**
+
+Dalla barra di navigazione nella parte superiore dello schermo, seleziona **Rete -> CDN**.
 
    ![Opzioni di menu Rete](images/network-cdn.png)
 
-3. Nella pagina **Content Delivery Networks**, seleziona il pulsante **Ordina CDN** in alto a destra.
+**Passo 3:**
 
-	![Seleziona ordine CDN](images/order-cdn-button.png)
+Nella pagina **Content Delivery Networks**, seleziona il pulsante **Order CDN** (Ordina CDN) in alto a destra.
+
+   ![Seleziona l'ordinazione della CDN](images/order-cdn-button.png)
 
 ## Dal portale Bluemix:
 
-1. Accedi al [Portale Bluemix](https://www.ibm.com/cloud-computing/bluemix/)
+**Passo 1:**
 
-2. Fai clic su **Catalogo IBM Bluemix**. Dalla barra di navigazione a sinistra, seleziona **Rete**.
+Accedi al [Portale Bluemix](https://www.ibm.com/cloud-computing/bluemix/)
+
+**Passo 2:**
+
+Fai clic su [Catalogo IBM Bluemix](https://console.bluemix.net/catalog/). Dalla barra di navigazione a sinistra, seleziona **Rete**.
 
    ![Navigazione Bluemix CDN](images/bluemix_navigation.png)
 
-3. Fai clic sul **tile CDN**, che ti porta alla schermata Selezione fornitore.
+**Passo 3:**
+
+Fai clic sul **tile CDN**, che ti porta alla schermata Selezione fornitore.
 
    ![Icona Bluemix CDN](images/bluemix_tile.png)
 
-4. Dalla schermata **Seleziona un provider CDN**, scegli tra le opzioni del provider CDN. Fai clic sul pulsante **Selezionato** nella parte inferiore dello schermo per confermare le tue opzioni selezionate, quindi fai clic su **Avvia provisioning** per avviare il processo di provisioning.
 
-	![Seleziona provider CDN](images/newReducedSizeVendorSelectAndProvision.png)
-	
-5. Compila il campo **Configura nome**: 
-      * Specifica il _nome host_ (**obbligatorio**), che funge da identificativo primario per il tuo CDN (ad esempio, _example.testingcdn.net_).
-      * Facoltativamente, puoi fornire un _CNAME_ personalizzato (ad esempio _myfirstcdn.cdnedge.bluemix.net_). Se non fornisci un CNAME, ne verrà creato uno per te. <informazioni di convalida da includere qui>
-      
-      ![Configura nome](images/configure-hostname-cname.png)
-		
-6. Compila il campo **Configura la tua origine**: per configurare questo campo, devi selezionare l'opzione **Server** o **Archiviazione oggetti**. (La specifica di **Percorso** è facoltativa. <informazioni di convalida>)
-		
-  * **Opzione Server**: se selezioni l'opzione **Server**, immetti il nome host o l'indirizzo IP del server di origine da cui i dati devono essere memorizzati nella cache. 
-      * Se selezioni questa opzione, devi specificare l'**Indirizzo IP** del server di origine.
-      * Puoi anche fornire una **Porta HTTP**, una **Porta HTTPS** o entrambe. (Questi campi indicano quale protocollo e numero di porta possono essere utilizzati per contattare il server di origine.)
+**Passo 4:**
 
-	   ![Configura server di origine](images/configure-origin-server.png)
-		
-  * **Opzione Archiviazione oggetti**: se selezioni l'opzione **Archiviazione oggetti**, devi fornire le seguenti informazioni:
+Dalla schermata **Select a CDN Provider** (Seleziona un provider CDN), scegli tra le opzioni del provider CDN. Fai clic sul pulsante **Select** (Seleziona) per confermare le tue opzioni selezionate e fai quindi clic su **Start Provisioning** (Avvia provisioning) nella parte inferiore destra dello schermo per avviare il processo di provisioning.  
+       ![Seleziona provider CDN](images/Vendor_Select_And_Provision.png)
+
+**Passo 5:**
+
+Compila il campo **Configure Name** (Configura nome):  
+
+  * Specifica il **Hostname** (Nome host) (**obbligatorio**), che funge da identificativo primario per la tua CDN (ad esempio _example.testingcdn.net_).  
+  * Facoltativamente, puoi fornire un **CNAME** personalizzato (ad esempio _myfirstcdn.cdnedge.bluemix.net_). Se non fornisci un CNAME, ne verrà creato uno per te. <informazioni di convalida da includere qui>  
+
+       ![Configura il nome](images/configure-hostname-cname.png)  
+
+    **Nota**: l'utilizzo di un CNAME inappropriato potrebbe causare la chiusura dei servizi.
+
+**Passo 6:**
+
+Compila il campo **Configura la tua origine**: per configurare questo campo, devi selezionare l'opzione **Server** o **Object Storage**.  
+
+   * Specifica la **Host header** (Intestazione host) (facoltativo). Se non ne viene fornita una, verrà automaticamente impostata sull'**Hostname** (Nome host). Consulta la descrizione della funzione per [Supporto dell'intestazione host](about.html#host-header-support-) per ulteriori informazioni sull'intestazione host.  
+   
+   * Fornisci un **Path** (Percorso) (facoltativo). Il percorso deve essere relativo all'**Hostname** (Nome host). 
+   
+      ![Configura l'origine](images/configure-origin.png)  
+
+  * **Opzione Server**: se selezioni l'opzione **Server**, immetti il nome host o l'indirizzo IP del server di origine da cui i dati devono essere memorizzati nella cache.
+      * Devi specificare l'**Indirizzo del server di origine** (nome host o indirizzo IPv4 del server di origine) se selezioni questa opzione. Se viene selezionata la **Porta HTTPS**, l'**Indirizzo del server di origine** deve essere il nome host e non l'indirizzo IP.
+      * Puoi anche fornire una **Porta HTTP**, una **Porta HTTPS** o entrambe. Questi campi indicano quale protocollo e numero porta possono essere utilizzati per contattare il server di origine. Per i numeri porta non predefiniti, fai riferimento a [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco di numeri porta consentiti.
+
+	     ![Configura il server di origine](images/configure-origin-server.png)
+
+  * **Opzione Object Storage**: se selezioni l'opzione **Object Storage**, devi fornire le seguenti informazioni:
       * l'**Endpoint** da cui recuperare l'oggetto.
       * il nome del **Bucket** in cui è memorizzato il tuo contenuto e
       * la **porta HTTPS**.
       * Puoi anche specificare le estensioni file, separate da virgole, che possono essere utilizzate nel servizio CDN. (Se non si specificano estensioni file, sono consentite tutte le estensioni.)
-      * Devi impostare l'**Access Control List** (ACL) per ogni **Oggetto** presente nel tuo **Bucket** per l'accesso "public-read".
-		
-	   ![Configura Archiviazione oggetti](images/configure-origin-object-storage.png)
+      * Devi impostare l'ACL (**Access Control List**) per ogni **Oggetto** presente nel tuo **Bucket** per l'accesso "public-read".
 
-7. Configura il campo **Altre opzioni**: questa sezione contiene le opzioni di configurazione per il campo **Utilizza contenuto obsoleto** e il campo **Rispetta intestazioni**.
-    
-     * Campo **Utilizza contenuto obsoleto**: **Utilizza contenuto obsoleto** è un valore booleano che indica se utilizzare il contenuto memorizzato nella cache che è scaduto, nel caso in cui non sia possibile raggiungere il server di origine. A causa di una limitazione corrente, la funzionalità **Utilizza contenuto obsoleto**  è abilitata per impostazione predefinita, indipendentemente dal fatto che l'utente la imposti su **Attivo** o **Disattivo**.
-     * Campo **Rispetta intestazioni**: quando l'opzione **Rispetta intestazioni** è impostata su **Attivo**, le impostazioni TTL definite nell'intestazione dall'origine sovrascriveranno il TTL CDN predefinito. **Rispetta intestazioni** è impostata su **Attivo** per impostazione predefinita, tuttavia devi configurare questo campo.
+	     ![Configura l'Object Storage](images/configure-origin-object-storage.png)
 
-		![Altre opzioni](images/other-options.png)
-		
-8. Seleziona il pulsante **Crea** nell'angolo in basso a destra per creare il tuo CDN.
+**Passo 7:**
+
+Configura il campo **Altre opzioni**: questa sezione contiene le opzioni di configurazione per il campo **Rispetta intestazioni**.
+
+   * Quando l'opzione **Respect Headers** (Rispetta intestazioni) è impostata su **On** (Attivo), le impostazioni TTL definite nell'intestazione dall'origine sovrascriveranno il TTL CDN predefinito. **Respect Headers** (Rispetta intestazioni) è impostata su **On** (Attivo) per impostazione predefinita, tuttavia devi configurare questo campo.  
+
+        ![Altre opzioni](images/other-options.png)
+
+**Passo 8:**
+
+Seleziona il pulsante **Create** (Crea) nell'angolo in basso a destra per creare la tua CDN.

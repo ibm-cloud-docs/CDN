@@ -21,3 +21,5 @@ Die folgenden Einschränkungen gelten für den neuen CDN-Service des Anbieters A
 * Die Bereinigung von Inhalten auf Verzeichnisebene oder in mehreren Dateien wird derzeit nicht unterstützt.
 * Derzeit sind maximal 10 CDN für ein angegebenes {{site.data.keyword.BluSoftlayer_notm}}-Konto zulässig.
 * Die Gesamtzahl der Ursprungs- und TTL-Einträge pro CDN ist auf 75 begrenzt.
+* Die Funktion 'Nicht aktuelle Inhalte bereitstellen' ist immer aktiviert, selbst dann, wenn das CDN bei inaktivierter Option erstellt wurde. 
+* Wenn das CDN mit den Optionen **Server** und **HTTP-Port** erstellt wurde, kann der Ursprung nur mit der Option **Server** hinzugefügt werden.

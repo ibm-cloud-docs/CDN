@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -14,89 +14,332 @@ lastupdated: "2017-09-06"
 {:tip: .tip}
 {:download: .download}
 
-# Référence d'API
 
-Visitez la page https://sldn.softlayer.com/article/PHP pour en savoir plus sur la configuration de PHP et SOAP. 
- 
-## API pour un compte
+
+# Références de l'API CDN
+
+L'interface de programmation {{site.data.keyword.BluSoftlayer_notm}} (généralement appelée SLAPI), fournie par IBM Cloud, est l'interface de développement qui permet aux développeurs et administrateurs système d'interagir directement avec le système back end de {{site.data.keyword.BluSoftlayer_notm}}.
+
+SLAPI implémente un grand nombre de fonctionnalités du portail client : si une interaction est possible dans le portail client, elle peut également être exécutée dans SLAPI. Puisque vous pouvez interagir à l'aide d'un programme avec toutes les portions de l'environnement {{site.data.keyword.BluSoftlayer_notm}} au sein de SLAPI, vous pouvez utiliser l'API pour automatiser les tâches.
+
+SLAPI est un système RPC (Remote Procedure Call, appel de procédure distante). Chaque appel implique l'envoi de données vers un noeud final d'API et la réception de données structurées en retour. Le format utilisé pour l'envoi et la réception de données à l'aide de SLAPI dépend de l'implémentation que vous avez choisie. SLAPI utilise actuellement SOAP, XML-RPC ou REST pour la transmission de données.
+
+Pour en savoir plus sur SLAPI ou sur les API du service IBM Cloud Content Delivery Network (CDN), veuillez consulter les ressources suivantes dans le réseau de développement d'IBM Cloud :
+
+* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
+* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
+* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
+* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+
+----
+
+Pour commencer, vous trouverez ci-dessous la séquence d'appels API recommandée :
+* `listVendors` - Fournit une liste des fournisseurs pris en charge.
+* `verifyOrder` - Vérifie si la commande peut-être placée.
+* `placeOrder`  - Crée le compte CDN avec un fournisseur donné. Vous pouvez créer jusqu'à 10 mappages de CDN après un appel placeOrder réussi.
+* `createDomainMapping` - Crée les mappages du CDN
+* `verifyDomainMapping` - Change le statut du CDN en _RUNNING_ (en cours d'exécution)
+
+Vous pouvez utiliser les autres API après avoir suivi la séquence précédente.
+
+[Un exemple de code est disponible pour chaque étape de cette séquence d'appels.](cdn-example-code.html#code-examples-using-the-cdn-api)
+
+**REMARQUE** : vous **devez** utiliser le nom d'utilisateur d'API et la clé d'API d'un utilisateur possédant le droit `CDN_ACCOUNT_MANAGE` pour la plupart des appels d'API affichés dans ce document. Contactez l'utilisateur principal de votre compte si vous avez besoin que ce droit soit activé pour vous. (Chaque compte client IBM Cloud possède un utilisateur principal)
+
+----
+## API pour les fournisseurs
+### listVendors
+Cette API permet aux utilisateurs de dresser la liste des fournisseurs CDN pris en charge. Le `vendorName` est nécessaire pour créer un compte CDN et commencer à commander votre CDN.
+
+* **Paramètres requis** : Aucun
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
+
+  Vous trouverez le conteneur des fournisseurs et un exemple d'utilisation ici : [Conteneur des fournisseurs](vendor-container.html)
+
+----
+## API de compte
 ### verifyCdnAccountExists
-Vérifie si un compte CDN existe pour l'utilisateur qui appelle l'API, `vendorName`
+Vérifie si un compte CDN existe pour l'utilisateur appelant l'API, pour le nom de fournisseur donné (`vendorName`).
 
- * **Paramètres** : `vendorName`
- * **Retour** : `true` si le compte existe, sinon `false`
-___
+* **Paramètres requis** : `vendorName` : Fournissez le nom d'un fournisseur de CDN valide.
+* **Retour** : `true` si un compte existe, sinon `false`.
 
+----
 ## API pour le mappage de domaine
 ### createDomainMapping
-A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour le fournisseur donné et l'associe à l'{{site.data.keyword.BluSoftlayer_notm}}ID de compte de l'utilisateur. Le compte CDN doit être créé à l'aide du paramètre `createCustomerSubAccount` pour que l'API fonctionne. Une fois le compte CDN créé, le paramètre `defaultTTL` est créé avec la valeur 3 600 secondes.
+A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour le fournisseur donné et l'associe à l'{{site.data.keyword.BluSoftlayer_notm}}ID de compte de l'utilisateur. Le compte CDN doit d'abord être créé avec `placeOrder` pour que cette API fonctionne (voir un exemple de l'appel d'API `placeOrder` dans les [Exemples de codes](cdn-example-code.html)). Une fois le compte CDN créé, le paramètre `defaultTTL` est créé avec la valeur 3 600 secondes.
 
- * **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. Cette collection doit comporter les éléments suivants :  `vendorName`, `hostname`, `protocol`, `originType`, `originHost`, `originHostPort`, `respectHeader`, `serveStale`, `cname`, `performanceConfiguration`, `header`, `certificateType`, `path`
- * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`. La collection inclut une valeur `uniqueId`, qui doit être envoyée sous forme d'entrée pour les appels API suivants liés au mappage.
-___ 
+* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+  [Afficher le conteneur d'entrée](input-container.html)
+
+  Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un mappage de domaine (les attributs sont facultatifs sauf indication contraire) :
+    * `vendorName` : **obligatoire** Fournissez le nom d'un fournisseur IBM Cloud CDN valide.
+    * `origin` : **obligatoire** Fournissez l'adresse du serveur d'origine sous forme de chaîne.
+    * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
+    * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
+    * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
+    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Le chemin d'accès par défaut est /\*
+    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte) ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
+    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine. 
+    * `cname` : Fournissez un alias pour le nom d'hôte. Il sera généré si aucune valeur n'est fournie.
+    * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
+    * `fileExtension` : (facultatif pour le stockage d'objet) Extensions de fichiers autorisées à être mises en cache.
+    * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache. Si aucun argument `cacheKeyQueryRule` n'est fourni, la valeur par défaut "include-all" sera utilisée
+      * `include-all` - inclut tous les arguments de requête **default**
+      * `ignore-all` - ignore tous les arguments de requête
+      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
+
+  **REMARQUE** : La collection fournit une valeur `uniqueId` qui doit être envoyée sous forme d'entrée pour les appels API suivants en relation avec le mappage ou le chemin d'origine.
+
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### deleteDomainMapping
-Supprime le mappage de domaine sur la base du paramètre `uniqueId`. Le mappage de domaine doit se trouver dans l'un des états suivants :  _RUNNING_, _STOPPED_, , _DELETED_, _ERROR_, _CNAME\_CONFIGURATION_ ou _SSL\_CONFIGURATION_.
+Supprime le mappage de domaine sur la base du paramètre `uniqueId`. Le mappage de domaine doit se trouver dans l'un des états suivants : _RUNNING_, _STOPPED_, _DELETED_, _ERROR_, _CNAME_CONFIGURATION_ ou _SSL_CONFIGURATION_.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Paramètres obligatoires** : `uniqueId` : ID unique du mappage à supprimer
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### verifyDomainMapping
-Vérifie le statut du CDN et met à jour les valeurs `status`, `cname` et/ou `vendorCname` si nécessaire. Renvoie les valeurs mises à jour le cas échéant. Le mappage de domaine doit se trouver dans l'un des états suivants : _RUNNING_, _CNAME\_CONFIGURATION_ ou _SSL\_CONFIGURATION_.
+Vérifie l'état du CDN et met à jour la valeur `status` du mappage CDN si elle a changé. Lorsqu'un mappage de CDN est créé initialement, son statut est _CNAME_CONFIGURATION_. A ce stade, vous devez mettre à jour l'enregistrement DNS de sorte que le nom d'hôte du mappage CDN pointe vers le CNAME. Contactez votre fournisseur DNS si vous avez des questions relatives à la procédure de mise à jour et à la durée nécessaire pour propager les modifications sur Internet. La durée moyenne est comprise entre 15 et 30 minutes. Au-delà de ce délai, l'API `verifyDomainMapping` doit être appelée afin de vérifier si la chaîne CNAME est terminée. Si tel est le cas, le statut du mappage CDN devient _RUNNING_.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+Vous pouvez appeler cette API à tout moment afin d'obtenir le statut du mappage CDN le plus récent. Le mappage de domaine doit se trouver dans l'un des états suivants : _RUNNING_ ou _CNAME_CONFIGURATION_.
+
+* **Paramètres obligatoires** : `uniqueId` : ID unique du mappage que vous souhaitez vérifier
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### startDomainMapping
 Démarre un mappage de domaine CDN sur la base du paramètre `uniqueId`. Pour démarrer, le mappage de domaine doit se trouver à l'état _STOPPED_.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Paramètres obligatoires** : `uniqueId` : ID unique du mappage devant être démarré
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### stopDomainMapping
 Met fin à un mappage de domaine CDN sur la base du paramètre `uniqueId`. Pour s'arrêter, le mappage de domaine doit se trouver à l'état _RUNNING_.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Paramètres obligatoires** : `uniqueId` : ID unique du mappage devant être arrêté
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### updateDomainMapping
-Permet à l'utilisateur de mettre à jour les propriétés du mappage identifiées par le paramètre `uniqueId`. Les zones pouvant être modifiées sont les suivantes : `originHost`, `performanceConfiguration`, `header`, `httpPort`, `httpsPort`, `certificateType`, `respectHeader`, `serveStale`, `path`, et lorsque le type d'origine du chemin est Object Storage, les zones `bucketName` et `fileExtension` peuvent également être éditées. Pour être mis à jour, le mappage de domaine doit se trouver à l'état _RUNNING_. 
+Permet à l'utilisateur de mettre à jour les propriétés du mappage identifiées par le paramètre `uniqueId`. Les zones suivantes peuvent être modifiées : les arguments `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` et si votre type d'origine est Stockage d'objet, `bucketName` et `fileExtension` peuvent également être modifiés. Pour être mis à jour, le mappage de domaine doit se trouver à l'état _RUNNING_.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+  [Afficher le conteneur d'entrée](input-container.html)
+
+  Les attributs suivants appartiennent au conteneur d'entrée et **doivent** être fournis lors de la mise à jour d'un mappage de domaine :
+    * `vendorName` : Fournissez le nom du fournisseur de CDN de ce mappage.
+    * `path` : Fournissez le chemin en cours de ce mappage
+    * `origin` : Fournissez l'adresse du serveur d'origine sous forme de chaîne.
+    * `originType` : Le type d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
+    * `domain` : Fournissez votre nom d'hôte.
+    * `protocol` : Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
+    * `httpPort` et/ou `httpsPort` : Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
+    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine. 
+    * `uniqueId` : Généré après la création du mappage.
+    * `cname` : Fournissez le cname. Si vous ne l'avez pas fourni lors de la création du mappage, il a été créé automatiquement.
+    * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
+    * `fileExtension` : (**obligatoire** pour le stockage d'objet uniquement) Extensions de fichiers pouvant être mises en cache.
+    * `cacheKeyQueryRule` : Les règles de comportement des clés de cache peuvent uniquement être mises à jour pour les mappages créés _après_ le 16/11/17. Les options suivantes sont disponibles pour configurer le comportement des clés de cache :
+      * `include-all` - inclut tous les arguments de requête **default**
+      * `ignore-all` - ignore tous les arguments de requête
+      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### listDomainMappings
-Renvoie une collection de tous les domaines d'un client particulier.
+Renvoie une collection de tous les mappages de domaines pour le client en cours.
 
- * **Paramètres** : _none_ 
- * **Retour** : Collection de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Paramètres requis** : Aucun
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Afficher le conteneur de mappage](mapping-container.html)
+
+----
 ### listDomainMappingByUniqueId
 Renvoie une collection avec un objet de domaine unique sur la base du paramètre `uniqueId` associé au CDN.
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection d'objet unique pour des objets de type `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Paramètres obligatoires** : `uniqueId`: ID unique du mappage à renvoyer
+* **Retour** : Collection d'objet unique de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Afficher le conteneur de mappage](mapping-container.html)
 
+----
+## API du serveur d'origine
+### createOriginPath
+Crée un chemin d'origine pour un CDN existant et un client particulier. Le chemin d'origine peut être basé sur un serveur hôte ou sur un stockage d'objet. Pour créer le chemin d'origine, le mappage de domaine doit être dans un état _RUNNING_ ou _CNAME_CONFIGURATION_.
+
+* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+  [Afficher le conteneur d'entrée](input-container.html)
+
+  Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
+    * `vendorName` : **obligatoire** Fournissez le nom d'un fournisseur IBM Cloud CDN valide.
+    * `origin` : **obligatoire** Fournissez l'adresse du serveur d'origine sous forme de chaîne.
+    * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
+    * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
+    * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
+    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Doit commencer par le chemin de mappage. Par exemple, si le chemin de mappage est `/test`, votre chemin d'origine peut être `/test/media`
+    * `httpPort` et/ou `httpsPort` : **obligatoire** Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
+    * `uniqueId` : **obligatoire** Généré après la création du mappage.
+    * `cname` : Fournissez un alias pour le nom d'hôte. Si vous n'avez pas fourni, un cname unique a été généré pour vous lors de la création du mappage.
+    * `bucketName` : (**obligatoire** pour le stockage d'objet) Nom de compartiment de votre stockage d'objet S3.
+    * `fileExtension` : (facultatif pour le stockage d'objet) Extensions de fichiers autorisées à être mises en cache.
+    * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache : 
+      * `include-all` - inclut tous les arguments de requête **default**
+      * `ignore-all` - ignore tous les arguments de requête
+      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Afficher le conteneur de chemin d'origine](path-container.html)
+
+----
+### updateOriginPath
+Met à jour un chemin d'origine existant pour un mappage existant et un client particulier. Le type d'origine ne peut pas être changé avec cette API. Les propriétés suivantes peuvent être modifiées : `path`, `origin`, `httpPort` et `httpsPort`, `header` and `cacheKeyQueryRule` arguments. Pour être mis à jour, le mappage de domaine doit se trouver à l'état _RUNNING_ ou _CNAME_CONFIGURATION_.
+
+* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+  [Afficher le conteneur d'entrée](input-container.html)
+
+  Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la mise à jour d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
+    * `oldPath` : **obligatoire** Chemin en cours à modifier
+    * `origin` : (**obligatoire** en cas de mise à jour) Fournissez l'adresse du serveur d'origine sous forme de chaîne.
+    * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
+    * `path` : **obligatoire** Nouveau chemin à ajouter. Relatif au chemin de mappage.
+    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte en cas de mise à jour) Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `uniqueId` : **obligatoire** ID unique du mappage auquel appartient cette origine
+    * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
+    * `fileExtension` : (**obligatoire** pour le stockage d'objet uniquement) Extensions de fichiers pouvant être mises en cache.
+    * `cacheKeyQueryRule` : (**obligatoire** en cas de mise à jour) Les règles de comportement de la clé de cache peuvent uniquement être mises à jour dans le cas de chemins d'origine créés _après_ le 16/11/17. Les options suivantes sont disponibles pour configurer le comportement de la clé de cache :
+      * `include-all` - inclut tous les arguments de requête **default**
+      * `ignore-all` - ignore tous les arguments de requête
+      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+
+* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Afficher le conteneur de chemin d'origine](path-container.html)
+
+----
+### deleteOriginPath
+Supprime un chemin d'origine existant d'un CDN existant, et pour un client particulier. Pour être supprimé, le mappage de domaine doit se trouver à l'état _RUNNING_ ou _CNAME_CONFIGURATION_.
+
+* **Paramètres obligatoires**:
+  * `uniqueId` : ID unique du mappage auquel appartient ce chemin d'origine
+  * `path` : chemin à supprimer
+
+* **Retour** : Message d'état si la suppression a réussi, sinon message d'exception.
+
+----
+### listOriginPath
+Répertorie les chemins d'origine d'un mappage existant sur la base du paramètre `uniqueId`.
+
+* **Paramètres obligatoires**:
+  * `uniqueId` : Fournissez l'ID unique du mappage pour lequel vous souhaitez répertorier les chemins d'origine.
+* **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Afficher le conteneur de chemin d'origine](path-container.html)
+
+----
 ## API pour la purge
+### Classe de conteneur pour la purge :
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @var string
+     */
+    public $saved;
+
+    /**
+     * @var string
+     */
+    public $date;
+}  
+```
+
 ### createPurge
 Crée un enregistrement de purge et l'insère dans la base de données.
 
- * **Paramètres** : `string` `uniqueId`, `string` `path`
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
-### getPurgeHistoryPerMapping
-Renvoie l'historique de purge d'un CDN sur la base du paramètre `uniqueId` et du statut `saved`. La valeur par défaut de `saved` est _unsaved_.)
+* **Paramètres** :
+  * `uniqueId` : ID unique du mappage vers lequel la purge sera créée
+  * `path` : chemin d'accès à la purge devant être créée
 
- * **Paramètres** : `string` `uniqueId`, `int` `saved`
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Retour** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
+### getPurgeHistoryPerMapping
+Renvoie l'historique de purge d'un CDN sur la base du paramètre `uniqueId` et du statut `saved`. (La valeur par défaut `saved` est définie sur _UNSAVED_.)
+
+* **Paramètres** :
+  * `uniqueId` : ID unique du mappage pour lequel l'historique de purge doit être extrait
+  * `saved` : renvoie les purges sauvegardées (_SAVED_) ou non sauvegardées (_UNSAVED_)
+
+* **Retour** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
 ### saveOrUnsavePurgePath
 Met à jour le statut de l'entrée du chemin de purge pour indiquer si la purge doit être sauvegardée ou non. Crée une nouvelle purge `saved` si un chemin de purge est sauvegardé. Supprime un enregistrement de purge sauvegardé si le chemin est défini sur `unsaved`.
 
- * **Paramètres** : `string` `uniqueId`, `string` `path`, `int` `saved`
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Paramètres** :
+  * `uniqueId`: ID unique du mappage auquel appartient la purge
+  * `path` : chemin d'accès à la purge à sauvegarder ou non
+  * `saved` : sauvegardé (_SAVED_) ou non sauvegardé (_UNSAVED_)
 
-## API pour la durée de vie
+* **Retour** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
+## API pour la durée de vie  
+### Variables de la classe TimeToLive :  
+```  
+class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var int
+     */
+    public $timeToLive;
+
+    /**
+     * @var timestamp
+     */
+    public $createDate;
+}
+```  
 ### createTimeToLive
 Crée un nouvel objet `TimeToLive` et l'insère dans la base de données.
 
@@ -120,50 +363,157 @@ Répertorie les objets `TimeToLive` sur la base du paramètre `uniqueId` du CDN.
 
  * **Paramètres** : `string` `uniqueId`
  * **Retour** : Tableau d'objets de type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
-___
 
-## API pour l'origine
-### createOriginPath
-Crée un chemin d'origine pour un CDN existant et un client particulier. Le chemin d'origine peut porter sur un serveur hôte ou sur un stockage d'objets. Pour créer le chemin d'origine, le mappage de domaine doit se trouver à l'état _RUNNING_ ou _CNAME\_CONFIGURATION_.  
+ ----
+## API pour Metrics  
+### Classe de conteneur pour Metrics :  
+```  
+class SoftLayer_Container_Network_CdnMarketplace_Metrics  
+{  
+    /**
+     * @var string
+     */
+    public $type;
 
- * **Paramètres** : Un objet `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` pour lequel doivent être définies les propriétés suivantes : `domainName`, `vendorName`, `path`, `originType` et `origin`. Si le type d'origine est un serveur, les paramètres `httpPort` et/ou `httpsPort` doivent également être définis. Si le type d'origine est un stockage d'objets, le paramètre `bucketName` doit également être renseigné, ainsi que le paramètre `fileExtension` en option.  
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+    /**
+     * @var string[]
+     */
+    public $names;
 
-___ 
-### updateOrigin
-Met à jour un chemin d'origine existant pour un mappage extistant et un client particulier. La valeur `originType` n'est pas modifiable. Seules les propriétés suivantes le sont : `path`, `origin`, `httpPort` et `httpsPort`. Pour être mis à jour, le mappage de domaine doit être à l'état _RUNNING_ ou _CNAME\_CONFIGURATION_.
+    /**
+     * @var string[]
+     */   
+     public $totals;
 
- * **Paramètres** : Un objet `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` pour lequel doivent être définies les propriétés suivantes : `domainName`, `vendorName`, `path`, `originType` et `origin`. Si le type d'origine est un serveur, les paramètres `httpPort` et/ou `httpsPort` doivent également être définis. Si le type d'origine du chemin est un stockage d'objets, le paramètre `bucketName` doit être renseigné, ainsi que le paramètre `fileExtension` en option.  
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___ 
-### deleteOriginPath
-Supprime un chemin d'origine pour un CDN existant et un client particulier. Pour être supprimé, le mappage de domaine doit être à l'état _RUNNING_ ou _CNAME\_CONFIGURATION_.  
+    /**
+     * @var string[]
+     */
+    public $percentage;
 
- * **Paramètres** : `string` `uniqueId`, `string` `path`
- * **Retour** : Message d'état si la suppression aboutit, sinon message d'exception
+    /**
+     * @var string[]
+     */
+    public $time;
 
-___
-### listOriginPath
-Répertorie le chemin d'origine d'un mappage existant et d'un client particulier.
+    /**
+     * @var string[]
+     */
+    public $xaxis;
 
- * **Paramètres** : `string` `uniqueId`
- * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___
+    /**
+     * @var string[]
+     */
+    public $yaxis1;
 
-## API pour les métriques
+    /**
+     * @var string[]
+     */
+    public $yaxis2;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis3;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis4;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis5;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis6;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis7;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis8;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis9;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis10;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis11;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis12;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis13;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis14;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis15;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis16;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis17;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis18;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis19;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis20;
+}  
+```  
 ### getCustomerUsageMetrics
 Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un compte client, au cours d'une période donnée.
 
  * **Paramètres** : `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- 
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+___
 ### getMappingUsageMetrics
 Renvoie le nombre total de statistiques avec affichage direct du mappage concerné. La valeur `frequency` est agrégée par défaut.
 
  * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+___
 ### getMappingHitsMetrics
 Renvoie le nombre total de correspondances à une certaine fréquence au cours d'un laps de temps donné, par mappage de domaine. La fréquence peut être au format 'jour', 'semaine' et 'mois', où chaque intervalle correspond à un point de tracé sur le graphique. Les données renvoyées sont ordonnées en fonction des valeurs `startDate`, `endDate` et `frequency`. La valeur `frequency` est agrégée par défaut.
 
@@ -171,20 +521,19 @@ Renvoie le nombre total de correspondances à une certaine fréquence au cours d
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
-Renvoie le nombre total de correspondances à une certaine fréquence au cours d'un laps de temps donné. La fréquence peut être au format 'heure', 'jour', 'semaine' et 'mois', où chaque intervalle correspond à un point de tracé sur le graphique. Les données renvoyées doivent être ordonnées en fonction des valeurs `startDate`, `endDate` et `frequency`. La valeur `frequency` est agrégée par défaut.
+Renvoie le nombre total de correspondances à une certaine fréquence au cours d'un laps de temps donné. La fréquence peut être au format 'jour', 'semaine' et 'mois', où chaque intervalle correspond à un point de tracé sur le graphique. Les données renvoyées doivent être ordonnées en fonction des valeurs `startDate`, `endDate` et `frequency`. La valeur `frequency` est agrégée par défaut.
 
  * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
-Renvoie le nombre maximum de correspondances par région d'un CDN individuel. Les régions peuvent être différentes d'un fournisseur à l'autre. Par mappage.
+Renvoie le nombre de correspondances vers le serveur d'équilibrage des charges pour un CDN individuel. Les régions peuvent être différentes d'un fournisseur à l'autre. Par mappage.
 
  * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
-Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un compte client, au cours d'une période donnée. La valeur `frequency` est agrégée par défaut.
+Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un mappage donné, au cours d'une période donnée. La valeur `frequency` est agrégée par défaut.
 
  * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___

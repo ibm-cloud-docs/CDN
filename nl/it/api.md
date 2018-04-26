@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -14,89 +14,332 @@ lastupdated: "2017-09-06"
 {:tip: .tip}
 {:download: .download}
 
-# Riferimento API
 
-Visita il sito https://sldn.softlayer.com/article/PHP per ulteriori informazioni su PHP e SOAP relativi alla configurazione. 
- 
-## API per un Account
+
+# Guida di riferimento alle API CDN
+
+L'API (Application Programming Interface) {{site.data.keyword.BluSoftlayer_notm}} (comunemente conosciuta come SLAPI), fornita da IBM Cloud, è l'interfaccia di sviluppo che fornisce agli sviluppatori e agli amministratori di sistema l'integrazione diretta con il sistema di backend {{site.data.keyword.BluSoftlayer_notm}}.
+
+La SLAPI implementa molte delle funzioni nel portale del cliente: se è possibile un'interazione nel portale del cliente, può anche essere eseguita nella SLAPI. Poiché puoi interagire con tutte le parti dell'ambiente {{site.data.keyword.BluSoftlayer_notm}} in modo programmatico, nella SLAPI, puoi utilizzare l'API per automatizzare le attività.
+
+La SLAPI è un sistema RPC (Remote Procedure Call). Ogni chiamata comporta l'invio di dati tramite l'endpoint API e la ricezione dei dati strutturati come ritorno. Il formato utilizzato per inviare e ricevere i dati con la SLAPI dipende da quale implementazione dell'API scegli. La SLAPI al momento utilizza SOAP, XML-RPC o REST per la trasmissione dei dati.
+
+Per ulteriori informazioni sulla SLAPI o sulle API del servizio CDN (Content Delivery Network) IBM Cloud, consulta le seguenti risorse nella rete di sviluppo IBM Cloud:
+
+* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
+* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
+* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
+* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+
+----
+
+Per iniziare, questa è una sequenza di chiamata API consigliata da seguire:
+* `listVendors` - fornisce l'elenco dei fornitori supportati
+* `verifyOrder` - verifica se l'ordine può essere effettuato
+* `placeOrder` - crea l'account CDN con il fornitore specificato. Possono essere create fino a 10 associazioni CDN dopo una corretta chiamata placeOrder.
+* `createDomainMapping` - crea le associazioni CDN
+* `verifyDomainMapping` - modifica lo stato CDN in _RUNNING_
+
+Puoi utilizzare altre API dopo aver seguito la precedente sequenza.
+
+[Il codice di esempio è disponibile per tutti i passi in questa sequenza di chiamata.](cdn-example-code.html#code-examples-using-the-cdn-api)
+
+**NOTA**: **devi** utilizzare il nome utente API e la chiave API di un utente con l'autorizzazione `CDN_ACCOUNT_MANAGE` per la maggior parte delle chiamate API presentate in questo documento. Controlla l'utente Master del tuo account se hai bisogno che ti venga abilitata questa autorizzazione. (A ogni account cliente IBM Cloud è fornito un utente Master).
+
+----
+## API per fornitore
+### listVendors
+Questa API consente all'utente di elencare i fornitori CDN supportati. Il `vendorName` è necessario per creare un account CDN e per un'introduzione all'ordinazione della tua CDN.
+
+* **Parametri obbligatori**: Nessuno
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Vendor`
+
+  Il Contenitore fornitore e un esempio di utilizzo possono essere visualizzati qui: [Contenitore fornitore](vendor-container.html)
+
+----
+## API per Account
 ### verifyCdnAccountExists
-Verifica che esista un account CDN per l'utente che richiama l'API, relativo al `vendorName` fornito
+Verifica che esista un account CDN per l'utente che richiama l'API, per il `vendorName` fornito.
 
- * **Parametri**: `vendorName`
- * **Restituzione**: `true` se l'account esiste, altrimenti `false`
-___
+* **Parametri obbligatori**: `vendorName`: fornisce il nome di un provider CDN valido.
+* **Restituzione**: `true` se esiste un account, altrimenti restituisce `false`.
 
+----
 ## API per Associazione dominio
 ### createDomainMapping
-Utilizzando gli input forniti, questa funzione crea un'associazione dominio per il fornitore indicato e la unisce all'ID account {{site.data.keyword.BluSoftlayer_notm}} dell'utente. Affinché questa API funzioni, l'account CDN deve essere creato utilizzando `createCustomerSubAccount`. Una volta creato il CDN, viene creato un `defaultTTL` con un valore di 3600 secondi.
+Utilizzando gli input forniti, questa funzione crea un'associazione dominio per il fornitore indicato e la unisce all'ID account {{site.data.keyword.BluSoftlayer_notm}} dell'utente. L'account CDN deve prima essere creato utilizzando `placeOrder` perché questa API funzioni (vedi un esempio della chiamata API `placeOrder` negli [Esempi di codice](cdn-example-code.html)). Una volta creato il CDN, viene creato un `defaultTTL` con un valore di 3600 secondi.
 
- * **Parametri**:  una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. La raccolta deve includere i seguenti elementi:  `vendorName`, `hostname`, `protocol`, `originType`, `originHost`, `originHostPort`, `respectHeader`, `serveStale`, `cname`, `performanceConfiguration`, `header`, `certificateType`, `path`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`. La raccolta fornisce un valore `uniqueId`, che deve essere inviato come input per le successive chiamate API correlate all'associazione.
-___ 
+* **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  [Visualizza il Contenitore di input](input-container.html)
+
+  I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un'associazione dominio (gli attributi sono facoltativi se non diversamente indicato):
+    * `vendorName`: **obbligatorio** Fornisce il nome di un provider di CDN IBM Cloud valido.
+    * `origin`: **obbligatorio** Fornisce l'indirizzo del server di origine come una stringa.
+    * `originType`: **obbligatorio** Il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
+    * `domain`: **obbligatorio** Fornisce il tuo nome host come una stringa.
+    * `protocol`: **obbligatorio** I protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
+    * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Il percorso predefinito è /\*
+    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
+    * `respectHeader`: un valore booleano che, se impostato su `true`, farà in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
+    * `cname`: fornisce un alias al nome host. Sarà generato se non ne viene fornito uno.
+    * `bucketName`: (**obbligatorio** solo per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
+    * `fileExtension`: (facoltativo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
+    * `cacheKeyQueryRule`: per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni.Se non viene fornito alcun argomento `cacheKeyQueryRule`, per impostazione predefinita sarà "include-all"
+      * `include-all` - include tutti gli argomenti della query **valore predefinito**
+      * `ignore-all` - ignora tutti gli argomenti della query
+      * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
+      * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
+
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
+
+  **NOTE**: la raccolta fornisce un valore `uniqueId`, che deve essere inviato come input per le successive chiamate API correlate all'associazione e al percorso di origine.
+
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### deleteDomainMapping
-Elimina l'associazione dominio in base all'`uniqueId`. L'associazione dominio deve essere in uno dei seguenti stati:  _IN ESECUZIONE_, _ARRESTATO_, _ELIMINATO_, _ERRORE_, _CONFIGURAZIONE_CNAME\_ o _CONFIGURAZIONE_SSL\_.
+Elimina l'associazione dominio in base all'`uniqueId`. L'associazione dominio deve essere in uno dei seguenti stati: _RUNNING_ (In esecuzione), _STOPPED_ (Arrestato), _DELETED_ (Eliminato), _ERROR_ (Errore), _CNAME_CONFIGURATION_ (Configurazione CNAME) o _SSL_CONFIGURATION_ (Configurazione SSL).
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da eliminare
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### verifyDomainMapping
-Verifica lo stato del CDN e, se necessario, aggiorna `status`, `cname` e/o `vendorCname`. Restituisce i valori aggiornati laddove applicabile. L'associazione dominio deve essere in uno dei seguenti stati: _IN ESECUZIONE_, _CONFIGURAZIONE_CNAME\_ o _CONFIGURAZIONE_SSL\_.
+Verifica lo stato della CDN e aggiorna lo stato (`status`) dell'associazione CDN se ha subito variazioni. Quando un'associazione CDN viene creata inizialmente, il suo stato viene presentato come _CNAME_CONFIGURATION_. A questo punto, devi aggiornare il record di DNS in modo che l'associazione CDN punti il nome host al CNAME. Controlla il tuo provider DNS se hai domande su come viene eseguito l'aggiornamento e su dopo quanto tempo ha effetto la modifica e viene diffusa su internet. Normalmente, dovrebbero essere necessari tra i 15 e 30 minuti. Dopo tale tempo, deve essere richiamata questa API `verifyDomainMapping` per verificare se la catena CNAME è completa. Se la catena CNAME è completa, lo stato dell'associazione CDN viene modificato in _RUNNING_.
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+Questa API può venire richiamata in qualsiasi momento per ottenere l'ultimo stato dell'associazione CDN. L'associazione dominio deve essere in uno dei seguenti stati: _RUNNING_ o _CNAME_CONFIGURATION_.
+
+* **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione che desideri verificare
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### startDomainMapping
-Avvia un'associazione dominio CDN in base all'`uniqueId`. Per essere avviata, l'associazione dominio deve essere in uno stato _ARRESTATO_.
+Avvia un'associazione dominio CDN in base all'`uniqueId`. Per essere avviata, l'associazione dominio deve essere in uno stato _STOPPED_.
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da avviare
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### stopDomainMapping
-Arresta un'associazione dominio CDN in base all'`uniqueId`. Per iniziare l'arresto, l'associazione dominio deve essere in uno stato _IN ESECUZIONE_.
+Arresta un'associazione dominio CDN in base all'`uniqueId`. Per iniziare l'arresto, l'associazione dominio deve essere in uno stato _RUNNING_.
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da arrestare
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### updateDomainMapping
-Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall'`uniqueId`. È possibile modificare i seguenti campi: `originHost`, `performanceConfiguration`, `header`, `httpPort`, `httpsPort`, `certificateType`, `respectHeader`, `serveStale`, `path` e, se il tipo di origine del percorso è Archiviazione oggetti, è possibile modificare anche `bucketName` e `fileExtension`. Affinché un aggiornamento venga eseguito, l'associazione dominio deve essere in uno stato _IN ESECUZIONE_.
+Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall'`uniqueId`. I seguenti campi possono essere modificati: argomenti `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header` e `cacheKeyQueryRule` e, se il tuo tipo di origine è Object Storage, possono essere modificati anche `bucketName` e `fileExtension`. Affinché un aggiornamento venga eseguito, l'associazione dominio deve essere in uno stato _RUNNING_.
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  [Visualizza il Contenitore di input](input-container.html)
+
+  I seguenti attributi fanno parte del Contenitore di input e devono essere forniti **obbligatoriamente** quando si aggiorna un'associazione dominio:
+    * `vendorName`: fornisce il nome del provider CDN per questa associazione.
+    * `path`: fornisce il percorso corrente per questa associazione
+    * `origin`: fornisce l'indirizzo del server di origine come una stringa.
+    * `originType`: il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
+    * `domain`: fornisce il tuo nome host.
+    * `protocol`: i protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
+    * `httpPort` e/o `httpsPort`: queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
+    * `respectHeader`: un valore booleano che, se impostato su `true`, farà in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
+    * `uniqueId`: generato dopo la creazione dell'associazione.
+    * `cname`: fornisce il cname. Uno è stato generato quando l'associazione è stata creata, se non ne hai fornito uno.
+    * `bucketName`: (**obbligatorio** solo per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
+    * `fileExtension`: (**obbligatorio** solo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
+    * `cacheKeyQueryRule`: le regole di modalità di funzionamento delle chiavi della cache possono essere aggiornate solo per le associazioni CDN create _dopo_ il 16/11/17. Per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni:
+      * `include-all` - include tutti gli argomenti della query **valore predefinito**
+      * `ignore-all` - ignora tutti gli argomenti della query
+      * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
+      * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
+* **Restituzione** una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### listDomainMappings
-Restituisce una raccolta di tutti i domini per un particolare cliente.
+Restituisce una raccolta di tutte le associazioni dominio per l'attuale cliente.
 
- * **Parametri**: _none_ 
- * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Parametri obbligatori**: Nessuno
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Visualizza il Contenitore associazione](mapping-container.html)
+
+----
 ### listDomainMappingByUniqueId
-Restituisce una raccolta con un singolo oggetto dominio in base all'`uniqueId` di un CDN.
+Restituisce una raccolta con un singolo oggetto dominio in base all'`uniqueId` di una CDN.
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta a oggetto singolo di oggetti di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da restituire
+* **Restituzione**: una raccolta di singoli oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Visualizza il Contenitore associazione](mapping-container.html)
 
+----
+## API per origine
+### createOriginPath
+Crea un percorso di origine per una CDN esistente e per un particolare cliente. Il percorso di origine può essere basato su un server host o un'Object Storage. Per creare il percorso di origine, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
+
+* **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  [Visualizza il Contenitore di input](input-container.html)
+
+  I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si crea un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
+    * `vendorName`: **obbligatorio** Fornisce il nome di un provider di CDN IBM Cloud valido.
+    * `origin`: **obbligatorio** Fornisce l'indirizzo del server di origine come una stringa.
+    * `originType`: **obbligatorio** Il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
+    * `domain`: **obbligatorio** Fornisce il tuo nome host come una stringa.
+    * `protocol`: **obbligatorio** I protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
+    * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Deve iniziare con il percorso associazione. Ad esempio, se il percorso associazione è `/test`, il tuo percorso di origine può essere `/test/media`
+    * `httpPort` e/o `httpsPort`: **obbligatorio** Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
+    * `uniqueId`: **obbligatorio** Generato dopo la creazione dell'associazione.
+    * `cname`: fornisce un alias al nome host. Se non avevi fornito un nome univoco, ne è stato generato uno per te quando è stata creata l'associazione.
+    * `bucketName`: (**obbligatorio** per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
+    * `fileExtension`: (facoltativo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
+    * `cacheKeyQueryRule`: per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni:
+      * `include-all` - include tutti gli argomenti della query **valore predefinito**
+      * `ignore-all` - ignora tutti gli argomenti della query
+      * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
+      * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
+
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Visualizza il Contenitore percorso di origine](path-container.html)
+
+----
+### updateOriginPath
+Aggiorna un percorso di origine per un'associazione esistente e per un particolare cliente. Il tipo di origine non può essere modificato con questa API. È possibile modificare le seguenti proprietà: gli argomenti `path`, `origin`, `httpPort`, `httpsPort`, `header` e `cacheKeyQueryRule`. Per essere aggiornata, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
+
+* **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  [Visualizza il Contenitore di input](input-container.html)
+
+  I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
+    * `oldPath`: **obbligatorio** L'attuale percorso da modificare
+    * `origin`: (**obbligatorio** se in fase di aggiornamento) Fornisce l'indirizzo del server di origine come una stringa.
+    * `originType`: **obbligatorio** Il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
+    * `path`: **obbligatorio** Nuovo percorso da aggiungere. Relativo al percorso di associazione.
+    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host, se in fase di aggiornamento) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `uniqueId`: **obbligatorio** L'ID univoco dell'associazione a cui appartiene questa origine
+    * `bucketName`: (**obbligatorio** solo per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
+    * `fileExtension`: (**obbligatorio** solo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
+    * `cacheKeyQueryRule`: (**obbligatorio** se in fase di aggiornamento) Le regole di modalità di funzionamento delle chiavi della cache possono essere aggiornate solo per i percorsi di origine creati _dopo_ il 16/11/17. Per configurare la modalità di funzionamento delle chiavi della cache sono disponibili le seguenti opzioni:
+      * `include-all` - include tutti gli argomenti della query **valore predefinito**
+      * `ignore-all` - ignora tutti gli argomenti della query
+      * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
+      * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
+
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Visualizza il Contenitore percorso di origine](path-container.html)
+
+----
+### deleteOriginPath
+Elimina un percorso di origine esistente per una CDN esistente e per uno specifico cliente. Per essere eliminata, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
+
+* **Parametri obbligatori**:
+  * `uniqueId`: l'ID univoco dell'associazione a cui appartiene questo percorso di origine
+  * `path`: percorso da eliminare
+
+* **Restituzione**: un messaggio di stato se l'eliminazione è riuscita; altrimenti, viene generata un'eccezione.
+
+----
+### listOriginPath
+Elenca i percorsi di origine per un'associazione esistente in base all'`uniqueId`.
+
+* **Parametri obbligatori**:
+  * `uniqueId`: fornisce l'ID univoco dell'associazione per cui vuoi elencare i percorsi di origine.
+* **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Visualizza il Contenitore percorso di origine](path-container.html)
+
+----
 ## API per Eliminazione
+### Classe contenitore per l'eliminazione:
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @var string
+     */
+    public $saved;
+
+    /**
+     * @var string
+     */
+    public $date;
+}
+```
+
 ### createPurge
 Crea un record di eliminazione e lo inserisce nel database.
 
- * **Parametri**: `string` `uniqueId`, `string` `path`
- * **Restituzione**:  una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
-### getPurgeHistoryPerMapping
-Restituisce la cronologia di eliminazioni per un CDN in base all'`uniqueId` e allo stato `saved`. (Per impostazione predefinita, il valore `saved` è impostato su _unsaved_.)
+* **Parametri**:
+  * `uniqueId`: ID univoco dell'associazione per cui verrà creata l'eliminazione
+  * `path`: il percorso dell'eliminazione da creare
 
- * **Parametri**: `string` `uniqueId`, `int` `saved`
- * **Restituzione**:  una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
+### getPurgeHistoryPerMapping
+Restituisce la cronologia delle eliminazioni per una CDN in base all'`uniqueId` e allo stato `saved`. (Per impostazione predefinita, il valore `saved` è impostato su _UNSAVED_ (non salvato).
+
+* **Parametri**:
+  * `uniqueId`: l'ID univoco dell'associazione per cui richiamare la cronologia delle eliminazioni
+  * `saved`: restituisce le eliminazioni che sono state salvate (_SAVED_) o non salvate (_UNSAVED_)
+
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
 ### saveOrUnsavePurgePath
 Aggiorna lo stato della voce di percorso di eliminazione per indicare se questo percorso di eliminazione deve essere salvato. Se un percorso di eliminazione viene salvato, crea una nuova eliminazione `saved`. Se il percorso è `unsaved`, elimina un record di eliminazione salvata.
 
- * **Parametri**: `string` `uniqueId`, `string` `path`, `int` `saved`
- * **Restituzione**:  una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Parametri**:
+  * `uniqueId`: l'ID univoco dell'associazione a cui appartiene l'eliminazione
+  * `path`: il percorso dell'eliminazione da salvare o non salvare
+  * `saved`: _SAVED_ o _UNSAVED_
 
-## API per Time to Live
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
+## API per Time to Live  
+### Variabili classe TimeToLive:  
+```  
+class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var int
+     */
+    public $timeToLive;
+
+    /**
+     * @var timestamp
+     */
+    public $createDate;
+}
+```  
 ### createTimeToLive
 Crea un nuovo oggetto `TimeToLive` e lo inserisce nel database.
 
@@ -104,7 +347,7 @@ Crea un nuovo oggetto `TimeToLive` e lo inserisce nel database.
  * **Restituzione**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
 ### updateTtl
-Aggiorna un oggetto `TimeToLive` esistente. Se gli input  _oldTtl_ e _newTtl_ sono uguali, termina prima.
+Aggiorna un oggetto `TimeToLive` esistente. Se gli input _oldTtl_ e _newTtl_ sono uguali, termina prima.
 
  * **Parametri**: `string` `uniqueId`, `string` `oldPath`, `string` `newPath`, `int` `oldTtl`, `int` `newTtl`
  * **Restituzione**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
@@ -116,54 +359,161 @@ Elimina un oggetto `TimeToLive` esistente dal database.
  * **Restituzione**: una stringa con lo stato dell'eliminazione
 ___
 ### listTtl
-Elenca gli oggetti `TimeToLive` esistenti in base all'`uniqueId` di un CDN.
+Elenca gli oggetti `TimeToLive` esistenti in base all'`uniqueId` di una CDN.
 
  * **Parametri**: `string` `uniqueId`
  * **Restituzione**: un array di oggetti di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
-___
 
-## API per Origine
-### createOriginPath
-Crea un percorso di origine per un CDN esistente e per un particolare cliente. Il percorso di origine può essere basato su un server host o su Archiviazione oggetti. Per creare il percorso di origine, l'associazione dominio deve essere in uno stato _IN ESECUZIONE_ o _CONFIGURAZIONE_CNAME_.  
+ ----
+## API per Metriche  
+### Classe contenitore per le metriche:  
+```  
+class SoftLayer_Container_Network_CdnMarketplace_Metrics
+{
+    /**
+     * @var string
+     */
+    public $type;
 
- * **Parametri**: un oggetto `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` che prevede l'impostazione delle seguenti proprietà: `domainName`, `vendorName`, `path`, `originType` e `origin`. Se il tipo di origine è un server, è necessario impostare anche `httpPort` e/o `httpsPort`. Se il tipo di origine è Archiviazione oggetti, è necessario fornire anche `bucketName` e, facoltativamente, `fileExtension`.  
- * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+    /**
+     * @var string[]
+     */
+    public $names;
 
-___ 
-### updateOrigin
-Aggiorna un percorso di origine per un'associazione esistente e per un particolare cliente. La proprietà `originType` non può essere modificata. È possibile modificare solo le seguenti proprietà: `path`, `origin`, `httpPort` e `httpsPort`. Per essere aggiornato, l'associazione dominio deve essere in uno stato _IN ESECUZIONE_ o _CONFIGURAZIONE_CNAME\_.
+    /**
+     * @var string[]
+     */   
+     public $totals;
 
- * **Parametri**: un oggetto `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` che prevede l'impostazione delle seguenti proprietà: `domainName`, `vendorName`, `path`, `originType` e `origin`. Se il tipo di origine è un server, è necessario impostare anche `httpPort` e/o `httpsPort`. Se il tipo di origine del percorso è Archiviazione oggetti, è necessario fornire `bucketName` e, facoltativamente, `fileExtension`.   
- * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___ 
-### deleteOriginPath
-Elimina un percorso di origine per un CDN esistente e per un particolare cliente. Per essere eliminato, l'associazione dominio deve essere in uno stato _IN ESECUZIONE_ o _CONFIGURAZIONE_CNAME\_.  
+    /**
+     * @var string[]
+     */
+    public $percentage;
 
- * **Parametri**: `string` `uniqueId`, `string` `path`
- * **Restituzione**: un messaggio di stato se l'eliminazione è stata eseguita correttamente; altrimenti, un'eccezione
+    /**
+     * @var string[]
+     */
+    public $time;
 
-___
-### listOriginPath
-Elenca il percorso di origine per un'associazione esistente e per un particolare cliente.
+    /**
+     * @var string[]
+     */
+    public $xaxis;
 
- * **Parametri**: `string` `uniqueId`
- * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___
+    /**
+     * @var string[]
+     */
+    public $yaxis1;
 
-## API per Metriche
+    /**
+     * @var string[]
+     */
+    public $yaxis2;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis3;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis4;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis5;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis6;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis7;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis8;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis9;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis10;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis11;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis12;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis13;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis14;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis15;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis16;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis17;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis18;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis19;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis20;
+}
+```  
 ### getCustomerUsageMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per l'account di un cliente, per un determinato periodo di tempo.
 
  * **Parametri**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- 
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+___
 ### getMappingUsageMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta per l'associazione fornita. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
  * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+___
 ### getMappingHitsMetrics
 Restituisce il numero totale di riscontri a una certa frequenza per un determinato intervallo di tempo, per associazione dominio. La frequenza può essere 'day', 'week' e 'month', dove ogni intervallo è un punto per il grafico. I dati di restituzione sono ordinati in base a `startDate`, `endDate` e `frequency`. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
@@ -171,20 +521,19 @@ Restituisce il numero totale di riscontri a una certa frequenza per un determina
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
-Restituisce il numero totale di riscontri a una certa frequenza per un determinato intervallo di tempo. La frequenza può essere 'hour', 'day', 'week' e 'month', dove ogni intervallo è un punto per il grafico. I dati di restituzione devono essere ordinati in base a `startDate`, `endDate` e `frequency`. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
+Restituisce il numero totale di riscontri a una certa frequenza per un determinato intervallo di tempo. La frequenza può essere 'day', 'week' e 'month', dove ogni intervallo è un punto per il grafico. I dati di restituzione devono essere ordinati in base a `startDate`, `endDate` e `frequency`. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
  * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
-Restituisce il numero di riscontri perimetrali per regione per un singolo CDN. Le regioni possono differire per ogni fornitore. Per associazione.
+Restituisce il numero di riscontri edge per una singola CDN. Le regioni possono differire per ogni fornitore. Per associazione.
 
  * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
-Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per l'account di un cliente, per un determinato periodo di tempo. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
+Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per un'associazione fornita, per un determinato periodo di tempo. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
  * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___

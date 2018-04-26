@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-05"
+lastupdated: "2017-10-12"
 
 ---
 
@@ -14,30 +14,36 @@ lastupdated: "2017-09-05"
 {:tip: .tip}
 {:download: .download}
 
-# CDN을 사용하여 시작하기
+# 시작하기
 
-IBM Cloud에서 제공하는 CDN(Content Delivery Network) 서비스를 선택해 주셔서 감사합니다. CDN에는 미디어 및 엔터테인먼트, 소프트웨어, 게임, 금융 및 전자상거래 등의 다양한 애플리케이션이 있습니다. IBM Cloud는 Akamai와 파트너 관계를 맺어 적정 가격으로 가장 포괄적인 기능을 제공합니다. Akamai는 131개국 이상에서 200,000개가 넘는 에지 서버를 보유하여 가장 필요로 하는 곳, 즉 사용자에게 가장 가까운 컨텐츠를 제공합니다. 
+IBM Cloud CDN(Content Delivery Network)은 미디어, 엔터테인먼트, 소프트웨어, 게임, 금융 및 전자상거래를 포함한 다양한 업계 솔루션에 사용되어 사용자 비즈니스의 요구를 충족시킬 수 있습니다. IBM Cloud는 Akamai와 파트너 관계를 맺어 적정 가격으로 가장 포괄적인 Content Delivery Network 기능을 제공합니다. Akamai는 131개국 이상에서 200,000개가 넘는 에지 서버를 보유하여, 사용자가 가장 필요로 하는 곳과 가장 가까운 위치에서 컨텐츠를 제공합니다.
 
-## CDN(Content Delivery Network)은 무엇입니까?
+## 시작하기 전에
 
-CDN(Content Delivery Network)은 국가 또는 전세계의 여러 지역을 통해 분산되는 에지 서버의 콜렉션입니다. 웹 컨텐츠는 컨텐츠를 요청하는 고객과 가장 가까운 지역에 위치하는 에지 서버에서 제공됩니다. 이 기술을 통해 사용자는 지연 시간을 줄여 컨텐츠를 수신할 수 있습니다. 고객을 위해 개선된 전체 경험을 전달합니다. 
+IBM Cloud Content Delivery Network를 사용하려면 먼저 [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)가 있어야 합니다. 그런 다음 사용자 환경 설정에 따라 [IBM Cloud 계정](https://console.bluemix.net/registration/) 또는 새 [IBM Cloud CDN 고객 포털](https://control.softlayer.com)을 통해 Content Delivery Network 서비스를 주문할 수 있습니다.
 
-## CDN은 어떻게 작동합니까?
+IBM Cloud Content Delivery Network 사용을 위한 계정을 얻는 데 도움이 필요한 경우, [IBM 영업 담당자에게 문의](https://www.ibm.com/cloud-computing/bluemix/contact-us)하여 시작하기에 대한 자세한 안내를 받으십시오.
 
-CDN은 전세계의 에지 서버에서 웹 컨텐츠를 캐싱하여 목적을 달성합니다. 사용자가 웹 컨텐츠를 요청하는 경우 컨텐츠 요청은 사용자와 지리적으로 가장 가까운 에지 서버로 라우팅됩니다. CDN은 컨텐츠가 이동해야 하는 거리를 줄여 최적화된 처리량, 최소화된 대기 시간 및 향상된 성능을 제공합니다.  
+## 튜토리얼
 
+IBM Cloud Object Storage의 CDN(Content Delivery Network) 작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
 
 ## 이미 계정이 있습니까?
 
-기존 CDN 고객은 새 CDN 포털을 통해 계정에 액세스할 수 있습니다. **스토리지** 탭이 아닌 **네트워크** 탭에서 액세스 권한을 얻을 수 있습니다. 
+기존 CDN 고객은 새 [IBM Cloud CDN 포털](https://control.softlayer.com)을 통해 계정에 액세스할 수 있습니다. 기존 계정이 있는 경우 이제 **스토리지** 탭이 아닌 **네트워크** 탭에서 Content Delivery Network에 액세스할 수 있습니다.
 
+## CDN 대역폭 가격 책정(달러로 표시되는 요금)
 
-## 가격 책정(미국 달러로 표시)
+IBM Cloud Content Delivery Network with Akamai에는 추가 스토리지 요금이 포함되지 않으며 사용하는 대역폭에 대해서만 요금을 지불합니다.
 
-| 월별 | NA/EMEA | APAC | LATAM | 오스트랄라시아 | 인도|
-|:---------------:|:-------------:|:-------------:|:-------------:|:-----------:|:-------------:|
-| 처음 10TB | 0.085 | 0.14  | 0.25  | 0.14 | 0.17 |
-| 10 - 250TB  | 0.05  | 0.12 | 0.18  | 0.12  | 0.11 |
-| 250 - 500TB | 0.04  | 0.10 | 0.16  | 0.10  | 0.10 |
-| 500TB - 3PB   | 0.025 | 0.07  | 0.13  | 0.09 | 0.09 |
-|  \>3PB      | 0.02  | 0.06 | 0.125 | 0.085 | 0.085 |
+**참고:** 가격 책정이 GB 단위의 사용량별로 표시됩니다.
+
+이 서비스를 시작하기 전에 옆으로 스크롤해서 전체 지역 표를 볼 수 있습니다.
+
+|월별| N/A | EMEA | APAC | 일본 | LATAM | 오스트랄라시아 | 인도 |
+|-------|-----|-----|-----|-----|-----|----|-----|
+|처음 10TB| 0.085 | 0.085 | 0.14 | 0.14 | 0.25 | 0.14 | 0.17 |
+|10 - 250TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |
+|250 - 500TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
+|500TB - 3PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
+|\>3PB| 0.02 | 0.02 | 0.06 | 0.06 | 0.125 | 0.085 | 0.085 |

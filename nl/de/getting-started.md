@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-05"
+lastupdated: "2017-10-12"
 
 ---
 
@@ -14,30 +14,36 @@ lastupdated: "2017-09-05"
 {:tip: .tip}
 {:download: .download}
 
-# Einführung in CDN
+# Einführung
 
-Vielen Dank, dass Sie sich für den von IBM Cloud bereitgestellten Service 'Content Delivery Network' (CDN) entschieden haben. CDN findet in vielen verschiedenen Bereichen Anwendung, z. B. in den Bereichen Medien und Unterhaltung, Software, Gaming, Bankwesen und E-Commerce. IBM Cloud hat in Akamai einen Partner gefunden, um möglichst umfassende Funktionen zu erschwinglichen Kosten bereitzustellen. Akamai verfügt über mehr als 200.000 Edge-Server in über 130 Ländern, die Inhalte möglichst ortsnah genau dort bereitzustellen, wo sie dringend gebraucht werden - bei Ihren Kunden.
+IBM Cloud Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanforderungen für eine Reihe von Branchenlösungen genutzt werden, zu denen Medien, Unterhaltung, Software, Gaming, Bankwesen und E-Commerce zählen. IBM Cloud hat eine Partnerschaft mit Akamai geschlossen, um möglichst umfassende Content Delivery Network-Funktionen unter höchster Kosteneffizienz anbieten zu können. Akamai verfügt über 200.000 Edge-Server in mehr als 130 Ländern, um die Inhalte denen möglichst nahe zu bringen, die sie benötigen: Ihren Benutzern.
 
-## Was ist Content Delivery Network (CDN)?
+## Vorbereitende Schritte
 
-Content Delivery Network (CDN) ist ein Computerverbund aus Edge-Servern, die über verschiedene Teile eines Landes oder der Welt verteilt sind. Die zugehörigen Webinhalte werden von einem Server bereitgestellt, dessen geografische Region dem Kunden, der die Inhalte anfordert, am nächsten liegt. Dieses Verfahren ermöglicht eine schnelle Zustellung der Inhalte an die Benutzer. Daraus ergibt sich eine bessere Serviceerfahrung für Ihre Kunden.
+Bevor Sie mit der Verwendung von IBM Cloud Content Delivery Network beginnen, benötigen Sie zunächst eine [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Anschließend können Sie Ihren Content Delivery Network-Service je nach Vorliebe über Ihr [IBM Cloud-Konto](https://console.bluemix.net/registration/) oder über das neue [IBM Cloud CDN-Kundenportal](https://control.softlayer.com) bestellen.
 
-## Wie funktioniert CDN?
+Falls Sie Hilfe bei der Erstellung eines Kontos zur Verwendung von IBM Cloud Content Delivery Network benötigen, können Sie [Ihren IBM Vertriebsbeauftragten kontaktieren](https://www.ibm.com/cloud-computing/bluemix/contact-us), um weitere Anleitungen für den Einstieg zu erhalten.
 
-CDN erreicht den beabsichtigten Zweck durch das Caching von Webinhalten auf Edge-Servern auf der ganzen Welt. Wenn ein Benutzer Webinhalte anfordert, wird die Anfrage an den Edge-Server weitergeleitet, dessen geografischer Standort dem Benutzer am nächsten liegt. Durch das Verkürzen des Übertragungswegs für die angeforderten Inhalte bietet CDN optimierten Durchsatz, minimierte Latenzzeiten und ein besseres Leistungsverhalten. 
+## Lernprogramm
 
+[Hier finden Sie ein Lernprogramm](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
 
 ## Sie haben bereits ein Konto?
 
-Bestehende CDN-Kunden können über das neue CDN-Portal auf Ihre Konten zugreifen. Der Zugriff erfolgt über die Registerkarte **Netz** anstatt über die Registerkarte **Speicher**.
+Bestehende CDN-Kunden haben über das neue [IBM Cloud CDN-Portal](https://control.softlayer.com) Zugriff auf ihre Konten. Wenn Sie ein vorhandenes Konto haben, können Sie jetzt über die Registerkarte **Netz** auf Ihr Content Delivery Network zugreifen (nicht über die Registerkarte **Speicher**).
 
+## Preisstruktur für CDN-Bandbreite (in US-Dollar)
 
-## Preisstruktur (angegeben in US-Dollar)
+IBM Cloud Content Delivery Network mit Akamai schließt keine zusätzlichen Speichergebühren ein. Sie bezahlen nur die Bandbreite, die Sie nutzen.
 
-| Pro Monat | NA/EMEA | APAC | LATAM | Ozeanien | Indien |
-|:---------------:|:-------------:|:-------------:|:-------------:|:-----------:|:-------------:|
-| Erste 10 TB | 0,085 | 0,14  | 0,25  | 0,14 | 0,17 |
-| 10 - 250 TB | 0,05  | 0,12 | 0,18  | 0,12  | 0,11 |
-| 250 - 500 TB| 0,04  | 0,10 | 0,16  | 0,10  | 0,10 |
-| 500 TB - 3 PB| 0,025 | 0,07  | 0,13  | 0,09 | 0,09 |
-|  \>3 PB     | 0,02  | 0,06 | 0,125 | 0,085 | 0,085 |
+**Hinweis:** Die Preisstruktur wird pro GB Nutzung angegeben.
+
+Sie können die Anzeige seitwärts verschieben, um die geografische Tabelle vollständig einzublenden, bevor Sie mit der Nutzung dieses Service beginnen.
+
+|Pro Monat| NA | EMEA | APAC | JAPAN | LATAM | Ozeanien | Indien |
+|-------|-----|-----|-----|-----|-----|----|-----|
+|Erste 10 TB| 0,085 | 0,085 | 0,14 | 0,14 | 0,25 | 0,14 | 0,17 |
+|10 - 250 TB | 0,05 | 0,05 | 0,12 | 0,12 | 0,18 | 0,12 | 0,11 |
+|250 - 500 TB| 0,04 | 0,04 | 0,10 | 0,10 | 0,16 | 0,10 | 0,10 |
+|500 TB - 3 PB| 0,025 | 0,025| 0,07 | 0,07 | 0,13 | 0,09 | 0,09 |
+|\>3 PB| 0,02 | 0,02 | 0,06 | 0,06 | 0,125 | 0,085 | 0,085 |

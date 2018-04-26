@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -14,177 +14,526 @@ lastupdated: "2017-09-06"
 {:tip: .tip}
 {:download: .download}
 
-# API-Referenz
 
-Weitere Informationen zur Konfiguration für PHP und SOAP finden Sie unter https://sldn.softlayer.com/article/PHP. 
- 
-## API für ein Konto
+
+# CDN - API-Referenz
+
+Die von IBM Cloud bereitgestellte {{site.data.keyword.BluSoftlayer_notm}} Application Programming Interface (allgemein bezeichnet als SLAPI) ist die Entwicklungsschnittstelle, über die Anwendungsentwickler und Systemadministratoren direkt mit dem Back-End-System von {{site.data.keyword.BluSoftlayer_notm}} interagieren können.
+
+Die SLAPI implementiert viele der Funktionen im Kundenportal: Wenn eine Interaktion im Kundenportal möglich ist, kann sie auch in der SLAPI erreicht werden. Da Sie mit allen Teilen der {{site.data.keyword.BluSoftlayer_notm}}-Umgebung über das Programm interagieren können, können Sie über die SLAPI Tasks automatisieren.
+
+Die SLAPI ist ein RPC-System (RPC, Remote Procedure Call). Bei jedem Aufruf werden Daten an einen API-Endpunkt gesendet und als Antwort strukturierte Daten empfangen. Das verwendete Format zum Senden und Empfangen von Daten über die SLAPI hängt davon ab, welche Implementierung der API Sie verwenden. Die SLAPI verwendet derzeit SOAP, XML-RPC oder REST für die Datenübertragung.
+
+Weitere Informationen zur SLAPI oder zu den APIs des Service 'Content Delivery Network' (CDN) von IBM Cloud finden Sie in den folgenden Ressourcen im IBM Cloud Development Network:
+
+* [Übersicht über SLAPI](https://sldn.softlayer.com/article/softlayer-api-overview )
+* [Einführung in SLAPI](http://sldn.softlayer.com/article/getting-started )
+* [API 'SoftLayer_Product_Package'](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
+* [Handbuch zur PHP-basierten SOAP-API](https://sldn.softlayer.com/article/PHP )
+
+----
+
+Nachfolgend finden Sie als Erstes die empfohlene Reihenfolge von API-Aufrufen:
+* `listVendors`: Stellt die Liste der unterstützten Anbieter bereit.
+* `verifyOrder`: Prüft, ob die Bestellung aufgegeben werden kann.
+* `placeOrder`: Erstellt das CDN-Konto mit einem bestimmten Anbieter. Bis zu 10 CDN-Zuordnungen können nach einem erfolgreichen Aufruf 'placeOrder' erstellt werden.
+* `createDomainMapping`: Erstellt die CDN-Zuordnungen.
+* `verifyDomainMapping`: Ändert den CDN-Status in _RUNNING_.
+
+Sie können die anderen APIs verwenden, nachdem Sie die vorherige Reihenfolge befolgt haben.
+
+[Für jeden Schritt in dieser Aufrufreihenfolge steht Beispielcode zur Verfügung.](cdn-example-code.html#code-examples-using-the-cdn-api)
+
+**Hinweis:** Sie **müssen** den API-Benutzernamen und den API-Schlüssel eines Benutzers mit der Berechtigung `CDN_ACCOUNT_MANAGE` für die meisten der API-Aufrufe verwenden, die in diesem Dokument gezeigt werden. Stimmen Sie mit dem Masterbenutzer Ihres Kontos ab, ob diese Berechtigung für Sie aktiviert sein muss. (Jedes IBM Cloud-Kundenkonto wird mit einem Masterbenutzer bereitgestellt.)
+
+----
+## API für Anbieter
+### listVendors
+Mit dieser API kann der Benutzer die unterstützten CDN-Anbieter auflisten. Der Anbietername (`vendorName`) wird zum Erstellen eines CDN-Kontos und zum Bestellen Ihres CDN benötigt.
+
+* **Erforderliche Parameter:** Keine
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Vendor`.
+
+  Informationen und ein Verwendungsbeispiel zum Anbietercontainer finden Sie unter [Vendor-Container](vendor-container.html).
+
+----
+## API für Konto
 ### verifyCdnAccountExists
-Prüft, ob ein CDN-Konto für den Benutzer, der die API aufruft, für den angegebenen Anbieternamen (`vendorName`) besteht.
+Prüft, ob ein CDN-Konto für den Benutzer vorhanden ist, der die API für den angegebenen Anbieternamen (`vendorName`) aufruft.
 
- * **Parameter**: `vendorName`
- * **Rückgabe**: `true`, wenn ein Konto vorhanden ist, andernfalls `false`
-___
+* **Erforderliche Parameter:** `vendorName` - Geben Sie den Namen eines gültigen CDN-Anbieters an.
+* **Rückgabe:** `true`, wenn ein Konto vorhanden ist, andernfalls `false`.
 
+----
 ## API für Domänenzuordnung
 ### createDomainMapping
-Diese Funktion erstellt anhand der bereitgestellten Eingaben eine Domänenzuordnung für den angegebenen Anbieter und ordnet sie der {{site.data.keyword.BluSoftlayer_notm}}-Konto-ID des Benutzers zu. Das CDN-Konto muss mit `createCustomerSubAccount` erstellt werden, damit diese API ausgeführt werden kann. Nachdem das CDN erfolgreich erstellt wurde, wird ein Element `defaultTTL` mit dem Wert 3600 Sekunden erstellt.
+Diese Funktion erstellt anhand der bereitgestellten Eingaben eine Domänenzuordnung für den angegebenen Anbieter und ordnet sie der {{site.data.keyword.BluSoftlayer_notm}}-Konto-ID des Benutzers zu. Das CDN-Konto muss zuerst mit `placeOrder` erstellt werden, damit diese API funktioniert. (Ein Beispiel für den Aufruf der API `placeOrder` finden Sie in den [Codebeispielen](cdn-example-code.html).) Nachdem das CDN erfolgreich erstellt wurde, wird ein Element `defaultTTL` mit dem Wert 3600 Sekunden erstellt.
 
- * **Parameter**: Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`. Die Sammlung sollte die folgenden Elemente enthalten: `vendorName`, `hostname`, `protocol`, `originType`, `originHost`, `originHostPort`, `respectHeader`, `serveStale`, `cname`, `performanceConfiguration`, `header`, `certificateType` und `path`.
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`. Die Sammlung stellt eine Kennung `uniqueId` bereit, die als Eingabe an nachfolgende API-Aufrufe gesendet werden muss, die sich auf die Zuordnung beziehen.
-___ 
+* **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Sie können alle Attribute im Eingabecontainer hier anzeigen:
+  [Eingabecontainer anzeigen](input-container.html)
+
+  Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn eine Domänenzuordnung erstellt wird (Attribute sind optional, sofern nicht anders angegeben):
+    * `vendorName`: **Erforderlich** - Geben Sie den Namen eines gültigen IBM Cloud CDN-Anbieters an.
+    * `origin`: **Erforderlich** - Geben Sie die Adresse des Ursprungsservers in Form einer Zeichenfolge an.
+    * `originType`: **Erforderlich** - Der Ursprungstyp kann `HOST_SERVER` oder `OBJECT_STORAGE` sein.
+    * `domain`: **Erforderlich** - Geben Sie Ihren Hostnamen in Form einer Zeichenfolge an.
+    * `protocol`: **Erforderlich** - Unterstützte Protokolle sind `HTTP`, `HTTPS` oder `HTTP_AND_HTTPS`.
+    * `path`: Der Pfad, aus dem der im Cache gespeicherte Inhalt zugestellt wird. Standardpfad: /\*
+    * `httpPort` und/oder `httpsPort`: (**Erforderlich** für Host-Server) - Diese beiden Optionen müssen dem gewünschten Protokoll entsprechen. Für das Protokoll `HTTP` muss `httpPort` festgelegt werden und `httpsPort` darf _nicht_ festgelegt werden. Analog muss für das Protokoll `HTTPS` das Attribut `httpsPort` festgelegt werden und `httpPort` darf _nicht_ festgelegt werden. Für die Protokollangabe `HTTP_AND_HTTPS` _müssen_ _sowohl_ `httpPort` als auch `httpsPort` festgelegt werden. Akamai hat bestimmte Einschränkungen in Bezug auf Portnummern. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+    * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
+    * `respectHeader`: Ein boolescher Wert, der beim Wert `true` veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
+    * `cname`: Gibt einen Aliasnamen für den Hostnamen an. Wird generiert, wenn kein Name angegeben wird.
+    * `bucketName`: (**Erforderlich** nur für Object Storage) Der Bucketname für Ihren S3-Objektspeicher.
+    * `fileExtension`: (Optional für Object Storage) Die Dateierweiterungen, deren Speicherung im Cache zugelassen wird.
+    * `cacheKeyQueryRule`: Die folgenden Optionen sind zum Konfigurieren des Cacheschlüsselverhaltens verfügbar. Wenn keine Argumente für `cacheKeyQueryRule` angegeben werden, wird der Standardwert "include-all" verwendet.
+      * `include-all` - Schließt alle Abfrageargumente ein. **Standardwert**.
+      * `ignore-all` - Ignoriert alle Abfrageargumente.
+      * `ignore: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Ignoriert diese bestimmten Abfrageargumente. Beispiel: `ignore: abfrage1 abfrage2`
+      * `include: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Schließt diese bestimmten Abfrageargumente ein. Beispiel: `include: abfrage1 abfrage2`
+
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
+
+  **Hinweis:** Die Sammlung stellt einen Wert `uniqueId` bereit, der als Eingabe für nachfolgende API-Aufrufe für Zuordnung (Mapping) und Ursprungspfad (Origin Path) gesendet werden muss.
+
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### deleteDomainMapping
-Löscht die Domänenzuordnung basierend auf `uniqueId`. Die Domänenzuordnung muss einen der folgenden Statuswerte aufweisen: _RUNNING_, _STOPPED_, _DELETED_, _ERROR_, _CNAME\_CONFIGURATION_ oder _SSL\_CONFIGURATION_.
+Löscht die Domänenzuordnung basierend auf `uniqueId`. Die Domänenzuordnung muss einen der folgenden Statuswerte aufweisen: _RUNNING_ (Aktiv), _STOPPED_ (Gestoppt), _DELETED_ (Gelöscht), _ERROR_ (Fehler), _CNAME_CONFIGURATION_ oder _SSL_CONFIGURATION_ (CNAME-Konfiguration).
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Erforderliche Parameter:**: `uniqueId` - Die eindeutige ID der Zuordnung, die gelöscht werden soll.
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### verifyDomainMapping
-Überprüft den Status des CDN und aktualisiert `status`, `cname` und/oder `vendorCname`, falls erforderlich. Gibt gegebenenfalls den bzw. die aktualisierten Wert(e) zurück. Die Domänenzuordnung muss einen der folgenden Statuswerte aufweisen: _RUNNING_, _CNAME\_CONFIGURATION_ oder _SSL\_CONFIGURATION_.
+Prüft den Status des CDN und aktualisiert den Status (Attribut `status`) der CDN-Zuordnung, wenn er geändert wurde. Wenn eine CDN-Zuordnung zu Anfang erstellt wird, weist sie den Status _CNAME_CONFIGURATION_ auf. An diesem Punkt müssen Sie den DNS-Eintrag aktualisieren, sodass die CDN-Zuordnung den Hostnamen auf den CNAME verweist. Wenden Sie sich an Ihren DNS-Anbieter, falls Sie Fragen zum Aktualisierungsprozess und dazu haben, wie lange es dauert, bis die Änderung im Internet verbreitet wird. Normalerweise sollte dies 15 bis 30 Minuten dauern. Anschließend muss mit dieser API `verifyDomainMapping` überprüft werden, ob die CNAME-Verkettung abgeschlossen ist. Wenn die CNAME-Verkettung abgeschlossen ist, wird der Status der CDN-Zuordnung in _RUNNING_ (Aktiv) geändert.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+Diese API kann jederzeit aufgerufen werden, um den aktuellen Status der CDN-Zuordnung abzurufen. Die Domänenzuordnung muss einen der folgenden Statuswerte aufweisen: _RUNNING_ (Aktiv) oder _CNAME_CONFIGURATION_ (CNAME-Konfiguration).
+
+* **Erforderliche Parameter:**: `uniqueId` - Die eindeutige ID der Zuordnung, die geprüft werden soll.
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### startDomainMapping
 Startet eine CDN-Domänenzuordnung basierend auf `uniqueId`. Die Domänenzuordnung muss den Status _STOPPED_ aufweisen, damit sie gestartet werden kann.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Erforderliche Parameter:** `uniqueId` - Die eindeutige ID der Zuordnung, die gestartet werden soll.
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### stopDomainMapping
 Stoppt eine CDN-Domänenzuordnung basierend auf `uniqueId`. Die Domänenzuordnung muss den Status _RUNNING_ aufweisen, damit das Stoppen eingeleitet werden kann.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Erforderliche Parameter:** `uniqueId` - Die eindeutige ID der Zuordnung, die gestoppt werden soll.
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### updateDomainMapping
-Ermöglicht dem Benutzer das Aktualisieren der durch `uniqueId` identifizierten Zuordnung. Die folgenden Felder können geändert werden: `originHost`, `performanceConfiguration`, `header`, `httpPort`, `httpsPort`, `certificateType`, `respectHeader`, `serveStale`, `path`. Wenn Ihr Pfad den Ursprungstyp 'Objektspeicher' (Object Storage) aufweist, können auch `bucketName` und `fileExtension` geändert werden. Die Domänenzuordnung muss den Status _RUNNING_ aufweisen, damit eine Aktualisierung erfolgen kann.
+Ermöglicht dem Benutzer das Aktualisieren der durch `uniqueId` identifizierten Zuordnung. Die folgenden Felder können geändert werden: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header` und die Argumente für `cacheKeyQueryRule`. Beim Ursprungstyp 'Object Storage' können außerdem die Felder `bucketName` und `fileExtension` geändert werden. Die Domänenzuordnung muss den Status _RUNNING_ aufweisen, damit eine Aktualisierung erfolgen kann.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Sie können alle Attribute im Eingabecontainer hier anzeigen:
+  [Eingabecontainer anzeigen](input-container.html)
+
+  Die folgenden Attribute gehören zum Eingabecontainer und **müssen** bei der Aktualisierung einer Domänenzuordnung angegeben werden:
+    * `vendorName`: Geben Sie den Namen des CDN-Anbieters für diese Zuordnung an.
+    * `path`: Geben Sie den aktuellen Pfad für diese Zuordnung an.
+    * `origin`: Geben Sie die Adresse des Ursprungsservers in Form einer Zeichenfolge an.
+    * `originType`: Der Ursprungstyp kann `HOST_SERVER` oder `OBJECT_STORAGE` sein.
+    * `domain`: Geben Sie Ihren Hostnamen an.
+    * `protocol`: Unterstützte Protokolle sind `HTTP`, `HTTPS` oder `HTTP_AND_HTTPS`.
+    * `httpPort` und/oder `httpsPort`: Diese beiden Optionen müssen dem gewünschten Protokoll entsprechen. Für das Protokoll `HTTP` muss `httpPort` festgelegt werden und `httpsPort` darf _nicht_ festgelegt werden. Analog muss für das Protokoll `HTTPS` das Attribut `httpsPort` festgelegt werden und `httpPort` darf _nicht_ festgelegt werden. Für die Protokollangabe `HTTP_AND_HTTPS` _müssen_ _sowohl_ `httpPort` als auch `httpsPort` festgelegt werden. Akamai hat bestimmte Einschränkungen in Bezug auf Portnummern. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+    * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
+    * `respectHeader`: Ein boolescher Wert, der beim Wert `true` veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
+    * `uniqueId`: Wird nach der Erstellung der Zuordnung generiert.
+    * `cname`: Geben Sie den CNAME an. Es wurde ein CNAME generiert, als die Zuordnung erstellt wurde, sofern Sie keinen angegeben hatten.
+    * `bucketName`: (**Erforderlich** nur für Object Storage) Der Bucketname für Ihren S3-Objektspeicher.
+    * `fileExtension`: (**Erforderlich** nur für Object Storage) Die Dateierweiterungen, deren Speicherung im Cache zugelassen wird.
+    * `cacheKeyQueryRule`: Die Regeln für das Cacheschlüsselverhalten können nur für CDN-Zuordnungen aktualisiert werden, die _nach_ dem 16.11.2017 erstellt wurden. Die folgenden Optionen sind zum Konfigurieren des Cacheschlüsselverhaltens verfügbar:
+      * `include-all` - Schließt alle Abfrageargumente ein. **Standardwert**.
+      * `ignore-all` - Ignoriert alle Abfrageargumente.
+      * `ignore: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Ignoriert diese bestimmten Abfrageargumente. Beispiel: `ignore: abfrage1 abfrage2`
+      * `include: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Schließt diese bestimmten Abfrageargumente ein. Beispiel: `include: abfrage1 abfrage2`
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### listDomainMappings
-Gibt eine Sammlung aller Domänen für einen bestimmten Kunden zurück.
+Gibt eine Sammlung aller Domänenzuordnungen für den aktuellen Kunden zurück.
 
- * **Parameter**: _keine_ 
- * **Rückgabe**: Eine Sammlung des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___ 
+* **Erforderliche Parameter:** Keine
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+  [Zuordnungscontainer anzeigen](mapping-container.html)
+
+----
 ### listDomainMappingByUniqueId
-Gibt eine Sammlung mit einem einzelnen Domänenobjekt zurück, basierend auf der Kennung `uniqueId` eines CDN.
+Gibt eine Sammlung mit einem einzelnen Domänenobjekt basierend auf der Kennung `uniqueId` eines CDN zurück.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung mit einzelnen Objekten des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`
-___
+* **Erforderliche Parameter:** `uniqueId` - Die eindeutige ID der Zuordnung, die zurückgegeben werden soll.
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` mit einem Objekt
+  [Zuordnungscontainer anzeigen](mapping-container.html)
 
+----
+## APIs für Ursprung
+### createOriginPath
+Erstellt einen Ursprungspfad für ein vorhandenes CDN und für einen bestimmten Kunden. Der Ursprungspfad kann auf einem Host-Server oder auf Object Storage basieren. Zum Erstellen des Ursprungspfads muss die Domänenzuordnung den Status _RUNNING_ oder _CNAME_CONFIGURATION_ aufweisen.
+
+* **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Sie können alle Attribute im Eingabecontainer hier anzeigen:
+  [Eingabecontainer anzeigen](input-container.html)
+
+  Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn ein Ursprungspfad erstellt wird (Attribute sind optional, sofern nicht anders angegeben):
+    * `vendorName`: **Erforderlich** - Geben Sie den Namen eines gültigen IBM Cloud CDN-Anbieters an.
+    * `origin`: **Erforderlich** - Geben Sie die Adresse des Ursprungsservers in Form einer Zeichenfolge an.
+    * `originType`: **Erforderlich** - Der Ursprungstyp kann `HOST_SERVER` oder `OBJECT_STORAGE` sein.
+    * `domain`: **Erforderlich** - Geben Sie Ihren Hostnamen in Form einer Zeichenfolge an.
+    * `protocol`: **Erforderlich** - Unterstützte Protokolle sind `HTTP`, `HTTPS` oder `HTTP_AND_HTTPS`.
+    * `path`: Der Pfad, aus dem der im Cache gespeicherte Inhalt zugestellt wird. Muss mit dem Zuordnungspfad beginnen. Beispiel: Wenn der Zuordnungspfad `/test` ist, kann der Ursprungspfad `/test/media` sein.
+    * `httpPort` und/oder `httpsPort`: **Erforderlich** - Diese beiden Optionen müssen dem gewünschten Protokoll entsprechen. Für das Protokoll `HTTP` muss `httpPort` festgelegt werden und `httpsPort` darf _nicht_ festgelegt werden. Analog muss für das Protokoll `HTTPS` das Attribut `httpsPort` festgelegt werden und `httpPort` darf _nicht_ festgelegt werden. Für die Protokollangabe `HTTP_AND_HTTPS` _müssen_ _sowohl_ `httpPort` als auch `httpsPort` festgelegt werden. Akamai hat bestimmte Einschränkungen in Bezug auf Portnummern. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+    * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
+    * `uniqueId`: **Erforderlich** - Wird nach der Erstellung der Zuordnung generiert.
+    * `cname`: Gibt einen Aliasnamen für den Hostnamen an. Wenn Sie keinen eindeutigen CNAME angegeben haben, wurde beim Erstellen der Zuordnung ein solcher Name für Sie generiert.
+    * `bucketName`: (**Erforderlich** für Object Storage) Der Bucketname für Ihren S3-Objektspeicher.
+    * `fileExtension`: (Optional für Object Storage) Die Dateierweiterungen, deren Speicherung im Cache zugelassen wird.
+    * `cacheKeyQueryRule`: Die folgenden Optionen sind zum Konfigurieren des Cacheschlüsselverhaltens verfügbar:
+      * `include-all` - Schließt alle Abfrageargumente ein. **Standardwert**.
+      * `ignore-all` - Ignoriert alle Abfrageargumente.
+      * `ignore: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Ignoriert diese bestimmten Abfrageargumente. Beispiel: `ignore: abfrage1 abfrage2`
+      * `include: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Schließt diese bestimmten Abfrageargumente ein. Beispiel: `include: abfrage1 abfrage2`
+
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Ursprungspfadcontainer anzeigen](path-container.html)
+
+----
+### updateOriginPath
+Aktualisiert einen vorhandenen Ursprungspfad für eine vorhandene Zuordnung und für einen bestimmten Kunden. Der Ursprungstyp kann mit dieser API nicht geändert werden. Die folgenden Eigenschaften können geändert werden: `path`, `origin`, `httpPort` und `httpsPort`, `header` und Argumente für `cacheKeyQueryRule`. Zum Aktualisieren muss die Domänenzuordnung den Status _RUNNING_ oder _CNAME_CONFIGURATION_ aufweisen.
+
+* **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  Sie können alle Attribute im Eingabecontainer hier anzeigen:
+  [Eingabecontainer anzeigen](input-container.html)
+
+  Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn ein Ursprungspfad aktualisiert wird (Attribute sind optional, sofern nicht anders angegeben):
+    * `oldPath`: **Erforderlich** - Der aktuelle Pfad, der geändert werden soll.
+    * `origin`: (**Erforderlich** bei Aktualisierung) - Geben Sie die Adresse des Ursprungsservers in Form einer Zeichenfolge an.
+    * `originType`: **Erforderlich** - Der Ursprungstyp kann `HOST_SERVER` oder `OBJECT_STORAGE` sein.
+    * `path`: **Erforderlich** - Der neue Pfad, der hinzugefügt werden soll. Gilt relativ zum Zuordnungspfad.
+    * `httpPort` und/oder `httpsPort`: (**Erforderlich** für Host-Server bei Aktualisierung) - Diese beiden Optionen müssen dem gewünschten Protokoll entsprechen. Für das Protokoll `HTTP` muss `httpPort` festgelegt werden und `httpsPort` darf _nicht_ festgelegt werden. Analog muss für das Protokoll `HTTPS` das Attribut `httpsPort` festgelegt werden und `httpPort` darf _nicht_ festgelegt werden. Für die Protokollangabe `HTTP_AND_HTTPS` _müssen_ _sowohl_ `httpPort` als auch `httpsPort` festgelegt werden. Akamai hat bestimmte Einschränkungen in Bezug auf Portnummern. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+    * `uniqueId`: **Erforderlich** - Die eindeutige ID der Zuordnung, zu der dieser Ursprungspfad gehört.
+    * `bucketName`: (**Erforderlich** nur für Object Storage) Der Bucketname für Ihren S3-Objektspeicher.
+    * `fileExtension`: (**Erforderlich** nur für Object Storage) Die Dateierweiterungen, deren Speicherung im Cache zugelassen wird.
+    * `cacheKeyQueryRule`: (**Erforderlich** bei Aktualisierung) Regeln für das Cacheschlüsselverhalten können nur für Ursprungspfade aktualisiert werden, die _nach_ dem 16.11.2017 erstellt wurden. Die folgenden Optionen sind zum Konfigurieren des Cacheschlüsselverhaltens verfügbar:
+      * `include-all` - Schließt alle Abfrageargumente ein. **Standardwert**.
+      * `ignore-all` - Ignoriert alle Abfrageargumente.
+      * `ignore: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Ignoriert diese bestimmten Abfrageargumente. Beispiel: `ignore: abfrage1 abfrage2`
+      * `include: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Schließt diese bestimmten Abfrageargumente ein. Beispiel: `include: abfrage1 abfrage2`
+
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Ursprungspfadcontainer anzeigen](path-container.html)
+
+----
+### deleteOriginPath
+Löscht einen vorhandenen Ursprungspfad für ein vorhandenes CDN und für einen bestimmten Kunden. Zum Löschen muss die Domänenzuordnung den Status _RUNNING_ oder _CNAME_CONFIGURATION_ aufweisen.
+
+* **Erforderliche Parameter:**:
+  * `uniqueId`: Die eindeutige ID der Zuordnung, zu der dieser Ursprungspfad gehört.
+  * `path`: Der Pfad, der gelöscht werden soll.
+
+* **Rückgabe:** Eine Statusnachricht, wenn das Löschen erfolgreich war. Andernfalls wird eine Ausnahmebedingung ausgelöst.
+
+----
+### listOriginPath
+Listet die Ursprungspfade für eine vorhandene Zuordnung auf Basis der eindeutigen ID (`uniqueId`) auf.
+
+* **Erforderliche Parameter:**:
+  * `uniqueId`: Geben Sie die eindeutige ID der Zuordnung an, für die Sie die Ursprungspfade auflisten wollen.
+* **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+
+  [Ursprungspfadcontainer anzeigen](path-container.html)
+
+----
 ## API für Bereinigung
+### Containerklasse für Bereinigung:
+```
+class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @var string
+     */
+    public $saved;
+
+    /**
+     * @var string
+     */
+    public $date;
+}  
+```
+
 ### createPurge
 Erstellt einen Bereinigungsdatensatz und fügt ihn in die Datenbank ein.
 
- * **Parameter**: `string` `uniqueId`, `string` `path`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Parameter:**
+  * `uniqueId`: Die eindeutige ID der Zuordnung, für die die Bereinigung erstellt wird.
+  * `path`: Der Pfad der Bereinigung, die erstellt werden soll.
+
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
 ### getPurgeHistoryPerMapping
-Gibt den Bereinigungsverlauf für ein CDN basierend auf `uniqueId` und dem Status `saved` zurück. (Der Wert für `saved` ist standardmäßig auf _unsaved_ gesetzt.)
+Gibt den Bereinigungsverlauf für ein CDN auf der Basis der eindeutigen ID (`uniqueId`) und des Speicherstatus (`saved`) zurück. (Der Wert von `saved` wird standardmäßig auf _UNSAVED_ gesetzt.)
 
- * **Parameter**: `string` `uniqueId`, `int` `saved`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Parameter:**
+  * `uniqueId`: Die eindeutige ID der Zuordnung, für die der Bereinigungsverlauf abgerufen werden soll.
+  * `saved`: Gibt Bereinigungen zurück, die gespeichert (_SAVED_) oder nicht gespeichert (_UNSAVED_) sind.
+
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
 ### saveOrUnsavePurgePath
-Aktualisiert den Status des Pfadeintrags für Bereinigung, um anzugeben, ob der Bereinigungspfad gespeichert werden soll. Erstellt eine neue gespeicherte Bereinigung (`saved`), wenn ein Bereinigungspfad gespeichert ist. Löscht einen gespeicherten Bereinigungsdatensatz, wenn der Pfad nicht gespeichert (`unsaved`) ist.
+Aktualisiert den Status des Bereinigungspfadeintrags, um anzugeben, ob dieser Bereinigungspfad gespeichert werden soll. Erstellt eine neue gespeicherte (`saved`) Bereinigung, wenn ein Bereinigungspfad gespeichert wird. Löscht den Eintrag einer gespeicherten Bereinigung, wenn der Pfad nicht gespeichert (`unsaved`) wird.
 
- * **Parameter**: `string` `uniqueId`, `string` `path`, `int` `saved`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
-___
+* **Parameter:**
+  * `uniqueId`: Die eindeutige ID der Zuordnung, zu der die Bereinigung gehört.
+  * `path`: Der Pfad der Bereinigung, die gespeichert oder nicht gespeichert werden soll.
+  * `saved`: _SAVED_ (gespeichert) oder _UNSAVED_ (nicht gespeichert).
 
-## API für Lebensdauer
+* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
+
+----
+## API für Lebensdauer  
+### Variablen der Klasse TimeToLive:  
+```  
+class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
+{
+    /**
+     * @var string
+     */
+    public $path;
+
+    /**
+     * @var int
+     */
+    public $timeToLive;
+
+    /**
+     * @var timestamp
+     */
+    public $createDate;
+}
+```  
 ### createTimeToLive
 Erstellt ein neues Objekt `TimeToLive` und fügt es in die Datenbank ein.
 
- * **Parameter**: `string` `uniqueId`, `string` `path`, `int` `ttl`
- * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
+ * **Parameter:** `string` `uniqueId`, `string` `path`, `int` `ttl`
+ * **Rückgabe:** Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
 ### updateTtl
 Aktualisiert ein vorhandenes Objekt `TimeToLive`. Wenn die Eingaben _oldTtl_ und _newTtl_ gleich sind, wird diese Funktion frühzeitig beendet.
 
- * **Parameter**: `string` `uniqueId`, `string` `oldPath`, `string` `newPath`, `int` `oldTtl`, `int` `newTtl`
- * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
+ * **Parameter:** `string` `uniqueId`, `string` `oldPath`, `string` `newPath`, `int` `oldTtl`, `int` `newTtl`
+ * **Rückgabe:** Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
 ### deleteTtl
 Löscht ein vorhandenes Objekt `TimeToLive` aus der Datenbank.
 
- * **Parameter**: `string` `uniqueId`, `string` `pathName`
- * **Rückgabe**: Eine Zeichenfolge mit dem Status des Löschvorgangs
+ * **Parameter:** `string` `uniqueId`, `string` `pathName`
+ * **Rückgabe:** Eine Zeichenfolge mit dem Status des Löschvorgangs
 ___
 ### listTtl
 Listet vorhandene Objekte `TimeToLive` basierend auf der Kennung `uniqueId` eines CDN auf.
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Ein Array mit Objekten des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
-___
+ * **Parameter:** `string` `uniqueId`
+ * **Rückgabe:** Ein Array mit Objekten des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
-## API für Ursprung
-### createOriginPath
-Erstellt einen Ursprungspfad für ein vorhandenes CDN und für einen bestimmten Kunden. Der Ursprungspfad kann auf einem Hostserver oder dem Objektspeicher basieren. Die Domänenzuordnung muss den Status _RUNNING_ oder _CNAME\_CONFIGURATION_ aufweisen, damit der Ursprungspfad erstellt werden kann.  
+ ----
+## API für Metriken  
+### Containerklasse für Metriken:  
+```  
+class SoftLayer_Container_Network_CdnMarketplace_Metrics  
+{  
+    /**
+     * @var string
+     */
+    public $type;
 
- * **Parameter**: Ein Objekt `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`, das erwartet, dass die folgenden Eigenschaften festgelegt werden: `domainName`, `vendorName`, `path`, `originType` und `origin`. Wenn der Ursprungstyp 'Server' ist, muss außerdem `httpPort` und/oder `httpsPort` festgelegt werden. Wenn der Ursprungstyp 'Objektspeicher' (Object Storage) ist, muss auch `bucketName` angegeben werden sowie optional die Eigenschaft `fileExtension`.  
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
+    /**
+     * @var string[]
+     */
+    public $names;
 
-___ 
-### updateOrigin
-Aktualisiert einen vorhandenen Ursprungspfad für eine vorhandene Zuordnung und für einen bestimmten Kunden. Die Eigenschaft `originType` kann nicht geändert werden. Nur die folgenden Eigenschaften können geändert werden: `path`, `origin`, `httpPort` und `httpsPort`. Die Domänenzuordnung muss den Status _RUNNING_ oder _CNAME\_CONFIGURATION_ aufweisen, damit sie aktualisiert werden kann.
+    /**
+     * @var string[]
+     */   
+     public $totals;
 
- * **Parameter**: Ein Objekt `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`, das erwartet, dass die folgenden Eigenschaften festgelegt werden: `domainName`, `vendorName`, `path`, `originType` und `origin`. Wenn der Ursprungstyp 'Server' ist, muss außerdem `httpPort` und/oder `httpsPort` festgelegt werden. Wenn der Ursprungstyp 'Objektspeicher (Object Storage) ist, muss auch `bucketName` sowie optional `fileExtension` angegeben werden.  
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___ 
-### deleteOriginPath
-Löscht einen vorhandenen Ursprungspfad für ein vorhandenes CDN und für einen bestimmten Kunden. Die Domänenzuordnung muss den Status _RUNNING_ oder _CNAME\_CONFIGURATION_ aufweisen, damit sie gelöscht werden kann.  
+    /**
+     * @var string[]
+     */
+    public $percentage;
 
- * **Parameter**: `string` `uniqueId`, `string` `path`
- * **Rückgabe**: Eine Statusnachricht, wenn das Löschen erfolgreich ausgeführt wurde, andernfalls eine Ausnahmebedingung.
+    /**
+     * @var string[]
+     */
+    public $time;
 
-___
-### listOriginPath
-Listet den Ursprungspfad für eine vorhandene Zuordnung und für einen bestimmten Kunden auf.
+    /**
+     * @var string[]
+     */
+    public $xaxis;
 
- * **Parameter**: `string` `uniqueId`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
-___
+    /**
+     * @var string[]
+     */
+    public $yaxis1;
 
-## API für Metriken
+    /**
+     * @var string[]
+     */
+    public $yaxis2;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis3;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis4;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis5;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis6;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis7;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis8;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis9;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis10;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis11;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis12;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis13;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis14;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis15;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis16;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis17;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis18;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis19;
+
+    /**
+     * @var string[]
+     */
+    public $yaxis20;
+}  
+```  
 ### getCustomerUsageMetrics
 Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohne Grafik) für ein Kundenkonto über einen angegebenen Zeitraum zurück.
 
- * **Parameter**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- 
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+ * **Parameter:** `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
 ### getMappingUsageMetrics
 Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige für die angegebene Zuordnung zurück. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___ 
+ * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
 ### getMappingHitsMetrics
 Gibt die Gesamtzahl der Treffer mit einer bestimmten Häufigkeit über einen angegebenen Zeitraum pro Domänenzuordnung zurück. Als Häufigkeit kann 'day' (Tag), 'week' (Woche) oder 'month' (Monat) angegeben werden. Dabei liefert jedes Intervall einen Diagrammpunkt für eine Grafik. Die zurückgegebenen Daten werden basierend auf `startDate`, `endDate` und `frequency` geordnet. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+ * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
-Gibt die Gesamtzahl der Treffer mit einer bestimmten Häufigkeit über einen angegebenen Zeitraum zurück. Als Häufigkeit kann 'hour' (Stunde), 'day' (Tag), 'week' (Woche) oder 'month' (Monat) angegeben werden. Dabei liefert jedes Intervall einen Diagrammpunkt für eine Grafik. Die zurückgegebenen Daten müssen basierend auf `startDate`, `endDate` und `frequency` geordnet werden. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
+Gibt die Gesamtzahl der Treffer mit einer bestimmten Häufigkeit über einen angegebenen Zeitraum zurück. Als Häufigkeit kann 'day' (Tag), 'week' (Woche) oder 'month' (Monat) angegeben werden. Dabei liefert jedes Intervall einen Diagrammpunkt für eine Grafik. Die zurückgegebenen Daten müssen basierend auf `startDate`, `endDate` und `frequency` geordnet werden. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+ * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
-Gibt die Anzahl der Edge-Treffer pro Region für ein einzelnes CDN zurück. Die Regionen können bei jedem Anbieter variieren. Pro Zuordnung.
+Gibt die Anzahl der Edge-Treffer für ein einzelnes CDN zurück. Die Regionen können bei jedem Anbieter variieren. Pro Zuordnung.
 
- * **Parameter**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+ * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
-Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohne Grafik) für ein Kundenkonto über einen angegebenen Zeitraum zurück. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
+Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohne Grafik) für eine bestimmte Zuordnung über einen angegebenen Zeitraum zurück. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
- * **Rückgabe**: Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___
+ * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
