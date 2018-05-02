@@ -13,11 +13,13 @@ Content Delivery Network (CDN)
     {: .navgroup id="howto"}
     how-to-order.md
     how-to.md
+    rules-and-naming-conventions.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
     faqs.md
     known-limitations.md
+    troubleshooting.md
     edge-servers.md
     getting-help.md
     {: .navgroup-end}
