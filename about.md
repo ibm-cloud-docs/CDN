@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-23"
+lastupdated: "2018-05-04"
 
 ---
 
@@ -33,7 +33,7 @@ The key features of the IBM Cloud Content Delivery Network service include:
   * HTTPS support with wildcard certificate
   * Host Header support
   * Serve Stale content
-  * "Ignore Query Args in Cache Key" feature
+  * Cache Key Query Args
   * Content Compression
   * Large File Optimization
   * Video on Demand
@@ -94,7 +94,7 @@ The Respect Headers option allows the HTTP Header configuration in the Origin to
 
 When the CDN Edge server receives a user request, and the requested content is not cached, the Edge server reaches out to the Origin host to fetch the content. That content is then cached for the Time To Live (TTL) duration specified for the content. If a user request is received after the TTL has expired, the Edge server reaches out to the Origin host to fetch the content. If the Origin server cannot be reached for some reason (for instance, the Origin host is down, or there is a network issue), the Edge server serves the expired (stale) content to the request. This feature is supported by Akamai and **cannot** be turned off.
 
-### "Ignore Query Args in Cache Key" feature
+### Cache Key Query Args
 
 Akamai Edge servers cache content on a so-called "Cache Store." To use the content from the "Cache Store," Edge servers use a "Cache Key." Typically, a Cache Key is generated based on a portion of an end-user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content delivered is the same. By default, Akamai uses the query function's arguments to generate the Cache Key, and therefore, to generate a unique Cache Key for each user. This method is not optimal, because it causes the Edge server to contact the Origin server for content that is already cached, but using a different Cache Key. The **Ignore Query Args in Cache Key** feature allows you to specify whether the query args should be ignored when generating a Cache Key. This feature applies to any `create` or `update` of a CDN Mapping configuration, as well as for any `create` or `update` of an Origin path.
 

@@ -20,6 +20,6 @@ IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't
 
 ## March 2018
 
-  * Large File Optimization [feature description](about.html#large-file-optimization-)
-  * Cache Key Optimization [feature description](about.html#cache-key-optimization-)
-  * Video On Demand Optimization [feature description](about.html#video-on-demand-optimization-)
+  * Large File Optimization [feature description](about.html#large-file-optimization)
+  * Cache Key Optimization [feature description](about.html#cache-key-query-args)
+  * Video On Demand Optimization [feature description](about.html#video-on-demand-optimization)
