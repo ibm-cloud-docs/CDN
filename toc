@@ -8,19 +8,23 @@ Content Delivery Network (CDN)
     getting-started.md
     about.md
     naas-video.md
+    new-features.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     how-to-order.md
     how-to.md
     rules-and-naming-conventions.md
+    limits-and-max-values.md
+    byte-range-request.md
+    metrics.md
+    edge-servers.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
     faqs.md
     known-limitations.md
     troubleshooting.md
-    edge-servers.md
     getting-help.md
     {: .navgroup-end}
 
