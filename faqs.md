@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-01"
+lastupdated: "2018-05-03"
 
 ---
 
@@ -42,31 +42,6 @@ You are only billed for bandwidth used per IBM Cloud Content Delivery Network in
 
 IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.BluSoftlayer_notm}} Account.
 
-## How do I view the metrics and usage?
-
-You can view metrics and usage on the **Overview** page, which can be reached by selecting your CDN from the **Content Delivery Networks** page. **NOTE**: After you create your CDN, it may take up to 48 hours for metrics to appear.
-
-## I created a CDN and there was data traffic through the CDN. Why don't my metrics show up?
-
-After a CDN is created, it takes 48 hours for metrics to appear.
-
-## Is there a minimum number of days for which I can view metrics? Is there a maximum?
-
-There are a minimum and a maximum number of days for which you can view metrics using IBM Cloud Content Delivery Network with Akamai. Metrics can be gathered for a minimum of 7 days. Metrics can be viewed for a maximum of 90 days. For those using the API, it is recommended to use 89 days as the maximum, to account for any differences in time zones.
-
-## Why is the hit ratio non-zero when total hits are zero?
-Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
-
-```
-((Edge hits - Ingress hits)/Edge hits) * 100
-
-where:
-Edge hits is defined as "All hits to the edge servers from the end-users"
-Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
-```
-
-Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
-
 ## If I select `delete` from the CDN's overflow menu, does that delete my account?
 
 No; it will only delete that CDN. Your account still exists, and you can create additional CDNs.
@@ -74,18 +49,6 @@ No; it will only delete that CDN. Your account still exists, and you can create 
 ## Does caching use push or pull?
 
 Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the edge server from the Origin Server, as opposed to manually uploading the content onto the edge server.
-
-## Is there a maximum value for Time To Live? A minimum?
-
-The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 30 seconds.
-
-## Is there a limit on the number of Origin and TTL entries?
-
-Yes, the combined limit is 75 entries per CDN.
-
-## Is there a limit on the number of CDNs I can have?
-
-Yes, you can have a limit of 10 CDNs per account.
 
 ## Is there a recommended browser to use for CDN service configuration?
 
@@ -95,15 +58,11 @@ Yes, Firefox and Chrome are the recommended browsers. It is recommended that you
 
 If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin Server.
 
-
 ## My CDN is in an Error State. What do I do now?
 Please refer to the ['Getting Help and Support'](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#gettinghelp) page, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
 
 ## Where do I find my CNAME if I didn't provide one?
 Click on your CDN to access the **Overview** Page in the Portal. On the right corner you can see a **Details** section with the `CName` information.
-
-## Is there a limit on the number of Purge requests that can be active at once?
-Yes. There can only be 5 active purge requests at a time.
 
 ## My Purge Request for a given file path is in Progress. Can I submit a new request for the same file path?
 No. There can only be one active Purge request for a given file path at a time.
@@ -125,21 +84,9 @@ Omitting the slash, for example, using `www.example.com/images` will result in a
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
 [Here's a tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
-## What is the largest file size that can be delivered via Akamai CDN?
-
-Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320GB are possible.
-
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 
 Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708) from Akamai.
-
-## What is a Byte-range request, and how does it work with Akamai CDN?
-
-A Byte-Range request is used to retrieve partial content from an origin server. The Range HTTP request header indicates which part of the content the server should return. Several parts can be requested with one range header at once, and the server may send back these ranges in a multipart response. If the server sends back ranges, it responds with a 206 (Partial Content) status.
-
-When a byte-range request is sent using IBM Cloud CDN with Akamai, the user may receive a 200 (OK) response code for the first request, and a 206 response code for all subsequent requests. This is because Akamai edge servers request content from the origin in compressed format. So, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it will go forward to the origin and will request the entire object. In this case, the origin serves the object without the content length header to Akamai, and the end user would be served the whole object even though it was a byte-range request. Thus the 200 Status code. On subsequent requests, the edge server has the object in its cache and will serve the 206 status code.
-
-One way to ensure a 206 response, even for the first byte-range request, is to disable `Transfer-Encoding: chunked` on your origin server.
 
 ## What security is included with IBM CDN solution with Akamai?
 

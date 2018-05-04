@@ -1,0 +1,36 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-05-03"
+
+---
+
+{:shortdesc: .shortdesc}
+{:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
+
+# Limits and Maximum Values
+
+## Is there a maximum value for Time To Live? A minimum?
+
+The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 30 seconds.
+
+## Is there a limit on the number of Origin and TTL entries?
+
+Yes, the combined limit is 75 entries per CDN.
+
+## Is there a limit on the number of CDNs I can have?
+
+Yes, you can have a limit of 10 CDNs per account.
+
+## Is there a limit on the number of Purge requests that can be active at once?
+Yes. There can only be 5 active purge requests at a time.
+
+## What is the largest file size that can be delivered via Akamai CDN?
+
+Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320GB are possible.
