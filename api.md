@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-05-03"
 
 ---
 
@@ -26,10 +26,10 @@ The SLAPI is a Remote Procedure Call (RPC) system. Each call involves sending da
 
 For more information about SLAPI, or about the IBM Cloud Content Delivery Network (CDN) service APIs, see the following resources in the IBM Cloud Development Network:
 
-* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+* [SLAPI Overview](https://softlayer.github.io/ )
+* [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -365,175 +365,70 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
  * **Return**: an array of objects of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API for Metrics  
-### Container class for Metrics:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## API for Metrics
+[View the Metrics Container](metrics-container.html)
 ### getCustomerUsageMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
- * **Parameters**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is 'aggregate' by default.
 
- * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be 'day', 'week', and 'month', where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is 'aggregate' by default.
 
- * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Returns the total number of hits at a certain frequency over a given range of time. Frequency can be 'day', 'week', and 'month', where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is 'aggregate' by default.
 
- * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Returns the number of edge hits for an individual CDN. Regions may differ for each vendor. Per mapping.
 
- * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is 'aggregate' by default.
 
- * **Parameters**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameters**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`

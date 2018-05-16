@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-01"
+lastupdated: "2018-05-07"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-01"
 {:tip: .tip}
 {:download: .download}
 
-# Rules and Naming Conventions 
+# Rules and Naming Conventions
 
 ## What are the rules for the Hostname?
 The `Hostname` input string **must**:
@@ -42,7 +42,7 @@ Bucket names:
   * must **not** be formatted as an IP address (for example, 127.0.0.1)
   * may **not** start with a period (.)
   * may end with a period (.)
-  * only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed). 
+  * only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed).
 
 **NOTE**: Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
 
@@ -50,6 +50,16 @@ Bucket names:
 The Path is optional when creating your CDN. However, if provided, the Path **must**:
   * be less than 1000 characters in length
   * begin with `/`
+
+# What are the rules for the Path string for Purge?
+The Purge path:
+  * must be less than 1000 characters in length
+  * must begin with `/`
+  * cannot end with `/`
+  * cannot end with a period (.)
+  * cannot contain `*`
+
+**NOTE**: Purge is only allowed for single files. Directory level purge is not supported at this time.
 
 ## For the **Add Origin** command, are there any rules to follow for the Path string?
 For **Add Origin**, the path is **mandatory**. Also if your CDN was created with a path, the path for **Add Origin** must start with the CDN path as the prefix. For example, if the CDN path was specified as `/storage`, to invoke **Add Origin** with a path called `/examplePath`, the path provided would be `/storage/examplePath`.

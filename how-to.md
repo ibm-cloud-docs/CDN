@@ -204,7 +204,7 @@ Select the **Purge** tab.
 
 **Step 3:**  
 
-Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time.
+Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see [this FAQ](faq.html#what-are-the-rules-for-the-path-string-for-purge-) for more details on what syntax is allowed for the Purge path.
 
 **Step 4:**  
 

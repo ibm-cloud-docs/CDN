@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-16"
+  years: 2017, 2018
+lastupdated: "2018-05-10"
 
 ---
 
@@ -44,33 +44,62 @@ Of particular note is the `uniqueId`, which is generated when a mapping is creat
 
 For example, this call to `listDomainMappingByUniqueid`  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');  
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
 ```
 
 will return an object to similar to this one:
 
 ```php  
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
-                (
-                    [vendorName] => akamai
-                    [uniqueId] => 750352919747xxx
-                    [domain] => test.testingcdn.net
-                    [protocol] => HTTP_AND_HTTPS
-                    [originType] => HOST_SERVER
-                    [originHost] => test.testingcdn.net
-                    [httpPort] => 80
-                    [httpsPort] => 443
-                    [cname] => test.cdnedge.bluemix.net
-                    [performanceConfiguration] =>
-                    [certificateType] =>
-                    [respectHeaders] => 1
-                    [header] =>
-                    [status] => RUNNING
-                    [bucketName] =>
-                    [fileExtension] =>
-                    [path] => /
-                    [cacheKeyQueryRule] => include-all
-                )
+        (
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => NO_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+            [vendorName] => akamai
+        )
+
 ```
+{: codeblock}
 
+Calls to `stopDomainMapping` and `startDomainMapping` will return the same Mapping object, with the `status` being the difference.
 
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+        (
+          ...
+
+            [status] => STOPPED
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+        (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
