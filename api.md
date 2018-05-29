@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -71,6 +71,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
+  
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when creating a domain mapping (attributes are optional unless otherwise noted):
@@ -152,7 +153,7 @@ Enables the user to update properties of the mapping identified by the `uniqueId
     * `protocol`: Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
     * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
-    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `respectHeader`: A Boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
     * `uniqueId`: Generated after the mapping is created.
     * `cname`: Provide the cname. One was generated when the mapping was created if you did not provide one.
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
@@ -163,6 +164,7 @@ Enables the user to update properties of the mapping identified by the `uniqueId
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
 * **Return** a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [View the Mapping Container](mapping-container.html)
 
 ----
@@ -171,6 +173,7 @@ Returns a collection of all domain mappings for current customer.
 
 * **Required Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [View the Mapping Container](mapping-container.html)
 
 ----
@@ -179,6 +182,7 @@ Returns a collection with a single domain object based on a CDN's `uniqueId`.
 
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping to be returned
 * **Return**: a single-object collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [View the Mapping Container](mapping-container.html)
 
 ----
@@ -188,6 +192,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
+  
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when creating an Origin Path (attributes are optional unless otherwise noted):
@@ -219,6 +224,7 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
+  
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when updating an Origin Path (attributes are optional unless otherwise noted):

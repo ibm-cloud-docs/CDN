@@ -51,7 +51,7 @@ The Path is optional when creating your CDN. However, if provided, the Path **mu
   * be less than 1000 characters in length
   * begin with `/`
 
-# What are the rules for the Path string for Purge?
+## What are the rules for the Path string for Purge?
 The Purge path:
   * must be less than 1000 characters in length
   * must begin with `/`
