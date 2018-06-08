@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-20"
+lastupdated: "2018-06-07"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-04-20"
 
 # Getting Started
 
-IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry solutions-- including media, entertainment, software, gaming, banking, and e-commerce-- to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. Akamai boasts over 200,000 edge servers in over 130 countries, to bring the content closest to where you need it most--your users.
+IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in 36 countries, to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 
