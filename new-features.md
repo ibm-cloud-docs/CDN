@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-12"
+lastupdated: "2018-06-18"
 
 ---
 
@@ -23,4 +23,4 @@ IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't
   * Large File Optimization [feature description](about.html#large-file-optimization)
   * Cache Key Optimization [feature description](about.html#cache-key-query-args)
   * Video On Demand Optimization [feature description](about.html#video-on-demand-optimization)
-  * HTTPS with DV SAN support [feature description](about.html#HTTPS Protocol support with Wildcard and DV SAN certificate)
+  * HTTPS with DV SAN support [feature description](about.html#https-protocol-support-with-wildcard-and-dv-san-certificate)
