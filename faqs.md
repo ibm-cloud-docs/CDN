@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-05"
+lastupdated: "2018-06-19"
 
 ---
 
@@ -36,7 +36,7 @@ For HTTP-based CDN, update your DNS record so that your website points to the `C
 
 ## What will I be billed for?
 
-You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [Getting Started](https://github.com/IBM-Bluemix-Docs/CDN/blob/master/getting-started.md#pricing-shown-in-usd) section for this service.
+You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [Getting Started](getting-started.html#cdn-bandwidth-pricing-rates-shown-in-usd-) section for this service.
 
 ## When will I be billed?
 
@@ -60,7 +60,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 
 ## My CDN is in an Error State. What do I do now?
 
-Please refer to the ['Getting Help and Support'](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#gettinghelp) page, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
+Please refer to the [Troubleshooting](troubleshooting.html#troubleshooting) or [Getting Help and Support](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
 
 ## Where do I find my CNAME if I didn't provide one?
 

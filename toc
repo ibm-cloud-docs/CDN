@@ -14,9 +14,9 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="howto"}
     how-to-order.md
+    basic-functions.md
     how-to.md
     how-to-https.md
-    basic-functions.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md

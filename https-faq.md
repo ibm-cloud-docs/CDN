@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-17"
+lastupdated: "2018-06-19"
 
 ---
 
@@ -24,7 +24,7 @@ In the case of SAN certificate, multiple customer domains share a single SAN cer
 
 ## How is Domain Validation with redirect accomplished?
 
-It depends on your server. The procedure for completing Domain Validation for Apache and Nginx servers can be found [in this document](how-to-https.html/#redirect-).
+It depends on your server. The procedure for completing Domain Validation for Apache and Nginx servers can be found on the [Completing Domain Control Validation for HTTPS](how-to-https.html#redirect-) page.
 
 ## How long does Domain Validation take?
 
@@ -62,7 +62,7 @@ The SSL certificates that are supported are Wildcard certificate and Domain Vali
 
 Domain Validation can be addressed in one of three ways: CNAME, Standard or Direct.
 
-For details on how to address any of these, please refer to [this document](how-to-https.html/#domain-validation-challenge-).
+For details on how to address any of these, please refer to the [Completing Domain Control Validation for HTTPS](how-to-https.html#how-to-https.html#initial-steps-to-domain-control-validation) document.
 
 ## What will happen if I don't address the challenge for the domain validation?
 

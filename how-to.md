@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-06-19"
 
 ---
 
@@ -115,7 +115,7 @@ Select the **Purge** tab.
 
 **Step 3:**
 
-Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see [this FAQ](rules-and-naming-conventions.md#what-are-the-rules-for-the-path-string-for-purge-) for more details on what syntax is allowed for the Purge path.
+Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see the [Rules and Naming Conventions](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
 
 **Step 4:**
 
