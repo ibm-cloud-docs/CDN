@@ -27,6 +27,7 @@ class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 * `originHost`: Origin server address (either the hostname or the IPv4 address of the Origin Server), which is the endpoint from which to fetch content, or the name of the Bucket where content is stored. It must be less than 511 characters.
 * `httpPort`:  Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
 * `httpsPort`:  Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please the see [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+* `certificateType`: Type of certificate being used by a mapping. May be `WILDCARD_CERT` or `SHARED_SAN_CERT`. Value will be 0 for HTTP mappings.
 * `cname`: Canonical name record that aliases the hostname. It may be provided by the user, or system-generated. If user-provided, it should be less than 64 alphanumeric characters, and it must be unique. If not provided, one will be generated when the mapping is created.
 * `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the Origin to override CDN TTL settings.
 * `header`: Specifies Host header information used by the Origin server.

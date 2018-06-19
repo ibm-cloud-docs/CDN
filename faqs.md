@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -59,20 +59,25 @@ Yes, Firefox and Chrome are the recommended browsers. It is recommended that you
 If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin Server.
 
 ## My CDN is in an Error State. What do I do now?
+
 Please refer to the ['Getting Help and Support'](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#gettinghelp) page, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
 
 ## Where do I find my CNAME if I didn't provide one?
+
 Click on your CDN to access the **Overview** Page in the Portal. On the right corner you can see a **Details** section with the `CName` information.
 
 ## My Purge Request for a given file path is in Progress. Can I submit a new request for the same file path?
+
 No. There can only be one active Purge request for a given file path at a time.
 
 ## Is Internet Protocol version 6 (IPv6) supported with the IBM Cloud Content Delivery Network service? How does it work?
+
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
 
 **NOTE:** Creating an IBM Cloud CDN using an IPv6 address as the Origin Server Address is not supported.
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
+
 Yes. For the Akamai vendor, only the following port numbers are allowed:
 72, 80-89, 443, 488, 591, 777, 1080, 1088, 1111, 1443, 2080, 7001, 7070, 7612, 7777, 8000-9001, 9090, 9901-9908, 11080-11110, 12900-12949, 20410, and 45002.
 
@@ -82,6 +87,7 @@ The path for a CDN mapping or for the origin is treated as a directory. Therefor
 Omitting the slash, for example, using `www.example.com/images` will result in a **Page Not Found** error.
 
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
+
 [Here's a tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## I received notification that my Origin Certificate is expiring. What do I do now?

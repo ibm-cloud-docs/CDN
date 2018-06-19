@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-06-06"
 
 ---
 
@@ -71,7 +71,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
-  
+
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when creating a domain mapping (attributes are optional unless otherwise noted):
@@ -80,7 +80,8 @@ Using the provided inputs, this function creates a domain mapping for the given 
     * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `domain`: **required** Provide your host name as a string.
     * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `path`: Path from which the cached content will be served. Default path is /\*
+    * `certificateType`: **required** for HTTPS protocol. `SHARED_SAN_CERT `or `WILDCARD_CERT`
+    * `path`: Path from which the cached content will be served. Default path is `/*`
     * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
     * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
@@ -192,7 +193,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
-  
+
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when creating an Origin Path (attributes are optional unless otherwise noted):
@@ -224,7 +225,7 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
-  
+
   [View the Input Container](input-container.html)
 
   The following attributes are part of the Input Container and may be provided when updating an Origin Path (attributes are optional unless otherwise noted):

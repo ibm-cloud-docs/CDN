@@ -21,6 +21,7 @@ The `Hostname` input string **must**:
   * consist of alphanumeric characters
   * be less than 254 characters
   * end with a valid top-level domain name
+  * must **not** contain more than 10 labels
   * must **not** end in `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
 Please refer to RFC 1035, section 2.3.4 for more details.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -40,11 +40,10 @@ The following attributes are specific to the Mapping class:
 * `domain`: Primary CDN name. Also referred to as host name.
 * `protocol`: Protocol used to set up services. Can be HTTP, HTTPS or a combination of the two, HTTP_AND_HTTPS.
 * `cname`: Canonical name record aliases the hostname. May be provided by the user, or system-generated. If user-provided, it should be less than 64 alphanumeric characters and must be unique. If not provided, one will be generated when the mapping is created.
-* `certificateType`: Type of certificate being used by a mapping, that is, Wildcard. Value will be 0 for HTTP mappings.
+* `certificateType`: Type of certificate being used by a mapping. May be `WILDCARD_CERT` or `SHARED_SAN_CERT`. Value will be 0 for HTTP mappings.
 * `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the Origin to override CDN TTL settings.
 * `header`: Specifies host header information used by the Origin.
 
 The following attributes are related to Cloud Object Storage (COS):  
 * `bucketName`: Unique name of your bucket for S3 object storage.  
 * `fileExtension`: File extensions that are allowed.
-

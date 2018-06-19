@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -57,7 +57,7 @@ Click on the **CDN Tile**, which takes you to the Vendor Selection screen.
 
 **Step 4:**
 
-From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm your selected options, then click **Start Provision** at the bottom right of your screen, to start the provisioning process.  
+From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm your selected options, then click **Next** at the bottom right of your screen, to start the provisioning process.  
        ![Select CDN provider](images/Vendor_Select_And_Provision.png)
 
 **Step 5:**
@@ -76,14 +76,15 @@ Fill out the **Configure Name** field:
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
 
    * Specify the **Host header** (optional). If one is not provided, it will default to the **Hostname**. Please see the feature description for [Host header support](about.html#host-header-support-) for more information about the Host header.  
-   
-   * Provide a **Path** (optional). The Path should be relative to the **Hostname**. 
-   
+
+   * Provide a **Path** (optional). The Path should be relative to the **Hostname**.
+
       ![Configure Origin](images/configure-origin.png)  
 
   * **The Server Option**: If you select the **Server** option, enter the hostname or IP address of the Origin Server from which data should be cached.
       * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server) if you select this option. If **HTTPS port** is selected, the **Origin Server Address** must be hostname and not IP address.
       * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * **SSL Certificate** This option will appear _only_ when HTTPS Port is selected. \*Additional information for HTTPS and SSL Certificate configurations is following the Object Storage Option description.
 
 	     ![Configure origin server](images/configure-origin-server.png)
 
@@ -91,10 +92,18 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
       * the **Endpoint** from which to fetch the Object,
       * the name of the **Bucket** in which your content is stored, and
       * the **HTTPS port**.
+      * **SSL Certificate** This option will appear _only_ when HTTPS Port is selected. \*Additional information for HTTPS and SSL Certificate configurations is following the Object Storage Option description.
       * You also may specify the file extensions, separated by commas, that can be used in the CDN service.(If no file name extensions are specified, all file extensions are allowed.)
       * You must set the **Access Control List** (ACL) for each **Object** in your **Bucket** to "public-read".
 
-	     ![Configure object storage](images/configure-origin-object-storage.png)
+      	  ![Configure object storage](images/configure-origin-cos.png)
+
+  * **SSL Certificate**: If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your **SSL Certificate** option. Both offer the enhanced security provided by HTTPS.
+    * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
+    * **DV SAN Certificate** allows HTTPS traffic over your domain, but requires additional steps to verify.
+
+        ![Configure HTTPS](images/configure-https.png)
+
 
 **Step 7:**
 

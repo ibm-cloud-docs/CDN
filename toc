@@ -7,6 +7,7 @@ Content Delivery Network (CDN)
     {: .navgroup id="learn"}
     getting-started.md
     about.md
+    about-https.md
     naas-video.md
     new-features.md
     {: .navgroup-end}
@@ -14,6 +15,8 @@ Content Delivery Network (CDN)
     {: .navgroup id="howto"}
     how-to-order.md
     how-to.md
+    how-to-https.md
+    basic-functions.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md
@@ -23,6 +26,7 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="help"}
     faqs.md
+    https-faq.md
     known-limitations.md
     troubleshooting.md
     getting-help.md

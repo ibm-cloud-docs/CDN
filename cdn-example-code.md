@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-010"
+lastupdated: "2018-06-06"
 
 ---
 
@@ -205,13 +205,16 @@ try {
     $inputObject->protocol = "HTTP";
     $inputObject->httpPort = 80;
 
+    // The following value is required only for HTTPS protocol
+    $inputObject->certificateType = "SHARED_SAN_CERT";
+
     // The following values are optional
     $inputObject->cname = "api-testing.cdnedge.bluemix.net";
     $inputObject->path = "/media";
     $inputObject->header = '';
     $inputObject->respectHeader = true;
     $inputObject->bucketName = 'mybucket';
-    $inputObject->fileExtention = "txt, jpeg";
+    $inputObject->fileExtension = "txt, jpeg";
     $inputObject->cacheKeyQueryRule = "include-all";
 
     $cdnMapping = $client->createDomainMapping($inputObject);
@@ -233,7 +236,7 @@ Array
         (
             [bucketName] => mybucket
             [cacheKeyQueryRule] => include-all
-            [certificateType] => NO_CERT
+            [certificateType] => SHARED_SAN_CERT
             [cname] => api-testing.cdnedge.bluemix.net
             [domain] => api-testing.cdntesting.net
             [header] => origin.cdntesting.net
