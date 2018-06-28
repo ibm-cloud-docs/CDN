@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-06-28"
 
 ---
 
@@ -25,7 +25,7 @@ IBM Cloud offers two ways to secure your CDN with HTTPS - Wildcard Certificate a
 
 ![Diagram for Http and Wildcard](images/state-diagram-wildcard.png)
 
-### Subject Alternate Name (SAN) Certificate Support
+## Subject Alternate Name (SAN) Certificate Support
 
 >Subject Alternative Name (SAN) Certificate is a digital SSL certificate that allows multiple domains, or hostnames, to be protected by a single certificate.
 >

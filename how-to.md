@@ -140,25 +140,25 @@ Select the **Settings** tab. Your CDN configuration details are displayed.
    ![Settings tab](images/settings-tab.png)  
    **NOTE**: You will only see SSL Certificate if your CDN was configured with HTTPS.
 
-  For **Server**, the following fields can be changed:
-   * Host header
-   * Origin server address
-   * HTTP/HTTPS Port
-   * Serve Stale Content
-   * Respect Headers
-   * Optimization options
-   * Cache-query
+For **Server**, the following fields can be changed:
+  * Host header
+  * Origin server address
+  * HTTP/HTTPS Port
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
+  * Cache-query    
 
-  For **Object Storage**, the following fields can be changed:
-   * Host header
-   * Endpoint
-   * Bucket name
-   * HTTPS Port
-   * Allowed file extensions
-   * Serve Stale Content
-   * Respect Headers
-   * Optimization options
-   * Cache-query
+For **Object Storage**, the following fields can be changed:
+  * Host header
+  * Endpoint
+  * Bucket name
+  * HTTPS Port
+  * Allowed file extensions
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
+  * Cache-query
 
 **Step 3:**
 

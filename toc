@@ -9,6 +9,7 @@ Content Delivery Network (CDN)
     about.md
     about-https.md
     naas-video.md
+    [Use CDN with Cloud Object Storage to deliver your static files faster](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
     new-features.md
     {: .navgroup-end}
 

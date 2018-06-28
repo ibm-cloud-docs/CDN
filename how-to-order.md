@@ -36,15 +36,15 @@ On the **Content Delivery Networks** page, select the **Order CDN** button in th
 
    ![Select order CDN](images/order-cdn-button.png)
 
-## From the Bluemix Portal:
+## From the IBM Cloud Portal:
 
 **Step 1:**
 
-Log on the [Bluemix Portal](https://www.ibm.com/cloud-computing/bluemix/)
+Log on the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/)
 
 **Step 2:**
 
-Click on [IBM Bluemix Catalog](https://console.bluemix.net/catalog/). From the left-hand navigation bar, select **Network**.
+Click on [IBM Cloud Catalog](https://console.bluemix.net/catalog/). From the left-hand navigation bar, select **Network**.
 
    ![Bluemix CDN Navigation](images/bluemix_navigation.png)
 
@@ -83,7 +83,7 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
   * **The Server Option**: If you select the **Server** option, enter the hostname or IP address of the Origin Server from which data should be cached.
       * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server) if you select this option. If **HTTPS port** is selected, the **Origin Server Address** must be hostname and not IP address.
-      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) for a list of allowed port numbers.
       * **SSL Certificate** This option will appear _only_ when HTTPS Port is selected. \*Additional information for HTTPS and SSL Certificate configurations is following the Object Storage Option description.
 
 	     ![Configure origin server](images/configure-origin-server.png)

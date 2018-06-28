@@ -16,11 +16,11 @@ lastupdated: "2018-06-07"
 
 # Getting Started
 
-IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in 36 countries, to bring the content closest to where you need it most--your users.
+IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in [36 countries](edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 
-Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through your [IBM Cloud Account](https://console.bluemix.net/registration/), or through the new [IBM Cloud CDN Customer Portal](https://control.softlayer.com), depending on your preference.
+Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through your [IBM Cloud Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), or through the new [IBM Cloud CDN Customer Portal](https://control.softlayer.com/network/cdn), depending on your preference.
 
 If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
 
