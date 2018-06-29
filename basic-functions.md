@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-06-28"
 
 ---
 
@@ -22,7 +22,7 @@ Learn how to get your CDN to a RUNNING state by following these guidelines. This
 
 Once you've created a CDN, it appears on your CDN dashboard. Here you'll see the name of your CDN, the Origin, the Provider, and the status.  
 
- ![Mapping list screenshot](images/mapping_list_cname.png)
+ ![Mapping list screenshot](images/mapping_list.png)
 
 
 If you ordered your CDN with HTTP or HTTPS with Wildcard certificate, you can proceed to Step 1.

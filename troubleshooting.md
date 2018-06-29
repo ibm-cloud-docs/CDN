@@ -65,6 +65,14 @@ To correct the issue, ensure that your Origin server's SSL certificate(s) meets 
 
 If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](getting-help.html#gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
+## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
+
+When your IBM Cloud CDN is configured to use IBM COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
+
+## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
+
+If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdnedge.bluemix.net`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
+
 ## What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?
 
 This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
@@ -129,11 +137,3 @@ The `Access denied` message is seen when you're trying to accreachess a CDN usin
 The behavior of a URL redirecting to IBM Cloud CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdnedge.bluemix.net` for HTTPS mappings or `http://examplecname.cdnedge.bluemix.net` or `https://examplecname.cdnedge.bluemix.net` for HTTP_AND_HTTPS mappings.
 
 The URL redirects to IBM Cloud CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by means of the hostname. For example, `http://example.com`.
-
-## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
-
-When your IBM Cloud CDN is configured to use IBM COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
-
-## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
-
-If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdnedge.bluemix.net`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.

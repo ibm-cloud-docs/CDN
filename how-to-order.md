@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-06-05"
+lastupdated: "2018-06-28"
 
 ---
 
@@ -18,29 +18,11 @@ lastupdated: "2018-06-05"
 
 Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered either from the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/) or the [Bluemix Portal](https://www.ibm.com/cloud-computing/bluemix/).
 
-## From the Control Portal:
-
-**Step 1:**
-
-To begin, log on to the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/) using your unique credentials.
-
-**Step 2:**
-
-From the navigation bar at the top of the display, select **Network -> CDN**.
-
-   ![Network menu options](images/network-cdn.png)
-
-**Step 3:**
-
-On the **Content Delivery Networks** page, select the **Order CDN** button in the top right corner.
-
-   ![Select order CDN](images/order-cdn-button.png)
-
 ## From the IBM Cloud Portal:
 
 **Step 1:**
 
-Log on the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/)
+Log in to your account from the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/)
 
 **Step 2:**
 
@@ -50,28 +32,33 @@ Click on [IBM Cloud Catalog](https://console.bluemix.net/catalog/). From the lef
 
 **Step 3:**
 
-Click on the **CDN Tile**, which takes you to the Vendor Selection screen.
+Click on the **CDN Tile**.
 
    ![Bluemix CDN Icon](images/bluemix_tile.png)
 
-
 **Step 4:**
+
+Select **Create** at the bottom right, which takes you to the Vendor Selection screen.
+
+   ![CDN overview](images/content-delivery.png)
+
+**Step 5:**
 
 From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm your selected options, then click **Next** at the bottom right of your screen, to start the provisioning process.  
        ![Select CDN provider](images/Vendor_Select_And_Provision.png)
 
-**Step 5:**
+**Step 6:**
 
 Fill out the **Configure Name** field:  
 
-  * Specify the **Hostname** (**required**), which serves as the primary identifier for your CDN (for example, _example.testingcdn.net_).  
-  * Optionally, you may provide a custom **CNAME** (such as _myfirstcdn.cdnedge.bluemix.net_). If no CNAME is provided, one will be created for you. <validation information to be included here>  
+  * Specify the **Hostname** (**required**), which serves as the primary identifier for your CDN (for example, `example.testingcdn.net`).  
+  * Optionally, you may provide a custom **CNAME** (such as `myfirstcdn.cdnedge.bluemix.net`). If no CNAME is provided, one will be created for you.  
 
        ![Configure Name](images/configure-hostname-cname.png)  
 
     **Note**: Use of an inappropriate CNAME may lead to termination of services.
 
-**Step 6:**
+**Step 7:**
 
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
 
@@ -98,14 +85,14 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
       	  ![Configure object storage](images/configure-origin-cos.png)
 
-  * **SSL Certificate**: If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your **SSL Certificate** option. Both offer the enhanced security provided by HTTPS.
+  * **SSL Certificate**: If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your **SSL Certificate** option. Both offer  the enhanced security provided by HTTPS.
+
     * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
     * **DV SAN Certificate** allows HTTPS traffic over your domain, but requires additional steps to verify.
 
         ![Configure HTTPS](images/configure-https.png)
 
-
-**Step 7:**
+**Step 8:**
 
 Configure the **Other Options** field: This section contains configuration options for the **Respect Headers** field.
 
@@ -113,6 +100,6 @@ Configure the **Other Options** field: This section contains configuration optio
 
         ![Other options](images/other-options.png)
 
-**Step 8:**
+**Step 9:**
 
 Select the **Create** button in the bottom right corner to create your CDN.
