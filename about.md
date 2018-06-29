@@ -37,7 +37,7 @@ The key features of the IBM Cloud Content Delivery Network service include:
   * Content Compression
   * Large File Optimization
   * Video on Demand
-  
+
 Please see [this document](feature-description.html#feature-descriptions) for full feature descriptions.
 
 ## Architectural Diagram
