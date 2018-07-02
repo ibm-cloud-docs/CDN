@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-02"
 
 ---
 
@@ -15,6 +15,8 @@ lastupdated: "2018-06-19"
 {:download: .download}
 
 # Manage your CDN
+
+This document describes common tasks for managing your CDN.
 
 ## Setting content caching time using "Time To Live"
 
