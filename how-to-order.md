@@ -16,9 +16,9 @@ lastupdated: "2018-06-28"
 
 # Order a CDN
 
-Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered either from the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/) or the [Bluemix Portal](https://www.ibm.com/cloud-computing/bluemix/).
+Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/).
 
-## From the IBM Cloud Portal:
+## Navigating to the CDN page:
 
 **Step 1:**
 
@@ -36,18 +36,21 @@ Click on the **CDN Tile**.
 
    ![Bluemix CDN Icon](images/bluemix_tile.png)
 
-**Step 4:**
+
+## Order a new CDN:
+
+**Step 1:**
 
 Select **Create** at the bottom right, which takes you to the Vendor Selection screen.
 
    ![CDN overview](images/content-delivery.png)
 
-**Step 5:**
+**Step 2:**
 
 From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm your selected options, then click **Next** at the bottom right of your screen, to start the provisioning process.  
        ![Select CDN provider](images/Vendor_Select_And_Provision.png)
 
-**Step 6:**
+**Step 3:**
 
 Fill out the **Configure Name** field:  
 
@@ -58,11 +61,11 @@ Fill out the **Configure Name** field:
 
     **Note**: Use of an inappropriate CNAME may lead to termination of services.
 
-**Step 7:**
+**Step 4:**
 
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
 
-   * Specify the **Host header** (optional). If one is not provided, it will default to the **Hostname**. Please see the feature description for [Host header support](about.html#host-header-support-) for more information about the Host header.  
+   * Specify the **Host header** (optional). If one is not provided, it will default to the **Hostname**. Please see the feature description for [Host header support](feature-descriptions.html#host-header-support) for more information about the Host header.  
 
    * Provide a **Path** (optional). The Path should be relative to the **Hostname**.
 
@@ -92,7 +95,7 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
         ![Configure HTTPS](images/configure-https.png)
 
-**Step 8:**
+**Step 5:**
 
 Configure the **Other Options** field: This section contains configuration options for the **Respect Headers** field.
 

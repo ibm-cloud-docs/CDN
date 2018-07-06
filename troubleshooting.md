@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-08"
+lastupdated: "2018-07-06"
 
 ---
 
@@ -15,6 +15,8 @@ lastupdated: "2018-06-08"
 {:download: .download}
 
 # Troubleshooting
+
+In this document, you will find various ways to troubleshoot your CDN. If you need to contact support, be sure to provide your CDN's reference number.
 
 ## How do I know my CDN is working?
 Run the following `curl` command by replacing `http://your.cdn.domain/uri` with the respective file path on your CDN:
@@ -77,54 +79,57 @@ If your CDN was created using HTTPS with a Wildcard certificate, the connection 
 
 This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
 
-<html>
-	<table>
-	<tr>
-		<th rowspan=2>Browser URL</th>
-		<th rowspan=2>CDN with HTTP protocol only</th>
-		<th colspan=2>CDN with HTTPS protocol only</th>
-		<th colspan=2>CDN with both HTTP and HTTPS protocols</th>
-	</tr>
-	<tr>
-		<th> Wildcard </th>
-		<th> Shared SAN </th>
-		<th> Wildcard </th>
-		<th> Shared SAN </th>
-	</tr>
-	<tr>
-		<td> http://hostname </td>
-		<td> Successful load </td>
-		<td> 301 Moved permanently </td>
-		<td> Successful load </td>
-		<td> 301 Moved permanently </td>
-		<td> Successful load </td>
-	</tr>
-  <tr>
-    <td> https://hostname</td>
-		<td> Access denied </td>
-		<td> Redirects to IBM Cloud Webpage </td>
-		<td> Successful load </td>
-		<td> Redirects to IBM Cloud Webpage </td>
-		<td> Successful load </td>
-	</tr>
-	<tr>
+<table>
+<caption caption-side=“top”>Table of Expected Behaviors</caption>
+<thead>
+<tr>
+<th rowspan=2>Browser URL</th>
+<th rowspan=2>CDN with HTTP protocol only</th>
+<th colspan=2>CDN with HTTPS protocol only</th>
+<th colspan=2>CDN with both HTTP and HTTPS protocols</th>
+</tr>
+<tr>
+<th> Wildcard </th>
+<th> Shared SAN </th>
+<th> Wildcard </th>
+<th> Shared SAN </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> http://hostname </td>
+<td> Successful load </td>
+<td> 301 Moved permanently </td>
+<td> Successful load </td>
+<td> 301 Moved permanently </td>
+<td> Successful load </td>
+</tr>
+<tr>
+<td> https://hostname</td>
+<td> Access denied </td>
+<td> Redirects to IBM Cloud Webpage </td>
+<td> Successful load </td>
+<td> Redirects to IBM Cloud Webpage </td>
+<td> Successful load </td>
+</tr>
+<tr>
 		<td> http://cname </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
-	</tr>
-	<tr>
+</tr>
+<tr>
 		<td> https://cname </td>
 		<td> Redirects to IBM Cloud Webpage </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> Redirects to IBM Cloud Webpage </td>
-	</tr>
-	</table>
-</html>
+</tr>
+</tbody>
+</table>
 
 **Notes:**
 
@@ -132,7 +137,7 @@ A `301 Moved permanently` message most likely indicates you are attempting to re
 
 With an HTTP **only** protocol, you will receive the `301 Moved permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
 
-The `Access denied` message is seen when you're trying to accreachess a CDN using an incorrect protocol. Ensure that you're using `http` for CDNs created with HTTP protocol, or `https` for CDNs created with HTTPS protocol.
+The `Access denied` message is seen when you're trying to reach a CDN using an incorrect protocol. Ensure that you're using `http` for CDNs created with HTTP protocol, or `https` for CDNs created with HTTPS protocol.
 
 The behavior of a URL redirecting to IBM Cloud CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdnedge.bluemix.net` for HTTPS mappings or `http://examplecname.cdnedge.bluemix.net` or `https://examplecname.cdnedge.bluemix.net` for HTTP_AND_HTTPS mappings.
 
