@@ -20,7 +20,7 @@ IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry s
 
 ## Before you begin
 
-Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through your [IBM Cloud Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), or through the new [IBM Cloud CDN Customer Portal](https://control.softlayer.com/network/cdn), depending on your preference.
+Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through your [IBM Cloud Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), or through the new [IBM Cloud CDN Console](https://www.ibm.com/cloud/cdn), depending on your preference.
 
 If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
 

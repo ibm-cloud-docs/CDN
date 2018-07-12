@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-06"
+lastupdated: "2018-07-09"
 
 ---
 
@@ -83,16 +83,16 @@ This table shows the behavior expected for the supported protocols when loading 
 <caption caption-side=“top”>Table of Expected Behaviors</caption>
 <thead>
 <tr>
-<th rowspan=2>Browser URL</th>
-<th rowspan=2>CDN with HTTP protocol only</th>
-<th colspan=2>CDN with HTTPS protocol only</th>
-<th colspan=2>CDN with both HTTP and HTTPS protocols</th>
+<th rowspan=2 scope="col">Browser URL</th>
+<th rowspan=2 scope="col">CDN with HTTP protocol only</th>
+<th colspan=2 scope="col">CDN with HTTPS protocol only</th>
+<th colspan=2 scope="col">CDN with both HTTP and HTTPS protocols</th>
 </tr>
 <tr>
-<th> Wildcard </th>
-<th> Shared SAN </th>
-<th> Wildcard </th>
-<th> Shared SAN </th>
+<th scope="col"> Wildcard </th>
+<th scope="col"> Shared SAN </th>
+<th scope="col"> Wildcard </th>
+<th scope="col"> Shared SAN </th>
 </tr>
 </thead>
 <tbody>

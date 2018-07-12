@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-09"
 
 ---
 
@@ -18,7 +18,6 @@ lastupdated: "2018-06-19"
 
 The following limitations apply to the new CDN service for the Akamai Vendor:
 * Purge of directory level content or multiple files is currently not supported.
-* Limit of 10 CDNs currently allowed for a given {{site.data.keyword.BluSoftlayer_notm}} Account.
 * Limit on total number of Origins and TTL entries is 75 per CDN.
 * Serve Stale Content Option functionality will always be **On**.
 * HTTPS certificate type cannot be changed once a mapping is created - for example, from Wildcard to DV SAN.

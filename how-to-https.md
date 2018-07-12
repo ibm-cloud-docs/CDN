@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-06"
+lastupdated: "2018-07-09"
 
 ---
 
@@ -14,7 +14,11 @@ lastupdated: "2018-07-06"
 {:tip: .tip}
 {:download: .download}
 
-# Completing Domain Control Validation for HTTPS
+# Completing Domain Control Validation for HTTPS with DV SAN
+
+The following diagram outlines the various states your CDN will enter from the time it is created, until it gets to running.
+
+  ![SAN state diagram](images/state-diagram-san.png)
 
 ## Initial steps to Domain Control Validation
 
@@ -61,7 +65,7 @@ If your CNAME record was added to your DNS provider before ordering your CDN, yo
 
    ![Domain Validation CNAME](images/domain-validation-cname.png)
 
-**NOTE**: This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using the Standard method to validate your domain.
+**NOTE**: This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
 ---
 ### Standard
