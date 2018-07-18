@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-20"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -20,11 +20,11 @@ IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't
 
 ## June 2018
 
-* HTTPS with DV SAN support [feature description](about.html#https-protocol-support-with-wildcard-and-dv-san-certificate)
+* HTTPS with DV SAN support [feature description](feature-descriptions.html#https-protocol-support)
 * IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
 
 ## March 2018
 
-  * Large File Optimization [feature description](about.html#large-file-optimization)
-  * Cache Key Optimization [feature description](about.html#cache-key-query-args)
-  * Video On Demand Optimization [feature description](about.html#video-on-demand-optimization)
+  * Large File Optimization [feature description](feature-descriptions.html#large-file-optimization)
+  * Cache Key Optimization [feature description](feature-descriptions.html#cache-key-query-args)
+  * Video On Demand Optimization [feature description](feature-descriptions.html#video-on-demand-optimization)

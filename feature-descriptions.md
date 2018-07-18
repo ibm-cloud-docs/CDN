@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -34,7 +34,7 @@ In certain cases, you may want to deliver certain content from a different Origi
 
 ## Path-based CDN mappings
 
-Your IBM Cloud CDN service can be restricted to a particular directory path on the Origin server by providing the path when creating the CDN. An end-user is allowed access only to those contents in that directory path. For example if a CDN `www.example.com` is created with Path `/videos`, it is accessible only via `www.example.com/videos/`.
+Your IBM Cloud CDN service can be restricted to a particular directory path on the Origin server by providing the path when creating the CDN. An end-user is allowed access only to those contents in that directory path. For example if a CDN `www.example.com` is created with Path `/videos`, it is accessible **only** through `www.example.com/videos/*`.
 
 ## Purge cached content
 
@@ -60,7 +60,7 @@ The Edge server uses the **Host Header** when communicating with the Origin host
 
 ## HTTPS Protocol support
 
-CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](about-https.html#Wildcard-Certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](about-https.html#subject-alternate-name-san-certificate-support). This type also will be referred to as a _SAN certificate_ in this documentation.
+CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](about-https.html#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](about-https.html#subject-alternate-name-san-certificate-support). This type also will be referred to as a _SAN certificate_ in this documentation.
 
 The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](how-to-https.html) during configuration. No cost is associated with using either of these certificates. Please refer to the [Troubleshooting document](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) to understand the implication of selecting a given Certificate type.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-07-11"
 
 ---
 
@@ -21,6 +21,8 @@ A Content Delivery Network (CDN) is a collection of edge servers that are distri
 ## How does a CDN work?
 
 A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using IBM Cloud Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
+
+## Features
 
 The key features of the IBM Cloud Content Delivery Network service include:
   * Host Server Origin support
@@ -42,6 +44,6 @@ Please see [this document](feature-descriptions.html#feature-descriptions) for f
 
 ## Architectural Diagram
 
-The folllowing diagram offers a schematic overview of the three-tier architecture of IBM Cloud CDN.
+The following diagram offers a schematic overview of the three-tier architecture of IBM Cloud CDN.
 
 ![Architectural diagram](images/3-tier-architecture.png)

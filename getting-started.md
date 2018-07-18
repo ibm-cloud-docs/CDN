@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -27,10 +27,6 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 ## Tutorial
 
 [Here's a tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
-
-## Already have an account?
-
-Existing CDN customers have access to their accounts through the new [IBM Cloud CDN portal](https://control.softlayer.com). If you have an existing account, you can now access your Content Delivery Network from the **Network** tab, rather than from the **Storage** tab.
 
 ## CDN Bandwidth Pricing (Rates shown in USD)
 

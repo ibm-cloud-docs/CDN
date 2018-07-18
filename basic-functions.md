@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -47,7 +47,7 @@ Any time after you've configured the CNAME with your DNS provider, you may check
 
 When the CNAME chaining is complete, selecting **Get Status** will change the status to *RUNNING*, and the CDN is ready to use.
 
-Congratulations! Your CDN is now running. From here, the [Manage your CDN](how-to.html#manage-your-CDN) page has additional information on configuring options, such as [Time to Live](how-to.html#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](how-to.html#purging-cached-content), and [Adding Origin Path details](how-to.html#adding-origin-path-details).
+Congratulations! Your CDN is now running. From here, the [Manage your CDN](how-to.html#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](how-to.html#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](how-to.html#purging-cached-content), and [Adding Origin Path details](how-to.html#adding-origin-path-details).
 
 ## Starting CDN
 

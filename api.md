@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-17"
 
 ---
 
@@ -29,7 +29,7 @@ For more information about SLAPI, or about the IBM Cloud Content Delivery Networ
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/php/ )
 
 ----
 

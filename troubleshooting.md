@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-09"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -97,7 +97,7 @@ This table shows the behavior expected for the supported protocols when loading 
 </thead>
 <tbody>
 <tr>
-<td> http://hostname </td>
+<td> `http://hostname` </td>
 <td> Successful load </td>
 <td> 301 Moved permanently </td>
 <td> Successful load </td>
@@ -105,7 +105,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <td> Successful load </td>
 </tr>
 <tr>
-<td> https://hostname</td>
+<td> `https://hostname`</td>
 <td> Access denied </td>
 <td> Redirects to IBM Cloud Webpage </td>
 <td> Successful load </td>
@@ -113,7 +113,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <td> Successful load </td>
 </tr>
 <tr>
-		<td> http://cname </td>
+		<td> `http://cname` </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
@@ -121,7 +121,7 @@ This table shows the behavior expected for the supported protocols when loading 
 		<td> 301 Moved permanently </td>
 </tr>
 <tr>
-		<td> https://cname </td>
+		<td> `https://cname` </td>
 		<td> Redirects to IBM Cloud Webpage </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
