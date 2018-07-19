@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-03"
+  years: 2017, 2018
+lastupdated: "2018-05-09"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-10-03"
 {:download: .download}
 
 # Contenitore fornitore
-La raccolta `SoftLayer_Container_Network_CdnMarketplace_Vendor` contiene gli attributi utilizzati dalle nostre API Vendor. 
+La raccolta `SoftLayer_Container_Network_CdnMarketplace_Vendor` contiene gli attributi utilizzati dalle nostre API Vendor.
 
 
 class `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
@@ -28,9 +28,23 @@ class `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 Visualizza un elenco dei fornitori disponibili nonché le loro funzioni con una chiamata alla API `listVendors`:
 
 ```php
-$vendors = $client->listVendors();
-``` 
+require_once __DIR__.'/vendor/autoload.php';
+
+$apiUsername = '<Your username>' ;
+$apiKey = '<Your apiKey>' ;
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
+try {
+    $vendors = $client->listVendors();
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to retrieve list of vendors: ' . $e->getMessage());
+}
+```
+{: codeblock}
+
 La chiamata API precedente genera un output simile al seguente:
+
 ```php
 SoftLayer_Container_Network_CdnMarketplace_Vendor Object
 (
@@ -39,5 +53,5 @@ SoftLayer_Container_Network_CdnMarketplace_Vendor Object
     [features] => Web Delivery, Content Caching, Content Purge, HTTP/HTTPS Support
     [status] => ACTIVE
 )
-
 ```
+{: codeblock}

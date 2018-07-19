@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -24,12 +24,12 @@ SLAPI는 고객 포털에서 다수의 기능을 구현합니다. 고객 포털�
 
 SLAPI는 원격 프로시저 호출(RPC) 시스템입니다. 각 호출에는 API 엔드포인트로 데이터 전송 및 그에 대한 구조화된 데이터 수신이 포함됩니다. SLAPI로 데이터를 전송하고 수신하는 데 사용되는 형식은 사용자가 선택하는 API의 구현에 따라 다릅니다. SLAPI는 현재 데이터 전송을 위해 SOAP, XML-RPC 또는 REST를 사용합니다.
 
-SLAPI 또는 IBM Cloud CDN(Content Delivery Network) 서비스 API에 대한 자세한 정보는 IBM Cloud 개발 네트워크에서 다음 리소스를 참조하십시오.
+SLAPI 또는 IBM Cloud Content Delivery Network  서비스 API에 대한 자세한 정보는 IBM Cloud 개발 네트워크에서 다음 리소스를 참조하십시오.
 
-* [SLAPI 개요](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [SLAPI 시작하기](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [PHP Soap API 안내서](https://sldn.softlayer.com/article/PHP )
+* [SLAPI 개요](https://softlayer.github.io/ )
+* [SLAPI 시작하기](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [PHP Soap API 안내서](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -70,7 +70,8 @@ CDN 계정이 API를 호출하는 사용자를 위해 존재하는지 아니면 
 이 기능은 제공된 입력을 사용하여 제공된 벤더를 위해 도메인 맵핑을 작성하고 이를 사용자의 {{site.data.keyword.BluSoftlayer_notm}} 계정 ID와 연관시킵니다. 이 API를 작동하려면 먼저 `placeOrder`를 사용하여 CDN 계정을 작성해야 합니다([코드 예제](cdn-example-code.html)에서 `placeOrder` API 호출의 예제 참조). CDN을 작성한 후 `defaultTTL`은 3,600초의 값으로 작성됩니다.
 
 * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
-  다음에서 입력 컨테이너의 모든 속성을 볼 수 있습니다.
+  여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
   [입력 컨테이너 보기](input-container.html)
 
   다음 속성은 입력 컨테이너의 일부이며 도메인 맵핑을 작성할 때 제공될 수 있습니다(별도의 언급이 없으면 속성은 선택사항임).
@@ -79,13 +80,14 @@ CDN 계정이 API를 호출하는 사용자를 위해 존재하는지 아니면 
     * `originType`: **필수** 원본 유형은 `HOST_SERVER` 또는 `OBJECT_STORAGE`입니다.
     * `domain`: **필수** 호스트 이름을 문자열로 제공하십시오.
     * `protocol`: **필수** 지원되는 프로토콜은 `HTTP`, `HTTPS` 또는 `HTTP_AND_HTTPS`입니다.
-    * `path`: 캐시된 컨텐츠를 제공하는 데 사용할 경로입니다. 기본 경로는 /\*입니다.
+    * `certificateType`: HTTPS 프로토콜의 경우 **필수**입니다. `SHARED_SAN_CERT `또는 `WILDCARD_CERT`입니다.
+    * `path`: 캐시된 컨텐츠를 제공하는 데 사용할 경로입니다. 기본 경로는 `/*`입니다.
     * `httpPort` 및/또는 `httpsPort`: (호스트 서버에 대해 **필수**) 이러한 두 옵션은 원하는 프로토콜에 해당해야 합니다. 프로토콜이 `HTTP`인 경우 `httpPort`를 설정해야 하고 `httpsPort`는 설정하면 _안 됩니다_. 마찬가지로 프로토콜이 `HTTPS`인 경우 `httpsPort`를 설정해야 하고 `httpPort`는 설정하면 _안 됩니다_. 프로토콜이 `HTTP_AND_HTTPS`인 경우 `httpPort`와 `httpsPort`를 _둘 다_ 설정_해야 합니다_. Akamai에는 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호는 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
     * `header`: 원본 서버에서 사용되는 호스트 헤더 정보를 지정합니다.
     * `respectHeader`: `true`로 설정된 경우 원본의 TTL 설정이 CDN TTL 설정을 대체하게 하는 부울 값입니다.
     * `cname`: 호스트 이름에 대한 별명을 제공하십시오. 제공하지 않으면 생성됩니다.
-    * `bucketName`: (오브젝트 스토리지에 대해서만 **필수**) S3 오브젝트 스토리지의 버킷 이름입니다.
-    * `fileExtension`: (오브젝트 스토리지의 경우 선택사항) 캐시할 수 있는 파일 확장자입니다.
+    * `bucketName`: (Object Storage에 대해서만 **필수**) S3 Object Storage의 버킷 이름입니다.
+    * `fileExtension`: (Object Storage의 경우 선택사항) 캐시할 수 있는 파일 확장자입니다.
     * `cacheKeyQueryRule`: 다음 옵션은 캐시 키 동작을 구성하는 데 사용 가능합니다. `cacheKeyQueryRule` 인수가 제공되지 않으면 기본값 "include-all"로 설정됩니다.
       * `include-all` - 모든 조회 인수를 포함합니다. **기본값**
       * `ignore-all` - 모든 조회 인수를 무시합니다.
@@ -137,7 +139,7 @@ CDN 상태를 확인하고 변경된 경우 CDN 맵핑의 `status`를 업데이�
 
 ----
 ### updateDomainMapping
-사용자가 `uniqueId`로 식별된 맵핑의 특성을 업데이트하도록 합니다. `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header` 및 `cacheKeyQueryRule` 인수 필드가 변경될 수 있으며, 원본 유형이 오브젝트 스토리지인 경우 `bucketName` 및 `fileExtension`도 변경될 수 있습니다. 업데이트가 실행되려면 도메인 맵핑의 상태는 _RUNNING_이어야 합니다.
+사용자가 `uniqueId`로 식별된 맵핑의 특성을 업데이트하도록 합니다. `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header` 및 `cacheKeyQueryRule` 인수 필드가 변경될 수 있으며, 원본 유형이 Object Storage인 경우 `bucketName` 및 `fileExtension`도 변경될 수 있습니다. 업데이트가 실행되려면 도메인 맵핑의 상태는 _RUNNING_이어야 합니다.
 
 * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
   다음에서 입력 컨테이너의 모든 속성을 볼 수 있습니다.
@@ -155,14 +157,15 @@ CDN 상태를 확인하고 변경된 경우 CDN 맵핑의 `status`를 업데이�
     * `respectHeader`: `true`로 설정된 경우 원본의 TTL 설정이 CDN TTL 설정을 대체하게 하는 부울 값입니다.
     * `uniqueId`: 맵핑이 작성된 후 생성됩니다.
     * `cname`: cname을 제공하십시오. 제공하지 않으면 맵핑이 작성된 후 생성됩니다.
-    * `bucketName`: (오브젝트 스토리지에 대해서만 **필수**) S3 오브젝트 스토리지의 버킷 이름입니다.
-    * `fileExtension`: (오브젝트 스토리지에 대해서만 **필수**) 캐시할 수 있는 파일 확장자입니다.
+    * `bucketName`: (Object Storage에 대해서만 **필수**) S3 Object Storage의 버킷 이름입니다.
+    * `fileExtension`: (Object Storage에 대해서만 **필수**) 캐시할 수 있는 파일 확장자입니다.
     * `cacheKeyQueryRule`: 캐시 키 동작 규칙은 2017년 11월 16일 _이후_ 작성된 CDN 맵핑에 대해서만 업데이트할 수 있습니다. 다음 옵션은 캐시 키 동작을 구성하는 데 사용 가능합니다.
       * `include-all` - 모든 조회 인수를 포함합니다. **기본값**
       * `ignore-all` - 모든 조회 인수를 무시합니다.
       * `ignore: space separated query-args` - 특정 조회 인수를 무시합니다. 예를 들어, `ignore: query1 query2`입니다.
       * `include: space separated query-args`: 특정 조회 인수를 포함합니다. 예를 들어, `include: query1 query2`입니다.
-* **리턴** 유형 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`의 콜렉션
+* **리턴**: 유형 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`의 콜렉션
+
   [맵핑 컨테이너 보기](mapping-container.html)
 
 ----
@@ -171,6 +174,7 @@ CDN 상태를 확인하고 변경된 경우 CDN 맵핑의 `status`를 업데이�
 
 * **필수 매개변수**: 없음
 * **리턴**: 유형 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`의 콜렉션
+
   [맵핑 컨테이너 보기](mapping-container.html)
 
 ----
@@ -179,15 +183,17 @@ CDN의 `uniqueId`를 기반으로 한 단일 도메인 오브젝트를 사용하
 
 * **필수 매개변수**: `uniqueId`: 리턴할 맵핑의 고유 ID
 * **리턴**: 유형 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`의 단일 오브젝트 콜렉션
+
   [맵핑 컨테이너 보기](mapping-container.html)
 
 ----
 ## 원본에 대한 API
 ### createOriginPath
-기존 CDN과 특정 고객에 대해 원본 경로를 작성합니다. 원본 경로는 호스트 서버 또는 오브젝트 스토리지를 기반으로 할 수 있습니다. 원본 경로를 작성하려면 도메인 맵핑의 상태는 _RUNNING_ 또는 _CNAME_CONFIGURATION_ 중 하나여야 합니다.
+기존 CDN과 특정 고객에 대해 원본 경로를 작성합니다. 원본 경로는 호스트 서버 또는 Object Storage를 기반으로 할 수 있습니다. 원본 경로를 작성하려면 도메인 맵핑의 상태는 _RUNNING_ 또는 _CNAME_CONFIGURATION_ 중 하나여야 합니다.
 
 * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
-  다음에서 입력 컨테이너의 모든 속성을 볼 수 있습니다.
+  여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
   [입력 컨테이너 보기](input-container.html)
 
   다음 속성은 입력 컨테이너의 일부이며 원본 경로를 작성할 때 제공될 수 있습니다(별도의 언급이 없으면 속성은 선택사항임).
@@ -201,8 +207,8 @@ CDN의 `uniqueId`를 기반으로 한 단일 도메인 오브젝트를 사용하
     * `header`: 원본 서버에서 사용되는 호스트 헤더 정보를 지정합니다.
     * `uniqueId`: **필수** 맵핑이 작성된 후 생성됩니다.
     * `cname`: 호스트 이름에 대한 별명을 제공하십시오. 고유 cname을 제공하지 않으면 맵핑이 작성될 때 생성됩니다.
-    * `bucketName`: (오브젝트 스토리지에 대해 **필수**) S3 오브젝트 스토리지의 버킷 이름입니다.
-    * `fileExtension`: (오브젝트 스토리지의 경우 선택사항) 캐시할 수 있는 파일 확장자입니다.
+    * `bucketName`: (Object Storage에 대해 **필수**) S3 Object Storage의 버킷 이름입니다.
+    * `fileExtension`: (Object Storage의 경우 선택사항) 캐시할 수 있는 파일 확장자입니다.
     * `cacheKeyQueryRule`: 다음 옵션은 캐시 키 동작을 구성하는 데 사용 가능합니다.
       * `include-all` - 모든 조회 인수를 포함합니다. **기본값**
       * `ignore-all` - 모든 조회 인수를 무시합니다.
@@ -218,7 +224,8 @@ CDN의 `uniqueId`를 기반으로 한 단일 도메인 오브젝트를 사용하
 기존 맵핑과 특정 고객에 대해 기존 원본 경로를 업데이트합니다. 이 API를 사용하여 원본 유형을 변경할 수 없습니다. `path`, `origin`, `httpPort`, `httpsPort`, `header` 및 `cacheKeyQueryRule` 인수 특성을 변경할 수 있습니다. 업데이트하려면 도메인 맵핑의 상태는 _RUNNING_ 또는 _CNAME_CONFIGURATION_ 중 하나여야 합니다.
 
 * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
-  다음에서 입력 컨테이너의 모든 속성을 볼 수 있습니다.
+  여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
   [입력 컨테이너 보기](input-container.html)
 
   다음 속성은 입력 컨테이너의 일부이며 원본 경로를 업데이트할 때 제공될 수 있습니다(별도의 언급이 없으면 속성은 선택사항임).
@@ -228,8 +235,8 @@ CDN의 `uniqueId`를 기반으로 한 단일 도메인 오브젝트를 사용하
     * `path`: **필수** 추가할 새 경로입니다. 맵핑 경로에 상대적입니다.
     * `httpPort` 및/또는 `httpsPort`: (업데이트하는 경우 호스트 서버에 대해 **필수**) 이러한 두 옵션이 원하는 프로토콜에 해당해야 합니다. 프로토콜이 `HTTP`인 경우 `httpPort`를 설정해야 하고 `httpsPort`는 설정하면 _안 됩니다_. 마찬가지로 프로토콜이 `HTTPS`인 경우 `httpsPort`를 설정해야 하고 `httpPort`는 설정하면 _안 됩니다_. 프로토콜이 `HTTP_AND_HTTPS`인 경우 `httpPort`와 `httpsPort`를 _둘 다_ 설정_해야 합니다_. Akamai에는 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호는 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
     * `uniqueId`: **필수** 이 원본이 속한 맵핑의 고유 ID
-    * `bucketName`: (오브젝트 스토리지에 대해서만 **필수**) S3 오브젝트 스토리지의 버킷 이름입니다.
-    * `fileExtension`: (오브젝트 스토리지에 대해서만 **필수**) 캐시할 수 있는 파일 확장자입니다.
+    * `bucketName`: (Object Storage에 대해서만 **필수**) S3 Object Storage의 버킷 이름입니다.
+    * `fileExtension`: (Object Storage에 대해서만 **필수**) 캐시할 수 있는 파일 확장자입니다.
     * `cacheKeyQueryRule`: (업데이트하는 경우 **필수**) 2017년 11월 16일 _이후_ 작성된 원본 경로에 대해서만 캐시 키 동작 규칙을 업데이트할 수 있습니다. 다음 옵션은 캐시 키 동작 구성에 사용 가능합니다.
       * `include-all` - 모든 조회 인수를 포함합니다. **기본값**
       * `ignore-all` - 모든 조회 인수를 무시합니다.
@@ -365,175 +372,70 @@ CDN의 `uniqueId`를 기반으로 한 기존 `TimeToLive` 오브젝트를 나열
  * **리턴**: 유형이 `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`인 오브젝트의 배열
 
  ----
-## 메트릭에 대한 API  
-### 메트릭의 컨테이너 클래스:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## 메트릭에 대한 API
+[메트릭 컨테이너 보기](metrics-container.html)
 ### getCustomerUsageMetrics
 지정된 기간 동안 고객 계정의 직접적인 표시(그래프 없음)를 위해 미리 결정된 통계의 총 수를 리턴합니다.
 
- * **매개변수**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
 ___
 ### getMappingUsageMetrics
 지정된 맵핑의 직접적인 표시를 위해 미리 결정된 통계의 총 수를 리턴합니다. 기본적으로 `frequency`의 값은 'aggregate'입니다.
 
- * **매개변수**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
 ___
 ### getMappingHitsMetrics
 지정된 시간 범위 동안 특정 빈도로 도메인 맵핑당 히트의 총 수를 리턴합니다. 빈도는 '일', '주' 및 '월'이 될 수 있습니다. 여기서, 그래프의 각 간격은 하나의 플롯 점입니다. 리턴 데이터는 `startDate`, `endDate` 및 `frequency`에 따라 정렬됩니다. 기본적으로 `frequency`의 값은 'aggregate'입니다.
 
- * **매개변수**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
 ___
 ### getMappingHitsByTypeMetrics
 지정된 시간 범위 동안 특정 빈도로 히트의 총 수를 리턴합니다. 빈도는 '일', '주' 및 '월'이 될 수 있습니다. 여기서, 그래프의 각 간격은 하나의 플롯 점입니다. 리턴 데이터는 `startDate`, `endDate` 및 `frequency`에 따라 정렬되어야 합니다. 기본적으로 `frequency`의 값은 'aggregate'입니다.
 
- * **매개변수**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
 ___
 ### getMappingBandwidthMetrics
 개별 CDN에 대한 에지 히트의 수를 리턴합니다. 영역은 각 벤더별로 다를 수 있습니다. 맵핑당입니다.
 
- * **매개변수**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
 ___
 ### getMappingBandwidthByRegionMetrics
 지정된 기간 동안 지정된 맵핑의 직접적인 표시(그래프 없음)를 위해 미리 결정된 통계의 총 수를 리턴합니다. 기본적으로 `frequency`의 값은 'aggregate'입니다.
 
- * **매개변수**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **매개변수**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션

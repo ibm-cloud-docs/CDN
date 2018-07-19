@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-02-06"
 
 # CDN 주문
 
-여기에서 CDN(Content Delivery Network) 주문 방법을 알아볼 수 있습니다. [고객 포털 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://control.softlayer.com/) 또는 [Bluemix 포털](https://www.ibm.com/cloud-computing/bluemix/) 중 하나에서 CDN을 주문할 수 있습니다.
+여기에서 Content Delivery Network  주문 방법을 알아볼 수 있습니다. [고객 포털 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://control.softlayer.com/) 또는 [Bluemix 포털](https://www.ibm.com/cloud-computing/bluemix/) 중 하나에서 CDN을 주문할 수 있습니다.
 
 ## 제어 포털에서:
 
@@ -32,19 +32,19 @@ lastupdated: "2018-02-06"
 
 **단계 3:**
 
-**CDN(Content Delivery Networks)** 페이지의 오른쪽 상단 모서리에서 **CDN 주문** 단추를 선택하십시오.
+**Content Delivery Network** 페이지의 오른쪽 상단 모서리에서 **CDN 주문** 단추를 선택하십시오.
 
    ![CDN 주문 선택](images/order-cdn-button.png)
 
-## Bluemix 포털에서:
+## IBM Cloud 포털에서 다음을 수행합니다.
 
 **단계 1:**
 
-[Bluemix 포털](https://www.ibm.com/cloud-computing/bluemix/)에 로그온하십시오.
+[IBM Cloud 포털](https://www.ibm.com/cloud-computing/bluemix/)에 로그온하십시오.
 
 **단계 2:**
 
-[IBM Bluemix 카탈로그](https://console.bluemix.net/catalog/)를 클릭하십시오. 왼쪽 탐색줄에서 **네트워크**를 선택하십시오.
+[IBM Cloud 카탈로그](https://console.bluemix.net/catalog/)를 클릭하십시오. 왼쪽 탐색줄에서 **네트워크**를 선택하십시오.
 
    ![Bluemix CDN 탐색](images/bluemix_navigation.png)
 
@@ -57,7 +57,7 @@ lastupdated: "2018-02-06"
 
 **단계 4:**
 
-**CDN 제공자 선택** 화면에서 CDN 제공자 옵션을 선택하십시오. **선택** 단추를 클릭하여 선택한 옵션을 확인한 다음 화면 맨 아래 오른쪽에 있는 **프로비저닝 시작**을 클릭하여 프로비저닝 프로세스를 시작하십시오.  
+**CDN 제공자 선택** 화면에서 CDN 제공자 옵션을 선택하십시오. **선택** 단추를 클릭하여 선택한 옵션을 확인한 다음 화면 맨 아래 오른쪽에 있는 **다음**을 클릭하여 프로비저닝 프로세스를 시작하십시오.  
        ![CDN 제공자 선택](images/Vendor_Select_And_Provision.png)
 
 **단계 5:**
@@ -73,28 +73,37 @@ lastupdated: "2018-02-06"
 
 **단계 6:**
 
-**원본 구성** 필드를 채우십시오. 이 필드를 구성하려면 **서버** 또는 **오브젝트 스토리지** 옵션 중 하나를 선택해야 합니다.  
+**원본 구성** 필드를 채우십시오. 이 필드를 구성하려면 **서버** 또는 **Object Storage** 옵션 중 하나를 선택해야 합니다.  
 
    * **호스트 헤더**를 지정하십시오(선택사항). 제공하지 않으면 기본값 **호스트 이름**으로 설정됩니다. 호스트 헤더에 대한 자세한 정보는 [호스트 헤더 지원](about.html#host-header-support-)의 기능 설명을 참조하십시오.  
-   
-   * **경로**를 제공하십시오(선택사항). 경로는 **호스트 이름**에 대해 상대적이어야 합니다. 
-   
+
+   * **경로**를 제공하십시오(선택사항). 경로는 **호스트 이름**에 대해 상대적이어야 합니다.
+
       ![원본 구성](images/configure-origin.png)  
 
   * **서버 옵션**: **서버** 옵션을 선택한 경우 데이터를 캐싱할 원본 서버의 호스트 이름 또는 IP 주소를 입력하십시오.
       * 이 옵션을 선택하는 경우 **원본 서버 주소**(원본 서버의 호스트 이름 또는 IPv4 주소)를 지정해야 합니다. **HTTPS 포트**를 선택하면 **원본 서버 주소**가 IP 주소가 아닌 호스트 이름이어야 합니다.
-      * 또한 **HTTP 포트**, **HTTPS 포트 ** 또는 둘 다를 제공해야 할 수 있습니다. 이러한 필드는 원본 서버에 접속하는 데 사용할 수 있는 프로토콜 및 포트 번호를 표시합니다. 기본이 아닌 포트 번호의 경우, 허용되는 포트 번호의 목록은 [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
+      * 또한 **HTTP 포트**, **HTTPS 포트 ** 또는 둘 다를 제공해야 할 수 있습니다. 이러한 필드는 원본 서버에 접속하는 데 사용할 수 있는 프로토콜 및 포트 번호를 표시합니다. 기본이 아닌 포트 번호의 경우, 허용되는 포트 번호의 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai)를 참조하십시오.
+      * **SSL Certificate** 이 옵션은 HTTPS 포트를 선택할 때_만_ 표시됩니다. \*HTTPS 및 SSL Certificate 구성에 대한 자세한 정보를 보려면 Object Storage 옵션 설명을 따르십시오.
 
 	     ![원본 서버 구성](images/configure-origin-server.png)
 
-  * **오브젝트 스토리지 옵션**: **오브젝트 스토리지** 옵션을 선택하는 경우 다음 정보를 제공해야 합니다.
+  * **Object Storage 옵션**: **Object Storage** 옵션을 선택하는 경우 다음 정보를 제공해야 합니다.
       * 오브젝트를 페치할 **엔드포인트**
       * 컨텐츠가 저장되는 **버킷**의 이름
       * **HTTPS 포트**.
+      * **SSL Certificate** 이 옵션은 HTTPS 포트를 선택할 때_만_ 표시됩니다. \*HTTPS 및 SSL Certificate 구성에 대한 자세한 정보를 보려면 Object Storage 옵션 설명을 따르십시오.
       * CDN 서비스에 사용할 수 있는 파일 확장자(쉼표로 구분됨)를 제공할 수도 있습니다. (파일 이름 확장자가 지정되지 않으면 모든 파일 확장자가 허용됩니다.)
       * **버킷**에서 각 **오브젝트**에 대한 **액세스 제어 목록**(ACL)을 "public-read"로 설정해야 합니다.
 
-	     ![오브젝트 스토리지 구성](images/configure-origin-object-storage.png)
+      	  ![Object Storage 구성](images/configure-origin-cos.png)
+
+  * **SSL Certificate**: 서버 또는 Object Storage에 대해 **HTTPS 포트**를 선택하면 **와일드카드** 또는 **DV SAN 인증서**를 **SSL Certificate** 옵션으로 선택할 수 있습니다. 둘 다 HTTPS에서 제공하는 고급 보안을 제공합니다.
+    * **와일드카드 인증서**를 사용하면 **CNAME**을 사용할 때만 HTTPS 트래픽을 허용하고 사용자가 추가로 조치를 수행할 필요가 없습니다.
+    * **DV SAN 인증서**를 사용하면 도메인에서 HTTPS 트래픽이 허용되며 확인을 위해 추가 단계를 수행해야 합니다.
+
+        ![HTTPS 구성](images/configure-https.png)
+
 
 **단계 7:**
 

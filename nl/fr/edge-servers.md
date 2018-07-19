@@ -47,8 +47,8 @@ La liste ci-dessous indique les pays possédant les POP Akamai que nous utilison
 * Espagne
 * Suède
 * Suisse
-* Taiwan, Province de Chine 
-* Thaïlande 
+* Taiwan, Province de Chine
+* Thaïlande
 * Turquie
 * Royaume-Uni
 * Etats-Unis

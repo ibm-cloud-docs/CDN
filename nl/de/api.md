@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -26,10 +26,10 @@ Die SLAPI ist ein RPC-System (RPC, Remote Procedure Call). Bei jedem Aufruf werd
 
 Weitere Informationen zur SLAPI oder zu den APIs des Service 'Content Delivery Network' (CDN) von IBM Cloud finden Sie in den folgenden Ressourcen im IBM Cloud Development Network:
 
-* [Übersicht über SLAPI](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Einführung in SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [API 'SoftLayer_Product_Package'](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [Handbuch zur PHP-basierten SOAP-API](https://sldn.softlayer.com/article/PHP )
+* [Übersicht über SLAPI](https://softlayer.github.io/ )
+* [Einführung in SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [API 'SoftLayer_Product_Package'](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [Handbuch zur PHP-basierten SOAP-API](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -71,6 +71,7 @@ Diese Funktion erstellt anhand der bereitgestellten Eingaben eine Domänenzuordn
 
 * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
   [Eingabecontainer anzeigen](input-container.html)
 
   Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn eine Domänenzuordnung erstellt wird (Attribute sind optional, sofern nicht anders angegeben):
@@ -79,7 +80,8 @@ Diese Funktion erstellt anhand der bereitgestellten Eingaben eine Domänenzuordn
     * `originType`: **Erforderlich** - Der Ursprungstyp kann `HOST_SERVER` oder `OBJECT_STORAGE` sein.
     * `domain`: **Erforderlich** - Geben Sie Ihren Hostnamen in Form einer Zeichenfolge an.
     * `protocol`: **Erforderlich** - Unterstützte Protokolle sind `HTTP`, `HTTPS` oder `HTTP_AND_HTTPS`.
-    * `path`: Der Pfad, aus dem der im Cache gespeicherte Inhalt zugestellt wird. Standardpfad: /\*
+    * `certificateType`: **Erforderlich** für HTTPS-Protokoll. `SHARED_SAN_CERT` oder `WILDCARD_CERT`
+    * `path`: Der Pfad, aus dem der im Cache gespeicherte Inhalt zugestellt wird. Standardpfad ist `/*`
     * `httpPort` und/oder `httpsPort`: (**Erforderlich** für Host-Server) - Diese beiden Optionen müssen dem gewünschten Protokoll entsprechen. Für das Protokoll `HTTP` muss `httpPort` festgelegt werden und `httpsPort` darf _nicht_ festgelegt werden. Analog muss für das Protokoll `HTTPS` das Attribut `httpsPort` festgelegt werden und `httpPort` darf _nicht_ festgelegt werden. Für die Protokollangabe `HTTP_AND_HTTPS` _müssen_ _sowohl_ `httpPort` als auch `httpsPort` festgelegt werden. Akamai hat bestimmte Einschränkungen in Bezug auf Portnummern. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
     * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
     * `respectHeader`: Ein boolescher Wert, der beim Wert `true` veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
@@ -163,6 +165,7 @@ Ermöglicht dem Benutzer das Aktualisieren der durch `uniqueId` identifizierten 
       * `ignore: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Ignoriert diese bestimmten Abfrageargumente. Beispiel: `ignore: abfrage1 abfrage2`
       * `include: durch Leerzeichen getrennte Liste von Abfrageargumenten` - Schließt diese bestimmten Abfrageargumente ein. Beispiel: `include: abfrage1 abfrage2`
 * **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Zuordnungscontainer anzeigen](mapping-container.html)
 
 ----
@@ -171,6 +174,7 @@ Gibt eine Sammlung aller Domänenzuordnungen für den aktuellen Kunden zurück.
 
 * **Erforderliche Parameter:** Keine
 * **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Zuordnungscontainer anzeigen](mapping-container.html)
 
 ----
@@ -178,7 +182,8 @@ Gibt eine Sammlung aller Domänenzuordnungen für den aktuellen Kunden zurück.
 Gibt eine Sammlung mit einem einzelnen Domänenobjekt basierend auf der Kennung `uniqueId` eines CDN zurück.
 
 * **Erforderliche Parameter:** `uniqueId` - Die eindeutige ID der Zuordnung, die zurückgegeben werden soll.
-* **Rückgabe:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` mit einem Objekt
+* **Rückgabe:** Eine Einzelobjektsammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Zuordnungscontainer anzeigen](mapping-container.html)
 
 ----
@@ -188,6 +193,7 @@ Erstellt einen Ursprungspfad für ein vorhandenes CDN und für einen bestimmten 
 
 * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
   [Eingabecontainer anzeigen](input-container.html)
 
   Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn ein Ursprungspfad erstellt wird (Attribute sind optional, sofern nicht anders angegeben):
@@ -219,6 +225,7 @@ Aktualisiert einen vorhandenen Ursprungspfad für eine vorhandene Zuordnung und 
 
 * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
   [Eingabecontainer anzeigen](input-container.html)
 
   Die folgenden Attribute gehören zum Eingabecontainer und werden möglicherweise bereitgestellt, wenn ein Ursprungspfad aktualisiert wird (Attribute sind optional, sofern nicht anders angegeben):
@@ -365,175 +372,70 @@ Listet vorhandene Objekte `TimeToLive` basierend auf der Kennung `uniqueId` eine
  * **Rückgabe:** Ein Array mit Objekten des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API für Metriken  
-### Containerklasse für Metriken:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## API für Metriken
+[Metrikcontainer anzeigen](metrics-container.html)
 ### getCustomerUsageMetrics
 Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohne Grafik) für ein Kundenkonto über einen angegebenen Zeitraum zurück.
 
- * **Parameter:** `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige für die angegebene Zuordnung zurück. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Gibt die Gesamtzahl der Treffer mit einer bestimmten Häufigkeit über einen angegebenen Zeitraum pro Domänenzuordnung zurück. Als Häufigkeit kann 'day' (Tag), 'week' (Woche) oder 'month' (Monat) angegeben werden. Dabei liefert jedes Intervall einen Diagrammpunkt für eine Grafik. Die zurückgegebenen Daten werden basierend auf `startDate`, `endDate` und `frequency` geordnet. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Gibt die Gesamtzahl der Treffer mit einer bestimmten Häufigkeit über einen angegebenen Zeitraum zurück. Als Häufigkeit kann 'day' (Tag), 'week' (Woche) oder 'month' (Monat) angegeben werden. Dabei liefert jedes Intervall einen Diagrammpunkt für eine Grafik. Die zurückgegebenen Daten müssen basierend auf `startDate`, `endDate` und `frequency` geordnet werden. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Gibt die Anzahl der Edge-Treffer für ein einzelnes CDN zurück. Die Regionen können bei jedem Anbieter variieren. Pro Zuordnung.
 
- * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohne Grafik) für eine bestimmte Zuordnung über einen angegebenen Zeitraum zurück. Der Wert für `frequency` lautet standardmäßig 'aggregate'.
 
- * **Parameter:** `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parameter:**
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`

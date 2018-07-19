@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-16"
+  years: 2017, 2018
+lastupdated: "2018-05-10"
 
 ---
 
@@ -30,6 +30,8 @@ dois, HTTP_AND_HTTPS.
 que é o terminal do qual buscar conteúdo ou o nome do depósito em que o conteúdo é armazenado. Ele deve ser menor que 511 caracteres.
 * `httpPort`: número da porta usada para o protocolo HTTP. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Veja as [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
 * `httpsPort`: número da porta usada para o protocolo HTTPS. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Consulte as [Perguntas frequentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
+* `certificateType`: tipo de certificado que está sendo usado por um mapeamento. Pode ser `WILDCARD_CERT` ou `SHARED_SAN_CERT`. O valor
+será 0 para mapeamentos de HTTP.
 * `cname`: registro de nome canônico que cria um alias do nome do host. Ele pode ser fornecido pelo usuário ou gerado pelo sistema. Se for fornecido pelo usuário, ele deverá ter menos que 64 caracteres alfanuméricos e deve ser exclusivo. Se não fornecido, um será gerado quando o mapeamento for criado.
 * `respectHeaders`: um Valor booleano que, se configurado como 'true', fará as configurações do TTL na Origem substituírem as configurações do TTL do CDN.
 * `header`: especifica as informações do cabeçalho do Host usadas pelo Servidor de origem.
@@ -48,7 +50,7 @@ para chamadas API subsequentes.
 
 Por exemplo, essa chamada para `listDomainMappingByUniqueid`  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');
+$cdnMapping = $client-> listDomainMappingByUniqueid ('750352919747xxx');  
 ```
 
 retornará um objeto semelhante a esse:
@@ -56,25 +58,53 @@ retornará um objeto semelhante a esse:
 ```php  
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
                 (
-                    [vendorName] => akamai
-                    [uniqueId] => 750352919747xxx
-                    [domain] => test.testingcdn.net
-                    [protocol] => HTTP_AND_HTTPS
-                    [originType] => HOST_SERVER
-                    [originHost] => test.testingcdn.net
-                    [httpPort] => 80
-                    [httpsPort] => 443
-                    [cname] => test.cdnedge.bluemix.net
-                    [performanceConfiguration] =>
-                    [certificateType] =>
-                    [respectHeaders] => 1
-                    [header] =>
-                    [status] => RUNNING
-                    [bucketName] =>
-                    [fileExtension] =>
-                    [path] => /
-                    [cacheKeyQueryRule] => include-all
-                )
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => NO_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net [originType] => HOST_SERVER [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+            [vendorName] => akamai
+        )
+
 ```
+{: codeblock}
 
+As chamadas para `stopDomainMapping` e `startDomainMapping`
+retornarão o mesmo objeto de Mapeamento, com o `status` representando a diferença.
 
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => STOPPED
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}

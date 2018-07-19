@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-03"
+  years: 2017, 2018
+lastupdated: "2018-05-09"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-10-03"
 {:download: .download}
 
 # 벤더 컨테이너
-`SoftLayer_Container_Network_CdnMarketplace_Vendor` 콜렉션에는 벤더 API에서 이용하는 속성이 포함됩니다. 
+`SoftLayer_Container_Network_CdnMarketplace_Vendor` 콜렉션에는 벤더 API에서 이용하는 속성이 포함됩니다.
 
 
 클래스 `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
@@ -28,9 +28,23 @@ lastupdated: "2017-10-03"
 `listVendors` API에 대한 호출을 사용하여 기능 뿐만 아니라 사용 가능한 벤더 목록을 표시합니다.
 
 ```php
-$vendors = $client->listVendors();
-``` 
+require_once __DIR__.'/vendor/autoload.php';
+
+$apiUsername = '<Your username>' ;
+$apiKey = '<Your apiKey>' ;
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
+try {
+    $vendors = $client->listVendors();
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to retrieve list of vendors: ' . $e->getMessage());
+}
+```
+{: codeblock}
+
 이전 API 호출의 출력 결과는 다음과 유사합니다.
+
 ```php
 SoftLayer_Container_Network_CdnMarketplace_Vendor Object
 (
@@ -39,5 +53,5 @@ SoftLayer_Container_Network_CdnMarketplace_Vendor Object
     [features] => Web Delivery, Content Caching, Content Purge, HTTP/HTTPS Support
     [status] => ACTIVE
 )
-
 ```
+{: codeblock}

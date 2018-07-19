@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-03"
+  years: 2017, 2018
+lastupdated: "2018-05-09"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-10-03"
 {:download: .download}
 
 # 供應商容器
-`SoftLayer_Container_Network_CdnMarketplace_Vendor` 集合包含了我們的供應商 API 所使用的屬性。 
+`SoftLayer_Container_Network_CdnMarketplace_Vendor` 集合包含了我們的供應商 API 所使用的屬性。
 
 
 類別 `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
@@ -28,9 +28,24 @@ lastupdated: "2017-10-03"
 呼叫 `listVendors` API，顯示可用供應商及其特性的清單：
 
 ```php
-$vendors = $client->listVendors();
-``` 
+require_once __DIR__.'/vendor/autoload.php';
+
+$apiUsername = '<Your username>' ;
+$apiKey = '<Your apiKey>' ;
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
+try {
+    $vendors = $client->listVendors();
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to retrieve list of vendors: ' . $e->getMessage());
+}
+```
+{: codeblock}
+
 前一個 API 呼叫會導致類似如下的輸出：
+
+
 ```php
 SoftLayer_Container_Network_CdnMarketplace_Vendor Object
 (
@@ -41,3 +56,4 @@ SoftLayer_Container_Network_CdnMarketplace_Vendor Object
 )
 
 ```
+{: codeblock}

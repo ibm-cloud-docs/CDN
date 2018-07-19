@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -26,10 +26,10 @@ La SLAPI è un sistema RPC (Remote Procedure Call). Ogni chiamata comporta l'inv
 
 Per ulteriori informazioni sulla SLAPI o sulle API del servizio CDN (Content Delivery Network) IBM Cloud, consulta le seguenti risorse nella rete di sviluppo IBM Cloud:
 
-* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+* [SLAPI Overview](https://softlayer.github.io/ )
+* [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -70,7 +70,8 @@ Verifica che esista un account CDN per l'utente che richiama l'API, per il `vend
 Utilizzando gli input forniti, questa funzione crea un'associazione dominio per il fornitore indicato e la unisce all'ID account {{site.data.keyword.BluSoftlayer_notm}} dell'utente. L'account CDN deve prima essere creato utilizzando `placeOrder` perché questa API funzioni (vedi un esempio della chiamata API `placeOrder` negli [Esempi di codice](cdn-example-code.html)). Una volta creato il CDN, viene creato un `defaultTTL` con un valore di 3600 secondi.
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
+
   [Visualizza il Contenitore di input](input-container.html)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un'associazione dominio (gli attributi sono facoltativi se non diversamente indicato):
@@ -79,14 +80,15 @@ Utilizzando gli input forniti, questa funzione crea un'associazione dominio per 
     * `originType`: **obbligatorio** Il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
     * `domain`: **obbligatorio** Fornisce il tuo nome host come una stringa.
     * `protocol`: **obbligatorio** I protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
-    * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Il percorso predefinito è /\*
+    * `certificateType`: **obbligatorio** per il protocollo HTTPS. `SHARED_SAN_CERT` o `WILDCARD_CERT`
+    * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Il percorso predefinito è `/*`
     * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
     * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
     * `respectHeader`: un valore booleano che, se impostato su `true`, farà in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
     * `cname`: fornisce un alias al nome host. Sarà generato se non ne viene fornito uno.
     * `bucketName`: (**obbligatorio** solo per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
     * `fileExtension`: (facoltativo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
-    * `cacheKeyQueryRule`: per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni.Se non viene fornito alcun argomento `cacheKeyQueryRule`, per impostazione predefinita sarà "include-all"
+    * `cacheKeyQueryRule`: per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni. Se non viene fornito alcun argomento `cacheKeyQueryRule`, per impostazione predefinita sarà "include-all"
       * `include-all` - include tutti gli argomenti della query **valore predefinito**
       * `ignore-all` - ignora tutti gli argomenti della query
       * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
@@ -162,7 +164,8 @@ Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall
       * `ignore-all` - ignora tutti gli argomenti della query
       * `ignore: space separated query-args` - ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
       * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
-* **Restituzione** una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+* **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Visualizza il Contenitore associazione](mapping-container.html)
 
 ----
@@ -171,6 +174,7 @@ Restituisce una raccolta di tutte le associazioni dominio per l'attuale cliente.
 
 * **Parametri obbligatori**: Nessuno
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Visualizza il Contenitore associazione](mapping-container.html)
 
 ----
@@ -179,15 +183,17 @@ Restituisce una raccolta con un singolo oggetto dominio in base all'`uniqueId` d
 
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da restituire
 * **Restituzione**: una raccolta di singoli oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Visualizza il Contenitore associazione](mapping-container.html)
 
 ----
 ## API per origine
 ### createOriginPath
-Crea un percorso di origine per una CDN esistente e per un particolare cliente. Il percorso di origine può essere basato su un server host o un'Object Storage. Per creare il percorso di origine, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
+Crea un percorso di origine per una CDN esistente e per un particolare cliente. Il percorso di origine può essere basato su un server host o un Object Storage. Per creare il percorso di origine, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
+
   [Visualizza il Contenitore di input](input-container.html)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si crea un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
@@ -218,7 +224,8 @@ Crea un percorso di origine per una CDN esistente e per un particolare cliente. 
 Aggiorna un percorso di origine per un'associazione esistente e per un particolare cliente. Il tipo di origine non può essere modificato con questa API. È possibile modificare le seguenti proprietà: gli argomenti `path`, `origin`, `httpPort`, `httpsPort`, `header` e `cacheKeyQueryRule`. Per essere aggiornata, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
+  Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
+
   [Visualizza il Contenitore di input](input-container.html)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
@@ -285,7 +292,7 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
      * @var string
      */
     public $date;
-}
+}  
 ```
 
 ### createPurge
@@ -365,175 +372,70 @@ Elenca gli oggetti `TimeToLive` esistenti in base all'`uniqueId` di una CDN.
  * **Restituzione**: un array di oggetti di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API per Metriche  
-### Classe contenitore per le metriche:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics
-{
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}
-```  
+## API per Metriche
+[Visualizza il Contenitore di metriche](metrics-container.html)
 ### getCustomerUsageMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per l'account di un cliente, per un determinato periodo di tempo.
 
- * **Parametri**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta per l'associazione fornita. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
- * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Restituisce il numero totale di riscontri a una certa frequenza per un determinato intervallo di tempo, per associazione dominio. La frequenza può essere 'day', 'week' e 'month', dove ogni intervallo è un punto per il grafico. I dati di restituzione sono ordinati in base a `startDate`, `endDate` e `frequency`. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
- * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Restituisce il numero totale di riscontri a una certa frequenza per un determinato intervallo di tempo. La frequenza può essere 'day', 'week' e 'month', dove ogni intervallo è un punto per il grafico. I dati di restituzione devono essere ordinati in base a `startDate`, `endDate` e `frequency`. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
- * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Restituisce il numero di riscontri edge per una singola CDN. Le regioni possono differire per ogni fornitore. Per associazione.
 
- * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per un'associazione fornita, per un determinato periodo di tempo. Il valore di `frequency` è 'aggregate' per impostazione predefinita.
 
- * **Parametri**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parametri**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`

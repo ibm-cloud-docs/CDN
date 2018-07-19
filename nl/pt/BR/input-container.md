@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-11-14"
 {:download: .download}
 
 # Contêiner de entrada
-O contêiner de entrada é uma coleção utilizada por ambas as classes, mapeamento e caminho (origem). Ele fornece um conjunto
+O contêiner de entrada é uma coleção utilizada por ambas as classes, mapeamento e caminho (origem).  Ele fornece um conjunto
 consistente de atributos de entrada para ambas as classes.
 
 * `vendorName`: o nome de um provedor válido do IBM Cloud CDN.
@@ -45,7 +45,7 @@ Os atributos a seguir são específicos para a classe de mapeamento:
 HTTP_AND_HTTPS.
 * `cname`: registro de nome canônico cria alias do nome do host. Pode ser fornecido pelo usuário ou
 gerado pelo sistema. Se fornecido pelo usuário, ele deve ter menos que 64 caracteres alfanuméricos e deve ser exclusivo. Se não fornecido, um será gerado quando o mapeamento for criado.
-* `certificateType`: tipo de certificado que está sendo usado por um mapeamento, ou seja, curinga. O valor
+* `certificateType`: tipo de certificado que está sendo usado por um mapeamento. Pode ser `WILDCARD_CERT` ou `SHARED_SAN_CERT`. O valor
 será 0 para mapeamentos de HTTP.
 * `respectHeaders`: um Valor booleano que, se configurado como 'true', fará as configurações do TTL na Origem substituírem as configurações do TTL do CDN.
 * `cabeçalho`: especifica informações do cabeçalho do host usadas pela origem.
@@ -53,4 +53,3 @@ será 0 para mapeamentos de HTTP.
 Os atributos a seguir são relacionados ao Cloud Object Storage (COS):  
 * `bucketName`: o nome exclusivo de seu depósito para armazenamento de objetos S3.  
 * `fileExtension`: extensões de arquivo que são permitidas.
-

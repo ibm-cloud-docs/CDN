@@ -15,7 +15,7 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # パス (オリジン) コンテナー
-`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` コレクションには、(オリジン) パス API によって使用される属性が含まれています。それぞれのパス API がこのタイプのコレクションを返します。
+`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` コレクションには、(オリジン) パス API によって使用される属性が含まれています。 それぞれのパス API がこのタイプのコレクションを返します。
 
 クラス `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
@@ -24,11 +24,11 @@ lastupdated: "2017-11-14"
 * `originType`: オリジン・ホストのタイプ。現在、「HOST\_SERVER」または「OBJECT\_STORAGE」です。  
 * `httpPort`: HTTP プロトコルに使用されるポートの番号。  
 * `httpsPort`: HTTPS プロトコルに使用されるポートの番号。  
-* `status`: (オリジン) パスの状況。有効な状況は _CREATING_、_STARTING_、_RUNNING_、_UPDATING_、_STOPPING_、および _DELETING_ です。
+* `status`: (オリジン) パスの状況。 有効な状況は _CREATING_、_STARTING_、_RUNNING_、_UPDATING_、_STOPPING_、および _DELETING_ です。
 * `fileExtension`: キャッシュ可能なファイル拡張子。  
 * `header`: オリジン・サーバーによって使用されるホスト・ヘッダー情報を指定します。
 * `cacheKeyQueryRule`: キャッシュ・キーの動作を構成するために以下のオプションを使用できます。
   * `include-all`: すべての照会引数を含めます。**デフォルト**です
   * `ignore-all`: すべての照会引数を無視します
-  * `ignore: space separated query-args`: スペースで区切られた特定の照会引数を無視します。例えば、「ignore: query1 query2」です
-  * `include: space separated query-args`: スペースで区切られた特定の照会引数を含めます。例えば、「include: query1 query2」です
+  * `ignore: space separated query-args`: スペースで区切られた特定の照会引数を無視します。 例えば、「ignore: query1 query2」です
+  * `include: space separated query-args`: スペースで区切られた特定の照会引数を含めます。 例えば、「include: query1 query2」です

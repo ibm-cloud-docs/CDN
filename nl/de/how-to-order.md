@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -36,15 +36,15 @@ Wählen Sie auf der Seite **Content Delivery Networks** die Schaltfläche **CDN 
 
    ![CDN-Bestellprozess auswählen](images/order-cdn-button.png)
 
-## Gehen Sie im Bluemix-Portal wie folgt vor:
+## Im IBM Cloud-Portal:
 
 **Schritt 1:**
 
-Melden Sie sich beim [Bluemix-Portal](https://www.ibm.com/cloud-computing/bluemix/) an.
+Melden Sie sich am [IBM Cloud-Portal](https://www.ibm.com/cloud-computing/bluemix/) an.
 
 **Schritt 2:**
 
-Klicken Sie auf [IBM Bluemix-Katalog](https://console.bluemix.net/catalog/). Wähle Sie in der linken Navigationsleiste die Option **Netz** aus.
+Klicken Sie auf [IBM Cloud-Katalog](https://console.bluemix.net/catalog/). Wählen Sie in der linken Navigationsleiste die Option **Netz** aus.
 
    ![Bluemix - CDN-Navigation](images/bluemix_navigation.png)
 
@@ -57,7 +57,7 @@ Klicken Sie auf die Kachel **CDN**, um die Anzeige für Anbieterauswahl aufzuruf
 
 **Schritt 4:**
 
-Wählen Sie in der Anzeige **CDN-Anbieter auswählen** unter den verfügbaren Optionen für CDN-Anbieter aus. Klicken Sie auf die Schaltfläche **Auswählen**, um die ausgewählten Optionen zu bestätigen, und klicken Sie dann auf **Bereitstellung starten** in der rechten unteren Ecke der Anzeige, um den Bereitstellungsprozess zu starten.  
+Wählen Sie in der Anzeige **CDN-Anbieter auswählen** unter den verfügbaren Optionen für CDN-Anbieter aus. Klicken Sie auf die Schaltfläche **Auswählen**, um Ihre ausgewählten Optionen zu bestätigen und klicken Sie anschließend unten auf dem Bildschirm auf **Weiter**, um den Bereitstellungsprozess zu starten.  
        ![CDN-Anbieter auswählen](images/Vendor_Select_And_Provision.png)
 
 **Schritt 5:**
@@ -76,14 +76,15 @@ Füllen Sie das Feld **Name konfigurieren** aus:
 Füllen Sie das Feld **Ursprung konfigurieren** aus: Zum Konfigurieren dieses Felds müssen Sie entweder die Option **Server** oder die Option **Objektspeicher** auswählen.  
 
    * Geben Sie einen Wert für **Host-Header** (optional) an. Wenn kein Host-Header angegeben wird, wird standardmäßig der Wert von **Hostname** verwendet. Weitere Informationen zum Host-Header finden Sie in der Funktionsbeschreibung zur [Host-Header-Unterstützung](about.html#host-header-support-).  
-   
-   * Geben Sie einen **Pfad** (optional) an. Der Pfad muss relativ zum **Hostnamen** angegeben werden. 
-   
+
+   * Geben Sie einen **Pfad** (optional) an. Der Pfad muss relativ zum **Hostnamen** angegeben werden.
+
       ![Ursprungsserver konfigurieren](images/configure-origin.png)  
 
   * **Option 'Server'**: Wenn Sie die Option **Server** auswählen, geben Sie den Hostnamen oder die IP-Adresse des Ursprungsservers an, aus dem Daten im Cache gespeichert werden sollen.
       * Wenn Sie diese Option auswählen, müssen Sie die **Adresse des Ursprungsservers** (Hostname oder IPv4-Adresse des Ursprungsservers) angeben. Wenn **HTTPS-Port** ausgewählt wird, muss die **Adresse des Ursprungsservers** der Hostname und nicht die IP-Adresse sein.
-      * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) eine Liste der zulässigen Portnummern.
+      * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) eine Liste der zulässigen Portnummern.
+      * **SSL-Zertifikat** Diese Option wird _nur_ angezeigt, wenn der HTTPS-Port ausgewählt ist. \*Weitere Informationen zu HTTPS- und SSL-Zertifikatskonfigurationen finden Sie nach der Beschreibung der Option 'Objektspeicher'.
 
 	     ![Ursprungsserver konfigurieren](images/configure-origin-server.png)
 
@@ -91,10 +92,18 @@ Füllen Sie das Feld **Ursprung konfigurieren** aus: Zum Konfigurieren dieses Fe
       * Den **Endpunkt**, aus dem das Objekt abgerufen werden soll
       * Den Namen des **Buckets**, in dem Ihr Inhalt gespeichert ist
       * Den **HTTPS-Port**
-      * Außerdem können Sie die Dateierweiterungen angeben (getrennt durch Kommas), die im CDN-Service verwendet werden können. (Wenn keine Dateinamenerweiterungen angegeben werden, sind alle Erweiterungen zulässig.)
+      * **SSL-Zertifikat** Diese Option wird _nur_ angezeigt, wenn der HTTPS-Port ausgewählt ist. \*Weitere Informationen zu HTTPS- und SSL-Zertifikatskonfigurationen finden Sie nach der Beschreibung der Option 'Objektspeicher'.
+      * Außerdem können Sie die Dateierweiterungen angeben (getrennt durch Kommas), die im CDN-Service verwendet werden können. (Wenn keine Dateinamenserweiterungen angegeben werden, sind alle Erweiterungen zulässig.)
       * Sie müssen in der **Zugriffssteuerungsliste** (Access Control List, ACL) für jedes **Objekt** in Ihrem **Bucket** die Berechtigung 'public-read' festlegen.
 
-	     ![Objektspeicher konfigurieren](images/configure-origin-object-storage.png)
+      	  ![Objektspeicher konfigurieren](images/configure-origin-cos.png)
+
+  * **SSL-Zertifikat**: Falls Sie **HTTPS-Port** für den Server- oder Objektspeicher auswählen, können Sie **Wildcard-Zertifikat** oder **DV-SAN-Zertifikat** für die Option **SSL-Zertifikat** auswählen. Beide bieten die erweiterten Sicherheitsfunktionen von HTTPS.
+    * Ein **Wildcard-Zertifikat** ermöglicht HTTPS-Datenverkehr nur bei Verwendung eines **CNAME** und erfordert keine weiteren Aktionen.
+    * Ein **DV-SAN-Zertifikat** ermöglicht HTTPS-Datenverkehr über Ihre Domäne, es müssen jedoch noch weitere Schritte zur Überprüfung ausgeführt werden.
+
+        ![HTTPS konfigurieren](images/configure-https.png)
+
 
 **Schritt 7:**
 

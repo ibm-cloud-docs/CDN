@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-11-14"
 {:download: .download}
 
 # 입력 컨테이너
-입력 컨테이너는 맵핑과 (원본) 경로 클래스에서 이용하는 콜렉션입니다. 두 클래스에 대한 입력 속성의 일관된 세트를 제공합니다.
+입력 컨테이너는 맵핑과 (원본) 경로 클래스에서 이용하는 콜렉션입니다.  두 클래스에 대한 입력 속성의 일관된 세트를 제공합니다.
 
 * `vendorName`: 올바른 IBM Cloud CDN 제공자의 이름입니다.
 * `oldPath`: updateOriginPath()에서 사용됩니다. 이 특성은 현재 또는 '이전' 경로의 이름을 저장합니다.
@@ -40,11 +40,10 @@ lastupdated: "2017-11-14"
 * `domain`: 기본 CDN 이름입니다. 또한 호스트 이름이라고도 합니다.
 * `protocol`: 서비스 설정에 사용되는 프로토콜입니다. HTTP, HTTPS 또는 이 두 가지의 조합(HTTP_AND_HTTPS)입니다.
 * `cname`: 호스트 이름에 별명을 지정하는 표준 이름 레코드입니다. 사용자가 제공하거나 시스템에서 생성합니다. 사용자가 제공하는 경우 고유한 64자 미만의 영숫자 문자여야 합니다. 제공하지 않으면 맵핑 작성 시 생성됩니다.
-* `certificateType`: 맵핑에서 사용되는 인증서의 유형(즉, 와일드카드)입니다. HTTP 맵핑의 경우 값은 0이 됩니다.
+* `certificateType`: 맵핑에서 사용하는 인증서의 유형입니다. `WILDCARD_CERT` 또는 `SHARED_SAN_CERT`일 수 있습니다. HTTP 맵핑의 경우 값은 0이 됩니다.
 * `respectHeaders`: 'true'로 설정된 경우 원본의 TTL 설정이 CDN TTL 설정을 대체하게 하는 부울 값입니다.
 * `header`: 원본에서 사용되는 호스트 헤더 정보를 지정합니다.
 
 다음 속성은 COS(Cloud Object Storage)와 관련되어 있습니다.  
-* `bucketName`: S3 오브젝트 스토리지에 대한 버킷의 고유 이름입니다.  
+* `bucketName`: S3 Object Storage에 대한 버킷의 고유 이름입니다.  
 * `fileExtension`: 허용되는 파일 확장자입니다.
-

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -27,10 +27,10 @@ O SLAPI é um sistema de Chamada de Procedimento Remoto (RPC). Cada chamada envo
 Para obter mais informações sobre o SLAPI ou sobre as APIs de serviço do IBM Cloud Content Delivery Network (CDN), consulte os
 seguintes recursos no IBM Cloud Development Network:
 
-* [Visão geral do SLAPI](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Introdução ao SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [Guia da API PHP Soap](https://sldn.softlayer.com/article/PHP )
+* [Visão geral do SLAPI](https://softlayer.github.io/ )
+* [Introdução ao SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [Guia da API PHP Soap](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -74,12 +74,13 @@ Verifica se existe uma conta CDN para o usuário que está chamando a API, para 
 ----
 ## API para mapeamento de domínio
 ### createDomainMapping
-Usando as entradas fornecidas, essa função cria um mapeamento de domínio para o fornecedor especificado e o associa ao ID da conta do {{site.data.keyword.BluSoftlayer_notm}} do usuário. 
-A conta CDN deve primeiro ser criada usando `placeOrder` para essa API funcionar (veja um exemplo da chamada API
+Usando as entradas fornecidas, essa função cria um mapeamento de domínio para o fornecedor especificado e o associa ao ID da conta do {{site.data.keyword.BluSoftlayer_notm}} do usuário. A conta CDN deve primeiro ser criada usando `placeOrder` para essa API funcionar (veja um exemplo da chamada API
 `placeOrder` nos [Exemplos de código](cdn-example-code.html)). Depois de criar o CDN com sucesso, um `defaultTTL` será criado com um valor de 3.600 segundos.
 
 * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  É possível visualizar todos os atributos no Contêiner de entrada aqui: [Visualizar o Contêiner de entrada](input-container.html)
+  É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+  [ Visualizar o Contêiner de Entrada ](input-container.html)
 
   Os atributos a seguir são parte do contêiner de entrada e podem ser fornecidos ao criar um mapeamento de domínio (os
 atributos são opcionais, a menos que indicado de outra forma):
@@ -88,11 +89,12 @@ atributos são opcionais, a menos que indicado de outra forma):
     * `originType`: **necessário** O tipo de origem pode ser `HOST_SERVER` ou `OBJECT_STORAGE`.
     * `domain`: **necessário** forneça o seu nome do host como uma sequência.
     * `protocol`: **necessário** Os protocolos suportados são `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
-    * `path`: caminho por meio do qual o conteúdo em cache será entregue. O caminho padrão é /\*
+    * ` certificateType `:  ** obrigatório **  para o protocolo HTTPS. ` SHARED_SAN_CERT  ` ou  ` WILDCARD_CERT `
+    * `path`: caminho por meio do qual o conteúdo em cache será entregue. O caminho padrão é  ` / * `
     * `httpPort` e/ou `httpsPort`: (**necessário** para servidor host)
 Essas duas opções devem corresponder ao protocolo desejado. Se o protocolo for `HTTP`, então `httpPort` deverá ser configurado e `httpsPort` _não_ deverá ser configurado. Da mesma forma, se o protocolo for `HTTPS`, então `httpsPort` deverá ser configurado e `httpPort` _não_ deverá ser configurado. Se o protocolo for `HTTP_AND_HTTPS`, então _ambos_ `httpPort` e `httpsPort` _deverão_ ser configurados. A Akamai tem certas limitações em números de porta. Veja as [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
     * `header`: especifica as informações do cabeçalho do host usadas pelo Servidor de origem
-    * `respectHeader`: um valor booleano que, se configurado como `true`, fará as configurações do TTL na Origem substituírem as configurações do TTL do CDN.
+    * `respectHeader`: um valor booleano que, se configurado como `true`, faz as configurações do TTL na Origem substituam as configurações do TTL do CDN.
     * `cname`: forneça um alias para o nome do host. Será gerado se um não for fornecido.
     * `bucketName`: Nome do bucket (**necessário** apenas para o Object Storage) para o seu Object Storage do S3.
     * `fileExtension`: extensões do arquivo (opcionais para o Object Storage) que podem ser armazenadas em cache.
@@ -124,8 +126,7 @@ excluído
 ### verifyDomainMapping
 Verifica o status do CDN e atualiza o `status` do mapeamento CDN se ele mudar. Quando um mapeamento
 CDN é criado inicialmente, seu status é mostrado como _CNAME_CONFIGURATION_. Neste ponto, deve-se atualizar o registro
-DNS para que o mapeamento CDN aponte o nome do host para o CNAME. Verifique com seu provedor DNS se você tiver perguntas sobre como a atualização é feita e quanto tempo pode levar para a mudança se propagar na Internet. Geralmente, deve levar de 15 a 30 minutos. 
-Após esse tempo, essa API `verifyDomainMapping` deverá ser chamada para verificar se a cadeia CNAME foi concluída. Se
+DNS para que o mapeamento CDN aponte o nome do host para o CNAME. Verifique com seu provedor DNS se você tiver perguntas sobre como a atualização é feita e quanto tempo pode levar para a mudança se propagar na Internet. Geralmente, deve levar de 15 a 30 minutos. Após esse tempo, essa API `verifyDomainMapping` deverá ser chamada para verificar se a cadeia CNAME foi concluída. Se
 a cadeia CNAME estiver concluída, o status do mapeamento CDN mudará para _EM EXECUÇÃO_.
 
 Esta API pode ser chamada a qualquer momento para obter o status de mapeamento do CDN mais recente. O mapeamento de domínio
@@ -158,7 +159,7 @@ Para um mapeamento de domínio do CDN com base no `uniqueId`. Para iniciar a par
 
 ----
 ### updateDomainMapping
-Permite que o usuário atualize propriedades do mapeamento identificado pelo `uniqueId`. É possível mudar os campos a seguir: argumentos `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` e, se o seu tipo de origem for armazenamento de objetos, o `bucketName` e o `fileExtension` também poderão ser mudados. Para que uma atualização ocorra, o mapeamento de domínio deverá estar em um estado _RUNNING_.
+Permite que o usuário atualize propriedades do mapeamento identificado pelo `uniqueId`. É possível mudar os campos a seguir: argumentos `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` e, se o seu tipo de origem for Object Storage, o `bucketName` e o `fileExtension` também poderão ser mudados. Para que uma atualização ocorra, o mapeamento de domínio deverá estar em um estado _RUNNING_.
 
 * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   É possível visualizar todos os atributos no Contêiner de entrada aqui: [Visualizar o Contêiner de entrada](input-container.html)
@@ -176,7 +177,8 @@ um mapeamento de domínio:
     * `httpPort` e/ou `httpsPort`: essas duas opções devem corresponder ao protocolo
 desejado. Se o protocolo for `HTTP`, então `httpPort` deverá ser configurado e `httpsPort` _não_ deverá ser configurado. Da mesma forma, se o protocolo for `HTTPS`, então `httpsPort` deverá ser configurado e `httpPort` _não_ deverá ser configurado. Se o protocolo for `HTTP_AND_HTTPS`, então _ambos_ `httpPort` e `httpsPort` _deverão_ ser configurados. A Akamai tem certas limitações em números de porta. Veja as [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números de porta permitidos.
     * `header`: especifica as informações do cabeçalho do host usadas pelo Servidor de origem
-    * `respectHeader`: um valor booleano que, se configurado como `true`, fará as configurações do TTL na Origem substituírem as configurações do TTL do CDN.
+    * `respectHeader`: um valor booleano que, se configurado como
+`true`, faz com que as configurações de TTL na Origem substituam as configurações de TTL do CDN.
     * `uniqueId`: gerado após o mapeamento ser criado.
     * `cname`: forneça o cname. Um foi gerado quando o mapeamento foi criado se você não forneceu um.
     * `bucketName`: Nome do bucket (**necessário** apenas para o Object Storage) para o seu Object Storage do S3.
@@ -188,16 +190,18 @@ chave de cache:
       * `ignore-all` - ignora todos os argumentos de consulta
       * `ignore: space separated query-args` - ignora esses argumentos de consulta específicos. Por exemplo, `ignore: query1 query2`
       * `include: space separated query-args`: inclui esses argumentos de consulta específicos. Por exemplo, `include: query1 query2`
-* **Retornar** uma coleção do tipo
-`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` [Visualizar o
-contêiner do mapeamento](mapping-container.html)
+* ** Retornar **  uma coleta do tipo  ` SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping `
+
+  [Visualizar o Mapeamento de contêiner](mapping-container.html)
 
 ----
 ### listDomainMappings
 Retorna uma coleção de todos os mapeamentos de domínio para o cliente atual.
 
 * **Parâmetros necessários**: nenhum
-* **Retornar**: uma coleção de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` [Visualizar o Contêiner de mapeamento](mapping-container.html)
+* **Retornar**: uma coleção de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Visualizar o Mapeamento de contêiner](mapping-container.html)
 
 ----
 ### listDomainMappingByUniqueId
@@ -205,19 +209,22 @@ Retorna uma coleção com um único objeto de domínio com base no `uniqueId` de
 
 * **Parâmetros necessários**: `uniqueId`: ID exclusivo do mapeamento a ser
 retornado
-* **Retornar**: uma coleção de único objeto do tipo
-`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` [Visualizar o
-contêiner do mapeamento](mapping-container.html)
+* **Retornar**: uma coleta de objeto único do tipo
+`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Visualizar o Mapeamento de contêiner](mapping-container.html)
 
 ----
 ## APIs para origem
 ### createOriginPath
 Cria um Caminho de origem para um CDN existente e para um cliente específico. O caminho de origem pode se basear em um
-servidor host ou armazenamento de objetos. Para criar o caminho de origem, o mapeamento de domínio deverá estar em um
+servidor host ou Object Storage. Para criar o caminho de origem, o mapeamento de domínio deverá estar em um
 estado _EM EXECUÇÃO_ ou _CNAME_CONFIGURATION_.
 
 * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  É possível visualizar todos os atributos no Contêiner de entrada aqui: [Visualizar o Contêiner de entrada](input-container.html)
+  É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+  [ Visualizar o Contêiner de Entrada ](input-container.html)
 
   Os atributos a seguir são parte do contêiner de entrada e podem ser fornecidos ao criar um caminho de origem (atributos são opcionais, a menos que indicado de outra forma):
     * `vendorName`: **necessário** forneça o nome de um provedor válido do IBM Cloud CDN.
@@ -231,7 +238,7 @@ mapeamento. Por exemplo, se o caminho de mapeamento for `/test`, então, o seu c
     * `header`: especifica as informações do cabeçalho do host usadas pelo Servidor de origem
     * `uniqueId`: **necessário** gerado após o mapeamento ser criado.
     * `cname`: forneça um alias para o nome do host. Se você não forneceu um cname exclusivo, um foi gerado para você quando o mapeamento foi criado.
-    * `bucketName`: (**necessário** para armazenamento de objetos) nome do depósito para seu armazenamento de objetos S3.
+    * `bucketName`: (**necessário** para Object Storage) nome do depósito para seu Object Storage S3.
     * `fileExtension`: extensões do arquivo (opcionais para o Object Storage) que podem ser armazenadas em cache.
     * `cacheKeyQueryRule`: as opções a seguir estão disponíveis para configurar o comportamento da Chave de cache:
       * `include-all` - inclui todos os argumentos de consulta **padrão**
@@ -249,7 +256,9 @@ Atualiza um Caminho de origem existente para um mapeamento existente e para um c
 EXECUÇÃO_ ou _CNAME_CONFIGURATION_.
 
 * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  É possível visualizar todos os atributos no Contêiner de entrada aqui: [Visualizar o Contêiner de entrada](input-container.html)
+  É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+  [ Visualizar o Contêiner de Entrada ](input-container.html)
 
   Os atributos a seguir são parte do contêiner de entrada e podem ser fornecidos ao atualizar um caminho de origem (atributos são opcionais, a menos que indicado de outra forma):
     * `oldPath`: **necessário** caminho atual para ser mudado
@@ -391,151 +400,71 @@ Lista objetos `TimeToLive` existentes com base no `uniqueId` de um CDN.
  * **Retorno**: uma matriz de objetos do tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API para métricas  
-### Classe do contêiner para métricas:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /** * @var string[]
-     */
-    public $names;
-
-    /** * @var string[]
-     */   
-     public $totals;
-
-    /** * @var string[]
-     */
-    public $percentage;
-
-    /** * @var string[]
-     */
-    public $time;
-
-    /** * @var string[]
-     */
-    public $xaxis;
-
-    /** * @var string[]
-     */
-    public $yaxis1;
-
-    /** * @var string[]
-     */
-    public $yaxis2;
-
-    /** * @var string[]
-     */
-    public $yaxis3;
-
-    /** * @var string[]
-     */
-    public $yaxis4;
-
-    /** * @var string[]
-     */
-    public $yaxis5;
-
-    /** * @var string[]
-     */
-    public $yaxis6;
-
-    /** * @var string[]
-     */
-    public $yaxis7;
-
-    /** * @var string[]
-     */
-    public $yaxis8;
-
-    /** * @var string[]
-     */
-    public $yaxis9;
-
-    /** * @var string[]
-     */
-    public $yaxis10;
-
-    /** * @var string[]
-     */
-    public $yaxis11;
-
-    /** * @var string[]
-     */
-    public $yaxis12;
-
-    /** * @var string[]
-     */
-    public $yaxis13;
-
-    /** * @var string[]
-     */
-    public $yaxis14;
-
-    /** * @var string[]
-     */
-    public $yaxis15;
-
-    /** * @var string[]
-     */
-    public $yaxis16;
-
-    /** * @var string[]
-     */
-    public $yaxis17;
-
-    /** * @var string[]
-     */
-    public $yaxis18;
-
-    /** * @var string[]
-     */
-    public $yaxis19;
-
-    /** * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## API para métricas
+[ Visualizar o Contêiner de Métricas ](metrics-container.html)
 ### getCustomerUsageMetrics
 Retorna o número total de estatísticas predeterminadas para exibição direta (sem gráfico) para a conta de um cliente, durante um período de tempo especificado.
 
- * **Parâmetros**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:
+   * ` vendorName `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
 
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Retorna o número total de estatísticas predeterminadas para exibição direta para o mapeamento especificado. O valor de `frequency` é 'aggregate', por padrão.
 
- * **Parâmetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:
+   * ` mappingUniqueId `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
+
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Retorna o número total de ocorrências em uma certa frequência durante um intervalo de tempo especificado, por mapeamento de domínio. A frequência pode ser 'dia', 'semana' e 'mês', em que cada intervalo é um ponto de plot para um gráfico. Os dados de retorno são ordenados com base em `startDate`, `endDate` e `frequency`. O valor de `frequency` é 'aggregate', por padrão.
 
- * **Parâmetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:
+   * ` mappingUniqueId `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
+
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Retorna o número total de ocorrências em uma certa frequência durante um intervalo de tempo especificado. A frequência pode ser 'dia', 'semana' e 'mês', em que cada intervalo é um ponto de plot para um gráfico. Os dados de retorno devem ser ordenados com base em `startDate`, `endDate` e `frequency`. O valor de `frequency` é 'aggregate', por padrão.
 
- * **Parâmetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:
+   * ` mappingUniqueId `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
+
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Retorna o número de ocorrências da borda para um CDN individual. As regiões podem ser diferentes para cada fornecedor. Por
 mapeamento.
 
- * **Parâmetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:  
+   * ` mappingUniqueId `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
+
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Retorna o número total de estatísticas pré-determinadas para exibição direta (sem gráfico) para um determinado mapeamento, durante um período de tempo especificado. O valor de `frequency` é 'aggregate', por padrão.
 
- * **Parâmetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parâmetros**:
+   * ` mappingUniqueId `
+   * ` startDate `
+   * ` endDate `
+   * ` frequência `
+
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`

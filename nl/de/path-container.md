@@ -22,8 +22,8 @@ Klasse `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 * `mappingUniqueId`: Die eindeutige ID der Zuordnung, zu der dieser Ursprungspfad gehört.  
 * `path`: Der Pfad relativ zur Domäne, über den dieser Ursprung erreicht werden kann.  
 * `originType`: Der Typ des Ursprungshosts, gegenwärtig ‘HOST\_SERVER’ oder ‘OBJECT\_STORAGE’.  
-* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird.   
-* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird.   
+* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird.  
+* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird.  
 * `status`: Der Status des Pfads (Ursprungspfads). Gültige Statuswerte: _CREATING_ (Wird erstellt), _STARTING_ (Wird gestartet), _RUNNING_ (Aktiv), _UPDATING_ (Wird aktualisiert), _STOPPING_ (Wird gestoppt) und _DELETING_ (Wird gelöscht).
 * `fileExtension`: Die Dateierweiterungen, deren Speicherung im Cache zugelassen wird.  
 * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -40,11 +40,10 @@ lastupdated: "2017-11-14"
 * `domain`：主要的 CDN 名稱。也稱為主機名稱。
 * `protocol`：用來設定服務的通訊協定。它可以是 HTTP、HTTPS，或兩者的組合 - HTTP_AND_HTTPS。
 * `cname`：主機名稱別名的標準名稱記錄。它可以由使用者提供，也可以由系統產生。如果由使用者提供，則應該少於 64 個英數字元，且必須是唯一的。如果未提供，將會在建立對映時產生一個。
-* `certificateType`：對映正在使用的憑證類型，亦即，萬用字元。對於 HTTP 對映，值將為 0。
+* `certificateType`：對映所使用的憑證類型。可能是 `WILDCARD_CERT` 或 `SHARED_SAN_CERT`。對於 HTTP 對映，值將為 0。
 * `respectHeaders`：布林值，如果設為 'true' 會導致原點的 TTL 設定置換 CDN TTL 設定。
 * `header`：指定原點所使用的主機標頭資訊。
 
 下列屬性與 Cloud Object Storage (COS) 相關：  
 * `bucketName`：S3 Object Storage 的儲存區唯一名稱。  
 * `fileExtension`：允許的副檔名。
-

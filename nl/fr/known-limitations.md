@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-10"
+  years: 2017, 2018
+lastupdated: "2018-06-19"
 
 ---
 
@@ -17,9 +17,10 @@ lastupdated: "2017-09-10"
 # Limitations connues
 
 Les limitations suivantes s'appliquent au nouveau service CDN avec le fournisseur Akamai :
-* HTTPS est actuellement pris en charge via les certificats génériques uniquement.
 * La purge de contenu au niveau des répertoires ou de plusieurs fichiers n'est actuellement pas pris en charge.
 * Le nombre maximal de CDN actuellement autorisés pour un compte {{site.data.keyword.BluSoftlayer_notm}} est de 10.
 * Le nombre total d'entrées TTL et d'origines est actuellement limité à 75 par CDN.
-* La fonctionnalité Serve Stale Content est toujours définie sur **On**, même si le CDN a été créé avec l'option **Off**. 
-* Si le CDN a été créé avec les options **Server** et **HTTP Port**, la zone d'origine ne peut être ajoutée qu'avec l'option **Server**.
+* La fonctionnalité de traitement des contenus périmés est toujours définie sur **On**.
+* Le type de certificat HTTPS ne peut pas être modifié une fois qu'un mappage est créé (d'un certificat de caractère générique à un certificat SAN DV, par exemple).
+* HTTPS avec un certificat SAN DV n'est disponible que pour les nouveaux CDN.
+* Un CDN créé avec un certificat SAN DV ne peut être supprimé à moins que son état soit RUNNING, CNAME_Configuration, CREATE_ERROR ou DELETE_ERROR.

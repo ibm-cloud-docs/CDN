@@ -7,18 +7,30 @@ Red de entrega de contenido (CDN)
     {: .navgroup id="learn"}
     getting-started.md
     about.md
+    about-https.md
     naas-video.md
+    [Uso de CDN con Cloud Object Storage para entregar sus archivos estáticos más rápidamente](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+    new-features.md
+    feature-descriptions.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     how-to-order.md
+    basic-functions.md
     how-to.md
+    how-to-https.md
+    rules-and-naming-conventions.md
+    limits-and-max-values.md
+    byte-range-request.md
+    metrics.md
+    edge-servers.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
     faqs.md
+    https-faq.md
     known-limitations.md
-    edge-servers.md
+    troubleshooting.md
     getting-help.md
     {: .navgroup-end}
 

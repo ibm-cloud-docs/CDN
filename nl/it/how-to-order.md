@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -36,15 +36,15 @@ Nella pagina **Content Delivery Networks**, seleziona il pulsante **Order CDN** 
 
    ![Seleziona l'ordinazione della CDN](images/order-cdn-button.png)
 
-## Dal portale Bluemix:
+## Dal portale IBM Cloud:
 
 **Passo 1:**
 
-Accedi al [Portale Bluemix](https://www.ibm.com/cloud-computing/bluemix/)
+Accedi al [Portale IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/)
 
 **Passo 2:**
 
-Fai clic su [Catalogo IBM Bluemix](https://console.bluemix.net/catalog/). Dalla barra di navigazione a sinistra, seleziona **Rete**.
+Fai clic su [Catalogo IBM Cloud](https://console.bluemix.net/catalog/). Dalla barra di navigazione a sinistra, seleziona **Rete**.
 
    ![Navigazione Bluemix CDN](images/bluemix_navigation.png)
 
@@ -57,7 +57,7 @@ Fai clic sul **tile CDN**, che ti porta alla schermata Selezione fornitore.
 
 **Passo 4:**
 
-Dalla schermata **Select a CDN Provider** (Seleziona un provider CDN), scegli tra le opzioni del provider CDN. Fai clic sul pulsante **Select** (Seleziona) per confermare le tue opzioni selezionate e fai quindi clic su **Start Provisioning** (Avvia provisioning) nella parte inferiore destra dello schermo per avviare il processo di provisioning.  
+Dalla schermata **Select a CDN Provider** (Seleziona un provider CDN), scegli tra le opzioni del provider CDN. Fai clic sul pulsante **Select** (Seleziona) per confermare le tue opzioni selezionate e fai quindi clic su **Next** (Avanti) nella parte inferiore destra dello schermo per avviare il processo di provisioning.  
        ![Seleziona provider CDN](images/Vendor_Select_And_Provision.png)
 
 **Passo 5:**
@@ -76,14 +76,15 @@ Compila il campo **Configure Name** (Configura nome):
 Compila il campo **Configura la tua origine**: per configurare questo campo, devi selezionare l'opzione **Server** o **Object Storage**.  
 
    * Specifica la **Host header** (Intestazione host) (facoltativo). Se non ne viene fornita una, verrà automaticamente impostata sull'**Hostname** (Nome host). Consulta la descrizione della funzione per [Supporto dell'intestazione host](about.html#host-header-support-) per ulteriori informazioni sull'intestazione host.  
-   
-   * Fornisci un **Path** (Percorso) (facoltativo). Il percorso deve essere relativo all'**Hostname** (Nome host). 
-   
+
+   * Fornisci un **Path** (Percorso) (facoltativo). Il percorso deve essere relativo all'**Hostname** (Nome host).
+
       ![Configura l'origine](images/configure-origin.png)  
 
   * **Opzione Server**: se selezioni l'opzione **Server**, immetti il nome host o l'indirizzo IP del server di origine da cui i dati devono essere memorizzati nella cache.
       * Devi specificare l'**Indirizzo del server di origine** (nome host o indirizzo IPv4 del server di origine) se selezioni questa opzione. Se viene selezionata la **Porta HTTPS**, l'**Indirizzo del server di origine** deve essere il nome host e non l'indirizzo IP.
-      * Puoi anche fornire una **Porta HTTP**, una **Porta HTTPS** o entrambe. Questi campi indicano quale protocollo e numero porta possono essere utilizzati per contattare il server di origine. Per i numeri porta non predefiniti, fai riferimento a [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco di numeri porta consentiti.
+      * Puoi anche fornire una **Porta HTTP**, una **Porta HTTPS** o entrambe. Questi campi indicano quale protocollo e numero porta possono essere utilizzati per contattare il server di origine. Per i numeri porta non predefiniti, fai riferimento a [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) per un elenco di numeri porta consentiti.
+      * **Certificato SSL **: questa opzione viene visualizzata _solo_ quando si seleziona la porta HTTPS. \*Ulteriori informazioni per le configurazioni dei certificati HTTPS e SSL seguono la descrizione dell'opzione Object Storage.
 
 	     ![Configura il server di origine](images/configure-origin-server.png)
 
@@ -91,10 +92,18 @@ Compila il campo **Configura la tua origine**: per configurare questo campo, dev
       * l'**Endpoint** da cui recuperare l'oggetto.
       * il nome del **Bucket** in cui è memorizzato il tuo contenuto e
       * la **porta HTTPS**.
+      * **Certificato SSL **: questa opzione viene visualizzata _solo_ quando si seleziona la porta HTTPS. \*Ulteriori informazioni per le configurazioni dei certificati HTTPS e SSL seguono la descrizione dell'opzione Object Storage.
       * Puoi anche specificare le estensioni file, separate da virgole, che possono essere utilizzate nel servizio CDN. (Se non si specificano estensioni file, sono consentite tutte le estensioni.)
       * Devi impostare l'ACL (**Access Control List**) per ogni **Oggetto** presente nel tuo **Bucket** per l'accesso "public-read".
 
-	     ![Configura l'Object Storage](images/configure-origin-object-storage.png)
+      	  ![Configura l'Object Storage](images/configure-origin-cos.png)
+
+  * **Certificato SSL**: se selezioni la **Porta HTTPS** per Server o Object Storage, puoi scegliere **Wildcard** o **Certificato SAN DV** come opzione per il tuo **Certificato SSL**. Entrambi offrono la sicurezza avanzata fornita da HTTPS.
+    * Il **Certificato wildcard** consente il traffico HTTPS solo quando si utilizza il **CNAME** e non richiede alcuna ulteriore azione da parte tua
+    * Il **Certificato SAN DV** consente il traffico HTTPS sul tuo dominio, ma richiede ulteriori passi per la verifica.
+
+        ![Configura HTTPS](images/configure-https.png)
+
 
 **Passo 7:**
 

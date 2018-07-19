@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -40,11 +40,10 @@ lastupdated: "2017-11-14"
 * `domain`：主 CDN 名称。也称为主机名。
 * `protocol`：用于设置服务的协议。可以为 HTTP、HTTPS 或两者的组合 (HTTP_AND_HTTPS)。
 * `cname`：作为主机名别名的规范名称记录。可由用户提供，或由系统生成。如果用户提供，应该少于 64 个字母数字字符，并且必须唯一。如果未提供，将在创建映射时生成该名称。
-* `certificateType`：映射使用的证书类型，即通配符证书。对于 HTTP 映射，值将为 0。
+* `certificateType`：映射使用的证书类型。可以是 `WILDCARD_CERT` 或 `SHARED_SAN_CERT`。对于 HTTP 映射，值将为 0。
 * `respectHeaders`：布尔值，如果设置为“true”，将导致源中的 TTL 设置覆盖 CDN TTL 设置。
 * `header`：指定源使用的主机头信息。
 
 以下属性与 Cloud Object Storage (COS) 相关：  
 * `bucketName`：S3 Object Storage 的存储区的唯一名称。  
 * `fileExtension`：允许的文件扩展名。
-

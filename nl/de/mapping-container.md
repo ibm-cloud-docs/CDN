@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-16"
+  years: 2017, 2018
+lastupdated: "2018-05-10"
 
 ---
 
@@ -27,6 +27,7 @@ Klasse `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 * `originHost`: Die Ursprungsserveradresse (entweder der Hostname oder die IPv4-Adresse des Ursprungsservers), von dessen Endpunkt Inhalte oder der Name des Buckets, in dem Inhalte gespeichert sind, abgerufen werden sollen. Muss weniger als 511 Zeichen lang sein.
 * `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
 * `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+* `certificateType`: Typ des Zertifikats, das von einer Zuordnung verwendet wird. Zulässige Werte sind `WILDCARD_CERT` und `SHARED_SAN_CERT`. Für HTTP-Zuordnungen ist der Wert 0.
 * `cname`: Der Eintrag des kanonischen Namens, der als Aliasname für den Hostnamen fungiert. Dieser Name kann vom Benutzer angegeben oder durch das System generiert werden. Wenn er vom Benutzer angegeben wird, muss er weniger als 64 alphanumerische Zeichen enthalten und er muss eindeutig sein. Wenn kein Name angegeben wird, wird bei Erstellung der Zuordnung ein Name generiert.
 * `respectHeaders`: Ein boolescher Wert, der beim Wert 'true' veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
 * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
@@ -44,7 +45,7 @@ Speziell zu beachten ist das Attribut `uniqueId`, dessen Wert generiert wird, we
 
 Beispiel: Der folgende Aufruf von `listDomainMappingByUniqueid`  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');  
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');
 ```
 
 gibt ein Objekt wie das folgende zurück:
@@ -52,25 +53,54 @@ gibt ein Objekt wie das folgende zurück:
 ```php  
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
                 (
-                    [vendorName] => akamai
-                    [uniqueId] => 750352919747xxx
-                    [domain] => test.testingcdn.net
-                    [protocol] => HTTP_AND_HTTPS
-                    [originType] => HOST_SERVER
-                    [originHost] => test.testingcdn.net
-                    [httpPort] => 80
-                    [httpsPort] => 443
-                    [cname] => test.cdnedge.bluemix.net
-                    [performanceConfiguration] =>
-                    [certificateType] =>
-                    [respectHeaders] => 1
-                    [header] =>
-                    [status] => RUNNING
-                    [bucketName] =>
-                    [fileExtension] =>
-                    [path] => /
-                    [cacheKeyQueryRule] => include-all
-                )
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => NO_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+            [vendorName] => akamai
+        )
+
 ```
+{: codeblock}
 
+Beim Aufrufen von `stopDomainMapping` und `startDomainMapping` wird dasselbe Zuordnungsobjekt zurückgegeben, nur der `Status` ist unterschiedlich.
 
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => STOPPED
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}

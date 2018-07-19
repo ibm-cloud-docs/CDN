@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-16"
+  years: 2017, 2018
+lastupdated: "2018-05-10"
 
 ---
 
@@ -27,6 +27,7 @@ clase `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 * `originHost`: dirección del servidor de origen (nombre de host o la dirección IPv4 del servidor de origen), que es el punto final desde el que captar contenido, o el nombre del grupo donde se almacena el contenido. Debe ser inferior a 511 caracteres.
 * `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
 * `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+* `certificateType`: tipo de certificado utilizado por una correlación. Puede ser `WILDCARD_CERT` o `SHARED_SAN_CERT`. El valor será 0 para correlaciones HTTP.
 * `cname`: registro de nombre canónico que da alias al nombre de host. Puede ser proporcionado por el usuario o generado por el sistema. Si es proporcionado por el usuario, debe tener menos de 64 caracteres alfanuméricos y ser exclusivo. Si no se proporciona, se generará uno cuando se crea la correlación.
 * `respectHeaders`: un valor booleano que, si se establece en 'true', provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.
 * `header`: especifica la información de cabecera de host utilizada por el servidor de origen.
@@ -44,7 +45,7 @@ Cabe destacar `uniqueId`, que se genera cuando se crea una correlación y se uti
 
 Por ejemplo, esta llamada a `listDomainMappingByUniqueid`  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');  
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
 ```
 
 devolverá un objeto similar a este:
@@ -52,25 +53,54 @@ devolverá un objeto similar a este:
 ```php  
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
                 (
-                    [vendorName] => akamai
-                    [uniqueId] => 750352919747xxx
-                    [domain] => test.testingcdn.net
-                    [protocol] => HTTP_AND_HTTPS
-                    [originType] => HOST_SERVER
-                    [originHost] => test.testingcdn.net
-                    [httpPort] => 80
-                    [httpsPort] => 443
-                    [cname] => test.cdnedge.bluemix.net
-                    [performanceConfiguration] =>
-                    [certificateType] =>
-                    [respectHeaders] => 1
-                    [header] =>
-                    [status] => RUNNING
-                    [bucketName] =>
-                    [fileExtension] =>
-                    [path] => /
-                    [cacheKeyQueryRule] => include-all
-                )
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => NO_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+            [vendorName] => akamai
+        )
+
 ```
+{: codeblock}
 
+Las llamadas a `stopDomainMapping` y `startDomainMapping` devolverán el mismo objeto de correlación, siendo el `status` la diferencia.
 
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => STOPPED
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}

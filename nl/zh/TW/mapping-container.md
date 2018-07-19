@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-16"
+  years: 2017, 2018
+lastupdated: "2018-05-10"
 
 ---
 
@@ -27,6 +27,7 @@ lastupdated: "2017-11-16"
 * `originHost`：原點伺服器位址（原點伺服器的主機名稱或 IPv4 位址），這是要從該處提取內容的端點，或是內容儲存所在儲存區的名稱。它必須少於 511 個字元。
 * `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
 * `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `certificateType`：對映所使用的憑證類型。可能是 `WILDCARD_CERT` 或 `SHARED_SAN_CERT`。對於 HTTP 對映，值將為 0。
 * `cname`：主機名稱別名的標準名稱記錄。它可以由使用者提供，也可以由系統產生。如果由使用者提供，則應該少於 64 個英數字元，且必須是唯一的。如果未提供，將會在建立對映時產生一個。
 * `respectHeaders`：布林值，如果設為 'true' 會導致原點的 TTL 設定置換 CDN TTL 設定。
 * `header`：指定原點伺服器所使用的主機標頭資訊。
@@ -44,7 +45,7 @@ lastupdated: "2017-11-16"
 
 例如，這個 `listDomainMappingByUniqueid` 呼叫  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');  
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
 ```
 
 會傳回類似如下的物件：
@@ -52,25 +53,54 @@ $cdnMapping = $client->listDomainMappingByUniqueid(d'750352919747xxx');
 ```php  
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
                 (
-                    [vendorName] => akamai
-                    [uniqueId] => 750352919747xxx
-                    [domain] => test.testingcdn.net
-                    [protocol] => HTTP_AND_HTTPS
-                    [originType] => HOST_SERVER
-                    [originHost] => test.testingcdn.net
-                    [httpPort] => 80
-                    [httpsPort] => 443
-                    [cname] => test.cdnedge.bluemix.net
-                    [performanceConfiguration] =>
-                    [certificateType] =>
-                    [respectHeaders] => 1
-                    [header] =>
-                    [status] => RUNNING
-                    [bucketName] =>
-                    [fileExtension] =>
-                    [path] => /
                     [cacheKeyQueryRule] => include-all
-                )
+            [certificateType] => NO_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+            [vendorName] => akamai
+        )
+
 ```
+{: codeblock}
 
+`stopDomainMapping` 及 `startDomainMapping` 呼叫會傳回相同的「對映」物件，但 `status` 會不同。
 
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+                    ...
+
+            [status] => STOPPED
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}
+
+```php  
+[0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
+                (
+                    ...
+
+            [status] => RUNNING
+            [uniqueId] => 750352919747xxx
+
+          ...
+        )
+
+```
+{: codeblock}

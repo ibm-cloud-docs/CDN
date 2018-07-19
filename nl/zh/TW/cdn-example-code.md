@@ -1,13 +1,13 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-03"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -16,57 +16,69 @@ lastupdated: "2017-10-03"
 
 # 使用 CDN API 的程式碼範例
 
-## 列出供應商的程式碼範例
+本文件包含範例 API 呼叫以及眾多 CDN API 的產生輸出。
+
+## 所有 API 呼叫都需要的一般步驟
 
 必要條件是從 https://github.com/softlayer/softlayer-api-php-client 下載並安裝 Soap Client
 
-```
-// Example code to demonstrate CDN Soap API call
-// This code prints the IBM CDN Service supported vendors on the terminal it is run from
+  * 您需要透過 `vendor/autoload` 來取得 SoapClient 的存取權。此路徑相對於從中執行 Script 的位置，而且可能需要適當地修改。在 PHP 中，此陳述式看起來如下：`require_once './../vendor/autoload.php';`
 
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
+      ```php
+      require_once __DIR__.'/vendor/autoload.php';
+      ```
 
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
+  * 所有 API 呼叫都會使用您的使用者名稱及 apiKey 進行鑑別。您可以在[入門](https://softlayer.github.io/article/getting-started/)頁面的「取得 API 金鑰」下，找到如何產生 apiKey 的相關資訊。
 
-// Step 3: Initialize SoapClient for the appropriate class. In this case, it is the
-// SoftLayer_Network_CdnMarketplace_Vendor class which defines the listVendors method
+      ```php
+      $apiUsername = '<Your username>' ;
+      $apiKey = '<Your apiKey>' ;
+      ```
+  * 針對適當的類別，起始設定 SoapClient。
+
+## 列出供應商的程式碼範例
+
+在此情況下，它是 SoftLayer_Network_CdnMarketplace_Vendor 類別，可定義 `listVendors` API 而且必須以參數形式傳遞至 `\SoftLayer\SoapClient::getClient()`。當您建立「網域對映」時，稍後會需要作用中供應商的名稱。
+
+```php
+
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
-
-// Step 4: Call the listVendors method and print the vendors
-// When successful the script will display the vendors on the terminal
 try {
     $vendors = $client->listVendors();
     print_r($vendors);
 } catch (\Exception $e) {
     die('Unable to retrieve list of vendors: ' . $e->getMessage());
 }
+
 ```
+
+`listVendor` 程式碼將顯示供應商陣列，以及其狀態和特性。範例輸出會顯示一個作用中供應商 Akamai。
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+            [featureSummary] => Performance, Reliability and Scale
+            [features] => Web Delivery, Content Caching, Content Purge, HTTP/HTTPS Support
+            [status] => ACTIVE
+            [vendorName] => akamai
+        )
+
+)
+```
+
 {: codeblock}
 
-## 驗證順序的程式碼範例 
+## 驗證順序的程式碼範例
 
-```
-<?php
+在下訂單之前，不需要呼叫 `verifyOrder`，但建議您呼叫它。它可以用來驗證後續的 `placeOrder` 呼叫將成功。您可以在 [SoftLayer API 文件](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/)中，找到 `verifyOrder` 的相關資訊。
 
-// This code verifies if a CDN order can be successfully placed
+在此情況下，它是 `SoftLayer_Product_Order` 類別，可定義 verifyOrder 方法而且必須以參數形式傳遞至 `\SoftLayer\SoapClient::getClient()`。在呼叫 `verifyOrder` 之前，您需要使用 `SoftLayer_Product_Package` 來建置 `$orderObject`。
 
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
-
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
-
-
-// Step 3: Initialize an API client for the SoftLayer_Product_Package class
+```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
 
-// Step 4: Set Filter and Mask to get the right package object
 try {
     $filter = new stdClass();
     $filter->keyName = new stdClass();
@@ -87,12 +99,10 @@ try {
 
     $package = $client->getAllObjects()[0];
 
-    // Step 5: Initialize OrderData object
     $orderData = new stdClass();
     $orderData->packageId = $package->id;
     $orderData->prices = $package->itemPrices;
 
-    // Step 6: Create SoapVar orderObject
     $orderObject = new SoapVar(
         $orderData,
         SOAP_ENC_OBJECT,
@@ -100,7 +110,6 @@ try {
         'http://api.service.softlayer.com/soap/v3/'
     );
 
-    // Step 7: Get Product Order Client and call verifyOrder
     $productOrderClient = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Order', null, $apiUsername, $apiKey);
 
     $result = $productOrderClient->verifyOrder($orderObject);
@@ -118,25 +127,12 @@ catch (\Exception $e) {
 
 ## 下單的程式碼範例
 
-```
-<?php
+此 API 呼叫與前一個程式碼範例相同，但它呼叫 `placeOrder`，而非 `verifyOrder`。您可以在 [SoftLayer API 文件](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/)中，找到 `placeOrder` 的相關資訊。
 
-// This code is identical to VerifyOrder except Step 7 which calls placeOrder. 
-// PlaceOrder should be called only after a successful verifyOrder 
+```php
 
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
-
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
-
-
-// Step 3: Initialize an API client for the SoftLayer_Product_Package class
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
 
-// Step 4: Set Filter and Mask to get the right package object
 try {
     $filter = new stdClass();
     $filter->keyName = new stdClass();
@@ -157,12 +153,10 @@ try {
 
     $package = $client->getAllObjects()[0];
 
-    // Step 5: Initialize OrderData object
     $orderData = new stdClass();
     $orderData->packageId = $package->id;
     $orderData->prices = $package->itemPrices;
 
-    // Step 6: Create SoapVar orderObject
     $orderObject = new SoapVar(
         $orderData,
         SOAP_ENC_OBJECT,
@@ -170,7 +164,6 @@ try {
         'http://api.service.softlayer.com/soap/v3/'
     );
 
-    // Step 7: Get Product Order Client and call placeOrder
     $productOrderClient = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Order', null, $apiUsername, $apiKey);
 
     $result = $productOrderClient->placeOrder($orderObject);
@@ -188,47 +181,46 @@ catch (\Exception $e) {
 
 ## 建立 CDN 或建立網域對映的程式碼範例
 
-```
-<?php
+此範例顯示如何使用 `createDomainMapping` API 來建立新的 CDN 對映。它採用 `stdClass` 物件的單一參數。應該使用 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 類別來起始設定 SoapClient，如此範例所示。
 
-// This is example code to show how to call createDomainMapping to create a new CDN
+**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions)。
 
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
+```php
 
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Mapping',
+    null,
+    $apiUsername,
+    $apiKey
+  );
 
-// Step 3: Initialize SoapClient for the appropriate class. In this case, it is the
-// SoftLayer_Network_CdnMarketplace_Configuration_Mapping class which defines the createDomainMapping method
-$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Configuration_Mapping', null, $apiUsername, $apiKey);
 
-// Step 4: Initialize the $input object and call createDomainMapping
 try {
-    $input = new stdClass();
+    $inputObject = new stdClass();
 
-    // Provide the vendor Name
-    $input->vendorName = "akamai";
+    // The following values are required
+    $inputObject->vendorName = "akamai";
+    $inputObject->origin = "origin.cdntesting.net";
+    $inputObject->originType = "HOST_SERVER";
+    $inputObject->domain = "api-testing.cdntesting.net";
+    $inputObject->protocol = "HTTP";
+    $inputObject->httpPort = 80;
 
-    // Specify Hostname and Cname
-    $input->domain = "beta.testingcdn.net";
-    $input->cname = "beta.cdnedge.bluemix.net";
+    // The following value is required only for HTTPS protocol
+    $inputObject->certificateType = "SHARED_SAN_CERT";
 
-    // Specify Origin Type. Here "HOST_SERVER" is chosen
-    $input->originType = "HOST_SERVER";
+    // The following values are optional
+    $inputObject->cname = "api-testing.cdnedge.bluemix.net";
+    $inputObject->path = "/media";
+    $inputObject->header = '';
+    $inputObject->respectHeader = true;
+    $inputObject->bucketName = 'mybucket';
+    $inputObject->fileExtension = "txt, jpeg";
+    $inputObject->cacheKeyQueryRule = "include-all";
 
-    // Specify Origin address, protocol and Port number
-    $input->origin = "testserver.testingcdn.net";
-    $input->protocol = "HTTP";
-    $input->httpPort = 80;
-
-    // Specify Options
-    $input->respectHeaders = true;
-
-    $cdnMapping = $client->createDomainMapping($input);
+    $cdnMapping = $client->createDomainMapping($inputObject);
     print_r($cdnMapping);
+
 } catch (\Exception $e) {
     die('createDomainMapping failed with an exception: ' . $e->getMessage());
 }
@@ -236,30 +228,54 @@ try {
 ```
 {: codeblock}
 
+`createDomainMapping` 範例將會顯示新建立 CDN 的屬性。請記下 `uniqueId`，因為您需要將它提供為許多其他 API 的參數。其輸出應類似如下：
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+            [bucketName] => mybucket
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => SHARED_SAN_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => CNAME_CONFIGURATION
+            [uniqueId] => 610345992629xxx
+            [vendorName] => akamai
+        )
+
+)
+```
+{: codeblock}
+
 ## 驗證網域對映的程式碼範例
 
-```
-<?php
+VerifyDomainMapping 會檢查 CNAME 配置是否完成，如果完成，則會將 CDN 狀態移至 RUNNING 狀態。呼叫 `verifyDomainMapping` 之前，您必須先將自訂「主機名稱」的 CNAME 記錄新增至 DNS 伺服器。
 
-// Before calling verifyDomainMapping, the customer has to add a CNAME record of the custom Hostname to the DNS server.
-// This code calls verifyDomainMapping with the UniqueId that was returned as part of createDomainMapping.
-// VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status
+此範例會呼叫 `verifyDomainMapping`，而所含的 UniqueId 會傳回為 `createDomainMapping` 的一部分。應該使用 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 類別來起始設定 SoapClient，如下列範例所示。
 
-// Step 1: Get access to the SoapClient via vendor/autoload. The path is relative to where
-// the script is run from and may need to be modified appropriately
-require_once './../vendor/autoload.php';
+```php
 
-// Step 2: Provide valid API Username and API Key
-$apiUsername = '<Your username>' ;
-$apiKey = '<Your apiKey>' ;
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Mapping',
+    null,
+    $apiUsername,
+    $apiKey
+  );
 
-// Step 3: Initialize SoapClient for the appropriate class. In this case, it is the
-// SoftLayer_Network_CdnMarketplace_Configuration_Mapping class which defines the verifyDomainMapping method
-$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Configuration_Mapping', null, $apiUsername, $apiKey);
-
-// Step 4: Initialize the $uniqueId and call verifyDomainMapping
 try {
-    $uniqueId = 907987176256747;
+    $uniqueId = 610345992629xxx;
 
     $cdnMapping = $client->verifyDomainMapping($uniqueId);
 
@@ -270,3 +286,51 @@ try {
 }
 ```
 {: codeblock}
+
+如果您的 CNAME 記錄已新增至 DNS 伺服器，則在呼叫 `verifyDomainMapping` 之後，CDN 的 `status` 會變更為 RUNNING，如下列範例所示。
+
+```php
+
+    [0] => stdClass Object
+        (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 610345992629xxx
+
+          ...
+        )
+```
+{: codeblock}
+
+
+如果您的 CNAME 記錄尚未新增至 DNS 伺服器，或尚未更新您的伺服器，則 CDN 的 `status` 將會是 CNAME_CONFIGURATION，如下列範例所示。
+
+**附註** 可能需要幾分鐘（最多 30）的時間，CNAME 鏈結才會完成。
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+          ...
+
+            [status] => CNAME_CONFIGURATION
+            [uniqueId] => 610345992629xxx
+
+          ...
+        )
+
+)
+```
+{: codeblock}
+
+若要確定已正確配置 CNAME 記錄，請在指令行上執行 `dig <your domain>`。其輸出應類似如下：
+
+```
+;; ANSWER SECTION:
+api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdnedge.bluemix.net.
+```
+{: codeblock}
+
+在這裡，我們會看到網域名稱已正確對映至 CNAME。

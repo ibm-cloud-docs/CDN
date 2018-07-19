@@ -22,8 +22,8 @@ class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 * `mappingUniqueId`: l'ID univoco dell'associazione a cui appartiene questo Origin Path.  
 * `path`:  il percorso relativo al dominio che può essere utilizzato per raggiungere questa origine.  
 * `originType`: il tipo dell'host di origine, attualmente ‘HOST\_SERVER’ oppure ‘OBJECT\_STORAGE’.  
-* `httpPort`: il numero della porta utilizzata per il protocollo HTTP.   
-* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS.   
+* `httpPort`: il numero della porta utilizzata per il protocollo HTTP.  
+* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS.  
 * `status`: lo stato del Path (Origin (Percorso (origine)). Gli stati validi sono: _CREATING_, _STARTING_, _RUNNING_, _UPDATING_, _STOPPING_ e _DELETING_.
 * `fileExtension`: le estensioni file di cui è consentita la memorizzazione in cache.  
 * `header`: specifica le informazioni sull'intestazione host utilizzate dal server di origine.

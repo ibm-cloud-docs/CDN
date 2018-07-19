@@ -1,13 +1,13 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-03"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -16,28 +16,33 @@ lastupdated: "2017-10-03"
 
 # Codebeispiele mit der CDN-API
 
-## Beispielcode zum Auflisten von Anbietern
+Dieses Dokument enthält API-Beispielaufrufe und die sich daraus ergebende Ausgabe für eine Vielzahl an CDN-APIs.
+
+## Für alle API-Aufrufe erforderliche allgemeine Schritte
 
 Als Voraussetzung muss der SOAP-Client von 'https://github.com/softlayer/softlayer-api-php-client' heruntergeladen und installiert werden.
 
-```
-// Beispielcode zur Veranschaulichung eines SOAP-API-Aufrufs für CDN
-// Mit diesem Code werden die vom IBM Service 'CDN' unterstützten Anbieter auf dem Terminal ausgedruckt, auf dem der Code ausgeführt wird.
+  * Sie müssen über `vendor/autoload` Zugriff auf den SOAP-Client erhalten. Der Pfad ist relativ zu der Position, an der das Script ausgeführt wird; es kann erforderlich sein, ihn entsprechend zu ändern. In PHP ähnelt die Anweisung der folgenden Zeichenfolge: `require_once './../vendor/autoload.php';`
 
-// Schritt 1: Erhalten Sie Zugriff auf den SOAP-Client über 'vendor/autoload'. Der Pfad ist relativ zu der Position, an der
-// das Script ausgeführt wird und muss möglicherweise entsprechend bearbeitet werden.
-require_once './../vendor/autoload.php';
+      ```php
+      require_once __DIR__.'/vendor/autoload.php';
+      ```
 
-// Schritt 2: Geben Sie einen gültigen Benutzernamen und Schlüssel für die API an.
-$apiUsername = '<Ihr Benutzername>' ;
-$apiKey = '<Ihr API-Schlüssel>' ;
+  * Alle API-Aufrufe werden mit dem Benutzernamen und einem API-Schlüssel authentifiziert. Weitere Informationen zum Generieren eines API-Schlüssels finden Sie auf der Seite [Einführung](https://softlayer.github.io/article/getting-started/) unter 'API-Schlüssel abrufen'. 
 
-// Schritt 3: Initialisieren Sie den SOAP-Client für die entsprechende Klasse. In diesem Fall ist es die Klasse
-// 'SoftLayer_Network_CdnMarketplace_Vendor', die die Methode 'listVendors' definiert.
+      ```php
+      $apiUsername = '<Ihr Benutzername>' ;
+      $apiKey = '<Ihr API-Schlüssel>' ;
+      ```
+  * Initialisieren Sie den SOAP-Client für die entsprechende Klasse.
+
+## Beispielcode zum Auflisten von Anbietern
+
+In diesem Fall definiert die Klasse 'SoftLayer_Network_CdnMarketplace_Vendor' die API `listVendors` und muss als Parameter an `\SoftLayer\SoapClient::getClient()` übergeben werden. Sie benötigen den Namen eines aktiven Anbieters später, wenn Sie eine Domänenzuordnung durchführen.
+
+```php
+
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Vendor', null, $apiUsername, $apiKey);
-
-// Schritt 4: Rufen Sie die Methode 'listVendors' auf und drucken Sie die Anbieter aus.
-// Ist der Vorgang erfolgreich, zeigt das Script die Anbieter auf dem Terminal an.
 try {
     $vendors = $client->listVendors();
     print_r($vendors);
@@ -45,28 +50,34 @@ try {
     die('Unable to retrieve list of vendors: ' . $e->getMessage());
 }
 ```
+
+Bei Verwendung des Codes `listVendor` wird eine Reihe von Anbietern zusammen mit ihren Statusangaben und Funktionen angezeigt. Als Beispielausgabe wird ein aktiver Anbieter mit dem Namen Akamai angezeigt.
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+            [featureSummary] => Performance, Reliability and Scale
+            [features] => Web Delivery, Content Caching, Content Purge, HTTP/HTTPS Support
+            [status] => ACTIVE
+            [vendorName] => akamai
+        )
+
+)
+```
+
 {: codeblock}
 
-## Beispielcode zum Prüfen der Bestellung 
+## Beispielcode zum Prüfen der Bestellung
 
-```
-<?php
+Der Aufruf für `verifyOrder` muss nicht verbindlich vor der Erteilung eines Auftrags ausgeführt werden, diese Reihenfolge wird jedoch empfohlen. So kann überprüft werden, ob ein nachfolgender Aufruf für `placeOrder` erfolgreich ist. Weitere Informationen zu `verifyOrder` finden Sie in der [Dokumentation zur SoftLayer-API](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
-// Mit diesem Code wird geprüft, ob ein CDN erfolgreich platziert werden kann.
+In diesem Fall definiert die Klasse `SoftLayer_Product_Order` die Methode 'verifyOrder' und muss als Parameter an `\SoftLayer\SoapClient::getClient()` übergeben werden. Vor dem Aufruf für `verifyOrder` müssen Sie `$orderObject` mithilfe von `SoftLayer_Product_Package` erstellen.
 
-// Schritt 1: Erhalten Sie Zugriff auf den SOAP-Client über 'vendor/autoload'. Der Pfad ist relativ zu der Position, an der
-// das Script ausgeführt wird und muss möglicherweise entsprechend bearbeitet werden.
-require_once './../vendor/autoload.php';
-
-// Schritt 2: Geben Sie einen gültigen Benutzernamen und Schlüssel für die API an.
-$apiUsername = '<Ihr Benutzername>' ;
-$apiKey = '<Ihr API-Schlüssel>' ;
-
-
-// Schritt 3: Initialisieren Sie den API-Client für die Klasse 'SoftLayer_Product_Package'.
+```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
 
-// Schritt 4: Legen Sie Filter und Maske fest, um das richtige Paketobjekt zu erhalten.
 try {
     $filter = new stdClass();
     $filter->keyName = new stdClass();
@@ -87,12 +98,10 @@ try {
 
     $package = $client->getAllObjects()[0];
 
-    // Schritt 5: Initialisieren Sie das Objekt 'OrderData'.
     $orderData = new stdClass();
     $orderData->packageId = $package->id;
     $orderData->prices = $package->itemPrices;
 
-    // Schritt 6: Erstellen Sie 'SoapVar orderObject'.
     $orderObject = new SoapVar(
         $orderData,
         SOAP_ENC_OBJECT,
@@ -100,7 +109,6 @@ try {
         'http://api.service.softlayer.com/soap/v3/'
     );
 
-    // Schritt 7: Rufen Sie den Client für den Produktauftrag ab und rufen Sie 'verifyOrder' auf.
     $productOrderClient = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Order', null, $apiUsername, $apiKey);
 
     $result = $productOrderClient->verifyOrder($orderObject);
@@ -118,25 +126,12 @@ catch (\Exception $e) {
 
 ## Beispielcode zum Aufgeben einer Bestellung
 
-```
-<?php
+Abgesehen davon, dass `placeOrder` anstatt `verifyOrder` aufgerufen wird, ist dieser API-Aufruf mit dem vorherigen Codebeispiel identisch. Weitere Informationen zu `placeOrder` finden Sie in der [Dokumentation zur SoftLayer-API](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
 
-// Dieser Code ist identisch mit 'VerifyOrder', mit Ausnahme von Schritt 7, mit dem 'placeOrder' aufgerufen wird. 
-// 'PlaceOrder' sollte nur nach erfolgreicher Ausführung von 'verifyOrder' aufgerufen werden.
+```php
 
-// Schritt 1: Erhalten Sie Zugriff auf den SOAP-Client über 'vendor/autoload'. Der Pfad ist relativ zu der Position, an der
-// das Script ausgeführt wird und muss möglicherweise entsprechend bearbeitet werden.
-require_once './../vendor/autoload.php';
-
-// Schritt 2: Geben Sie einen gültigen Benutzernamen und Schlüssel für die API an.
-$apiUsername = '<Ihr Benutzername>' ;
-$apiKey = '<Ihr API-Schlüssel>' ;
-
-
-// Schritt 3: Initialisieren Sie den API-Client für die Klasse 'SoftLayer_Product_Package'.
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
 
-// Schritt 4: Legen Sie Filter und Maske fest, um das richtige Paketobjekt zu erhalten.
 try {
     $filter = new stdClass();
     $filter->keyName = new stdClass();
@@ -157,12 +152,10 @@ try {
 
     $package = $client->getAllObjects()[0];
 
-    // Schritt 5: Initialisieren Sie das Objekt 'OrderData'.
     $orderData = new stdClass();
     $orderData->packageId = $package->id;
     $orderData->prices = $package->itemPrices;
 
-    // Schritt 6: Erstellen Sie 'SoapVar orderObject'.
     $orderObject = new SoapVar(
         $orderData,
         SOAP_ENC_OBJECT,
@@ -170,7 +163,6 @@ try {
         'http://api.service.softlayer.com/soap/v3/'
     );
 
-    // Schritt 7: Rufen Sie den Client für den Produktauftrag ab und rufen Sie 'placeOrder' auf.
     $productOrderClient = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Order', null, $apiUsername, $apiKey);
 
     $result = $productOrderClient->placeOrder($orderObject);
@@ -188,47 +180,46 @@ catch (\Exception $e) {
 
 ## Beispielcode zum Erstellen eines CDN oder einer Domänenzuordnung
 
-```
-<?php
+Im folgenden Beispiel wird dargestellt, wie mithilfe der API `createDomainMapping` eine neue CDN-Zuordnung erstellt wird. Hierbei wird ein einzelner Parameter des Objekts `stdClass` verwendet. Der SOAP-Client muss mithilfe der Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` wie im Beispiel beschrieben initialisiert werden.
 
-// Mit diesem Beispielcode wird gezeigt, wie 'createDomainMapping' zum Erstellen eines neuen CDN aufgerufen werden kann.
+**HINWEIS:** Falls Sie einen angepassten CNAME angeben, **muss** dieser mit `.cdnedge.bluemix.net` enden; andernfalls wird ein Fehler ausgelöst. Informationen zu den Regeln zum Angeben eines eigenen CNAME finden Sie in [dieser Beschreibung](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions).
 
-// Schritt 1: Erhalten Sie Zugriff auf den SOAP-Client über 'vendor/autoload'. Der Pfad ist relativ zu der Position, an der
-// das Script ausgeführt wird und muss möglicherweise entsprechend bearbeitet werden.
-require_once './../vendor/autoload.php';
+```php
 
-// Schritt 2: Geben Sie einen gültigen Benutzernamen und Schlüssel für die API an.
-$apiUsername = '<Ihr Benutzername>' ;
-$apiKey = '<Ihr API-Schlüssel>' ;
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Mapping',
+    null,
+    $apiUsername,
+    $apiKey
+  );
 
-// Schritt 3: Initialisieren Sie den SOAP-Client für die entsprechende Klasse. In diesem Fall ist es die Klasse
-// 'SoftLayer_Network_CdnMarketplace_Configuration_Mapping', die die Methode 'createDomainMapping' definiert.
-$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Configuration_Mapping', null, $apiUsername, $apiKey);
 
-// Schritt 4: Initialisieren Sie das Objekt '$input' und rufen Sie 'createDomainMapping' auf.
 try {
-    $input = new stdClass();
+    $inputObject = new stdClass();
 
-    // Geben Sie den Anbietername an.
-    $input->vendorName = "akamai";
+    // Folgende Werte sind erforderlich
+    $inputObject->vendorName = "akamai";
+    $inputObject->origin = "origin.cdntesting.net";
+    $inputObject->originType = "HOST_SERVER";
+    $inputObject->domain = "api-testing.cdntesting.net";
+    $inputObject->protocol = "HTTP";
+    $inputObject->httpPort = 80;
 
-    // Geben Sie den Hostnamen und einen Wert für 'Cname' an.
-    $input->domain = "beta.testingcdn.net";
-    $input->cname = "beta.cdnedge.bluemix.net";
+    // Der folgende Wert ist nur für das HTTPS-Protokoll erforderlich
+    $inputObject->certificateType = "SHARED_SAN_CERT";
 
-    // Geben Sie den Ursprungstyp an. Hier wird "HOST_SERVER" ausgewählt.
-    $input->originType = "HOST_SERVER";
+    // Die folgenden Werte sind optional
+    $inputObject->cname = "api-testing.cdnedge.bluemix.net";
+    $inputObject->path = "/media";
+    $inputObject->header = '';
+    $inputObject->respectHeader = true;
+    $inputObject->bucketName = 'mybucket';
+    $inputObject->fileExtension = "txt, jpeg";
+    $inputObject->cacheKeyQueryRule = "include-all";
 
-    // Geben Sie den Ursprungsadresse, das Protokoll und die Portnummer an.
-    $input->origin = "testserver.testingcdn.net";
-    $input->protocol = "HTTP";
-    $input->httpPort = 80;
-
-    // Geben Sie Optionen an.
-    $input->respectHeaders = true;
-
-    $cdnMapping = $client->createDomainMapping($input);
+    $cdnMapping = $client->createDomainMapping($inputObject);
     print_r($cdnMapping);
+
 } catch (\Exception $e) {
     die('createDomainMapping failed with an exception: ' . $e->getMessage());
 }
@@ -236,30 +227,54 @@ try {
 ```
 {: codeblock}
 
+Im Beispiel `createDomainMapping` werden die Attribute der neu erstellten CDN-Instanz angezeigt. Notieren Sie sich den Wert für `uniqueId`, da Sie ihn als Parameter für viele andere APIs angeben müssen. Die Ausgabe sollte der nachfolgenden ähneln:
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+            [bucketName] => mybucket
+            [cacheKeyQueryRule] => include-all
+            [certificateType] => SHARED_SAN_CERT
+            [cname] => api-testing.cdnedge.bluemix.net
+            [domain] => api-testing.cdntesting.net
+            [header] => origin.cdntesting.net
+            [httpPort] => 80
+            [httpsPort] =>
+            [originHost] => origin.cdntesting.net
+            [originType] => HOST_SERVER
+            [path] => /media/
+            [performanceConfiguration] => General web delivery
+            [protocol] => HTTP
+            [respectHeaders] => 1
+            [serveStale] => 1
+            [status] => CNAME_CONFIGURATION
+            [uniqueId] => 610345992629xxx
+            [vendorName] => akamai
+        )
+
+)
+```
+{: codeblock}
+
 ## Beispielcode zum Überprüfen der Domänenzuordnung
 
-```
-<?php
+Von 'VerifyDomainMapping' wird überprüft, ob die CNAME-Konfiguration vollständig ist; falls dies der Fall ist, wechselt der CDN-Status in den Status AKTIV. Vor dem Aufrufen von `verifyDomainMapping` müssen Sie einen CNAME-Datensatz des angepassten Hostnamens zu Ihrem DNS-Server hinzufügen.
 
-// Vor dem Aufrufen von 'verifyDomainMapping' muss der Kunde einen CNAME-Datensatz des angepassten Hostnamens zum DNS-Server hinzufügen.
-// Mit diesem Code wird 'verifyDomainMapping' mit der 'UniqueId' aufgerufen, die als Teil von 'createDomainMapping' zurückgegeben wurde.
-// Mit 'VerifyDomainMapping' wird überprüft, ob die Konfiguration von 'CNAME' abgeschlossen ist. Ist dies der Fall, wir der CDN-Status auf 'RUNNING' gesetzt.
+Im folgenden Beispiel wird `verifyDomainMapping` mit dem Wert für 'UniqueId' aufgerufen, der als Teil von `createDomainMapping` zurückgegeben wurde. Der SOAP-Client muss mithilfe der Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` wie im folgenden Beispiel beschrieben initialisiert werden.
 
-// Schritt 1: Erhalten Sie Zugriff auf den SOAP-Client über 'vendor/autoload'. Der Pfad ist relativ zu der Position, an der
-// das Script ausgeführt wird und muss möglicherweise entsprechend bearbeitet werden.
-require_once './../vendor/autoload.php';
+```php
 
-// Schritt 2: Geben Sie einen gültigen Benutzernamen und Schlüssel für die API an.
-$apiUsername = '<Ihr Benutzername>' ;
-$apiKey = '<Ihr API-Schlüssel>' ;
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Mapping',
+    null,
+    $apiUsername,
+    $apiKey
+  );
 
-// Schritt 3: Initialisieren Sie den SOAP-Client für die entsprechende Klasse. In diesem Fall ist es die Klasse
-// 'SoftLayer_Network_CdnMarketplace_Configuration_Mapping', die die Methode 'verifyDomainMapping' definiert.
-$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Configuration_Mapping', null, $apiUsername, $apiKey);
-
-// Schritt 4: Initialisieren Sie das Objekt '$uniqueId' und rufen Sie 'verifyDomainMapping' auf.
 try {
-    $uniqueId = 907987176256747;
+    $uniqueId = 610345992629xxx;
 
     $cdnMapping = $client->verifyDomainMapping($uniqueId);
 
@@ -270,3 +285,51 @@ try {
 }
 ```
 {: codeblock}
+
+Falls der CNAME-Datensatz zum DNS-Server hinzugefügt wurde, ändert sich der Wert für `status` der CDN-Instanz nach dem Aufruf für `verifyDomainMapping` wie im folgenden Beispiel dargestellt in AKTIV.
+
+```php
+
+    [0] => stdClass Object
+        (
+          ...
+
+            [status] => RUNNING
+            [uniqueId] => 610345992629xxx
+
+          ...
+        )
+```
+{: codeblock}
+
+
+Falls der CNAME-Datensatz nicht zum DNS-Server hinzugefügt wurde oder der Server noch nicht aktualisiert wurde, lautet der Wert für `status` für die CDN-Instanz wie im folgenden Beispiel angegeben 'CNAME_CONFIGURATION'.
+
+**Hinweis:** Es kann einige Minuten dauern (bis zu 30), bis die CNAME-Verkettung abgeschlossen ist.
+
+```php
+Array
+(
+    [0] => stdClass Object
+        (
+          ...
+
+            [status] => CNAME_CONFIGURATION
+            [uniqueId] => 610345992629xxx
+
+          ...
+        )
+
+)
+```
+{: codeblock}
+
+Wenn Sie sicherstellen möchten, dass der CNAME-Datensatz ordnungsgemäß konfiguriert ist, führen Sie `dig <your domain>` in der Befehlszeile aus. Die Ausgabe sollte der nachfolgenden ähnlich sein:
+
+```
+;; ANSWER SECTION:
+api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdnedge.bluemix.net.
+```
+{: codeblock}
+
+Nachfolgend wird der Domänenname angezeigt, der dem CNAME ordnungsgemäß zugeordnet ist.

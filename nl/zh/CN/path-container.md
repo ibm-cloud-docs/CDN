@@ -15,7 +15,7 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # 路径（源）容器
-`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 集合包含路径（源）API 利用的属性。每一个路径 API 都会返回此类型的集合。
+`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 集合包含（源）路径 API 利用的属性。每一个路径 API 都会返回此类型的集合。
 
 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类  
 

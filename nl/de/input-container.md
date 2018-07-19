@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-11-14"
 {:download: .download}
 
 # Eingabecontainer
-Der Eingabecontainer (Input Container) ist eine Attributsammlung, die sowohl von Zuordnungsklassen (Mapping) als auch von Pfadklassen (Ursprungspfadklassen - Path) genutzt wird. Er stellt eine konsistente Gruppe von Eingabeattributen für beide Klassen bereit.
+Der Eingabecontainer (Input Container) ist eine Attributsammlung, die sowohl von Zuordnungsklassen (Mapping) als auch von Pfadklassen (Ursprungspfadklassen - Path) genutzt wird.  Er stellt eine konsistente Gruppe von Eingabeattributen für beide Klassen bereit.
 
 * `vendorName`: Der Name eines gültigen IBM Cloud CDN-Anbieters.
 * `oldPath`: Wird von updateOriginPath() verwendet. Diese Eigenschaft speichert den Namen des aktuellen oder des 'alten' Pfads.
@@ -40,11 +40,10 @@ Die folgenden Attribute sind für die Zuordnungsklasse (Mapping) spezifisch:
 * `domain`: Der primäre CDN-Name. Wird auch als Hostname bezeichnet.
 * `protocol`: Das Protokoll, das zur Einrichtung von Services verwendet wird. Dabei kann es sich um HTTP, HTTPS oder HTTP_AND_HTTPS (eine Kombination aus HTTP und HTTPS) handeln.
 * `cname`: Der Eintrag des kanonischen Namens, der als Aliasname für den Hostnamen fungiert. Dieser Name kann vom Benutzer angegeben oder durch das System generiert werden. Wenn er vom Benutzer angegeben wird, muss er weniger als 64 alphanumerische Zeichen enthalten und er muss eindeutig sein. Wenn kein Name angegeben wird, wird bei Erstellung der Zuordnung ein Name generiert.
-* `certificateType`: Der Typ von Zertifikat, der von einer Zuordnung verwendet wird, das heißt 'Platzhalter' (Wildcard). Für HTTP-Zuordnungen ist der Wert 0.
+* `certificateType`: Typ des Zertifikats, das von einer Zuordnung verwendet wird. Zulässige Werte sind `WILDCARD_CERT` und `SHARED_SAN_CERT`. Für HTTP-Zuordnungen ist der Wert 0.
 * `respectHeaders`: Ein boolescher Wert, der beim Wert 'true' veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
 * `header`: Gibt die Informationen für den Host-Header an, die vom Ursprungsserver verwendet werden.
 
 Die folgenden Attribute beziehen sich auf Cloud Object Storage (COS):  
 * `bucketName`: Der eindeutige Name Ihres Buckets für den S3-Objektspeicher.  
 * `fileExtension`: Die Dateierweiterungen, die zugelassen werden.
-

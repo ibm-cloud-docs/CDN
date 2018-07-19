@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -26,10 +26,10 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 
 如需 SLAPI 的相關資訊，或 IBM Cloud Content Delivery Network (CDN) 服務 API 的相關資訊，請參閱 IBM Cloud Development Network 中的下列資源：
 
-* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+* [SLAPI Overview](https://softlayer.github.io/ )
+* [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -70,6 +70,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 使用提供的輸入，此功能會建立給定供應商的網域對映，並建立它與使用者的「{{site.data.keyword.BluSoftlayer_notm}} 帳戶 ID」的關聯。必須先使用 `placeOrder` 建立 CDN 帳戶，此 API 才能運作（如需 `placeOrder` API 呼叫的範例，請參閱[程式碼範例](cdn-example-code.html)）。順利建立 CDN 之後，會建立值為 3600 秒的 `defaultTTL`。
 
 * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
   [檢視輸入容器](input-container.html)
 
   下列屬性是「輸入容器」的一部分，可以在建立網域對映時提供（除非另有說明，否則屬性為選用性）：
@@ -78,7 +79,8 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
     * `originType`：**必要**。原點類型可以為 `HOST_SERVER` 或 `OBJECT_STORAGE`。
     * `domain`：**必要**。請以字串形式提供主機名稱。
     * `protocol`：**必要**。支援的通訊協定為 `HTTP`、`HTTPS` 或 `HTTP_AND_HTTPS`。
-    * `path`：將從該處提供快取內容的路徑。預設路徑是 /\*
+    * `certificateType`：對於 HTTPS 通訊協定為**必要**。`SHARED_SAN_CERT` 或 `WILDCARD_CERT`
+    * `path`：將從該處提供快取內容的路徑。預設路徑是 `/*`
     * `httpPort` 及/或 `httpsPort`：（對於主伺服器為**必要**）這兩個選項必須對應於想要的通訊協定。如果通訊協定是 `HTTP`，則必須設定 `httpPort`，且_不得_ 設定 `httpsPort`。同樣地，如果通訊協定是 `HTTPS`，則必須設定 `httpsPort`，且_不得_ 設定 `httpPort`。如果通訊協定是 `HTTP_AND_HTTPS`，則 `httpPort` 和 `httpsPort` _都必須_ 設定。Akamai 對於埠號有特定的限制。如需允許的埠號，請參閱[常見問題](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
     * `header`：指定原點伺服器所使用的主機標頭資訊。
     * `respectHeader`：布林值，如果設為 `true` 將導致原點的 TTL 設定置換 CDN TTL 設定。
@@ -150,7 +152,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
     * `protocol`：支援的通訊協定為 `HTTP`、`HTTPS` 或 `HTTP_AND_HTTPS`。
     * `httpPort` 及/或 `httpsPort`：這兩個選項必須對應於想要的通訊協定。如果通訊協定是 `HTTP`，則必須設定 `httpPort`，且_不得_ 設定 `httpsPort`。同樣地，如果通訊協定是 `HTTPS`，則必須設定 `httpsPort`，且_不得_ 設定 `httpPort`。如果通訊協定是 `HTTP_AND_HTTPS`，則 `httpPort` 和 `httpsPort` _都必須_ 設定。Akamai 對於埠號有特定的限制。如需允許的埠號，請參閱[常見問題](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
     * `header`：指定原點伺服器所使用的主機標頭資訊。
-    * `respectHeader`：布林值，如果設為 `true` 將導致原點的 TTL 設定置換 CDN TTL 設定。
+    * `respectHeader`：布林值，如果設為 `true`，將導致原點的 TTL 設定置換 CDN TTL 設定。
     * `uniqueId`：在對映建立之後產生。
     * `cname`：請提供 CNAME。如果您未提供，則在建立對映時會產生。
     * `bucketName`：（僅對於 Object Storage 為**必要**）S3 Object Storage 的儲存區名稱。
@@ -160,7 +162,8 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
       * `ignore-all` - 忽略所有查詢引數
       * `ignore: 以空格區隔的查詢引數` - 忽略那些特定的查詢引數。例如 `ignore: query1 query2`
       * `include: 以空格區隔的查詢引數` - 包含那些特定的查詢引數。例如 `include: query1 query2`
-* **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 的集合
+* **傳回**類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 的集合
+
   [檢視對映容器](mapping-container.html)
 
 ----
@@ -169,6 +172,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 
 * **必要參數**：無
 * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 的集合
+
   [檢視對映容器](mapping-container.html)
 
 ----
@@ -177,6 +181,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 
 * **必要參數**：`uniqueId`：要傳回之對映的唯一 ID
 * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 的單一物件集合
+
   [檢視對映容器](mapping-container.html)
 
 ----
@@ -185,6 +190,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 建立現有 CDN 及特定客戶的「原點路徑」。「原點路徑」可以根據「主伺服器」或 Object Storage。若要建立「原點路徑」，網域對映必須處於 _RUNNING_ 或 _CNAME_CONFIGURATION_ 狀態。
 
 * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
   [檢視輸入容器](input-container.html)
 
   下列屬性是「輸入容器」的一部分，可以在建立原點路徑時提供（除非另有說明，否則屬性為選用性）：
@@ -215,6 +221,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 更新現有對映及特定客戶的現有「原點路徑」。無法使用此 API 來變更原點類型。可以變更下列內容：`path`、`origin`、`httpPort` 及 `httpsPort`、`header` 及 `cacheKeyQueryRule` 引數。若要更新，網域對映必須處於 _RUNNING_ 或 _CNAME_CONFIGURATION_ 狀態。
 
 * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
   [檢視輸入容器](input-container.html)
 
   下列屬性是「輸入容器」的一部分，可以在更新原點路徑時提供（除非另有說明，否則屬性為選用性）：
@@ -361,175 +368,70 @@ ___
  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive` 的物件陣列
 
  ----
-## 度量值的 API  
-### 度量值的容器類別  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## 度量值的 API
+[檢視度量值容器](metrics-container.html)
 ### getCustomerUsageMetrics
 傳回客戶帳戶在一段指定期間的直接顯示畫面（沒有圖形）的預定統計資料總數。
 
- * **參數**：`string` `vendorName`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
 ___
 ### getMappingUsageMetrics
 傳回給定對映的直接顯示畫面的預定統計資料總數。依預設，`frequency` 的值是 'aggregate'。
 
- * **參數**：`string` `mappingUniqueId`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
 ___
 ### getMappingHitsMetrics
 傳回每個網域對映在給定時間範圍內依特定頻率的命中總數。頻率可以是 'day'、'week' 及 'month'，而每一個間隔都是圖形的一個圖點。根據 `startDate`、`endDate` 及 `frequency`，排序傳回資料。依預設，`frequency` 的值是 'aggregate'。
 
- * **參數**：`string` `mappingUniqueId`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
 ___
 ### getMappingHitsByTypeMetrics
 傳回給定時間範圍內依特定頻率的命中總數。頻率可以是 'day'、'week' 及 'month'，而每一個間隔都是圖形的一個圖點。根據 `startDate`、`endDate` 及 `frequency`，必須排序傳回資料。依預設，`frequency` 的值是 'aggregate'。
 
- * **參數**：`string` `mappingUniqueId`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
 ___
 ### getMappingBandwidthMetrics
 傳回個別 CDN 的邊緣命中數。每一個供應商的地區可能會不同。每個對映。
 
- * **參數**：`string` `mappingUniqueId`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
 ___
 ### getMappingBandwidthByRegionMetrics
 傳回給定對映在一段指定期間的直接顯示畫面（沒有圖形）的預定統計資料總數。依預設，`frequency` 的值是 'aggregate'。
 
- * **參數**：`string` `mappingUniqueId`、`int` `startDate`、`int` `endDate`、`string` `frequency`
+ * **參數**：
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合

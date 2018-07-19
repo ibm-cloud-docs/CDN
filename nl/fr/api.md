@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -26,10 +26,10 @@ SLAPI est un système RPC (Remote Procedure Call, appel de procédure distante).
 
 Pour en savoir plus sur SLAPI ou sur les API du service IBM Cloud Content Delivery Network (CDN), veuillez consulter les ressources suivantes dans le réseau de développement d'IBM Cloud :
 
-* [SLAPI Overview](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Getting Started with SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [PHP Soap API Guide](https://sldn.softlayer.com/article/PHP )
+* [SLAPI Overview](https://softlayer.github.io/ )
+* [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -71,6 +71,7 @@ A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour 
 
 * **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
   [Afficher le conteneur d'entrée](input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un mappage de domaine (les attributs sont facultatifs sauf indication contraire) :
@@ -79,18 +80,19 @@ A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour 
     * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
     * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
     * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
-    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Le chemin d'accès par défaut est /\*
+    * `certificateType` : **obligatoire** pour le protocole HTTPS. `SHARED_SAN_CERT` ou `WILDCARD_CERT`
+    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Le chemin d'accès par défaut est `/*`
     * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte) ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
-    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine. 
+    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
     * `cname` : Fournissez un alias pour le nom d'hôte. Il sera généré si aucune valeur n'est fournie.
     * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
     * `fileExtension` : (facultatif pour le stockage d'objet) Extensions de fichiers autorisées à être mises en cache.
     * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache. Si aucun argument `cacheKeyQueryRule` n'est fourni, la valeur par défaut "include-all" sera utilisée
       * `include-all` - inclut tous les arguments de requête **default**
       * `ignore-all` - ignore tous les arguments de requête
-      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
-      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+      * `ignore: arguments de requête séparés par des espaces` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: arguments de requête séparés par des espaces` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
 
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
@@ -152,7 +154,7 @@ Permet à l'utilisateur de mettre à jour les propriétés du mappage identifié
     * `protocol` : Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
     * `httpPort` et/ou `httpsPort` : Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
-    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine. 
+    * `respectHeader` : Valeur booléenne qui, si elle définie sur `true`, entraîne le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
     * `uniqueId` : Généré après la création du mappage.
     * `cname` : Fournissez le cname. Si vous ne l'avez pas fourni lors de la création du mappage, il a été créé automatiquement.
     * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
@@ -160,9 +162,10 @@ Permet à l'utilisateur de mettre à jour les propriétés du mappage identifié
     * `cacheKeyQueryRule` : Les règles de comportement des clés de cache peuvent uniquement être mises à jour pour les mappages créés _après_ le 16/11/17. Les options suivantes sont disponibles pour configurer le comportement des clés de cache :
       * `include-all` - inclut tous les arguments de requête **default**
       * `ignore-all` - ignore tous les arguments de requête
-      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
-      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+      * `ignore: arguments de requête séparés par des espaces` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: arguments de requête séparés par des espaces` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Afficher le conteneur de mappage](mapping-container.html)
 
 ----
@@ -171,6 +174,7 @@ Renvoie une collection de tous les mappages de domaines pour le client en cours.
 
 * **Paramètres requis** : Aucun
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Afficher le conteneur de mappage](mapping-container.html)
 
 ----
@@ -178,7 +182,8 @@ Renvoie une collection de tous les mappages de domaines pour le client en cours.
 Renvoie une collection avec un objet de domaine unique sur la base du paramètre `uniqueId` associé au CDN.
 
 * **Paramètres obligatoires** : `uniqueId`: ID unique du mappage à renvoyer
-* **Retour** : Collection d'objet unique de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+* **Retour** : Collection d'objets uniques de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
   [Afficher le conteneur de mappage](mapping-container.html)
 
 ----
@@ -188,6 +193,7 @@ Crée un chemin d'origine pour un CDN existant et un client particulier. Le chem
 
 * **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
   [Afficher le conteneur d'entrée](input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
@@ -203,11 +209,11 @@ Crée un chemin d'origine pour un CDN existant et un client particulier. Le chem
     * `cname` : Fournissez un alias pour le nom d'hôte. Si vous n'avez pas fourni, un cname unique a été généré pour vous lors de la création du mappage.
     * `bucketName` : (**obligatoire** pour le stockage d'objet) Nom de compartiment de votre stockage d'objet S3.
     * `fileExtension` : (facultatif pour le stockage d'objet) Extensions de fichiers autorisées à être mises en cache.
-    * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache : 
+    * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache :
       * `include-all` - inclut tous les arguments de requête **default**
       * `ignore-all` - ignore tous les arguments de requête
-      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
-      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+      * `ignore: arguments de requête séparés par des espaces` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: arguments de requête séparés par des espaces` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
 
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
@@ -219,6 +225,7 @@ Met à jour un chemin d'origine existant pour un mappage existant et un client p
 
 * **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
   [Afficher le conteneur d'entrée](input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la mise à jour d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
@@ -233,8 +240,8 @@ Met à jour un chemin d'origine existant pour un mappage existant et un client p
     * `cacheKeyQueryRule` : (**obligatoire** en cas de mise à jour) Les règles de comportement de la clé de cache peuvent uniquement être mises à jour dans le cas de chemins d'origine créés _après_ le 16/11/17. Les options suivantes sont disponibles pour configurer le comportement de la clé de cache :
       * `include-all` - inclut tous les arguments de requête **default**
       * `ignore-all` - ignore tous les arguments de requête
-      * `ignore: space separated query-args` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
-      * `include: space separated query-args` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+      * `ignore: arguments de requête séparés par des espaces` - ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
+      * `include: arguments de requête séparés par des espaces` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
 
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
@@ -365,175 +372,70 @@ Répertorie les objets `TimeToLive` sur la base du paramètre `uniqueId` du CDN.
  * **Retour** : Tableau d'objets de type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API pour Metrics  
-### Classe de conteneur pour Metrics :  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## API pour Metrics
+[Afficher le conteneur Metrics](metrics-container.html)
 ### getCustomerUsageMetrics
 Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un compte client, au cours d'une période donnée.
 
- * **Paramètres** : `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Renvoie le nombre total de statistiques avec affichage direct du mappage concerné. La valeur `frequency` est agrégée par défaut.
 
- * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Renvoie le nombre total de correspondances à une certaine fréquence au cours d'un laps de temps donné, par mappage de domaine. La fréquence peut être au format 'jour', 'semaine' et 'mois', où chaque intervalle correspond à un point de tracé sur le graphique. Les données renvoyées sont ordonnées en fonction des valeurs `startDate`, `endDate` et `frequency`. La valeur `frequency` est agrégée par défaut.
 
- * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Renvoie le nombre total de correspondances à une certaine fréquence au cours d'un laps de temps donné. La fréquence peut être au format 'jour', 'semaine' et 'mois', où chaque intervalle correspond à un point de tracé sur le graphique. Les données renvoyées doivent être ordonnées en fonction des valeurs `startDate`, `endDate` et `frequency`. La valeur `frequency` est agrégée par défaut.
 
- * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Renvoie le nombre de correspondances vers le serveur d'équilibrage des charges pour un CDN individuel. Les régions peuvent être différentes d'un fournisseur à l'autre. Par mappage.
 
- * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un mappage donné, au cours d'une période donnée. La valeur `frequency` est agrégée par défaut.
 
- * **Paramètres** : `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Paramètres** :
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -40,11 +40,10 @@ Los siguientes atributos son específicos de la clase Correlación:
 * `domain`: nombre de la CDN primaria. También denominado nombre de host.
 * `protocol`: protocolo utilizado para configurar servicios. Puede ser HTTP, HTTPS o una combinación de ambos, HTTP_AND_HTTPS.
 * `cname`: registro de nombre canónico da alias al nombre de host. Puede ser proporcionado por el usuario o generado por el sistema. Si es proporcionado por el usuario, debe tener menos de 64 caracteres alfanuméricos y ser exclusivo. Si no se proporciona, se generará uno cuando se crea la correlación.
-* `certificateType`: tipo de certificado utilizado por una correlación, es decir, el comodín. El valor será 0 para correlaciones HTTP.
+* `certificateType`: tipo de certificado utilizado por una correlación. Puede ser `WILDCARD_CERT` o `SHARED_SAN_CERT`. El valor será 0 para correlaciones HTTP.
 * `respectHeaders`: un valor booleano que, si se establece en 'true', provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.
 * `header`: Especifica la información de cabecera de host utilizada por el origen.
 
 Los siguientes atributos están relacionados con Cloud Object Storage (COS):  
 * `bucketName`: nombre exclusivo del grupo para S3 Object Storage.  
 * `fileExtension`: extensiones de archivo permitidas.
-

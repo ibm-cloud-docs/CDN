@@ -1,0 +1,117 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-06-15"
+
+---
+
+{:shortdesc: .shortdesc}
+{:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
+
+# 讓 CDN 成為執行中狀態
+
+瞭解如何遵循這些準則，讓 CDN 進入 RUNNING 狀態。此文件也會告訴您如何啟動和停止 CDN。
+
+## 進入執行中
+
+在建立 CDN 之後，它就會出現在 CDN 儀表板上。您可以在這裡看到 CDN 名稱、「原點」、「提供者」及狀態。  
+
+ ![對映清單擷取畫面](images/mapping_list_cname.png)
+
+
+如果您訂購的 CDN 具有使用「萬用字元」憑證的 HTTP 或 HTTPS，則可以繼續「步驟 1」。
+
+如果您已建立具有 HTTPS DV SAN 憑證的 CDN，則可能需要執行其他步驟來驗證網域，而這些步驟可以在[完成 HTTPS 的網域控制驗證](how-to-https.html#completing-domain-control-validation-for-https)頁面上找到。
+
+**步驟 1：**
+
+在您訂購 CDN 之後，需要與 DNS 提供者一起配置 **CNAME**。大部分 DNS 提供者都會指示您如何設定或變更 CNAME。
+
+   * 在此期間，您的 CDN 狀態會顯示為 **CNAME 配置**。請與 DNS 提供者聯繫，以找出變更何時生效。
+
+   ![CNAME 配置](images/cname-config.png)  
+
+**步驟 2：**
+
+在您與 DNS 提供者一起配置 CNAME 之後，隨時都可以透過從 CDN 狀態右側的「溢位」功能表中選取**取得狀態**來檢查狀態。
+
+  ![CNAME 取得狀態](images/cname-getstatus.png)  
+
+**步驟 3：**
+
+CNAME 鏈結完成後，選取**取得狀態**會將狀態變更為 *RUNNING*，並且可以開始使用 CDN。
+
+恭喜！您的 CDN 現在正在執行。在這裡，[管理 CDN](how-to.html#manage-your-CDN) 頁面包含關於配置選項（例如[存活時間](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除快取的內容](how-to.html#purging-cached-content)及[新增原點路徑詳細資料](how-to.html#adding-origin-path-details)）的其他資訊。
+
+## 啟動 CDN
+
+只有在處於「已停止」狀態時，才能啟動 CDN  
+
+**步驟 1：**
+
+從「溢位」功能表（此功能表顯示為 CDN 列右側的三個點）中，按一下「啟動 CDN」。
+
+  ![「溢位」功能表](images/start_cdn.png)
+
+**步驟 2：**
+
+即會出現較大的對話框視窗，要求確認您要啟動此服務。選取**確認**以繼續。
+
+**步驟 3：**
+
+如果動作成功，則對話框會出現在畫面右上角，讓您知道它已成功，並且附有時間。
+
+**步驟 4：**
+
+這個步驟會將「狀態」變更為「CNAME 配置」
+
+**步驟 5：**
+
+從「溢位」功能表中，按一下「取得狀態」。這個步驟會將狀態變更為「執行中」。您的 CDN 將變成可操作。
+
+## 停止 CDN
+
+只有在處於「執行中」狀態時，才能停止 CDN。
+
+**步驟 1：**
+
+從「溢位」功能表（CDN 狀態右側的 3 個垂直點）中，按一下「停止 CDN」。
+ ![「溢位」功能表](images/stop_cdn.png)
+
+**步驟 2：**
+
+即會出現較大的對話框視窗，要求您確認要停止此服務。選取**確認**以繼續。
+
+**步驟 3：**
+
+大約 5 到 15 秒之後，狀態應該會變更為「已停止」
+
+## 刪除 CDN
+
+若要刪除 CDN，請遵循下列步驟：
+
+**附註**：從「溢位」功能表中選取`刪除`，只會刪除 CDN，並不會刪除您的帳戶。
+
+**步驟 1：**
+
+從「溢位」功能表中，按一下「刪除」。
+
+ ![刪除 CDN「溢位」功能表](images/delete_cdn.png)
+
+**步驟 2：**
+
+即會出現較大的對話框視窗，要求確認您要刪除。按一下**刪除**以繼續。
+
+**附註**：如果 CDN 是使用具有「DV SAN 憑證」的 HTTPS 所配置，則最多可能需要 5 小時才能完成此刪除處理程序。
+
+  ![刪除，但發出警告](images/delete-with-warning.png)
+
+**步驟 3：**
+
+完成步驟 1 和 2 之後，您的 CDN 狀態將是`刪除中`。刪除處理程序完成後，再按一次溢位功能表中的「取得狀態」，將會從 CDN 清單中移除列。如果刪除處理程序尚未完成，則此動作沒有作用。

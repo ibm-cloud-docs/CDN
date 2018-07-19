@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2018
+lastupdated: "2018-06-07"
 
 ---
 
@@ -40,11 +40,10 @@ I seguenti attributi sono specifici per la classe Mapping:
 * `domain`: il nome CDN primario. Viene indicato anche come nome host.
 * `protocol`: il protocollo utilizzato per configurare i servizi. Può essere HTTP, HTTPS o una combinazione dei due, HTTP_AND_HTTPS.
 * `cname`: il record di nome canonico che funge da alias del nome host. Può essere fornito dall'utente oppure generato dal sistema. Se viene fornito dall'utente, deve avere una lunghezza inferiore ai 64 caratteri alfanumerici e deve essere univoco. Se non viene fornito, ne viene generato uno quando viene creata l'associazione.
-* `certificateType`: il tipo di certificato utilizzato da un'associazione, ossia wildcard. Il valore sarà 0 per le associazioni HTTP.
+* `certificateType`: il tipo di certificato utilizzato da un'associazione. Può essere `WILDCARD_CERT` o `SHARED_SAN_CERT`. Il valore sarà 0 per le associazioni HTTP.
 * `respectHeaders`: un valore booleano che, se impostato su 'true', fa in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
 * `header`: specifica le informazioni sull'intestazione host utilizzate dall'origine.
 
 I seguenti attributi sono correlati a COS (Cloud Object Storage):  
 * `bucketName`: il nome univoco del tuo bucket per l'Object Storage S3.  
 * `fileExtension`: le estensioni file consentite.
-

@@ -44,8 +44,7 @@ Ao usar os fóruns para fazer uma pergunta, marque a sua pergunta para que ela p
 identifique a sua pergunta com "cdn" e "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * Para perguntas sobre o serviço e instruções de introdução, use o fórum [IBM developerWorks dW Answers
-![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. 
-Inclua as tags "cdn" e "ibm-cloud".
+![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Inclua as tags "cdn" e "ibm-cloud".
 
 Consulte
 [Obtendo

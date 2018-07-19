@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2018-01-26"
+  years: 2017, 2018
+lastupdated: "2018-06-06"
 
 ---
 
@@ -20,16 +20,16 @@ lastupdated: "2018-01-26"
 
 La interfaz de programación de aplicaciones de {{site.data.keyword.BluSoftlayer_notm}} (habitualmente llamada SLAPI), proporcionada por IBM Cloud, es la interfaz de desarrollo que da a los desarrolladores y administradores del sistema una interacción directa con el sistema de fondo {{site.data.keyword.BluSoftlayer_notm}}.
 
-La SLAPI implementa muchas funciones en el Portal de cliente: si es posible una interacción en el Portal de cliente, también puede cumplirse en la SLAPI. Como puede interactuar con todas las porciones del entorno {{site.data.keyword.BluSoftlayer_notm}} mediante programación, dentro de la SLAPI, puede utilizar la API para automatizar tareas.
+La SLAPI implementa muchas funciones en el Portal de clientes: si es posible una interacción en el Portal de cliente, también puede cumplirse en la SLAPI. Como puede interactuar con todas las porciones del entorno {{site.data.keyword.BluSoftlayer_notm}} mediante programación, dentro de la SLAPI, puede utilizar la API para automatizar tareas.
 
 La SLAPI es un sistema de llamada a procedimiento remoto (RPC). Cada llamada implica el envío de datos a un punto final de API y la recepción de datos estructurados. El formato utilizado para enviar y recibir datos con la SLAPI depende de qué implementación de la API utilice. Actualmente la SLAPI utiliza SOAP, XML-RPC o REST para la transmisión de datos.
 
 Para obtener más información sobre la SLAPI, o sobre las API de servicio de IBM Cloud Content Delivery Network (CDN), consulte los siguientes recursos en IBM Cloud Development Network:
 
-* [Descripción general de SLAPI](https://sldn.softlayer.com/article/softlayer-api-overview )
-* [Iniciación a SLAPI](http://sldn.softlayer.com/article/getting-started )
-* [SoftLayer_Product_Package API](http://sldn.softlayer.com/reference/services/SoftLayer_Product_Package )
-* [Guía de API Soap PHP](https://sldn.softlayer.com/article/PHP )
+* [Descripción general de SLAPI](https://softlayer.github.io/ )
+* [Iniciación a SLAPI](https://softlayer.github.io/article/getting-started/ )
+* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
+* [Guía de API Soap PHP](https://softlayer.github.io/article/PHP/ )
 
 ----
 
@@ -70,7 +70,9 @@ Comprueba si existe una cuenta CDN del usuario que llama a la API para el `vendo
 Usando las entradas proporcionadas, esta función crea una correlación de dominios para el proveedor dado y la asocia con el ID de cuenta de {{site.data.keyword.BluSoftlayer_notm}} del usuario. La cuenta de CDN debe crearse primero utilizando `placeOrder` para que esta API funcione (vea un ejemplo de la llamada de API `placeOrder` en los [Ejemplos de código](cdn-example-code.html)). Después de crear correctamente la CDN, se crea `defaultTTL` con un valor de 3600 segundos.
 
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puede ver todos los atributos del contenedor de entradas aquí: [Ver el contenedor de entradas](input-container.html)
+  Aquí puede ver todos los atributos del Contenedor de entrada:
+
+  [Ver el contenedor de entrada](input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al crearse una correlación de dominios (los atributos son opcionales a menos que se indique lo contrario):
     * `vendorName`: **necesario** Proporcione el nombre de un proveedor de IBM Cloud CDN válido.
@@ -78,7 +80,8 @@ Usando las entradas proporcionadas, esta función crea una correlación de domin
     * `originType`: **necesario** El tipo de origen puede ser `HOST_SERVER` u `OBJECT_STORAGE`.
     * `domain`: **necesario** Proporcione el nombre de host como una serie.
     * `protocol`: **necesario** Los protocolos soportados son `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
-    * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. La vía de acceso predeterminada es /\*
+    * `certificateType`: **obligatorio** para el protocolo HTTPS. `SHARED_SAN_CERT` o `WILDCARD_CERT`
+    * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. La vía de acceso predeterminada es `/*`
     * `httpPort` y/o `httpsPort`: (**necesario** para el servidor de host) Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
     * `header`: especifica la información de cabecera de host utilizada por el servidor de origen.
     * `respectHeader`: un valor booleano que, si se establece en `true`, provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.
@@ -161,7 +164,8 @@ Habilita al usuario para que actualice las propiedades de la correlación identi
       * `ignore: space separated query-args` - ignora argumentos de consulta específicos. Por ejemplo, `ignore: query1 query2`
       * `include: space separated query-args`: incluye argumentos de consulta específicos. Por ejemplo, `include: query1 query2`
 * **Devuelve** una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Ver contenedor de correlaciones](mapping-container.html)
+
+  [Ver el contenedor de correlaciones](mapping-container.html)
 
 ----
 ### listDomainMappings
@@ -169,15 +173,17 @@ Devuelve una recopilación de todas las correlaciones de dominio para el cliente
 
 * **Parámetros necesarios**: Ninguno
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Ver contenedor de correlaciones](mapping-container.html)
+
+  [Ver el contenedor de correlaciones](mapping-container.html)
 
 ----
 ### listDomainMappingByUniqueId
 Devuelve una recopilación con un objeto de dominio único basado en el `uniqueId` de una CDN.
 
 * **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que se va a devolver
-* **Devuelve**: una recopilación de único objeto del tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Ver contenedor de correlaciones](mapping-container.html)
+* **Devuelve**: una recopilación de un solo objeto de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
+
+  [Ver el contenedor de correlaciones](mapping-container.html)
 
 ----
 ## API para origen
@@ -185,7 +191,9 @@ Devuelve una recopilación con un objeto de dominio único basado en el `uniqueI
 Crea una vía de acceso de origen para una CDN existente y un cliente determinado. La vía de acceso de origen puede basarse en un servidor de Host o en Object Storage. Para crear la vía de acceso de origen, el estado de la correlación de dominios debe ser _RUNNING_ o _CNAME_CONFIGURATION_.
 
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puede ver todos los atributos del contenedor de entradas aquí: [Ver el contenedor de entradas](input-container.html)
+  Aquí puede ver todos los atributos del Contenedor de entrada:
+
+  [Ver el contenedor de entrada](input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al crearse una vía de acceso de origen (los atributos son opcionales a menos que se indique lo contrario):
     * `vendorName`: **necesario** Proporcione el nombre de un proveedor de IBM Cloud CDN válido.
@@ -215,7 +223,9 @@ Crea una vía de acceso de origen para una CDN existente y un cliente determinad
 Actualiza una vía de acceso de origen para una correlación existente y un cliente determinado. El tipo de origen no puede cambiarse con esta API. Se pueden cambiar las siguientes propiedades: `path`, `origin`, `httpPort` y `httpsPort`, `header` y argumentos `cacheKeyQueryRule`. Para que se actualice la correlación de dominios debe estar en estado _RUNNING_ o _CNAME_CONFIGURATION_.
 
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puede ver todos los atributos del contenedor de entradas aquí: [Ver el contenedor de entradas](input-container.html)
+  Aquí puede ver todos los atributos del Contenedor de entrada:
+
+  [Ver el contenedor de entrada](input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al actualizar una vía de acceso de origen (los atributos son opcionales a menos que se indique lo contrario):
     * `oldPath`: **necesario** vía de acceso actual que se cambiará
@@ -361,175 +371,70 @@ Lista los objetos `TimeToLive` existentes según un valor de `uniqueId` de la CD
  * **Devuelve**: una matriz de objetos de tipo `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 
  ----
-## API para métricas  
-### Clase de contenedor para métricas:  
-```  
-class SoftLayer_Container_Network_CdnMarketplace_Metrics  
-{  
-    /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @var string[]
-     */
-    public $names;
-
-    /**
-     * @var string[]
-     */   
-     public $totals;
-
-    /**
-     * @var string[]
-     */
-    public $percentage;
-
-    /**
-     * @var string[]
-     */
-    public $time;
-
-    /**
-     * @var string[]
-     */
-    public $xaxis;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis1;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis2;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis3;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis4;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis5;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis6;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis7;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis8;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis9;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis10;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis11;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis12;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis13;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis14;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis15;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis16;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis17;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis18;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis19;
-
-    /**
-     * @var string[]
-     */
-    public $yaxis20;
-}  
-```  
+## API para métricas
+[Visualizar el contenedor de métricas](metrics-container.html)
 ### getCustomerUsageMetrics
 Devuelve el número total de estadísticas predeterminadas para su visualización directa (sin gráficos), correspondientes a la cuenta de un cliente durante un periodo de tiempo determinado.
 
- * **Parámetros**: `string` `vendorName`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:
+   * `vendorName`
+   * `startDate`
+   * `endDate`
+   * `frequency`
 
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
 Devuelve el número total de estadísticas predeterminadas para su visualización directa, correspondientes a la correlación determinada. El valor de `frequency` es "aggregate" de forma predeterminada.
 
- * **Parámetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
 Devuelve el número total de aciertos en una frecuencia determinada durante un intervalo de tiempo dado, por correlación de dominios. La frecuencia puede ser diaria, semanal o mensual, en la que cada intervalo es un punto de gráfico. Los datos devueltos se ordenan según los valores de `startDate`, `endDate` y `frequency`. El valor de `frequency` es "aggregate" de forma predeterminada.
 
- * **Parámetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
 Devuelve el número total de aciertos en una frecuencia determinada durante un intervalo de tiempo dado. La frecuencia puede ser diaria, semanal o mensual, en la que cada intervalo es un punto de gráfico. Los datos devueltos deben ordenarse según los valores de `startDate`, `endDate` y `frequency`. El valor de `frequency` es "aggregate" de forma predeterminada.
 
- * **Parámetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
 Devuelve el número de aciertos en el perímetro en una CDN individual. Las regiones pueden diferir según el proveedor. Por correlación.
 
- * **Parámetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:  
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
 Devuelve el número total de estadísticas predeterminadas para su visualización directa (sin gráficos), correspondientes a la correlación determinada durante un periodo de tiempo determinado. El valor de `frequency` es "aggregate" de forma predeterminada.
 
- * **Parámetros**: `string` `mappingUniqueId`, `int` `startDate`, `int` `endDate`, `string` `frequency`
+ * **Parámetros**:
+   * `mappingUniqueId`
+   * `startDate`
+   * `endDate`
+   * `frequency`
+
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-02-06"
+lastupdated: "2018-06-05"
 
 ---
 
@@ -36,15 +36,15 @@ Sur la page **Content Delivery Networks**, cliquez sur le bouton **Order CDN** e
 
    ![Select order CDN](images/order-cdn-button.png)
 
-## A partir du portail Bluemix :
+## Depuis le portail IBM Cloud
 
 **Etape 1 :**
 
-Connectez-vous au [Portail Bluemix](https://www.ibm.com/cloud-computing/bluemix/)
+Connectez-vous au portail [IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/)
 
 **Etape 2 :**
 
-Cliquez sur [IBM Bluemix Catalog](https://console.bluemix.net/catalog/). Dans la barre de navigation située dans la partie gauche de l'écran, sélectionnez **Network**.
+Cliquez sur [Catalogue IBM Cloud](https://console.bluemix.net/catalog/). Dans la barre de navigation située dans la partie gauche de l'écran, sélectionnez **Network**.
 
    ![Bluemix CDN Navigation](images/bluemix_navigation.png)
 
@@ -57,7 +57,7 @@ Cliquez sur **CDN Tile** pour accéder à la page de sélection du fournisseur.
 
 **Etape 4 :**
 
-Dans l'écran **Select a CDN Provider**, choisissez un fournisseur de CDN parmi les options proposées. Cliquez sur le bouton **Select** pour confirmer les options sélectionnées puis cliquez sur **Start Provision** en bas à droite de votre écran pour commencer le processus de mise à disposition.  
+Dans l'écran **Select a CDN Provider**, choisissez un fournisseur de CDN parmi les options proposées. Cliquez sur le bouton **Select** pour confirmer les options sélectionnées puis cliquez sur **Next** en bas à droite de votre écran pour commencer le processus de mise à disposition.  
        ![Select CDN provider](images/Vendor_Select_And_Provision.png)
 
 **Etape 5 :**
@@ -76,25 +76,34 @@ Renseignez la zone **Configure Name** :
 Renseignez la zone **Configure Your Origin** : Pour configurer cette zone, sélectionnez soit **Server**, soit **Object Storage**.  
 
    * Spécifiez **Host header** (facultatif). Si aucun en-tête d'hôte n'est fourni, la valeur de **Hostname** sera utilisée par défaut. Pour en savoir plus sur l'en-tête d'hôte, consultez la description de la fonction de [prise en charge des en-têtes d'hôte](about.html#host-header-support-).  
-   
-   * Fournissez un chemin d'accès dans **Path** (facultatif). Le chemin d'accès doit être relatif au nom d'hôte spécifié dans **Hostname**. 
-   
+
+   * Fournissez un chemin d'accès dans **Path** (facultatif). Le chemin d'accès doit être relatif au nom d'hôte spécifié dans **Hostname**.
+
       ![Configure Origin](images/configure-origin.png)  
 
   * Option **Server** : Si vous sélectionnez l'option **Server**, indiquez le nom d'hôte ou l'adresse IP du serveur d'origine à partir duquel les données sont mises en cache.
       * Renseignez la zone **Origin Server Address** (nom d'hôte ou adresse IPv4 du serveur d'origine) si vous avez sélectionné cette option. Si **HTTPS port** est sélectionné, l'adresse figurant sous **Origin Server Address** doit être celle du nom d'hôte et non l'adresse IP.
-      * Vous pouvez également spécifier les zones **HTTP port** et/ou **HTTPS port**. Ces zones indiquent quels protocoles et numéros de port peuvent être utilisés pour contacter le serveur d'origine. Pour utiliser des numéros de port qui ne sont pas ceux définis par défaut, consultez la [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir la liste des numéros de port autorisés.
+      * Vous pouvez également spécifier les zones **HTTP port** et/ou **HTTPS port**. Ces zones indiquent quels protocoles et numéros de port peuvent être utilisés pour contacter le serveur d'origine. Pour utiliser des numéros de port qui ne sont pas ceux définis par défaut, consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) pour obtenir la liste des numéros de port autorisés.
+      * **SSL Certificate** Cette option apparaît _uniquement_ quand HTTPS Port est sélectionné. \*Des informations supplémentaires relatives aux configurations de certificats SSL et HTTPS suivent la description de l'option Object Storage.
 
 	     ![Configure origin server](images/configure-origin-server.png)
 
   * Option **Object Storage** : Si vous sélectionnez l'option **Object Storage**, fournissez les informations suivantes :
-      * le noeud final (**Endpoint**) à partir duquel l'objet doit être récupéré, 
+      * le noeud final (**Endpoint**) à partir duquel l'objet doit être récupéré,
       * le nom du compartiment (**Bucket**) dans lequel est stocké le contenu, et
       * le port HTTPS (**HTTPS port**).
+      * **SSL Certificate** Cette option apparaît _uniquement_ quand HTTPS Port est sélectionné. \*Des informations supplémentaires relatives aux configurations de certificats SSL et HTTPS suivent la description de l'option Object Storage.
       * Vous pouvez également indiquer les extensions de fichiers, séparées par des virgules, susceptibles d'être utilisées dans le service CDN. (Si aucune extension n'est sélectionnée, toutes les extensions de fichiers sont admises.)
       * Définissez la liste de contrôle d'accès (**Access Control List**) de chaque **objet** dans votre **compartiment** sur "public-read".
 
-	     ![Configure object storage](images/configure-origin-object-storage.png)
+      	  ![Configure object storage](images/configure-origin-cos.png)
+
+  * **SSL Certificate** : si vous sélectionnez **HTTPS Port** pour Server ou pour Object Storage, vous pouvez choisir **Wildcard** ou **DV SAN Certificate** en tant qu'option **SSL Certificate**. Ces deux choix offrent la sécurité renforcée fournie par HTTPS.
+    * **Wildcard Certificate** autorise le trafic HTTPS uniquement en cas d'utilisation de **CNAME** et ne nécessite aucune autre action de votre part.
+    * **DV SAN Certificate** permet un trafic HTTPS sur votre domaine mais requiert des étapes supplémentaires de vérification.
+
+        ![Configuration HTTPS](images/configure-https.png)
+
 
 **Etape 7 :**
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-10"
+  years: 2017, 2018
+lastupdated: "2018-06-19"
 
 ---
 
@@ -17,9 +17,10 @@ lastupdated: "2017-09-10"
 # Limitazioni note
 
 Le seguenti limitazioni si applicano al nuovo servizio CDN per il fornitore Akamai:
-* HTTPS è attualmente supportato solo tramite certificato con carattere jolly.
 * L'eliminazione di più file o di contenuto a livello di directory non è attualmente supportata.
 * Limite di 10 CDN attualmente consentito per un determinato account {{site.data.keyword.BluSoftlayer_notm}}.
 * Il limite sul numero totale di voci di origine e TTL è 75 per ogni CDN.
-* L'opzione Utilizza contenuto obsoleto sarà sempre **Attiva**, anche se il CDN viene creato con essa **Non attiva** 
-* Se il CDN è stato creato con il **Server** e la **Porta HTTP**, l'origine può essere aggiunta soltanto con l'opzione **Server**.
+* L'opzione Utilizza contenuto obsoleto sarà sempre **Attiva**.
+* Il tipo di certificato HTTPS non può essere modificato una volta creata un'associazione, ad esempio da wildcard a SAN DV.
+* HTTPS con certificato SAN DV è disponibile solo per le nuove CDN.
+* Una CDN creata con un certificato SAN DV non può essere eliminata a meno che non si trovi in uno stato RUNNING, CNAME_Configuration, CREATE_ERROR o DELETE_ERROR.
