@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-07-19"
 
 ---
 
@@ -51,11 +51,13 @@ Congratulations! Your CDN is now running. From here, the [Manage your CDN](how-t
 
 ## Starting CDN
 
-A CDN can be started only when in 'Stopped' status  
+Starting your CDN informs the DNS to direct traffic from your origin to the Akamai edge server. Once the mapping is started, the DNS cache may still direct traffic to the origin so the functionality may not be seen by the domain immediately after the mapping is started. The time it takes to update depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
+
+**NOTE**: A CDN can be started only when in `Stopped` status  
 
 **Step 1:**
 
-Click 'Start CDN' from the Overflow menu, which appears as three dots to the right side of the CDN row.
+Click **Start CDN** from the Overflow menu, which appears as three dots to the right side of the CDN row.
 
   ![Overflow menu](images/start_cdn.png)
 
@@ -69,15 +71,17 @@ If the action was successful, a dialog box appears in the upper right corner of 
 
 **Step 4:**
 
-This step changes the Status to 'CNAME Configuration'
+This step changes the Status to `CNAME Configuration`
 
 **Step 5:**
 
-Click 'Get Status' from Overflow menu. This step changes the status to 'Running'. Your CDN becomes operational.
+Click **Get Status** from Overflow menu. This step changes the status to `Running`. Your CDN becomes operational.
 
 ## Stopping CDN
 
-A CDN can be stopped only when in 'Running' status.
+Once a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN edge servers and content is fetched directly from the origin. After a mapping is stopped, there may be a brief period of time where your content is not accessible. This is because the DNS cache may still be directing traffic to the Akamai edge servers. However, during this time, the Akamai edge server will deny traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
+
+**NOTE**: A CDN can be stopped only when in `Running` state.
 
 **Step 1:**
 

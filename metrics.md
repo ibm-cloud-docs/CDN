@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-07-24"
 
 ---
 
@@ -16,14 +16,15 @@ lastupdated: "2018-05-03"
 
 # Metrics
 
-## How do I view the metrics and usage?
+When you first select your CDN from the list, the Overview page opens. Here you can see the Total Bandwidth, Total Hits and Hit Ratio for the selected time period (default is 30 days).
 
-You can view metrics and usage on the **Overview** page, which can be reached by selecting your CDN from the **Content Delivery Networks** page. **NOTE**: After you create your CDN, it may take up to 48 hours for metrics to appear.
+  ![Metrics Overview](images/metrics-overview.png)
 
-## I created a CDN and there was data traffic through the CDN. Why don't my metrics show up?
+Directly beneath the overview, you will see a graphical representation of Total Bandwidth, Bandwidth per Region, Total Hits, and Hits By Type.
 
-After a CDN is created, it takes 48 hours for metrics to appear.
+  ![Metrics graphs](images/metrics-graphs.png)
 
+**NOTE**: After you create your CDN, it may take up to 48 hours for metrics to appear.
 
 ## Is there a minimum number of days for which I can view metrics? Is there a maximum?
 
@@ -35,8 +36,12 @@ Hit ratio represents the percentage of times the content was delivered from the 
 > ((Edge hits - Ingress hits)/Edge hits) * 100
 
 where:
+
 Edge hits is defined as "All hits to the edge servers from the end-users"  
 Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
 
 Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
 
+## Are metrics updated in real-time?
+
+No. Metrics are updated every 24 hours.

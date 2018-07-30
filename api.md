@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -262,7 +262,7 @@ Deletes and existing Origin Path for an existing CDN, and for a particular custo
 Lists the Origin Paths for an existing mapping based on the `uniqueId`.
 
 * **Required Parameters**:
-  * `uniqueId`: provide the uniqueid of the mapping for which you want to list Origin Paths.
+  * `uniqueId`: provide the uniqueId of the mapping for which you want to list Origin Paths.
 * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
   [View the Origin Path Container](path-container.html)
@@ -439,3 +439,85 @@ Returns the total number of predetermined statistics for direct display (no grap
    * `frequency`
 
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+
+----
+## API for Geographical Access Control
+### createGeoblocking
+Creates a new Geographical Access Control rule, and returns the newly created rule.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attributes are part of the Input Container and are **required** when creating a new Geographical Access Control rule:
+    * `uniqueId`: uniqueId of the mapping to assign the rule
+    * `accessType`: specifies whether the rule will `ALLOW` or `DENY` traffic to the given region
+    * `regionType`: the type of region to apply the Geographical Access Control rule to, either `CONTINENT` or `COUNTRY_OR_REGION`
+    * `regions`: an array listing the locations that the `accessType` will apply to
+
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) page to see a list of possible regions.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [View the Geo-blocking class](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+Updates an existing Geographical Access Control rule for an existing domain mapping and returns the updated rule.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attributes are part of the Input Container and may be provided when updating a  Geographical Access Control rule (parameters are optional unless otherwise noted):
+    * `uniqueId`: **required** uniqueId of the mapping the rule to be updated belongs
+    * `accessType`: specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
+    * `regionType`: the type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`
+    * `regions`: an array listing the locations that the `accessType` will apply to
+
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) page to see a list of possible regions.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [View the Geo-blocking class](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+Removes an existing Geographical Access Control rule from an existing domain mapping.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attribute is part of the Input Container and is **required** when deleting a Geographical Access Control rule:
+    * `uniqueId`: provide the uniqueId of the mapping that the rule to be deleted belongs to.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [View the Geo-blocking class](geoblock-behavior.html)
+
+----
+### getGeoblocking
+Retrieves a mapping's Geographical Access Control behavior from the database.
+
+  * **Parameters**:
+    * `uniqueId`: the uniqueId of the mapping that the rule belongs to.
+
+  * **Returns**: an object of type
+     `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [View the Geo-blocking class](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+Returns a list of the types and regions that are allowed for creating Geographical Access Control rules.
+
+  * **Parameters**:
+    * `uniqueId`: the uniqueId of your domain mapping.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
+
+    [View the Geo-blocking class](geoblock-behavior.html)

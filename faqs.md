@@ -60,7 +60,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 
 ## My CDN is in an Error State. What do I do now?
 
-Please refer to the [Troubleshooting](troubleshooting.html#troubleshooting) or [Getting Help and Support](getting-help.html#getting-help-and-support) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
+Please refer to the [Troubleshooting](troubleshooting.html#troubleshooting) or [Getting Help and Support](getting-help.html#gettinghelp) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
 
 ## Where do I find my CNAME if I didn't provide one?
 

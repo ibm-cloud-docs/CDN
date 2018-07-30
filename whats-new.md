@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -18,6 +18,10 @@ lastupdated: "2018-07-13"
 
 IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 
+## July 2018
+
+  * Geographical Access Control [feature description](feature-descriptions.html#geographical-access-control) (currently available only through the API)
+
 ## June 2018
 
 * HTTPS with DV SAN support [feature description](feature-descriptions.html#https-protocol-support)
@@ -27,4 +31,4 @@ IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't
 
   * Large File Optimization [feature description](feature-descriptions.html#large-file-optimization)
   * Cache Key Optimization [feature description](feature-descriptions.html#cache-key-query-args)
-  * Video On Demand Optimization [feature description](feature-descriptions.html#video-on-demand-optimization)
+  * Video On Demand Optimization [feature description](feature-descriptions.html#video-on-demand)

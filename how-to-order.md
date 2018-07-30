@@ -76,7 +76,7 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
       * Provide a **Path** where content can be retrieved from on the Origin (optional). Please see the feature description for [Path-based CDN mappings](feature-descriptions.html#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
-      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) for a list of allowed port numbers.
+      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
         * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
@@ -96,7 +96,7 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
       * You **must** provide the name of the **Bucket** in which your content is stored.
 
-      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) for a list of allowed port numbers.
+      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
         * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part

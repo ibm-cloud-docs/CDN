@@ -33,6 +33,7 @@ The following attributes are common to the Mapping and (Origin) Path classes:
   * `ignore-all`: Ignore all query arguments
   * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
   * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
+* `geoblockingRule`
 
 The following attributes are specific to the Mapping class:
 

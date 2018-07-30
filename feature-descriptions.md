@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -110,3 +110,13 @@ When this feature is enabled, there is a slight performance cost associated with
 **Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
 **Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the drop-down menu under **Optimize for** on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
+
+## Geographical Access Control
+
+Geographical Access Control is a rule-based behavior that lets you set an access-type on a group of users based on their geographical location. There are two types of behaviors - **Allow** and **Deny**.
+
+The access-type `Allow` lets you specifically allow traffic to selected regions based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to `Allow` traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
+
+On the other hand, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified, regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents will **not** be able to use your service, whereas users on all other continents will have access to it.
+
+**NOTE**: This feature is currently available only through our API. You can view the [API page](api.html#api-for-geographical-access-control) for more information.
