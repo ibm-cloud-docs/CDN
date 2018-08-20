@@ -30,7 +30,7 @@ Your account is created during the CDN order process, when you click on **Select
 
 ## What do I do when my CDN is in CNAME_CONFIGURATION Status?
 
-For HTTP-based CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For HTTPS-based CDN, this DNS update is **NOT** needed.
+For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
 
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
 
