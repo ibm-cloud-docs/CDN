@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -33,6 +33,13 @@ Your account is created during the CDN order process, when you click on **Select
 For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
 
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
+
+A typical CNAME record would look like the following on the DNS configuration page:
+
+| **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | example.com | example.cdnedge.bluemix.net | 15 minutes |
+
 
 ## What will I be billed for?
 
@@ -94,6 +101,10 @@ Omitting the slash, for example, using `www.example.com/images` will result in a
 
 Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708) from Akamai.
 
-## What security is included with IBM CDN solution with Akamai?
+## What security is included with the IBM CDN solution with Akamai?
 
-By using the distributed Akamai platform, you get unparalleled scale and resiliency with more than 240,000 servers in over 130 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
+Using the distributed Akamai platform, you get unparalleled scale and resiliency with more than 240,000 servers in over 130 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
+
+## Are cookies from the origin server preserved by the Akamai CDN? 
+
+For non-cacheable content, or any content that is not cached, cookies are preserved from the origin. For content that is cached by Edge servers, cookies are not preserved.
