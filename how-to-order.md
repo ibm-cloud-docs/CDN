@@ -41,17 +41,11 @@ Click on the **CDN Tile**.
 
 **Step 1:**
 
-Select **Create** at the bottom right, which takes you to the Vendor Selection screen.
+Click **Create** at the bottom right, which creates your CDN account if you don't have one already and redirects you to the CDN Configure screen.
 
    ![CDN overview](images/content-delivery.png)
 
 **Step 2:**
-
-From the **Select a CDN Provider** screen, choose among the CDN provider options. Click the **Select** button to confirm the selected provider, then click **Next** at the bottom right of your screen, to start the provisioning process.
-
-   ![Select CDN provider](images/select-provider.png)
-
-**Step 3:**
 
 Fill out the **Configure Name** field:  
 
@@ -62,11 +56,11 @@ Fill out the **Configure Name** field:
 
     **Note**: After provisioning your new CDN, you **must** configure the CNAME with your DNS provider.
 
-**Step 4:**
+**Step 3:**
 
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
 
-  * **Step 4, Option 1: The Server Option**
+  * **Step 3, Option 1: The Server Option**
 
      ![Configure Origin](images/configure-origin-server.png)
 
@@ -84,7 +78,7 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
 	     ![Configure origin server](images/ssl-cert-options.png)
 
-  * **Step 4, Option 2: The Object Storage Option**
+  * **Step 3, Option 2: The Object Storage Option**
 
     ![Configure Object storage](images/configure-origin-object-storage.png)
 

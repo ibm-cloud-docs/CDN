@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-25"
 
 ---
 
@@ -113,10 +113,10 @@ When this feature is enabled, there is a slight performance cost associated with
 
 ## Geographical Access Control
 
-Geographical Access Control is a rule-based behavior that lets you set an access-type on a group of users based on their geographical location. There are two types of behaviors - **Allow** and **Deny**.
+Geographical Access Control is a rule-based behavior that lets you set the `access-type` parameter for a group of users, based on their geographical location. Two types of behaviors are available: **Allow** and **Deny**.
 
-The access-type `Allow` lets you specifically allow traffic to selected regions based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to `Allow` traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
+The access-type `Allow` lets you specifically allow traffic to selected regions, based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to `Allow` traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
 
 On the other hand, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified, regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents will **not** be able to use your service, whereas users on all other continents will have access to it.
 
-**NOTE**: This feature is currently available only through our API. You can view the [API page](api.html#api-for-geographical-access-control) for more information.
+This feature is accessible from the **Settings** page of your CDN Configuration.

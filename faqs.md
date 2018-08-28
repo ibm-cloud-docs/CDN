@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-08-24"
 
 ---
 
@@ -28,7 +28,7 @@ A CDN achieves its purpose by caching web content on edge servers around the wor
 
 Your account is created during the CDN order process, when you click on **Select** after navigating through the "Vendor selection" menu.
 
-## What do I do when my CDN is in CNAME_CONFIGURATION Status?
+## What do I do when my CDN is in CNAME Configuration Status?
 
 For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
 
@@ -38,7 +38,7 @@ A typical CNAME record would look like the following on the DNS configuration pa
 
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
-| CNAME | example.com | example.cdnedge.bluemix.net | 15 minutes |
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
 
 
 ## What will I be billed for?
@@ -108,3 +108,16 @@ Using the distributed Akamai platform, you get unparalleled scale and resiliency
 ## Are cookies from the origin server preserved by the Akamai CDN? 
 
 For non-cacheable content, or any content that is not cached, cookies are preserved from the origin. For content that is cached by Edge servers, cookies are not preserved.
+
+## How do I use the IBM Cloud Console to give other users permission to create or manage a CDN?
+
+In the IBM Cloud Console, the account's Master User can provide other users with permission to create and manage a CDN. From the IBM Cloud Console main page, follow these steps to edit permissions:
+ * Select the **Account** tab
+ * Select **Users -> User List**
+ * Click on the desired **Username**
+ * Then select the **Portal Permissions** tab
+ * Select the **Services** tab
+ * Select **Manage CDN Account**
+ * Click the **Edit Portal Permissions** button
+ * Set the permissions that are needed.
+

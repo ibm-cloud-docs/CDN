@@ -18,9 +18,13 @@ lastupdated: "2018-07-25"
 
 IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 
+## August 2018
+
+  * Geographical Access Control [feature description](feature-descriptions.html#geographical-access-control) (available through UI)
+
 ## July 2018
 
-  * Geographical Access Control [feature description](feature-descriptions.html#geographical-access-control) (currently available only through the API)
+  * Geographical Access Control [feature description](feature-descriptions.html#geographical-access-control) (available  through the API)
 
 ## June 2018
 
