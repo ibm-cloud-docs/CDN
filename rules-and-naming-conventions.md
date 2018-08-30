@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-07"
+lastupdated: "2018-08-29"
 
 ---
 
@@ -16,15 +16,17 @@ lastupdated: "2018-05-07"
 
 # Rules and Naming Conventions
 
-## What are the rules for the Hostname?
-The `Hostname` input string **must**:
+## What are the rules for the CDN Hostname?
+The CDN `Hostname` input string **must**:
   * consist of alphanumeric characters
   * be less than 254 characters
   * end with a valid top-level domain name
   * must **not** contain more than 10 labels
   * must **not** end in `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
-Please refer to RFC 1035, section 2.3.4 for more details.
+Please refer to RFC 1035, section 2.3.4 for more details. 
+
+Furthermore, we highly recommend using a fully-qualified domain name as your CDN Hostname. Choose a name of the form 'www.example.com' rather than a root domain name (also referred as Zone Apex or Naked domain), of the form 'example.com'. You'll need to create a CNAME Record for the CDN Hostname you use, and the DNS RFC 1033 requires the root domain record to be an A Record, not a CNAME. Further clarification is provided in RFC 2181, section 10.1
 
 ## What are the custom CNAME naming conventions?
 The `CNAME` input string must adhere to the following rules:
@@ -60,7 +62,7 @@ The Purge path:
   * cannot end with a period (.)
   * cannot contain `*`
 
-**NOTE**: Purge is only allowed for single files. Directory level purge is not supported at this time.
+**NOTE**: Purge is allowed for single files only. Directory-level purge is not supported at this time.
 
 ## For the **Add Origin** command, are there any rules to follow for the Path string?
 For **Add Origin**, the path is **mandatory**. Also if your CDN was created with a path, the path for **Add Origin** must start with the CDN path as the prefix. For example, if the CDN path was specified as `/storage`, to invoke **Add Origin** with a path called `/examplePath`, the path provided would be `/storage/examplePath`.

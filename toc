@@ -19,6 +19,7 @@ Content Delivery Network (CDN)
     basic-functions.md
     how-to.md
     how-to-https.md
+    control-browser-caching-duration.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md
