@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -21,6 +21,7 @@ IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't
 ## August 2018
 
   * Geographical Access Control [feature description](feature-descriptions.html#geographical-access-control) (available through UI)
+  * Vendor Selection step is not needed anymore for [Ordering a CDN] (how-to-order.html#order-a-new-cdn-)
 
 ## July 2018
 

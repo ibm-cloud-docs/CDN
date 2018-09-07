@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -21,6 +21,8 @@ A Content Delivery Network (CDN) is a collection of edge servers that are distri
 ## How does a CDN work?
 
 A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using IBM Cloud Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
+
+![High level CDN diagram](images/high-level-cdn-diagram.png)
 
 ## Features
 
