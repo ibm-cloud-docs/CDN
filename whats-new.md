@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-09-13"
 
 ---
 
@@ -17,6 +17,10 @@ lastupdated: "2018-09-03"
 # What's New
 
 IBM Cloud launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
+
+## September 2018
+
+  * We now have POPs in these newly added locations: Bahrain, Belgium, Colombia, Ecuador, Finland, Greece, Hong Kong, Indonesia, Macau, Norway, Oman, Romania, South Korea, Sri Lanka, United Arab Emirates, and Uruguay. Look at the complete list of countries [here] (https://console.bluemix.net/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers)
 
 ## August 2018
 
