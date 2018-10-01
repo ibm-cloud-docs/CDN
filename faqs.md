@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,7 +26,7 @@ A CDN achieves its purpose by caching web content on edge servers around the wor
 
 ## How is my IBM Cloud Content Delivery Network service account created?
 
-Your account is created during the CDN order process, when you click on **Select** after navigating through the "Vendor selection" menu.
+Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network -> CDN page**, your account is created. If you are creating a CDN from the IBM cloud portal, when you click the **Create** button, under the **Catalog -> Network -> Content Delivery Network** page, your account is created.
 
 ## What do I do when my CDN is in CNAME Configuration Status?
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-25"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -42,7 +42,7 @@ IBM Cloud CDN provides the capability to conveniently and quickly remove, or "pu
 
 ## Time to Live (TTL)
 
-The Time To Live indicates the amount of time (in seconds) the Edge server will cache the content for that particular file or directory path. When a CDN is first created, a global Time To Live (TTL) is created for path `/\*` with a default time of 3600 seconds. The minimum value for TTL is 30 seconds, and the maximum value is 2147483647 seconds. For each entry, the TTL path should be unique for the CDN. If multiple paths match a given content, the most recently configured path match applies to that content. For example, consider two TTLs, `/example/file` created first with a time to live value of 3000 seconds and `/example/*` is created later, with a value of 4000 seconds. Although `/example/file` is more specific, `/example/*` was created most recently, so the TTL for `/example/file` will be 4000 seconds. Once created, TTL entries can be edited for path and/or time. They can be deleted as well.
+The Time To Live indicates the amount of time (in seconds) the Edge server will cache the content for that particular file or directory path. When a CDN is first created, a global Time To Live (TTL) is created for path `/\*` with a default time of 3600 seconds. The minimum value for TTL is 0 seconds, and the maximum value is 2147483647 seconds. For each entry, the TTL path should be unique for the CDN. If multiple paths match a given content, the most recently configured path match applies to that content. For example, consider two TTLs, `/example/file` created first with a time to live value of 3000 seconds and `/example/*` is created later, with a value of 4000 seconds. Although `/example/file` is more specific, `/example/*` was created most recently, so the TTL for `/example/file` will be 4000 seconds. Once created, TTL entries can be edited for path and/or time. They can be deleted as well.
 
 ## Metrics with graphical views
 

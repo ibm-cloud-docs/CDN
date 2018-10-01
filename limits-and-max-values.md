@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2018-05-03"
 
 ## Is there a maximum value for Time To Live? A minimum?
 
-The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 30 seconds.
+The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 0 seconds.
 
 ## Is there a limit on the number of Origin and TTL entries?
 

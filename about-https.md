@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -32,5 +32,7 @@ IBM Cloud offers two ways to secure your CDN with HTTPS - Wildcard Certificate a
 >With SAN certificate for HTTPS, your primary CDN Hostname is added to a certificate that has been issued by a Certificate Authority. This allows your users the ability to access your service securely via the hostname rather than the CNAME; for example, `https://www.example.com`.
 >
 >When the CDN order is placed using HTTPS SAN certificate, it goes through the process of requesting a certificate and creating a Domain Control Validation (DCV). DCV is the process a Certificate Authority uses to establish that you are authorized to access and control the domain. Your action is required in order to complete this step. After control has been established, the certificate is deployed to the CDN Edge Servers around the world. Once the certificate is successfully deployed, the renewal of the certificate is handled automatically. More information on this feature can be found in the [feature description](feature-descriptions.html#https-protocol-support). Domain Control Validation methods are explained in more detail on the [Completing Domain Control Validation for HTTPS](how-to-https.html#initial-steps-to-domain-control-validation) page.
+
+**Note:** Once the CDN reaches RUNNING status, you must keep the CDN Hostname CNAME record in your DNS. If the CNAME record is removed, the CDN Hostname may be removed from the SAN certificate within 3 days. If that happens, HTTPS traffic is no longer served with that CDN Hostname.
 
 ![Diagram for HTTPS with SAN Cert](images/state-diagram-san.png)
