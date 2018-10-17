@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-19"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -81,7 +81,9 @@ Click **Get Status** from Overflow menu. This step changes the status to `Runnin
 
 Once a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN edge servers and content is fetched directly from the origin. After a mapping is stopped, there may be a brief period of time where your content is not accessible. This is because the DNS cache may still be directing traffic to the Akamai edge servers. However, during this time, the Akamai edge server will deny traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 
-**NOTE**: A CDN can be stopped only when in `Running` state.
+**NOTES**: 
+* Stopping CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status. 
+* A CDN can be stopped only when in `Running` state.
 
 **Step 1:**
 
@@ -118,4 +120,4 @@ A larger dialog window appears, asking to confirm that you want to delete. Click
 
 **Step 3:**
 
-After completing steps 1 and 2, your CDN's status will be `Deleting`. When the delete process is complete, clicking 'Get Status' from the overflow menu again will remove the row from the CDN list. If the delete process has not completed, this action will have no effect.
+After completing steps 1 and 2, your CDN's status will be `Deleting`. When the delete process is complete, click 'Get Status' from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action will have no effect.

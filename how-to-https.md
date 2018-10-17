@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-09"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -44,28 +44,30 @@ Click on the name of the CDN that needs to be validated. The Overview page opens
 
    ![Domain Validation Needed](images/view-domain-validation.png)
 
-**Step 4:** Once you'veve completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 to 4 hours.
+**Step 4:** Once you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 to 4 hours.
 
   * When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
 
 Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](basic-functions.html#get-to-running) page.
 
 
-## Domain Validation Challenge
+## Domain Control Validation 
 
-The _Domain Validation Challenge_ proves that you are the owner of the domain. The following three sections describe three ways you can address the Domain Validation Challenge.
+To get your CDN domain name added to the SAN certificate, you must prove that you have adminitrative control over your domain. This process of proof is referred to as addressing the Domain Control Validation (DCV). You must address the DCV within 48 hours. If you fail to do so, your request expires, and you must begin the order process again. The three different ways to address DCV are described in the sections that follow.
 
-**NOTE**: If you do not respond to the Domain Validation request within 48 hours, your request expires, and you must begin the order process again.
 
 ### CNAME
 
-If your CNAME record was added to your DNS provider before ordering your CDN, you don't need to do anything else. The Domain Validation is automatically handled by IBM Cloud, Akamai, and the Certificate Authority (CA). Validation can take 2 to 4 hours.
+This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
-  * If you have not yet configured your CNAME with your DNS provider, you'll need to do so at this time. Most DNS providers can give you instructions on setting or changing the CNAME.
+To use this method, you'll add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdnedge.bluemix.net` domain. No other action is required from you. The DCV will progress automatically from this point. Validation can take 2 to 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
 
-   ![Domain Validation CNAME](images/domain-validation-cname.png)
+Most DNS providers can give you instructions on setting or changing the CNAME. Here an example of a typical CNAME record:
 
-**NOTE**: This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
+| **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
+
 
 ---
 ### Standard
