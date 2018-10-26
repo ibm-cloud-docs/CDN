@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-01"
+lastupdated: "2018-10-24"
 
 ---
 
@@ -103,7 +103,7 @@ Follow the steps outlined in [this article](https://community.akamai.com/docs/DO
 
 ## What security is included with the IBM CDN solution with Akamai?
 
-Using the distributed Akamai platform, you get unparalleled scale and resiliency with more than 240,000 servers in over 130 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
+Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
 
 ## Are cookies from the origin server preserved by the Akamai CDN? 
 
