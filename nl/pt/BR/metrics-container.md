@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ### Classe do contêiner para métricas:
 A coleção `SoftLayer_Container_Network_CdnMarketplace_Metrics` contém os atributos utilizados por
 nossas APIs de métricas. Há três valores possíveis para o atributo `type`: PIECHART, LINEGRAPH ou

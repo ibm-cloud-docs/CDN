@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-10"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -25,8 +25,8 @@ Klasse `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 * `protocol`: Das Protokoll, das zur Einrichtung von Services verwendet wird. Dabei kann es sich um HTTP, HTTPS oder HTTP_AND_HTTPS (eine Kombination aus HTTP und HTTPS) handeln.
 * `originType`: Der Typ des Ursprungshosts, gegenwärtig 'HOST_SERVER' oder 'OBJECT_STORAGE'.
 * `originHost`: Die Ursprungsserveradresse (entweder der Hostname oder die IPv4-Adresse des Ursprungsservers), von dessen Endpunkt Inhalte oder der Name des Buckets, in dem Inhalte gespeichert sind, abgerufen werden sollen. Muss weniger als 511 Zeichen lang sein.
-* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
-* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
+* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie Informationen zu den zulässigen Portnummern.
 * `certificateType`: Typ des Zertifikats, das von einer Zuordnung verwendet wird. Zulässige Werte sind `WILDCARD_CERT` und `SHARED_SAN_CERT`. Für HTTP-Zuordnungen ist der Wert 0.
 * `cname`: Der Eintrag des kanonischen Namens, der als Aliasname für den Hostnamen fungiert. Dieser Name kann vom Benutzer angegeben oder durch das System generiert werden. Wenn er vom Benutzer angegeben wird, muss er weniger als 64 alphanumerische Zeichen enthalten und er muss eindeutig sein. Wenn kein Name angegeben wird, wird bei Erstellung der Zuordnung ein Name generiert.
 * `respectHeaders`: Ein boolescher Wert, der beim Wert 'true' veranlasst, dass die TTL-Einstellungen im Ursprungsserver die TTL-Einstellungen des CDN überschreiben.
@@ -45,7 +45,7 @@ Speziell zu beachten ist das Attribut `uniqueId`, dessen Wert generiert wird, we
 
 Beispiel: Der folgende Aufruf von `listDomainMappingByUniqueid`  
 ```php  
-$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
 ```
 
 gibt ein Objekt wie das folgende zurück:

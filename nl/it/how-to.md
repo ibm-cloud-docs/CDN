@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,23 +16,25 @@ lastupdated: "2018-06-19"
 
 # Gestisci la tua CDN
 
+Questo documento descrive le attività comuni per gestire la tua CDN.
+
 ## Impostazione del tempo di memorizzazione dei contenuti nella cache utilizzando "Time To Live"
 
-Una volta che la tua CDN è in esecuzione, puoi impostare il tempo di memorizzazione dei contenuti nella cache utilizzando TTL (Time To Live). Il Time To Live per un determinato percorso di file o directory indica per quanto tempo i contenuti debbano restare memorizzati nella cache. Quando hai creato l'Associazione CDN, è stato creato un TTL globale predefinito di 3600 secondi.
+Una volta che la tua CDN è in esecuzione, puoi impostare il tempo di memorizzazione dei contenuti nella cache utilizzando TTL (Time To Live). Il Time To Live per un determinato percorso di file o directory indica per quanto tempo i contenuti debbano restare memorizzati nella cache. Quando hai creato l'associazione CDN, è stato creato un TTL globale predefinito di 3600 secondi (1 ora).
 
 **Passo 1:**  
 
-Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Panoramica**.
+Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.
 
 **Passo 2:**  
 
-Puoi modificare il tempo utilizzando le frecce o immettendo un nuovo valore. Il valore di tempo è specificato in secondi. Ad esempio, 3600 secondi equivale a 1 ora. Il valore minimo per `timeToLive` è 30 secondi, mentre il valore massimo è 2147483647 secondi. Seleziona il pulsante **Salva** per impostare il tempo di memorizzazione dei contenuti nella cache.
+Puoi modificare il tempo utilizzando le frecce o immettendo un nuovo valore. Il valore di tempo è specificato in secondi. Ad esempio, 3600 secondi equivale a 1 ora. Il valore più piccolo per `timeToLive` che è possibile scegliere è 0 secondi mentre quello più grande è 2147483647 secondi (circa 24855 giorni). Seleziona il pulsante **Save** per impostare il tempo di memorizzazione dei contenuti nella cache.
 
   ![Aggiunta di ttl](images/adding-path.png)
 
 **Passo 3:**
 
-Dopo aver salvato, puoi **Modificare** o **Eliminare** l'impostazione TTL utilizzando le opzioni del menu di overflow. (**NOTA**: non è possibile modificare il percorso per TTL. Se il percorso associazione viene modificato, il percorso TTL viene aggiornato automaticamente).
+Dopo aver salvato, puoi modificare (**Edit**) o eliminare (**Delete**) l'impostazione TTL utilizzando le opzioni del menu Overflow. (**NOTA**: non è possibile modificare il percorso per TTL. Se il percorso associazione viene modificato, il percorso TTL viene aggiornato automaticamente).
 
   ![Modifica o elimina ttl](images/edit-delete-ttl-setting.png)  
 
@@ -42,23 +44,23 @@ Dopo aver salvato, puoi **Modificare** o **Eliminare** l'impostazione TTL utiliz
 
 ## Aggiunta dei dettagli del percorso di origine
 
-Quando la tua CDN è in stato *Configurazione_CNAME* o *In esecuzione*, puoi aggiungere i dettagli del percorso di origine. Puoi scegliere di fornire il contenuto da più server di origine. Ad esempio, le foto possono essere fornite da un server diverso da quello dei video. L'origine può essere basata su un Server host o su Object Storage.
+Quando la tua CDN è in stato *CNAME_Configuration* o *Running*, puoi aggiungere i dettagli del percorso di origine. Puoi scegliere di fornire il contenuto da più server di origine. Ad esempio, le foto possono essere fornite da un server diverso da quello dei video. L'origine può essere basata su un Server host o su Object Storage.
 
-**Nota:** il CDN fa una trasformazione URL per il server di origine. Ad esempio, se viene aggiunta l'origine `xyz.example.com` con il percorso `/example/*`, quando un utente apre l'URL `www.example.com/example/*` il server edge CDN richiama il contenuto da `xyz.example.com/*`.
+**Nota:** la CDN fa una trasformazione URL per il server di origine. Ad esempio, se viene aggiunta l'origine `xyz.example.com` con il percorso `/example/*`, quando un utente apre l'URL `www.example.com/example/*` il server edge CDN richiama il contenuto da `xyz.example.com/*`.
 
 **Passo 1:**
 
-Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Panoramica**.  
+Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.  
 
 **Passo 2:**
 
-Seleziona la scheda **Origini** e fai clic sul pulsante **Aggiungi origine**. Questo passo apre una nuova finestra di dialogo, dove puoi configurare la tua origine.  
+Seleziona la scheda **Origins** e fai clic sul pulsante **Add Origin**. Questo passo apre una nuova finestra di dialogo, dove puoi configurare la tua origine.  
 
    ![Origini - Aggiungi origine](images/add-origins.png)
 
 **Passo 3:**
 
-*Devi* fornire un percorso. Il percorso *deve* iniziare con il percorso del CDN come prefisso, se il CDN è stato creato con un percorso.  
+*Devi* fornire un percorso. Il percorso *deve* iniziare con il percorso del CDN come prefisso, se la CDN è stata creata con un percorso.  
   Ad esempio, se il CDN è stato creato con un percorso di `/examplePath`, il percorso per l'origine deve iniziare con il prefisso `/examplePath/`. Puoi facoltativamente fornire un intestazione host.  
 
    ![Origini - Aggiungi origine](images/add-origin-path.png)
@@ -75,27 +77,27 @@ Seleziona **Server** o **Object Storage**.
 
        ![Aggiungi origine - Object Storage](images/add-origin-object-storage.png)
 
-  * Le opzioni **Ottimizzazione** e **Chiave della cache** sono uguali per le configurazioni di server e Object Storage.
+  * Le opzioni **Optimization** e **Cache Key** sono uguali per le configurazioni di server e Object Storage.
 
-    * Scegli le opzioni di **Ottimizzazione** dal menu a discesa. **Fornitura web generale** è l'opzione predefinita, oppure puoi scegliere le ottimizzazioni **File di grandi dimensioni** o **Video on-demand**. **Fornitura web generale** consente alla CDN di fornire contenuto fino a 1,8GB, mentre l'ottimizzazione **File di grandi dimensioni** consente download di file da 1,8GB a 320GB. **Video on-demand** ottimizza la tua CDN per la fornitura di formati di streaming segmentati. Le descrizioni delle funzioni per l'[Ottimizzazione dei file di grandi dimensioni](about.html#large-file-optimization) e [Video on-demand](about.html#video-on-demand) forniscono ulteriori informazioni.
+    * Scegli le opzioni di **Optimization** dal menu a discesa. **General web delivery** è l'opzione predefinita, oppure puoi scegliere le ottimizzazioni **Large file** o **Video on demand**. **General web delivery** consente alla CDN di fornire contenuto fino a 1,8GB, mentre l'ottimizzazione **Large file** consente download di file da 1,8GB a 320GB. **Video on demand** ottimizza la tua CDN per la fornitura di formati di streaming segmentati. Le descrizioni delle funzioni per l'[Ottimizzazione dei file di grandi dimensioni](feature-descriptions.html#large-file-optimization) e [Video on-demand](feature-descriptions.html#video-on-demand) forniscono ulteriori informazioni.
 
         ![Opzioni di configurazione delle prestazioni](images/performance-config-options.png)
 
-    * Scegli le opzioni **Chiave della cache** dal menu a discesa. L'opzione predefinita è **Includi tutto**. Se selezioni **Includi specificato** o **Ignora specificato**, **devi** immettere le stringhe di query da includere o ignorare, separate da uno spazio. Ad esempio, immetti `uuid=123456` per una singola stringa di query oppure `uuid=123456 issue=important` per due stringhe di query.  Puoi saperne di più sugli [Argomenti di query della chiave della cache](about.html#cache-key-query-args) nella descrizione della funzione.
+    * Scegli le opzioni **Cache Key** dal menu a discesa. L'opzione predefinita è **Include-all**. Se selezioni **Include specified** o **Ignore specified**, **devi** immettere le stringhe di query da includere o ignorare, separate da uno spazio. Ad esempio, immetti `uuid=123456` per una singola stringa di query oppure `uuid=123456 issue=important` per due stringhe di query.  Puoi saperne di più sugli [Argomenti di query della chiave della cache](feature-descriptions.html#cache-key-query-args) nella descrizione della funzione.
 
         ![Opzioni della chiave della cache](images/cache-key-options.png)
 
-**NOTA**: le opzioni protocollo e porta visualizzate dall'IU corrisponderanno a quanto selezionato quando è stata ordinata la CDN. Ad esempio, se è stata selezionata la **Porta HTTP** come parte dell'ordinazione di una CDN, come parte di Aggiungi origine viene visualizzata solo l'opzione **Porta HTTP**.
+**NOTA**: le opzioni protocollo e porta visualizzate dall'IU corrisponderanno a quanto selezionato quando è stata ordinata la CDN. Ad esempio, se è stata selezionata la porta HTTP (**HTTP port**) come parte dell'ordinazione di una CDN, come parte di Add Origin viene visualizzata solo l'opzione **HTTP port**.
 
 **Passo 5:**
 
-Seleziona il pulsante **Aggiungi** per aggiungere il tuo percorso di origine.
+Seleziona il pulsante **Add** per aggiungere il tuo percorso di origine.
 
   **Nota**: quando fornisci le estensioni file per un percorso di origine Object Storage, l'impostazione TTL che ha lo stesso URL del percorso di origine è definita con un ambito per includere tutti i file che hanno tali estensioni file specificate. Ad esempio, se crei un percorso di origine `/example` e specifichi l'estensione file "jpg png gif", il valore TTL del percorso TTL `/example` avrà un ambito che include tutti i file JPG/PNG/GIF nella directory `/example` e nelle sue sottodirectory.
 
 **Passo 6:**
 
-Dopo l'aggiunta, puoi **Modificare** o **Eliminare** l'origine utilizzando le opzioni del menu di overflow.
+Dopo l'aggiunta, puoi modificare (**Edit**) o eliminare (**Delete**) l'origine utilizzando le opzioni del menu Overflow.
 
   ![Modifica o elimina origine](images/edit-delete-origin.png)
 
@@ -105,21 +107,21 @@ Una volta che la tua CDN è in esecuzione, puoi eliminare il contenuto memorizza
 
 **Passo 1:**
 
-Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Panoramica**.
+Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.
 
 **Passo 2:**
 
-Seleziona la scheda **Elimina**.
+Seleziona la scheda **Purge**.
 
-   ![Pagina Elimina](images/purge_tab.png)
+   ![Pagina Purge](images/purge_tab.png)
 
 **Passo 3:**
 
-Immetti la sintassi del percorso unix standard per indicare quale file vuoi eliminare, quindi seleziona il pulsante **Elimina**. L'eliminazione è consentita solo per un singolo file in questo momento. Consulta la pagina [Regole e convenzioni di denominazione](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) per ulteriori dettagli su quale sintassi è consentita per il percorso di eliminazione.
+Immetti la sintassi del percorso unix standard per indicare quale file vuoi eliminare, quindi seleziona il pulsante **Purge**. L'eliminazione è consentita solo per un singolo file in questo momento. Consulta la pagina [Regole e convenzioni di denominazione](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) per ulteriori dettagli su quale sintassi è consentita per il percorso di eliminazione.
 
 **Passo 4:**
 
-Dopo l'eliminazione, l'attività viene elencata in **Attività di eliminazione**. Puoi selezionare **Ripeti eliminazione** o **Favorito** per il percorso utilizzando le opzioni del menu di overflow.
+Dopo l'eliminazione, l'attività viene elencata in **Purge Activity**. Puoi selezionare **Redo purge** o **Favorite** per il percorso utilizzando le opzioni del menu Overflow.
 
    ![Attività di eliminazione](images/purge-activity.png)
 
@@ -131,40 +133,40 @@ Una volta che la tua CDN è in esecuzione, puoi aggiornare i dettagli della conf
 
 **Passo 1:**
 
-Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Panoramica**.
+Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.
 
 **Passo 2:**
 
-Seleziona la scheda **Impostazioni**. Vengono visualizzati i dettagli della tua configurazione CDN.
+Seleziona la scheda **Settings**. Vengono visualizzati i dettagli della tua configurazione CDN.
 
-   ![Scheda Impostazioni](images/settings-tab.png)  
+   ![Scheda Settings](images/settings-tab.png)  
    **NOTA**: vedrai il certificato SSL solo se la tua CDN è stata configurata con HTTPS.
 
 Per **Server**, è possibile modificare i seguenti campi:
-  * Intestazione host
-  * Indirizzo server di origine
-  * Porta HTTP/HTTPS
-  * Utilizzo di contenuto obsoleto
-  * Respect Headers (Rispetta intestazioni)
-  * Opzioni di ottimizzazione
+  * Host header
+  * Origin server address
+  * HTTP/HTTPS Port
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
   * Cache-query    
 
 Per **Object Storage**, è possibile modificare i seguenti campi:
-  * Intestazione host
+  * Host header
   * Endpoint
-  * Nome bucket
-  * Porta HTTPS
-  * Estensioni file consentite
-  * Utilizzo di contenuto obsoleto
-  * Respect Headers (Rispetta intestazioni)
-  * Opzioni di ottimizzazione
+  * Bucket name
+  * HTTPS Port
+  * Allowed file extensions
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
   * Cache-query
 
 **Passo 3:**
 
-Aggiorna i dettagli **Origine** o **Altre opzioni** laddove necessario, quindi fai clic sul pulsante **Salva** nell'angolo inferiore destro per aggiornare i dettagli della tua configurazione CDN.
+Aggiorna i dettagli **Origin** o **Other Options** laddove necessario, quindi fai clic sul pulsante **Save** nell'angolo inferiore destro per aggiornare i dettagli della tua configurazione CDN.
 
-   ![Pulsante Salva](images/save-button.png)
+   ![Pulsante Save](images/save-button.png)
 
 ## Configura IBM Cloud Object Storage per CDN
 

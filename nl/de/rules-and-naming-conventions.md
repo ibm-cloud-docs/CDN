@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-07"
+lastupdated: "2018-08-29"
 
 ---
 
@@ -16,15 +16,17 @@ lastupdated: "2018-05-07"
 
 # Regeln und Namenskonventionen
 
-## Welche Regeln gelten für den Hostnamen?
-Die Eingabezeichenfolge für `Hostname` **muss** die folgenden Voraussetzungen erfüllen:
+## Welche Regeln gelten für den CDN-Hostnamen?
+Die Eingabezeichenfolge für den CDN-Hostnamen`` **muss** die folgenden Voraussetzungen erfüllen:
   * Sie muss aus alphanumerischen Zeichen bestehen.
   * Sie muss kürzer als 254 Zeichen sein.
   * Sie muss auf einen gültigen Domänennamen der höchsten Ebene enden.
   * Sie darf **nicht** mehr als 10 Bezeichnungen enthalten.
   * Sie darf **nicht** mit `cdnedge.bluemix.net` enden (diese Endung wird für CNAMES verwendet und ist für diese reserviert).
 
-Weitere Details finden Sie in RFC 1035, Abschnitt 2.3.4.
+Weitere Details finden Sie in RFC 1035, Abschnitt 2.3.4. 
+
+Darüber hinaus empfehlen wir die Verwendung eines vollständig qualifizierten Domänennamens als CDN-Hostnamen. Wählen Sie einen Namen der Form 'www.example.com' anstelle eines Rootdomänennamens (auch als 'Zonen-Apex' oder 'Naked domain' bezeichnet) der Form 'example.com'. Sie müssen einen CNAME-Eintrag für den verwendeten CDN-Hostnamen erstellen und bei dem Rootdomäneneintrag muss es sich gemäß RFC 1033 für DNS um einen A-Eintrag, nicht um einen CNAME-Eintrag handeln. Weitere Erläuterungen hierzu finden Sie in RFC 2181, Abschnitt 10.1.
 
 ## Welche angepassten Konventionen gelten für die CNAME-Benennung?
 Die Eingabezeichenfolge für `CNAME` muss die folgenden Regeln einhalten:

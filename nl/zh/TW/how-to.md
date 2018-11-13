@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # 管理 CDN
 
+本文件說明管理 CDN 的一般作業。
+
 ## 使用「存活時間」設定內容快取時間
 
-在您的 CDN 執行之後，即可使用「存活時間 (TTL)」設定內容快取時間。特定檔案或目錄路徑的「存活時間」指出應該快取內容多久的時間。當您建立「CDN 對映」時，已建立 3600 秒的預設廣域 TTL。
+在您的 CDN 執行之後，即可使用「存活時間 (TTL)」設定內容快取時間。特定檔案或目錄路徑的「存活時間」指出應該快取內容多久的時間。當您建立「CDN 對映」時，已建立 3600 秒（1 小時）的預設廣域 TTL。
 
 **步驟 1：**  
 
@@ -26,7 +28,7 @@ lastupdated: "2018-06-19"
 
 **步驟 2：**  
 
-您可以使用箭頭或透過輸入新時間來調整時間。時間值是以秒為單位指定。例如，3600 秒等於 1 小時。可選擇的 `timeToLive` 的最小值是 30 秒，而最大值是 2147483647 秒。選取**儲存**按鈕，以設定時間快取時間。
+您可以使用箭頭或透過輸入新時間來調整時間。時間值是以秒為單位指定。例如，3600 秒等於 1 小時。可選擇的 `timeToLive` 的最小值是 0 秒，而最大值是 2147483647 秒（大約 24855 日）。選取**儲存**按鈕，以設定時間快取時間。
 
   ![新增 TTL](images/adding-path.png)
 
@@ -44,7 +46,7 @@ lastupdated: "2018-06-19"
 
 CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原點路徑」詳細資料。您可以選擇提供多個「原點伺服器」的內容。例如，可以從與視訊不同的伺服器遞送照片。「原點」可以根據「主伺服器」或 Object Storage。
 
-**附註：**CDN 會為原點伺服器進行 URL 轉換。例如，如果原點 `xyz.example.com` 新增時路徑為 `/example/*`，當使用者開啟 URL `www.example.com/example/*` 時，CDN Edge Server 會從 `xyz.example.com/*` 擷取內容。
+**附註：**CDN 會為原點伺服器進行 URL 轉換。例如，如果原點 `xyz.example.com` 新增時路徑為 `/example/*`，當使用者開啟 URL `www.example.com/example/*` 時，CDN 邊緣伺服器會從 `xyz.example.com/*` 擷取內容。
 
 **步驟 1：**
 
@@ -77,11 +79,11 @@ CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原�
 
   * 伺服器及 Object Storage 配置的**最佳化**及**快取金鑰**選項是相同的。
 
-    * 從下拉功能表選擇**最佳化**選項。預設選項是**一般 Web 遞送**，或者您也可以選擇**大型檔案**或**隨選視訊**最佳化。**一般 Web 遞送**允許 CDN 提供最多 1.8GB 的內容，而**大型檔案**最佳化允許下載從 1.8GB 到 320GB 的檔案。**隨選視訊**會將您的 CDN 最佳化以便遞送分段的串流格式。[大型檔案最佳化](about.html#large-file-optimization)和[隨選視訊](about.html#video-on-demand)的特性說明提供進一步的資訊。
+    * 從下拉功能表選擇**最佳化**選項。預設選項是**一般 Web 遞送**，或者您也可以選擇**大型檔案**或**隨選視訊**最佳化。**一般 Web 遞送**允許 CDN 提供最多 1.8GB 的內容，而**大型檔案**最佳化允許下載從 1.8GB 到 320GB 的檔案。**隨選視訊**會將您的 CDN 最佳化以便遞送分段的串流格式。[大型檔案最佳化](feature-descriptions.html#large-file-optimization)和[隨選視訊](feature-descriptions.html#video-on-demand)的特性說明提供進一步的資訊。
 
         ![效能配置選項](images/performance-config-options.png)
 
-    * 從下拉功能表選擇**快取金鑰**選項。預設選項是 **Include-all**。如果您選取 **Include specified** 或 **Ignore specified**，您**必須**輸入要包含或忽略的查詢字串，並以空格區隔。例如，輸入 `uuid=123456` 作為單一查詢字串，或輸入 `uuid=123456 issue=important` 作為兩個查詢字串。您可以在特性說明中找到[快取金鑰查詢引數](about.html#cache-key-query-args)的詳細資訊。
+    * 從下拉功能表選擇**快取金鑰**選項。預設選項是 **Include-all**。如果您選取 **Include specified** 或 **Ignore specified**，您**必須**輸入要包含或忽略的查詢字串，並以空格區隔。例如，輸入 `uuid=123456` 作為單一查詢字串，或輸入 `uuid=123456 issue=important` 作為兩個查詢字串。您可以在特性說明中找到[快取金鑰查詢引數](feature-descriptions.html#cache-key-query-args)的詳細資訊。
 
         ![快取金鑰選項](images/cache-key-options.png)
 

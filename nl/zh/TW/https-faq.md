@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -24,7 +24,7 @@ lastupdated: "2018-06-19"
 
 ## 如何使用重新導向來完成「網域驗證」？
 
-這視您的伺服器而定。您可以在[完成 HTTPS 的網域控制驗證](how-to-https.html#redirect-)頁面上，找到完成 Apache 及 Nginx 伺服器的「網域驗證」程序。
+這視您的伺服器而定。您可以在[完成 HTTPS 的網域控制驗證](how-to-https.html#redirect)頁面上，找到完成 Apache 及 Nginx 伺服器的「網域驗證」程序。
 
 ## 「網域驗證」需要多長的時間？
 
@@ -36,7 +36,7 @@ lastupdated: "2018-06-19"
 
 ## 刪除使用 DV SAN 憑證的 CDN 需要多久的時間？
 
-刪除您的 CDN 需要從所有 Edge Server 上的憑證中移除您的網域。此程序最多需要 8 小時才能完成。
+刪除您的 CDN 需要從所有邊緣伺服器上的憑證中移除您的網域。此程序最多需要 8 小時才能完成。
 
 ## 是否有其他與使用 DV SAN 憑證相關聯的成本？
 

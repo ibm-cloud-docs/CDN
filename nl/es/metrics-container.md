@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ### Clase de contenedor para métricas:
 La recopilación `SoftLayer_Container_Network_CdnMarketplace_Metrics` contiene los atributos para nuestras API de métricas. Existen tres valores posibles para el atributo `type`: PIECHART, LINEGRAPH o TOTALS. La salida para los demás atributos de este contenedor dependerá del `type`, que se describe al detalle a continuación. Todos los atributos excepto `type` son matrices. No todos los atributos se utilizan para todos los tipos.
 

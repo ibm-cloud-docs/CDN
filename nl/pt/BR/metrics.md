@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-07-24"
 
 ---
 
@@ -16,14 +16,15 @@ lastupdated: "2018-05-03"
 
 # Métricas
 
-## Como visualizo as métricas e o uso?
+Quando você seleciona seu CDN pela primeira vez na lista, a página Visão geral é aberta. Aqui é possível ver a Largura total da banda, o Total de ocorrências e a Taxa de acertos do período selecionado (o padrão é 30 dias).
 
-É possível visualizar métricas e uso na página **Visão geral**, que pode ser acessada selecionando seu CDN na página **Content Delivery Networks**. **NOTA**: após criar o seu CDN, pode demorar até 48 horas para as métricas aparecerem.
+  ![Visão geral das métricas](images/metrics-overview.png)
 
-## Eu criei um CDN e havia tráfego de dados por meio do CDN. Por que minhas métricas não aparecem?
+Diretamente abaixo da visão geral, você verá uma representação gráfica da Largura total da banda, da Largura da banda por região, do Total de ocorrências e de Ocorrências por tipo.
 
-Após a criação de um CDN, são necessárias 48 horas para que as métricas apareçam.
+  ![Gráficos de medidas](images/metrics-graphs.png)
 
+**NOTA**: após criar o seu CDN, pode demorar até 48 horas para as métricas aparecerem.
 
 ## Há um número mínimo de dias durante os quais eu posso visualizar as métricas? Há um máximo?
 
@@ -35,11 +36,15 @@ A taxa de acertos representa a porcentagem de vezes que o conteúdo foi entregue
 
 > ((Ocorrências do Edge - Ocorrências de ingresso)/Ocorrências do Edge) * 100
 
-em que: ocorrências do Edge são definidas como "Todas as ocorrências dos servidores de borda dos usuários
-finais"  
+em que:
+
+As ocorrências de borda são definidas como "Todas as ocorrências dos servidores de borda por meio dos usuários finais"  
 As ocorrências de ingresso são definidas como "Ocorrências de origem ou de ingresso são para o tráfego de sua
 origem para os servidores de borda Akamai"
 
 Como a taxa de acertos é calculada no nível de conta e não por CDN, a taxa de acertos será a mesma para todos os CDNs em sua
 conta. Este fato também explica por que a Taxa de Acertos pode ser diferente de zero quando o número de ocorrências do Edge para um CDN particular é zero.
 
+## As métricas são atualizadas em tempo real?
+
+Não. As métricas são atualizadas a cada 24 horas.

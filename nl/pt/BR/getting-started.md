@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -25,11 +25,7 @@ para levar o conteúdo para onde é mais necessário, seus usuários.
 ## Antes de começar
 
 Antes de começar a usar o IBM Cloud Content Delivery Network, você precisará primeiro de um
-[IBMid](https://www.ibm.com/account/us-en/signup/register.html). Em seguida, é possível
-solicitar seu serviço do Content Delivery Network por meio do
-[IBM Cloud
-Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) ou por meio do novo [Portal do cliente
-do IBM Cloud CDN](https://control.softlayer.com/network/cdn), dependendo de sua preferência.
+[IBMid](https://www.ibm.com/account/us-en/signup/register.html). Em seguida, é possível pedir seu serviço Content Delivery Network por meio do [Painel do IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) ou por meio do novo [Console do IBM Cloud CDN](https://www.ibm.com/cloud/cdn), dependendo de sua preferência.
 
 Se você precisar de assistência na obtenção de uma conta para usar o IBM Cloud Content Delivery Network, você poderá
 [entrar em contato com seu representante de vendas IBM](https://www.ibm.com/cloud-computing/bluemix/contact-us) para
@@ -38,12 +34,6 @@ obter orientação adicional sobre a introdução.
 ## Tutorial
 
 [Aqui está um tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sobre a criação de um Content Delivery Network para o IBM Cloud Object Storage.
-
-## Já possui uma conta?
-
-Os clientes CDN existentes têm acesso às suas contas por meio do novo [Portal CDN do
-IBM Cloud](https://control.softlayer.com). Se você tiver uma conta existente, agora será possível acessar o seu Content Delivery Network da guia
-**Rede**, em vez da guia **Armazenamento**.
 
 ## Precificação da largura da banda do CDN (taxas mostradas em US$)
 
@@ -54,8 +44,7 @@ banda que você usar.
 
 É possível rolar para as laterais para ver a tabela geográfica completa antes de começar a usar esse serviço.
 
-|Por mês|[América do Norte](north-america-region.html) | [Europa, Oriente Médio, África](emea-region.html) |
-[Ásia](asia-region.html) | Japão |[América do Sul](south-america-region.html) | Austrália, Nova Zelândia | Índia |
+|Por mês| [América do Norte](north-america-region.html) | [Europa, Oriente Médio, África](emea-region.html) | [Ásia](asia-region.html) | Japão | [América do Sul](south-america-region.html) | Austrália, Nova Zelândia | Índia |
 |-------|-----|-----|-----|-----|-----|----|-----|
 |Primeiros 10 TB| 0,085 | 0,085 | 0,14 | 0,14 | 0,25 | 0,14 | 0,17 |
 |10 - 250 TB | 0,05 | 0,05 | 0,12 | 0,12 | 0,18 | 0,12 | 0,11 |

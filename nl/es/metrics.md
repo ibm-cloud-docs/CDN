@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-07-24"
 
 ---
 
@@ -16,14 +16,15 @@ lastupdated: "2018-05-03"
 
 # Métricas
 
-## ¿Cómo visualizo las métricas y el uso?
+Cuando selecciona por primera vez la CDN de la lista, se abre la página Visión general. Aquí puede ver el ancho de banda total, el total de coincidencias y la proporción de coincidencias para el periodo de tiempo seleccionado (el valor predeterminado es de 30 días).
 
-Puede ver las métricas y el uso en la página **Visión general**, a la que puede navegar seleccionando la CDN en la página **Redes de entrega de contenido**. **NOTA**: después de crear la CDN, puede tardar 48 horas hasta que aparezcan las métricas.
+  ![Visión general de las métricas](images/metrics-overview.png)
 
-## He creado una CDN y había tráfico de datos a través de la CDN. ¿Por qué no aparecen mis métricas?
+Directamente por debajo de la visión general, verá una representación gráfica del ancho de banda total, el ancho de banda por región, el total de coincidencias y las coincidencias por tipo.
 
-Después de crear una CDN, las métricas tardan 48 horas en aparecer.
+  ![Gráficas de métricas](images/metrics-graphs.png)
 
+**NOTA**: después de crear la CDN, puede tardar 48 horas hasta que aparezcan las métricas.
 
 ## ¿Existe un número mínimo de días para los que puedo ver las métricas? ¿Hay un máximo?
 
@@ -32,11 +33,15 @@ Existe un número mínimo y máximo de días durante el cual puede visualizar la
 ## ¿Por qué la proporción de coincidencias es distinta a cero cuando el total de coincidencias es cero?
 La proporción de coincidencias representa el porcentaje de veces que el contenido se ha suministrado desde la memoria caché del servidor Edge, en lugar de desde el servidor de origen. Se calcula de la siguiente forma:
 
-> ((Edge hits - Ingress hits)/Edge hits) * 100
+> ((Coincidencias Edge - Coincidencias Ingress)/Coincidencias Edge) * 100
 
 donde:
-Aciertos de Edge se define como "Todos los aciertos en los servidores de Edge de los usuarios finales"  
-Aciertos de Ingress se define como "Aciertos de Origen o Ingress para el tráfico desde el origen a los servidores Edge de Akamai"
+
+Coincidencias Edge se definen como "Todas las coincidencias a los servidores perimetrales desde los usuarios finales"  
+Coincidencias Ingress se definen como "Las coincidencias de origen o Ingress son para el tráfico desde su origen a los servidores perimetrales de Edge"
 
 Como la proporción de coincidencias se calcula a nivel de cuenta y no por CDN, la proporción de coincidencias será la misma para todas las CDN de su cuenta. Esto también explica por qué la proporción de coincidencias pueda ser distinta a cero cuando el número de coincidencias Edge para una CDN determinada sea cero.
 
+## ¿Se actualizan las métricas en tiempo real?
+
+No. Las métricas se actualizan cada 24 horas.

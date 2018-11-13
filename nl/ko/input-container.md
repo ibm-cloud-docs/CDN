@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ lastupdated: "2018-06-07"
 다음 속성은 맵핑 및 (원본) 경로 클래스에 공통됩니다.
 * `originType`: 원본 호스트의 유형(현재 'HOST_SERVER' 또는 'OBJECT_STORAGE')입니다.
 * `origin`: 원본 서버 주소(원본 서버의 호스트 이름 또는 IPv4 주소), 컨텐츠를 페치할 엔드포인트 또는 컨텐츠가 저장되는 버킷의 이름입니다. 511자 미만이어야 합니다.
-* `httpPort`: HTTP 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
-* `httpsPort`: HTTPS 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
+* `httpPort`: HTTP 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
+* `httpsPort`: HTTPS 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
 * `status`:  맵핑 또는 경로의 상태입니다. 상태는 CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED 또는 ERROR입니다.
 * `path`: 캐시된 컨텐츠를 제공하는 데 사용할 경로입니다. 기본 경로는 /\*이며 `updateOriginPath` API에서 사용될 때 이 속성은 추가할 새 경로를 참조합니다.
 * `performanceConfiguration`: 맵핑의 성능 구성에 대한 스펙입니다.
@@ -33,6 +33,7 @@ lastupdated: "2018-06-07"
   * `ignore-all`: 모든 조회 인수를 무시합니다.
   * `ignore: space separated query-args`: 특정 조회 인수를 무시합니다. 예를 들어, `ignore: query1 query2`입니다.
   * `include: space separated query-args`: 특정 조회 인수를 포함합니다. 예를 들어, `include: query1 query2`입니다.
+* `geoblockingRule`
 
 다음 속성은 맵핑 클래스에 한정됩니다.
 

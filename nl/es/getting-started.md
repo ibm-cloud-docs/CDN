@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ IBM Cloud Content Delivery Network (CDN) se puede utilizar para una gran varieda
 
 ## Antes de empezar
 
-Antes de empezar a utilizar IBM Cloud Content Delivery Network, primero necesita un [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Después podrá realizar el pedido del servicio de Content Delivery Network mediante su [panel de control de IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), o a través del nuevo [Portal de clientes de IBM Cloud CDN](https://control.softlayer.com/network/cdn), en función de lo que prefiera.
+Antes de empezar a utilizar IBM Cloud Content Delivery Network, primero necesita un [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Después podrá realizar el pedido del servicio de Content Delivery Network mediante su [panel de control de IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), o a través de la nueva [Consola de IBM Cloud CDN](https://www.ibm.com/cloud/cdn), en función de lo que prefiera.
 
 Si necesita ayuda para obtener una cuenta para utilizar IBM Cloud Content Delivery Network, puede [ponerse en contacto con su representante de ventas de IBM](https://www.ibm.com/cloud-computing/bluemix/contact-us) para obtener orientación adicional sobre cómo empezar.
 
 ## Guía de aprendizaje
 
 [Aquí se incluye una guía de aprendizaje](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
-
-## ¿Ya dispone de una cuenta?
-
-Los clientes de CDN acceden a sus cuentas a través del nuevo [portal de IBM Cloud CDN](https://control.softlayer.com). Si ya tiene una cuenta, puede acceder a la red de entrega de contenidos desde el separador **Redes**, en lugar del separador **Almacenamiento**.
 
 ## Precios de ancho de banda de CDN (tarifas mostradas en dólares)
 

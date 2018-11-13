@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-10"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -25,8 +25,8 @@ class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 * `protocol`: il protocollo utilizzato per configurare i servizi. Può essere HTTP, HTTPS o una combinazione dei due, HTTP_AND_HTTPS.
 * `originType`: tipo dell'host di origine, attualmente 'HOST_SERVER' o 'OBJECT_STORAGE'.
 * `originHost`: l'indirizzo del server di origine (il nome host o l'indirizzo IPv4 del server di origine), che è l'endpoint da cui recuperare il contenuto oppure il nome del bucket dove è memorizzato il contenuto. Deve avere una lunghezza inferiore ai 511.
-* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
-* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
 * `certificateType`: il tipo di certificato utilizzato da un'associazione. Può essere `WILDCARD_CERT` o `SHARED_SAN_CERT`. Il valore sarà 0 per le associazioni HTTP.
 * `cname`: il record di nome canonico che funge da alias del nome host. Può essere fornito dall'utente oppure generato dal sistema. Se viene fornito dall'utente, deve avere una lunghezza inferiore ai 64 caratteri alfanumerici e deve essere univoco. Se non viene fornito, ne viene generato uno quando viene creata l'associazione.
 * `respectHeaders`: un valore booleano che, se impostato su 'true', fa in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.

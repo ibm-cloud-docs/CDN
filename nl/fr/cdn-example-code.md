@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -182,7 +182,7 @@ catch (\Exception $e) {
 
 Cet exemple vous montre comment créer un nouveau mappage CDN en utilisant l'API `createDomainMapping`. Il accepte un paramètre unique de l'objet `stdClass`. SoapClient doit être initialisé via la classe `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`, comme illustré dans l'exemple.
 
-**Remarque**: si vous choisissez de fournir un nom CNAME personnalisé, il **doit** se terminer par `.cdnedge.bluemix.net` ou une erreur est émise. Voir [cette description](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions) pour savoir comment fournir votre propre nom CNAME.
+**Remarque**: si vous choisissez de fournir un nom CNAME personnalisé, il **doit** se terminer par `.cdnedge.bluemix.net` ou une erreur est émise. Voir [cette description](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) pour savoir comment fournir votre propre nom CNAME.
 
 ```php
 

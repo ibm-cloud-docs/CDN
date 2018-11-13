@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -16,15 +16,15 @@ lastupdated: "2018-06-19"
 
 # Domande frequenti per HTTPS
 
-## Qual è la differenza tra HTTPS con certificato wildcard e HTTPS con certificato SAN?
+## Qual è la differenza tra HTTPS con certificato jolly e HTTPS con certificato SAN?
 
-Con il certificato wildcard, tutti i clienti utilizzano lo stesso certificato distribuito sulle reti CDN del fornitore. Per accedere al servizio, è necessario utilizzare il CNAME, compreso il suffisso IBM `.cdnedge.bluemix.net`. Ad esempio, `https://www.example-cname.cdnedge.bluemix.net`
+Con il certificato jolly, tutti i clienti utilizzano lo stesso certificato distribuito sulle reti CDN del fornitore. Per accedere al servizio, è necessario utilizzare il CNAME, compreso il suffisso IBM `.cdnedge.bluemix.net`. Ad esempio, `https://www.example-cname.cdnedge.bluemix.net`
 
 Nel caso del certificato SAN, più domini cliente condividono un singolo certificato SAN aggiungendo i loro nomi di dominio nelle voci SAN. È quindi possibile accedere al servizio utilizzando il nome host, ad esempio `https://www.example.com`
 
 ## Come viene realizzata la convalida del dominio con il reindirizzamento?
 
-Dipende dal tuo server. La procedura per completare la convalida del dominio per i server Apache e Nginx può essere trovata nella pagina [Completamento della convalida del controllo del dominio per HTTPS](how-to-https.html#redirect-).
+Dipende dal tuo server. La procedura per completare la convalida del dominio per i server Apache e Nginx può essere trovata nella pagina [Completamento della convalida del controllo del dominio per HTTPS](how-to-https.html#redirect).
 
 ## Quanto dura la convalida del dominio?
 
@@ -40,7 +40,7 @@ L'eliminazione della tua CDN richiede che il tuo dominio venga rimosso dal certi
 
 ## Sono previsti costi aggiuntivi associati all'uso del certificato SAN DV?
 
-No. Le configurazioni dei certificati SAN DV vengono fornite senza costi aggiuntivi rispetto a HTTP o HTTPS con certificato wildcard.
+No. Le configurazioni dei certificati SAN DV vengono fornite senza costi aggiuntivi rispetto a HTTP o HTTPS con certificato jolly.
 
 ## È possibile aggiornare la mia CDN creata mediante HTTPS con wildcard per utilizzare il certificato SAN DV?
 
@@ -50,13 +50,13 @@ No, al momento non è possibile modificare l'associazione di wildcard nel certif
 
 Un'Autorità di certificazione (CA) è un'entità che emette i certificati digitali.
 
-## Quale CA viene utilizzata dal servizio IBM Cloud CDN per l'emissione di un certificato SAN DV?
+## Quale CA viene utilizzata dal servizio CDN IBM Cloud per l'emissione di un certificato SAN DV?
 
-Il servizio IBM Cloud CDN utilizza l'Autorità di certificazione LetsEncrypt.
+Il servizio CDN IBM Cloud utilizza l'Autorità di certificazione LetsEncrypt.
 
 ## Quali certificati SSL sono supportati?
 
-I certificati SSL supportati sono il certificato wildcard e il certificato SAN (Subject Alternate Name) DV (Domain Validation). Il certificato SAN viene condiviso tra più clienti. La CDN IBM Cloud non supporta il caricamento di certificati personalizzati.
+I certificati SSL supportati sono il certificato jolly e il certificato SAN (Subject Alternate Name) DV (Domain Validation). Il certificato SAN viene condiviso tra più clienti. La CDN IBM Cloud non supporta il caricamento di certificati personalizzati.
 
 ## Ho ricevuto un'e-mail che mi chiedeva di affrontare una verifica di convalida del dominio. Cosa faccio adesso?
 
@@ -68,7 +68,7 @@ Per dettagli su come affrontare uno di questi modi, fai riferimento al documento
 
 Se lo stato dell'associazione rimane DOMAIN_VALIDATION_PENDING per più di 48 ore, la creazione dell'associazione verrà annullata e lo stato dell'associazione sarà CREATE_ERROR. In questo stato, puoi scegliere di riprovare la creazione o eliminare l'associazione.
 
-## Il certificato wildcard deve convalidare il dominio?
+## Il certificato jolly deve convalidare il dominio?
 
 No, ma puoi utilizzare solo il CNAME per richiamare il contenuto dalla tua origine. `https://www.example-cname.cdnedge.bluemix.net`
 
@@ -82,4 +82,4 @@ Non necessariamente. La selezione del certificato è gestita da Akamai, al fine 
 
 ## Perché vedo "wildcard" quando eseguo un `dig` o quando provo ad accedere al contenuto con la CDN in stato `Requesting Certificate`, `Domain Validation pending` o `Deploying Certificate`?
 
-Durante il processo di richiesta del certificato SAN DV, la catena di record DNS per la tua CDN è concatenata temporaneamente a un certificato wildcard. Fino a quando il processo non viene completato, il contenuto viene temporaneamente fornito tramite questo certificato wildcard. Una volta completato il processo di richiesta, la catena di record DNS viene aggiornata per il concatenamento al certificato SAN DV della CDN.
+Durante il processo di richiesta del certificato SAN DV, la catena di record DNS per la tua CDN è concatenata temporaneamente a un certificato jolly. Fino a quando il processo non viene completato, il contenuto viene temporaneamente fornito tramite questo certificato jolly. Una volta completato il processo di richiesta, la catena di record DNS viene aggiornata per il concatenamento al certificato SAN DV della CDN.

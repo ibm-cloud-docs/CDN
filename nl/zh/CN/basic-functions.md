@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-06-15"
 
 在您创建 CDN 后，它会显示在 CDN 仪表板上。在此处，您将看到 CDN 的名称、源、提供者和状态。  
 
- ![映射列表屏幕快照](images/mapping_list_cname.png)
+ ![映射列表屏幕快照](images/mapping-list.png)
 
 
 如果订购的是支持使用通配符证书的 HTTP 或 HTTPS 的 CDN，那么可以继续执行步骤 1。
@@ -47,15 +47,17 @@ lastupdated: "2018-06-15"
 
 CNAME 链接完成时，选择**获取状态**会使状态更改为 *RUNNING*，并且 CDN 已就绪可供使用。
 
-恭喜您！现在，您的 CDN 正在运行。在此，[管理 CDN](how-to.html#manage-your-CDN) 页面具有有关配置选项（例如，[生存时间](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除高速缓存的内容](how-to.html#purging-cached-content)和[添加源路径详细信息](how-to.html#adding-origin-path-details)）的其他信息。
+恭喜您！现在，您的 CDN 正在运行。在此，[管理 CDN](how-to.html#manage-your-cdn) 页面具有有关配置选项（例如，[生存时间](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除高速缓存的内容](how-to.html#purging-cached-content)和[添加源路径详细信息](how-to.html#adding-origin-path-details)）的其他信息。
 
 ## 启动 CDN
 
-仅当 CDN 处于“已停止”状态时，才可以启动它。  
+启动 CDN 会通知 DNS 将来自源的流量定向到 Akamai 边缘服务器。启动映射后，DNS 高速缓存仍然可以将流量定向到源，因此在启动映射后，域可能不会立即看到该功能。更新所需的时间取决于 DNS 高速缓存刷新频率，并根据 DNS 提供者而变化。
+
+**注**：仅当 CDN 处于`已停止`状态时，才可以启动 CDN。  
 
 **步骤 1：**
 
-单击溢出菜单（在 CDN 行右侧显示为三个点）中的“启动 CDN”。
+单击溢出菜单（在 CDN 行右侧显示为三个点）中的**启动 CDN**。
 
   ![溢出菜单](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ CNAME 链接完成时，选择**获取状态**会使状态更改为 *RUNNING*，
 
 **步骤 4：**
 
-此步骤会使状态更改为“CNAME 配置”
+此步骤会使状态更改为 `CNAME 配置`
 
 **步骤 5：**
 
-从溢出菜单单击“获取状态”。此步骤会使状态更改为“正在运行”。现在，您的 CDN 在正常运行。
+单击溢出菜单中的**获取状态**。此步骤会使状态更改为`正在运行`。现在，您的 CDN 在正常运行。
 
 ## 停止 CDN
 
-仅当 CDN 处于“正在运行”状态时，才可以停止它。
+停止映射后，DNS 查找将切换到源。流量会跳过 CDN 边缘服务器，并且直接从源中访存内容。停止映射后，可能会有很短的一段时间无法访问内容。这是因为 DNS 高速缓存可能仍在将流量定向到 Akamai 边缘服务器。但是，在此期间，Akamai 边缘服务器会拒绝该域的流量。此时间段的持续时间取决于 DNS 高速缓存刷新频率，并根据 DNS 提供者而变化。
+
+**注**： 
+* 对于配置为使用 HTTPS SAN 证书的 CDN，建议**不要**停止 CDN，因为将 CDN 移回`正在运行`状态后，HTTPS 流量可能不起作用。 
+* 仅当 CDN 处于`正在运行`状态时，才可以将其停止。
 
 **步骤 1：**
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ In diesem Abschnitt erfahren Sie anhand der folgenden Anleitungen, was Sie tun m
 
 Nachdem Sie ein CDN erstellt haben, wird es in Ihrem CDN-Dashboard aufgeführt. Dort werden CDN-Name, Ursprung, Anbieter und Status angezeigt.  
 
- ![Screenshot der Zuordnungsliste](images/mapping_list_cname.png)
+ ![Screenshot der Zuordnungsliste](images/mapping-list.png)
 
 
 Wenn Sie CDN mit HTTP bzw. HTTPS mit einem Wildcard-Zertifikat bestellt haben, können Sie mit Schritt 1 fortfahren.
@@ -39,7 +39,7 @@ Nachdem Sie ein CDN bestellt haben, müssen Sie in **CNAME** Ihren DNS-Anbieter 
 
 **Schritt 2:**
 
-Nach dem Konfigurieren Ihres DNS-Anbieters in CNAME können Sie jederzeit den Status überprüfen, indem Sie im Überlaufmenü rechts neben dem CDN-Status die Option zum Abrufen des Status**** auswählen.
+Nach dem Konfigurieren des CNAME-Werts mit Ihrem DNS-Anbieter können Sie jederzeit den Status überprüfen, indem Sie im Überlaufmenü rechts neben dem CDN-Status die Option zum Abrufen des Status**** auswählen.
 
   ![CNAME getStatus](images/cname-getstatus.png)  
 
@@ -47,15 +47,17 @@ Nach dem Konfigurieren Ihres DNS-Anbieters in CNAME können Sie jederzeit den St
 
 Wenn die CNAME-Verkettung abgeschlossen ist, wechselt der Status bei Auswahl von **Status abrufen** zu *AKTIV* und CDN kann verwendet werden.
 
-Glückwunsch! Ihr CDN ist nun aktiv. Ab jetzt werden auf der Seite [CDN verwalten](how-to.html#manage-your-CDN) zusätzliche Informationen zu Konfigurationsoptionen angezeigt, zum Beispiel [Lebensdauer](how-to.html#setting-content-caching-time-using-time-to-live-), [Cacheinhalt bereinigen](how-to.html#purging-cached-content) und [Details für Ursprungspfad hinzufügen](how-to.html#adding-origin-path-details).
+Glückwunsch! Ihr CDN ist nun aktiv. Ab jetzt werden auf der Seite [CDN verwalten](how-to.html#manage-your-cdn) zusätzliche Informationen zu Konfigurationsoptionen angezeigt, zum Beispiel [Lebensdauer](how-to.html#setting-content-caching-time-using-time-to-live-), [Cacheinhalt bereinigen](how-to.html#purging-cached-content) und [Details für Ursprungspfad hinzufügen](how-to.html#adding-origin-path-details).
 
 ## CDN starten
 
-Nur ein CDN, das den Status 'Gestoppt' aufweist, kann gestartet werden.  
+Beim CDN-Start wird das DNS benachrichtigt, dass Datenverkehr vom Ursprungsserver an den Akamai-Edge-Server weitergeleitet werden soll. Sobald die Zuordnung gestartet wurde, wird vom DNS-Cache möglicherweise weiterhin Datenverkehr an den Ursprungsserver geleitet. Die ordnungsgemäße Funktionsweise ist deshalb unmittelbar nach dem Start der Zuordnung möglicherweise nicht sofort für die Domäne erkennbar. Die für die Aktualisierung erforderliche Zeit richtet sich danach, wie oft der DNS-Cache aktualisiert wird, und variiert je nach DNS-Anbieter.
+
+**HINWEIS**: Ein CDN kann nur gestartet werden, wenn es den Status `Gestoppt` aufweist.   
 
 **Schritt 1:**
 
-Klicken Sie auf 'CDN starten' im Überlaufmenü, das rechts neben der CDN-Zeile in Form von drei Punkten angezeigt wird.
+Klicken Sie auf **CDN starten** im Überlaufmenü, das rechts neben der CDN-Zeile in Form von drei Punkten angezeigt wird.
 
   ![Überlaufmenü](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ Wenn die Aktion erfolgreich ausgeführt wurde, wird in der rechten oberen Ecke d
 
 **Schritt 4:**
 
-Dieser Schritt ändert den Status in 'CNAME-Konfiguration'.
+Dieser Schritt ändert den Status in `CNAME-Konfiguration`.
 
 **Schritt 5:**
 
-Klicken Sie im Überlaufmenü auf 'Status abrufen'. Dieser Schritt ändert den Status in 'Aktiv'. Ihr CDN wird einsatzfähig.
+Klicken Sie im Überlaufmenü auf **Status abrufen**. Dieser Schritt ändert den Status in `Aktiv`. Ihr CDN wird einsatzfähig.
 
 ## CDN stoppen
 
-Nur ein CDN, das den Status 'Aktiv' aufweist, kann gestoppt werden..
+Wird eine Zuordnung gestoppt, wechselt die DNS-Suche wieder zum Ursprungsserver. Beim Datenverkehr wird der CDN-Edge-Server ausgelassen und Inhalte werden direkt beim Ursprungsserver abgerufen. Nach dem Stoppen einer Zuordnung gibt es möglicherweise einen kurzen Zeitraum, in dem nicht auf Ihre Inhalte zugegriffen werden kann, da der DNS-Cache u. U. Datenverkehr weiterhin an die Akamai-Edge-Server leitet. Zu diesem Zeitpunkt wird der Datenverkehr für die Domäne jedoch vom Akamai-Edge-Server blockiert. Die Länge diese Zeitraums richtet sich danach, wie oft der DNS-Cache aktualisiert wird, und variiert je nach DNS-Anbieter.
+
+**HINWEISE**: 
+* Es empfiehlt sich **NICHT**, ein CDN zu stoppen, das mit einem HTTPS-SAN-Zertifikat konfiguriert ist, da HTTPS-Datenverkehr möglicherweise nach dem erneuten Aktivieren des CDN (Status `Aktiv`) nicht mehr aufgenommen wird.  
+* Ein CDN kann nur gestoppt werden, wenn es den Status `Aktiv` aufweist. 
 
 **Schritt 1:**
 
@@ -114,4 +120,4 @@ In einem größeren Dialogfenster werden Sie aufgefordert, das Löschen zu best�
 
 **Schritt 3:**
 
-Nach Ausführung der Schritte 1 und 2 ändert sich der CDN-Status in `Wird gelöscht`. Wenn Sie nach Abschluss des Löschprozesses im Überlaufmenü wieder auf 'Status abrufen' klicken, wird die Zeile aus der CDN-Liste entfernt. Wenn der Löschprozess nicht abgeschlossen ist, ist diese Aktion wirkungslos.
+Nach Ausführung der Schritte 1 und 2 ändert sich der CDN-Status in `Wird gelöscht`. Klicken Sie nach Abschluss des Löschprozesses im Überlaufmenü auf 'Status abrufen', um die Zeile in der CDN-Liste zu entfernen. Wenn der Löschprozess nicht abgeschlossen ist, ist diese Aktion wirkungslos.

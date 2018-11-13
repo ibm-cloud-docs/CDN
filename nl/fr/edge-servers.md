@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-09-05"
 
 ---
 
@@ -16,40 +16,55 @@ lastupdated: "2018-04-09"
 # Liste des serveurs d'équilibrage des charges
 
 La liste ci-dessous indique les pays possédant les POP Akamai que nous utilisons :
- 
+
 * Argentine
 * Australie
 * Autriche
+* Bahreïn
+* Belgique
 * Brésil
 * Bulgarie
 * Canada
 * Chili
+* Colombie
 * République tchèque
 * Danemark
+* Equateur
+* Finlande
 * France
 * Allemagne
-* Hong Kong 
+* Grèce
+* Hong Kong
 * Inde
+* Indonésie
 * Irlande
 * Israël
 * Italie
 * Japon
+* Macao
 * Malaisie
 * Mexique
 * Pays-Bas
 * Nouvelle-Zélande
+* Norvège
+* Oman
 * Pérou
 * Philippines
 * Pologne
 * Qatar
+* Roumanie
 * Singapour
 * Afrique du Sud
+* Corée du Sud
 * Espagne
+* Sri Lanka
 * Suède
 * Suisse
 * Taiwan, Province de Chine
 * Thaïlande
 * Turquie
+* Emirats arabes unis
 * Royaume-Uni
 * Etats-Unis
+* Uruguay
 * Vietnam

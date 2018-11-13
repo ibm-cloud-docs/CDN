@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ Weitere Informationen zur SLAPI oder zu den APIs des Service 'Content Delivery N
 * [Übersicht über SLAPI](https://softlayer.github.io/ )
 * [Einführung in SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [API 'SoftLayer_Product_Package'](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [Handbuch zur PHP-basierten SOAP-API](https://softlayer.github.io/article/PHP/ )
+* [Handbuch zur PHP-basierten SOAP-API](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -262,7 +262,7 @@ Löscht einen vorhandenen Ursprungspfad für ein vorhandenes CDN und für einen 
 Listet die Ursprungspfade für eine vorhandene Zuordnung auf Basis der eindeutigen ID (`uniqueId`) auf.
 
 * **Erforderliche Parameter:**:
-  * `uniqueId`: Geben Sie die eindeutige ID der Zuordnung an, für die Sie die Ursprungspfade auflisten wollen.
+  * `uniqueId`: Geben Sie die eindeutige ID der Zuordnung an, für die Sie Ursprungspfade auflisten wollen.
 * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
   [Ursprungspfadcontainer anzeigen](path-container.html)
@@ -439,3 +439,85 @@ Gibt die Gesamtzahl der vordefinierten Statistiken für die direkte Anzeige (ohn
    * `frequency`
 
  * **Rückgabe:** Eine Sammlung mit Objekten des Typs `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+
+----
+## API für Geographical Access Control
+### createGeoblocking
+Erstellt eine neue Regel für Geographical Access Control und gibt die neu erstellte Regel zurück.
+
+  * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
+    [Eingabecontainer anzeigen](input-container.html)
+
+    Die folgenden Attribute gehören zum Eingabecontainer und sind beim Erstellen einer neuen Geographical Access Control-Regel **erforderlich**:
+    * `uniqueId`: Die eindeutige ID der Zuordnung, zu der die Regel zugewiesen werden soll.
+    * `accessType`: Gibt an, ob über die Regel Datenverkehr zu der angegebenen Region zugelassen (`ALLOW`) oder blockiert (`DENY`) wird.
+    * `regionType`: Der Typ der Region, auf die die Geographical Access Control-Regel angewendet werden soll. Mögliche Typen sind `CONTINENT` und `COUNTRY_OR_REGION`.
+    * `regions`: Eine Wertegruppe mit einer Auflistung der Standorte, auf die das Attribut `accessType` angewendet wird.
+
+      Eine Liste der zur Auswahl stehenden Regionen finden Sie auf der Seite [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html). 
+
+  * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Klasse für geografische Zugriffsblockierung anzeigen](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+Aktualisiert eine vorhandene Geographical Access Control-Regel für eine vorhandene Domänenzuordnung und gibt die aktualisierte Regel zurück. 
+
+  * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
+    [Eingabecontainer anzeigen](input-container.html)
+
+    Die folgenden Attribute gehören zum Eingabecontainer und werden bei der Aktualisierung einer Geographical Access Control-Regel möglicherweise bereitgestellt (Parameter sind optional, sofern nicht anders angegeben):
+    * `uniqueId`: **Erforderliche** eindeutige ID der Zuordnung, zu der die zu aktualisierende Regel gehört.
+    * `accessType`: Gibt an, ob über die Regel Datenverkehr zu der angegebenen Region zugelassen (`ALLOW`) oder blockiert (`DENY`) wird.
+    * `regionType`: Der Typ der Region, auf die die Regel angewendet werden soll. Mögliche Typen sind `CONTINENT` und `COUNTRY_OR_REGION`.
+    * `regions`: Eine Wertegruppe mit einer Auflistung der Standorte, auf die das Attribut `accessType` angewendet wird.
+
+      Eine Liste der zur Auswahl stehenden Regionen finden Sie auf der Seite [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html).
+
+  * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Klasse für geografische Zugriffsblockierung anzeigen](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+Entfernt eine vorhandene Geographical Access Control-Regel für eine vorhandene Domänenzuordnung.
+
+  * **Parameter:** Eine Sammlung des Typs `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Sie können alle Attribute im Eingabecontainer hier anzeigen:
+
+    [Eingabecontainer anzeigen](input-container.html)
+
+    Das folgende Attribut gehört zum Eingabecontainer und ist beim Löschen einer Geographical Access Control-Regel **erforderlich**:
+    * `uniqueId`: Geben Sie die eindeutige ID der Zuordnung an, zu der die zu löschende Regel gehört.
+
+  * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Klasse für geografische Zugriffsblockierung anzeigen](geoblock-behavior.html)
+
+----
+### getGeoblocking
+Ruft das Geographical Access Control-Verhalten einer Zuordnung in der Datenbank ab.
+
+  * **Parameter:**
+    * `uniqueId`: Die eindeutige ID der Zuordnung an, zu der die Regel gehört.
+
+  * **Rückgabe**: Ein Objekt des Typs
+`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Klasse für geografische Zugriffsblockierung anzeigen](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+Gibt eine Liste der Typen und Regionen zurück, die für die Erstellung von Geographical Access Control-Regeln infrage kommen.
+
+  * **Parameter:**
+    * `uniqueId`: Die eindeutige ID der Domänenzuordnung.
+
+  * **Rückgabe**: Ein Objekt des Typs `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
+
+    [Klasse für geografische Zugriffsblockierung anzeigen](geoblock-behavior.html)

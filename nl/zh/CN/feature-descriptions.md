@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -34,7 +34,7 @@ lastupdated: "2018-06-28"
 
 ## 基于路径的 CDN 映射
 
-通过在创建 CDN 时提供路径，可以将 IBM Cloud CDN 服务限制于源服务器上的特定目录路径。最终用户只能访问该目录路径中的内容。例如，如果使用 `/videos` 路径创建 CDN `www.example.com`，那么只能通过 `www.example.com/videos/` 对其进行访问。
+通过在创建 CDN 时提供路径，可以将 IBM Cloud CDN 服务限制于源服务器上的特定目录路径。最终用户只能访问该目录路径中的内容。例如，如果使用 `/videos` 路径创建 CDN `www.example.com`，那么**只能**通过 `www.example.com/videos/*` 对其进行访问。
 
 ## 清除高速缓存的内容
 
@@ -42,7 +42,7 @@ IBM Cloud CDN 提供了方便快捷地从边缘服务器中除去或“清除”
 
 ## 生存时间 (TTL)
 
-生存时间指示边缘服务器将对该特定文件或目录路径的内容进行高速缓存的时间量（以秒为单位）。首次创建 CDN 时，将为路径 `/\*` 创建全局生存时间 (TTL)，缺省时间为 3600 秒。TTL 的最小值为 30 秒，最大值为 2147483647 秒。对于每个条目，TTL 路径对于 CDN 都应该唯一。如果多个路径与一个给定内容相匹配，那么将向该内容应用最近配置的路径匹配项。例如，假设有两个 TTL，先创建了 `/example/file`，生存时间值为 3000 秒，随后创建了 `/example/*`，生存时间值为 4000 秒。虽然 `/example/file` 更具体，但因为 `/example/*` 是最近创建的，所以 `/example/file` 的 TTL 为 4000 秒。创建 TTL 条目后，可以针对路径和/或时间对其进行编辑。也可以将其删除。
+生存时间指示边缘服务器将对该特定文件或目录路径的内容进行高速缓存的时间量（以秒为单位）。首次创建 CDN 时，将为路径 `/\*` 创建全局生存时间 (TTL)，缺省时间为 3600 秒。TTL 的最小值为 0 秒，最大值为 2147483647 秒。对于每个条目，TTL 路径对于 CDN 都应该唯一。如果多个路径与一个给定内容相匹配，那么将向该内容应用最近配置的路径匹配项。例如，假设有两个 TTL，先创建了 `/example/file`，生存时间值为 3000 秒，随后创建了 `/example/*`，生存时间值为 4000 秒。虽然 `/example/file` 更具体，但因为 `/example/*` 是最近创建的，所以 `/example/file` 的 TTL 为 4000 秒。创建 TTL 条目后，可以针对路径和/或时间对其进行编辑。也可以将其删除。
 
 ## 以图形视图显示度量值
 
@@ -60,7 +60,7 @@ IBM Cloud CDN 提供了方便快捷地从边缘服务器中除去或“清除”
 
 ## HTTPS 协议支持
 
-CDN 可配置为使用 HTTPS 协议安全地向最终用户提供内容。此配置要求必须将 SSL 证书作为 CDN 配置的一部分进行设置。有两种类型的 SSL 证书选项可用于 HTTPS：[通配符证书](about-https.html#Wildcard-Certificate-support)和[域验证 (DV) 主题替代名称 (SAN) 证书](about-https.html#subject-alternate-name-san-certificate-support)。此类型在本文档中也称为 _SAN 证书_。
+CDN 可配置为使用 HTTPS 协议安全地向最终用户提供内容。此配置要求必须将 SSL 证书作为 CDN 配置的一部分进行设置。有两种类型的 SSL 证书选项可用于 HTTPS：[通配符证书](about-https.html#wildcard-certificate-support)和[域验证 (DV) 主题替代名称 (SAN) 证书](about-https.html#subject-alternate-name-san-certificate-support)。此类型在本文档中也称为 _SAN 证书_。
 
 对于 HTTPS CDN 来说，要使用的 SSL 证书类型是一个重要的考虑事项。通配符证书配置设置速度较快，但缺点是只能通过 CNAME 访问 CDN。SAN 证书设置过程需要 4 到 8 小时才能完成，但它能将 CDN 用于 CDN 域（即，主机名）。在配置期间，SAN 证书还需要额外的[**域控制验证**](how-to-https.html)步骤。使用其中任一证书都没有关联的成本。请参阅[故障诊断文档](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-)，以了解选择给定证书类型的影响。
 
@@ -110,3 +110,13 @@ Akamai 边缘服务器在**高速缓存存储**上高速缓存内容。为了使
 **视频点播**性能优化能够跨多种网络类型提供高质量流。因为基于 Akamai 的 IBM Cloud CDN 具有可动态分布负载的分布式网络，所以无论您是否制定过针对大规模受众进行扩展的计划，都可以快速完成扩展。
 
 **视频点播**针对 HLS、DASH、HDS 和 HSS 等分段流格式的分发进行了优化。目前，**不**支持实时视频流。您可以通过从“设置”选项卡上**优化对象**下的下拉菜单中选择**视频点播**选项来启用此功能，或者在创建新的源路径期间启用此功能。仅当优化视频文件的传递时才应启用此功能。
+
+## 地理访问控制
+
+地理访问控制是一种基于规则的行为，允许您根据用户的地理位置，为一组用户设置 `access-type` 参数。有两种类型的行为：**Allow** 和 **Deny**。
+
+通过 access-type `Allow`，您可以根据区域类型，具体允许流量流至所选区域。允许特定区域的流量会隐式阻止其他所有区域的流量。例如，您可以选择 `Allow` 以允许流量流至所选大洲，例如欧洲和大洋洲，这将阻止其他所有大洲的访问。
+
+另一方面，`Deny` 行为会阻止指定组访问您的服务，但允许其他所有未指定区域的访问。例如，如果将欧洲和大洋洲的地理访问控制的 access-type 设置为 `Deny`，那么这些大洲的用户将**无法**使用您的服务，而所有其他大洲的用户都可以访问您的服务。
+
+此功能可在 CDN 配置的**设置**页面中进行访问。

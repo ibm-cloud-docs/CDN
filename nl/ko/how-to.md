@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # CDN 관리
 
+이 문서는 CDN 관리에 대한 공통 태스크에 대해 설명합니다.
+
 ## "TTL(Time To Live)"을 사용하여 컨텐츠 캐싱 설정
 
-CDN이 실행된 후 TTL(Time To Live)을 사용하여 컨텐츠 캐싱 시간을 설정할 수 있습니다. 특정 파일 또는 디렉토리 경로의 TTL(Time To Live)은 컨텐츠가 캐싱되어야 하는 기간을 표시합니다. CDN 맵핑을 작성한 경우 3,600초의 기본 글로벌 TTL이 작성되었습니다.
+CDN이 실행된 후 TTL(Time To Live)을 사용하여 컨텐츠 캐싱 시간을 설정할 수 있습니다. 특정 파일 또는 디렉토리 경로의 TTL(Time To Live)은 컨텐츠가 캐싱되어야 하는 기간을 표시합니다. CDN 맵핑을 작성한 경우 3,600초(1시간)의 기본 글로벌 TTL이 작성됩니다.
 
 **단계 1:**  
 
@@ -26,7 +28,7 @@ CDN 페이지에서 **개요** 페이지로 이동할 수 있도록 CDN을 선�
 
 **단계 2:**  
 
-화살표를 사용하거나 새 시간을 입력하여 시간을 조정할 수 있습니다. 시간 값은 초로 지정됩니다. 예를 들어, 3,600초는 1시간과 같습니다. `timeToLive`에 선택할 수 있는 가장 작은 값은 30초이고, 가장 큰 값은 2,147,483,647초입니다. 컨텐츠 캐싱 시간을 설정하려면 **저장** 단추를 선택하십시오.
+화살표를 사용하거나 새 시간을 입력하여 시간을 조정할 수 있습니다. 시간 값은 초로 지정됩니다. 예를 들어, 3,600초는 1시간과 같습니다. `timeToLive`에 선택할 수 있는 가장 작은 값은 0초이고, 가장 큰 값은 2,147,483,647초입니다(약 24,855일). 컨텐츠 캐싱 시간을 설정하려면 **저장** 단추를 선택하십시오.
 
   ![TTL 추가](images/adding-path.png)
 
@@ -77,11 +79,11 @@ CDN 페이지에서 **개요** 페이지로 이동할 수 있도록 CDN을 선�
 
   * **최적화** 및 **캐시 키** 옵션은 서버 및 Object Storage 구성에 대해 동일합니다.
 
-    * 드롭 다운 메뉴에서 **최적화** 옵션을 선택하십시오. **일반 웹 전달**은 기본 옵션이며, **대형 파일** 또는 **VoD(Video on demand)** 최적화를 선택할 수도 있습니다. **일반 웹 전달**을 사용하면 CDN이 최대 1.8GB의 컨텐츠를 제공할 수 있는 반면, **대형 파일** 최적화를 사용하면 1.8GB에서 320GB까지의 파일을 다운로드할 수 있습니다. **VoD(Video on demand)**는 세그먼트화된 스트리밍 형식의 전달을 위해 CDN을 최적화합니다. [대형 파일 최적화](about.html#large-file-optimization) 및 [VoD(Video on Demand)](about.html#video-on-demand)에 대한 기능 설명은 추가 정보를 제공합니다.
+    * 드롭 다운 메뉴에서 **최적화** 옵션을 선택하십시오. **일반 웹 전달**은 기본 옵션이며, **대형 파일** 또는 **VoD(Video on demand)** 최적화를 선택할 수도 있습니다. **일반 웹 전달**을 사용하면 CDN이 최대 1.8GB의 컨텐츠를 제공할 수 있는 반면, **대형 파일** 최적화를 사용하면 1.8GB에서 320GB까지의 파일을 다운로드할 수 있습니다. **VoD(Video on demand)**는 세그먼트화된 스트리밍 형식의 전달을 위해 CDN을 최적화합니다. [대형 파일 최적화](feature-descriptions.html#large-file-optimization) 및 [VoD(Video on Demand)](feature-descriptions.html#video-on-demand)에 대한 기능 설명은 추가 정보를 제공합니다.
 
         ![성능 구성 옵션](images/performance-config-options.png)
 
-    * 드롭 다운 메뉴에서 **캐시 키** 옵션을 선택하십시오. 기본 옵션은 **Include-all**입니다. **Include specified** 또는 **Ignore specified**를 선택하면 포함하거나 무시할 조회 문자열을 쉼표로 구분하여 입력**해야 합니다**. 예를 들어, 단일 조회 문자열의 경우에는 `uuid=123456`을 입력하고 두 조회 문자열의 경우에는 `uuid=123456 issue=important`를 입력하십시오.  기능 설명에서 [캐시 키 조회 인수](about.html#cache-key-query-args)에 대해 자세히 알아볼 수 있습니다.
+    * 드롭 다운 메뉴에서 **캐시 키** 옵션을 선택하십시오. 기본 옵션은 **Include-all**입니다. **Include specified** 또는 **Ignore specified**를 선택하면 포함하거나 무시할 조회 문자열을 쉼표로 구분하여 입력**해야 합니다**. 예를 들어, 단일 조회 문자열의 경우에는 `uuid=123456`을 입력하고 두 조회 문자열의 경우에는 `uuid=123456 issue=important`를 입력하십시오.  기능 설명에서 [캐시 키 조회 인수](feature-descriptions.html#cache-key-query-args)에 대해 자세히 알아볼 수 있습니다.
 
         ![캐시 키 옵션](images/cache-key-options.png)
 

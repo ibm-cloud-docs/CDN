@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -34,7 +34,7 @@ In gewissen Fällen kann es nützlich sein, bestimmte Inhalte von einem anderen 
 
 ## Pfadbasierte CDN-Zuordnungen
 
-Ihr IBM Cloud CDN-Service kann bei der Erstellung des CDN auf einen bestimmten Verzeichnispfad auf dem Ursprungsserver durch die Angabe des Pfads eingeschränkt werden. Ein Endbenutzer ist nur für den Zugriff auf die Inhalte in diesem Verzeichnispfad berechtigt. Beispiel: Wenn die CDN-Instanz `www.example.com` mit dem Pfad `/videos` erstellt wird, kann auf sie nur über `www.example.com/videos/` zugegriffen werden.
+Ihr IBM Cloud CDN-Service kann bei der Erstellung des CDN auf einen bestimmten Verzeichnispfad auf dem Ursprungsserver durch die Angabe des Pfads eingeschränkt werden. Ein Endbenutzer ist nur für den Zugriff auf die Inhalte in diesem Verzeichnispfad berechtigt. Beispiel: Wenn die CDN-Instanz `www.example.com` mit dem Pfad `/videos` erstellt wird, ist ein Zugriff **nur** mit `www.example.com/videos/*` möglich. 
 
 ## Cacheinhalte bereinigen
 
@@ -42,13 +42,13 @@ IBM Cloud CDN bietet die Möglichkeit, den im Cache gespeicherten Inhalt von Edg
 
 ## Lebensdauerfunktion (Time to Live - TTL)
 
-Die Lebensdauer (Time To Live) gibt die Zeitdauer (in Sekunden) an, die der Edge-Server den Inhalt für eine bestimmte Datei oder einen bestimmten Verzeichnispfad im Cache speichert. Wenn eine CDN-Instanz zum ersten Mal erstellt wird, wird ein globaler TTL-Wert für den Pfad `/\*` mit einer Standarddauer von 3600 Sekunden erstellt. Der Mindestwert für TTL ist 30 Sekunden, der Maximalwert 2.147.483.647 Sekunden. Für jeden Eintrag muss der Pfad für TTL für das CDN eindeutig sein. Wenn mehrere Pfade einem gegebenen Inhalt entsprechen, gilt der zuletzt konfigurierte Pfad für diesen Inhalt. Betrachten Sie zum Beispiel zwei TTLs: Der Pfad `/example/file` wird zuerst mit einem TTL-Wert von 3000 Sekunden erstellt. Später wird der Pfad `/example/*` mit einem Wert von 4000 Sekunden erstellt. Der Pfad `/example/file` ist zwar spezifischer, jedoch wurde der Pfad `/example/*` zuletzt erstellt, sodass der TTL-Wert für `/example/file` 4000 beträgt. Nach der Erstellung können TTL-Einträge in Bezug auf den Pfad und/oder die Zeitdauer bearbeitet werden. Sie können außerdem auch gelöscht werden.
+Die Lebensdauer (Time To Live) gibt die Zeitdauer (in Sekunden) an, die der Edge-Server den Inhalt für eine bestimmte Datei oder einen bestimmten Verzeichnispfad im Cache speichert. Wenn eine CDN-Instanz zum ersten Mal erstellt wird, wird ein globaler TTL-Wert für den Pfad `/\*` mit einer Standarddauer von 3600 Sekunden erstellt. Der Mindestwert für TTL beträgt 0 Sekunden, der Maximalwert 2.147.483.647 Sekunden. Für jeden Eintrag muss der Pfad für TTL für das CDN eindeutig sein. Wenn mehrere Pfade einem gegebenen Inhalt entsprechen, gilt der zuletzt konfigurierte Pfad für diesen Inhalt. Betrachten Sie zum Beispiel zwei TTLs: Der Pfad `/example/file` wird zuerst mit einem TTL-Wert von 3000 Sekunden erstellt. Später wird der Pfad `/example/*` mit einem Wert von 4000 Sekunden erstellt. Der Pfad `/example/file` ist zwar spezifischer, jedoch wurde der Pfad `/example/*` zuletzt erstellt, sodass der TTL-Wert für `/example/file` 4000 beträgt. Nach der Erstellung können TTL-Einträge in Bezug auf den Pfad und/oder die Zeitdauer bearbeitet werden. Sie können außerdem auch gelöscht werden.
 
 ## Metriken mit grafischen Ansichten
 
 Metriken für ein einzelnes CDN werden auf der Registerkarte 'Übersicht' des Kundenportals für die betreffende CDN-Zuordnung bereitgestellt. Zur Nutzung des CDN werden zwei Typen von Metriken berechnet: Metriken, die Werte über einen Zeitraum in Form eines Diagramms darstellen, und Metriken, die in Form von Aggregatwerten aufbereitet werden.
 
-Für Metriken, die Änderungen über einen Zeitraum als Diagramm darstellen, werden drei Kurvendiagramme und ein Kreisdiagramm angezeigt. Die folgenden drei Kurvendiagramme sind verfügbar: **Bandbreite** (Bandwidth), **Treffer nach Zuordnung** (Hits by Mapping) und **Treffer nach Typ** (Hits by Type). Sie stellen die Aktivität nach Tagen über den Verlauf Ihres angegebenen Zeitrahmens dar. Die Diagramme für **Bandbreite** und **Treffer nach Zuordnung** sind Einzelkurvendiagramme, während die Aufgliederung des Diagramms **Treffer nach Typ** eine Kurve für jeden bereitgestellten Treffertyp darstellt. Das Kreisdiagramm zeigt eine regionale Aufgliederung der Bandbreite für eine CDN-Zuordnung auf Prozentsatzbasis an.
+Für Metriken, die Änderungen über einen Zeitraum als Diagramm darstellen, werden drei Kurvendiagramme und ein Kreisdiagramm angezeigt. Die folgenden drei Kurvendiagramme sind verfügbar: **Bandbreite**, **Treffer nach Zuordnung** und **Treffer nach Typ**. Sie stellen die Aktivität nach Tagen über den Verlauf Ihres angegebenen Zeitrahmens dar. Die Diagramme für **Bandbreite** und **Treffer nach Zuordnung** sind Einzelkurvendiagramme, während die Aufgliederung des Diagramms **Treffer nach Typ** eine Kurve für jeden bereitgestellten Treffertyp darstellt. Das Kreisdiagramm zeigt eine regionale Aufgliederung der Bandbreite für eine CDN-Zuordnung auf Prozentsatzbasis an.
 
 Metriken, die für Aggregatwerte angezeigt werden, umfassen die **Bandbreitennutzung** in GB, die **Gesamtzahl Treffer** für den CDN-Edge-Server und die **Trefferquote**. Die Trefferquote gibt den Prozentsatz für die Häufigkeit an, mit der Inhalte durch den Edge-Server und _nicht_ durch seinen Ursprungsserver bereitgestellt werden. Die Trefferquote wird zurzeit als Funktion aller Ihrer CDN-Zuordnungen dargestellt und nicht nur für die CDN-Zuordnung, die Sie gerade anzeigen.
 
@@ -60,7 +60,7 @@ Vom Edge-Server wird der **Host-Header** für die Kommunikation mit dem Ursprung
 
 ## Unterstützung für HTTPS-Protokoll
 
-CDN kann so konfiguriert werden, dass das HTTPS-Protokoll zum sicheren Bereitstellen des Inhalts für die Endbenutzer verwendet wird. Für diese Konfiguration ist das Einrichten eines SSL-Zertifikats im Rahmen der CDN-Konfiguration erforderlich. Für HTTPS stehen zwei Arten von SSL-Zertifikatsoptionen zur Verfügung: ein [Wildcard-Zertifikat](about-https.html#Wildcard-Certificate-support) und ein [DV-SAN-Zertifikat](about-https.html#subject-alternate-name-san-certificate-support). Dieser Typ wird in dieser Dokumentation auch als _SAN-Zertifikat_ bezeichnet.
+CDN kann so konfiguriert werden, dass das HTTPS-Protokoll zum sicheren Bereitstellen des Inhalts für die Endbenutzer verwendet wird. Für diese Konfiguration ist das Einrichten eines SSL-Zertifikats im Rahmen der CDN-Konfiguration erforderlich. Für HTTPS stehen zwei Arten von SSL-Zertifikatsoptionen zur Verfügung: ein [Wildcard-Zertifikat](about-https.html#wildcard-certificate-support) und ein [DV-SAN-Zertifikat](about-https.html#subject-alternate-name-san-certificate-support). Dieser Typ wird in dieser Dokumentation auch als _SAN-Zertifikat_ bezeichnet.
 
 Der Typ des SSL-Zertifikats für HTTPS-CDN sollte mit Bedacht ausgewählt werden. Die Konfiguration eines Wildcard-Zertifikats ist zwar schnell, der Nachteil ist jedoch, dass auf CDN nur über einen CNAME zugegriffen werden kann. Die Durchführung des Prozesses für ein SAN-Zertifikat dauert zwar vier bis acht Stunden, dafür kann CDN mit der CDN-Domäne (also dem Hostnamen) verwendet werden. Für ein SAN-Zertifikat ist auch ein weiterer Schritt für eine [**Validierung der Domänensteuerung**](how-to-https.html) während der Konfiguration erforderlich. Für die Verwendung beider Zertifikate fallen keine Kosten an. Informationen zu den Auswirkungen bei der Auswahl eines bestimmten Zertifikats finden Sie unter [Fehlerbehebung für Dokumente](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-).
 
@@ -78,7 +78,7 @@ Wenn der CDN-Edge-Server eine Benutzeranforderung empfängt und der angeforderte
 
 ## Abfrageargumente im Cacheschlüssel
 
-Akamai-Edge-Server speichern Inhalt in einem so genannten **Cachespeicher** ("Cache Store") zwischen. Zur Verwendung der Inhalte aus dem **Cachespeicher** verwenden Edge-Server einen **Cachekey** ("Cache Key"). In der Regel wird ein **Cacheschlüssel** als Bestandteil der URL eines Endbenutzers generiert. In einigen Fällen enthält die URL Argumente der Abfragefunktion, die sich für Einzelbenutzer unterscheiden, jedoch ist der zugestellte Inhalt identisch. Standardmäßig verwendet Akamai die Argumente der Abfragefunktion, um den Cacheschlüssel zu generieren, sodass für jeden Benutzer einer eigener Cacheschlüssel generiert wird. Diese Methode ist nicht optimal, da sie zur Folge hat, dass der Edge-Server den Ursprungsserver unter Verwendung eines anderen Cacheschlüssels kontaktiert, um Inhalte abzurufen, die sich bereits im Cache befinden. Durch die Funktion **Abfrageargumente im Cacheschlüssel ignorieren** können Sie angeben, ob die Abfrageargumente beim Generieren eines Cacheschlüssels ignoriert werden sollen. Diese Funktion gilt für jedes `Erstellen` oder `Aktualisieren` einer CDN-Zuordnungskonfiguration sowie für jedes `Erstellen` oder `Aktualisieren` eines Ursprungspfads.
+Akamai-Edge-Server speichern Inhalt in einem so genannten **Cachespeicher** ("Cache Store") zwischen. Zur Verwendung der Inhalte aus dem **Cachespeicher** verwenden Edge-Server einen **Cacheschlüssel**. In der Regel wird ein **Cacheschlüssel** als Bestandteil der URL eines Endbenutzers generiert. In einigen Fällen enthält die URL Argumente der Abfragefunktion, die sich für Einzelbenutzer unterscheiden, jedoch ist der zugestellte Inhalt identisch. Standardmäßig verwendet Akamai die Argumente der Abfragefunktion, um den Cacheschlüssel zu generieren, sodass für jeden Benutzer einer eigener Cacheschlüssel generiert wird. Diese Methode ist nicht optimal, da sie zur Folge hat, dass der Edge-Server den Ursprungsserver unter Verwendung eines anderen Cacheschlüssels kontaktiert, um Inhalte abzurufen, die sich bereits im Cache befinden. Durch die Funktion **Abfrageargumente im Cacheschlüssel ignorieren** können Sie angeben, ob die Abfrageargumente beim Generieren eines Cacheschlüssels ignoriert werden sollen. Diese Funktion gilt für jedes `Erstellen` oder `Aktualisieren` einer CDN-Zuordnungskonfiguration sowie für jedes `Erstellen` oder `Aktualisieren` eines Ursprungspfads.
 
 **Hinweis:** Der Wert für **Abfrageargumente im Cacheschlüssel** kann in der Registerkarte **Einstellungen** nach der Erstellung einer CDN-Zuordnung konfiguriert werden. Für den Ursprungspfad können sie während der Operationen zum Erstellen (`create`) oder Aktualisieren (`update`) eines Ursprungspfads konfiguriert werden.
 
@@ -110,3 +110,13 @@ Wenn diese Funktion aktiviert ist, entsteht eine geringfügige Leistungsbeeintr�
 Die Leistungsoptimierung für **Video-on-Demand** liefert ein Streaming mit hoher Qualität über verschiedene Typen von Netzen. Durch die Nutzung der Fähigkeit des verteilten Netzes, die Auslastung dynamisch zu verteilen, bietet IBM Cloud CDN mit Akamai die Möglichkeit, schnelle Skalierungen für geplant oder ungeplant wachsende Benutzergruppen durchzuführen.
 
 **Video-on-Demand** wird für die Verteilung segmentierter Streamingformate wie HLS, DASH, HDS und HSS optimiert. Live-Video-Streams werden gegenwärtig **nicht** unterstützt. Sie können die Funktion **Video-on-Demand** aktivieren, indem Sie die Option im Dropdown-Menü unter **Optimieren für** auf der Registerkarte 'Einstellungen' auswählen oder wenn Sie einen neuen Ursprungspfad erstellen. Sie können diese Funktion nur aktivieren, wenn Sie die Zustellung von Videodateien optimieren.
+
+## Geografische Zugriffssteuerung (Geographical Access Control)
+
+Bei der Funktion 'Geographical Access Control' handelt es sich um ein auf Regeln basierendes Verhalten, bei dem Sie den Parameter `access-type` ausgerichtet am Standort für eine Gruppe von Benutzern festlegen können. Es stehen zwei Typen von Verhalten zur Auswahl: **Allow** und **Deny**. 
+
+Der Zugriffstyp `Allow` ermöglicht es Ihnen, ausgerichtet am Regionstyp gezielt Datenverkehr mit ausgewählten Regionen zuzulassen. Durch das Zulassen von Datenverkehr für bestimmte Regionen wird implizit der Datenverkehr mit allen anderen Regionen blockiert. Sie können beispielsweise über `Allow` den Datenverkehr mit ausgewählten Kontinenten, z. B. mit Europa oder Ozeanien, zulassen und damit den Zugriff für die übrigen Kontinente blockieren. 
+
+Mit dem Verhalten `Deny` wird dagegen der Zugriff auf Ihren Service für die angegebene Gruppe blockiert, für alle übrigen, nicht angegebenen Regionen jedoch zugelassen. Wenn Sie als Zugriffstyp für Geographical Access Control das Verhalten `Deny` für Europa und Ozeanien festlegen, können Benutzer in diesen Kontinenten **nicht** auf Ihren Service zugreifen, während Benutzer in den übrigen Kontinenten über Zugriff verfügen. 
+
+Diese Funktion kann über die Seite **Einstellungen** der CDN-Konfiguration aufgerufen werden. 

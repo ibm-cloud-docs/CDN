@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ lastupdated: "2018-06-07"
 下列屬性是對映和（原點）路徑類別共同的屬性：
 * `originType`：原點主機的類型，目前為 'HOST_SERVER' 或 'OBJECT_STORAGE'。
 * `origin`：原點伺服器位址（原點伺服器的主機名稱或 IPv4 位址），這是要從該處提取內容的端點，或是內容儲存所在儲存區的名稱。它必須少於 511 個字元。
-* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
-* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
 * `status`：對映或路徑的狀態。狀態可以是 CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED 或 ERROR。
 * `path`：將從該處提供快取內容的路徑。預設路徑是 /\*。由 `updateOriginPath` API 使用時，這個屬性是指要新增的新路徑。
 * `performanceConfiguration`：對映效能配置的規格。
@@ -33,6 +33,7 @@ lastupdated: "2018-06-07"
   * `ignore-all`：忽略所有查詢引數
   * `ignore: 以空格區隔的查詢引數`：忽略那些特定的查詢引數。例如 `ignore: query1 query2`
   * `include: 以空格區隔的查詢引數`：包含那些特定的查詢引數。例如 `include: query1 query2`
+* `geoblockingRule`
 
 下列屬性是對映類別所特有：
 

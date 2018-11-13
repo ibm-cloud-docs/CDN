@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -25,8 +25,8 @@ Os atributos a seguir são comuns para as classes de mapeamento e caminho (orige
 * `originType`: O tipo de Host de origem, atualmente 'HOST_SERVER' ou 'OBJECT_STORAGE'.
 * `origin`: endereço do servidor de origem (ou o nome do host ou o endereço IPv4 do servidor de origem), o
 terminal do qual buscar conteúdo ou o nome do depósito onde o conteúdo é armazenado. Deve ser menor que 511 caracteres.
-* `httpPort`: número da porta usada para o protocolo HTTP. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Veja as [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista de números de porta permitidos.
-* `httpsPort`: número da porta usada para o protocolo HTTPS. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Veja as [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista de números de porta permitidos.
+* `httpPort`: número da porta usada para o protocolo HTTP. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Consulte as [Perguntas frequentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista de números de porta permitidos.
+* `httpsPort`: número da porta usada para o protocolo HTTPS. A Akamai tem certas limitações em números de porta para as portas de HTTP e HTTPS. Consulte as [Perguntas frequentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista de números de porta permitidos.
 * `status`: o status do mapeamento ou do caminho. O status pode ser CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED ou ERROR.
 * `path`: caminho por meio do qual o conteúdo em cache será entregue. O caminho padrão é /\* Quando usados
 pela API `updateOriginPath`, esse atributo se refere ao novo caminho a ser incluído.
@@ -36,6 +36,7 @@ pela API `updateOriginPath`, esse atributo se refere ao novo caminho a ser inclu
   * `ignore-all`: ignore todos os argumentos de consulta
   * `ignore: space separated query-args`: ignora esses argumentos de consulta específicos. Por exemplo, `ignore: query1 query2`
   * `include: space separated query-args`: inclui esses argumentos de consulta específicos. Por exemplo, `include: query1 query2`
+* `geoblockingRule`
 
 Os atributos a seguir são específicos para a classe de mapeamento:
 

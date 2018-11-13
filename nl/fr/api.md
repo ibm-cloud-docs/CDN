@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ Pour en savoir plus sur SLAPI ou sur les API du service IBM Cloud Content Delive
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -52,7 +52,7 @@ Vous pouvez utiliser les autres API après avoir suivi la séquence précédente
 Cette API permet aux utilisateurs de dresser la liste des fournisseurs CDN pris en charge. Le `vendorName` est nécessaire pour créer un compte CDN et commencer à commander votre CDN.
 
 * **Paramètres requis** : Aucun
-* **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
+* **Retour** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
   Vous trouverez le conteneur des fournisseurs et un exemple d'utilisation ici : [Conteneur des fournisseurs](vendor-container.html)
 
@@ -61,7 +61,7 @@ Cette API permet aux utilisateurs de dresser la liste des fournisseurs CDN pris 
 ### verifyCdnAccountExists
 Vérifie si un compte CDN existe pour l'utilisateur appelant l'API, pour le nom de fournisseur donné (`vendorName`).
 
-* **Paramètres requis** : `vendorName` : Fournissez le nom d'un fournisseur de CDN valide.
+* **Paramètres requis** : `vendorName` : fournissez le nom d'un fournisseur de CDN valide.
 * **Retour** : `true` si un compte existe, sinon `false`.
 
 ----
@@ -81,7 +81,7 @@ A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour 
     * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
     * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
     * `certificateType` : **obligatoire** pour le protocole HTTPS. `SHARED_SAN_CERT` ou `WILDCARD_CERT`
-    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Le chemin d'accès par défaut est `/*`
+    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Le chemin d'accès par défaut est `/*`
     * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte) ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
     * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
@@ -202,7 +202,7 @@ Crée un chemin d'origine pour un CDN existant et un client particulier. Le chem
     * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
     * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
     * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
-    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Doit commencer par le chemin de mappage. Par exemple, si le chemin de mappage est `/test`, votre chemin d'origine peut être `/test/media`
+    * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Doit commencer par le chemin de mappage. Par exemple, si le chemin de mappage est `/test`, votre chemin d'origine peut être `/test/media`
     * `httpPort` et/ou `httpsPort` : **obligatoire** Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
     * `uniqueId` : **obligatoire** Généré après la création du mappage.
@@ -439,3 +439,84 @@ Renvoie le nombre total de statistiques prédéterminées avec affichage direct 
    * `frequency`
 
  * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+
+----
+## API pour le contrôle d'accès géographique
+### createGeoblocking
+Crée une nouvelle règle de contrôle d'accès géographique et renvoie la règle nouvellement créée. 
+
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la création d'une nouvelle règle de contrôle d'accès géographique : 
+    * `uniqueId` : ID unique du mappage pour affecter la règle
+    * `accessType` : indique si la règle autorisera (`ALLOW`) ou refusera (`DENY`) le trafic vers la région concernée.
+    * `regionType` : type de région à laquelle appliquer la règle de contrôle d'accès géographique, à savoir `CONTINENT` ou `COUNTRY_OR_REGION`
+    * `regions`: tableau répertoriant les emplacements auxquels le type d'accès (`accessType`) s'appliquera
+
+      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html). 
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+Met à jour une règle de contrôle d'accès géographique existante pour un mappage de domaine existant et renvoie la règle mise à jour.
+
+  * **Paramètres** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la mise à jour d'une règle de contrôle d'accès géographique (les paramètres sont facultatifs sauf indication contraire) :
+    * `uniqueId` : ID unique **requis** du mappage auquel appartient la règle à mettre à jour
+    * `accessType` : indique si la règle autorisera (`ALLOW`) ou refusera (`DENY`) le trafic vers la région concernée.
+    * `regionType` : type de région à laquelle appliquer la règle, à savoir `CONTINENT` ou `COUNTRY_OR_REGION`
+    * `regions`: tableau répertoriant les emplacements auxquels le type d'accès (`accessType`) s'appliquera
+
+      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html). 
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+Retirer une règle de contrôle d'accès géographique d'un mappage de domaine existant. 
+
+  * **Paramètres** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la suppression d'une règle de contrôle d'accès géographique : 
+    * `uniqueId` : fournissez l'ID unique du mappage auquel appartient la règle à supprimer.
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+
+----
+### getGeoblocking
+Extrait de la base de données le comportement de contrôle d'accès géographique d'un mappage. 
+
+  * **Paramètres** :
+    * `uniqueId` : ID unique du mappage auquel appartient la règle.
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+Renvoie une liste des types et des régions admis pour la création de règles de contrôle d'accès géographique.
+
+  * **Paramètres** :
+    * `uniqueId` : ID unique de votre mappage de domaine.
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
+
+    [Afficher la classe Geo-blocking](geoblock-behavior.html)

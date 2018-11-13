@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # Gestión de la CDN
 
+En este documento se describen las tareas comunes para gestionar la CDN.
+
 ## Definición del tiempo de almacenamiento de contenido en memoria caché usando "Tiempo de duración"
 
-Cuando la CDN se está ejecutando, puede definir el tiempo de almacenamiento de contenido en memoria caché usando Tiempo de duración (TTL). El Tiempo de duración de una vía de acceso de directorio o archivo determinado indica cuánto tiempo debería almacenarse el contenido en memoria caché. Cuando ha creado la correlación de CDN, se ha generado un TTL global predeterminado de 3600 segundos.
+Cuando la CDN se está ejecutando, puede definir el tiempo de almacenamiento de contenido en memoria caché usando Tiempo de duración (TTL). El Tiempo de duración de una vía de acceso de directorio o archivo determinado indica cuánto tiempo debería almacenarse el contenido en memoria caché. Cuando ha creado la correlación de CDN, se ha generado un TTL global predeterminado de 3600 segundos (1 hora).
 
 **Paso 1:**  
 
@@ -26,7 +28,7 @@ En la página CDN, seleccione su CDN para ir a la página **Visión general**.
 
 **Paso 2:**  
 
-Puede ajustar el tiempo utilizando las flechas o introduciendo un nuevo tiempo. El valor de tiempo se especifica en segundos. Por ejemplo, 3600 segundos es igual a 1 hora. El valor más bajo para `timeToLive` que se puede escoger es 30 segundos y el más alto es 2147483647 segundos. Seleccione el botón **Guardar** para establecer el tiempo de almacenamiento de contenido en memoria caché.
+Puede ajustar el tiempo utilizando las flechas o introduciendo un nuevo tiempo. El valor de tiempo se especifica en segundos. Por ejemplo, 3600 segundos es igual a 1 hora. El valor más bajo para `timeToLive` que se puede escoger es 0 segundos y el más alto es 2147483647 segundos (aproximadamente 24855 días). Seleccione el botón **Guardar** para establecer el tiempo de almacenamiento de contenido en memoria caché.
 
   ![Añadir ttl](images/adding-path.png)
 
@@ -77,11 +79,11 @@ Seleccione **Servidor** u **Object Storage**.
 
   * Las opciones **Optimización** y **Clave de caché** son las mismas para las configuraciones de Servidor y de Object Storage.
 
-    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](about.html#large-file-optimization) y [Vídeo on Demand](about.html#video-on-demand) proporcionan más información.
+    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](feature-descriptions.html#large-file-optimization) y [Vídeo on Demand](feature-descriptions.html#video-on-demand) proporcionan más información.
 
         ![Opciones de configuración del rendimiento](images/performance-config-options.png)
 
-    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](about.html#cache-key-query-args) en la descripción de la característica.
+    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](feature-descriptions.html#cache-key-query-args) en la descripción de la característica.
 
         ![Opciones de clave de caché](images/cache-key-options.png)
 

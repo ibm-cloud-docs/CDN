@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -27,8 +27,7 @@ por exemplo, `https://www.example.com`
 
 ## Como a Validação de Domínio com redirecionamento é feita?
 
-Depende do seu servidor. O procedimento para concluir a Validação de Domínio para os servidores Apache e
-Nginx pode ser localizado na página [Concluindo Domain Control Validation para HTTPS](how-to-https.html#redirect-).
+Depende do seu servidor. O procedimento para concluir a Validação de domínio para servidores Apache e Nginx pode ser localizado na página [Concluindo a validação de controle de domínio para HTTPS](how-to-https.html#redirect).
 
 ## Quanto tempo leva a Validação de Domínio?
 
@@ -43,8 +42,7 @@ até a execução.
 
 ## Quanto tempo leva para excluir um CDN com o certificado SAN DV?
 
-A exclusão do CDN requer que seu domínio seja removido do certificado em todos os servidores de borda. 
-Esse processo pode levar até 8 horas para ser concluído.
+A exclusão do CDN requer que seu domínio seja removido do certificado em todos os servidores de borda. Esse processo pode levar até 8 horas para ser concluído.
 
 ## Há algum custo adicional associado ao uso do certificado SAN DV?
 

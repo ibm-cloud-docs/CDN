@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ## A região da América do Norte inclui:
 
 * Antígua e Barbuda

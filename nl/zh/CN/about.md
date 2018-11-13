@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -22,6 +22,10 @@ Content Delivery Network (CDN) 是边缘服务器的集合，这些服务器遍�
 
 CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成其目的。当客户请求 Web 内容时，内容请求会路由到地理位置与该客户最近的边缘服务器。通过减少内容必须传输的距离，CDN 提供最优的吞吐量、最短的等待时间和提高的性能。使用基于 Akamai 的 IBM Cloud Content Delivery Network，内容提供商能以最少的配置实现在全球各地高效传递请求的内容。
 
+![高级别 CDN 图](images/high-level-cdn-diagram.png)
+
+## 功能
+
 IBM Cloud Content Delivery Network 服务包含以下主要功能：
   * 主机服务器源支持
   * Object Storage 源支持
@@ -37,8 +41,9 @@ IBM Cloud Content Delivery Network 服务包含以下主要功能：
   * 内容压缩
   * 大型文件优化
   * 视频点播
+  * 地理访问控制
 
-请参阅[此文档](feature-description.html#feature-descriptions)以获取完整的功能描述。
+请参阅[此文档](feature-descriptions.html#feature-descriptions)以获取完整的功能描述。
 
 ## 体系结构图
 

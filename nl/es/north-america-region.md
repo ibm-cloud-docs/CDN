@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ## La región de Norteamérica incluye:
 
 * Antigua y Barbuda

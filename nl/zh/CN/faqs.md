@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,13 +26,20 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 
 ## 如何创建我的 IBM Cloud Content Delivery Network 服务帐户？
 
-在 CDN 订购流程中，当浏览“供应商选择”菜单后单击**选择**时会创建您的帐户。
+您的帐户是在 CDN 订购过程中创建的。如果是从原有门户网站创建 CDN，那么单击**网络 -> CDN** 页面下的**订购 CDN** 按钮时，将创建您的帐户。如果是从 IBM Cloud 门户网站创建 CDN，那么单击**目录 -> 网络 -> 内容交付网络**页面下的**创建**按钮时，将创建您的帐户。
 
-## 当 CDN 处于 CNAME_CONFIGURATION 状态时我该怎么办？
+## 当 CDN 处于 CNAME 配置状态时我该怎么办？
 
-对于基于 HTTP 的 CDN，请更新 DNS 记录，以便您的 Web 站点指向与新 CDN 映射相关联的 `CNAME`。对于基于 HTTPS 的 CDN，**无需**此 CDN 更新。
+对于基于 HTTP 和 SAN 证书的 HTTPS CDN，请更新 DNS 记录，以便您的 Web 站点指向与新 CDN 映射相关联的 `CNAME`。对于基于通配符证书的 HTTPS CDN，**无需**此 DNS 更新。
 
 **注**：可能最多需要 15-30 分钟才能使更新变为活动状态。请向您的 DNS 提供者咨询，以获取准确的时间估算。
+
+在“DNS 配置”页面上，典型的 CNAME 记录如下所示：
+
+|**资源类型**|**主机**|**指向 (CNAME)**|**TTL**|
+|------------------|---------|-------------|----------------|
+|CNAME|www.example.com|example.cdnedge.bluemix.net|15 分钟|
+
 
 ## 需要付费的项有哪些？
 
@@ -60,7 +67,7 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 
 ## 我的 CDN 处于错误状态。我现在该怎么做？
 
-请参阅[故障诊断](troubleshooting.html#troubleshooting)或[获取帮助和支持](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help)页面，或者在[客户门户网站 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://control.softlayer.com/) 中开具凭单。
+请参阅[故障诊断](troubleshooting.html#troubleshooting)或[获取帮助和支持](getting-help.html#gettinghelp)页面，或者在[客户门户网站 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://control.softlayer.com/) 中开具凭单。
 
 ## 如果我未提供 CNAME，那么在哪里能够找到它？
 
@@ -97,3 +104,20 @@ CDN 映射或源的路径会被视为目录。因此，尝试访问源路径的�
 ## 基于 Akamai 的 IBM CDN 解决方案包含哪些安全性？
 
 通过使用分布式 Akamai 平台，您可以使用 130 多个国家/地区的 240,000 多台服务器，从而获得无与伦比的规模和弹性。Akamai 平台位于您的基础架构和最终用户之间，充当流量突然激增的第一道防线。Akamai Intelligent Platform 也是一个逆向代理服务器，只侦听和响应端口 80 和 443 上的请求，这意味着其他端口上的流量会在边缘上被丢弃，而不会转发到您的基础架构。
+
+## Akamai CDN 会保留来自源服务器的 cookie 吗？ 
+
+对于不可高速缓存的内容或任何未高速缓存的内容，将保留来自源的 cookie。对于边缘服务器高速缓存的内容，不会保留 cookie。
+
+## 如何使用 IBM Cloud 控制台为其他用户授予创建或管理 CDN 的许可权？
+
+在 IBM Cloud 控制台中，帐户的主用户可以为其他用户提供创建和管理 CDN 的许可权。在 IBM Cloud 控制台主页中，执行以下步骤以编辑许可权：
+ * 选择**帐户**选项卡
+ * 选择**用户 -> 用户列表**
+ * 单击所需的**用户名**
+ * 然后，选择**门户网站许可权**选项卡
+ * 选择**服务**选项卡
+ * 选择**管理 CDN 帐户**
+ * 单击**编辑门户网站许可权**按钮
+ * 设置需要的许可权。
+

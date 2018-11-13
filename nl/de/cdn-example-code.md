@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -25,10 +25,10 @@ Als Voraussetzung muss der SOAP-Client von 'https://github.com/softlayer/softlay
   * Sie müssen über `vendor/autoload` Zugriff auf den SOAP-Client erhalten. Der Pfad ist relativ zu der Position, an der das Script ausgeführt wird; es kann erforderlich sein, ihn entsprechend zu ändern. In PHP ähnelt die Anweisung der folgenden Zeichenfolge: `require_once './../vendor/autoload.php';`
 
       ```php
-      require_once __DIR__.'/vendor/autoload.php';
+      require_once __VERZEICHNIS__.'/vendor/autoload.php';
       ```
 
-  * Alle API-Aufrufe werden mit dem Benutzernamen und einem API-Schlüssel authentifiziert. Weitere Informationen zum Generieren eines API-Schlüssels finden Sie auf der Seite [Einführung](https://softlayer.github.io/article/getting-started/) unter 'API-Schlüssel abrufen'. 
+  * Alle API-Aufrufe werden mit dem Benutzernamen und einem API-Schlüssel authentifiziert. Weitere Informationen zum Generieren eines API-Schlüssels finden Sie auf der Seite [Einführung](https://softlayer.github.io/article/getting-started/) unter 'API-Schlüssel abrufen'.
 
       ```php
       $apiUsername = '<Ihr Benutzername>' ;
@@ -182,7 +182,7 @@ catch (\Exception $e) {
 
 Im folgenden Beispiel wird dargestellt, wie mithilfe der API `createDomainMapping` eine neue CDN-Zuordnung erstellt wird. Hierbei wird ein einzelner Parameter des Objekts `stdClass` verwendet. Der SOAP-Client muss mithilfe der Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` wie im Beispiel beschrieben initialisiert werden.
 
-**HINWEIS:** Falls Sie einen angepassten CNAME angeben, **muss** dieser mit `.cdnedge.bluemix.net` enden; andernfalls wird ein Fehler ausgelöst. Informationen zu den Regeln zum Angeben eines eigenen CNAME finden Sie in [dieser Beschreibung](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions).
+**HINWEIS:** Falls Sie einen angepassten CNAME angeben, **muss** dieser mit `.cdnedge.bluemix.net` enden; andernfalls wird ein Fehler ausgelöst. Informationen zu den Regeln zum Angeben eines eigenen CNAME finden Sie in [dieser Beschreibung](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-).
 
 ```php
 

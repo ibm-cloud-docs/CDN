@@ -1,17 +1,17 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" audience="service" href="/docs/infrastructure/cdn/getting-started.html"}
+{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html"}
 Red de entrega de contenido (CDN)
 
     {: .navgroup id="learn"}
     getting-started.md
     about.md
+    feature-descriptions.md
     about-https.md
     naas-video.md
-    [Uso de CDN con Cloud Object Storage para entregar sus archivos estáticos más rápidamente](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
-    new-features.md
-    feature-descriptions.md
+    [Utilización de una CDN con Cloud Object Storage para proporcionar sus archivos estáticos con mayor rapidez](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+    whats-new.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
@@ -19,6 +19,7 @@ Red de entrega de contenido (CDN)
     basic-functions.md
     how-to.md
     how-to-https.md
+    control-browser-caching-duration.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md
@@ -37,4 +38,5 @@ Red de entrega de contenido (CDN)
     {: .navgroup id="reference"}
     api.md
     cdn-example-code.md
+    legacy-portal.md
     {: .navgroup-end}

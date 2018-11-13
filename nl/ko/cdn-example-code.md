@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -182,7 +182,7 @@ catch (\Exception $e) {
 
 이 예에서는 `createDomainMapping` API를 사용하여 새로운 CDN 맵핑을 작성하는 방법을 보여줍니다. `stdClass` 오브젝트의 매개변수 하나를 사용합니다. SoapClient는 다음 예에 표시된 대로 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 클래스를 사용하여 초기화해야 합니다.
 
-**참고**: 사용자 정의 CNAME을 제공하도록 선택하는 경우 `.cdnedge.bluemix.net`으로 종료**되어야** 합니다. 그렇지 않으면 오류로 처리됩니다. 고유 CNAME을 제공하는 데 관한 규칙은 [이 설명](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions)을 참조하십시오.
+**참고**: 사용자 정의 CNAME을 제공하도록 선택하는 경우 `.cdnedge.bluemix.net`으로 종료**되어야** 합니다. 그렇지 않으면 오류로 처리됩니다. 고유 CNAME을 제공하는 데 관한 규칙은 [이 설명](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)을 참조하십시오.
 
 ```php
 

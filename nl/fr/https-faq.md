@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -24,7 +24,7 @@ Dans le cas d'un certificat SAN, des domaines client multiples partagent un cert
 
 ## Comment s'effectue la validation de domaine avec redirection ?
 
-Cela dépend de votre serveur. La procédure d'exécution de la validation de domaine pour les serveurs Apache et Nginx est présentée sur la page [Exécution de la validation DCV (Domain Control Validation) pour HTTPS](how-to-https.html#redirect-).
+Cela dépend de votre serveur. La procédure d'exécution de la validation de domaine pour les serveurs Apache et Nginx est présentée sur la page [Exécution de la validation DCV (Domain Control Validation) pour HTTPS](how-to-https.html#redirect).
 
 ## Combien de temps dure la validation de domaine ?
 
@@ -82,4 +82,4 @@ Pas nécessairement. La sélection des certificats est gérée par Akamai, afin 
 
 ## Pourquoi "wildcard" s'affiche-t-il quand j'exécute une action `dig` ou que j'essaie d'accéder au contenu alors que le statut de mon CDN est `Requesting Certificate`, `Domain Validation pending` ou `Deploying Certificate` ?
 
-Lors du processus de demande d'un certificat SAN DV, la chaîne d'enregistrement DNS pour votre CDN est chaînée à un certificat de caractère générique, temporairement. Jusqu'à ce que le processus soit terminé, le contenu est temporairement servi via ce certificat de caractère générique. Une fois le processus de demande terminé, la chaîne d'enregistrement DNS est mise à jour pour chaîner le certificat SAN DV de votre CDN.
+Lors du processus de demande d'un certificat SAN DV, la chaîne d'enregistrement DNS pour votre CDN est chaînée à un certificat de caractère générique, temporairement. Jusqu'à ce que le processus soit terminé, le contenu est temporairement distribué via ce certificat de caractère générique. Une fois le processus de demande terminé, la chaîne d'enregistrement DNS est mise à jour pour chaîner le certificat SAN DV de votre CDN.

@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ### 度量值的容器类
 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 集合包含度量值 API 使用的属性。`type` 属性有三个可能的值：PIECHART、LINEGRAPH 或 TOTALS。此容器中其余属性的输出取决于 `type`，这将在下面进一步详细描述。除 `type` 以外的其他所有属性都是数组。并非所有属性都用于所有类型。
 

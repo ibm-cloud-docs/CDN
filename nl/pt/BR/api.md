@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -30,7 +30,7 @@ seguintes recursos no IBM Cloud Development Network:
 * [Visão geral do SLAPI](https://softlayer.github.io/ )
 * [Introdução ao SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [Guia da API PHP Soap](https://softlayer.github.io/article/PHP/ )
+* [Guia da API PHP Soap](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -296,7 +296,7 @@ lançada.
 Lista os caminhos de origem para um mapeamento existente com base no `uniqueId`.
 
 * **Parâmetros necessários**:
-  * `uniqueId`: forneça o ID exclusivo do mapeamento para o qual você deseja listar Caminhos de origem.
+  * `uniqueId`: forneça o uniqueId do mapeamento para o qual você deseja listar Caminhos de origem.
 * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
   [Visualizar o Contêiner do caminho de origem](path-container.html)
@@ -468,3 +468,85 @@ Retorna o número total de estatísticas pré-determinadas para exibição diret
    * ` frequência `
 
  * **Retorno**: uma coleção de objetos do tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+
+----
+## API para o Controle de acesso geográfico
+### createGeoblocking
+Cria uma nova regra de Controle de acesso geográfico e retorna a regra recém-criada.
+
+  * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+    [ Visualizar o Contêiner de Entrada ](input-container.html)
+
+    Os atributos a seguir fazem parte do Contêiner de entrada e são **necessários** ao criar uma nova regra de Controle de acesso geográfico:
+    * `uniqueId`: uniqueId do mapeamento que designará a regra
+    * `accessType`: especifica se a regra usará `ALLOW` ou `DENY` para permitir ou negar tráfego para a região especificada
+    * `regionType`: o tipo de região ao qual aplicar a regra de Controle de acesso geográfico, seja `CONTINENT` ou `COUNTRY_OR_REGION`
+    * `regions`: uma matriz que lista os locais aos quais o `accessType` se aplicará
+
+      Consulte a página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver uma lista de possíveis regiões.
+
+  * **Retorna**: um objeto do tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Visualizar a classe de Bloqueio geográfico](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+Atualiza uma regra de Controle de acesso geográfico existente para um mapeamento de domínio existente e retorna a regra atualizada.
+
+  * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+    [ Visualizar o Contêiner de Entrada ](input-container.html)
+
+    Os atributos a seguir fazem parte do Contêiner de entrada e podem ser fornecidos ao atualizar uma regra de Controle de acesso geográfico (os parâmetros são opcionais, a menos que indicado de outra forma):
+    * `uniqueId`: **necessário** uniqueId do mapeamento ao qual a regra a ser atualizada pertence
+    * `accessType`: especifica se a regra usará `ALLOW` ou `DENY` para permitir ou negar tráfego para a região especificada.
+    * `regionType`: o tipo de região ao qual aplicar a regra, seja `CONTINENT` ou `COUNTRY_OR_REGION`
+    * `regions`: uma matriz que lista os locais aos quais o `accessType` se aplicará
+
+      Consulte a página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver uma lista de possíveis regiões.
+
+  * **Retorna**: um objeto do tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Visualizar a classe de Bloqueio geográfico](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+Remove uma regra de Controle de acesso geográfico existente de um mapeamento de domínio existente.
+
+  * **Parâmetros**: uma coleção do tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    É possível visualizar todos os atributos no Contêiner de entrada aqui:
+
+    [ Visualizar o Contêiner de Entrada ](input-container.html)
+
+    O atributo a seguir faz parte do Contêiner de entrada e é **necessário** ao excluir uma regra de Controle de acesso geográfico:
+    * `uniqueId`: forneça o uniqueId do mapeamento ao qual a regra a ser excluída pertence.
+
+  * **Retorna**: um objeto do tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Visualizar a classe de Bloqueio geográfico](geoblock-behavior.html)
+
+----
+### getGeoblocking
+Recupera o comportamento de Controle de acesso geográfico de um mapeamento por meio do banco de dados.
+
+  * **Parâmetros**:
+    * `uniqueId`: o uniqueId do mapeamento ao qual a regra pertence.
+
+  * **Retorna**: um objeto do tipo
+     `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Visualizar a classe de Bloqueio geográfico](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+Retorna uma lista dos tipos e regiões que têm permissão para criar regras de Controle de acesso geográfico.
+
+  * **Parâmetros**:
+    * `uniqueId`: o uniqueId de seu mapeamento de domínio.
+
+  * **Retorna**: um objeto do tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
+
+    [Visualizar a classe de Bloqueio geográfico](geoblock-behavior.html)

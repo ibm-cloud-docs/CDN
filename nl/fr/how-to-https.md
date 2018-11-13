@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-17"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -14,9 +14,13 @@ lastupdated: "2018-06-17"
 {:tip: .tip}
 {:download: .download}
 
-# Exécution de la validation DCV (Domain Control Validation) pour HTTPS
+# Exécution de la validation DCV (Domain Control Validation) pour HTTPS avec DV SAN
 
-## Etapes de validation DCV initiales 
+Le diagramme suivant présente les différents états possibles pour votre CDN entre le moment où il est créé et celui où il commence à fonctionner :
+
+  ![Diagramme des états SAN](images/state-diagram-san.png)
+
+## Etapes de validation DCV initiales
 
 **Etape 1 :**
 
@@ -36,7 +40,7 @@ Une fois que l'autorité de certification a reçu la demande, elle émet une dem
 
 **Etape 3 :**
 
-Cliquez sur le nom du CDN qui doit être validé. Sur la page de présentation qui s'ouvre, vous pouvez voir le statut général de votre CDN. En haut de la page, une alerte s'affiche vous rappelant qu'une validation du domaine est nécessaire. Sélectionnez le bouton **View domain validation** pour ouvrir une fenêtre qui vous indique les informations d'authentification requises pour l'exécution du processus de validation.
+Cliquez sur le nom du CDN qui doit être validé. Sur la page de présentation qui s'ouvre, vous pouvez voir le statut général de votre CDN. En haut de la page, une alerte s'affiche pour vous rappeler qu'une validation du domaine est nécessaire. Sélectionnez le bouton **View domain validation** pour ouvrir une fenêtre qui vous indique les informations d'authentification requises pour l'exécution du processus de validation.
 
    ![Domain Validation Needed](images/view-domain-validation.png)
 
@@ -44,35 +48,37 @@ Cliquez sur le nom du CDN qui doit être validé. Sur la page de présentation q
 
   * Quand ce processus est terminé, tous les domaines, quelle que soit la méthode de validation utilisée, passent à l'état **CNAME Configuration**.
 
-Vous trouverez des informations complémentaires relatives à l'exécution de la configuration CNAME ainsi qu'à la surveillance de votre CDN dans la page [Lancement de l'exécution](basic-functions.html#get-to-running).
+Vous trouverez des informations complémentaires relatives à l'exécution de la configuration CNAME ainsi qu'à la surveillance de votre CDN sur la page [Lancement de l'exécution](basic-functions.html#get-to-running).
 
 
-## Demande d'authentification de validation de domaine
+## Validation DCV (Domain Control Validation) 
 
-La demande d'authentification de validation de domaine prouve que vous êtes le propriétaire du domaine. Les trois méthodes dont vous disposez pour répondre à la demande d'authentification de validation de domaine sont présentées ci-dessous.
+Pour que votre nom de domaine CDN soit ajouté au certificat SAN, vous devez prouver que vous disposez d'un contrôle administratif sur votre domaine. Ce processus de validation est nommé DCV (Domain Control Validation). Vous avez un délai de 48 heures pour effectuer la validation DCV. Si vous ne le faites pas, votre demande expire et vous devez recommencer le processus de commande. Les sections suivantes décrivent les trois méthodes possibles pour effectuer la validation DCV. 
 
-**Remarque** : si vous ne répondez pas à la demande d'authentification de validation de domaine dans les 48 heures, cette demande expire et vous devez recommencer le processus de commande.
 
 ### CNAME
 
-Si votre enregistrement CNAME a été ajouté à votre fournisseur DNS avant de commander votre CDN, vous n'avez rien d'autre à faire. La validation de domaine est automatiquement gérée par IBM Cloud, Akamai et l'autorité de certification. Cette validation peut prendre entre 2 et 4 heures.
+Cette méthode n'est recommandée que **QUE SI** votre CDN ne distribue **pas** le trafic en temps réel. Si votre domaine distribue le trafic en temps réel, nous vous recommandons d'utiliser la méthode Standard ou Redirect pour valider votre domaine. 
 
-  * Si vous n'avez pas encore configuré votre enregistrement CNAME avec votre fournisseur DNS, vous devez le faire maintenant. La plupart des fournisseurs DNS peuvent vous fournir des instructions sur la manière de définir ou de modifier le CNAME.
+Pour utiliser cette méthode, vous ajouterez un enregistrement CNAME pour votre domaine CDN dans votre configuration DNS. La valeur CNAME à utiliser est celle que vous avez utilisée lors de la création du CDN. Elle doit se terminer par le domaine `cdnedge.bluemix.net`. Aucune autre action n'est requise de votre part. La validation DCV progressera automatiquement à partir de là. Cette validation peut durer entre 2 et 4 heures. Une fois le certificat déployé, votre CDN passe directement au statut RUNNING.
 
-   ![Domain Validation - CNAME](images/domain-validation-cname.png)
+La plupart des fournisseurs DNS peuvent vous fournir des instructions sur la manière de définir ou de modifier le CNAME. Voici un exemple d'enregistrement CNAME standard :
 
-**Remarque** : cette méthode n'est recommandée que **QUE SI** votre CDN ne sert **pas** le trafic en temps réel. Sinon, il est conseillé d'utiliser la méthode Standard pour valider votre domaine.
+| **Type de ressource** | **Hôte** | **Pointe vers (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
+
 
 ---
 ### Méthode Standard
 
-Si vous choisissez la méthode Standard  pour la validation de domaine, la fenêtre affiche deux options, **Challenge URL** et **Challenge response**. Pour effectuer le processus de validation de domaine, ajoutez à votre serveur d'origine la réponse **Challenge response** fournie, ce qui permet à l'autorité de certification d'extraire la réponse **Challenge response** de votre serveur d'origine en utilisant l'URL spécifiée dans **Challenge URL**. Une fois votre serveur d'origine correctement configuré, la validation de domaine peut prendre entre 2 et 4 heures.
+Si vous choisissez la méthode Standard  pour la validation de domaine, la fenêtre affiche deux options, **Challenge URL** et **Challenge response**. Pour effectuer le processus de validation de domaine, ajoutez à votre serveur d'origine la réponse **Challenge response** fournie. Cela permettra à l'autorité de certification d'extraire la réponse **Challenge response** de votre serveur d'origine en utilisant l'URL spécifiée dans **Challenge URL**. Une fois votre serveur d'origine correctement configuré, la validation de domaine peut prendre entre 2 et 4 heures.
 
    ![Domain Validation - Standard](images/domain-validation-standard.png)
 
-Pour effectuer la procédure de validation de domaine via la méthode Standard, vous devez configurer votre serveur d'origine d'une façon particulière. Les procédures exemple pour les serveurs Apache et Nginx sont présentées ci-dessous.
+Pour effectuer la procédure de validation de domaine via la méthode Standard, vous devez configurer votre serveur d'origine d'une façon particulière. Les exemples de procédure pour  les serveurs _Apache(TM)_ et _Nginx(TM)_ sont présentés ci-après. 
 
-**Situation exemple**
+**Exemple de situation**
 * Serveur d'origine : `www.example.com`
 * Domaine CDN : `cdn.example.com`
 * URL de demande d'authentification (option Challenge URL) : `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
@@ -82,7 +88,7 @@ Pour effectuer la procédure de validation de domaine via la méthode Standard, 
 
   * **Etape 1 :** connectez-vous à la machine en exécutant le serveur Apache2.
 
-  * **Etape 2 :** créez le fichier pour la demande d'authentification sous `.well-known/acme-challenge/`, dans le répertoire de contenu de votre site web. L'emplacement par défaut pour le contenu de site Web Apache2 est `/var/www/html/`. Pour cet exemple, la réponse à la demande d'authentification sera placée dans le répertoire `/var/www/html/.well-known/acme-challenge/`.
+  * **Etape 2 :** créez le fichier pour la demande d'authentification sous `.well-known/acme-challenge/`, dans le répertoire de contenu de votre site web.  L'emplacement par défaut pour le contenu de site Web Apache2 est `/var/www/html/`. Pour cet exemple, la réponse à la demande d'authentification sera placée dans le répertoire `/var/www/html/.well-known/acme-challenge/`.
 
       ```
       mkdir -p /var/www/html/.well-known/acme-challenge
@@ -105,7 +111,7 @@ Pour effectuer la procédure de validation de domaine via la méthode Standard, 
 
   * **Etape 1 :** connectez-vous à la machine en exécutant le serveur Nginx.
 
-  * **Etape 2 :** créez le fichier pour la demande d'authentification sous `.well-known/acme-challenge/`, dans le répertoire de contenu de votre site web. L'emplacement par défaut pour le contenu de site Nginx est `/usr/share/nginx/html/`. Pour cet exemple, la réponse à la demande d'authentification sera placée dans le répertoire `/usr/share/nginx/html/.well-known/acme-challenge/`.
+  * **Etape 2 :** créez le fichier pour la demande d'authentification sous `.well-known/acme-challenge/`, dans le répertoire de contenu de votre site web.  L'emplacement par défaut pour le contenu de site Nginx est `/usr/share/nginx/html/`.  Pour cet exemple, la réponse à la demande d'authentification sera placée dans le répertoire `/usr/share/nginx/html/.well-known/acme-challenge/`.
       ```
       mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
       printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
@@ -147,9 +153,9 @@ Cliquez sur l'onglet **Redirect** pour afficher toutes les informations permetta
 
    ![Domain Validation - Redirect](images/domain-validation-redirect.png)
 
-Pour effectuer la procédure de validation de domaine via la méthode Redirect, vous devez configurer votre serveur Web d'une façon particulière. Les procédures exemple pour les serveurs Apache et Nginx sont présentées ci-dessous.
+Pour effectuer la procédure de validation de domaine via la méthode Redirect, vous devez configurer votre serveur Web d'une façon particulière. Les exemples de procédure pour les serveurs Apache et Nginx sont présentés dans les sections ci-après. 
 
-**Situation exemple**
+***Exemple de situation**
 * Serveur d'origine : `www.example.com`
 * Domaine CDN : `cdn.example.com`
 * URL de demande d'authentification (option Challenge URL) : `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
@@ -159,11 +165,12 @@ Pour effectuer la procédure de validation de domaine via la méthode Redirect, 
 
   * **Etape 1 :** connectez-vous à la machine en exécutant le serveur Apache2.
 
-  * **Etape 2 :** ouvrez votre fichier de configuration de serveur Apache2. `/etc/apache2/apache2.conf` et `/etc/apache2/sites-enabled/` sont les emplacements par défaut pour le fichiers de configuration.
+  * **Etape 2 :** ouvrez votre fichier de configuration de serveur Apache2. `/etc/apache2/apache2.conf` et `/etc/apache2/sites-enabled/` sont les emplacements par défaut du fichier de configuration. 
 
   * **Etape 3 :** ajoutez une instruction de redirection à l'emplacement approprié du fichier de configuration. Si nécessaire, ajoutez votre domaine CDN en tant qu'alias **ServerAlias** supplémentaire dans votre hôte virtuel pour votre serveur d'origine.
+
     ```
-    Redirect http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
+    Redirect /.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 
   * **Etape 4 :** redémarrez le serveur Apache2 avec un temps d'indisponibilité minimal en utilisant la commande suivante :
@@ -228,7 +235,7 @@ Pour effectuer la procédure de validation de domaine via la méthode Redirect, 
 
 #### Vérifiez que la redirection fonctionne correctement
 
-La procédure ci-dessous redirige le trafic uniquement pour l'URL de demande d'authentification spécifique vers la redirection d'URL. Vous pouvez vérifier le bon fonctionnement de la redirection via `curl` ou le navigateur.
+La procédure ci-dessous redirige le trafic _uniquement_ pour l'URL de demande d'authentification spécifique vers la redirection d'URL. Vous pouvez vérifier que la redirection a bien fonctionné via `curl` ou le navigateur.
 
 * Pour vérifier que la redirection fonctionne via `curl`, exécutez la commande suivante pour l'URL de demande d'authentification.
 
@@ -236,9 +243,9 @@ La procédure ci-dessous redirige le trafic uniquement pour l'URL de demande d'a
     curl -vL http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 
-* Pour vérifier que la redirection fonctionne via le navigateur, essayez d'accéder à l'URL de demande d'authentification depuis votre navigateur.
+* Pour vérifier que la redirection fonctionne via le navigateur, essayez d'atteindre l'URL de demande d'authentification depuis votre navigateur.
 
-Dans les deux cas, vous devez être capable d'extraire la copie de l'objet fichier de demande d'authentification de validation de domaine depuis Akamai, dans le domaine dcv.akamai.com, où la demande d'origine a été redirigée.
+Dans les deux cas, vous devez être capable d'extraire la copie de l'objet fichier de demande d'authentification de validation de domaine depuis Akamai, dans le domaine `dcv.akamai.com`, où la demande d'origine a été redirigée.
 
 #### Nettoyage pour la méthode Redirect
 

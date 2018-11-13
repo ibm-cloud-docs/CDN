@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,13 +26,20 @@ Um CDN atinge o seu propósito armazenando em cache o conteúdo da web em servid
 
 ## Como a minha conta de serviço do IBM Cloud Content Delivery Network foi criada?
 
-Sua conta é criada durante o processo de ordem do CDN quando você clica em **Selecionar** após navegar pelo menu "Seleção do fornecedor".
+Sua conta é criada durante o processo de pedido do CDN. Se você estiver criando um CDN por meio do portal Anterior, quando clicar no botão **Pedir CDN**, na **página Rede -> CDN**, sua conta será criada. Se estiver criando um CDN por meio do portal me nuvem da IBM, quando clicar no botão **Criar**, na página **Catálogo -> Rede -> Content Delivery Network**, sua conta será criada.
 
-## O que fazer quando meu CDN estiver no status CNAME_CONFIGURATION?
+## O que fazer quando meu CDN estiver no status de configuração CNAME?
 
-Para CDN baseado em HTTP, atualize seu registro DNS para que o seu website aponte para o `CNAME` associado ao seu novo mapeamento de CDN. Para CDN baseado em HTTPS, a atualização desse DNS **NÃO** é necessária.
+Para o CDN de HTTPS baseado em Certificados HTTP e SAN, atualize seu registro DNS para que seu website aponte para o `CNAME` associado ao novo mapeamento de CDN. Para o CDN de HTTPS baseado em Certificado curinga, essa atualização de DNS **NÃO** é necessária.
 
 **Nota**: pode levar até 15 - 30 minutos para a atualização se tornar ativa. Verifique com seu provedor DNS para obter uma estimativa de tempo exata.
+
+Um registro CNAME típico seria semelhante ao seguinte na página de configuração do DNS:
+
+| **Tipo de recurso** | **Host** | **Pontos para (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutos |
+
 
 ## Pelo que serei cobrado?
 
@@ -62,7 +69,7 @@ servidor de origem específico.
 
 ## Meu CDN está em um estado de erro. O que faço agora?
 
-Consulte as páginas [Resolução de problemas](troubleshooting.html#troubleshooting) ou [Obtendo ajuda e suporte](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help) ou abra um chamado no [Portal do cliente ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://control.softlayer.com/).
+Consulte as páginas [Resolução de problemas](troubleshooting.html#troubleshooting) ou [Obtendo ajuda e suporte](getting-help.html#gettinghelp) ou abra um chamado no [Portal do cliente ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://control.softlayer.com/).
 
 ## Onde localizo meu CNAME se eu não forneci um?
 
@@ -96,6 +103,23 @@ Omitir a barra, por exemplo, usando `www.example.com/images` resultará em um er
 
 Siga as etapas descritas [nesse artigo](https://community.akamai.com/docs/DOC-7708) do Akamai.
 
-## Qual segurança é incluída com a solução CDN da IBM com Akamai?
+## Qual segurança está incluída com a solução IBM CDN com Akamai?
 
-Usando a plataforma Akamai distribuída, você obtém escala e resiliência sem precedentes com mais de 240 mil servidores em mais de 130 países. A Plataforma Akamai está entre sua infraestrutura e seus usuários finais e age como o primeiro nível de defesa para picos repentinos no tráfego. Akamai Intelligent Platform também é um proxy reverso que atende e responde a solicitações nas portas 80 e 443 apenas, o que significa que o tráfego em outras portas é descartado na borda sem ser encaminhado para a sua infraestrutura.
+Usando a plataforma Akamai distribuída, você obtém escala e resiliência incomparáveis com mais de 240.000 servidores em mais de 130 países. A Plataforma Akamai está entre sua infraestrutura e seus usuários finais e age como o primeiro nível de defesa para picos repentinos no tráfego. Akamai Intelligent Platform também é um proxy reverso que atende e responde a solicitações nas portas 80 e 443 apenas, o que significa que o tráfego em outras portas é descartado na borda sem ser encaminhado para a sua infraestrutura.
+
+## Os cookies do servidor de origem são preservados pelo CDN do Akamai? 
+
+Para conteúdo não armazenável em cache ou qualquer conteúdo que não seja armazenado em cache, os cookies são preservados da origem. Para conteúdo armazenado em cache pelos servidores de borda, os cookies não são preservados.
+
+## Como usar o IBM Cloud Console para conceder a outros usuários permissão para criar ou gerenciar um CDN?
+
+No IBM Cloud Console, o usuário principal da conta pode fornecer a outros usuários a permissão para criar e gerenciar um CDN. Na página principal do IBM Cloud Console, siga estas etapas para editar permissões:
+ * Selecione a guia **Conta**
+ * Selecione **Usuários -> Lista de usuários**
+ * Clique no **Nome de usuário** desejado
+ * Em seguida, selecione a guia **Permissões do portal**
+ * Selecione a guia **Serviços**
+ * Selecione **Gerenciar a conta CDN**
+ * Clique no botão **Editar permissões do portal**
+ * Configure as permissões necessárias.
+

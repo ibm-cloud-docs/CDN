@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ La CDN (Content Delivery Network) IBM Cloud può essere utilizzata per diverse s
 
 ## Prima di iniziare
 
-Prima di iniziare a utilizzare IBM Cloud Content Delivery Network, avrai bisogno di un [ID IBM](https://www.ibm.com/account/us-en/signup/register.html). Puoi quindi ordinare il servizio Content Delivery Network tramite il tuo [Dashboard IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) o attraverso il nuovo [Portale del cliente della CDN IBM Cloud](https://control.softlayer.com/network/cdn), a seconda della tua preferenza.
+Prima di iniziare a utilizzare IBM Cloud Content Delivery Network, avrai bisogno di un [ID IBM](https://www.ibm.com/account/us-en/signup/register.html). Puoi quindi ordinare il tuo servizio Content Delivery Network tramite il tuo [dashboard IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) oppure tramite la nuova [console CDN IBM Cloud](https://www.ibm.com/cloud/cdn), a seconda della tua preferenza.
 
 Se hai bisogno di assistenza per ottenere un account per utilizzare IBM Cloud Content Delivery Network, puoi [rivolgerti al tuo rappresentante delle vendite IBM](https://www.ibm.com/cloud-computing/bluemix/contact-us) per ulteriori informazioni introduttive.
 
 ## Esercitazione
 
 [Ecco un'esercitazione](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sulla creazione di una CDN (Content Delivery Network) per IBM Cloud Object Storage
-
-## Hai già un account?
-
-I clienti CDN esistenti hanno accesso ai loro account tramite il nuovo [portale della CDN IBM Cloud](https://control.softlayer.com). Se hai un account esistente, puoi ora accedere al tuo Content Delivery Network dalla scheda **Rete** invece che dalla scheda **Archiviazione**.
 
 ## Prezzi della larghezza di banda di CDN (tariffe presentate in USD)
 

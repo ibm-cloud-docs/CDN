@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-07"
+lastupdated: "2018-08-29"
 
 ---
 
@@ -16,15 +16,17 @@ lastupdated: "2018-05-07"
 
 # Regole e convenzioni di denominazione
 
-## Quali sono le regole per il nome host?
-La stringa di input del `Nome host` **deve**:
+## Quali sono le regole per l'Hostname (Nome host) CDN?
+La stringa di input `Hostname` **deve**:
   * consistere in caratteri alfanumerici
   * essere inferiore ai 254 caratteri
   * terminare con un nome dominio di livello superiore valido
   * **non** deve contenere più di 10 etichette
   * **non** deve terminare con `cdnedge.bluemix.net` (tale termine viene utilizzato per i CNAME ed è riservato)
 
-Consulta RFC 1035, sezione 2.3.4 per ulteriori dettagli.
+Consulta RFC 1035, sezione 2.3.4 per ulteriori dettagli. 
+
+Inoltre, consigliamo vivamente di utilizzare un FQDN (fully-qualified domain name) come tuo Hostname (Nome host) CDN. Scegli un nome in formato 'www.example.com' invece di un nome dominio root (indicato anche come dominio apex di zona o naked) nel formato 'example.com'. Dovrai creare un record CNAME per l'Hostname (Nome host) CDN che utilizzi e la DNS RFC 1033 richiede che il record di dominio root sia un record A, non un CNAME. Ulteriori chiarimenti sono forniti nella RFC 2181, sezione 10.1
 
 ## Quali sono le convenzioni di denominazione CNAME personalizzate?
 La stringa di input `CNAME` deve rispettare le seguenti regole:
@@ -60,7 +62,7 @@ Il percorso di eliminazione:
   * non può terminare con un punto (.)
   * non può contenere `*`
 
-**NOTA**: l'eliminazione è consentita solo per i singoli file. L'eliminazione a livello di directory non è supportata in questo momento.
+**NOTA**: l'eliminazione è consentita solo per i singoli file. L'eliminazione a livello di directory non è supportata, al momento.
 
 ## Per il comando **Aggiungi origine**, esistono delle regole da seguire per la stringa del percorso?
 Per **Aggiungi origine**, il percorso è **obbligatorio**. Anche se la tua CDN è stata creata con un percorso, il percorso per **Aggiungi origine** deve iniziare con il percorso della CDN come prefisso. Ad esempio, se il percorso della CDN è stato specificato come `/storage`, per richiamare **Aggiungi origine** con un percorso denominato `/examplePath`, il percorso fornito sarà `/storage/examplePath`.

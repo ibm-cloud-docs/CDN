@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ Para obtener más información sobre la SLAPI, o sobre las API de servicio de IB
 * [Descripción general de SLAPI](https://softlayer.github.io/ )
 * [Iniciación a SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [Guía de API Soap PHP](https://softlayer.github.io/article/PHP/ )
+* [Guía de API Soap PHP](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -438,3 +438,84 @@ Devuelve el número total de estadísticas predeterminadas para su visualizació
    * `frequency`
 
  * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+
+----
+## API de Control de acceso geográfico
+### createGeoblocking
+Crea una nueva regla de control de acceso geográfico, y devuelve la regla recién creada.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](input-container.html)
+
+    Los siguientes atributos forman parte del contenedor de entrada y son **necesarios** cuando se crea una nueva regla de control de acceso geográfico:
+    * `uniqueId`: ID exclusivo de la correlación para asignar a la regla
+    * `accessType`: especifica si la regla permitirá (`ALLOW`) o denegará (`DENY` ) el tráfico a una región dada
+    * `regionType`: tipo de región que se aplicará a la regla de control de acceso geográfico, `CONTINENT` o `COUNTRY_OR_REGION`
+    * `regions`: una matriz con una lista de ubicaciones a las que se aplicará el `accessType`
+
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver una lista de las posibles regiones.
+
+  * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+Actualiza una regla de control de acceso geográfico existente para una correlación de dominio existente y devuelve la regla actualizada.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](input-container.html)
+
+    Los siguientes atributos forman parte del Contenedor de entrada y se pueden proporcionar al actualizar una regla de control de acceso geográfico (los parámetros son opcionales a menos que se indique lo contrario):
+    * `uniqueId`: ID exclusivo **necesario** de la correlación a la que pertenece la regla a actualizar
+    * `accessType`: especifica si la regla permitirá (`ALLOW`) o denegará (`DENY` ) el tráfico a una región dada.
+    * `regionType`: tipo de región que se aplicará a la regla, `CONTINENT` o `COUNTRY_OR_REGION`
+    * `regions`: una matriz con una lista de ubicaciones a las que se aplicará el `accessType`
+
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver una lista de las posibles regiones.
+
+  * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+Elimina una regla de control de acceso geográfico existente de una correlación de dominio existente.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](input-container.html)
+
+    El siguiente atributo forma parte del contenedor de entrada y es **necesario** al suprimir una regla de control de acceso geográfico:
+    * `uniqueId`: proporcione el ID exclusivo de la correlación a la que pertenece la regla a suprimir.
+
+  * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+
+----
+### getGeoblocking
+Recupera de la base de datos un comportamiento del control de acceso geográfico de una correlación.
+
+  * **Parámetros**:
+    * `uniqueId`: identificador exclusivo de la correlación a la que pertenece la regla.
+
+  * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
+
+    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+Devuelve una lista de los tipos y regiones que están permitidos para crear reglas de control de acceso geográfico.
+
+  * **Parámetros**:
+    * `uniqueId`: ID exclusivo de su correlación de dominio.
+
+  * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
+
+    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)

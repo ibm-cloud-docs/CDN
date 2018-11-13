@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -24,7 +24,7 @@ lastupdated: "2018-06-19"
 
 ## 如何完成通过重定向进行的域验证？
 
-这取决于您的服务器。完成 Apache 和 Nginx 服务器的域验证的过程可在[完成 HTTPS 的域控制验证](how-to-https.html#redirect-)页面上找到。
+这取决于您的服务器。完成 Apache 和 Nginx 服务器的域验证的过程可在[完成 HTTPS 的域控制验证](how-to-https.html#redirect)页面上找到。
 
 ## 域验证需要多长时间？
 

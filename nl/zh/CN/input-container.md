@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ lastupdated: "2018-06-07"
 下面是映射和（源）路径类的公共属性：
 * `originType`：源主机的类型，当前为“HOST_SERVER”或“OBJECT_STORAGE”。
 * `origin`：源服务器地址（源服务器的主机名或 IPv4 地址）、从中访存内容的端点或存储内容的存储区的名称。必须少于 511 个字符。
-* `httpPort`：用于 HTTP 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
-* `httpsPort`：用于 HTTPS 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
+* `httpPort`：用于 HTTP 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
+* `httpsPort`：用于 HTTPS 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
 * `status`：映射或路径的状态。状态可以为 CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED 或 ERROR。
 * `path`：将从中提供高速缓存内容的路径。缺省路径为 /\*。由 `updateOriginPath` API 使用时，此属性是指要添加的新路径。
 * `performanceConfiguration`：映射的性能配置的规范。
@@ -33,6 +33,7 @@ lastupdated: "2018-06-07"
   * `ignore-all`：忽略所有查询自变量
   * `ignore: 空格分隔的查询自变量`：忽略这些特定查询自变量。例如，`ignore: query1 query2`
   * `include: 空格分隔的查询自变量`：包含这些特定查询自变量。例如，`include: query1 query2`
+* `geoblockingRule`
 
 下面是特定于映射类的属性：
 

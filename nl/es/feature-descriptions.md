@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -34,7 +34,7 @@ En algunos casos, es posible que desee entregar contenido determinado desde un s
 
 ## Correlaciones de CDN basadas en vías de acceso
 
-El servicio de IBM Cloud CDN puede restringirse a una vía de acceso del directorio determinada en el servidor de origen proporcionando la vía de acceso al crear la CDN. Un usuario final solo podrá acceder al contenido que resida en dicha vía de acceso del directorio. Por ejemplo, si se crea una CDN `www.example.com` con la vía de acceso `/videos`, solo será accesible a través de `www.example.com/videos/`.
+El servicio de IBM Cloud CDN puede restringirse a una vía de acceso del directorio determinada en el servidor de origen proporcionando la vía de acceso al crear la CDN. Un usuario final solo podrá acceder al contenido que resida en dicha vía de acceso del directorio. Por ejemplo, si se crea una CDN `www.example.com` con la vía de acceso `/videos`, **únicamente** es accesible a través de `www.example.com/videos/*`.
 
 ## Depuración de contenido almacenado en memoria caché
 
@@ -42,7 +42,7 @@ IBM Cloud CDN proporciona la capacidad de eliminar de forma cómoda y rápida, o
 
 ## Tiempo de duración (TTL)
 
-El Tiempo de duración indica la cantidad de tiempo (en segundos) que el servidor perimetral almacenará en memoria caché el contenido para una vía de acceso de directorio o archivo determinada. Cuando se crea una CDN por primera vez, se crea un Tiempo de duración (TTL) global para la vía de acceso `/\*` con un tiempo predeterminado de 3600 segundos. El valor mínimo para TTL es 30 segundos, y el valor máximo es 2147483647 segundos. Para cada entrada, la vía de acceso de TTL debe ser exclusiva para la CDN. Si varias vías de acceso coinciden con un contenido determinado, la coincidencia de vía de acceso configurada más recientemente será la que se aplique a dicho contenido. Por ejemplo, considere dos TTL, `/example/file` creada primero con un valor de tiempo de duración de 3000 segundos y `/example/*` creada posteriormente, con un valor de 4000 segundos. Aunque `/example/file` es más específica, `/example/*` se ha creado más recientemente, por lo que el TTL para `/example/file` será de 4000 segundos. Una vez creadas, las entradas de TTL se pueden editar para la vía de acceso y/o el tiempo. También se pueden suprimir.
+El Tiempo de duración indica la cantidad de tiempo (en segundos) que el servidor perimetral almacenará en memoria caché el contenido para una vía de acceso de directorio o archivo determinada. Cuando se crea una CDN por primera vez, se crea un Tiempo de duración (TTL) global para la vía de acceso `/\*` con un tiempo predeterminado de 3600 segundos. El valor mínimo para TTL es 0 segundos, y el valor máximo es 2147483647 segundos. Para cada entrada, la vía de acceso de TTL debe ser exclusiva para la CDN. Si varias vías de acceso coinciden con un contenido determinado, la coincidencia de vía de acceso configurada más recientemente será la que se aplique a dicho contenido. Por ejemplo, considere dos TTL, `/example/file` creada primero con un valor de tiempo de duración de 3000 segundos y `/example/*` creada posteriormente, con un valor de 4000 segundos. Aunque `/example/file` es más específica, `/example/*` se ha creado más recientemente, por lo que el TTL para `/example/file` será de 4000 segundos. Una vez creadas, las entradas de TTL se pueden editar para la vía de acceso y/o el tiempo. También se pueden suprimir.
 
 ## Métricas con vistas gráficas
 
@@ -60,7 +60,7 @@ El servidor perimetral utiliza la **cabecera de host** cuando se comunica con el
 
 ## Soporte de protocolo HTTPS
 
-La CDN se puede configurar para que utilice el protocolo HTTPS para servir el contenido de forma segura a los usuarios finales. Esta configuración requiere que se configure un certificado SSL como parte de la configuración de la CDN. Hay dos tipos de opciones de certificado SSL disponibles para HTTPS: [Certificado de comodín](about-https.html#Wildcard-Certificate-support) y [Certificado de nombre alternativo (SAN) validado](about-https.html#subject-alternate-name-san-certificate-support). Este tipo también se denominará _certificado SAN_ en esta documentación.
+La CDN se puede configurar para que utilice el protocolo HTTPS para servir el contenido de forma segura a los usuarios finales. Esta configuración requiere que se configure un certificado SSL como parte de la configuración de la CDN. Hay dos tipos de opciones de certificado SSL disponibles para HTTPS: [Certificado de comodín](about-https.html#wildcard-certificate-support) y [Certificado de nombre alternativo (SAN) validado](about-https.html#subject-alternate-name-san-certificate-support). Este tipo también se denominará _certificado SAN_ en esta documentación.
 
 El tipo de certificado SSL que se debe utilizar es una consideración importante para la CDN de HTTPS. La configuración por certificado comodín es rápida, pero tiene la desventaja de que sólo se puede acceder a la CDN por medio de un CNAME. El proceso de certificado SAN tarda de 4 a 8 horas en completarse, pero proporciona la capacidad de utilizar la CDN con su dominio de CDN (es decir, el nombre de host). El certificado SAN también requiere un paso adicional de [**Validación de control de dominio**](how-to-https.html) durante la configuración. No hay ningún coste asociado a utilizar ninguno de estos certificados. Consulte el [Documento de resolución de problemas](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) para entender las implicaciones de la selección de un determinado tipo de certificado.
 
@@ -110,3 +110,13 @@ Cuando esta característica está habilitada, existe un pequeño coste de rendim
 La optimización del rendimiento de **Vídeo on Demand** ofrece streaming de alta calidad en distintos tipos de red. Con la capacidad de la red distribuida para distribuir la carga dinámicamente, la CDN de IBM Cloud con Akamai le proporciona la capacidad de escalar rápidamente para públicos de gran tamaño, tanto si lo había planificado como si no.
 
 La opción **Vídeo on Demand** está optimizada para la distribución de formatos de streaming segmentados, como HLS, DASH, HDS y HSS. El streaming de vídeo en directo **no** está admitido por ahora. Puede habilitar la característica **Vídeo on Demand** seleccionando la opción desde el menú desplegable bajo **Optimizar para** en el separador Valores, o al crear una nueva vía de acceso de origen. Debe habilitar esta característica solo cuando optimice la entrega de archivos de vídeo.
+
+## Control de acceso geográfico
+
+El control de acceso geográfico es un comportamiento basado en reglas que permite establecer el parámetro `access-type` para un grupo de usuarios, en función de su ubicación geográfica. Hay dos tipos de comportamientos disponibles: **Allow** y **Deny**.
+
+El tipo de acceso `Allow` permite de forma específica el tráfico a regiones seleccionadas, en función del tipo de la región. Permitir el tráfico a regiones específicas bloquea implícitamente el tráfico de todas las otras. Por ejemplo, puede elegir permitir (`Allow`) el tráfico a determinados continentes, como Europa y Oceanía, lo que bloqueará el acceso a todos los demás continentes.
+
+Por otro lado, el comportamiento de denegar (`Deny`) bloquea el acceso al servicio al grupo especificado, pero permite el acceso a todas las demás regiones no especificadas. Por ejemplo, si establece el tipo de acceso de control de acceso geográfico en denegar (`Deny`) a los continentes de Europa y Oceanía, los usuarios de dichos continentes **no** podrán utilizar el servicio, mientras que los usuarios de todos los demás continentes tendrán acceso al mismo.
+
+Esta característica es accesible desde la página de **Valores** de su configuración de CDN.

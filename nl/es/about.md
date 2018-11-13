@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -22,6 +22,10 @@ Una red de entrega de contenido (CDN) es un conjunto de servidores perimetrales 
 
 Una CDN logra su objetivo almacenando contenido en la memoria caché de servidores perimetrales en todo el mundo. Cuando un cliente solicita contenido web, la solicitud se direcciona al servidor perimetral más cercano al cliente desde el punto de vista geográfico. Al reducir la distancia que debe desplazarse el contenido, la CDN ofrece rendimiento optimizado, latencia minimizada y aumento de rendimiento. Al utilizar IBM Cloud Content Delivery Network con Akamai, los proveedores de contenidos garantizan la entrega eficiente del contenido solicitado en todo el mundo, con una configuración mínima.
 
+![Diagrama CDN de alto nivel](images/high-level-cdn-diagram.png)
+
+## Características
+
 Las características principales del servicio IBM Cloud Content Delivery Network incluyen:
   * Soporte al origen de servidor de host
   * Soporte al origen de Object Storage
@@ -37,8 +41,9 @@ Las características principales del servicio IBM Cloud Content Delivery Network
   * Compresión de contenido
   * Optimización de archivos de gran tamaño
   * Vídeo on Demand
+  * Control de acceso geográfico
 
-Consulte [este documento](feature-description.html#feature-descriptions) para ver la descripción completa de las características.
+Consulte [este documento](feature-descriptions.html#feature-descriptions) para ver la descripción completa de las características.
 
 ## Diagrama arquitectónico
 

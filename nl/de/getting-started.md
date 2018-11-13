@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ IBM Cloud Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanf
 
 ## Vorbereitende Schritte
 
-Bevor Sie mit der Verwendung von IBM Cloud Content Delivery Network beginnen, benötigen Sie zunächst eine [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Anschließend können Sie den Content Delivery Network-Service über das [IBM Cloud-Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) oder über das neue [IBM Cloud CDN-Kundenportal](https://control.softlayer.com/network/cdn) je nach Präferenz bestellen.
+Bevor Sie mit der Verwendung von IBM Cloud Content Delivery Network beginnen, benötigen Sie zunächst eine [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Anschließend können Sie den Content Delivery Network-Service über das [IBM Cloud-Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) oder über die neue [CDN-Konsole von IBM Cloud](https://www.ibm.com/cloud/cdn) je nach Präferenz bestellen.
 
 Falls Sie Hilfe bei der Erstellung eines Kontos zur Verwendung von IBM Cloud Content Delivery Network benötigen, können Sie [Ihren IBM Vertriebsbeauftragten kontaktieren](https://www.ibm.com/cloud-computing/bluemix/contact-us), um weitere Anleitungen für den Einstieg zu erhalten.
 
 ## Lernprogramm
 
 [Hier finden Sie ein Lernprogramm](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
-
-## Sie haben bereits ein Konto?
-
-Bestehende CDN-Kunden haben über das neue [IBM Cloud CDN-Portal](https://control.softlayer.com) Zugriff auf ihre Konten. Wenn Sie ein vorhandenes Konto haben, können Sie jetzt über die Registerkarte **Netz** auf Ihr Content Delivery Network zugreifen (nicht über die Registerkarte **Speicher**).
 
 ## Preisstruktur für CDN-Bandbreite (in US-Dollar)
 

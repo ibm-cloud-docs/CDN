@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -73,7 +73,7 @@ Array
 
 Antes de realizar un pedido, la llamada a `verifyOrder` no es obligatoria, pero se recomienda. Se puede utilizar para verificar que una llamada posterior a `placeOrder` tendrá éxito. Puede encontrar más información sobre `verifyOrder` en la [documentación de la API de SoftLayer](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
-En este caso es la clase `SoftLayer_Product_Order` la que define el método verifyOrder y se debe pasar como un parámetro a `\SoftLayer\SoapClient ::getClient ()`. Antes de la llamada a `verifyOrder`, tiene que crear el `$orderObject` utilizando `SoftLayer_Product_Package`.
+En este caso es la clase `SoftLayer_Product_Order` la que define el método verifyOrder y se debe pasar como un parámetro a `\SoftLayer\SoapClient::getClient()`. Antes de la llamada a `verifyOrder`, tiene que crear el `$orderObject` utilizando `SoftLayer_Product_Package`.
 
 ```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
@@ -182,7 +182,7 @@ catch (\Exception $e) {
 
 En este ejemplo se muestra cómo crear una nueva correlación de CDN utilizando la API `createDomainMapping`. Necesita un solo parámetro, un objeto `stdClass`. El SoapClient debe inicializarse utilizando la clase `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`, tal como se muestra en el ejemplo.
 
-**NOTA**: Si decide proporcionar un CNAME personalizado, **debe** finalizar con `.cdnedge.bluemix.net` o se producirá un error. Consulte [esta descripción](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions) para obtener reglas sobre cómo proporcionar su propio CNAME.
+**NOTA**: Si decide proporcionar un CNAME personalizado, **debe** finalizar con `.cdnedge.bluemix.net` o se producirá un error. Consulte [esta descripción](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) para obtener reglas sobre cómo proporcionar su propio CNAME.
 
 ```php
 

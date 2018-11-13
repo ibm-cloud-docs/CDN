@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -109,7 +109,7 @@ SLAPI 是遠端程序呼叫 (RPC) 系統。每個呼叫包含傳送資料給 API
 
 ----
 ### verifyDomainMapping
-驗證 CDN 的狀態，並更新 CDN 對映的 `status`（如果它已變更的話）。一開始建立 CDN 對映時，它的狀態會顯示為_CNAME_CONFIGURATION_。此時，您必須更新 DNS 記錄，使 CDN 對映將主機名稱指向 CNAME。如果您有如何進行更新和變更可能需要多久才能在網際網路上傳播的相關問題，請洽詢您的 DNS 提供者。一般而言，應該需要 15 到 30 分鐘。該時間之後，必須呼叫這個 `verifyDomainMapping` API 以驗證 CNAME 鏈是否完整。如果 CNAME 鏈完整，CDN 對映的狀態會變更為 _RUNNING_。
+驗證 CDN 的狀態，並更新 CDN 對映的 `status`（如果它已變更的話）。一開始建立 CDN 對映時，它的狀態會顯示為 _CNAME_CONFIGURATION_。此時，您必須更新 DNS 記錄，使 CDN 對映將主機名稱指向 CNAME。如果您有如何進行更新和變更可能需要多久才能在網際網路上傳播的相關問題，請洽詢您的 DNS 提供者。一般而言，應該需要 15 到 30 分鐘。該時間之後，必須呼叫這個 `verifyDomainMapping` API 以驗證 CNAME 鏈是否完整。如果 CNAME 鏈完整，CDN 對映的狀態會變更為 _RUNNING_。
 
 可以隨時呼叫此 API 以取得最新的 CDN 對映狀態。網域對映必須處於下列其中一種狀態：_RUNNING_ 或 _CNAME_CONFIGURATION_。
 
@@ -435,3 +435,81 @@ ___
    * `frequency`
 
  * **傳回**：類型 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 的物件集合
+
+----
+## 地理存取控制的 API
+### createGeoblocking
+建立新的「地理存取控制」規則，並傳回新建立的規則。
+
+  * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
+    [檢視輸入容器](input-container.html)
+
+    下列屬性是「輸入容器」的一部分，**必須**在建立新的「地理存取控制」規則時提供：
+    * `uniqueId`：用來指派規則之對映的唯一 ID
+    * `accessType`：指定規則將 `ALLOW` 還是 `DENY` 對給定地區的資料流量
+    * `regionType`：要套用「地理存取控制」規則的地區類型，`CONTINENT` 或是 `COUNTRY_OR_REGION`
+    * `regions`：列出 `accessType` 將適用位置的陣列
+
+      請參閱 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 頁面，以查看可能地區的清單。
+
+  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的物件
+
+    [檢視 Geo-blocking 類別](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+更新現有網域對映的現有「地理存取控制」規則，並傳回更新後的規則。
+
+  * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
+    [檢視輸入容器](input-container.html)
+
+    下列屬性是「輸入容器」的一部分，可以在更新「地理存取控制」規則時提供（除非另有說明，否則屬性為選用性）：
+    * `uniqueId`：**必要**。要更新之規則所屬對映的唯一 ID。
+    * `accessType`：指定規則將 `ALLOW` 還是 `DENY` 對給定地區的資料流量。
+    * `regionType`：要套用規則的地區類型，`CONTINENT` 或是 `COUNTRY_OR_REGION`
+    * `regions`：列出 `accessType` 將適用位置的陣列
+
+      請參閱 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 頁面，以查看可能地區的清單。
+
+  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的物件
+
+    [檢視 Geo-blocking 類別](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+移除現有網域對映的現有「地理存取控制」規則。
+
+  * **參數**：類型 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 的集合。您可以在這裡檢視「輸入容器」中的所有屬性：
+
+    [檢視輸入容器](input-container.html)
+
+    下列屬性是「輸入容器」的一部分，**必須**在刪除「地理存取控制」規則時提供：
+    * `uniqueId`：請提供要刪除之規則所屬對映的唯一 ID。
+
+  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的物件
+
+    [檢視 Geo-blocking 類別](geoblock-behavior.html)
+
+----
+### getGeoblocking
+從資料庫擷取對映的「地理存取控制」行為。
+
+  * **參數**：
+    * `uniqueId`：規則所屬對映的唯一 ID。
+
+  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的物件
+
+    [檢視 Geo-blocking 類別](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+傳回被允許建立「地理存取控制」規則的類型及地區清單。
+
+  * **參數**：
+    * `uniqueId`：網域對映的唯一 ID。
+
+  * **傳回**：類型 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` 的物件
+
+    [檢視 Geo-blocking 類別](geoblock-behavior.html)

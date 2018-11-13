@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,13 +26,20 @@ Una CDN raggiunge il suo scopo memorizzando in cache il contenuto web sui server
 
 ## Come viene creato il mio account di servizio CDN (Content Delivery Network) IBM Cloud?
 
-Il tuo account viene creato durante il processo di ordine della CDN, quando fai clic su **Seleziona** dopo aver esplorato il menu "Selezione venditore".
+Il tuo account viene creato durante il processo dell'ordine CDN. Se stai creando una CDN dal portale legacy, quando fai clic sul pulsante **Order CDN** nella **pagina Network -> CDN**, il tuo account viene creato. Se stai creando una CDN dal portale cloud IBM, quando fai clic sul pulsante **Crea** nella pagina **Catalogo -> Rete -> Content Delivery Network**, il tuo account viene creato.
 
-## Cosa devo fare quando la mia CDN è in stato CNAME_CONFIGURATION?
+## Cosa devo fare quando la mia CDN è nello stato CNAME Configuration?
 
-Per la CDN basata su HTTP, aggiorna il tuo record DNS in modo che il tuo sito web punti al `CNAME` associato alla tua nuova associazione CDN. Per la CDN basata su HTTPS, questo aggiornamento del DNS **NON** è necessario.
+Per la CDN HTTPS basata sul certificato SAN e HTTP, aggiorna il tuo record DNS in modo che il tuo sito web punti al `CNAME` associato alla tua nuova associazione CDN. Per la CDN HTTPS basata sul certificato jolly, questo aggiornamento del DNS **NON** è necessario.
 
 **Nota**: l'attivazione dell'aggiornamento potrebbe richiedere fino a 15-30 minuti. Contatta il tuo provider DNS per ottenere una stima di tempo accurata.
+
+Ecco come si presenta un tipico record CNAME nella pagina di configurazione DNS:
+
+| **Tipo di risorsa** | **Host** | **Punta a (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minuti |
+
 
 ## Che cosa mi verrà addebitato?
 
@@ -42,13 +49,13 @@ Ti viene addebitata solo la larghezza di banda utilizzata per l'istanza CDN (Con
 
 La fatturazione di IBM Cloud Content Delivery Network avviene in base al periodo di fatturazione stabilito nel tuo account {{site.data.keyword.BluSoftlayer_notm}}.
 
-## Se seleziono `delete` dal menu di overflow CDN, viene eliminato il mio account?
+## Se seleziono `delete` dal menu Overflow CDN, viene eliminato il mio account?
 
 No; verrà eliminato solo quel CDN. Il tuo account esiste ancora e puoi creare altri CDN.
 
 ## La memorizzazione nella cache utilizza il push o il pull?
 
-La memorizzazione del contenuto nella cache viene effettuata utilizzando il modello _pull di origine_. Il pull di origine è un metodo con cui i dati vengono "estratti" dal server edge dall'interno del server di origine, a differenza del caricamento manuale del contenuto sul server edge.
+La memorizzazione del contenuto nella cache viene effettuata utilizzando il modello _pull di origine_. Il pull di origine è un metodo con cui i dati vengono "estratti" dal server perimetrale dall'interno del server di origine, a differenza del caricamento manuale del contenuto sul server perimetrale.
 
 ## C'è un browser consigliato da utilizzare per la configurazione del servizio CDN?
 
@@ -60,7 +67,7 @@ Fornire un percorso mentre crei la tua CDN ti consente di isolare i file che pos
 
 ## La mia CDN è in uno stato di errore. Cosa faccio adesso?
 
-Fai riferimento alle pagine [Risoluzione dei problemi](troubleshooting.html#troubleshooting) o [Come ottenere aiuto e supporto](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
+Fai riferimento alle pagine [Risoluzione dei problemi](troubleshooting.html#troubleshooting) o [Come ottenere aiuto e supporto](getting-help.html#gettinghelp) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
 
 ## Dove trovo il mio CNAME se non ne ho fornito uno?
 
@@ -97,3 +104,20 @@ Attieniti alla procedura indicata in [questo articolo](https://community.akamai.
 ## Quale sicurezza è inclusa con la soluzione IBM CDN con Akamai?
 
 Utilizzando la piattaforma Akamai distribuita, ottieni una capacità di ridimensionamento e una resilienza senza pari, con più di 240.000 server in più di 130 paesi. La Akamai Platform si frappone tra la tua infrastruttura e i tuoi utenti finali e funge da primo livello di difesa per improvvisi picchi di traffico. Anche la Akamai Intelligent Platform è un proxy inverso che ascolta e risponde alle richieste solo sulle porte 80 e 443, il che significa che il traffico sulle altre porte viene rilasciato sull'edge senza essere inoltrato alla tua infrastruttura.
+
+## I cookie dal server di origine sono conservati dalla CDN Akamai? 
+
+Per il contenuto non memorizzabile in cache, o qualsiasi contenuto che non viene memorizzato nella cache, i cookie vengono conservati dall'origine. Per il contenuto memorizzato in cache dai server edge, i cookie non vengono conservati.
+
+## Come utilizzo la console IBM Cloud per dare ad altri utenti l'autorizzazione a creare o gestire una CDN?
+
+Nella console IBM Cloud, l'utente master dell'account può fornire ad altri utenti l'autorizzazione a creare e gestire una CDN. Dalla pagina principale della console IBM Cloud, attieniti alla seguente procedura per modificare le autorizzazioni:
+ * Seleziona la scheda **Account**
+ * Seleziona **Utenti -> Elenco utenti**
+ * Fai clic sul **Nome utente** desiderato
+ * Seleziona quindi la scheda **Autorizzazioni portale**
+ * Seleziona la scheda **Servizi**
+ * Seleziona **Gestisci account CDN**
+ * Fai clic sul pulsante **Modifica autorizzazioni portale**
+ * Imposta le autorizzazioni necessarie.
+

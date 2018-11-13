@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -22,6 +22,10 @@ Una CDN (Content Delivery Network) è una raccolta di server edge distribuiti in
 
 Una CDN raggiunge il suo scopo memorizzando in cache il contenuto web sui server edge in tutto il mondo. Quando un cliente richiede del contenuto web, la richiesta di contenuto viene indirizzata al server edge geograficamente più vicino a tale cliente. Riducendo la distanza che il contenuto deve percorrere, il CDN offre un rendimento ottimizzato, una latenza ridotta e prestazioni più elevate. Utilizzando IBM Cloud Content Delivery Network con Akamai, i provider di contenuto possono ottenere una fornitura efficiente del contenuto richiesto da tutto il mondo con una configurazione minima.
 
+![Diagramma della CDN di alto livello](images/high-level-cdn-diagram.png)
+
+## Funzioni
+
 Le funzioni chiave del servizio CDN (Content Delivery Network) IBM Cloud includono:
   * Supporto dell'origine server host
   * Supporto dell'origine Object Storage
@@ -30,15 +34,16 @@ Le funzioni chiave del servizio CDN (Content Delivery Network) IBM Cloud includo
   * Eliminazione del contenuto presente nella cache
   * TTL (Time to Live)
   * Metriche con viste grafiche
-  * Supporto del protocollo HTTPS con certificato wildcard e SAN DV
+  * Supporto del protocollo HTTPS con certificato jolly e SAN DV
   * Supporto dell'intestazione host (Host Header)
-  * Utilizzo di contenuto obsoleto
+  * Gestione di contenuto obsoleto
   * Argomenti di query della chiave della cache
   * Compressione del contenuto
   * Ottimizzazione dei file di grandi dimensioni
   * Video on-demand
+  * Controllo dell'accesso geografico
 
-Consulta [questo documento](feature-description.html#feature-descriptions) per le descrizioni complete delle funzioni.
+Consulta [questo documento](feature-descriptions.html#feature-descriptions) per le descrizioni complete delle funzioni.
 
 ## Digramma dell'architettura
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,16 +23,17 @@ Le conteneur d'entrée est une collection utilisée par les classes Mapping et (
 Les attributs suivants sont communs aux classes Mapping et (Origin) Path :
 * `originType` : Type de l'hôte d'origine, actuellement 'HOST_SERVER' ou 'OBJECT_STORAGE'.
 * `origin` : Adresse du serveur d'origine (nom d'hôte ou adresse IPv4 du serveur d'origine), point de terminaison à partir duquel le contenu est extrait ou nom du compartiment dans lequel le contenu est stocké. La longueur doit être inférieure à 511 caractères.
-* `httpPort` :  Numéro du port utilisé pour le protocole HTTP. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
-* `httpsPort` :  Numéro du port utilisé pour le protocole HTTPS. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
+* `httpPort` :  Numéro du port utilisé pour le protocole HTTP. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
+* `httpsPort` :  Numéro du port utilisé pour le protocole HTTPS. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
 * `status` :  Statut du mappage ou du chemin. Le statut peut être CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED ou ERROR.
-* `path` : Chemin d'accès à partir duquel le contenu mis en cache sera traité. Le chemin par défaut est /\* . Lorsqu'il est utilisé par l'API `updateOriginPath`, cet attribut se réfère au nouveau chemin devant être ajouté.
+* `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Le chemin par défaut est /\* . Lorsqu'il est utilisé par l'API `updateOriginPath`, cet attribut se réfère au nouveau chemin devant être ajouté.
 * `performanceConfiguration` : Spécifications pour la configuration des performances du mappage.
 * `cacheKeyQueryRule` : Les options suivantes sont disponibles pour configurer le comportement de la clé de cache :
   * `include-all`: Inclure tous les arguments de requête
   * `ignore-all` : Ignorer tous les arguments de requête
   * `ignore: arguments de requête séparés par des espaces` : Ignore ces arguments de requête spécifiques. Par exemple, `ignore: query1 query2`
   * `include: arguments de requête séparés par des espaces` : Inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
+* `geoblockingRule`
 
 Les attributs suivants sont spécifiques à la classe Mapping :
 

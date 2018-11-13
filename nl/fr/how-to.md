@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # Gestion de votre CDN
 
+Ce document décrit les tâches courantes de gestion de votre CDN.
+
 ## Configuration de l'heure de mise en cache du contenu à l'aide de l'option "Time To Live" (Durée de vie)
 
-Une fois votre CDN en cours d'exécution, vous pouvez définir l'heure de mise en cache du contenu à l'aide de la fonction de durée de vie Time To Live (TTL). La durée de vie d'un chemin de fichier ou de répertoire spécifique indique la durée pendant laquelle le contenu doit être mis en cache. Lorsque vous avez créé le mappage CDN, une valeur TTL globale de 3 600 secondes par défaut a été créée.
+Une fois votre CDN en cours d'exécution, vous pouvez définir l'heure de mise en cache du contenu à l'aide de la fonction de durée de vie Time To Live (TTL). La durée de vie d'un chemin de fichier ou de répertoire spécifique indique la durée pendant laquelle le contenu doit être mis en cache. Lorsque vous avez créé le mappage CDN, une valeur TTL globale de 3 600 secondes (1 heure) par défaut a été créée.
 
 **Etape 1 :**  
 
@@ -26,7 +28,7 @@ Sur la page des CDN, sélectionnez votre CDN pour accéder à la page **Overview
 
 **Etape 2 :**  
 
-Vous pouvez ajuster l'heure en utilisant les flèches ou en saisissant une nouvelle valeur. Cette valeur est exprimée en secondes. Par exemple, 3 600 secondes représentent 1 heure. La plus petite valeur admise pour `timeToLive` est 30 secondes, tandis que la valeur la plus grande est 2 147 483 647 secondes. Cliquez sur le bouton **Save** pour définir l'heure de mise en cache du contenu.
+Vous pouvez ajuster l'heure en utilisant les flèches ou en saisissant une nouvelle valeur. Cette valeur est exprimée en secondes. Par exemple, 3 600 secondes représentent 1 heure. La plus petite valeur admise pour `timeToLive` est 0 seconde, tandis que la valeur la plus élevée est 2147483647 secondes (environ 24855 jours). Cliquez sur le bouton **Save** pour définir l'heure de mise en cache du contenu.
 
   ![Adding ttl](images/adding-path.png)
 
@@ -77,11 +79,11 @@ Sélectionnez soit **Server**, soit **Object Storage**.
 
   * Les options d'**optimisation** et de **clé de cache** sont les mêmes pour la configuration du serveur et du stockage d'objet.
 
-    * Sélectionnez les options d'**optimisation** dans le menu déroulant. La **livraison Web générale** est l'option par défaut, mais vous pouvez aussi sélectionner les **optimisations de fichiers volumineux** ou la **vidéo à la demande**. L'optimisation de la **livraison Web générale** permet au CDN de servir un contenu de jusqu'à 1,8 Go, alors que l'optimisation des **fichiers volumineux** permet des téléchargements de fichiers de 1,8 Go à 320 Go. La **vidéo à la demande** optimise votre CDN pour la livraison de formats de diffusion en flux segmentés. Pour tout renseignement additionnel, voir les descriptions des fonctions [Optimisation des fichiers volumineux](about.html#large-file-optimization) et [Vidéo à la demande](about.html#video-on-demand).
+    * Sélectionnez les options d'**optimisation** dans le menu déroulant. La **livraison Web générale** est l'option par défaut, mais vous pouvez aussi sélectionner les **optimisations de fichiers volumineux** ou la **vidéo à la demande**. L'optimisation de la **livraison Web générale** permet au CDN de servir un contenu de jusqu'à 1,8 Go, alors que l'optimisation des **fichiers volumineux** permet des téléchargements de fichiers de 1,8 Go à 320 Go. La **vidéo à la demande** optimise votre CDN pour la livraison de formats de diffusion en flux segmentés. Pour tout renseignement additionnel, voir les descriptions des fonctions [Optimisation des fichiers volumineux](feature-descriptions.html#large-file-optimization) et [Vidéo à la demande](feature-descriptions.html#video-on-demand).
 
         ![Options de configuration des performances](images/performance-config-options.png)
 
-    * Sélectionnez les options de **clé de cache** dans le menu déroulant. L'option par défaut est **Include-all**. Si vous sélectionnez **Include specified** ou **Ignore specified**, vous **devez** entrer des chaînes de requête à inclure ou à ignorer, séparées par un espace. Par exemple, entrez `uuid=123456` pour une chaîne de requête unique, ou `uuid=123456 issue=important` pour deux chaînes de requête.  Pour en savoir plus sur la fonction [Cache Key Query Args](about.html#cache-key-query-args), consultez la description de la fonction.
+    * Sélectionnez les options de **clé de cache** dans le menu déroulant. L'option par défaut est **Include-all**. Si vous sélectionnez **Include specified** ou **Ignore specified**, vous **devez** entrer des chaînes de requête à inclure ou à ignorer, séparées par un espace. Par exemple, entrez `uuid=123456` pour une chaîne de requête unique, ou `uuid=123456 issue=important` pour deux chaînes de requête.  Pour en savoir plus sur la fonction [Cache Key Query Args](feature-descriptions.html#cache-key-query-args), consultez la description de la fonction.
 
         ![Options de clés de cache](images/cache-key-options.png)
 

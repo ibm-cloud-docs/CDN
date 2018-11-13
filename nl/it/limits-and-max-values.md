@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -18,18 +18,11 @@ lastupdated: "2018-05-03"
 
 ## Esiste un valore massimo per Time To Live? Un minimo?
 
-Il valore massimo per Time To Live è 2.147.483.647 secondi, che equivale a circa 68 anni! Il valore minimo è 30 secondi.
+Il valore massimo per Time To Live è 2.147.483.647 secondi, che equivale a circa 68 anni! Il valore minimo è 0 secondi.
 
 ## Esiste un limite sul numero di voci di origine e TTL?
 
 Sì, il limite combinato è di 75 voci per ogni CDN.
-
-## Esiste un limite sul numero di CDN che posso avere?
-
-Sì, puoi avere un limite di 10 CDN per account.
-
-## Esiste un limite sul numero di richieste di eliminazione che possono essere attive contemporaneamente?
-Sì. Ci possono essere solo 5 richieste di eliminazione attive alla volta.
 
 ## Quale è la dimensione file più grande che può essere recapitata tramite la CDN Akamai?
 

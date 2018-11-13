@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-06-15"
 
 CDN을 작성하면 CDN 대시보드에 즉시 표시됩니다. 여기서 CDN의 이름, 원본, 제공자 및 상태를 볼 수 있습니다.  
 
- ![맵핑 목록 스크린샷](images/mapping_list_cname.png)
+ ![맵핑 목록 스크린샷](images/mapping-list.png)
 
 
 와일드카드 인증서를 사용하는 HTTP 또는 HTTPS를 통해 CDN을 주문한 경우 1단계를 진행할 수 있습니다.
@@ -47,15 +47,17 @@ DNS 제공자를 사용하여 CNAME을 구성한 후에는 언제든지 CDN 상�
 
 CNAME 체인이 완료되면 **상태 가져오기**가 *실행 중*으로 변경되고 CDN을 사용할 수 있게 됩니다.
 
-완료되었습니다! CDN은 이제 실행 중입니다. 여기에서 [CDN 관리](how-to.html#manage-your-CDN) 페이지에는 [TTL(Time to Live)](how-to.html#setting-content-caching-time-using-time-to-live-), [캐시된 컨텐츠 영구 제거](how-to.html#purging-cached-content) 및 [원본 경로 추가 세부사항](how-to.html#adding-origin-path-details)과 같은 구성 옵션에 대한 추가 정보가 있습니다.
+완료되었습니다! CDN은 이제 실행 중입니다. 여기에서 [CDN 관리](how-to.html#manage-your-cdn) 페이지에는 [TTL(Time to Live)](how-to.html#setting-content-caching-time-using-time-to-live-), [캐시된 컨텐츠 영구 제거](how-to.html#purging-cached-content) 및 [원본 경로 추가 세부사항](how-to.html#adding-origin-path-details)과 같은 구성 옵션에 대한 추가 정보가 있습니다.
 
 ## CDN 시작
 
-'Stopped' 상태인 경우에만 CDN을 시작할 수 있습니다.  
+CDN을 시작하면 원본에서 Akamai 에지 서버로 트래픽을 전달하도록 DNS에 알립니다. 일단 맵핑이 시작되면 DNS 캐시가 원본으로 트래픽을 계속 전달할 수 있으므로 맵핑이 시작된 직후에는 기능이 도메인에 표시되지 않을 수 있습니다. 업데이트에 소요되는 시간은 DNS 캐시가 얼마나 자주 새로 고쳐지는 지에 따라 결정되며, DNS 제공업체에 따라서도 달라집니다. 
+
+**참고**: `Stopped` 상태인 경우에만 CDN을 시작할 수 있습니다.  
 
 **단계 1:**
 
-CDN 행의 오른쪽에 세 개의 점으로 표시되는 오버플로우 메뉴에서 'CDN 시작'을 클릭하십시오.
+CDN 행의 오른쪽에 세 개 점으로 표시되는 오버플로우 메뉴에서 **CDN 시작**을 클릭하십시오.
 
   ![오버플로우 메뉴](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ CDN 행의 오른쪽에 세 개의 점으로 표시되는 오버플로우 메뉴
 
 **단계 4:**
 
-이 단계에서는 상태가 'CNAME Configuration'으로 변경됩니다.
+이 단계는 상태를 `CNAME Configuration`으로 변경합니다.
 
 **단계 5:**
 
-오버플로우 메뉴에서 '상태 가져오기'를 클릭하십시오. 이 단계에서는 상태가 'Running'으로 변경됩니다. CDN이 작동 가능하게 됩니다.
+오버플로우 메뉴에서 **상태 가져오기**를 클릭하십시오. 이 단계는 상태를 `Running`으로 변경합니다. CDN이 작동 가능하게 됩니다.
 
 ## CDN 중지
 
-'Running' 상태인 경우에만 CDN을 중지할 수 있습니다.
+일단 맵핑이 중지되면 DNS 검색이 원본으로 전환됩니다. 트래픽은 CDN 에지 서버를 건너뛰고 원본에서 직접 컨텐츠가 페치됩니다. 맵핑이 중지된 후에는 잠깐 컨텐츠에 액세스하지 못할 수 있습니다. DNS 캐시가 트래픽을 계속 Akamai 에지 서버로 전달하기 때문일 수 있습니다. 그러나, 이 기간 동안 Akamai 에지 서버는 해당 도메인에 대한 트래픽을 거부합니다. 이 기간이 얼마나 지속되는지는 DNS 캐시가 얼마나 자주 새로 고쳐지는지에 따라 결정되며, DNS 제공업체에 따라 달라집니다. 
+
+**참고사항**: 
+* CDN을 `Running` 상태로 변경하는 경우 HTTPS 트래픽이 작동하지 않을 수 있으므로, HTTPS SAN 인증서로 구성된 CDN의 경우 CDN을 중지하는 것을 권장하지 **않습니다**.  
+* `Running` 상태인 경우에만 CDN을 중지할 수 있습니다.
 
 **단계 1:**
 
@@ -114,4 +120,4 @@ CDN을 삭제하려면 다음 단계를 수행하십시오.
 
 **단계 3:**
 
-1단계와 2단계를 완료하고 나면 CDN의 상태가 `Deleting`이 됩니다. 삭제 프로세스가 완료된 후 오버플로우 메뉴에서 '상태 가져오기'를 다시 클릭하면 CDN 목록에서 행이 제거됩니다. 삭제 프로세스가 완료되지 않으면 이 조치가 영향을 미치지 않습니다.
+1단계와 2단계를 완료하고 나면 CDN의 상태가 `Deleting`이 됩니다. 삭제 프로세스가 완료되면 오버플로우 메뉴에서 '상태 가져오기'를 다시 클릭하여 CDN 목록에서 행을 제거하십시오. 삭제 프로세스가 완료되지 않으면 이 조치가 영향을 미치지 않습니다.

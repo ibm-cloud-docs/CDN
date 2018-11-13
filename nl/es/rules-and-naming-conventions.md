@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-07"
+lastupdated: "2018-08-29"
 
 ---
 
@@ -16,15 +16,17 @@ lastupdated: "2018-05-07"
 
 # Convenios y reglas de nomenclatura
 
-## ¿Cuáles son las reglas para el nombre de host?
-La serie de entrada `Hostname` **debe**:
+## ¿Cuáles son las reglas para el nombre de host de CDN?
+La entrada para la serie del `Nombre de host` de CDN **debe**:
   * constar de caracteres alfanuméricos
   * ser inferior a 254 caracteres
   * finalizar por un nombre de dominio de nivel superior válido
   * **no** debe contener más de 10 etiquetas
   * **no** debe terminar en `cdnedge.bluemix.net` (ese sufijo se utiliza para los CNAME y está reservado)
 
-Consulte RFC 1035, sección 2.3.4, para obtener más detalles.
+Consulte RFC 1035, sección 2.3.4, para obtener más detalles. 
+
+Además, le recomendamos encarecidamente que utilice un nombre de dominio completo como nombre de host de CDN. Elija un nombre con el formato 'www.example.com' en lugar de un nombre de dominio raíz (también denominado como dominio Naked o de zona Apex), con el formato 'example.com'. Necesitará crear un registro CNAME para el nombre de host de CDN que utilice. El DNS RFC 1033 requiere que el registro de dominio raíz sea un registro A, no un CNAME. Consulte la RFC 2181, sección 10.1 para obtener más información.
 
 ## ¿Cuáles son las convenciones de nomenclatura de CNAME personalizado?
 La serie de entrada `CNAME` debe cumplir las siguientes reglas:

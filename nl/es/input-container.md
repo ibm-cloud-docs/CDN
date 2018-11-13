@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ El contenedor de entradas es una recopilación que utilizan las clases de Correl
 Los siguientes atributos son comunes en las clases de Correlación y Vía de acceso (de origen):
 * `originType`: tipo del host de origen, actualmente 'HOST_SERVER' u 'OBJECT_STORAGE'.
 * `origin`: dirección del servidor de origen (nombre de host o la dirección IPv4 del servidor de origen), el punto final desde el que captar contenido, o el nombre del grupo donde se almacena el contenido. Debe ser inferior a 511 caracteres.
-* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
-* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
+* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
+* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
 * `status`: el estado de la correlación o vía de acceso. El estado puede ser CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED o ERROR.
 * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. La vía de acceso predeterminada es /\* Cuando la utiliza la API `updateOriginPath`, este atributo se refiere a la nueva vía de acceso que se añadirá.
 * `performanceConfiguration`: especificaciones para la configuración del rendimiento de la correlación.
@@ -33,6 +33,7 @@ Los siguientes atributos son comunes en las clases de Correlación y Vía de acc
   * `ignore-all`: ignora todos los argumentos de consulta
   * `ignore: space separated query-args`: ignora argumentos de consulta específicos. Por ejemplo, `ignore: query1 query2`
   * `include: space separated query-args`: incluye argumentos de consulta específicos. Por ejemplo, `include: query1 query2`
+* `geoblockingRule`
 
 Los siguientes atributos son específicos de la clase Correlación:
 

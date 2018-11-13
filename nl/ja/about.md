@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -22,6 +22,10 @@ lastupdated: "2018-06-28"
 
 CDN は、世界中のエッジ・サーバー上に Web コンテンツをキャッシュすることで、その目的を果たします。 カスタマーが Web コンテンツを要求すると、そのカスタマーに地理的に最も近いエッジ・サーバーに、コンテンツ要求がルーティングされます。 CDN では、コンテンツの必要移動距離を削減することで、スループットの最適化、最小限の遅延、パフォーマンスの向上が実現されます。 コンテンツ・プロバイダーは、IBM Cloud Content Delivery Network with Akamai を使用して、世界中から要求されたコンテンツを最小限の構成で有効に配信することができます。
 
+![CDN 概要図](images/high-level-cdn-diagram.png)
+
+## 機能
+
 IBM Cloud Content Delivery Network サービスの主要機能は、以下のとおりです。
   * ホスト・サーバー・オリジンのサポート
   * オブジェクト・ストレージ・オリジンのサポート
@@ -37,11 +41,12 @@ IBM Cloud Content Delivery Network サービスの主要機能は、以下のと
   * コンテンツ圧縮
   * ラージ・ファイルの最適化
   * ビデオ・オンデマンド
+  * 地理的アクセス制御
 
-機能の完全な説明については、[この文書](feature-description.html#feature-descriptions)を参照してください。
+機能の完全な説明については、[この文書](feature-descriptions.html#feature-descriptions)を参照してください。
 
 ## アーキテクチャー図
 
-次の図は、IBM Cloud CDN の 3 層アーキテクチャーの概要を図示したものです。
+次の図は、IBM Cloud CDN の 3 層アーキテクチャーの概要を図式で示したものです。
 
 ![アーキテクチャー図](images/3-tier-architecture.png)

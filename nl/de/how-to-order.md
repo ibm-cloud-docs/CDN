@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-06-05"
+lastupdated: "2018-07-17"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -16,31 +16,13 @@ lastupdated: "2018-06-05"
 
 # CDN bestellen
 
-Hier erfahren Sie, wie ein Content Delivery Network (CDN) bestellt wird. Sie können Ihr CDN entweder über das [Kundenportal ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) oder über das [Bluemix-Portal](https://www.ibm.com/cloud-computing/bluemix/) bestellen.
+Hier erfahren Sie, wie ein Content Delivery Network (CDN) bestellt wird. Sie können ein CDN über das [IBM Cloud-Portal](https://www.ibm.com/cloud-computing/bluemix/) bestellen.
 
-## Gehen Sie im Steuerportal wie folgt vor:
-
-**Schritt 1:**
-
-Melden Sie sich zunächst mit Ihren eindeutigen Berechtigungsnachweisen beim [Kundenportal ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) an.
-
-**Schritt 2:**
-
-Wählen Sie in der Navigationsleiste oben in der Anzeige **Netz -> CDN** aus.
-
-   ![Optionen im Netzmenü](images/network-cdn.png)
-
-**Schritt 3:**
-
-Wählen Sie auf der Seite **Content Delivery Networks** die Schaltfläche **CDN bestellen** in der rechten oberen Ecke aus.
-
-   ![CDN-Bestellprozess auswählen](images/order-cdn-button.png)
-
-## Im IBM Cloud-Portal:
+## Zur CDN-Seite navigieren
 
 **Schritt 1:**
 
-Melden Sie sich am [IBM Cloud-Portal](https://www.ibm.com/cloud-computing/bluemix/) an.
+Melden Sie sich im [IBM Cloud-Portal](https://www.ibm.com/cloud-computing/bluemix/) bei Ihrem Konto an.
 
 **Schritt 2:**
 
@@ -50,69 +32,72 @@ Klicken Sie auf [IBM Cloud-Katalog](https://console.bluemix.net/catalog/). Wähl
 
 **Schritt 3:**
 
-Klicken Sie auf die Kachel **CDN**, um die Anzeige für Anbieterauswahl aufzurufen.
+Klicken Sie auf die **CDN-Kachel**.
 
    ![Bluemix - CDN-Symbol](images/bluemix_tile.png)
 
 
-**Schritt 4:**
+## Neues CDN bestellen
 
-Wählen Sie in der Anzeige **CDN-Anbieter auswählen** unter den verfügbaren Optionen für CDN-Anbieter aus. Klicken Sie auf die Schaltfläche **Auswählen**, um Ihre ausgewählten Optionen zu bestätigen und klicken Sie anschließend unten auf dem Bildschirm auf **Weiter**, um den Bereitstellungsprozess zu starten.  
-       ![CDN-Anbieter auswählen](images/Vendor_Select_And_Provision.png)
+**Schritt 1:**
 
-**Schritt 5:**
+Klicken Sie unten rechts **Erstellen**. Dadurch wird Ihr CDN-Konto erstellt, sofern noch nicht vorhanden, und Sie werden an die Seite für die CDN-Konfiguration weitergeleitet.
+
+   ![CDN-Übersicht](images/content-delivery.png)
+
+**Schritt 2:**
 
 Füllen Sie das Feld **Name konfigurieren** aus:  
 
-  * Geben Sie einen Wert für **Hostname** (**Erforderlich**) an, der als primäre Kennung für Ihr CDN fungiert (Beispiel: _example.testingcdn.net_).  
-  * Geben Sie optional einen angepassten Wert für **CNAME** an (z. B. _myfirstcdn.cdnedge.bluemix.net_). Wenn Sie CNAME nicht angeben, wird dieser Wert automatisch erstellt. <Validierungsinformationen hier einfügen>  
+  * Geben Sie einen Wert für **Hostname** (**erforderlich**) an, der als primäre Kennung für Ihr CDN fungiert (Beispiel: `example.testingcdn.net`).  
+  * Geben Sie optional einen angepassten Wert für **CNAME** an (z. B. `myfirstcdn.cdnedge.bluemix.net`). Wenn Sie CNAME nicht angeben, wird dieser Wert automatisch erstellt. Das Suffix `cdnedge.bluemix.net` wird automatisch an den Wert für CNAME angehängt. Wenn Sie einen ungeeigneten Wert für CNAME verwenden, kann dies zur Beendigung von Services führen.
 
        ![Namen konfigurieren](images/configure-hostname-cname.png)  
 
-    **Hinweis**: Wenn Sie einen ungeeigneten Wert für CNAME verwenden, kann dies zur Beendigung von Services führen.
+    **Hinweis**: Nach der Bereitstellung Ihres neuen CDN **müssen** Sie den CNAME mit Ihrem DNS-Anbieter konfigurieren.
 
-**Schritt 6:**
+**Schritt 3:**
 
 Füllen Sie das Feld **Ursprung konfigurieren** aus: Zum Konfigurieren dieses Felds müssen Sie entweder die Option **Server** oder die Option **Objektspeicher** auswählen.  
 
-   * Geben Sie einen Wert für **Host-Header** (optional) an. Wenn kein Host-Header angegeben wird, wird standardmäßig der Wert von **Hostname** verwendet. Weitere Informationen zum Host-Header finden Sie in der Funktionsbeschreibung zur [Host-Header-Unterstützung](about.html#host-header-support-).  
+  * **Schritt 3, Option 1: Serveroption**
 
-   * Geben Sie einen **Pfad** (optional) an. Der Pfad muss relativ zum **Hostnamen** angegeben werden.
+     ![Ursprungsserver konfigurieren](images/configure-origin-server.png)
 
-      ![Ursprungsserver konfigurieren](images/configure-origin.png)  
+      * Sie müssen die **Adresse des Ursprungsservers** (Hostname oder IPv4-Adresse des Ursprungsservers) angeben. Wenn **HTTPS-Port** ebenfalls ausgewählt ist, muss die **Adresse des Ursprungsservers** der Hostname und nicht die IP-Adresse sein.
 
-  * **Option 'Server'**: Wenn Sie die Option **Server** auswählen, geben Sie den Hostnamen oder die IP-Adresse des Ursprungsservers an, aus dem Daten im Cache gespeichert werden sollen.
-      * Wenn Sie diese Option auswählen, müssen Sie die **Adresse des Ursprungsservers** (Hostname oder IPv4-Adresse des Ursprungsservers) angeben. Wenn **HTTPS-Port** ausgewählt wird, muss die **Adresse des Ursprungsservers** der Hostname und nicht die IP-Adresse sein.
-      * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai) eine Liste der zulässigen Portnummern.
-      * **SSL-Zertifikat** Diese Option wird _nur_ angezeigt, wenn der HTTPS-Port ausgewählt ist. \*Weitere Informationen zu HTTPS- und SSL-Zertifikatskonfigurationen finden Sie nach der Beschreibung der Option 'Objektspeicher'.
+      * Geben Sie einen Wert für **Host-Header** (optional) an. Wenn kein Wert angegeben wird, wird standardmäßig der **Hostname** verwendet. Weitere Informationen zum Host-Header finden Sie in der Funktionsbeschreibung zur [Host-Header-Unterstützung](feature-descriptions.html#host-header-support).  
 
-	     ![Ursprungsserver konfigurieren](images/configure-origin-server.png)
+      * Geben Sie einen **Pfad** an, über den Inhalte des Ursprungsservers abgerufen werden können (optional). Wählen Sie die Featurebeschreibung für [Pfadbasierte CDN-Zuordnungen](feature-descriptions.html#path-based-cdn-mappings) aus und informieren Sie sich über die Auswirkungen, die das Hinzufügen eines Pfads zu diesem Zeitpunkt hat.
 
-  * **Option 'Objektspeicher'**: Wenn Sie die Option **Objektspeicher** auswählen, müssen Sie die folgenden Informationen angeben.
-      * Den **Endpunkt**, aus dem das Objekt abgerufen werden soll
-      * Den Namen des **Buckets**, in dem Ihr Inhalt gespeichert ist
-      * Den **HTTPS-Port**
-      * **SSL-Zertifikat** Diese Option wird _nur_ angezeigt, wenn der HTTPS-Port ausgewählt ist. \*Weitere Informationen zu HTTPS- und SSL-Zertifikatskonfigurationen finden Sie nach der Beschreibung der Option 'Objektspeicher'.
-      * Außerdem können Sie die Dateierweiterungen angeben (getrennt durch Kommas), die im CDN-Service verwendet werden können. (Wenn keine Dateinamenserweiterungen angegeben werden, sind alle Erweiterungen zulässig.)
-      * Sie müssen in der **Zugriffssteuerungsliste** (Access Control List, ACL) für jedes **Objekt** in Ihrem **Bucket** die Berechtigung 'public-read' festlegen.
+      * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) eine Liste der zulässigen Portnummern.
 
-      	  ![Objektspeicher konfigurieren](images/configure-origin-cos.png)
+      * Ein **SSL-Zertifikat** wird _nur_ angezeigt, wenn ein HTTPS-Port ausgewählt ist. Wenn Sie **HTTPS-Port** für den Server- oder Objektspeicher auswählen, können Sie **Wildcard-Zertifikat** oder **DV-SAN-Zertifikat** als SSL-Zertifikatsoption auswählen. Beide Optionen bieten die erweiterten Sicherheitsfunktionen von HTTPS.
+        * Ein **Wildcard-Zertifikat** ermöglicht HTTPS-Datenverkehr nur bei Verwendung eines **CNAME** und erfordert keine weiteren Aktionen.
+        * Ein **DV-SAN-Zertifikat** ermöglicht HTTPS-Datenverkehr über Ihre Domäne, es müssen jedoch noch weitere Schritte zur Überprüfung ausgeführt werden. Informationen zu den bei dieser Option erforderlichen Schritten und den implizierten Zeiteinschränkungen finden Sie unter [Validierung der Domänensteuerung für HTTPS durchführen](how-to-https.html#completing-domain-control-validation-for-https).
 
-  * **SSL-Zertifikat**: Falls Sie **HTTPS-Port** für den Server- oder Objektspeicher auswählen, können Sie **Wildcard-Zertifikat** oder **DV-SAN-Zertifikat** für die Option **SSL-Zertifikat** auswählen. Beide bieten die erweiterten Sicherheitsfunktionen von HTTPS.
-    * Ein **Wildcard-Zertifikat** ermöglicht HTTPS-Datenverkehr nur bei Verwendung eines **CNAME** und erfordert keine weiteren Aktionen.
-    * Ein **DV-SAN-Zertifikat** ermöglicht HTTPS-Datenverkehr über Ihre Domäne, es müssen jedoch noch weitere Schritte zur Überprüfung ausgeführt werden.
+	     ![Ursprungsserver konfigurieren](images/ssl-cert-options.png)
 
-        ![HTTPS konfigurieren](images/configure-https.png)
+  * **Schritt 3, Option 2: Objektspeicheroption**
 
+    ![Objektspeicher konfigurieren](images/configure-origin-object-storage.png)
 
-**Schritt 7:**
+      * Sie **müssen** den **Endpunkt** angeben, bei dem das Objekt abgerufen werden soll.
 
-Konfigurieren Sie das Feld **Weitere Optionen**: Dieser Abschnitt enthält Konfigurationsoptionen für das Feld **Header beibehalten**.
+      * Geben Sie einen Wert für **Host-Header** (optional) an. Wenn kein Wert angegeben wird, wird standardmäßig der **Hostname** verwendet. Weitere Informationen zum Host-Header finden Sie in der Funktionsbeschreibung zur [Host-Header-Unterstützung](feature-descriptions.html#host-header-support).  
 
-   * Wenn für das Feld **Header beibehalten** der Wert **On** (Ein) angegeben ist, überschreiben die vom Ursprungsserver im Header definierten TTL-Einstellungen die Standardeinstellungen für die CDN-TTL. Für **Header beibehalten** wird standardmäßig der Wert **On** (Ein) angegeben, aber Sie müssen dieses Feld konfigurieren.  
+      * Geben Sie einen **Pfad** an, über den Inhalte des Ursprungsservers abgerufen werden können (optional). Wählen Sie die Featurebeschreibung für [Pfadbasierte CDN-Zuordnungen](feature-descriptions.html#path-based-cdn-mappings) aus und informieren Sie sich über die Auswirkungen, die das Hinzufügen eines Pfads an diesem Punkt hat.
 
-        ![Weitere Optionen](images/other-options.png)
+      * Sie **müssen** den Namen für den **Bucket** angeben, in dem Ihr Inhalte gespeichert werden. 
 
-**Schritt 8:**
+      * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) eine Liste der zulässigen Portnummern.
+
+      * Ein **SSL-Zertifikat** wird _nur_ angezeigt, wenn der HTTPS-Port ausgewählt ist. Wenn Sie **HTTPS-Port** für den Server- oder Objektspeicher auswählen, können Sie **Wildcard-Zertifikat** oder **DV-SAN-Zertifikat** als SSL-Zertifikatsoption auswählen. Beide Optionen bieten die erweiterten Sicherheitsfunktionen von HTTPS.
+        * Ein **Wildcard-Zertifikat** ermöglicht HTTPS-Datenverkehr nur bei Verwendung eines **CNAME** und erfordert keine weiteren Aktionen.
+        * Ein **DV-SAN-Zertifikat** ermöglicht HTTPS-Datenverkehr über Ihre Domäne, es müssen jedoch noch weitere Schritte zur Überprüfung ausgeführt werden. Informationen zu den bei dieser Option erforderlichen Schritten und den implizierten Zeiteinschränkungen finden Sie unter [Validierung der Domänensteuerung für HTTPS durchführen](how-to-https.html#completing-domain-control-validation-for-https).
+
+        ![HTTPS konfigurieren](images/ssl-cert-options.png)
+
+      **HINWEIS**: Sie müssen in der **Zugriffssteuerungsliste** (ACL) für jedes Objekt in Ihrem Bucket die Berechtigung "public-read" mit Ihrem Provider für Cloudobjektspeicher konfigurieren. 
 
 Wählen Sie die Schaltfläche **Erstellen** in der rechten unteren Ecke aus, um Ihr CDN zu erstellen.

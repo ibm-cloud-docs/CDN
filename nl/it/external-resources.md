@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-18"
+lastupdated: "2018-10-02"
 
 ---
 
@@ -20,6 +20,10 @@ Queste risorse sono create da IBM e da alcuni dei nostri partner e clienti.
 ## Blog di IBM Tech (solo interno)
 
  * [Come ottenere prestazioni elevate per le applicazioni globali sulla CDN IBM Cloud, di Ketan Pancholi e Nikhil Gupta](https://www.ibm.com/w3-techblog/use-cases/2018/05/content-delivery-service/)
+ 
+ * [Where's My Kill Switch? Migrating Network Services to the Cloud](https://www.ibm.com/w3-techblog/wcp/2018/09/migrating-network-services/), di Chris Dotson
+ 
+   Una buona panoramica sulla sicurezza dei datacenter e SDN.
 
 
 ## Blog esterni

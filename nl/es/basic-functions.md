@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ Obtenga más información sobre cómo llevar la CDN en un estado de RUNNING sigu
 
 Después de crear una CDN, se mostrará en el panel de control de CDN. En el panel, verá el nombre de la CDN, el origen, el proveedor y el estado.  
 
- ![Captura de pantalla de la lista de correlación](images/mapping_list_cname.png)
+ ![Captura de pantalla de la lista de correlación](images/mapping-list.png)
 
 
 Si ha solicitado la CDN con HTTP o HTTPS con el certificado comodín, puede continuar con el Paso 1.
@@ -47,15 +47,17 @@ En cualquier momento tras haber configurado el CNAME con su proveedor de DNS, pu
 
 Cuando finalice el encadenamiento de CNAME, al seleccionar **Obtener estado** se cambiará el estado a *RUNNING* y la CDN está lista para su uso.
 
-¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](how-to.html#manage-your-CDN) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](how-to.html#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](how-to.html#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](how-to.html#adding-origin-path-details).
+¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](how-to.html#manage-your-cdn) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](how-to.html#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](how-to.html#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](how-to.html#adding-origin-path-details).
 
 ## Inicio de la CDN
 
-Una CDN solo se puede iniciar cuando su estado es "Stopped".  
+Cuando se inicia la CDN se informa al DNS para que direccione el tráfico desde su origen al servidor perimetral Akamai. Una vez iniciada la correlación, la caché del DNS todavía podría redirigir tráfico al origen de forma que la funcionalidad podría no ser vista por el dominio inmediatamente después del inicio. El tiempo necesario para la actualización depende de la frecuencia con la que se renueva la caché de DNS, y varía según cada proveedor de DNS.
+
+**NOTA**: Una CDN únicamente se puede iniciar cuando está en un estado `Stopped`  
 
 **Paso 1:**
 
-Pulse "Iniciar CDN" en el menú de desbordamiento, que se muestra como tres puntos a la derecha de la fila de la CDN.
+Pulse **Iniciar CDN** en el menú de desbordamiento, que se muestra como tres puntos a la derecha de la fila de la CDN.
 
   ![Menú de desbordamiento](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ Si la acción se ha realizado correctamente, aparecerá un recuadro de diálogo 
 
 **Paso 4:**
 
-Este paso cambia el estado a 'CNAME Configuration'
+Este paso cambia el estado a `CNAME Configuration`
 
 **Paso 5:**
 
-Pulse "Obtener estado" en el menú de desbordamiento. Este paso cambia el estado a 'Running'. Su CDN entrará en funcionamiento.
+Pulse **Obtener estado** en el menú de desbordamiento. Este paso cambia el estado a `Running`. Su CDN entrará en funcionamiento.
 
 ## Detención de la CDN
 
-Una CDN se puede detener solo cuando su estado es "Running".
+Una vez detenida la correlación, la búsqueda de DNS se conmuta al origen. El tráfico omite los servidores perimetrales de la CDN y el contenido se recupera directamente del origen. Una vez detenida la correlación, puede haber un periodo de tiempo breve en el que el contenido podría no ser accesible. Esto se debe a que la caché de DNS todavía podría redirigir el tráfico a los servidores perimetrales de Akamai. Sin embargo, durante este tiempo, el servidor perimetral Akamai denegará el tráfico para el dominio. Este periodo de tiempo depende de la frecuencia con la que se renueva la caché de DNS, y varía según cada proveedor de DNS.
+
+**NOTAS**: 
+* **NO** se recomienda detener la CDN si está configurada con un certificado SAN de HTTPS puesto que el tráfico HTTPS podría no funcionar al pasar de nuevo la CDN de nuevo al estado `Running`. 
+* Una CDN se puede detener solo cuando su estado es `Running`.
 
 **Paso 1:**
 
@@ -114,4 +120,4 @@ Se mostrará una ventana de diálogo más grande para que confirme que desea efe
 
 **Paso 3:**
 
-Después de completar los pasos 1 y 2, el estado de la CDN será `Suprimiendo`. Cuando finalice el proceso de supresión, al volver a hacer clic en "Obtener estado" en el menú de desbordamiento, se eliminará la fila de la lista de CDN. Si el proceso de supresión no se ha completado, esta acción no tendrá efecto.
+Después de completar los pasos 1 y 2, el estado de la CDN será `Suprimiendo`. Cuando finalice el proceso de supresión, al volver a pulsar en "Obtener estado" en el menú de desbordamiento, se eliminará la fila de la lista de CDN. Si el proceso de supresión no se ha completado, esta acción no tendrá efecto.

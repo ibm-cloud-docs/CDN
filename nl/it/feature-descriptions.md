@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -34,7 +34,7 @@ In specifici casi, potresti voler fornire del contenuto da un server di origine 
 
 ## Associazioni di CDN basate sui percorsi
 
-Il servizio di CDN IBM Cloud può essere limitato a uno specifico percorso di directory sul server di origine fornendo il percorso quando si crea la CDN. A un utente finale è consentito l'accesso solo ai contenuti in tale percorso di directory. Ad esempio, se una CDN `www.example.com` viene creata con il percorso `/videos`, è accessibile solo tramite `www.example.com/videos/`.
+Il servizio di CDN IBM Cloud può essere limitato a uno specifico percorso di directory sul server di origine fornendo il percorso quando si crea la CDN. A un utente finale è consentito l'accesso solo ai contenuti in tale percorso di directory. Ad esempio, se viene creata una CDN `www.example.com` con il percorso `/videos`, è accessibile **solo** tramite `www.example.com/videos/*`.
 
 ## Eliminazione del contenuto presente nella cache
 
@@ -42,7 +42,7 @@ La CDN IBM Cloud consente di rimuovere in modo rapido e facile, o "eliminare", i
 
 ## TTL (Time to Live)
 
-Il TTL (Time To Live) indica la quantità di tempo (in secondi) per cui il server edge memorizzerà in cache il contenuto per lo specifico percorso file o directory. Quando viene creata inizialmente una CDN, viene creato un TTL (Time To Live) globale per il percorso `/\*` con un tempo predefinito di 3600 secondi. Il valore minimo per TTL è 30 secondi e il valore massimo è 2147483647 secondi. Per ciascuna voce, il percorso TTL deve essere univoco per la CDN. Se più percorsi corrispondono a uno specifico contenuto, per tale contenuto varrà la corrispondenza con il percorso configurato più di recente. Si considerino ad esempio due TTL: `/example/file`, creato per primo con un valore TTL (Time To Live) di 3000 secondi e `/example/*`, creato successivamente con un valore di 4000 secondi. Anche se `/example/file` è più specifico, `/example/*` era stato creato più di recente e, quindi, il TTL per `/example/file` sarà di 4000 secondi. Una volta create, le voci TTL possono essere modificate per il percorso e/o il tempo. Possono anche essere eliminate.
+Il TTL (Time To Live) indica la quantità di tempo (in secondi) per cui il server edge memorizzerà in cache il contenuto per lo specifico percorso file o directory. Quando viene creata inizialmente una CDN, viene creato un TTL (Time To Live) globale per il percorso `/\*` con un tempo predefinito di 3600 secondi. Il valore minimo per TTL è 0 secondi e il valore massimo è 2147483647 secondi. Per ciascuna voce, il percorso TTL deve essere univoco per la CDN. Se più percorsi corrispondono a uno specifico contenuto, per tale contenuto varrà la corrispondenza con il percorso configurato più di recente. Si considerino ad esempio due TTL: `/example/file`, creato per primo con un valore TTL (Time To Live) di 3000 secondi e `/example/*`, creato successivamente con un valore di 4000 secondi. Anche se `/example/file` è più specifico, `/example/*` era stato creato più di recente e, quindi, il TTL per `/example/file` sarà di 4000 secondi. Una volta create, le voci TTL possono essere modificate per il percorso e/o il tempo. Possono anche essere eliminate.
 
 ## Metriche con viste grafiche
 
@@ -60,9 +60,9 @@ Il server edge utilizza l'intestazione host (**Host Header**) quando comunica co
 
 ## Supporto del protocollo HTTPS
 
-La CDN può essere configurata per utilizzare il protocollo HTTPS per fornire il contenuto in modo sicuro agli utenti finali. Questa configurazione richiede che un certificato SSL debba essere impostato come parte della configurazione CDN. Per HTTPS sono disponibili due tipi di opzioni di certificato SSL: [Certificato wildcard](about-https.html#Wildcard-Certificate-support) e [Certificato SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support). All'interno di questa documentazione, questo tipo sarà indicato anche come _Certificato SAN_.
+La CDN può essere configurata per utilizzare il protocollo HTTPS per fornire il contenuto in modo sicuro agli utenti finali. Questa configurazione richiede che un certificato SSL debba essere impostato come parte della configurazione CDN. Per HTTPS sono disponibili due tipi di opzioni di certificato SSL: [Certificato jolly](about-https.html#wildcard-certificate-support) e [Certificato SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support). All'interno di questa documentazione, questo tipo sarà indicato anche come _Certificato SAN_.
 
-Il tipo di certificato SSL da utilizzare è una considerazione importante per la rete CDN HTTPS. L'impostazione della configurazione del certificato wildcard è veloce, ma come lato negativo vi è il fatto che la CDN è accessibile solo tramite un CNAME. Il completamento del processo del certificato SAN richiede da 4 a 8 ore, ma offre la possibilità di utilizzare la CDN con il dominio CDN (ovvero, il nome host). Il certificato SAN richiede anche un ulteriore passo di [**Convalida del controllo del dominio**](how-to-https.html) durante la configurazione. Nessun costo è associato all'utilizzo di uno di questi certificati. Fai riferimento al [documento relativo alla risoluzione dei problemi](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) per comprendere l'implicazione della selezione di un determinato tipo di certificato.
+Il tipo di certificato SSL da utilizzare è una considerazione importante per la rete CDN HTTPS. L'impostazione della configurazione del certificato jolly è veloce, ma come lato negativo vi è il fatto che la CDN è accessibile solo tramite un CNAME. Il completamento del processo del certificato SAN richiede da 4 a 8 ore, ma offre la possibilità di utilizzare la CDN con il dominio CDN (ovvero, il nome host). Il certificato SAN richiede anche un ulteriore passo di [**Convalida del controllo del dominio**](how-to-https.html) durante la configurazione. Nessun costo è associato all'utilizzo di uno di questi certificati. Fai riferimento al [documento relativo alla risoluzione dei problemi](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) per comprendere l'implicazione della selezione di un determinato tipo di certificato.
 
 L'host di origine deve inoltre avere il suo proprio certificato SSL per il nome host CDN e deve essere firmato da un'autorità di certificazione (CA) riconosciuta.
 
@@ -72,7 +72,7 @@ Come prassi ottimale del settore, Akamai ritiene attendibili solo i certificati 
 
 L'opzione **Respect Headers** (Rispetta intestazioni) consente alla configurazione dell'intestazione HTTP nell'origine di sovrascrivere la configurazione della CDN. Questa funzione è attivata per impostazione predefinita, ma può essere disattivata.
 
-## Utilizzo di contenuto obsoleto
+## Gestione di contenuto obsoleto
 
 Quando riceve una richiesta utente e il contenuto richiesto non è memorizzato nella cache, il server edge CDN si rivolge all'host di origine per recuperare il contenuto. Il contenuto viene quindi memorizzato in cache per la durata TTL (Time To Live) specificata per il contenuto. Se la richiesta utente viene ricevuta dopo la scadenza del TTL, il server edge si rivolge all'host di origine per recuperare il contenuto. Se il server di origine non è raggiungibile per qualche motivo (ad esempio l'host di origine è inattivo o si è verificato un problema di rete), il server edge fornisce il contenuto scaduto (obsoleto) alla richiesta. Questa funzione è supportata da Akamai e **non può** essere disattivata.
 
@@ -110,3 +110,13 @@ Quando questa funzione è abilitata, fornire contenuto inferiore ai 10MB comport
 L'ottimizzazione delle prestazioni **Video on-demand** offre uno streaming di alta qualità su una gamma di tipi di rete. Avvalendosi della capacità della rete distribuita di distribuire il carico in modo dinamico, la CDN IBM Cloud con Akamai ti consente di eseguire rapidamente dei ridimensionamenti per vasti pubblici, che tu li abbia inclusi nei tuoi piani o meno.
 
 **Video on-demand** è ottimizzato per la distribuzione di formati di streaming segmentati quali HLS, DASH, HDS e HSS. Lo streaming video live **non** è supportato, al momento. È possibile abilitare la funzione **Video On Demand** (Video on-demand) selezionando l'opzione dal menu a discesa in **Optimize for** (Ottimizza per) nella scheda Settings (Impostazioni) o mentre si crea un nuovo percorso di origine. Devi abilitare questa funzione solo quando ottimizzi la fornitura di file video.
+
+## Controllo dell'accesso geografico
+
+Il Controllo dell'accesso geografico è una modalità di funzionamento basata sulle regole che ti consente di impostare il parametro `access-type` per un gruppo di utenti, sulla base della loro ubicazione geografica. Sono disponibili due tipi di modalità di funzionamento: **Allow** (Consenti) e **Deny** (Nega).
+
+L'access-type (tipo di accesso) `Allow` (Consenti) ti permette di consentire specificamente del traffico a regioni selezionate, in base al tipo di regione. Consentire il traffico per specifiche regioni blocca implicitamente il traffico per tutte le altre. Potresti, ad esempio, scegliere di consentire (`Allow`) il traffico a continenti selezionati, come l'Europa e l'Oceania), il che blocca l'accesso per tutti gli altri continenti.
+
+La modalità di funzionamento `Deny` (Nega), invece, blocca l'accesso al tuo servizio per il gruppo specificato, il che consente l'accesso per tutte le altre regioni non specificate. Ad esempio, se imposti l'access-type (tipo di accesso) del Controllo dell'accesso geografico su `Deny` (Nega) per i continenti Europa e Oceania, gli utenti in questi continenti **non** potranno utilizzare il tuo servizio mentre gli utenti in tutti gli altri continenti vi avranno accesso.
+
+Questa funzione è accessibile dalla pagina **Settings** (Impostazioni) della configurazione della tua CDN.

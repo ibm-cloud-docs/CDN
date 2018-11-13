@@ -1,3 +1,12 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
+
 ## La regione Asia include:
 
 * Afghanistan
@@ -25,7 +34,7 @@
 * Kiribati
 * Kyrgyzstan
 * Laos
-* Macau
+* Macao
 * Malaysia
 * Maldive
 * Marshall, Isole

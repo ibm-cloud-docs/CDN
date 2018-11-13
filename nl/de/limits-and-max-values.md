@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -18,18 +18,11 @@ lastupdated: "2018-05-03"
 
 ## Gibt es einen Maximalwert für die Lebensdauer? Gibt es einen Mindestwert?
 
-Der Maximalwert für die Lebensdauer (Time To Live, TTL) sind 2.147.483.647 Sekunden. Dies entspricht ungefähr 68 Jahren. Der Mindestwert sind 30 Sekunden.
+Der Maximalwert für die Lebensdauer (Time To Live, TTL) sind 2.147.483.647 Sekunden. Dies entspricht ungefähr 68 Jahren. Der Mindestwert beträgt 0 Sekunden.
 
 ## Gibt es einen Grenzwert für die Anzahl der Einträge für Ursprung und TTL?
 
 Ja, der kombinierte Grenzwert sind 75 Einträge pro CDN.
-
-## Gibt es einen Grenzwert für die Anzahl der CDN, die ich verwenden kann?
-
-Ja, Sie können maximal 10 CDN pro Konto verwenden.
-
-## Gibt es einen Grenzwert für die Anzahl der gleichzeitig aktiven Bereinigungsanforderungen?
-Ja. Es können höchstens 5 Bereinigungsanforderungen gleichzeitig aktiv sein.
 
 ## Was ist die größte Dateigröße, die über Akamai CDN zugestellt werden kann?
 

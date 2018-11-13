@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -16,21 +16,17 @@ lastupdated: "2018-06-07"
 
 # 開始使用
 
-IBM Cloud Content Delivery Network (CDN) 可以用於各種產業解決方案，包括媒體、娛樂、軟體、遊戲、銀行業及電子商務，以符合您的業務需要。IBM Cloud 與 Akamai 合作，提供最全面的 Content Delivery Network 特性，同時保持可負擔性。此夥伴關係的特色是在 [36 個國家/地區](edge-servers.html#list-of-edge-servers)中具有 Edge Server，可將內容帶到最接近您最需要的位置，就是您的使用者。
+IBM Cloud Content Delivery Network (CDN) 可以用於各種產業解決方案，包括媒體、娛樂、軟體、遊戲、銀行業及電子商務，以符合您的業務需要。IBM Cloud 與 Akamai 合作，提供最全面的 Content Delivery Network 特性，同時保持可負擔性。此夥伴關係的特色是在 [36 個國家/地區](edge-servers.html#list-of-edge-servers)中具有邊緣伺服器，可將內容帶到最接近您最需要的位置，就是您的使用者。
 
 ## 開始之前
 
-開始使用 IBM Cloud Content Delivery Network 之前，首先需要一個 [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)。接著您便可以透過 [IBM Cloud 儀表板](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai)訂購 Content Delivery Network 服務，或是透過新的 [IBM Cloud CDN 客戶入口網站](https://control.softlayer.com/network/cdn)訂購，視您的喜好而定。
+開始使用 IBM Cloud Content Delivery Network 之前，首先需要一個 [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)。接著您便可以透過 [IBM Cloud 儀表板](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai)訂購 Content Delivery Network 服務，或是透過新的 [IBM Cloud CDN 主控台](https://www.ibm.com/cloud/cdn)訂購，視您的喜好而定。
 
 如果您在取得帳戶以使用 IBM Cloud Content Delivery Network 時需要協助，可以[與您的 IBM 業務代表聯絡](https://www.ibm.com/cloud-computing/bluemix/contact-us)，以獲得開始使用的額外指引。
 
 ## 指導教學
 
-[這裡提供](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)為 IBM Cloud Object Storage 建立 Content Delivery Network 的指導教學。
-
-## 已經有帳戶了嗎？
-
-現有 CDN 客戶可以透過新的 [IBM Cloud CDN 入口網站](https://control.softlayer.com)來存取其帳戶。如果您已經有帳戶，您現在可以從**網路**標籤存取 Content Delivery Network，而不從**儲存空間**標籤存取。
+[下列的指導教學](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)：為 IBM Cloud Object Storage 建立 Content Delivery Network。
 
 ## CDN 頻寬定價（費率以美元顯示）
 

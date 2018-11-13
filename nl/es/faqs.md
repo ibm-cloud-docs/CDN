@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,13 +26,20 @@ Una CDN logra su objetivo almacenando contenido en la memoria caché de servidor
 
 ## ¿Cómo se crea mi cuenta de servicio de IBM Cloud Content Delivery Network?
 
-La cuenta se crea durante el proceso de pedido de CDN, cuando pulsa **Seleccionar** después de pasar por el menú "Selección de proveedor".
+La cuenta se crea durante el proceso de pedido de la CDN. Si está creando una CDN desde el portal antiguo, cuando pulsa el botón **Pedir CDN**, bajo **Red -> Página CDN**, se crea su cuenta. Si está creando una CDN desde el portal IBM Cloud, al pulsar el botón **Crear**, bajo la página **Catálogo -> Red -> Content Delivery Network**, se crea su cuenta.
 
-## ¿Qué hago cuando el estado de la CDN es CNAME_CONFIGURATION?
+## ¿Qué debo hacer cuando mi CDN está en el estado de configuración de CNAME?
 
-Para la CDN basada en HTTP, actualice el registro de DNS para que el sitio web apunte al `CNAME` asociado con la nueva correlación de CDN. Para la CDN basada en HTTPS, esta actualización de DNS **NO** es necesaria.
+Para CDN HTTP y HTTPS basadas en certificados SAN, actualice el registro de DNS para que el sitio web apunte al `CNAME` asociado con la nueva correlación de CDN. Para CDN HTTPS basadas en certificados comodín, esta actualización de DNS **NO** es necesaria.
 
 **Nota**: puede tardar entre 15 -30 minutos hasta que se active la actualización. Consulte a su proveedor de DNS el momento estimado.
+
+Un registro CNAME típico se parecería a lo siguiente en la página de configuración de DNS:
+
+| **Tipo de recurso** | **Host** | **Apunta a (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutos |
+
 
 ## ¿Qué se facturará?
 
@@ -60,7 +67,7 @@ Proporcionar una vía de acceso durante la creación de una CDN permite aislar l
 
 ## El estado de la CDN es Error. ¿Qué hago ahora?
 
-Consulte las páginas [Resolución de problemas](troubleshooting.html#troubleshooting) u [Obtención de ayuda y soporte](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
+Consulte las páginas [Resolución de problemas](troubleshooting.html#troubleshooting) u [Obtención de ayuda y soporte](getting-help.html#gettinghelp), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
 
 ## ¿Dónde encuentro mi CNAME si no he proporcionado ninguno?
 
@@ -94,6 +101,23 @@ Si omite la barra inclinada, por ejemplo, si utiliza `www.example.com/images` se
 
 Siga los pasos indicados en [este artículo](https://community.akamai.com/docs/DOC-7708) de Akamai.
 
-## ¿Qué seguridad se incluye en la solución IBM CDN con Akamai?
+## ¿Qué seguridad se incluye con la solución IBM CDN con Akamai?
 
 Con la plataforma Akamai distribuida, obtendrá una escalabilidad y una capacidad de recuperación sin precedentes, con más de 240.000 servidores en más de 130 países. La plataforma Akamai se sitúa entre su infraestructura y sus usuarios finales, y actúa como primer nivel de defensa en caso de aumento repentino del tráfico. Akamai Intelligent Platform es también un proxy inverso que escucha y responde a las solicitudes en puertos 80 y 443, lo que significa que el tráfico en otros puertos se desvía al extremo sin reenviarse a su infraestructura.
+
+## ¿La CDN de Akamai conserva las cookies del servidor de origen? 
+
+Para el contenido que no puede colocarse en caché, o cualquier contenido que no se almacene en caché, las cookies se conservan desde el origen. Para el contenido que los servidores perimetrales colocan en caché, las cookies no se conservan.
+
+## ¿Cómo utilizo la consola de IBM Cloud para dar permiso a otros usuarios para crear o gestionar una CDN?
+
+En la consola de IBM Cloud, el usuario maestro de la cuenta puede proporcionar a otros usuarios permiso para crear y gestionar una CDN. Desde la página principal de la consola de IBM Cloud, siga estos pasos para editar los permisos:
+ * Seleccione el separador **Cuenta**
+ * Seleccione **Usuarios -> Lista de usuarios**
+ * Pulse en el **Nombre de usuario** que desee
+ * A continuación, seleccione el separador **Permisos de portal**
+ * Seleccione el separador **Servicios**
+ * Seleccione **Gestionar cuenta de CDN**
+ * Pulse el botón **Editar permisos de portal**
+ * Establezca los permisos que sean necesarios.
+

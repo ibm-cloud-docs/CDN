@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-07"
+lastupdated: "2018-08-29"
 
 ---
 
@@ -16,15 +16,17 @@ lastupdated: "2018-05-07"
 
 # Règles et conventions de dénomination
 
-## Quelles sont les règles applicables au nom d'hôte ?
-La chaîne d'entrée `Hostname` **doit** :
+## Quelles sont les règles applicables au nom d'hôte de CDN ?
+La chaîne d'entrée `Hostname` de CDN **doit** :
   * être composée de caractères alphanumériques
   * comprendre moins de 254 caractères
   * se terminer par un nom de domaine de niveau supérieur valide
   * **ne pas** contenir plus de 10 libellés
   * **ne pas** se terminer par `cdnedge.bluemix.net` (cette terminaison, qui est utilisée pour les enregistrements CNAME, est réservée)
 
-Pour plus de détails, veuillez vous référer à la RFC 1035, section 2.3.4.
+Pour plus de détails, veuillez vous référer à la RFC 1035, section 2.3.4. 
+
+En outre, il est vivement recommandé d'utiliser un nom de domaine complet comme nom d'hôte de CDN. Choisissez un nom au format 'www.example.com' plutôt qu'un nom de domaine racine (également appelé domaine Zone Apex ou Naked) au format 'example.com'. Vous devrez créer un enregistrement CNAME pour le nom d'hôte de CDN que vous utilisez, et la norme RFC DNS 1033 exige que l'enregistrement de domaine racine soit un enregistrement A et non un enregistrement CNAME. Des explications supplémentaires sont fournies dans le document RFC 2181, section 10.1
 
 ## Que sont les conventions de dénomination CNAME personnalisées ?
 La chaîne d'entrée `CNAME` doit être conforme aux règles suivantes :
@@ -32,8 +34,8 @@ La chaîne d'entrée `CNAME` doit être conforme aux règles suivantes :
   * elle doit contenir moins de 64 caractères alphanumériques
   * elle ne doit **pas** comporter les caractères spéciaux `! @ # $ % ^ & *`
   * elle ne doit **pas** comporter des traits de soulignement (`_`)
-  * elle ne doit **pas** comporter de point (`.` )
-  * Les tirets (`-`) sont autorisés, mais le CNAME ne peut pas commencer ou se terminer par un tiret
+  * elle ne doit **pas** comporter de point (`.`)
+  * les tirets (`-`) sont autorisés, mais le CNAME ne peut pas commencer ou se terminer par un tiret
 
 ## Quelles sont les règles applicables aux noms de compartiment ?
 Les noms de compartiment :
@@ -57,7 +59,7 @@ Le chemin de purge doit :
   * faire moins de 1000 caractères de long
   * commencer par `/`
   * ne peut pas se terminer par `/`
-  * ne peut pas se terminer par un un point (.)
+  * ne peut pas se terminer par un point (.)
   * ne peut pas contenir `*`
 
 **Remarque** : la purge n'est autorisée que pour les fichiers uniques. La purge de niveau répertoire n'est pas prise en charge pour le moment.

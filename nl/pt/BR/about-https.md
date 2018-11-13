@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-10-03"
 
 ---
 
@@ -18,13 +18,13 @@ lastupdated: "2018-06-28"
 
 O IBM Cloud oferece duas maneiras de proteger seu CDN com HTTPS: usando o Certificado curinga e o Certificado Domain Validation (DV) SAN. Ambas as opções de HTTPS podem ser configuradas selecionando **Porta HTTPS** ao configurar seu CDN. A Porta HTTPS padrão é 443, ou é possível escolher um número de porta diferente por meio da qual rotear o tráfego HTTPS. Uma lista de números de portas permitidos pode ser localizada na [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
 
+Para decidir entre o uso de **Certificado curinga** e **Certificado SAN** para HTTPS, responda a esta pergunta: Deseja entregar o tráfego HTTPS por meio do CNAME do CDN ou do Nome de domínio do CDN? Se quiser entregar o tráfego HTTPS por meio do CNAME, selecione **Certificado curinga**. Se quiser entregar o tráfego HTTPS por meio do Nome de domínio do CDN, selecione **Certificado SAN**.
+
 ## Suporte a Certificado Curinga
 >O certificado curinga é a maneira mais simples de entregar conteúdo da web para seus usuários finais com segurança. O CDN CNAME completo, incluindo o sufixo de certificado Curinga, **deve**
 ser usado como o ponto de entrada de serviço (por exemplo, `https://example.cdnedge.bluemix.net`) para o uso do certificado curinga.
 >
->O IBM Cloud CDN usa o certificado curinga `*.cdnedge.bluemix.net`.
-O CNAME que termina com o sufixo `*.cdnedge.bluemix.net`, independentemente de ter sido criado para você ou fornecido por você, é incluído no certificado curinga que é mantido no servidor CDN Edge.
-Assim, o CNAME se torna a única maneira pela qual os usuários finais podem usar HTTPS para seu CDN.
+>O IBM Cloud CDN usa o certificado curinga `*.cdnedge.bluemix.net`. O CNAME que termina com o sufixo `*.cdnedge.bluemix.net`, independentemente de ter sido criado para você ou fornecido por você, é incluído no certificado curinga que é mantido no servidor CDN Edge. Assim, o CNAME se torna a única maneira pela qual os usuários finais podem usar HTTPS para seu CDN.
 
 ![Diagram for Http and Wildcard](images/state-diagram-wildcard.png)
 
@@ -38,13 +38,13 @@ de forma segura por meio do nome do host, não pelo CNAME; por exemplo, `https:/
 >
 >Quando o pedido do CDN é feito usando o certificado SAN HTTPS, ele passa pelos processos de
 solicitação de um certificado e de criação de uma Domain Control Validation (DCV). A DCV é o processo que uma
-Autoridade de certificação usa para estabelecer que você está autorizado a acessar e a controlar o domínio. 
-Sua ação é necessária para concluir esta etapa. Depois que o controle é estabelecido, o certificado é
+Autoridade de certificação usa para estabelecer que você está autorizado a acessar e a controlar o domínio. Sua ação é necessária para concluir esta etapa. Depois que o controle é estabelecido, o certificado é
 implementado nos servidores de borda do CDN em todo o mundo. Depois que o certificado é implementado com sucesso, a
 renovação do certificado é manipulada automaticamente. Mais informações sobre esse recurso podem ser
-localizadas na [descrição do recurso](about.html#https-protocol-support).
-Os métodos de Domain Control Validation são explicados com mais detalhes na página
+localizadas na [descrição do recurso](feature-descriptions.html#https-protocol-support). Os métodos de Domain Control Validation são explicados com mais detalhes na página
 [Concluindo a Validação de Controle de
 Domínio para HTTPS](how-to-https.html#initial-steps-to-domain-control-validation).
+
+**Nota:** uma vez que o CDN atinja o status RUNNING, deve-se manter o registro CNAME do Nome do host do CDN em seu DNS. Se o registro CNAME for removido, o Nome do host do CDN poderá ser removido do certificado SAN no prazo de 3 dias. Se isso acontecer, o tráfego HTTPS não será mais entregue com esse Nome do host do CDN.
 
 ![Diagrama para o certificado HTTPS com SAN](images/state-diagram-san.png)

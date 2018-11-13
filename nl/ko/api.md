@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -24,12 +24,12 @@ SLAPI는 고객 포털에서 다수의 기능을 구현합니다. 고객 포털�
 
 SLAPI는 원격 프로시저 호출(RPC) 시스템입니다. 각 호출에는 API 엔드포인트로 데이터 전송 및 그에 대한 구조화된 데이터 수신이 포함됩니다. SLAPI로 데이터를 전송하고 수신하는 데 사용되는 형식은 사용자가 선택하는 API의 구현에 따라 다릅니다. SLAPI는 현재 데이터 전송을 위해 SOAP, XML-RPC 또는 REST를 사용합니다.
 
-SLAPI 또는 IBM Cloud Content Delivery Network  서비스 API에 대한 자세한 정보는 IBM Cloud 개발 네트워크에서 다음 리소스를 참조하십시오.
+SLAPI 또는 IBM Cloud Content Delivery Network 서비스 API에 대한 자세한 정보는 IBM Cloud 개발 네트워크에서 다음 리소스를 참조하십시오.
 
 * [SLAPI 개요](https://softlayer.github.io/ )
 * [SLAPI 시작하기](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API 안내서](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API 안내서](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -439,3 +439,84 @@ ___
    * `frequency`
 
  * **리턴**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Metrics`인 오브젝트의 콜렉션
+
+----
+## 지리적 액세스 제어를 위한 API
+### createGeoblocking
+새 지리적 액세스 제어 규칙을 작성하고 새로 작성된 규칙을 리턴합니다.
+
+  * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
+    여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
+    [입력 컨테이너 보기](input-container.html)
+
+    다음 속성은 입력 컨테이너의 일부이며 새 지리적 액세스 제어 규칙을 작성할 때 **필요합니다**.
+    * `uniqueId`: 규칙을 지정할 맵핑의 고유 ID
+    * `accessType`: 규칙이 지정된 지역에 트래픽을 `ALLOW` 또는 `DENY`할지 지정합니다.
+    * `regionType`: 지리적 액세스 제어 규칙을 적용할 지역의 유형(`CONTINENT` 또는 `COUNTRY_OR_REGION`)
+    * `regions`: `accessType`을 적용할 위치를 나열하는 배열
+
+      가능한 지역 목록을 확인하려면 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 페이지를 참조하십시오.
+
+  * **리턴**: `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 유형의 오브젝트
+
+    [지역 차단 클래스 보기](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+기존 도메인 맵핑에 대한 기존의 지리적 액세스 제어 규칙을 업데이트하고 업데이트된 규칙을 리턴합니다.
+
+  * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
+    여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
+    [입력 컨테이너 보기](input-container.html)
+
+    다음 속성은 입력 컨테이너의 일부이며 지리적 액세스 제어 규칙을 업데이트할 때 제공될 수 있습니다(별도의 언급이 없으면 매개변수는 선택사항임). 
+    * `uniqueId`: 업데이트될 규칙이 속하는 맵핑의 **필수** 고유 ID
+    * `accessType`: 규칙이 지정된 지역에 트래픽을 `ALLOW` 또는 `DENY`할지 지정합니다.
+    * `regionType`: 규칙을 적용할 지역의 유형(`CONTINENT` 또는 `COUNTRY_OR_REGION`)
+    * `regions`: `accessType`을 적용할 위치를 나열하는 배열
+
+      가능한 지역 목록을 확인하려면 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 페이지를 참조하십시오.
+
+  * **리턴**: `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 유형의 오브젝트
+
+    [지역 차단 클래스 보기](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+기존 도메인 맵핑에서 기존의 지리적 액세스 제어 규칙을 제거합니다.
+
+  * **매개변수**: 유형이 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`인 콜렉션.
+    여기 입력 컨테이너에서 모든 속성을 볼 수 있습니다.
+
+    [입력 컨테이너 보기](input-container.html)
+
+    다음 속성은 입력 컨테이너의 일부이며 지리적 액세스 제어 규칙을 삭제할 때 **필요합니다**.
+    * `uniqueId`: 삭제될 규칙이 속하는 맵핑의 고유 ID를 제공합니다.
+
+  * **리턴**: `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 유형의 오브젝트
+
+    [지역 차단 클래스 보기](geoblock-behavior.html)
+
+----
+### getGeoblocking
+데이터베이스에서 맵핑의 지리적 액세스 제어 동작을 검색합니다.
+
+  * **매개변수**:
+    * `uniqueId`: 규칙이 속하는 맵핑의 고유 ID.
+
+  * **리턴**: `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 유형의 오브젝트
+
+    [지역 차단 클래스 보기](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+지리적 액세스 제어 규칙 작성에 허용되는 유형 및 지역의 목록을 리턴합니다.
+
+  * **매개변수**:
+    * `uniqueId`: 도메인 맵핑의 고유 ID.
+
+  * **리턴**: `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` 유형의 오브젝트
+
+    [지역 차단 클래스 보기](geoblock-behavior.html)

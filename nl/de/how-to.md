@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # CDN verwalten
 
+In diesem Dokument werden allgemeine Tasks für die Verwaltung Ihres CDN beschrieben.
+
 ## Zeitdauer für Inhalts-Caching mit 'Time To Live' festlegen
 
-Wenn Ihr CDN aktiv ist, können Sie die Zeitdauer für das Inhalts-Caching über die Lebensdauer (Time To Live, TTL) festlegen. Die Lebensdauer für eine bestimmte Datei bzw. einen bestimmten Verzeichnispfad gibt an, wie lange der zugehörige Inhalt im Cache gespeichert werden soll. Beim Erstellen der CDN-Zuordnung wurde für die Lebensdauer (TTL) ein globaler Standardwert von 3600 Sekunden erstellt.
+Wenn Ihr CDN aktiv ist, können Sie die Zeitdauer für das Inhalts-Caching über die Lebensdauer (Time To Live, TTL) festlegen. Die Lebensdauer für eine bestimmte Datei bzw. einen bestimmten Verzeichnispfad gibt an, wie lange der zugehörige Inhalt im Cache gespeichert werden soll. Beim Erstellen der CDN-Zuordnung wurde für die Lebensdauer (TTL) ein globaler Standardwert von 3600 Sekunden (1 Stunde) erstellt.
 
 **Schritt 1:**  
 
@@ -26,7 +28,7 @@ Wählen Sie auf der Seite 'CDN' Ihr CDN aus, um die Seite **Übersicht** zu öff
 
 **Schritt 2:**  
 
-Sie können den Zeitraum mithilfe der Pfeile anpassen, oder indem Sie einen neuen Wert eingeben. Der Zeitwert wird in Sekunden angegeben. Beispiel: 3600 Sekunden entsprechen einer Stunde. Der niedrigste zulässige Wert für `timeToLive` ist 30 Sekunden, der höchste Wert ist 2147483647 Sekunden. Wählen Sie die Schaltfläche **Speichern** aus, um den Zeitraum für das Inhalts-Caching festzulegen.
+Sie können den Zeitraum mithilfe der Pfeile anpassen, oder indem Sie einen neuen Wert eingeben. Der Zeitwert wird in Sekunden angegeben. Beispiel: 3600 Sekunden entsprechen einer Stunde. Der niedrigste verfügbare Wert für `timeToLive` beträgt 0 Sekunden, der höchste Wert 2147483647 Sekunden (etwa 24855 Tage). Wählen Sie die Schaltfläche **Speichern** aus, um den Zeitraum für das Inhalts-Caching festzulegen.
 
   ![TTL hinzufügen](images/adding-path.png)
 
@@ -77,11 +79,11 @@ Wählen Sie entweder **Server** oder **Objektspeicher** aus.
 
   * Die Optionen **Optimierung** und **Cacheschlüssel** sind für die Serverkonfiguration und die Objektspeicherkonfiguration (Object Storage) gleich.
 
-    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](about.html#large-file-optimization) und [Video-on-Demand](about.html#video-on-demand) enthalten weitere Informationen.
+    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](feature-descriptions.html#large-file-optimization) und [Video-on-Demand](feature-descriptions.html#video-on-demand) enthalten weitere Informationen.
 
         ![Optionen für die Leistungskonfiguration](images/performance-config-options.png)
 
-    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](about.html#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
+    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](feature-descriptions.html#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
 
         ![Optionen für Cacheschlüssel](images/cache-key-options.png)
 
@@ -168,7 +170,7 @@ Aktualisieren Sie bei Bedarf die Details für **Ursprung** oder **Weitere Option
 
 ## IBM Cloud Object Storage für CDN konfigurieren
 
-Um in IBM Cloud Object Storage gespeicherte Objekte zu verwenden, müssen Sie in der Eigenschaft 'acl' (Access Control List, Zugriffssteuerungsliste) für jedes Objekt in Ihrem Bucket den Zugriff 'public-read' festlegen.
+Um in IBM Cloud Object Storage gespeicherte Objekte zu verwenden, müssen Sie als Wert für die Eigenschaft 'acl' (Access Control List, Zugriffssteuerungsliste) für jedes Objekt in Ihrem Bucket den Zugriff 'public-read' festlegen.
 
 Informationen zum Installieren erforderlicher Clients oder Tools finden Sie im Abschnitt zu den Tools im IBM Cloud Object Storage Developer Center (https://developer.ibm.com/cloudobjectstorage/). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
 

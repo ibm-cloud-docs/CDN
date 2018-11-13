@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ IBM Cloud Content Delivery Network는 미디어, 엔터테인먼트, 소프트�
 
 ## 시작하기 전에
 
-IBM Cloud Content Delivery Network를 사용하려면 먼저 [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)가 있어야 합니다. 그런 다음 사용자 환경 설정에 따라 [IBM Cloud 대시보드](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) 또는 새 [IBM Cloud CDN 고객 포털](https://control.softlayer.com/network/cdn)을 통해 Content Delivery Network 서비스를 주문할 수 있습니다.
+IBM Cloud Content Delivery Network를 사용하려면 먼저 [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)가 있어야 합니다. 그런 다음 사용자 환경 설정에 따라 [IBM Cloud 대시보드](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) 또는 새 [IBM Cloud CDN 콘솔](https://www.ibm.com/cloud/cdn)을 통해 Content Delivery Network 서비스를 주문할 수 있습니다.
 
 IBM Cloud Content Delivery Network 사용을 위한 계정을 얻는 데 도움이 필요한 경우, [IBM 영업 담당자에게 문의](https://www.ibm.com/cloud-computing/bluemix/contact-us)하여 시작하기에 대한 자세한 안내를 받으십시오.
 
 ## 튜토리얼
 
-IBM Cloud Object Storage의 Content Delivery Network  작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
-
-## 이미 계정이 있습니까?
-
-기존 CDN 고객은 새 [IBM Cloud CDN 포털](https://control.softlayer.com)을 통해 계정에 액세스할 수 있습니다. 기존 계정이 있는 경우 이제 **스토리지** 탭이 아닌 **네트워크** 탭에서 Content Delivery Network에 액세스할 수 있습니다.
+IBM Cloud Object Storage의 Content Delivery Network 작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
 
 ## CDN 대역폭 가격 책정(달러로 표시되는 요금)
 

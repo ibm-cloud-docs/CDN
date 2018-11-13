@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-09-05"
 
 ---
 
@@ -16,40 +16,55 @@ lastupdated: "2018-04-09"
 # Lista de servidores de borda
 
 Aqui está a lista de países com POPs do Akamai que estamos usando:
- 
+
 * Argentina
 * Austrália
 * Áustria
+* Bahrein
+* Bélgica
 * Brasil
 * Bulgária
 * Canadá
 * Chile
+* Colômbia
 * República Tcheca
 * Dinamarca
+* Equador
+* Finlândia
 * França
 * Alemanha
-* Hong Kong 
+* Grécia
+* Hong Kong
 * Índia
+* Indonésia
 * Irlanda
 * Israel
 * Itália
 * Japão
+* Macau
 * Malásia
 * México
 * Países Baixos
 * Nova Zelândia
+* Noruega
+* Omã
 * Peru
 * Filipinas
 * Polônia
 * Catar
+* Romênia
 * Singapura
 * África do Sul
+* Coreia do Sul
 * Espanha
+* Sri Lanka
 * Suécia
 * Suíça
 * Taiwan, província da China
 * Tailândia
 * Turquia
+* Emirados Árabes Unidos
 * Reino Unido
 * Estados Unidos
+* Uruguai
 * Vietnã

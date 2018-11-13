@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -120,3 +120,17 @@ The access-type `Allow` lets you specifically allow traffic to selected regions,
 On the other hand, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified, regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents will **not** be able to use your service, whereas users on all other continents will have access to it.
 
 This feature is accessible from the **Settings** page of your CDN Configuration.
+
+## Hotlink Protection
+
+Hotlink Protection is a rules-based behavior that lets you control whether or not certain websites are allowed to access your content from your CDN.  The browser typically includes a `Referer` Header when an HTTP request is made from a link on a webpage and when that link points to a remote asset. The link that one website uses to access an asset from another website is called a hotlink.  Two types of behaviors are available: **ALLOW** and **DENY**.
+
+If your `protectionType` is set to `ALLOW`:
+* If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, then your CDN **will** serve the content requested.
+* Otherwise, your CDN will not serve the content.
+
+If your `protectionType` is set to `DENY`:
+* If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, then your CDN **will not** serve the content requested.
+* Otherwise, your CDN will serve the content.
+
+**NOTE**: This feature is currently available only through our API. You can view the [API page](api.html#api-for-hotlink-protection) for more information.

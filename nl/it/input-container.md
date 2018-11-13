@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ Il Contenitore di input è una raccolta utilizzata sia dalla classe Mapping che 
 I seguenti attributi sono comuni alle classi Mapping e (Origin) Path:
 * `originType`: tipo dell'host di origine, attualmente 'HOST_SERVER' o 'OBJECT_STORAGE'.
 * `origin`: l'indirizzo del server di origine (il nome host o l'indirizzo IPv4 del server di origine), l'endpoint da cui recuperare il contenuto oppure il nome del bucket dove è memorizzato il contenuto. Deve essere minore di 511 caratteri.
-* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
-* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
 * `status`: lo stato dell'associazione o del percorso. Lo stato può essere CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED o ERROR.
 * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Il percorso predefinito è /\* Quando viene utilizzato dalla API `updateOriginPath`, questo attributo fa riferimento al nuovo percorso da aggiungere.
 * `performanceConfiguration`: specifiche per la configurazione delle prestazioni dell'associazione.
@@ -33,6 +33,7 @@ I seguenti attributi sono comuni alle classi Mapping e (Origin) Path:
   * `ignore-all`: ignora tutti gli argomenti della query
   * `ignore: space separated query-args`: ignora questi specifici argomenti della query. Ad esempio, `ignore: query1 query2`
   * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
+* `geoblockingRule`
 
 I seguenti attributi sono specifici per la classe Mapping:
 

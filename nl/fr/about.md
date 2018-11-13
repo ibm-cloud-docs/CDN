@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -22,6 +22,10 @@ Un réseau de distribution de contenu (CDN - Content Delivery Network) est un en
 
 L'objectif d'un CDN est de mettre en cache du contenu Web sur des serveurs d'équilibrage des charges dans le monde entier. Lorsqu'un client fait une demande de contenu Web, la demande est acheminée vers le serveur le plus proche. En réduisant la distance géographique, le réseau CDN offre un débit optimal, une latence réduite et de meilleures performances. Grâce à IBM Cloud Content Delivery Network avec Akamai, les fournisseurs de contenu peuvent réaliser une diffusion efficace du contenu demandé dans le monde entier, et ce avec une configuration minimale.
 
+![Diagramme CDN de niveau supérieur](images/high-level-cdn-diagram.png)
+
+## Fonctions
+
 Les fonctions principales du service IBM Cloud Content Delivery Network incluent :
   * La prise en charge de l'origine du serveur hôte
   * La prise en charge de l'origine du stockage d'objet
@@ -37,8 +41,9 @@ Les fonctions principales du service IBM Cloud Content Delivery Network incluent
   * La compression de contenu
   * L'optimisation des fichiers volumineux
   * La vidéo à la demande
+  * Le contrôle d'accès géographique
 
-Consultez [ce document](feature-description.html#feature-descriptions) pour des descriptions complètes des fonctions.
+Consultez [ce document](feature-descriptions.html#feature-descriptions) pour des descriptions complètes des fonctions.
 
 ## Diagramme de l'architecture
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -44,9 +44,7 @@ precisa ser exclusivo.
 ## Mapeamentos do CDN baseados em caminho
 
 O serviço do IBM Cloud CDN pode ser restrito a um caminho do diretório específico no servidor de origem fornecendo o caminho ao
-criar o CDN. Um usuário final pode acessar apenas aqueles conteúdos no caminho do diretório. Por exemplo, se
-um CDN `www.example.com` for criado com o Caminho `/videos`, ele estará
-acessível apenas por meio de `www.example.com/videos/`.
+criar o CDN. Um usuário final pode acessar apenas aqueles conteúdos no caminho do diretório. Por exemplo, se um CDN `www.example.com` for criado com o Caminho `/videos`, ele estará acessível **somente** por meio de `www.example.com/videos/*`.
 
 ## Limpe o conteúdo em cache
 
@@ -55,9 +53,8 @@ Akamai limpa o arquivo em cerca de cinco segundos. A UI também fornece a capaci
 
 ## TTL (tempo de vida)
 
-O tempo de vida indica a quantidade de tempo (em segundos) que o servidor de borda levará para armazenar em cache o conteúdo para esse caminho específico de arquivo ou diretório. 
-Quando um CDN é criado pela primeira vez, um Tempo de Vida (TTL) global é criado para o caminho
-`/\*` com um tempo padrão de 3.600 segundos. O valor mínimo para o TTL é 30 segundos e o valor máximo é 2147483647 segundos. Para cada entrada, o caminho de TTL deve ser exclusivo para o CDN. Se múltiplos caminhos corresponderem a um determinado conteúdo, a correspondência de caminho configurada mais recentemente se aplicará a esse conteúdo. Por exemplo, considere dois TTLs, `/example/file` criados primeiro com um valor de tempo de vida de 3000 segundos e `/example/*` criado posteriormente, com um valor de 4000 segundos. Embora `/example/file` seja
+O tempo de vida indica a quantidade de tempo (em segundos) que o servidor de borda levará para armazenar em cache o conteúdo para esse caminho específico de arquivo ou diretório. Quando um CDN é criado pela primeira vez, um Tempo de Vida (TTL) global é criado para o caminho
+`/\*` com um tempo padrão de 3.600 segundos. O valor mínimo para TTL é 0 segundos e o valor máximo é 2147483647 segundos. Para cada entrada, o caminho de TTL deve ser exclusivo para o CDN. Se múltiplos caminhos corresponderem a um determinado conteúdo, a correspondência de caminho configurada mais recentemente se aplicará a esse conteúdo. Por exemplo, considere dois TTLs, `/example/file` criados primeiro com um valor de tempo de vida de 3000 segundos e `/example/*` criado posteriormente, com um valor de 4000 segundos. Embora `/example/file` seja
 mais específico, `/example/*` foi criado mais recentemente, de modo que o TTL para `/example/file`
 será de 4.000 segundos. Depois de criadas, as entradas de TTL poderão ser editadas para o caminho e/ou horário. Eles podem ser
 excluídos também.
@@ -68,8 +65,7 @@ Métricas para um CDN individual são fornecidas na guia Visão geral do portal 
 
 Para métricas que exibem a mudança ao longo de um período de tempo como um gráfico, é possível ver três gráficos de linhas e um gráfico de pizza. Os três gráficos de linhas são: **Largura da banda**, **Ocorrências por mapeamento**e **Ocorrências por tipo**. Eles exibem a atividade em uma base diária ao longo do curso de seu prazo especificado. Os gráficos para **Largura da banda** e **Ocorrências por mapeamento** são gráficos de linha única, enquanto que o detalhamento de **Ocorrências por tipo** mostra uma linha para cada um dos tipos de ocorrência fornecido. O gráfico de pizza exibe um detalhamento regional da largura da banda para um mapeamento de CDN em uma base porcentagem.
 
-As métricas mostradas para valores agregados incluem **Uso de largura da banda** em GB, **Total de ocorrências** para o servidor de borda do CDN e a **Taxa de acertos**. 
-A Taxa de acertos indica a porcentagem de vezes que o conteúdo é entregue pelo servidor
+As métricas mostradas para valores agregados incluem **Uso de largura da banda** em GB, **Total de ocorrências** para o servidor de borda do CDN e a **Taxa de acertos**. A Taxa de acertos indica a porcentagem de vezes que o conteúdo é entregue pelo servidor
 Edge, _não_ por meio de sua Origem. A taxa de acertos atualmente é mostrada como uma função de todos os mapeamentos de CDN, não apenas aquele que está sendo visualizado.
 
 Por padrão, ambos os números agregados e os gráficos padronizam a exibição de métricas para os últimos 30 dias, mas você pode mudar isso por meio do [Portal do cliente ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://control.softlayer.com/). As categorias são capazes de exibir métricas para períodos de 7, 15, 30, 60 ou 90 dias.
@@ -87,7 +83,7 @@ do host CDN (também chamado de nome de domínio CDN) será usado como o cabeça
 O CDN pode ser configurado para usar o protocolo HTTPS para entregar o conteúdo com segurança aos
 usuários finais. Essa configuração requer que um certificado SSL seja definido como parte da
 configuração do CDN. Dois tipos de opções de certificado SSL estão disponíveis para HTTPS:
-[Certificado curinga](about-https.html#Wildcard-Certificate-support) e
+[Certificado curinga](about-https.html#wildcard-certificate-support) e
 [Certificado Subject Alternative
 Name (SAN) de Domínio Validado (DV)](about-https.html#subject-alternate-name-san-certificate-support). Esse tipo também será referido como um Certificado
 SAN_ nesta documentação.
@@ -105,8 +101,7 @@ Certificado.
 O Host de origem também deve ter seu próprio certificado SSL para o nome do host do CDN e deve ser
 assinado por uma Autoridade de Certificação (CA) reconhecida.
 
-Como uma melhor prática do segmento de mercado, o Akamai somente confia em certificados raiz e não em certificados intermediários porque o conjunto de certificados intermediários que é confiável muda frequentemente. 
-É possível localizar os certificados confiáveis do Akamai
+Como uma melhor prática do segmento de mercado, o Akamai somente confia em certificados raiz e não em certificados intermediários porque o conjunto de certificados intermediários que é confiável muda frequentemente. É possível localizar os certificados confiáveis do Akamai
 [na
 web neste local](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
 
@@ -178,3 +173,13 @@ tipos de rede. Aproveitando a capacidade da rede distribuída para distribuir a 
 oferece a capacidade de escalar rapidamente para grandes públicos, independentemente de você ter ou não se planejado para eles.
 
 **Vídeo On Demand** é otimizado para distribuição de formatos de fluxo segmentado como HLS, DASH, HDS e HSS. A transmissão de vídeo em tempo real **não** é suportada neste momento. É possível ativar o recurso **Vídeo on Demand** selecionando a opção do menu suspenso em **Otimizar para** na guia Configurações ou ao criar um novo caminho de origem. É necessário ativar esse recurso apenas ao otimizar a entrega de arquivos de vídeo.
+
+## Controle de acesso geográfico
+
+O Controle de acesso geográfico é um comportamento baseado em regra que permite configurar o parâmetro `access-type` para um grupo de usuários, com base em sua localização geográfica. Dois tipos de comportamentos estão disponíveis: **Permitir** e **Negar**.
+
+O tipo de acesso `Allow` deixa permitir especificamente o tráfego para regiões selecionadas, com base no tipo de região. Permitir tráfego para regiões específicas bloqueia implicitamente o tráfego para todas as outras. Por exemplo, você pode optar por usar `Allow` para permitir tráfego para continentes selecionados, como Europa e Oceania, que bloqueia o acesso a todos os outros continentes.
+
+Por outro lado, o comportamento `Deny` bloqueia o acesso a seu serviço para o grupo especificado, mas permite acesso a todas as outras regiões não especificadas. Por exemplo, se você configurar o tipo de acesso Controle de acesso geográfico como `Deny` para os continentes da Europa e Oceania, os usuários nesses continentes **não** poderão usar seu serviço, enquanto os usuários em todos os outros continentes terão acesso a ele.
+
+Esse recurso é acessível na página **Configurações** de sua Configuração do CDN.

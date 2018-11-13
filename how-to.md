@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -60,8 +60,7 @@ Select the **Origins** tab, then select the **Add Origin** button. This step ope
 
 **Step 3:**
 
-You *must* provide a path. The path *must* start with the CDN path as the prefix, if the CDN was created with a path.  
-  For example, if the CDN was created with a path of `/examplePath` the path for the Origin must start with prefix `/examplePath/`. You may optionally provide a host header.  
+You *must* provide a path. You may optionally provide a host header.  
 
    ![Origins add origin](images/add-origin-path.png)
 

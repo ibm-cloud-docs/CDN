@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ IBM Cloud Content Delivery Network (CDN) 可以用于包括媒体、娱乐、软
 
 ## 开始之前
 
-开始使用 IBM Cloud Content Delivery Network 之前，您首先需要有 [IBM 标识](https://www.ibm.com/account/us-en/signup/register.html)。然后，才能通过 [IBM Cloud 仪表板](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai)或通过新的 [IBM Cloud CDN 客户门户网站](https://control.softlayer.com/network/cdn)来订购 Content Delivery Network 服务，具体取决于您的首选项。
+开始使用 IBM Cloud Content Delivery Network 之前，您首先需要有 [IBM 标识](https://www.ibm.com/account/us-en/signup/register.html)。然后，才能通过 [IBM Cloud 仪表板](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai)或通过新的 [IBM Cloud CDN 控制台](https://www.ibm.com/cloud/cdn)来订购 Content Delivery Network 服务，具体取决于您的首选项。
 
 如果在获取帐户以使用 IBM Cloud Content Delivery Network 时需要帮助，可以[联系 IBM 销售代表](https://www.ibm.com/cloud-computing/bluemix/contact-us)以获取其他入门指南。
 
 ## 教程
 
 请参阅关于如何为 IBM Cloud Object Storage 创建 Content Delivery Network 的[教程](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)。
-
-## 已经有帐户？
-
-现有 CDN 客户有权通过新的 [IBM Cloud CDN 门户网站](https://control.softlayer.com)访问其帐户。如果您有现有帐户，那么现在可以从**网络**选项卡来访问 Content Delivery Network，而不是从**存储**选项卡进行访问。
 
 ## CDN 带宽定价（费率以美元显示）
 

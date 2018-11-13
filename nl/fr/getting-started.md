@@ -2,12 +2,12 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="-blank"}
+{:new_window: target="blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
@@ -20,17 +20,13 @@ IBM Cloud Content Delivery Network (CDN) peut être utilisé dans des solutions 
 
 ## Avant de commencer
 
-Avant de commencer à utiliser IBM Cloud Content Delivery Network, vous avez besoin d'un [ID IBM](https://www.ibm.com/account/us-en/signup/register.html). Vous pourrez ensuite commander votre service CDN (Content Delivery Network) via votre [tableau de bord IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) ou par le biais du [portail IBM Cloud CDN Customer](https://control.softlayer.com/network/cdn), selon vos préférences.
+Avant de commencer à utiliser IBM Cloud Content Delivery Network, vous avez besoin d'un [ID IBM](https://www.ibm.com/account/us-en/signup/register.html). Vous pourrez ensuite commander votre service CDN (Content Delivery Network) via votre [tableau de bord IBM Cloud](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) ou par le biais de la nouvelle [console IBM Cloud CDN](https://www.ibm.com/cloud/cdn), selon vos préférences.
 
 Si vous avez besoin d'aide pour obtenir un compte pour utiliser IBM Cloud Content Delivery Network, vous pouvez [contacter votre représentant commercial IBM](https://www.ibm.com/cloud-computing/bluemix/contact-us) pour obtenir des conseils supplémentaires concernant la mise en route.
 
 ## Didacticiel
 
 [Voir le didacticiel](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sur la création d'un réseau de distribution de contenu (CDN) pour le stockage d'objets IBM Cloud.
-
-## Vous avez déjà un compte ?
-
-Les clients existants de CDN ont accès à leur compte à travers le nouveau [portail d'IBM Cloud CDN](https://control.softlayer.com). Si vous possédez déjà un compte, vous pouvez désormais accéder à votre CDN à partir de l'onglet **Network**, et non à partir de l'onglet **Storage**.
 
 ## Tarifs de la bande passante CDN (en dollars américains)
 

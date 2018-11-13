@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -24,7 +24,7 @@ Bei Verwendung eines SAN-Zertifikats wird ein einziges SAN-Zertifikat von mehrer
 
 ## Wie wird eine Validierung einer Domäne mit Weiterleitung durchgeführt?
 
-Dies hängt vom Server ab. Die Prozedur zur Ausführung der Domänenvalidierung für Apache- und Nginx-Server finden Sie auf der Seite [Validierung der Domänensteuerung für HTTPS ausführen](how-to-https.html#redirect-).
+Dies hängt vom Server ab. Die Prozedur zur Ausführung der Domänenvalidierung für Apache- und Nginx-Server finden Sie auf der Seite [Validierung der Domänensteuerung für HTTPS ausführen](how-to-https.html#redirect).
 
 ## Wie lange dauert die Validierung einer Domäne?
 
@@ -82,4 +82,4 @@ Nicht unbedingt. Die Zertifikatsauswahl wird von Akamai ausgeführt, um sicherzu
 
 ## Warum wird "Wildcard" angezeigt, wenn ich `dig` verwende oder wenn ich versuche, auf Inhalt zuzugreifen und sich die CDN-Instanz im Status `Zertifikat wird angefordert`, `Domänenvalidierung anstehend` oder `Zertifikat wird bereitgestellt` befindet?
 
-Während des Anforderungsprozesses für das DV-SAN-Zertifikat wird die DNS-Datensatzkette vorübergehend mit einem Wildcard-Zertifikat verkettet. Bis der Prozess abgeschlossen ist, wird der Inhalt temporär über dieses Wildcard-Zertifikat bereitgestellt. Sobald der Anforderungsprozess abgeschlossen ist, wird die DNA-Datensatzkette aktualisiert und eine Verkettung mit dem DV-SAN-Zertifikat der CDN-Instanz durchgeführt.
+Während des Anforderungsprozesses für das DV-SAN-Zertifikat wird die DNS-Datensatzkette für Ihr CDN vorübergehend mit einem Wildcard-Zertifikat verkettet. Bis der Prozess abgeschlossen ist, wird der Inhalt temporär über dieses Wildcard-Zertifikat bereitgestellt. Sobald der Anforderungsprozess abgeschlossen ist, wird die DNA-Datensatzkette aktualisiert und eine Verkettung mit dem DV-SAN-Zertifikat der CDN-Instanz durchgeführt.

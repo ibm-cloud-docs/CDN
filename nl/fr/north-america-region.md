@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ## La région Amérique du Nord inclut :
 
 * Antigua-et-Barbuda

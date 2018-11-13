@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -84,8 +84,7 @@ será bem-sucedida. Mais informações sobre `verifyOrder` podem ser localizadas
 da API do SoftLayer](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
 Nesse caso, ela é a classe `SoftLayer_Product_Order`, que define o método
-verifyOrder e deve ser transmitida como um parâmetro para `\SoftLayer\SoapClient::getClient()`.
-Antes da chamada para `verifyOrder`, é necessário construir o `$orderObject` usando
+verifyOrder e deve ser transmitida como um parâmetro para `\SoftLayer\SoapClient::getClient()`. Antes da chamada para `verifyOrder`, é necessário construir o `$orderObject` usando
 o `SoftLayer_Product_Package`.
 
 ```php
@@ -185,15 +184,13 @@ catch (\Exception $e) {
 
 ## Código de exemplo para criar CDN ou Criar Mapeamento de Domínio
 
-Este exemplo mostra como criar um novo mapeamento de CDN utilizando a API `createDomainMapping`.
-Ele utiliza um único parâmetro de um objeto `stdClass`. O SoapClient deve ser inicializado
+Este exemplo mostra como criar um novo mapeamento de CDN utilizando a API `createDomainMapping`. Ele utiliza um único parâmetro de um objeto `stdClass`. O SoapClient deve ser inicializado
 usando a classe `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`, conforme
 mostrado no exemplo.
 
 **NOTA**: se você optar por fornecer um CNAME customizado, ele
-**deverá** terminar com `.cdnedge.bluemix.net` ou um erro será lançado. 
-Consulte [esta
-descrição](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions) para obter as regras sobre como fornecer seu próprio CNAME.
+**deverá** terminar com `.cdnedge.bluemix.net` ou um erro será lançado. Consulte [esta
+descrição](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) para obter as regras sobre como fornecer seu próprio CNAME.
 
 ```php
 
@@ -233,8 +230,7 @@ try {
 ```
 {: codeblock}
 
-O exemplo `createDomainMapping` exibirá os atributos do CDN recém-criado.
-Anote o `uniqueId`, já que será necessário fornecê-lo como um parâmetro para muitas outras
+O exemplo `createDomainMapping` exibirá os atributos do CDN recém-criado. Anote o `uniqueId`, já que será necessário fornecê-lo como um parâmetro para muitas outras
 APIs. A saída deve ser semelhante a esta:
 
 ```php

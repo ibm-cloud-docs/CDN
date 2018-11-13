@@ -1,3 +1,12 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
+
 ## La région Amérique du Sud inclut :
 
 * Argentine
@@ -15,4 +24,4 @@
 * Géorgie du Sud et îles Sandwich du Sud
 * Suriname
 * Uruguay
-* Vénézuela
+* Venezuela

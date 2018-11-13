@@ -1,3 +1,11 @@
+---
+
+copyright:
+  years: 2018
+lastupdated: "2018-07-26"
+
+---
+
 ### メトリック用のコンテナー・クラス:
 `SoftLayer_Container_Network_CdnMarketplace_Metrics` コレクションには、メトリック API によって使用される属性が含まれています。 `type` 属性に指定できる値には、PIECHART、LINEGRAPH、TOTALS の 3 つがあります。 このコンテナーの残りの属性の出力は、以下で詳細に説明されている `type` によって異なります。 `type` を除くすべての属性が配列です。 すべての属性がすべてのタイプに使用されるわけではありません。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -26,13 +26,20 @@ CDN은 전세계의 에지 서버에서 웹 컨텐츠를 캐싱하여 목적을 
 
 ## IBM Cloud Content Delivery Network 서비스 계정을 작성하는 방법은 무엇입니까?
 
-"벤더 선택사항" 메뉴를 거친 후 **선택**을 클릭하면 CDN 주문 프로세스 중에 사용자 계정이 작성됩니다.
+CDN 주문 프로세스 중에 계정이 작성됩니다. 레거시 포털에서 CDN을 작성 중인 경우 **네트워크 -> CDN 페이지** 아래의 **CDN 주문** 단추를 클릭하면 계정이 작성됩니다. IBM Cloud 포털에서 CDN을 작성 중인 경우 **카탈로그 -> 네트워크 -> Content Delivery Network** 페이지 아래의 **작성** 단추를 클릭하면 계정이 작성됩니다. 
 
-## 내 CDN의 상태가 CNAME_CONFIGURATION인 경우 수행해야 할 작업은 무엇입니까?
+## 내 CDN 상태가 CNAME 구성인 경우 수행해야 할 작업은 무엇입니까?
 
-HTTP 기반 CDN의 경우 웹 사이트가 새 CDN 맵핑과 연관된 `CNAME`을 지정하도록 DNS 레코드를 업데이트하십시오. HTTPS 기반 CDN의 경우에는 이 DNS 업데이트가 필요하지 **않습니다**.
+HTTPS CDN 기반 SAN 인증서 및 HTTP의 경우, 웹 사이트가 새 CDN 맵핑과 연관된 `CNAME`을 가리키도록 DNS 레코드를 업데이트하십시오. HTTPS CDN 기반 와일드카드 인증서의 경우에는 이 DNS 업데이트가 필요하지 **않습니다**.
 
 **참고**: 활성 상태가 되도록 업데이트하는 데 15 - 30분이 소요될 수 있습니다. 정확한 예상 시간을 알아 보려면 DNS 제공자에게 문의하십시오.
+
+일반 CNAME 레코드는 DNS 구성 페이지에 다음과 같이 표시됩니다.
+
+| **리소스 유형** | **호스트** | **지정 대상 (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+|CNAME | www.example.com | example.cdnedge.bluemix.net | 15분 |
+
 
 ## 청구 항목은 무엇입니까?
 
@@ -60,7 +67,7 @@ CDN을 작성하는 중에 경로를 제공하면 특정 원본 서버에서 CDN
 
 ## 내 CDN은 오류 상태에 있습니다. 지금 어떠한 작업을 수행해야 합니까?
 
-[문제점 해결](troubleshooting.html#troubleshooting) 또는 [도움 및 지원 받기](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help) 페이지를 참조하거나 [고객 포털 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://control.softlayer.com/)에서 티켓을 여십시오.
+[문제점 해결](troubleshooting.html#troubleshooting) 또는 [도움 및 지원 받기](getting-help.html#gettinghelp) 페이지를 참조하거나 [고객 포털 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://control.softlayer.com/)에서 티켓을 여십시오.
 
 ## 내 CNAME을 제공하지 않은 경우 어디서 찾을 수 있습니까?
 
@@ -88,12 +95,29 @@ CDN 맵핑 또는 원본에 대한 경로가 디렉토리로 간주됩니다. �
 
 ## IBM COS(Cloud Object Storage)의 내 Content Delivery Network를 설정하는 방법은 무엇입니까?
 
-IBM Cloud Object Storage의 Content Delivery Network  작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
+IBM Cloud Object Storage의 Content Delivery Network 작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
 
 ## 내 원본 인증서가 만료된다는 알림을 수신했습니다. 지금 어떠한 작업을 수행해야 합니까?
 
 Akamai의 [이 기사](https://community.akamai.com/docs/DOC-7708)에 설명된 단계를 따르십시오.
 
-## Akamai를 사용한 IBM CDN 솔루션에 포함된 보안은 무엇입니까?
+## Akamai를 사용한 IBM CDN 솔루션에 포함되는 보안은 무엇입니까?
 
 분산 Akamai 플랫폼을 사용하면 130개국 이상에서 240,000개가 넘는 서버를 통해 엄청난 규모와 복원력을 갖게 됩니다. Akamai 플랫폼은 인프라와 일반 사용자 사이에서 트래픽의 갑작스런 증가에 대한 첫 번째 레벨의 방어 수단이 됩니다. 또한 Akamai Intelligent Platform은 포트 80과 443에서만 요청을 청취하고 응답하는 리버스 프록시이며, 이는 다른 포트의 트래픽이 인프라로 전송되지 않고 에지에서 삭제된다는 것을 의미합니다.
+
+## 원본 서버의 쿠키는 Akamai CDN에서 유지됩니까? 
+
+캐시 가능하지 않거나 캐시되지 않는 컨텐츠의 경우 쿠키는 원본 서버에서 유지됩니다. 에지 서버에서 캐시하는 컨텐츠의 경우 쿠키는 유지되지 않습니다.
+
+## IBM Cloud 콘솔을 사용하여 다른 사용자에게 CDN을 작성하거나 관리하는 권한을 부여하려면 어떻게 해야 합니까?
+
+IBM Cloud 콘솔에서 계정의 마스터 사용자는 다른 사용자에게 CDN을 작성하고 관리하는 권한을 제공할 수 있습니다. IBM Cloud 콘솔 메인 페이지에서, 다음 단계에 따라 권한을 편집하십시오.
+ * **계정** 탭을 선택하십시오. 
+ * **사용자 -> 사용자 목록**을 선택하십시오.
+ * 원하는 **사용자 이름**을 클릭하십시오.
+ * 그런 다음 **포털 권한** 탭을 선택하십시오.
+ * **서비스** 탭을 선택하십시오.
+ * **CDN 계정 관리**를 선택하십시오.
+ * **포털 권한 편집** 단추를 클릭하십시오.
+ * 필요한 권한을 설정하십시오.
+

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-07-24"
 
 ---
 
@@ -16,14 +16,15 @@ lastupdated: "2018-05-03"
 
 # Metriken
 
-## Wie kann ich die Metriken und die Nutzung anzeigen?
+Wenn Sie Ihr CDN zum ersten Mal in der Liste auswählen, wird die Übersichtsseite angezeigt. Auf dieser Seite werden für den ausgewählten Zeitraum (Standardzeitraum: 30 Tage) Werte für die Gesamtbandbreite, die Gesamtzahl der Cache-Treffer und die Trefferquote angezeigt.
 
-Die Metriken und die Nutzung können auf der Seite **Übersicht** angezeigt werden, die durch das Auswählen Ihres CDN auf der Seite **Content Delivery Networks** aufgerufen werden kann. **Hinweis:** Nach dem Erstellen eines CDN kann es bis zu 48 Stunden dauern, bevor die Metriken angezeigt werden.
+  ![Metrikübersicht](images/metrics-overview.png)
 
-## Ich habe ein CDN erstellt und es hat Datenverkehr über das CDN stattgefunden. Warum werden meine Metriken nicht angezeigt?
+Direkt unterhalb der Übersicht wird eine grafische Darstellung zu der Gesamtbandbreite nach Region, der Gesamtzahl der Cache-Treffer und den Treffern nach Typ angezeigt.
 
-Nach der Erstellung eines CDN dauert es 48 Stunden, bis die Metriken angezeigt werden.
+  ![Metrikdiagramme](images/metrics-graphs.png)
 
+**Hinweis:** Nach dem Erstellen eines CDN kann es bis zu 48 Stunden dauern, bevor die Metriken angezeigt werden.
 
 ## Gibt es eine Mindestanzahl von Tagen, für die ich Metriken anzeigen kann? Gibt es einen Maximalwert?
 
@@ -35,8 +36,12 @@ Die Trefferquote stellt den Prozentsatz der Male dar, die Inhalte anstatt aus de
 > ((Edge-Treffer - Eingangstreffer)/Edge-Treffer) * 100
 
 Dabei gilt:
+
 Die Definition für Edge-Treffer lautet "Alle Treffer für Edge-Server von Endbenutzern".  
 Die Definition für Eingangstreffer ist "Ursprungs- oder Eingangstreffer im Datenverkehr vom Ursprungsserver zu Akamai-Edge-Servern".
 
 Da die Trefferquote nicht pro CDN, sondern auf Kontoebene berechnet wird, ist die Trefferquote für alle CDNs in Ihrem Konto gleich. Diese Tatsache erklärt auch, warum die Trefferrate ungleich null sein kann, wenn die Anzahl der Edge-Treffer für einen bestimmten CDN Null ist.
 
+## Werden die Metriken in Echtzeit aktualisiert?
+
+Nein. Die Metriken werden alle 24 Stunden aktualisiert.

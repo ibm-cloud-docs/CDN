@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-03"
 
 ---
 
@@ -27,6 +27,10 @@ cliente solicita o conteúdo da web, a solicitação de conteúdo é roteada par
 próximo a esse cliente. Reduzindo a distância que o conteúdo deve viajar, o CDN oferece rendimento otimizado, latência minimizada e aumento de desempenho. Usando o IBM Cloud Content Delivery Network com o Akamai, os provedores de conteúdo podem realizar a entrega eficiente do conteúdo
 solicitado de todo o mundo, com configuração mínima.
 
+![Diagrama CDN de alto nível](images/high-level-cdn-diagram.png)
+
+## Recursos
+
 Os recursos-chave do serviço IBM Cloud Content Delivery Network incluem:
   * Suporte de origem do servidor host
   * Suporte de origem do Object Storage
@@ -42,9 +46,9 @@ Os recursos-chave do serviço IBM Cloud Content Delivery Network incluem:
   * Compactação de conteúdo
   * Otimização de arquivo grande
   * Vídeo on demand
+  * Controle de acesso geográfico
 
-Consulte [este documento](feature-description.html#feature-descriptions) para obter
-descrições completas do recurso.
+Consulte [este documento](feature-descriptions.html#feature-descriptions) para obter descrições completas do recurso.
 
 ## Diagrama Arquitetural
 

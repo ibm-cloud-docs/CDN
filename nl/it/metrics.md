@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-03"
+lastupdated: "2018-07-24"
 
 ---
 
@@ -16,14 +16,15 @@ lastupdated: "2018-05-03"
 
 # Metriche
 
-## Como posso visualizzare le metriche e l'utilizzo?
+Quando selezioni inizialmente la tua CDN dall'elenco, viene aperta la pagina di panoramica (Overview). Qui puoi vedere la larghezza di banda totale (Total Bandwidth), il totale riscontri (Total Hits) e la percentuale riscontri (Hit Ratio) per il periodo di tempo selezionato (il valore predefinito è 30 giorni).
 
-Puoi visualizzare le metriche e l'utilizzo nella pagina **Panoramica**, che può essere raggiunta selezionando la tua CDN dalla pagina **Content Delivery Networks**. **NOTA**: dopo che hai creato la tua CDN, potrebbero essere necessarie fino a 48 ore perché le metriche vengano visualizzate.
+  ![Panoramica delle metriche](images/metrics-overview.png)
 
-## Ho creato una CDN e c'era traffico di dati attraverso essa. Perché le mie metriche non vengono visualizzate?
+Direttamente sotto la panoramica, vedrai una rappresentazione grafica per la larghezza di banda totale (Total Bandwidth), la larghezza di banda per ogni regione (Bandwidth per Region), il totale riscontri (Total Hits) e i riscontri per tipo (Hits By Type).
 
-Dopo che hai creato una CDN, ci vogliono 48 prima che le metriche vengano visualizzate.
+  ![Grafici delle metriche](images/metrics-graphs.png)
 
+**NOTA**: dopo che hai creato la tua CDN, potrebbero essere necessarie fino a 48 ore perché le metriche vengano visualizzate.
 
 ## C'è un numero minimo di giorni per cui posso visualizzare le metriche? Esiste un massimo?
 
@@ -35,8 +36,12 @@ La percentuale di riscontri rappresenta la percentuale di volte in cui il conten
 > ((Edge hits - Ingress hits)/Edge hits) * 100
 
 dove:
-I riscontri edge sono definiti come "Tutti i riscontri ai server edge dagli utenti finali"  
+
+I riscontri Edge sono definiti come "All hits to the edge servers from the end-users"  
 I riscontri Ingress sono definiti come "I riscontri di origine o Ingress per il traffico dalla tua origine ai server edge Akamai"
 
 Poiché la percentuale di riscontri viene calcolata a livello dell'account e non per CDN, essa sarà uguale per tutte le CDN nel tuo account. Questo spiega inoltre perché la percentuale di riscontri può essere diversa da zero quando il numero di riscontri edge per una CDN particolare è zero.
 
+## Le metriche sono aggiornate in tempo reale?
+
+No. Le metriche vengono aggiornate ogni 24 ore.

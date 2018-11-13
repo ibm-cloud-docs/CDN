@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -24,7 +24,7 @@ En el caso del certificado SAN, varios dominios de cliente comparten un único c
 
 ## ¿Cómo se realiza la Validación de dominios con redirección?
 
-Depende del servidor. El procedimiento para completar la validación de dominios para los servidores Apache y Nginx se puede encontrar en la página [Completar la validación de control de dominio para HTTPS](how-to-https.html#redirect-).
+Depende del servidor. El procedimiento para completar la validación de dominios para los servidores Apache y Nginx se puede encontrar en la página [Completar la validación de control de dominio para HTTPS](how-to-https.html#redirect).
 
 ## ¿Cuánto tiempo lleva la validación de dominio?
 

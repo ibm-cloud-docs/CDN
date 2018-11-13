@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-17"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -14,7 +14,11 @@ lastupdated: "2018-06-17"
 {:tip: .tip}
 {:download: .download}
 
-# Completar la validación de control de dominio para HTTPS
+# Cómo completar la validación de control de dominio (DCV) para HTTPS con DV SAN
+
+En el siguiente diagrama se describen los diversos estados por los que pasará su CDN desde que se crea hasta que está en ejecución.
+
+  ![Diagrama de estado de SAN](images/state-diagram-san.png)
 
 ## Pasos iniciales para la validación de control de dominio
 
@@ -22,13 +26,13 @@ lastupdated: "2018-06-17"
 
 Una vez que haya solicitado su CDN con un certificado SAN DV, comienza el proceso de solicitud de certificado. Durante este proceso IBM Cloud CDN solicita un certificado de Akamai. Una vez que hay un certificado disponible, Akamai emite una solicitud a la entidad emisora de certificados (CA).
 
-  * Durante este tiempo, el estado de CDN se mostrará como **Solicitando certificado**.
+  * Durante este tiempo, el estado de CDN se muestra como **Solicitando certificado**.
 
     ![Solicitando certificado](images/requesting-cert.png)
 
 **Paso 2:**
 
-Una vez que la CA reciba la solicitud, emitirá un Desafío de validación de dominio.
+Una vez que la CA recibe la solicitud, emite un Desafío de validación de dominio.
 
   * Cuando esto sucede, el estado de la CDN cambia a **Validación de dominio necesaria**.
 
@@ -36,41 +40,43 @@ Una vez que la CA reciba la solicitud, emitirá un Desafío de validación de do
 
 **Paso 3:**
 
-Pulse en el nombre de la CDN que se debe validar. Se abre la página Visión general, donde puede ver el estado general de la CDN. En la parte superior de la página se encuentra una alerta que le recuerda que es necesaria la validación de dominios. Seleccione el botón **Visualizar validación de dominio** para abrir una ventana que le muestra la información de reto necesaria para completar el proceso de validación.
+Pulse en el nombre de la CDN que se debe validar. Se abre la página Visión general, donde puede ver el estado general de la CDN. En la parte superior de la página aparece una alerta que le recuerda que es necesaria la validación de dominio. Seleccione el botón **Visualizar validación de dominio** para abrir una ventana que muestra la información de desafío necesaria para completar el proceso de validación.
 
    ![Validación de dominio necesaria](images/view-domain-validation.png)
 
-**Paso 4:** Una vez que haya completado uno de los pasos de validación de la sección sobre cómo hacer frente a un Desafío de validación de dominio, la CDN se mueve al estado **Desplegando el certificado**. Durante este tiempo, Akamai distribuirá el certificado validado a sus servidores perimetrales. El despliegue de un certificado puede tardar de 2 a 4 horas.
+**Paso 4:** Una vez que haya completado uno de los pasos de validación de la sección sobre cómo hacer frente a un Desafío de validación de dominio, la CDN pasa al estado **Desplegando el certificado**. Durante este tiempo, Akamai distribuye el certificado validado a sus servidores perimetrales. El despliegue de un certificado puede tardar de 2 a 4 horas.
 
   * Cuando este proceso se haya completado, todos los dominios, independientemente del método de validación utilizado, se trasladan a un estado **Configuración de CNAME**.
 
-Puede encontrar información adicional sobre cómo completar la configuración de CNAME, así como sobre supervisar el CDN, en la página [Puesta en marcha](basic-functions.html#get-to-running).
+Puede encontrar información adicional sobre cómo completar la configuración de CNAME y cómo supervisar la CDN, en la página [Puesta en marcha](basic-functions.html#get-to-running).
 
 
-## Desafío de validación de dominio
+## Validación de control de dominio 
 
-El Desafío de Validación de Dominio prueba que es el propietario del dominio. A continuación se muestran tres maneras de hacer frente al Desafío de validación de dominios.
+Para añadir el nombre del dominio de la CDN al certificado SAN, debe probar que tiene el control administrativo sobre el dominio. A este proceso de prueba se le hace referencia como la validación de control de dominio (DCV). Debe realizar la validación de control de dominio (DCV) en 48 horas. Si no lo hace, la solicitud caduca, debe empezar de nuevo el proceso de pedido. Las tres maneras de abordar la DCV se describen en las secciones que siguen.
 
-**NOTA**: si no responde a la solicitud de validación de dominio en un plazo de 48 horas, la solicitud caducará y tendrá que volver a empezar el proceso de solicitud.
 
 ### CNAME
 
-Si el registro CNAME se ha añadido a su proveedor de DNS antes de solicitar la CDN, no es necesario que realice ninguna otra acción. The Domain Validation is automatically handled by IBM Cloud, Akamai, and the CA. La validación puede tardar de 2 a 4 horas.
+Este método se recomienda **SÓLO** si la CDN **no** da servicio a tráfico en directo. Si el dominio está sirviendo tráfico en directo, se recomienda utilizar el método Estándar o el método de Redireccionar para validar el dominio.
 
-  * Si todavía no ha configurado su CNAME con el proveedor de DNS, tiene que hacerlo en este momento. La mayoría de los proveedores de DNS pueden suministrar instrucciones sobre cómo configurar o cambiar el CNAME.
+Para utilizar este método, añadirá un registro CNAME para el dominio de CDN en su configuración de DNS. El valor de CNAME que se debe utilizar es el CNAME que ha utilizado al crear la CDN. Debería finalizar con el dominio `cdnedge.bluemix.net`. No se requiere ninguna otra acción. La verificación del control de dominio (DCV) continuará de forma automática a partir de este punto. La validación puede tardar de 2 a 4 horas. Una vez que se haya desplegado el certificado, la CDN pasa directamente al estado de ejecución (RUNNING).
 
-   ![CNAME de validación de dominio](images/domain-validation-cname.png)
+La mayoría de los proveedores de DNS pueden suministrar instrucciones sobre cómo configurar o cambiar el CNAME. A continuación, se muestra un ejemplo de un registro CNAME típico:
 
-**NOTA**: Este método se recomienda **SÓLO** si la CDN **no** da servicio a tráfico en directo. Si el dominio está sirviendo tráfico en directo, se recomienda utilizar el método Estándar para validar el dominio.
+| **Tipo de recurso** | **Host** | **Apunta a (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutos |
+
 
 ---
 ### Estándar
 
-Si selecciona el método Estándar para la validación de dominios, la ventana Validación de dominio muestra un **URL de Reto** y una **Respuesta de desafío**. Para completar el proceso Validación de dominio, debe añadir la **Respuesta del reto** proporcionada al servidor de origen. Esto permite que la CA recupere la **respuesta de desafío** del servidor de origen utilizando el URL especificado en el **URL de reto**. Una vez que el servidor de origen esté configurado correctamente, la validación de dominio puede tardar de 2 a 4 horas.
+Si selecciona el método Estándar para la validación de dominios, la ventana Validación de dominio muestra un **URL de desafío** y una **Respuesta de desafío**. Para completar el proceso de Validación de dominio, añada la **Respuesta de desafío** proporcionada al servidor de origen. Después de que se añada, la CA puede recuperar la **respuesta de desafío** del servidor de origen utilizando el URL especificado en el **URL de desafío**. Una vez que el servidor de origen esté configurado correctamente, la validación de dominio puede tardar de 2 a 4 horas.
 
    ![Desafío de validación de dominio estándar](images/domain-validation-standard.png)
 
-Para completar correctamente la validación de dominio a través del método Estándar, debe configurar el servidor de origen de una forma concreta. A continuación se describen los procedimientos de ejemplo para los servidores Apache y Nginx.
+Para completar correctamente la validación de dominio a través del método Estándar, debe configurar el servidor de origen de una forma concreta. A continuación se describen los procedimientos de ejemplo para los servidores de _Apache_ y _Nginx_.
 
 **Ejemplo de situación**
 * Servidor de origen: `www.example.com`
@@ -82,7 +88,7 @@ Para completar correctamente la validación de dominio a través del método Est
 
   * **Paso 1:** Inicie la sesión en el sistema que ejecuta el servidor Apache2.
 
-  * **Paso 2:** Cree el archivo de respuestas de reto para la respuesta de reto bajo `.known/acme-challenge/` en el directorio para el contenido del sitio web.  La ubicación predeterminada para el contenido del sitio web de Apache2 es `/var/www/html/`. Para este ejemplo, la respuesta de reto se colocaría en el directorio `/var/www/html/.well-known/acme-challenge/`.
+  * **Paso 2:** Cree el archivo de respuestas de desafío para la respuesta de desafío bajo `.known/acme-challenge/` en el directorio para el contenido del sitio web.  La ubicación predeterminada para el contenido del sitio web de Apache2 es `/var/www/html/`. Para este ejemplo, la respuesta de desafío se colocaría en el directorio `/var/www/html/.well-known/acme-challenge/`.
 
       ```
       mkdir -p /var/www/html/.well-known/acme-challenge
@@ -105,7 +111,7 @@ Para completar correctamente la validación de dominio a través del método Est
 
   * **Paso 1:** Inicie la sesión en el sistema que ejecuta el servidor Nginx.
 
-  * **Paso 2:** Cree el archivo de respuestas de reto para la respuesta de reto bajo `.known/acme-challenge/` en el directorio para el contenido del sitio web.  La ubicación predeterminada para el contenido del sitio web de Nginx es `/usr/share/nginx/html/`.  Para este ejemplo, la respuesta de reto se colocaría en el directorio `/usr/share/nginx/html/.well-known/acme-challenge/`.
+  * **Paso 2:** Cree el archivo de respuestas de desafío para la respuesta de desafío bajo `.known/acme-challenge/` en el directorio para el contenido del sitio web.  La ubicación predeterminada para el contenido del sitio web de Nginx es `/usr/share/nginx/html/`.  Para este ejemplo, la respuesta de desafío se colocaría en el directorio `/usr/share/nginx/html/.well-known/acme-challenge/`.
       ```
       mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
       printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
@@ -131,7 +137,7 @@ Para completar correctamente la validación de dominio a través del método Est
     ```
 * Para verificar que este método funciona a través de un navegador, intente acceder al URL de Desafío desde el navegador.
 
-En cualquiera de los casos, debe poder recuperar la copia del objeto de archivo de Reto de validación de dominio almacenado en el servidor de origen.
+En cualquiera de los casos, debe poder recuperar la copia del objeto de archivo de Desafío de validación de dominio almacenado en el servidor de origen.
 
 #### Limpieza para el método Estándar
 
@@ -147,13 +153,13 @@ Al pulsar en el separador **Redirigir** se muestra toda la información necesari
 
    ![Desafío de validación de dominio por redirección](images/domain-validation-redirect.png)
 
-Para completar satisfactoriamente la validación de dominio a través del método Redirect, es posible que tenga que configurar el servidor web de una forma concreta. A continuación se describen los procedimientos de ejemplo para los servidores Apache y Nginx.
+Para completar satisfactoriamente la validación de dominio a través del método Redirect, es posible que tenga que configurar el servidor web de una forma concreta. A continuación se describen en las siguientes secciones los procedimientos de ejemplo para los servidores Apache y Nginx.
 
 **Ejemplo de situación**
 * Servidor de origen: `www.example.com`
 * Dominio de CDN: `cdn.example.com`
 * URL de desafío: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
-* URL de redirección: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
+* Redirección de URL: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Configuración de redirección de Apache
 
@@ -162,8 +168,9 @@ Para completar satisfactoriamente la validación de dominio a través del métod
   * **Paso 2:** Abra el archivo de configuración del servidor Apache2. Las ubicaciones predeterminadas para los archivos de configuración son `/etc/apache2/apache2.conf` y `/etc/apache2/sites-enabled/`.
 
   * **Paso 3:** Añada una sentencia de redirección en la ubicación adecuada dentro del archivo de configuración. Si es necesario, añada el dominio del CDN como **ServerAlias** adicional al host virtual para el origen.
+
     ```
-    Redirect http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
+    Redirect /.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 
   * **Paso 4:** Reinicie el servidor Apache2 con un tiempo de inactividad mínimo utilizando el siguiente mandato:
@@ -228,7 +235,7 @@ Para completar satisfactoriamente la validación de dominio a través del métod
 
 #### Verifique que se está produciendo la redirección
 
-Si se completan estos pasos, sólo se redirigirá el tráfico para el URL específico de Reto a la dirección URL. Puede verificar que la redirección ha funcionado correctamente a través de `curl` o del navegador.
+Si se completan estos pasos, se redirigirá _únicamente_ el tráfico para el URL específico de Desafío a la Redirección URL. Puede verificar que la redirección ha funcionado correctamente a través de `curl` o a través del navegador.
 
 * Para verificar que la redirección funciona a través de `curl`, ejecute este mandato para el URL de Desafío:
 
@@ -238,7 +245,7 @@ Si se completan estos pasos, sólo se redirigirá el tráfico para el URL espec�
 
 * Para verificar que la redirección funciona a través de un navegador, intente acceder al URL de Desafío desde el navegador.
 
-En cualquier caso, debe poder recuperar la copia del objeto de archivo de Reto de validación de dominio de Akamai en el dominio dcv.akamai.com, al que se ha redirigido la solicitud original.
+En cualquier caso, debe poder recuperar la copia del objeto de archivo de Desafío de validación de dominio de Akamai en el dominio `dcv.akamai.com`, al que se ha redirigido la solicitud original.
 
 #### Limpieza para el método de Redirección
 

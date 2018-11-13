@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,10 +22,10 @@ Scopri come portare la tua CDN in uno stato di ESECUZIONE seguendo queste linee 
 
 Una volta che hai creato una CDN, essa viene visualizzata nel tuo dashboard CDN. Qui puoi visualizzare il nome della CDN, l'origine, il provider e lo stato.  
 
- ![Schermata elenco di associazioni](images/mapping_list_cname.png)
+ ![Schermata elenco di associazioni](images/mapping-list.png)
 
 
-Se hai ordinato la tua CDN con HTTP o HTTPS con il certificato wildcard, puoi procedere al passo 1.
+Se hai ordinato la tua CDN con HTTP o HTTPS con il certificato jolly, puoi procedere al passo 1.
 
 Se hai creato una CDN con HTTPS con il certificato SAN DV, potrebbero essere necessari ulteriori passi per verificare il tuo dominio; questi passi sono descritti nella pagina [Completamento della convalida del controllo del dominio per HTTPS](how-to-https.html#completing-domain-control-validation-for-https).
 
@@ -39,7 +39,7 @@ Dopo che hai ordinato una CDN, dovrai configurare il **CNAME** con il tuo provid
 
 **Passo 2:**
 
-Dopo aver configurato il CNAME con il tuo provider DNS, puoi controllare lo stato in qualsiasi momento selezionando **Ottieni stato** dal menu di overflow alla destra dello stato CDN.
+Dopo aver configurato il CNAME con il tuo provider DNS, puoi controllare lo stato in qualsiasi momento selezionando **Ottieni stato** dal menu Overflow alla destra dello stato CDN.
 
   ![CNAME getStatus](images/cname-getstatus.png)  
 
@@ -47,21 +47,23 @@ Dopo aver configurato il CNAME con il tuo provider DNS, puoi controllare lo stat
 
 Una volta completato il concatenamento CNAME, la selezione di **Ottieni stato** modificherà lo stato in *RUNNING* e la CDN è pronta per l'uso.
 
-Complimenti! La tua CDN è ora in esecuzione. Da qui, la pagina [Gestisci la tua CDN](how-to.html#manage-your-CDN) include ulteriori informazioni sulle opzioni di configurazione, come [TTL (Time-to-live)](how-to.html#setting-content-caching-time-using-time-to-live-), [Eliminazione del contenuto memorizzato nella cache](how-to.html#purging-cached-content) e [Aggiunta dei dettagli del percorso di origine](how-to.html#adding-origin-path-details).
+Complimenti! La tua CDN è ora in esecuzione. Da qui, la pagina [Gestisci la tua CDN](how-to.html#manage-your-cdn) include ulteriori informazioni sulle opzioni di configurazione, come [TTL (Time-to-live)](how-to.html#setting-content-caching-time-using-time-to-live-), [Eliminazione del contenuto memorizzato nella cache](how-to.html#purging-cached-content) e [Aggiunta dei dettagli del percorso di origine](how-to.html#adding-origin-path-details).
 
 ## Avvio di CDN
 
-Una CDN può essere avviata solo quando è in stato 'Arrestato'  
+L'avvio della CDN informa il DNS di indirizzare il traffico dalla tua origine al server edge Akamai. Dopo che l'associazione è stata avviata, la cache del DNS potrebbe ancora indirizzare il traffico all'origine e quindi la funzionalità potrebbe non essere vista dal dominio immediatamente dopo l'avvio dell'associazione. Il tempo necessario per l'aggiornamento dipende dalla frequenza con cui viene aggiornata la cache DNS e varia a seconda del tuo provider DNS.
+
+**NOTA**: una CDN può essere avviata solo quando è nello stato `Stopped` (Arrestato)  
 
 **Passo 1:**
 
-Fai clic su 'Avvia CDN' dal menu di overflow, indicato come tre punti a destra della riga CDN.
+Fai clic su **Start CDN** dal menu Overflow, indicato come tre punti a destra della riga della CDN.
 
-  ![Menu di overflow](images/start_cdn.png)
+  ![Menu Overflow](images/start_cdn.png)
 
 **Passo 2:**
 
-Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare di voler avviare il servizio. Seleziona **Conferma** per continuare.
+Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare di voler avviare il servizio. Seleziona **Confirm** per procedere.
 
 **Passo 3:**
 
@@ -69,44 +71,48 @@ Se l'azione è stata eseguita correttamente, viene visualizzata una casella di d
 
 **Passo 4:**
 
-Questo passo cambia lo stato in 'Configurazione CNAME'
+Questo passo modifica lo stato in `CNAME Configuration`
 
 **Passo 5:**
 
-Fai clic su 'Ottieni stato' dal menu di overflow. Questo passo cambia lo stato in 'In esecuzione' La tua CDN diventa operativa.
+Fai clic su **Get Status** dal menu Overflow. Questo passo modifica lo stato in `Running`. La tua CDN diventa operativa.
 
 ## Arresto della CDN
 
-Una CDN può essere arrestata solo quando è in stato 'In esecuzione'.
+Una volta arrestata l'associazione, la ricerca DNS viene passata all'origine. Il traffico ignora i server edge CDN e il contenuto viene recuperato direttamente dall'origine. Dopo che un'associazione è stata arrestata, ci può essere un breve periodo di tempo in cui il tuo contenuto non è accessibile. Ciò è dovuto al fato che la cache DNS potrebbe continuare a indirizzare il traffico ai server edge Akamai. Tuttavia, durante questo lasso di tempo, il server edge Akamai negherà il traffico per il dominio. La durata di questo periodo dipende dalla frequenza con cui viene aggiornata la cache DNS e varia a seconda del tuo provider DNS.
+
+**NOTE**: 
+* L'arresto della CDN **NON** è consigliato per una CDN configurata con un certificato SAN HTTPS poiché il traffico HTTPS potrebbe non funzionare quando passi la CDN nuovamente allo stato `Running` (In esecuzione). 
+* Una CDN può essere arrestata solo quando è in uno stato di `Running` (In esecuzione).
 
 **Passo 1:**
 
-Fai clic su 'Arresta CDN' dal menu di overflow (3 punti verticali a destra dello stato CDN).
- ![Menu di overflow](images/stop_cdn.png)
+Fai clic su 'Stop CDN' dal menu Overflow (3 punti verticali a destra dello stato CDN).
+ ![Menu Overflow](images/stop_cdn.png)
 
 **Passo 2:**
 
-Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare l'arresto del servizio. Seleziona **Conferma** per continuare.
+Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare l'arresto del servizio. Seleziona **Confirm** per procedere.
 
 **Passo 3:**
 
-Entro circa 5 - 15 secondi, lo stato dovrebbe cambiare in 'Arrestato'
+Entro circa 5 - 15 secondi, lo stato dovrebbe cambiare in 'Stopped' (Arrestato)
 
 ## Eliminazione di CDN
 
 Per eliminare una CDN, attieniti a questa procedura:
 
-**NOTA**: la selezione di `Elimina` dal menu di overflow elimina solo la CDN; non elimina il tuo account.
+**NOTA**: la selezione di `Delete` dal menu Overflow elimina solo la CDN; non elimina il tuo account.
 
 **Passo 1:**
 
-Fai clic su 'Elimina' dal menu di overflow.
+Fai clic su 'Delete' dal menu Overflow.
 
- ![Menu di overflow - Elimina CDN](images/delete_cdn.png)
+ ![Menu Overflow - Elimina CDN](images/delete_cdn.png)
 
 **Passo 2:**
 
-Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare di voler eseguire l'eliminazione. Fai clic su **Elimina** per procedere.
+Viene visualizzata una finestra di dialogo più grande che ti chiede di confermare di voler eseguire l'eliminazione. Fai clic su **Delete** per procedere.
 
 **NOTA**: se la tua CDN è configurata mediante HTTPS con il certificato SAN DV, potrebbero essere necessarie fino a 5 ore per completare il processo di eliminazione.
 
@@ -114,4 +120,4 @@ Viene visualizzata una finestra di dialogo più grande che ti chiede di conferma
 
 **Passo 3:**
 
-Dopo aver completato i passi 1 e 2, lo stato della tua CDN sarà `Deleting`. Al termine del processo di eliminazione, facendo di nuovo clic su 'Ottieni stato' dal menu di overflow si rimuoverà la riga dall'elenco di CDN. Se il processo di eliminazione non è stato completato, questa azione non avrà alcun effetto.
+Dopo aver completato i passi 1 e 2, lo stato della tua CDN sarà `Deleting`. Una volta completato il processo di eliminazione, fai nuovamente clic su 'Get Status' dal menu Overflow per rimuovere la riga dall'elenco di CDN. Se il processo di eliminazione non è stato completato, questa azione non avrà alcun effetto.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -16,9 +16,11 @@ lastupdated: "2018-06-19"
 
 # Gerenciar seu CDN
 
+Este documento descreve tarefas comuns para gerenciar seu CDN.
+
 ## Configurando o tempo de armazenamento em cache de conteúdo usando "Tempo de vida"
 
-Depois que seu CDN estiver em execução, será possível configurar o tempo de armazenamento em cache de conteúdo usando o Tempo de vida (TTL). O Tempo de vida de um determinado caminho de arquivo ou diretório indica quanto tempo esse conteúdo deve ficar armazenado em cache. Quando você criou o Mapeamento de CDN, um padrão TTL global de 3.600 segundos foi criado.
+Depois que seu CDN estiver em execução, será possível configurar o tempo de armazenamento em cache de conteúdo usando o Tempo de vida (TTL). O Tempo de vida de um determinado caminho de arquivo ou diretório indica quanto tempo esse conteúdo deve ficar armazenado em cache. Quando você criou o Mapeamento de CDN, um TTL global padrão de 3.600 segundos (1 hora) foi criado.
 
 **Etapa 1:**  
 
@@ -26,7 +28,7 @@ Na página CDN, selecione seu CDN, que o levará à página **Visão geral**.
 
 **Etapa 2:**  
 
-É possível ajustar o tempo usando as setas ou inserindo um novo tempo. O valor de tempo é especificado em segundos. Por exemplo, 3.600 segundos é igual a 1 hora. O menor valor para `timeToLive` que pode ser escolhido é 30 segundos, enquanto o maior é 2147483647 segundos. Selecione o botão **Salvar** para configurar o tempo de armazenamento em cache de conteúdo.
+É possível ajustar o tempo usando as setas ou inserindo um novo tempo. O valor de tempo é especificado em segundos. Por exemplo, 3.600 segundos é igual a 1 hora. O menor valor para `timeToLive` que pode ser escolhido é 0 segundos, enquanto o maior é 2147483647 segundos (aproximadamente 24.855 dias). Selecione o botão **Salvar** para configurar o tempo de armazenamento em cache de conteúdo.
 
   ![Incluindo TTL](images/adding-path.png)
 
@@ -82,12 +84,12 @@ de servidor e Object Storage.
 é a opção padrão ou é possível escolher as otimizações **Arquivo grande** ou **Vídeo on demand**. **Entrega geral da web** permite que o CDN entregue conteúdo até 1,8 GB, enquanto que a otimização
 **arquivo grande** permite downloads de arquivos de 1,8 GB até 320 GB. **Vídeo on demand**
 otimiza seu CDN para entrega de formatos de fluxo segmentado. As descrições de recurso para
-[Otimização de arquivo grande](about.html#large-file-optimization) e [Vídeo
-on Demand](about.html#video-on-demand) fornecem informações adicionais.
+[Otimização de arquivo grande](feature-descriptions.html#large-file-optimization) e [Vídeo
+on Demand](feature-descriptions.html#video-on-demand) fornecem informações adicionais.
 
         ![Opções de configuração de desempenho](images/performance-config-options.png)
 
-    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](about.html#cache-key-query-args) na descrição do recurso.
+    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](feature-descriptions.html#cache-key-query-args) na descrição do recurso.
 
         ![Opções da chave de cache](images/cache-key-options.png)
 
@@ -121,8 +123,7 @@ Selecione a guia **Limpar**.
 
 **Etapa 3:**
 
-Insira a sintaxe de caminho Unix padrão para indicar qual arquivo você gostaria de limpar e, em seguida, selecione o botão **Limpar**. A limpeza é permitida somente para um único arquivo neste momento. 
-Consulte a página
+Insira a sintaxe de caminho Unix padrão para indicar qual arquivo você gostaria de limpar e, em seguida, selecione o botão **Limpar**. A limpeza é permitida somente para um único arquivo neste momento. Consulte a página
 [Regras e
 convenções de nomenclatura](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obter mais detalhes sobre qual sintaxe é
 permitida para o caminho de Limpeza.
@@ -181,8 +182,7 @@ Atualize os detalhes de **Origem** ou de **Outras opções** se necessário e, e
 Para usar os objetos armazenados no IBM Cloud Object Storage, deve-se configurar o valor da propriedade "acl" (isto é, a lista de controle de acesso) para cada objeto em seu depósito para acesso de "leitura pública".
 
 Consulte a seção Ferramentas do IBM Cloud Object Storage Developer Center
-(https://developer.ibm.com/cloudobjectstorage/) para instalar quaisquer clientes ou ferramentas necessários.
-Este guia supõe que você tenha instalado a interface da linha de comandos oficial do AWS, que é compatível com a API S3 do IBM Cloud Object Storage.
+(https://developer.ibm.com/cloudobjectstorage/) para instalar quaisquer clientes ou ferramentas necessários. Este guia supõe que você tenha instalado a interface da linha de comandos oficial do AWS, que é compatível com a API S3 do IBM Cloud Object Storage.
 
 O código de exemplo abaixo mostra como configurar o acesso de "leitura pública" para todos os objetos em seu depósito, usando a interface da linha de comandos.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-06-15"
 
 在建立 CDN 之後，它就會出現在 CDN 儀表板上。您可以在這裡看到 CDN 名稱、「原點」、「提供者」及狀態。  
 
- ![對映清單擷取畫面](images/mapping_list_cname.png)
+ ![對映清單擷取畫面](images/mapping-list.png)
 
 
 如果您訂購的 CDN 具有使用「萬用字元」憑證的 HTTP 或 HTTPS，則可以繼續「步驟 1」。
@@ -47,15 +47,17 @@ lastupdated: "2018-06-15"
 
 CNAME 鏈結完成後，選取**取得狀態**會將狀態變更為 *RUNNING*，並且可以開始使用 CDN。
 
-恭喜！您的 CDN 現在正在執行。在這裡，[管理 CDN](how-to.html#manage-your-CDN) 頁面包含關於配置選項（例如[存活時間](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除快取的內容](how-to.html#purging-cached-content)及[新增原點路徑詳細資料](how-to.html#adding-origin-path-details)）的其他資訊。
+恭喜！您的 CDN 現在正在執行。在這裡，[管理 CDN](how-to.html#manage-your-cdn) 頁面包含關於配置選項（例如[存活時間](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除快取的內容](how-to.html#purging-cached-content)及[新增原點路徑詳細資料](how-to.html#adding-origin-path-details)）的其他資訊。
 
 ## 啟動 CDN
 
-只有在處於「已停止」狀態時，才能啟動 CDN  
+啟動 CDN 會通知 DNS 將來自您原點的資料流量導向 Akamai 邊緣伺服器。啟動對映之後，DNS 快取可能仍會將資料流量指引到原點，因此網域可能不會在啟動對映之後立即看到此功能。更新所需的時間取決於 DNS 快取重新整理的頻率，且會視您的 DNS 提供者而變。
+
+**附註**：只有在處於 `Stopped` 狀態時，才能啟動 CDN  
 
 **步驟 1：**
 
-從「溢位」功能表（此功能表顯示為 CDN 列右側的三個點）中，按一下「啟動 CDN」。
+從「溢位」功能表（此功能表顯示為 CDN 列右側的三個點）中，按一下**啟動 CDN**。
 
   ![「溢位」功能表](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ CNAME 鏈結完成後，選取**取得狀態**會將狀態變更為 *RUNNING*，
 
 **步驟 4：**
 
-這個步驟會將「狀態」變更為「CNAME 配置」
+這個步驟會將「狀態」變更為 `CNAME Configuration`
 
 **步驟 5：**
 
-從「溢位」功能表中，按一下「取得狀態」。這個步驟會將狀態變更為「執行中」。您的 CDN 將變成可操作。
+從「溢位」功能表中，按一下**取得狀態**。這個步驟會將狀態變更為 `Running`。您的 CDN 將變成可操作。
 
 ## 停止 CDN
 
-只有在處於「執行中」狀態時，才能停止 CDN。
+對映停止之後，DNS 查閱會切換至原點。資料流量會跳過 CDN 邊緣伺服器，而內容會直接從原點提取。對映停止之後，可能會有短暫的期間無法存取您的內容。這是因為 DNS 快取仍然可能將資料流量導向 Akamai 邊緣伺服器。不過，在這段時間內，Akamai 邊緣伺服器會拒絕網域的資料流量。這段期間持續的長度取決於 DNS 快取重新整理的頻率，且會視您的 DNS 提供者而變。
+
+**附註**： 
+* 針對配置 HTTPS SAN 憑證的 CDN **不建議**停止 CDN，因為當您將 CDN 移回 `Running` 狀態時，HTTPS 資料流量可能無法運作。 
+* 只有在處於 `Running` 狀態時，才能停止 CDN。
 
 **步驟 1：**
 
@@ -114,4 +120,4 @@ CNAME 鏈結完成後，選取**取得狀態**會將狀態變更為 *RUNNING*，
 
 **步驟 3：**
 
-完成步驟 1 和 2 之後，您的 CDN 狀態將是`刪除中`。刪除處理程序完成後，再按一次溢位功能表中的「取得狀態」，將會從 CDN 清單中移除列。如果刪除處理程序尚未完成，則此動作沒有作用。
+完成步驟 1 和 2 之後，您的 CDN 狀態將是`刪除中`。刪除處理程序完成後，再按一次溢位功能表中的「取得狀態」，以便從 CDN 清單中移除列。如果刪除處理程序尚未完成，則此動作沒有作用。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -23,7 +23,7 @@ informa como iniciar e parar o CDN.
 
 Depois de ter criado um CDN, ele aparecerá no painel CDN. Aqui você verá o nome do CDN, a Origem, o Provedor e o status.  
 
- ![Mapeando a captura de tela de lista](images/mapping_list_cname.png)
+ ![Mapeando a captura de tela de lista](images/mapping-list.png)
 
 
 Se você solicitou seu CDN com HTTP ou HTTPS com o certificado curinga, será possível continuar
@@ -53,19 +53,20 @@ Quando o encadeamento CNAME estiver concluído, a seleção de **Obter status**
 mudará o status para *RUNNING* e o CDN estará pronto para uso.
 
 Parabéns! Agora seu CDN está em execução. A partir de agora, a página
-[Gerenciar seu CDN](how-to.html#manage-your-CDN) tem informações adicionais sobre como
+[Gerenciar seu CDN](how-to.html#manage-your-cdn) tem informações adicionais sobre como
 configurar opções, como [Tempo de
 vida](how-to.html#setting-content-caching-time-using-time-to-live-), [Limpando conteúdo em cache](how-to.html#purging-cached-content) e
 [Incluindo detalhes do Caminho de Origem](how-to.html#adding-origin-path-details).
 
 ## Iniciando o CDN
 
-Um CDN poderá ser iniciado apenas quando estiver no status 'Interrompido'.  
+O início do CDN informa ao DNS para direcionar tráfego de sua origem para o servidor de borda do Akamai. Depois que o mapeamento é iniciado, o cache do DNS ainda pode direcionar o tráfego para a origem para que a funcionalidade não possa ser vista pelo domínio imediatamente após o início do mapeamento. O tempo gasto para atualização depende da frequência com que o cache do DNS é atualizado e varia, dependendo de seu provedor DNS.
+
+**NOTA**: um CDN pode ser iniciado somente quando no status `Stopped`  
 
 **Etapa 1:**
 
-Clique em 'Iniciar o CDN' no menu Overflow, que aparece como três pontos no lado direito da linha do
-CDN.
+Clique em **Iniciar CDN** no menu Overflow, que aparece como três pontos no lado direito da linha do CDN.
 
   ![Overflow menu](images/start_cdn.png)
 
@@ -79,15 +80,19 @@ Se a ação tiver sido bem-sucedida, aparecerá uma caixa de diálogo no canto s
 
 **Etapa 4:**
 
-Essa etapa muda o Status para 'Configuração do CNAME'
+Essa etapa muda o Status para `CNAME Configuration`
 
 **Etapa 5:**
 
-Clique em 'Obter status' no menu Overflow. Essa etapa muda o status para 'Em execução'. Seu CDN se torna operacional.
+Clique em **Obter status** no menu Overflow. Essa etapa muda o status para `Running`. Seu CDN se torna operacional.
 
 ## Parando o CDN
 
-Um CDN poderá ser interrompido apenas quando estiver no status 'Em execução'.
+Depois que um mapeamento é interrompido, a consulta de DNS é alternada para a origem. O tráfego ignora os servidores de borda do CDN e o conteúdo é buscado diretamente da origem. Depois que um mapeamento for interrompido, poderá haver um breve período de tempo em que seu conteúdo não estará acessível. Isso é porque o cache do DNS ainda pode estar direcionando o tráfego para os servidores de borda do Akamai. No entanto, durante esse tempo, o servidor de borda do Akamai negará tráfego para o domínio. O tempo de duração esse período depende da frequência com que o cache de DNS é atualizado e varia dependendo de seu provedor DNS.
+
+**NOTAS**: 
+* **NÃO** é recomendado parar um CDN configurado com um Certificado SAN HTTPS, porque o tráfego HTTPS pode não funcionar quando você mover o CDN de volta para o status `Running`. 
+* Um CDN pode ser interrompido somente quando no estado `Running`.
 
 **Etapa 1:**
 
@@ -127,6 +132,4 @@ levar até 5 horas para concluir o processo de exclusão.
 
 **Etapa 3:**
 
-Depois de concluir as etapas 1 e 2, o status de seu CDN será `Deleting`.
-Quando o processo de exclusão estiver concluído, clicar novamente em 'Obter status' no menu overflow
-removerá a linha da lista do CDN. Se o processo de exclusão não tiver sido concluído, esta ação não terá efeito.
+Depois de concluir as etapas 1 e 2, o status de seu CDN será `Deleting`. Quando o processo de exclusão estiver concluído, clique em 'Obter status' no menu overflow novamente para remover a linha da lista do CDN. Se o processo de exclusão não tiver sido concluído, esta ação não terá efeito.

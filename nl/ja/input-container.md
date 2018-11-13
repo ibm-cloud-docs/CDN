@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-07"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -23,8 +23,8 @@ lastupdated: "2018-06-07"
 以下の属性は、マッピング・クラスと (オリジン) パス・クラスに共通です。
 * `originType`: オリジン・ホストのタイプ。現在、「HOST_SERVER」または「OBJECT_STORAGE」です。
 * `origin`: オリジン・サーバー・アドレス (オリジン・サーバーのホスト名または IPv4 アドレスのいずれか)。これは、コンテンツのフェッチ元のエンドポイントまたはコンテンツが保管されているバケットの名前です。 511 文字未満でなければなりません。
-* `httpPort`: HTTP プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
-* `httpsPort`: HTTPS プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faq.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
+* `httpPort`: HTTP プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
+* `httpsPort`: HTTPS プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
 * `status`: マッピングまたはパスの状況。 状況は、CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED、または ERROR になります。
 * `path`: キャッシュに入れられたコンテンツの配信元のパス。 デフォルトのパスは /\* です。`updateOriginPath` API によって使用される場合、この属性は追加される新規パスを指します。
 * `performanceConfiguration`: マッピングのパフォーマンス構成の仕様。
@@ -33,6 +33,7 @@ lastupdated: "2018-06-07"
   * `ignore-all`: すべての照会引数を無視します
   * `ignore: space separated query-args`: スペースで区切られた特定の照会引数を無視します。 例えば、`ignore: query1 query2` です
   * `include: space separated query-args`: スペースで区切られた特定の照会引数を含めます。 例えば、`include: query1 query2` です
+* `geoblockingRule`
 
 以下の属性は、マッピング・クラスに固有です。
 
@@ -40,7 +41,7 @@ lastupdated: "2018-06-07"
 * `domain`: 1 次 CDN 名。 ホスト名とも呼ばれます。
 * `protocol`: サービスのセットアップに使用されるプロトコル。 HTTP、HTTPS、またはこれらの 2 つの組み合わせ (HTTP_AND_HTTPS) を指定できます。
 * `cname`: 正規名レコードはホスト名の別名です。 ユーザーが指定することも、システムによって生成することもできます。 ユーザー指定の場合、64 文字未満の英数字で、固有でなければなりません。 ユーザーが指定しない場合、マッピングの作成時に生成されます。
-* `certificateType`: マッピングによって使用されている証明書のタイプ。`WILDCARD_CERT` または `SHARED_SAN_CERT` です。値は、HTTP マッピングの場合は 0 です。
+* `certificateType`: マッピングによって使用されている証明書のタイプ。 `WILDCARD_CERT` または `SHARED_SAN_CERT` です。 値は、HTTP マッピングの場合は 0 です。
 * `respectHeaders`: 「true」に設定した場合、オリジンの TTL 設定によって CDN TTL 設定がオーバーライドされるようになるブール値。
 * `header`: オリジンによって使用されるホスト・ヘッダー情報を指定します。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-01"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -521,3 +521,69 @@ Returns a list of the types and regions that are allowed for creating Geographic
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
     [View the Geo-blocking class](geoblock-behavior.html)
+----
+## API for Hotlink Protection
+### createHotlinkProtection
+Creates a new Hotlink Protection, and returns the newly created behavior.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
+    * `uniqueId`: uniqueId of the mapping to which to assign the behavior
+    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
+    * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
+
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](hotlinkprotection-behavior.html) page to see a list of valid Hotlink Protection values.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [View the Hotlink Protection class](hotlinkprotection-behavior.html)
+
+----
+### updateHotlinkProtection
+Updates an existing Hotlink Protection behavior for an existing domain mapping and returns the updated behavior.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attributes are part of the Input Container and are **required** when updating an existing Hotlink Protection:
+    * `uniqueId`: the uniqueId of the mapping to which the existing behavior belongs
+    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues 
+    * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
+
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](hotlinkprotection-behavior.html) page to see a list of valid Hotlink Protection values.
+
+  * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [View the Hotlink Protection class](hotlinkprotection-behavior.html)
+
+----
+### deleteHotlinkProtection
+Removes an existing Hotlink Protection behavior from an existing domain mapping.
+
+  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    You can view all of the attributes in the Input Container here:
+
+    [View the Input Container](input-container.html)
+
+    The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
+    * `uniqueId`: uniqueId of the mapping from which to remove the behavior
+
+  * **Returns**: null
+
+----
+### getHotlinkProtection
+Retrieves a mapping's current Hotlink Protection behavior.
+
+  * **Parameters**:
+    * `uniqueId`: the uniqueId of the mapping to which the behavior belongs
+
+  * **Returns**: an object of type
+     `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [View the Hotlink Protection class](hotlinkprotection-behavior.html)

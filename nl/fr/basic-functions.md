@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -22,7 +22,7 @@ Apprenez comment exécuter votre CDN, en suivant les instructions ci-après. Ce 
 
 Une fois que vous avez créé un CDN, il apparaît sur votre tableau de bord des CDN. Vous voyez le nom du CDN, son origine, son fournisseur et son statut.  
 
- ![Capture d'écran de la liste des mappages](images/mapping_list_cname.png)
+ ![Capture d'écran de la liste des mappages](images/mapping-list.png)
 
 
 Si vous avez commandé votre CDN avec un certificat de caractère générique HTTP ou HTTPS, vous pouvez passer à l'étape 1.
@@ -47,15 +47,17 @@ Après avoir configuré le CNAME avec votre fournisseur DNS, vous pouvez vérifi
 
 Une fois le chaînage CNAME terminé, la sélection de l'option **Get Status** change le statut en *RUNNING* et le CDN est prêt à être utilisé.
 
-Félicitations ! Votre CDN est désormais actif. Consultez ensuite la page [Gestion de votre CDN](how-to.html#manage-your-CDN) pour obtenir des informations supplémentaires sur les options de configuration, disponibles dans les rubriques [Durée de vie](how-to.html#setting-content-caching-time-using-time-to-live-), [Purge du contenu mis en cache](how-to.html#purging-cached-content) et [Ajout de détails sur le chemin d'origine](how-to.html#adding-origin-path-details).
+Félicitations ! Votre CDN est désormais actif. Consultez ensuite la page [Gestion de votre CDN](how-to.html#manage-your-cdn) pour obtenir des informations supplémentaires sur les options de configuration, disponibles dans les rubriques [Durée de vie](how-to.html#setting-content-caching-time-using-time-to-live-), [Purge du contenu mis en cache](how-to.html#purging-cached-content) et [Ajout de détails sur le chemin d'origine](how-to.html#adding-origin-path-details).
 
 ## Démarrage du CDN
 
-Le CDN ne peut être démarré que lorsque son statut est "Arrêté".  
+Lorsque vous démarrez votre CDN, le serveur de noms de domaine est informé qu'il doit diriger le trafic depuis votre origine vers le serveur d'équilibrage des charges Akamai. Une fois le mappage démarré, le cache DNS peut encore diriger le trafic vers l'origine, par conséquent, il se peut que la fonctionnalité ne soit pas visible du domaine juste après le démarrage du mappage. Le temps nécessaire à la mise à jour dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre. 
+
+**Remarque** : un CDN ne peut être démarré que s'il a pour statut `Stopped`  
 
 **Etape 1 :**
 
-Cliquez sur "Start CDN" à partir du menu déroulant dynamique, à savoir les 3 points à droite de la ligne du CDN.
+Cliquez sur **Start CDN** à partir du menu déroulant dynamique, à savoir les 3 points à droite de la ligne du CDN.
 
   ![Menu déroulant dynamique](images/start_cdn.png)
 
@@ -69,15 +71,19 @@ Si l'action aboutit, une boîte de dialogue apparaît dans l'angle supérieur dr
 
 **Etape 4 :**
 
-Cette étape change le statut en "CNAME Configuration".
+Cette étape remplace le statut par `CNAME Configuration`
 
 **Etape 5 :**
 
-Cliquez sur l'option "Get Status" du menu déroulant dynamique. Cette étape change le statut en "Running". Votre CDN devient opérationnel.
+Cliquez sur **Get Status** dans le menu déroulant dynamique. Cette étape remplace le statut par `Running`. Votre CDN devient opérationnel.
 
 ## Arrêt du CDN
 
-UN CDN ne peut être arrêté que lorsque son statut est "Running".
+Une fois qu'un mappage est arrêté, la recherche DNS est basculée vers l'origine. Le trafic ignore les serveurs d'équilibrage des charges CDN et le contenu est extrait directement de l'origine. Une fois qu'un mappage est arrêté, votre contenu peut ne pas être accessible pendant un bref laps de temps. Cela est dû au fait qu'il se peut que le cache DNS soit encore en train de diriger le trafic vers les serveurs d'équilibrage des charges Akamai. Toutefois, durant ce laps de temps, le serveur d'équilibrage des charges Akamai refusera le trafic pour le domaine. Ce laps de temps dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre. 
+
+**REMARQUES** : 
+* Il n'est **PAS** recommandé d'arrêter un CDN qui est configuré avec un certificat SAN HTTPS, car il se peut que le trafic HTTPS ne fonctionne pas lorsque vous ramenez le CDN au statut `Running`.  
+* UN CDN ne peut être arrêté que lorsque son statut est `Running`. 
 
 **Etape 1 :**
 
@@ -90,7 +96,7 @@ Une boîte de dialogue plus grande s'ouvre, vous demandant de confirmer l'arrêt
 
 **Etape 3 :**
 
-Après environ 5-15 secondes, le statut passe à "Stopped'
+Après environ 5-15 secondes, le statut passe à 'Stopped'
 
 ## Suppression du CDN
 
@@ -114,4 +120,4 @@ Une boîte de dialogue plus grande s'ouvre, vous demandant de confirmer la suppr
 
 **Etape 3 :**
 
-Une fois les étapes 1 et 2 terminées, le statut de votre CDN sera `Deleting`. Quand le processus de suppression est terminé, en cliquant sur Get Status dans le menu déroulant dynamique, la ligne est retirée de la liste CDN. Si le processus de suppression n'est pas terminé, cette action n'a pas d'effet.
+Une fois les étapes 1 et 2 terminées, le statut de votre CDN sera `Deleting`. Lorsque le processus de suppression est terminé, lorsque vous cliquez sur 'Get Status' dans le menu déroulant dynamique, la ligne est retirée de la liste CDN. Si le processus de suppression n'est pas terminé, cette action n'a pas d'effet.

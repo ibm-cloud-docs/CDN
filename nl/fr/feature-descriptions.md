@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-28"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -24,17 +24,17 @@ IBM Cloud Content Delivery Network (CDN) peut être configuré pour traiter les 
 
 ## Prise en charge de l'origine du stockage d'objet
 
-IBM Cloud CDN peut être configuré pour servir le contenu provenant d'un noeud final de stockage d'objet en fournissant le noeud final, le nom de compartiment, le protocole et le port.Facultativement, une liste des extensions de fichiers peut être spécifiée pour autoriser uniquement la mise en cache des fichiers possédant ces extensions. Tous les objets du compartiment doivent être définis avec un accès en lecture anonyme ou public.
+IBM Cloud CDN peut être configuré pour servir le contenu provenant d'un noeud final de stockage d'objet en fournissant le noeud final, le nom de compartiment, le protocole et le port. Facultativement, une liste des extensions de fichiers peut être spécifiée pour autoriser uniquement la mise en cache des fichiers possédant ces extensions. Tous les objets du compartiment doivent être définis avec un accès en lecture anonyme ou public.
 
 Pour obtenir des informations complémentaires, consultez le tutoriel [Accelerate delivery of static files using a CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn).
 
 ## Prise en charge de plusieurs origines avec différents chemins
 
-Dans certains cas, il est possible que vous souhaitiez livrer certains contenus depuis un serveur d'origine différent. Par exemple, vous souhaitez que certaines photos ou vidéos soient servies à partir de serveurs d'origine différents. IBM Cloud CDN offre la possibilité de configurer plusieurs serveurs d'origine avec plusieurs chemins d'accès. Ceci offre une certaine flexibilité quant au mode et au lieu de stockage des données. Le chemin fourni pour le serveur d'origine doit être unique par rapport au CDN. Le serveur d'origine lui-même n'a pas besoin d'être unique.
+Dans certains cas, il est possible que vous souhaitiez livrer certains contenus depuis un serveur d'origine différent. Par exemple, vous souhaitez que certaines photos ou vidéos soient distribuées à partir de serveurs d'origine différents. IBM Cloud CDN offre la possibilité de configurer plusieurs serveurs d'origine avec plusieurs chemins d'accès. Ceci offre une certaine flexibilité quant au mode et au lieu de stockage des données. Le chemin fourni pour le serveur d'origine doit être unique par rapport au CDN. Le serveur d'origine lui-même n'a pas besoin d'être unique.
 
 ## Mappages de CDN basés sur des chemins
 
-Votre service IBM Cloud CDN peut être restreint à un chemin de répertoire spécifique sur le serveur d'origine si vous fournissez le chemin lors de la création du CDN. Un utilisateur final est uniquement autorisé à accéder aux contenus se trouvant dans ce chemin de répertoire. Ainsi, si un CDN `www.example.com` est créé avec le chemin `/videos`, il est uniquement accessible via `www.example.com/videos/`.
+Votre service IBM Cloud CDN peut être restreint à un chemin de répertoire spécifique sur le serveur d'origine si vous fournissez le chemin lors de la création du CDN. Un utilisateur final est uniquement autorisé à accéder aux contenus se trouvant dans ce chemin de répertoire. Ainsi, si un CDN `www.example.com` est créé avec le chemin `/videos`, il est **uniquement** accessible via `www.example.com/videos/*`.
 
 ## Purge des contenus mis en cache
 
@@ -42,7 +42,7 @@ IBM Cloud CDN offre la possibilité de supprimer ou de "purger" le contenu mis e
 
 ## Durée de vie (TTL)
 
-La "durée de vie" indique la durée (en secondes) pendant laquelle le serveur d'équilibrage des charges mettra en cache le contenu d'un fichier ou d'un chemin de répertoire particulier. Quand un CDN est créé pour la première fois, une durée de vie globale (TTL) est créée pour le chemin `/\*` avec une durée par défaut de 3600 secondes. La valeur minimale de TTL est de 30 secondes et la valeur maximale de 2147483647 secondes. Pour chaque entrée, le chemin TTL doit être unique pour le CDN. Si plusieurs chemins correspondent à un contenu donné, le chemin qui aura été configuré en dernier sera appliqué pour ce contenu. Prenons l'exemple de deux TTL : `/example/file` est créé en premier avec une valeur de durée de vie de 3000 secondes et `/example/*` est créé par la suite avec une valeur de durée de vie de 4000 secondes. Bien que `/example/file` soit plus spécifique, `/example/*` a été créé en dernier, et par conséquent la durée de vie de `/example/file` sera de 4000 secondes. Une fois créées, les entrées TTL peuvent être éditées (chemin et/ou durée). Elles peuvent également être supprimées.
+La "durée de vie" indique la durée (en secondes) pendant laquelle le serveur d'équilibrage des charges mettra en cache le contenu d'un fichier ou d'un chemin de répertoire particulier. Quand un CDN est créé pour la première fois, une durée de vie globale (TTL) est créée pour le chemin `/\*` avec une durée par défaut de 3600 secondes. La valeur minimale de TTL est de 0 secondes et la valeur maximale de 2147483647 secondes. Pour chaque entrée, le chemin TTL doit être unique pour le CDN. Si plusieurs chemins correspondent à un contenu donné, le chemin qui aura été configuré en dernier sera appliqué pour ce contenu. Prenons l'exemple de deux TTL : `/example/file` est créé en premier avec une valeur de durée de vie de 3000 secondes et `/example/*` est créé par la suite avec une valeur de durée de vie de 4000 secondes. Bien que `/example/file` soit plus spécifique, `/example/*` a été créé en dernier, et par conséquent la durée de vie de `/example/file` sera de 4000 secondes. Une fois créées, les entrées TTL peuvent être éditées (chemin et/ou durée). Elles peuvent également être supprimées.
 
 ## Mesures avec vues graphiques
 
@@ -60,7 +60,8 @@ Le serveur d'équilibrage des charges utilise l'en-tête **Host Header**  lors d
 
 ## Prise en charge du protocole HTTPS
 
-CDN peut être configuré afin d'utiliser le protocole HTTPS pour servir le contenu de façon sécurisée vers les utilisateurs finaux. Cette configuration nécessite qu'un certificat soit paramétré en tant qu'élément de la configuration CDN. Deux types d'options de certificats SSL sont disponibles pour HTTPS : [certificat de caractère générique](about-https.html#Wildcard-Certificate-support) et [certificat SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support), ce dernier type étant aussi appelé _certificat SAN_ dans cette documentation.
+CDN peut être configuré afin d'utiliser le protocole HTTPS pour servir le contenu de façon sécurisée vers les utilisateurs finaux. Cette configuration nécessite qu'un certificat soit paramétré en tant qu'élément de la configuration CDN. Deux types d'options de certificats SSL sont disponibles pour HTTPS : [certificat de caractère générique](about-https.html#wildcard-certificate-support) et [certificat SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support), ce dernier type étant aussi appelé _certificat SAN_ dans cette documentation.
+
 Le type de certificat SSL à utiliser est un choix important pour le CDN HTTPS. La procédure de configuration du certificat de caractère générique est rapide mais a pour inconvénient que le CDN n'est accessible que par le biais d'un enregistrement CNAME. Le processus de certificat SAN peut prendre 4 à 8 heures pour s'exécuter mais il permet d'utiliser le CDN avec le domaine CDN (c'est à dire le nom d'hôte). Le certificat SAN nécessite également une étape supplémentaire dans la procédure de [**validation DCV (Domain Control Validation)**](how-to-https.html) lors de la configuration. L'utilisation de l'un ou l'autre de ces certificats est gratuite. Consultez le document [Traitement des incidents](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) pour comprendre les implications de la sélection de l'un ou l'autre type de certificat.
 
 L'hôte d'origine doit aussi avoir son propre certificat SSL pour le nom d'hôte CDN et doit être signé par une autorité de certification reconnue.
@@ -100,7 +101,7 @@ Lorsque la compression est traitée par le serveur d'équilibrage des charges, l
 
 L'optimisation des fichiers volumineux permet au réseau CDN d'optimiser la distribution des contenus supérieurs à 10 Mo. Cette activation augmente les performances des fichiers volumineux et réduit les temps de latence et de téléchargement. Sans cette fonction, le CDN ne peut pas traiter les fichiers supérieurs à 1,8 Go. Cette fonction permet les téléchargements de fichiers supérieurs à 1,8 Go jusqu'à un maximum de 320 Go.
 
-Pour que l'optimisation des fichiers volumineux fonctionne, les demandes de plages d'octets **doivent** être activées sur le serveur d'origine. Le CDN Akamai utilise une technique appelée la "mise en cache partielle des objets" pour cette optimisation. Lorsqu'un fichier volumineux est demandé, le serveur d'équilibrage des charges vérifie que le fichier répond aux exigences en matière de taille. Cela signifie que les fichiers supérieurs à 10 Mo seront demandés au serveur d'origine par blocs. Une fois que le bloc arrive sur le serveur d'équilibrage des charges, il est mis en cache et automatiquement servi à l'utilisateur. Le bloc suivant est pré-extrait en parallèle par le serveur d'équilibrage des charges, réduisant ainsi la latence. Ce processus continue jusqu'à ce que le fichier entier soit extrait ou que la connexion soit coupée.
+Pour que l'optimisation des fichiers volumineux fonctionne, les demandes de plages d'octets **doivent** être activées sur le serveur d'origine. Le CDN Akamai utilise une technique appelée la "mise en cache partielle des objets" pour cette optimisation. Lorsqu'un fichier volumineux est demandé, le serveur d'équilibrage des charges vérifie que le fichier répond aux exigences en matière de taille. Cela signifie que les fichiers supérieurs à 10 Mo seront demandés au serveur d'origine par blocs. Une fois que le bloc arrive sur le serveur d'équilibrage des charges, il est mis en cache et automatiquement distribué à l'utilisateur. Le bloc suivant est pré-extrait en parallèle par le serveur d'équilibrage des charges, réduisant ainsi la latence. Ce processus continue jusqu'à ce que le fichier entier soit extrait ou que la connexion soit coupée.
 
 Lorsque cette fonction est activée, le traitement d'un contenu de moins de 10 Mo entraîne un léger coût en terme de performance. C'est la raison pour laquelle, cette fonction est uniquement recommandée en cas de fichiers volumineux. Un cas d'utilisation typique serait de créer un nouveau chemin d'origine dans la configuration du CDN et d'activer l'optimisation des fichiers volumineux pour ce chemin.
 
@@ -109,3 +110,13 @@ Lorsque cette fonction est activée, le traitement d'un contenu de moins de 10 M
 L'optimisation des performances de la **vidéo à la demande** offre une diffusion en flux de haute qualité sur des types de réseaux variés. En tirant parti de la capacité du réseau distribué à distribuer la charge de manière dynamique, IBM Cloud CDN avec Akamai vous offre la possibilité de vous adapter rapidement à de larges audiences, que vous les ayez planifiées ou non.
 
 La **vidéo à la demande** est optimisée pour la distribution de formats de diffusion en flux segmentés tels que HLS, DASH, HDS et HSS. La diffusion en flux de vidéos en direct n'est **pas** prise en charge à l'heure actuelle. Vous pouvez activer la fonction **vidéo à la demande** en sélectionnant l'option correspondante dans le menu déroulant sous **Optimize for** sur l'onglet Settings ou lors de la création d'un nouveau chemin d'origine. Activez uniquement cette fonction lorsque vous souhaitez optimiser la livraison des fichiers vidéos.
+
+## Contrôle d'accès géographique
+
+Le contrôle d'accès géographique est un comportement basé sur les règles qui vous permet de définir le paramètre `access-type` pour un groupe d'utilisateurs, en fonction de leur emplacement géographique. Deux types de comportement sont disponibles : **Autoriser** et **Refuser**.
+
+Le type d'accès `Autoriser` vous permet d'autoriser le trafic vers des régions sélectionnées, en fonction du type de région. Lorsque le trafic est autorisé pour certaines régions, il est implicitement bloqué pour toutes les autres régions. Par exemple, vous pouvez choisir d'`autoriser` le trafic vers des continents sélectionnés, par exemple, l'Europe et l'Océanie, et entraîner ainsi le blocage de l'accès pour tous les autres continents. 
+
+En revanche, le comportement `Refuser` bloque l'accès à votre service pour le groupe spécifié, mais autorise l'accès pour toutes les autres régions non spécifiées. Par exemple, si vous affectez la valeur `Refuser` au type d'accès Contrôle d'accès géographique pour l'Europe et l'Océanie, les utilisateurs de ces continents ne pourront **pas** utiliser votre service, tandis que les utilisateurs sur tous les autres continents auront accès à ce service. 
+
+Cette fonction est accessible à partir de la page **Paramètres** de votre configuration de CDN.

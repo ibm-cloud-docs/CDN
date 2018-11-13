@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2018-06-19"
 
 ## Was ist ein Content Delivery Network (CDN)?
 
-Content Delivery Network (CDN) ist ein Verbund von Edge-Servern, die über verschiedene Teile eines Landes oder der Welt verteilt sind. Die zugehörigen Webinhalte werden von einem Server bereitgestellt, dessen geografische Region dem Kunden, der die Inhalte anfordert, am nächsten liegt. Dieses Verfahren ermöglicht eine schnellere Zustellung der Inhalte als bei der Bereitstellung an einem zentralen Standort. Dies führt zu einer besserer Serviceerfahrung für Ihre Kunden.
+Content Delivery Network (CDN) ist ein Verbund von Edge-Servern, die über verschiedene Teile eines Landes oder der Welt verteilt sind. Die zugehörigen Webinhalte werden von einem Edge-Server bereitgestellt, dessen geografische Region dem Kunden, der die Inhalte anfordert, am nächsten liegt. Dieses Verfahren ermöglicht eine schnellere Zustellung der Inhalte als bei der Bereitstellung an einem zentralen Standort. Dies führt zu einer besserer Serviceerfahrung für Ihre Kunden.
 
 ## Wie funktioniert ein Content Delivery Network (CDN)?
 
@@ -26,13 +26,20 @@ CDN erreicht sein Ziel durch Caching von Webinhalten auf Edge-Servern rund um di
 
 ## Wie wird das Konto für den IBM Cloud Content Delivery Network-Service erstellt?
 
-Ihr Konto wird während des CDN-Bestellprozesses erstellt, wenn Sie auf **Auswählen** klicken, nachdem Sie durch das Menü für die Anbieterauswahl navigiert haben.
+Ihr Konto wird während des CDN-Bestellprozesses erstellt. Wenn Sie ein CDN über das traditionelle Portal erstellen, wird Ihr Konto erstellt, wenn Sie unter **Netz -> Seite 'CDN'** auf die Schaltfläche **CDN bestellen** klicken. Wenn Sie ein CDN über das IBM Cloud-Portal erstellen, wird Ihr Konto erstellt, wenn Sie auf der Seite **Katalog -> Netz -> Content Delivery Network** auf die Schaltfläche **Erstellen** klicken.
 
-## Was kann ich tun, wenn mein CDN den Status CNAME_CONFIGURATION aufweist?
+## Was kann ich tun, wenn mein CDN den Status 'CNAME-Konfiguration' aufweist?
 
-Aktualisieren Sie für ein HTTP-basiertes CDN Ihren DNS-Eintrag so, dass Ihre Website auf den `CNAME` verweist, der Ihrer neuen CDN-Zuordnung zugeordnet ist. Für ein HTTPS-basiertes CDN ist diese DNS-Aktualisierung **nicht** erforderlich.
+Aktualisieren Sie für ein HTTPS-CDN Ihren DNS-Eintrag so, dass Ihre Website auf den Wert für `CNAME` verweist, der Ihrer neuen CDN-Zuordnung zugeordnet ist. Für ein CDN, das auf HTTPS mit Wildcard-Zertifikat basiert, ist diese DNS-Aktualisierung **NICHT** erforderlich.
 
 **Hinweis**: Es kann 15 bis 30 Minuten dauern, bis die Aktualisierung wirksam wird. Eine genaue Zeitschätzung können Sie von Ihrem DNS-Provider erhalten.
+
+Ein typischer CNAME-Datensatz auf der Seite für die DNS-Konfiguration weist folgendes Format auf:
+
+| **Ressourcentyp** | **Host** | **Verweist auf (CNAME)** | **TTL** |
+|------------------|---------|-------------|----------------|
+| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 Minuten |
+
 
 ## Was wird mir in Rechnung gestellt?
 
@@ -60,7 +67,7 @@ Wenn Sie einen Pfad beim Erstellen Ihres CDN angeben, können Sie dadurch die Da
 
 ## Mein CDN weist einen Fehlerstatus auf. Was kann ich tun?
 
-Informationen finden Sie auf den Seiten [Fehlerbehebung](troubleshooting.html#troubleshooting) oder [Hilfe und Support anfordern](https://console.stage1.bluemix.net/docs/infrastructure/CDN/getting-help.html#getting-help); alternativ können Sie ein Ticket im [Kundenportal![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) öffnen.
+Informationen finden Sie auf den Seiten [Fehlerbehebung](troubleshooting.html#troubleshooting) oder [Hilfe und Support anfordern](getting-help.html#gettinghelp); alternativ können Sie ein Ticket im [Kundenportal![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) öffnen.
 
 ## Wo finde ich meinen CNAME, wenn ich keinen angegeben habe?
 
@@ -97,3 +104,20 @@ Führen Sie die Schritte aus, die in [diesem Artikel](https://community.akamai.c
 ## Welche Sicherheit ist in der IBM CDN-Lösung mit Akamai enthalten?
 
 Die Verwendung der verteilten Akamai-Plattform bietet Ihnen konkurrenzlose Skalierbarkeit und Ausfallsicherheit durch mehr als 240.000 Servern in 130 Ländern. Die Akamai-Plattform ist zwischen Ihrer Infrastruktur und Ihren Endbenutzern angesiedelt und fungiert als erste Auffangebene für plötzliche Bedarfsspitzen im Datenverkehr. Akamai Intelligent Platform dient zugleich als Reverse Proxy, der für Anforderungen nur über die Ports 80 und 443 empfangsbereit ist und auf diese Anforderungen reagiert, sodass Datenverkehr über andere Ports bereits an der Peripherie gelöscht und nicht an Ihre Infrastruktur weitergeleitet wird.
+
+## Werden Ursprungsservercookies in der Akamai-CDN-Instanz beibehalten? 
+
+Für nicht zwischenspeicherbare Inhalte bzw. Inhalte, die nicht zwischengespeichert werden, werden Cookies des Ursprungsservers beibehalten. Für von Edge-Servern zwischengespeicherte Inhalte werden keine Cookies beibehalten.
+
+## Wie kann ich anderen Benutzern über die IBM Cloud-Konsole die Berechtigung zum Erstellen und Verwalten eines CDN erteilen?
+
+Der Masterbenutzer des Kontos kann anderen Benutzern in der IBM Cloud-Konsole die Berechtigung zum Erstellen oder Verwalten eines CDN erteilen. Führen Sie in der Hauptseite der IBM Cloud-Konsole zum Bearbeiten von Berechtigungen die folgenden Schritte aus: 
+ * Wählen Sie die Registerkarte **Konto** aus.
+ * Wählen Sie **Benutzer -> Benutzerliste** aus.
+ * Klicken Sie in der Rubrik **Benutzername** auf den gewünschten Namen.
+ * Wählen Sie anschließend die Registerkarte **Portalberechtigungen** aus.
+ * Wählen Sie die Registerkarte **Services** aus.
+ * Wählen Sie **CDN-Konto verwalten** aus.
+ * Klicken Sie auf die Schaltfläche **Portalberechtigungen bearbeiten**.
+ * Legen Sie die erforderlichen Berechtigungen fest.
+

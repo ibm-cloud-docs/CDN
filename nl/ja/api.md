@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API Guide](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API Guide](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -80,8 +80,8 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
     * `originType`: **必須** オリジン・タイプは `HOST_SERVER` または `OBJECT_STORAGE` の可能性があります。
     * `domain`: **必須** ホスト名を文字列として指定します。
     * `protocol`: **必須** サポート対象のプロトコルは、`HTTP`、`HTTPS`、または`HTTP_AND_HTTPS` です。
-    * `certificateType`: HTTPS プロトコルの場合は**必須**。`SHARED_SAN_CERT` または `WILDCARD_CERT`。
-    * `path`: キャッシュに入れられたコンテンツの配信元のパス。 デフォルトのパスは `/*` です。 
+    * `certificateType`: HTTPS プロトコルの場合は**必須**。 `SHARED_SAN_CERT` または `WILDCARD_CERT`。
+    * `path`: キャッシュに入れられたコンテンツの配信元のパス。 デフォルトのパスは `/*` です。
     * `httpPort` および/または `httpsPort`: (ホスト・サーバーでは**必須**) これらの 2 つのオプションは、要求されたプロトコルに対応している必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
     * `header`: オリジン・サーバーによって使用されるホスト・ヘッダー情報を指定します。
     * `respectHeader`: `true` に設定された場合はオリジンの TTL 設定によって CDN TTL 設定がオーバーライドされるようになるブール値。
@@ -262,7 +262,7 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
 `uniqueId` に基づいて既存のマッピングに対するオリジン・パスをリストします。
 
 * **必須パラメーター**:
-  * `uniqueId`: オリジン・パスをリスト表示するマッピングの固有 ID。
+  * `uniqueId`: オリジン・パスをリスト表示するマッピングの固有 ID を指定します。
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` のオブジェクトのコレクション
 
   [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](path-container.html)
@@ -439,3 +439,85 @@ ___
    * `frequency`
 
  * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Metrics` のオブジェクトのコレクション
+
+----
+## 地理的アクセス制御用の API
+### createGeoblocking
+新しい地理的アクセス制御のルールを作成し、新しく作成されたルールを返します。
+
+  * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
+    入力コンテナーのすべての属性を次の場所で表示できます。
+
+    [入力コンテナーの概要](input-container.html)
+
+    以下の属性は入力コンテナーの一部であり、新しい地理的アクセス制御のルールを作成するときは**必須**です。
+    * `uniqueId`: ルールを割り当てるマッピングの固有 ID
+    * `accessType`: ルールが指定地域へのトラフィックを許可するか (`ALLOW`)、拒否するか (`DENY`) を指定します。
+    * `regionType`: 地理的アクセス制御のルールを適用する地域のタイプ。`CONTINENT` または `COUNTRY_OR_REGION` のいずれか。
+    * `regions`: `accessType` が適用されるロケーションをリストした配列
+
+      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) ページを参照してください。
+
+  * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
+
+    [ジオブロッキング・クラスの表示](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+既存ドメイン・マッピングの既存の地理的アクセス制御のルールを更新し、更新されたルールを返します。
+
+  * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
+    入力コンテナーのすべての属性を次の場所で表示できます。
+
+    [入力コンテナーの概要](input-container.html)
+
+    次の属性は入力コンテナーの一部であり、地理的アクセス制御のルールを更新するときに指定できます (特に記載がない限りパラメーターはオプションです)。
+    * `uniqueId`: **必須**。更新対象のルールが属するマッピングの固有 ID
+    * `accessType`: ルールが指定地域へのトラフィックを許可するか (`ALLOW`)、拒否するか (`DENY`) を指定します。
+    * `regionType`: ルールを適用する地域のタイプ。`CONTINENT` または `COUNTRY_OR_REGION` のいずれか。
+    * `regions`: `accessType` が適用されるロケーションをリストした配列
+
+      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) ページを参照してください。
+
+  * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
+
+    [ジオブロッキング・クラスの表示](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+既存のドメイン・マッピングから既存の地理的アクセス制御のルールを削除します。
+
+  * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
+    入力コンテナーのすべての属性を次の場所で表示できます。
+
+    [入力コンテナーの概要](input-container.html)
+
+    以下の属性は入力コンテナーの一部であり、地理的アクセス制御のルールを削除するときは**必須**です。
+    * `uniqueId`: 削除するルールが属するマッピングの固有 ID を指定します。
+
+  * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
+
+    [ジオブロッキング・クラスの表示](geoblock-behavior.html)
+
+----
+### getGeoblocking
+マッピングの地理的アクセス制御の動作をデータベースから取得します。
+
+  * **パラメーター**:
+    * `uniqueId`: ルールが属するマッピングの固有 ID。
+
+  * **戻り**: タイプ
+         `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
+
+    [ジオブロッキング・クラスの表示](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+地理的アクセス制御のルールの作成が許可されるタイプおよび地域のリストを返します。
+
+  * **パラメーター**:
+    * `uniqueId`: ドメイン・マッピングの固有 ID。
+
+  * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` のオブジェクト
+
+    [ジオブロッキング・クラスの表示](geoblock-behavior.html)

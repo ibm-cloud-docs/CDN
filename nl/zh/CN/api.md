@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -29,7 +29,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * [SLAPI 概述](https://softlayer.github.io/ )
 * [SLAPI 入门](https://softlayer.github.io/article/getting-started/ )
 * [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ )
-* [PHP Soap API 指南](https://softlayer.github.io/article/PHP/ )
+* [PHP Soap API 指南](https://softlayer.github.io/article/php/ )
 
 ----
 
@@ -258,7 +258,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 列出基于 `uniqueId` 的现有映射的源路径。
 
 * **必需参数**：
-  * `uniqueId`：提供要列出其源路径的映射的 uniqueid。
+  * `uniqueId`：提供要列出其源路径的映射的 uniqueId。
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类型的对象的集合
 
   [查看源路径容器](path-container.html)
@@ -435,3 +435,81 @@ ___
    * `frequency`
 
  * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Metrics` 类型的对象的集合
+
+----
+## 地理访问控制的 API
+### createGeoblocking
+创建新的地理访问控制规则，并返回新创建的规则。
+
+  * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
+
+    [查看输入容器](input-container.html)
+
+    以下属性是输入容器的一部分，在创建新的地理访问控制规则时是**必需**的：
+    * `uniqueId`：要为其分配规则的映射的 uniqueId
+    * `accessType`：指定规则将允许 (`ALLOW`) 还是拒绝 (`DENY`) 流至给定区域的流量
+    * `regionType`：应用地理访问控制规则的区域类型 - `CONTINENT` 或 `COUNTRY_OR_REGION`
+    * `regions`：列出将应用 `accessType` 的位置的数组
+
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 页面，以查看可能区域的列表。
+
+  * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
+
+    [查看 Geo-blocking 类](geoblock-behavior.html)
+
+----
+### updateGeoblocking
+更新现有域映射的现有地理访问控制规则，并返回更新后的规则。
+
+  * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
+
+    [查看输入容器](input-container.html)
+
+    以下属性是输入容器的一部分，可在更新地理访问控制规则时提供（参数是可选的，除非另有说明）：
+    * `uniqueId`：（**必需**）要更新的规则所属的映射的 uniqueId
+    * `accessType`：指定规则将允许 (`ALLOW`) 还是拒绝 (`DENY`) 流至给定区域的流量
+    * `regionType`：应用规则的区域类型 - `CONTINENT` 或 `COUNTRY_OR_REGION`
+    * `regions`：列出将应用 `accessType` 的位置的数组
+
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) 页面，以查看可能区域的列表。
+
+  * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
+
+    [查看 Geo-blocking 类](geoblock-behavior.html)
+
+----
+### deleteGeoblocking
+从现有域映射中除去现有地理访问控制规则。
+
+  * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
+
+    [查看输入容器](input-container.html)
+
+    以下属性是输入容器的一部分，在删除地理访问控制规则时是**必需**的：
+    * `uniqueId`：提供要删除的规则所属的映射的 uniqueId。
+
+  * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
+
+    [查看 Geo-blocking 类](geoblock-behavior.html)
+
+----
+### getGeoblocking
+从数据库中检索映射的地理访问控制行为。
+
+  * **参数**：
+    * `uniqueId`：规则所属的映射的 uniqueId。
+
+  * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
+
+    [查看 Geo-blocking 类](geoblock-behavior.html)
+
+----
+### getGeoblockingAllowedTypesAndRegions
+返回允许创建地理访问控制规则的类型和区域的列表。
+
+  * **参数**：
+    * `uniqueId`：域映射的 uniqueId
+
+  * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` 的对象
+
+    [查看 Geo-blocking 类](geoblock-behavior.html)

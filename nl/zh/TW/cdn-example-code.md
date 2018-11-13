@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-06"
+lastupdated: "2018-07-13"
 
 ---
 
@@ -183,7 +183,7 @@ catch (\Exception $e) {
 
 此範例顯示如何使用 `createDomainMapping` API 來建立新的 CDN 對映。它採用 `stdClass` 物件的單一參數。應該使用 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 類別來起始設定 SoapClient，如此範例所示。
 
-**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions)。
+**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)。
 
 ```php
 
