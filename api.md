@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-01"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -540,7 +540,7 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](hotlinkprotection-behavior.html)
+    [View the Hotlink Protection class](hotlink-protection-behavior.html)
 
 ----
 ### updateHotlinkProtection
@@ -560,7 +560,7 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](hotlinkprotection-behavior.html)
+    [View the Hotlink Protection class](hotlink-protection-behavior.html)
 
 ----
 ### deleteHotlinkProtection
@@ -586,4 +586,4 @@ Retrieves a mapping's current Hotlink Protection behavior.
   * **Returns**: an object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](hotlinkprotection-behavior.html)
+    [View the Hotlink Protection class](hotlink-protection-behavior.html)
