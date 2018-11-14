@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-24"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -26,7 +26,7 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 
 ## Tutorial
 
-[Here's a tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
+[Here's a tutorial](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## CDN Bandwidth Pricing (Rates shown in USD)
 
