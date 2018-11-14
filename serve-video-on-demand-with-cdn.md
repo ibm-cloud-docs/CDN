@@ -15,14 +15,15 @@ lastupdated: "2018-11-12"
 {:download: .download}
 
 
-# How to Serve Video on Demand with CDN
+# How to serve video on demand with CDN
+
+In this guide, we'll explore an example of how to leverage IBM Cloud CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin. 
 
 ## Introduction
+
 A number of formats, such as HLS, MPEG-DASH, and so forth, are available to stream video. 
 
-For the purpose of this guide, the example that we'll explore is how to leverage IBM Cloud CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin. 
-
-Conceptually, the setup is shown in the following diagram:
+Conceptually, the setup we're using is shown in the following diagram:
 
 ![IBM Cloud CDN for Video On Demand](images/ibmcdn-vod-example-model.png)
 
@@ -99,6 +100,7 @@ Such as:
 In this guide, only 1 audio stream and 1 video stream make up the example `test-video.mp4`. And so, the difference would not be a concern moving forward.
 
 Afterward, you can expect to see a number of `.ts` files.  Additionally, you can expect to see a `.m3u8` file that looks something like the following:
+
 ```
 $ cat test-video.m3u8 
 #EXTM3U
@@ -192,16 +194,14 @@ http {
 
 Not all streaming video formats may be natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
 
-For example, Safari would support native, HLS playback. And so, the video player on the webpage may be as simple as the following example using HTML5 <video> elements:
+For example, Safari would support native, HLS playback. And so, the video player on the webpage may be as simple as the following example using HTML5 `<video>` elements:
 
 ```
 <!DOCTYPE html>
 <html>
   <!-- Some HTML elements... -->
   
-  
   <video src="https://cdn.example.com/hls/test-video.m3u8"></video>
-  
   
   <!-- Some more HTML elements... -->
 </html>
