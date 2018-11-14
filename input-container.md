@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-01"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -50,4 +50,4 @@ The following attributes are related to Cloud Object Storage (COS):
 * `fileExtension`: File extensions that are allowed.
 
 The following attribute is related to configuring Hotlink Protection:
-* `hotlinkProtection`: Please see the [hotlink protection class](hotlinkprotection-behavior.html) for more details.
+* `hotlinkProtection`: Please see the [hotlink protection class](hotlink-protection-behavior.html) for more details.
