@@ -21,7 +21,6 @@ Content Delivery Network (CDN)
     how-to-https.md
     control-http-client-cache-duration.md
     serve-video-on-demand-with-cdn.md
-    hotlink-protection-behavior.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md

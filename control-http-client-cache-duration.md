@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-23"
+lastupdated: "2018-11-20"
 
 ---
 
@@ -22,7 +22,7 @@ When using a CDN, two levels of caching are available:
   * **Caching downstream** from the edge network of servers occurs when an end-user or HTTP client, such as a requesting browser, caches a piece of content from an edge server.
 
 The method you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
-  * Whether the [Respect Header setting](https://console.bluemix.net/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
+  * Whether the [Respect Header setting](how-to.html#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content. 
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the edge, if you want edge servers to send HTTP responses with the Cache-Control header for that content.
@@ -53,5 +53,5 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 |Off|No|Edge cache duration based on the CDN's TTL configuration|No|
 
 ## More Information
-* How to [manage your CDN](https://console.bluemix.net/docs/infrastructure/CDN/how-to.html)
+* How to [manage your CDN](how-to.html)
 * Cache-Control as defined in section 14.9 of [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)

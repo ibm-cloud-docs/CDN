@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-02"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -171,7 +171,7 @@ Update the **Origin** or **Other Options** details if needed, then click the **S
 
 To make use of objects stored in IBM Cloud Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
 
-Please refer to the Tools section IBM Cloud Object Storage Developer Center (https://developer.ibm.com/cloudobjectstorage/) to install any necessary clients or tools. This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
+Please refer to the IBM Cloud Object Storage Developer section (https://console.bluemix.net/docs/services/cloud-object-storage/basics/developers.html#for-developers) to install any necessary clients or tools. This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
 
 The example code below shows how to set "public-read" access for all the objects in your bucket, using the command line interface.
 
