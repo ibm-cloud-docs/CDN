@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -38,6 +38,10 @@ Your account is created during the CDN order process. If you are creating a CDN 
 For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
 
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
+
+## How do I add a CNAME record for my CDN domain in DNS?
+
+In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdnedge.bluemix.net`.
 
 A typical CNAME record would look like the following on the DNS configuration page:
 
