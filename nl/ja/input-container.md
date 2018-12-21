@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ lastupdated: "2018-07-13"
 以下の属性は、クラウド・オブジェクト・ストレージ (COS) に関連しています。  
 * `bucketName`: S3 オブジェクト・ストレージのバケットの固有の名前。  
 * `fileExtension`: 許可されるファイル拡張子。
+
+以下の属性は、ホット・リンク保護の構成に関連しています。
+* `hotlinkProtection`: 詳細についは、『[ホット・リンク保護クラス](hotlink-protection-behavior.html)』を参照してください。
