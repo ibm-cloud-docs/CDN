@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ lastupdated: "2018-07-13"
 다음 속성은 COS(Cloud Object Storage)와 관련되어 있습니다.  
 * `bucketName`: S3 Object Storage에 대한 버킷의 고유 이름입니다.  
 * `fileExtension`: 허용되는 파일 확장자입니다.
+
+다음 속성이 핫 링크 보호 구성과 관련됩니다.
+* `hotlinkProtection`: 세부사항은 [핫 링크 보호 클래스](hotlink-protection-behavior.html)를 참조하십시오.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -41,7 +41,7 @@ lastupdated: "2018-07-17"
 
 **단계 1:**
 
-오른쪽 맨 아래에서 **작성**을 클릭하십시오. CDN 계정이 없는 경우 CDN 계정을 작성하고 CDN 구성 화면으로 경로를 재지정합니다. 
+오른쪽 맨 아래에서 **작성**을 클릭하십시오. CDN 계정이 없는 경우 CDN 계정을 작성하고 CDN 구성 화면으로 경로를 재지정합니다.
 
    ![CDN 개요](images/content-delivery.png)
 
@@ -68,13 +68,13 @@ lastupdated: "2018-07-17"
 
       * **호스트 헤더**를 지정하십시오(선택사항). 헤더가 제공되지 않은 경우 기본값은 **호스트 이름**입니다. 호스트 헤더에 대한 자세한 정보는 [호스트 헤더 지원](feature-descriptions.html#host-header-support)의 기능 설명을 참조하십시오.  
 
-      * 원본 서버에서 컨텐츠를 검색할 수 있는 **경로**를 제공하십시오(선택사항). 지금 경로를 추가하는 경우 미치는 영향을 파악하려면 [경로 기반 CDN 맵핑](feature-descriptions.html#path-based-cdn-mappings)의 기능 설명을 참조하십시오. 
+      * 원본 서버에서 컨텐츠를 검색할 수 있는 **경로**를 제공하십시오(선택사항). 지금 경로를 추가하는 경우 미치는 영향을 파악하려면 [경로 기반 CDN 맵핑](feature-descriptions.html#path-based-cdn-mappings)의 기능 설명을 참조하십시오.
 
       * 또한 **HTTP 포트**, **HTTPS 포트 ** 또는 둘 다를 제공해야 할 수 있습니다. 이러한 필드는 원본 서버에 접속하는 데 사용할 수 있는 프로토콜 및 포트 번호를 표시합니다. 기본이 아닌 포트 번호의 경우, 허용되는 포트 번호의 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
 
       * **SSL 인증서** 이 옵션은 HTTPS 포트가 선택된 _경우에만_ 표시됩니다. 서버 또는 Object Storage에 대해 **HTTPS 포트**를 선택하는 경우 SSL 인증서 옵션으로 **와일드카드** 또는 **DV SAN 인증서**를 선택할 수 있습니다. 둘 다 HTTPS에서 제공하는 고급 보안을 제공합니다.
         * **와일드카드 인증서**를 사용하면 **CNAME**을 사용할 때만 HTTPS 트래픽을 허용하고 사용자가 추가로 조치를 수행할 필요가 없습니다.
-        * **DV SAN 인증서**를 사용하면 도메인에서 HTTPS 트래픽이 허용되지만, 확인을 위해 추가 단계를 수행해야 합니다. 이 옵션 선택과 관련하여 필요한 단계 및 시간 제한조건을 확인하려면 [HTTPS에 대한 도메인 제어 유효성 검증 완료](how-to-https.html#completing-domain-control-validation-for-https) 페이지를 참조하십시오. 
+        * **DV SAN 인증서**를 사용하면 도메인에서 HTTPS 트래픽이 허용되지만, 확인을 위해 추가 단계를 수행해야 합니다. 이 옵션 선택과 관련하여 필요한 단계 및 시간 제한조건을 확인하려면 [HTTPS에 대한 도메인 제어 유효성 검증 완료](how-to-https.html#completing-domain-control-validation-for-https) 페이지를 참조하십시오.
 
 	     ![원본 서버 구성](images/ssl-cert-options.png)
 
@@ -86,7 +86,7 @@ lastupdated: "2018-07-17"
 
       * **호스트 헤더**를 지정하십시오(선택사항). 헤더가 제공되지 않은 경우 기본값은 **호스트 이름**입니다. 호스트 헤더에 대한 자세한 정보는 [호스트 헤더 지원](feature-descriptions.html#host-header-support)의 기능 설명을 참조하십시오.  
 
-      * 원본 서버에서 컨텐츠를 검색할 수 있는 **경로**를 제공하십시오(선택사항). 여기에서 경로를 추가하는 경우 미치는 영향을 파악하려면 [경로 기반 CDN 맵핑](feature-descriptions.html#path-based-cdn-mappings)의 기능 설명을 참조하십시오. 
+      * 원본 서버에서 컨텐츠를 검색할 수 있는 **경로**를 제공하십시오(선택사항). 여기에서 경로를 추가하는 경우 미치는 영향을 파악하려면 [경로 기반 CDN 맵핑](feature-descriptions.html#path-based-cdn-mappings)의 기능 설명을 참조하십시오.
 
       * 컨텐츠가 저장되는 **버킷**의 이름을 제공**해야** 합니다.
 
@@ -94,10 +94,14 @@ lastupdated: "2018-07-17"
 
       * **SSL 인증서** 이 옵션은 HTTPS 포트가 선택된 _경우에만_ 표시됩니다. 서버 또는 Object Storage에 대해 **HTTPS 포트**를 선택하는 경우 SSL 인증서 옵션으로 **와일드카드** 또는 **DV SAN 인증서**를 선택할 수 있습니다. 둘 다 HTTPS에서 제공하는 고급 보안을 제공합니다.
         * **와일드카드 인증서**를 사용하면 **CNAME**을 사용할 때만 HTTPS 트래픽을 허용하고 사용자가 추가로 조치를 수행할 필요가 없습니다.
-        * **DV SAN 인증서**를 사용하면 도메인에서 HTTPS 트래픽이 허용되지만, 확인을 위해 추가 단계를 수행해야 합니다. 이 옵션 선택과 관련하여 필요한 단계 및 시간 제한조건을 확인하려면 [HTTPS에 대한 도메인 제어 유효성 검증 완료](how-to-https.html#completing-domain-control-validation-for-https) 페이지를 참조하십시오. 
+        * **DV SAN 인증서**를 사용하면 도메인에서 HTTPS 트래픽이 허용되지만, 확인을 위해 추가 단계를 수행해야 합니다. 이 옵션 선택과 관련하여 필요한 단계 및 시간 제한조건을 확인하려면 [HTTPS에 대한 도메인 제어 유효성 검증 완료](how-to-https.html#completing-domain-control-validation-for-https) 페이지를 참조하십시오.
 
         ![HTTPS 구성](images/ssl-cert-options.png)
 
-      **참고** Cloud Object Storage 제공자를 사용하여 버킷의 각 오브젝트에 대한 **액세스 제어 목록**(ACL)을 "public-read"로 설정해야 합니다. 
+      **참고** Cloud Object Storage 제공자를 사용하여 버킷의 각 오브젝트에 대한 **액세스 제어 목록**(ACL)을 "public-read"로 설정해야 합니다.
+      
+**단계 4:**
 
-CDN을 작성하려면 오른쪽 모서리 하단의 **작성** 단추를 선택하십시오.
+* 오른쪽 맨 아래의 **작성** 단추 위에 있는 **마스터 서비스 계약을 읽고 이용 약관에 동의합니다.**를 선택해야 합니다.
+
+* 그런 다음 오른쪽 모서리 맨 아래의 **작성** 단추를 선택하십시오.
