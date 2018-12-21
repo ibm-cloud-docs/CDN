@@ -23,7 +23,7 @@ Ces ressources sont créées par IBM et certains de nos partenaires et clients.
  
  * [Where's My Kill Switch? Migrating Network Services to the Cloud](https://www.ibm.com/w3-techblog/wcp/2018/09/migrating-network-services/), by Chris Dotson
  
-   Fournit un bon aperçu de la sécurité du centre de données et de SDN. 
+   Fournit un bon aperçu de la sécurité du centre de données et de SDN.
 
 
 ## Blogues externes

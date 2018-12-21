@@ -53,12 +53,12 @@ Vous trouverez des informations complémentaires relatives à l'exécution de la
 
 ## Validation DCV (Domain Control Validation) 
 
-Pour que votre nom de domaine CDN soit ajouté au certificat SAN, vous devez prouver que vous disposez d'un contrôle administratif sur votre domaine. Ce processus de validation est nommé DCV (Domain Control Validation). Vous avez un délai de 48 heures pour effectuer la validation DCV. Si vous ne le faites pas, votre demande expire et vous devez recommencer le processus de commande. Les sections suivantes décrivent les trois méthodes possibles pour effectuer la validation DCV. 
+Pour que votre nom de domaine CDN soit ajouté au certificat SAN, vous devez prouver que vous disposez d'un contrôle administratif sur votre domaine. Ce processus de validation est nommé DCV (Domain Control Validation). Vous avez un délai de 48 heures pour effectuer la validation DCV. Si vous ne le faites pas, votre demande expire et vous devez recommencer le processus de commande. Les sections suivantes décrivent les trois méthodes possibles pour effectuer la validation DCV.
 
 
 ### CNAME
 
-Cette méthode n'est recommandée que **QUE SI** votre CDN ne distribue **pas** le trafic en temps réel. Si votre domaine distribue le trafic en temps réel, nous vous recommandons d'utiliser la méthode Standard ou Redirect pour valider votre domaine. 
+Cette méthode n'est recommandée que **QUE SI** votre CDN ne distribue **pas** le trafic en temps réel. Si votre domaine distribue le trafic en temps réel, nous vous recommandons d'utiliser la méthode Standard ou Redirect pour valider votre domaine.
 
 Pour utiliser cette méthode, vous ajouterez un enregistrement CNAME pour votre domaine CDN dans votre configuration DNS. La valeur CNAME à utiliser est celle que vous avez utilisée lors de la création du CDN. Elle doit se terminer par le domaine `cdnedge.bluemix.net`. Aucune autre action n'est requise de votre part. La validation DCV progressera automatiquement à partir de là. Cette validation peut durer entre 2 et 4 heures. Une fois le certificat déployé, votre CDN passe directement au statut RUNNING.
 
@@ -76,7 +76,7 @@ Si vous choisissez la méthode Standard  pour la validation de domaine, la fenê
 
    ![Domain Validation - Standard](images/domain-validation-standard.png)
 
-Pour effectuer la procédure de validation de domaine via la méthode Standard, vous devez configurer votre serveur d'origine d'une façon particulière. Les exemples de procédure pour  les serveurs _Apache(TM)_ et _Nginx(TM)_ sont présentés ci-après. 
+Pour effectuer la procédure de validation de domaine via la méthode Standard, vous devez configurer votre serveur d'origine d'une façon particulière. Les exemples de procédure pour  les serveurs _Apache(TM)_ et _Nginx(TM)_ sont présentés ci-après.
 
 **Exemple de situation**
 * Serveur d'origine : `www.example.com`
@@ -153,7 +153,7 @@ Cliquez sur l'onglet **Redirect** pour afficher toutes les informations permetta
 
    ![Domain Validation - Redirect](images/domain-validation-redirect.png)
 
-Pour effectuer la procédure de validation de domaine via la méthode Redirect, vous devez configurer votre serveur Web d'une façon particulière. Les exemples de procédure pour les serveurs Apache et Nginx sont présentés dans les sections ci-après. 
+Pour effectuer la procédure de validation de domaine via la méthode Redirect, vous devez configurer votre serveur Web d'une façon particulière. Les exemples de procédure pour les serveurs Apache et Nginx sont présentés dans les sections ci-après.
 
 ***Exemple de situation**
 * Serveur d'origine : `www.example.com`
@@ -165,7 +165,7 @@ Pour effectuer la procédure de validation de domaine via la méthode Redirect, 
 
   * **Etape 1 :** connectez-vous à la machine en exécutant le serveur Apache2.
 
-  * **Etape 2 :** ouvrez votre fichier de configuration de serveur Apache2. `/etc/apache2/apache2.conf` et `/etc/apache2/sites-enabled/` sont les emplacements par défaut du fichier de configuration. 
+  * **Etape 2 :** ouvrez votre fichier de configuration de serveur Apache2. `/etc/apache2/apache2.conf` et `/etc/apache2/sites-enabled/` sont les emplacements par défaut du fichier de configuration.
 
   * **Etape 3 :** ajoutez une instruction de redirection à l'emplacement approprié du fichier de configuration. Si nécessaire, ajoutez votre domaine CDN en tant qu'alias **ServerAlias** supplémentaire dans votre hôte virtuel pour votre serveur d'origine.
 

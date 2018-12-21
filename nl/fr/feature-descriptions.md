@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -56,7 +56,7 @@ Par défaut, les numéros agrégés et les graphiques affichent les mesures des 
 
 ## Prise en charge des en-têtes d'hôte
 
-Le serveur d'équilibrage des charges utilise l'en-tête **Host Header**  lors de la communication avec l'hôte d'origine. Cette fonction offre de la flexibilité quant à la manière dont le service Web est configuré sur l'hôte d'origine. Si l'entrée de l'en-tête d'hôte n'est pas fournie, le service utilise le nom d'hôte du serveur d'origine en tant qu'en-tête d'hôte HTTP par défaut si le serveur d'origine est spécifié en tant que nom d'hôte (et non en tant qu'adresse IP). Si l'en-tête d'hôte n'est pas fourni et le serveur d'origine est fourni sous forme d'adresse IP, le nom d'hôte du CDN (également appelé le nom de domaine du CDN) est utilisé en tant qu'en-tête d'hôte HTTP par défaut.
+Le serveur d'équilibrage des charges utilise l'en-tête **Host Header**  lors de la communication avec l'hôte d'origine. Cette fonction offre de la flexibilité quant à la manière dont le service Web est configuré sur l'hôte d'origine. Elle permet en particulier les scénarios d'utilisation dans lesquels un client dispose de plusieurs serveurs Web configurés sur le même hôte d'origine. Si l'entrée de l'en-tête d'hôte n'est pas fournie, le service utilise le nom d'hôte du serveur d'origine en tant qu'en-tête d'hôte HTTP par défaut si le serveur d'origine est spécifié en tant que nom d'hôte (et non en tant qu'adresse IP). Si l'en-tête d'hôte n'est pas fourni et le serveur d'origine est fourni sous forme d'adresse IP, le nom d'hôte du CDN (également appelé le nom de domaine du CDN) est utilisé en tant qu'en-tête d'hôte HTTP par défaut.
 
 ## Prise en charge du protocole HTTPS
 
@@ -76,11 +76,11 @@ L'option **Respect Headers** permet à la configuration de l'en-tête HTTP de l'
 
 Lorsque le serveur d'équilibrage des charges du CDN reçoit une demande d'utilisateur et le contenu demandé n'est pas mis en cache, le serveur d'équilibrage des charges s'adresse à l'hôte d'origine pour récupérer le contenu. Ce contenu est ensuite mis en cache pendant la durée de vie spécifiée pour le contenu. Si une demande d'utilisateur est reçue après que la durée de vie spécifiée a expiré, le serveur d'équilibrage des charges s'adresse à l'hôte d'origine pour récupérer le contenu. Si le serveur d'origine ne peut pas être atteint pour une raison quelconque (par exemple parce que l'hôte d'origine est arrêté ou en cas de panne du réseau), le serveur d'équilibrage des charges sert le contenu expiré à la demande. Cette fonction est prise en charge par Akamai et **ne peut pas** être désactivée.
 
-## Arguments Cache Key Query
+## Optimisation des clés de cache
 
-Les serveurs d'équilibrage des charges Akamai mettent en cache les contenus dans un **magasin de cache**. Pour utiliser les contenus du **magasin de cache**, les serveurs d'équilibrage des charges se servent d'une **clé de cache**. Généralement, une **clé de cache** est générée sur la base d'une portion de l'URL d'un utilisateur final. Dans certains cas, l'URL contient des arguments de fonctions de demandes différents pour chaque utilisateur mais le contenu livré est le même. Par défaut, Akamai utilise les arguments de la fonction de demande pour générer la clé de cache et par conséquent pour générer une clé de cache unique pour chaque utilisateur. Cette méthode n'est pas optimale car elle oblige le serveur d'équilibrage des charges à contacter le serveur d'origine pour les contenus qui sont déjà mis en cache mais à l'aide d'une clé de cache différente. La fonction **Ignore Query Args in Cache Key** permet de spécifier si les arguments de la demande doivent être ignorés lors de la génération d'une clé de cache. Cette fonction s'applique à toute `création` ou `mise à jour` d'une configuration de mappage de CDN, ainsi qu'à toute `création` ou `mise à jour` d'un chemin d'origine.
+Les serveurs d'équilibrage des charges Akamai mettent en cache les contenus dans un **magasin de cache**. Pour utiliser les contenus du **magasin de cache**, les serveurs d'équilibrage des charges se servent d'une **clé de cache**. Généralement, une **clé de cache** est générée sur la base d'une portion de l'URL d'un utilisateur final. Dans certains cas, l'URL contient des arguments de fonctions de demandes différents pour chaque utilisateur mais le contenu livré est le même. Par défaut, Akamai utilise les arguments de la fonction de demande pour générer la clé de cache et par conséquent pour générer une clé de cache unique pour chaque utilisateur. Cette méthode n'est pas optimale car elle oblige le serveur d'équilibrage des charges à contacter le serveur d'origine pour les contenus qui sont déjà mis en cache mais à l'aide d'une clé de cache différente. La fonction d'**optimisation de clé de cache** permet de spécifier les arguments de requête à inclure/ignorer lors de la génération d'une clé de cache. Cette fonction s'applique à toute `création` ou `mise à jour` d'une configuration de mappage de CDN, ainsi qu'à toute `création` ou `mise à jour` d'un chemin d'origine.
 
-**Remarque :** la valeur des arguments Cache Key Query (zone **Cache Key Query Args**) peut être configurée dans l'onglet **Paramètres** après la création d'un mappage CDN. En ce qui concerne le chemin d'origine, ces arguments peuvent être configurés lors des opérations de `création` ou de `mise à jour` d'un chemin d'origine.
+**Remarque :** La valeur d'**d'optimisation de clé de cache** peut être configurée dans l'onglet **Paramètres** après la création d'un mappage CDN. En ce qui concerne le chemin d'origine, ces arguments peuvent être configurés lors des opérations de `création` ou de `mise à jour` d'un chemin d'origine.
 
 ## Compression de contenu
 
@@ -107,16 +107,30 @@ Lorsque cette fonction est activée, le traitement d'un contenu de moins de 10 M
 
 ## Vidéo à la demande
 
-L'optimisation des performances de la **vidéo à la demande** offre une diffusion en flux de haute qualité sur des types de réseaux variés. En tirant parti de la capacité du réseau distribué à distribuer la charge de manière dynamique, IBM Cloud CDN avec Akamai vous offre la possibilité de vous adapter rapidement à de larges audiences, que vous les ayez planifiées ou non.
+L'optimisation des performances de la **vidéo à la demande** offre une diffusion en flux de haute qualité sur des types de réseaux variés. En tirant parti des paramètres de contrôle de cache préconfigurés et de la capacité du réseau distribué pour répartir la charge de manière dynamique, IBM Cloud CDN avec Akamai vous offre la possibilité de vous adapter rapidement à de larges audiences, que vous les ayez planifiées ou non.
 
-La **vidéo à la demande** est optimisée pour la distribution de formats de diffusion en flux segmentés tels que HLS, DASH, HDS et HSS. La diffusion en flux de vidéos en direct n'est **pas** prise en charge à l'heure actuelle. Vous pouvez activer la fonction **vidéo à la demande** en sélectionnant l'option correspondante dans le menu déroulant sous **Optimize for** sur l'onglet Settings ou lors de la création d'un nouveau chemin d'origine. Activez uniquement cette fonction lorsque vous souhaitez optimiser la livraison des fichiers vidéos.
+La **vidéo à la demande** est optimisée pour la distribution de formats de diffusion en flux segmentés tels que HLS, DASH, HDS et HSS. La diffusion en flux de vidéos en direct n'est **pas** prise en charge à l'heure actuelle. Vous pouvez activer la fonction **vidéo à la demande** en sélectionnant l'option correspondante dans le menu déroulant sous **Optimize for** sur l'onglet Settings ou lors de la création d'un nouveau chemin d'origine. Activez uniquement cette fonction lorsque vous souhaitez optimiser la livraison des fichiers vidéo.
 
 ## Contrôle d'accès géographique
 
 Le contrôle d'accès géographique est un comportement basé sur les règles qui vous permet de définir le paramètre `access-type` pour un groupe d'utilisateurs, en fonction de leur emplacement géographique. Deux types de comportement sont disponibles : **Autoriser** et **Refuser**.
 
-Le type d'accès `Autoriser` vous permet d'autoriser le trafic vers des régions sélectionnées, en fonction du type de région. Lorsque le trafic est autorisé pour certaines régions, il est implicitement bloqué pour toutes les autres régions. Par exemple, vous pouvez choisir d'`autoriser` le trafic vers des continents sélectionnés, par exemple, l'Europe et l'Océanie, et entraîner ainsi le blocage de l'accès pour tous les autres continents. 
+Le type d'accès `Autoriser` vous permet d'autoriser le trafic vers des régions sélectionnées, en fonction du type de région. Lorsque le trafic est autorisé pour certaines régions, il est implicitement bloqué pour toutes les autres régions. Par exemple, vous pouvez choisir d'`autoriser` le trafic vers des continents sélectionnés, par exemple, l'Europe et l'Océanie, et entraîner ainsi le blocage de l'accès pour tous les autres continents.
 
-En revanche, le comportement `Refuser` bloque l'accès à votre service pour le groupe spécifié, mais autorise l'accès pour toutes les autres régions non spécifiées. Par exemple, si vous affectez la valeur `Refuser` au type d'accès Contrôle d'accès géographique pour l'Europe et l'Océanie, les utilisateurs de ces continents ne pourront **pas** utiliser votre service, tandis que les utilisateurs sur tous les autres continents auront accès à ce service. 
+En revanche, le comportement `Refuser` bloque l'accès à votre service pour le groupe spécifié, mais autorise l'accès pour toutes les autres régions non spécifiées. Par exemple, si vous affectez la valeur `Refuser` au type d'accès Contrôle d'accès géographique pour l'Europe et l'Océanie, les utilisateurs de ces continents ne pourront **pas** utiliser votre service, tandis que les utilisateurs sur tous les autres continents auront accès à ce service.
 
 Cette fonction est accessible à partir de la page **Paramètres** de votre configuration de CDN.
+
+## Protection des liens dynamiques
+
+La protection des liens dynamiques est un comportement basé sur des règles qui permet de contrôler si certains sites Web sont ou non autorisés à accéder à votre contenu depuis votre CDN. En général, le navigateur inclut un en-tête `Referer` lorsqu'une requête HTTP est émise depuis un lien d'une page Web et si ce lien pointe sur un actif distant. Le lien qu'utilise ce site Web pour accéder à un actif d'un autre site Web est appelé lien dynamique. Deux types de comportement sont disponibles : **ALLOW** (autoriser) et **DENY** (refuser).
+
+Lorsque `protectionType` est défini sur `ALLOW` :
+* Si la valeur de l'en-tête `Referer` d'une requête envoyée à votre CDN correspond à l'une des valeurs `refererValues` spécifiées, votre CNDS **diffusera** le contenu demandé.
+* Sinon, votre CDN ne diffusera pas le contenu.
+
+Lorsque `protectionType` est défini sur `DENY` :
+* Si la valeur de l'en-tête `Referer` d'une requête envoyée à votre CDN correspond à l'une des valeurs `refererValues` spécifiées, votre CNDS **ne diffusera pas** le contenu demandé.
+* Sinon, votre CDN diffusera le contenu.
+
+**REMARQUE** : cette fonction n'est actuellement disponible que par le biais de votre API. Pour plus d'informations, affichez la [page de l'API](api.html#api-for-hotlink-protection).

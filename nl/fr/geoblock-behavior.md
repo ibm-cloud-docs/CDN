@@ -15,11 +15,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Classe de blocage géographique
-La classe `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` contient les attributs utilisés par vos API de blocage géographique. Chacune des API de blocage géographique renvoie un objet de ce type et est utilisée pour définir des comportements de contrôle d'accès géographique sur un CDN. 
+La classe `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` contient les attributs utilisés par vos API de blocage géographique. Chacune des API de blocage géographique renvoie un objet de ce type et est utilisée pour définir des comportements de contrôle d'accès géographique sur un CDN.
 
 Classe `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` :
 
-* `accessType` : indique si une règle doit autoriser (`ALLOW`) ou refuser (`DENY`) une région donnée. 
+* `accessType` : indique si une règle doit autoriser (`ALLOW`) ou refuser (`DENY`) une région donnée.
 * `regionType` : type de région à laquelle appliquer la règle de blocage géographique, à savoir `CONTINENT` ou `COUNTRY_OR_REGION`
 * `regions` : tableau de valeurs basé sur `regionType`
 * `status` : statut de la règle en cours, `ACTIVE` ou `INACTIVE`

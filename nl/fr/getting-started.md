@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # Mise en route
 
-IBM Cloud Content Delivery Network (CDN) peut être utilisé dans des solutions appartenant à diverses industries (par exemple les médias, l'animation, les logiciels, les jeux vidéo, les banques et le commerce électronique) pour répondre à vos besoins professionnels. IBM Cloud s'est associé à Akamai pour offrir la gamme la plus étendue de fonctionnalités CDN, tout en maintenant des tarifs accessibles. Ce partenariat propose des serveurs d'équilibrage des charges dans [36 pays](edge-servers.html#list-of-edge-servers), afin de distribuer les contenus là où vous en avez le plus besoin, à savoir là où se trouvent vos utilisateurs.
+IBM Cloud Content Delivery Network (CDN) peut être utilisé dans des solutions appartenant à diverses industries (par exemple les médias, l'animation, les logiciels, les jeux vidéo, les banques et le commerce électronique) pour répondre à vos besoins professionnels. IBM Cloud s'est associé à Akamai pour offrir la gamme la plus étendue de fonctionnalités CDN, tout en maintenant des tarifs accessibles. Ce partenariat propose des serveurs d'équilibrage des charges dans plus de [50 pays](edge-servers.html#list-of-edge-servers), afin de distribuer les contenus là où vous en avez le plus besoin, à savoir là où se trouvent vos utilisateurs.
 
 ## Avant de commencer
 
@@ -26,7 +26,7 @@ Si vous avez besoin d'aide pour obtenir un compte pour utiliser IBM Cloud Conten
 
 ## Didacticiel
 
-[Voir le didacticiel](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sur la création d'un réseau de distribution de contenu (CDN) pour le stockage d'objets IBM Cloud.
+[Voir le didacticiel](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sur la création d'un réseau de distribution de contenu (CDN) pour le stockage d'objets IBM Cloud.
 
 ## Tarifs de la bande passante CDN (en dollars américains)
 
