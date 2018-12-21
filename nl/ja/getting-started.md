@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # 始めに
 
-IBM Cloud コンテンツ配信ネットワーク (CDN) は、ビジネスのニーズを満たすために、メディア、エンターテイメント、ソフトウェア、ゲーム、バンキング、e-commerce など、さまざまな業界ソリューションにご利用いただけます。 IBM クラウドでは、Akamai とのパートナーシップにより、最も包括的なコンテンツ配信ネットワーク機能を安価に提供しています。 このパートナーシップの主目的は、[36 カ国](edge-servers.html#list-of-edge-servers)に置かれたエッジ・サーバーによって、最も必要とされているところ、つまり、ユーザーの最も近くにコンテンツを配置することです。
+IBM Cloud コンテンツ配信ネットワーク (CDN) は、ビジネスのニーズを満たすために、メディア、エンターテイメント、ソフトウェア、ゲーム、バンキング、e-commerce など、さまざまな業界ソリューションにご利用いただけます。 IBM クラウドでは、Akamai とのパートナーシップにより、最も包括的なコンテンツ配信ネットワーク機能を安価に提供しています。 このパートナーシップの主目的は、[50 カ国](edge-servers.html#list-of-edge-servers)を超える国々に置かれたエッジ・サーバーによって、最も必要とされているところ、つまり、ユーザーの最も近くにコンテンツを配置することです。
 
 ## 始める前に
 
@@ -26,7 +26,7 @@ IBM Cloud コンテンツ配信ネットワークを使用するためのアカ�
 
 ## チュートリアル
 
-IBM Cloud Object Storage 用にコンテンツ配信ネットワークを作成する場合の[チュートリアル](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)があります。
+IBM Cloud Object Storage 用にコンテンツ配信ネットワークを作成する場合の[チュートリアル](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)があります。
 
 ## CDN 帯域幅の料金 (レートは米国ドルによる表示)
 

@@ -15,7 +15,7 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Geoblocking クラス
-`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` クラスには、ジオブロッキング API によって使用される属性が含まれています。各ジオブロッキング API は、このタイプのオブジェクトを返し、CDN の地理的アクセス制御の動作を設定するために使用されます。
+`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` クラスには、ジオブロッキング API によって使用される属性が含まれています。 各ジオブロッキング API は、このタイプのオブジェクトを返し、CDN の地理的アクセス制御の動作を設定するために使用されます。
 
 クラス `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 

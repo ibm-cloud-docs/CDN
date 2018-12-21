@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ IBM Cloud Content Delivery Network サービスの主要機能は、以下のと
   * ラージ・ファイルの最適化
   * ビデオ・オンデマンド
   * 地理的アクセス制御
+  * ホット・リンク保護
 
 機能の完全な説明については、[この文書](feature-descriptions.html#feature-descriptions)を参照してください。
 

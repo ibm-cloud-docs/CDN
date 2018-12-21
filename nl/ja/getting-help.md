@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-11-14"
 
 
 ---
@@ -31,7 +31,7 @@ lastupdated: "2018-04-09"
 # ヘルプとサポートの利用 
 {: #gettinghelp}
 
-最終更新: 2018 年 4 月 9 日
+最終更新: 2018 年 11 月14 日
 {: .last-updated}
 
 CDN を使用しているときに問題や質問がある場合は、情報を検索したり、以下にリストしたいずれかのフォーラムで質問したりして、支援を得ることができます。 サポート・チケットをオープンすることもできます。
@@ -43,6 +43,6 @@ CDN を使用しているときに問題や質問がある場合は、情報を�
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * サービスや使用開始の手順についての質問には、[IBM developerWorks dW Answers ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} フォーラムを使用してください。 「cdn」と「ibm-cloud」のタグを含めてください。
 
-フォーラムの使用について詳しくは、[「ヘルプの取得」](https://console.bluemix.net/docs/support/index.html#getting-help)を参照してください。
+フォーラムの使用について詳しくは、[「ヘルプの取得」](https://{DomainName}/docs/support/index.html#getting-help)を参照してください。
 
-IBM サポート・チケットのオープンや、サポート・レベルおよびチケットの重大度について詳しくは、[「サポートへの問い合わせ」](https://console.bluemix.net/docs/support/index.html#contacting-support)を参照してください。
+IBM サポート・チケットのオープンや、サポート・レベルおよびチケットの重大度について詳しくは、[「サポートへの問い合わせ」](https://{DomainName}/docs/support/index.html#contacting-support)を参照してください。
