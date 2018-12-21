@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -99,5 +99,9 @@ Compila il campo **Configura la tua origine**: per configurare questo campo, dev
         ![Configura HTTPS](images/ssl-cert-options.png)
 
       **NOTA** devi impostare l'ACL (**Access Control List**) per ciascun oggetto nel tuo bucket su "public-read" con il tuo provider COS (cloud object storage).
+      
+**Passo 4:**
 
-Seleziona il pulsante **Create** (Crea) nell'angolo in basso a destra per creare la tua CDN.
+* Devi selezionare **I have read the Master Service Agreement and agree to the terms therein** nella parte inferiore destra, sopra al pulsante **Create**.
+
+* Seleziona quindi il pulsante **Create** nell'angolo in basso a destra per creare la tua CDN.

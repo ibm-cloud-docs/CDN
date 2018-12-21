@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-11-14"
 
 
 ---
@@ -31,7 +31,7 @@ lastupdated: "2018-04-09"
 # Come ottenere aiuto e supporto 
 {: #gettinghelp}
 
-Ultimo aggiornamento: 9 aprile 2018
+Ultimo aggiornamento: 14 novembre 2018
 {: .last-updated}
 
 Se hai dei problemi o delle domande quando utilizzi CDN, puoi ottenere aiuto ricercando le informazioni o facendo delle domande attraverso uno dei forum elencati di seguito. Puoi anche aprire un ticket di supporto.
@@ -43,6 +43,6 @@ Quando utilizzi i forum per fare una domanda, contrassegna con una tag la tua do
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * Per domande sul servizio e le istruzioni introduttive, utilizza il forum [IBM developerWorks dW Answers ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Includi le tag  "cdn" e "ibm-cloud".
 
-Per ulteriori dettagli sull'utilizzo dei forum, vedi [Come ottenere supporto](https://console.bluemix.net/docs/support/index.html#getting-help).
+Per ulteriori dettagli sull'utilizzo dei forum, vedi [Come ottenere supporto](https://{DomainName}/docs/support/index.html#getting-help).
 
-Per informazioni su come aprire un ticket di supporto IBM o sui livelli di supporto e sulla gravità dei ticket, consulta [Come contattare il supporto](https://console.bluemix.net/docs/support/index.html#contacting-support).
+Per informazioni su come aprire un ticket di supporto IBM o sui livelli di supporto e sulla gravità dei ticket, consulta [Come contattare il supporto](https://{DomainName}/docs/support/index.html#contacting-support).

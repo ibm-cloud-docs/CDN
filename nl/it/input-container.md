@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ I seguenti attributi sono specifici per la classe Mapping:
 I seguenti attributi sono correlati a COS (Cloud Object Storage):  
 * `bucketName`: il nome univoco del tuo bucket per l'Object Storage S3.  
 * `fileExtension`: le estensioni file consentite.
+
+Il seguente attributo è correlato alla configurazione di Hotlink Protection:
+* `hotlinkProtection`: per ulteriori dettagli, consulta [Classe Hotlink Protection](hotlink-protection-behavior.html).
