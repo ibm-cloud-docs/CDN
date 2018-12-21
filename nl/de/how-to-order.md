@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -88,7 +88,7 @@ Füllen Sie das Feld **Ursprung konfigurieren** aus: Zum Konfigurieren dieses Fe
 
       * Geben Sie einen **Pfad** an, über den Inhalte des Ursprungsservers abgerufen werden können (optional). Wählen Sie die Featurebeschreibung für [Pfadbasierte CDN-Zuordnungen](feature-descriptions.html#path-based-cdn-mappings) aus und informieren Sie sich über die Auswirkungen, die das Hinzufügen eines Pfads an diesem Punkt hat.
 
-      * Sie **müssen** den Namen für den **Bucket** angeben, in dem Ihr Inhalte gespeichert werden. 
+      * Sie **müssen** den Namen für den **Bucket** angeben, in dem Ihr Inhalte gespeichert werden.
 
       * Sie können außerdem einen **HTTP-Port** und/oder einen **HTTPS-Port** angeben. Diese Felder geben an, welches Protokoll und welche Portnummer zum Verbinden mit dem Ursprungsserver verwendet werden kann. Für nicht standardmäßig verwendete Portnummern finden Sie in [den häufig gestellten Fragen](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) eine Liste der zulässigen Portnummern.
 
@@ -98,6 +98,10 @@ Füllen Sie das Feld **Ursprung konfigurieren** aus: Zum Konfigurieren dieses Fe
 
         ![HTTPS konfigurieren](images/ssl-cert-options.png)
 
-      **HINWEIS**: Sie müssen in der **Zugriffssteuerungsliste** (ACL) für jedes Objekt in Ihrem Bucket die Berechtigung "public-read" mit Ihrem Provider für Cloudobjektspeicher konfigurieren. 
+      **HINWEIS**: Sie müssen in der **Zugriffssteuerungsliste** (ACL) für jedes Objekt in Ihrem Bucket die Berechtigung "public-read" mit Ihrem Provider für Cloudobjektspeicher konfigurieren.
+      
+**Schritt 4:**
 
-Wählen Sie die Schaltfläche **Erstellen** in der rechten unteren Ecke aus, um Ihr CDN zu erstellen.
+* Sie müssen unten rechts oberhalb der Schaltfläche**Erstellen** das Feld **Ich habe die Rahmenvereinbarung gelesen und stimme den Bedingungen zu** auswählen. 
+
+* Wählen Sie anschließend die Schaltfläche **Erstellen** in der rechten unteren Ecke aus, um Ihr CDN zu erstellen. 

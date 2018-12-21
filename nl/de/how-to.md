@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-28"
 
 ---
 
@@ -60,8 +60,7 @@ Wählen Sie die Registerkarte **Ursprünge** und anschließend die Schaltfläche
 
 **Schritt 3:**
 
-Sie *müssen* einen Pfad angeben. Der Pfad *muss* mit dem CDN-Pfad als Präfix beginnen, wenn das CDN mit einem Pfad erstellt wurde.  
-  Beispiel: Wenn das CDN mit dem Pfad `/examplePath` erstellt wurde, muss der Pfad für den Ursprung mit dem Präfix `/examplePath/` beginnen. Sie können optional einen Host-Header angeben.  
+Sie *müssen* einen Pfad angeben. Sie können optional einen Host-Header angeben.  
 
    ![Ursprünge - Ursprung hinzufügen](images/add-origin-path.png)
 
@@ -172,7 +171,7 @@ Aktualisieren Sie bei Bedarf die Details für **Ursprung** oder **Weitere Option
 
 Um in IBM Cloud Object Storage gespeicherte Objekte zu verwenden, müssen Sie als Wert für die Eigenschaft 'acl' (Access Control List, Zugriffssteuerungsliste) für jedes Objekt in Ihrem Bucket den Zugriff 'public-read' festlegen.
 
-Informationen zum Installieren erforderlicher Clients oder Tools finden Sie im Abschnitt zu den Tools im IBM Cloud Object Storage Developer Center (https://developer.ibm.com/cloudobjectstorage/). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
+Informationen zum Installieren der erforderlichen Clients oder Tools finden Sie im [Abschnitt für IBM Cloud Object Storage-Entwickler] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
 
 Der folgende Beispielcode zeigt, wie der Zugriff 'public-read' für alle Objekt in Ihrem Bucket über die Befehlszeilenschnittstelle festgelegt wird.
 

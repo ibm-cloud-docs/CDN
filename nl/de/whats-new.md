@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-26"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -17,6 +17,16 @@ lastupdated: "2018-09-26"
 # Neuerungen
 
 IBM Cloud hat den CDN-Service mit Akamai im September 2017 gestartet, er wurde aber seitdem immer wieder verbessert. Wir nehmen weiterhin Erweiterungen vor und fügen neue Funktionen zum Service hinzu, um Ihnen und Ihren Endbenutzern bessere Dienstleistungen bieten zu können. Prüfen Sie immer wieder, ob es Neuerungen gibt.
+
+## November 2018
+
+  * Hotlinkschutz [Funktionsbeschreibung](feature-descriptions.html#hotlink-protection) (verfügbar über die API)
+  
+## Oktober 2018
+
+  * Die [maximale Anzahl der unterstützten Ursprungspfade](known-limitations.html#known-limitations) wurde von 25 auf 75 erhöht. 
+  * [Ursprungspfade](how-to.html#adding-origin-path-details) müssen nicht mehr mit dem Präfix des Zuordnungspfads beginnen. 
+  * Der zulässige Mindestwert für die [TTL](how-to.html#setting-content-caching-time-using-time-to-live-)-Zeit ist jetzt 0. Dadurch werden die Cookies aus dem Ursprung für Inhalte unter dem zugehörigen TTL-Pfad beibehalten. 
 
 ## September 2018
 
