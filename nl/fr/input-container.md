@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ Les attributs suivants sont spécifiques à la classe Mapping :
 Les attributs suivants sont liés au stockage d'objet dans le Cloud :  
 * `bucketName` : Nom unique de votre compartiment pour le stockage d'objets S3.  
 * `fileExtension` : Extensions de fichiers autorisées.
+
+L'attribut suivant est associé à la configuration de la protection des liens dynamiques :
+* `hotlinkProtection` : Pour plus d'informations, voir la [classe de protection des liens dynamiques](hotlink-protection-behavior.html).

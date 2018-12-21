@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-11-14"
 
 
 ---
@@ -31,7 +31,7 @@ lastupdated: "2018-04-09"
 # Aide et support 
 {: #gettinghelp}
 
-Dernière mise à jour le 9 avril 2018
+Dernière mise à jour le 14 novembre 2018
 {: .last-updated}
 
 Si vous rencontrez des problèmes ou si vous vous posez des questions lors de l'utilisation du CDN, vous pouvez obtenir de l'aide en recherchant des informations ou en posant des questions sur l'un des forums ci-dessous. Vous pouvez également ouvrir un ticket de demande de service.
@@ -43,6 +43,6 @@ Si vous utilisez les forums pour poser une question, balisez votre question de s
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * Pour toute question relative au service et aux instructions de mise en route, utilisez le forum [IBM developerWorks dW Answers ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Incluez les balises "cdn" et "ibm-cloud".
 
-Pour plus d'informations sur l'utilisation des forums, voir [Comment obtenir de l'aide](https://console.bluemix.net/docs/support/index.html#getting-help).
+Pour plus d'informations sur l'utilisation des forums, voir [Comment obtenir de l'aide](https://{DomainName}/docs/support/index.html#getting-help).
 
-Pour plus d'informations sur l'ouverture d'un ticket de demande de service IBM, sur les niveaux de support disponibles ou les niveaux de gravité des tickets, voir la rubrique décrivant [comment contacter le support](https://console.bluemix.net/docs/support/index.html#contacting-support).
+Pour plus d'informations sur l'ouverture d'un ticket de demande de service IBM, sur les niveaux de support disponibles ou les niveaux de gravité des tickets, voir la rubrique décrivant [comment contacter le support](https://{DomainName}/docs/support/index.html#contacting-support).

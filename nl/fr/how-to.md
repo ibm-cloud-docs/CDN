@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-28"
 
 ---
 
@@ -60,8 +60,7 @@ Sélectionnez l'onglet **Origins**, puis cliquez sur **Add Origin**. Cette étap
 
 **Etape 3 :**
 
-Vous *devez* fournir un chemin d'accès. Celui-ci doit *obligatoirement* commencer par le chemin du CDN comme préfixe, si le CDN a été créé avec un chemin.  
-  Par exemple, si le CDN a été créé avec le chemin `/examplePath`, le chemin d'accès à l'origine doit commencer par le préfixe `/examplePath/`. Vous pouvez fournir un en-tête d'hôte si vous le souhaitez.  
+Vous *devez* fournir un chemin d'accès. Vous pouvez fournir un en-tête d'hôte si vous le souhaitez.  
 
    ![Origins add origin](images/add-origin-path.png)
 
@@ -172,7 +171,7 @@ Mettez à jour les détails relatifs aux zones **Origin** ou **Other Options** l
 
 Pour pouvoir utiliser des objets stockés dans IBM Cloud Object Storage, définissez la propriété "acl" (à savoir, la liste de contrôle d'accès) pour chacun des objets contenus dans votre compartiment sur la valeur d'accès "public-read".
 
-Consultez la section Tools d'IBM Cloud Object Storage Developer Center (https://developer.ibm.com/cloudobjectstorage/) pour installer tous les clients ou outils nécessaires. Ce guide suppose que vous avez installé l'interface de ligne de commande AWS officielle, compatible avec l'API IBM Cloud Object Storage S3.
+Pour installer tous les clients ou outils nécessaires, voir la section [IBM Cloud Object Storage Developer] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Ce guide suppose que vous avez installé l'interface de ligne de commande AWS officielle, compatible avec l'API IBM Cloud Object Storage S3.
 
 L'exemple de code ci-dessous indique comment configurer l'accès "public-read" pour tous les objets de votre compartiment à l'aide de l'interface de ligne de commande.
 

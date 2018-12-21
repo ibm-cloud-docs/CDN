@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-26"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -18,10 +18,20 @@ lastupdated: "2018-09-26"
 
 IBM Cloud a lancé le service CDN avec Akamai en septembre 2017, mais nous ne sommes pas arrêtés là. Nous continuons à apporter des améliorations et à ajouter de nouvelles fonctions au service, de façon à mieux répondre à vos besoins et à ceux de vos utilisateurs finaux. Vérifiez régulièrement cette page pour vous tenir au courant des nouveautés.
 
+## Novembre 2018
+
+  * [Description de la fonction relative à la protection des liens dynamiques](feature-descriptions.html#hotlink-protection) (disponible via l'API)
+  
+## Octobre 2018
+
+  * Augmentation du [nombre maximum de chemins de serveurs d'origine pris en charge](known-limitations.html#known-limitations) de 25 à 75
+  * Les [chemins de serveurs d'origine](how-to.html#adding-origin-path-details) ne doivent plus obligatoirement commencer par un préfixe de chemin de mappage.
+  * La durée minimale [TTL](how-to.html#setting-content-caching-time-using-time-to-live-) possible est désormais 0. Ainsi, les cookies sont préservés depuis le serveur d'origine concernant le contenu situé sous le chemin TTL associé.
+
 ## Septembre 2018
 
   * Nous proposons désormais des POP aux emplacements nouvellement ajoutés suivants : Bahreïn, Belgique, Colombie, Equateur, Finlande, Grèce, Hong Kong, Indonésie, R.A.S. chinoise de Macao, Norvège, Oman, Roumanie, Corée du Sud, Sri Lanka, Emirats arabes unis et Uruguay. Consultez la liste complète de pays [ici](https://console.bluemix.net/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers).
-  * Possibilité de spécifier une valeur de durée de vie de 0 seconde pour un chemin donnné
+  * Possibilité de spécifier une valeur de durée de vie de 0 seconde pour un chemin donné
 
 ## Août 2018
 

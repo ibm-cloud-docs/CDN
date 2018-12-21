@@ -16,11 +16,11 @@ lastupdated: "2018-07-24"
 
 # Métriques
 
-La première fois que vous sélectionnez votre CDN dans la liste, la page de présentation s'ouvre. La quantité totale de bande passante, le nombre total d'accès et le taux d'accès pour la période sélectionnée (par défaut, 30 jours) s'affichent. 
+La première fois que vous sélectionnez votre CDN dans la liste, la page de présentation s'ouvre. La quantité totale de bande passante, le nombre total d'accès et le taux d'accès pour la période sélectionnée (par défaut, 30 jours) s'affichent.
 
   ![Présentation des métriques](images/metrics-overview.png)
 
-Juste au-dessous de la présentation figure une représentation graphique de la quantité totale de bande passante, de la quantité de bande passante par région, du nombre total d'accès et du nombre d'accès par type. 
+Juste au-dessous de la présentation figure une représentation graphique de la quantité totale de bande passante, de la quantité de bande passante par région, du nombre total d'accès et du nombre d'accès par type.
 
   ![Graphiques de métriques](images/metrics-graphs.png)
 
@@ -44,4 +44,4 @@ Etant donné que le taux d'accès est calculé au niveau du compte et non pour c
 
 ## Les métriques sont-elles mises à jour en temps réel ?
 
-Non. Les métriques sont mises à jour toutes les 24 heures. 
+Non. Les métriques sont mises à jour toutes les 24 heures.

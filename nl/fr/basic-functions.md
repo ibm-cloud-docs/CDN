@@ -51,7 +51,7 @@ Félicitations ! Votre CDN est désormais actif. Consultez ensuite la page [Ges
 
 ## Démarrage du CDN
 
-Lorsque vous démarrez votre CDN, le serveur de noms de domaine est informé qu'il doit diriger le trafic depuis votre origine vers le serveur d'équilibrage des charges Akamai. Une fois le mappage démarré, le cache DNS peut encore diriger le trafic vers l'origine, par conséquent, il se peut que la fonctionnalité ne soit pas visible du domaine juste après le démarrage du mappage. Le temps nécessaire à la mise à jour dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre. 
+Lorsque vous démarrez votre CDN, le serveur de noms de domaine est informé qu'il doit diriger le trafic depuis votre origine vers le serveur d'équilibrage des charges Akamai. Une fois le mappage démarré, le cache DNS peut encore diriger le trafic vers l'origine, par conséquent, il se peut que la fonctionnalité ne soit pas visible du domaine juste après le démarrage du mappage. Le temps nécessaire à la mise à jour dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre.
 
 **Remarque** : un CDN ne peut être démarré que s'il a pour statut `Stopped`  
 
@@ -79,11 +79,11 @@ Cliquez sur **Get Status** dans le menu déroulant dynamique. Cette étape rempl
 
 ## Arrêt du CDN
 
-Une fois qu'un mappage est arrêté, la recherche DNS est basculée vers l'origine. Le trafic ignore les serveurs d'équilibrage des charges CDN et le contenu est extrait directement de l'origine. Une fois qu'un mappage est arrêté, votre contenu peut ne pas être accessible pendant un bref laps de temps. Cela est dû au fait qu'il se peut que le cache DNS soit encore en train de diriger le trafic vers les serveurs d'équilibrage des charges Akamai. Toutefois, durant ce laps de temps, le serveur d'équilibrage des charges Akamai refusera le trafic pour le domaine. Ce laps de temps dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre. 
+Une fois qu'un mappage est arrêté, la recherche DNS est basculée vers l'origine. Le trafic ignore les serveurs d'équilibrage des charges CDN et le contenu est extrait directement de l'origine. Une fois qu'un mappage est arrêté, votre contenu peut ne pas être accessible pendant un bref laps de temps. Cela est dû au fait qu'il se peut que le cache DNS soit encore en train de diriger le trafic vers les serveurs d'équilibrage des charges Akamai. Toutefois, durant ce laps de temps, le serveur d'équilibrage des charges Akamai refusera le trafic pour le domaine. Ce laps de temps dépend de la fréquence de régénération du cache DNS, qui varie en fonction d'un fournisseur DNS à un autre.
 
 **REMARQUES** : 
-* Il n'est **PAS** recommandé d'arrêter un CDN qui est configuré avec un certificat SAN HTTPS, car il se peut que le trafic HTTPS ne fonctionne pas lorsque vous ramenez le CDN au statut `Running`.  
-* UN CDN ne peut être arrêté que lorsque son statut est `Running`. 
+* Il n'est **PAS** recommandé d'arrêter un CDN qui est configuré avec un certificat SAN HTTPS, car il se peut que le trafic HTTPS ne fonctionne pas lorsque vous ramenez le CDN au statut `Running`. 
+* UN CDN ne peut être arrêté que lorsque son statut est `Running`.
 
 **Etape 1 :**
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ Les fonctions principales du service IBM Cloud Content Delivery Network incluent
   * L'optimisation des fichiers volumineux
   * La vidéo à la demande
   * Le contrôle d'accès géographique
+  * La protection des liens dynamiques
 
 Consultez [ce document](feature-descriptions.html#feature-descriptions) pour des descriptions complètes des fonctions.
 
