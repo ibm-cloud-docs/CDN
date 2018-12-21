@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ IBM Cloud Content Delivery Network 服务包含以下主要功能：
   * 大型文件优化
   * 视频点播
   * 地理访问控制
+  * 热链接保护
 
 请参阅[此文档](feature-descriptions.html#feature-descriptions)以获取完整的功能描述。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-28"
 
 ---
 
@@ -60,9 +60,7 @@ lastupdated: "2018-09-24"
 
 **步骤 3：**
 
-您*必须*提供路径。如果 CDN 是使用路径创建的，那么路径*必须*以 CDN 路径作为前缀开始。
-  
-例如，如果 CDN 是使用路径 `/examplePath` 创建的，那么源的路径必须以前缀 `/examplePath/` 开头。您可选择提供主机头。  
+您*必须*提供路径。您可选择提供主机头。  
 
    ![源添加源](images/add-origin-path.png)
 
@@ -174,7 +172,7 @@ lastupdated: "2018-09-24"
 
 要使用存储在 IBM Cloud Object Storage 中的对象，您必须为存储区中的每个对象设置“acl”（即访问控制表）属性的值，以允许“public-read”访问权。
 
-请参阅 IBM Cloud Object Storage Developer Center 中的“工具”一节 (https://developer.ibm.com/cloudobjectstorage/)，以安装任何必要的客户机或工具。本指南假设您已安装正式的 AWS 命令行界面，其与 IBM Cloud Object Storage S3 API 兼容。
+要安装任何必备客户机或工具，请参阅 [IBM Cloud Object Storage Developer 一节] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)。本指南假设您已安装正式的 AWS 命令行界面，其与 IBM Cloud Object Storage S3 API 兼容。
 
 下面的示例代码显示如何使用命令行界面，为存储区中的所有对象设置“public-read”访问权。
 

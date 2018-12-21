@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -99,5 +99,9 @@ lastupdated: "2018-07-17"
         ![配置 HTTPS](images/ssl-cert-options.png)
 
       **注**：您必须通过 Cloud Object Storage 提供者，为存储区中的每个对象，将**访问控制表** (ACL) 设置为“public-read”。
+      
+**步骤 4：**
 
-选择右下角的**创建**按钮，可以创建 CDN。
+* 您必须选择正下方的**我已阅读主服务协议并同意其中的条款**（位于**创建**按钮上方）。
+
+* 然后选择右下角的**创建**按钮以创建 CDN。
