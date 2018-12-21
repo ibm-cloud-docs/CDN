@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-11-19"
 
 ---
 
@@ -99,5 +99,9 @@ Rellene el campo **Configure el origen**: para configurar este campo, debe selec
         ![Configurar HTTPS](images/ssl-cert-options.png)
 
       **NOTA** Debe establecer la **Lista de control de acceso** (ACL) para cada objeto en su grupo en "public-read" con su proveedor de objetos de nube.
+      
+**Paso 4:**
 
-Seleccione el botón **Crear** situado en la esquina inferior derecha para crear la CDN.
+* Debe seleccionar **He leído el contrato maestro de servicio y acepto sus condiciones** en la parte inferior derecha, sobre el botón **Crear**.
+
+* Luego seleccione el botón **Crear** en la esquina inferior derecha para crear su CDN.

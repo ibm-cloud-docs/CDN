@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # Cómo empezar
 
-IBM Cloud Content Delivery Network (CDN) se puede utilizar para una gran variedad de soluciones de industria, incluyendo medios de comunicación, entretenimiento, software, juegos, banca y comercio electrónico, para cubrir las necesidades de sus negocios. IBM Cloud se ha asociado con Akamai para ofrecer las características más completas de la red de entrega de contenido, manteniendo la asequibilidad. Esta asociación cuenta con servidores perimetrales en [36 países](edge-servers.html#list-of-edge-servers), para llevar el contenido al punto más cercano de donde más se necesita: los usuarios.
+IBM Cloud Content Delivery Network (CDN) se puede utilizar para una gran variedad de soluciones de industria, incluyendo medios de comunicación, entretenimiento, software, juegos, banca y comercio electrónico, para cubrir las necesidades de sus negocios. IBM Cloud se ha asociado con Akamai para ofrecer las características más completas de la red de entrega de contenido, manteniendo la asequibilidad. Esta asociación cuenta con servidores perimetrales en más de [50 países](edge-servers.html#list-of-edge-servers), para llevar el contenido al punto más cercano de donde más se necesita: los usuarios.
 
 ## Antes de empezar
 
@@ -26,7 +26,7 @@ Si necesita ayuda para obtener una cuenta para utilizar IBM Cloud Content Delive
 
 ## Guía de aprendizaje
 
-[Aquí se incluye una guía de aprendizaje](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
+[Aquí se incluye una guía de aprendizaje](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
 
 ## Precios de ancho de banda de CDN (tarifas mostradas en dólares)
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -56,7 +56,7 @@ De forma predeterminada, los números agregados y los gráficos muestran las mé
 
 ## Soporte a la cabecera de host
 
-El servidor perimetral utiliza la **cabecera de host** cuando se comunica con el host de origen. Esta característica proporciona flexibilidad para configurar el servicio web en el host de origen. Si no se proporciona la entrada de cabecera de host, el servicio utiliza el nombre de host del servidor de origen como cabecera de host HTTP predeterminada si el servidor de origen se especifica como nombre de host (en lugar de una dirección IP). Si no se proporciona la cabecera de host como entrada y se proporciona el servidor de origen como una dirección IP, se utiliza el nombre de host de CDN (también denominado Nombre de dominio de CDN) como la cabecera de host HTTP predeterminada.
+El servidor perimetral utiliza la **cabecera de host** cuando se comunica con el host de origen. Esta característica proporciona flexibilidad para configurar el servicio web en el host de origen. En concreto, habilita un caso de uso en el que un cliente tiene varios servidores web configurados en el mismo host de origen. Si no se proporciona la entrada de cabecera de host, el servicio utiliza el nombre de host del servidor de origen como cabecera de host HTTP predeterminada si el servidor de origen se especifica como nombre de host (en lugar de una dirección IP). Si no se proporciona la cabecera de host como entrada y se proporciona el servidor de origen como una dirección IP, se utiliza el nombre de host de CDN (también denominado Nombre de dominio de CDN) como la cabecera de host HTTP predeterminada.
 
 ## Soporte de protocolo HTTPS
 
@@ -76,11 +76,11 @@ La opción **Respetar cabeceras** permite que la configuración de la cabecera H
 
 Cuando el servidor perimetral de CDN recibe una solicitud de usuario, y el contenido de la solicitud no está almacenado en caché, el servidor perimetral contacta con el host de origen para recoger el contenido. En ese momento, dicho contenido se almacena en caché para el valor de Tiempo de duración (TTL) especificado para el contenido. Si se recibe una solicitud de usuario después de que caduque el TTL, el servidor perimetral contacta con el host de origen para recoger el contenido. Si no se puede contactar con el servidor de origen por algún motivo (por ejemplo, el host de origen está inactivo o existe un problema de red), el servidor perimetral sirve el contenido caducado (obsoleto) a la solicitud. Esta característica está admitida por Akamai y **no se puede** desactivar.
 
-## Argumentos de consulta de claves de memoria caché
+## Optimización de clave de caché
 
-Los servidores perimetrales de Akamai almacenan en caché el contenido en lo que denominan **Almacén de caché**. Para utilizar el contenido del **almacén de caché**, los servidores perimetrales utilizan una **clave de caché**. Normalmente, la **clave de caché** se genera a partir de una parte del URL de un usuario final. En algunos casos, el URL contiene argumentos de función de consulta que son distintos para usuarios individuales, pero el contenido proporcionado es el mismo. De forma predeterminada, Akamai utiliza los argumentos de la función de consulta para generar la clave de caché y, por tanto, para generar una clave de caché exclusiva para cada usuario. Este método no es óptimo, porque fuerza al servidor perimetral a contactar con el servidor de origen para contenido que ya está almacenado en caché, pero utilizando una clave de caché distinta. La característica **Ignorar argumentos de consulta en la clave de caché** le permite especificar si deben ignorarse los argumentos de consulta cuando se genera una clave de caché. Esta característica se aplica a cualquier acción de `crear` o `actualizar` de una configuración de correlación de CDN, así como para cualquier acción de `crear` o `actualizar` de una vía de acceso de origen.
+Los servidores perimetrales de Akamai almacenan en caché el contenido en lo que denominan **Almacén de caché**. Para utilizar el contenido del **almacén de caché**, los servidores perimetrales utilizan una **clave de caché**. Normalmente, la **clave de caché** se genera a partir de una parte del URL de un usuario final. En algunos casos, el URL contiene argumentos de función de consulta que son distintos para usuarios individuales, pero el contenido proporcionado es el mismo. De forma predeterminada, Akamai utiliza los argumentos de la función de consulta para generar la clave de caché y, por tanto, para generar una clave de caché exclusiva para cada usuario. Este método no es óptimo, porque fuerza al servidor perimetral a contactar con el servidor de origen para contenido que ya está almacenado en caché, pero utilizando una clave de caché distinta. La característica de **Optimización de clave de caché** le permite especificar qué argumentos de consulta se van a incluir o a ignorar cuando se genere una clave de caché. Esta característica se aplica a cualquier acción de `crear` o `actualizar` de una configuración de correlación de CDN, así como para cualquier acción de `crear` o `actualizar` de una vía de acceso de origen.
 
-**Nota:** El valor de **Grabaciones de consulta de claves de memoria caché** se puede configurar desde el separador **Valores** después de la creación de una correlación de CDN. Para la vía de acceso de origen, se pueden configurar durante las operaciones `create` o `update` de una vía de acceso de origen.
+**Nota:** El valor de **Optimización de clave de caché** se puede configurar desde el separador **Valores** después de la creación de una correlación de CDN. Para la vía de acceso de origen, se pueden configurar durante las operaciones `create` o `update` de una vía de acceso de origen.
 
 ## Compresión de contenido
 
@@ -107,7 +107,7 @@ Cuando esta característica está habilitada, existe un pequeño coste de rendim
 
 ## Vídeo on Demand
 
-La optimización del rendimiento de **Vídeo on Demand** ofrece streaming de alta calidad en distintos tipos de red. Con la capacidad de la red distribuida para distribuir la carga dinámicamente, la CDN de IBM Cloud con Akamai le proporciona la capacidad de escalar rápidamente para públicos de gran tamaño, tanto si lo había planificado como si no.
+La optimización del rendimiento de **Vídeo on Demand** ofrece streaming de alta calidad en distintos tipos de red. Mediante el aprovechamiento de los valores de control preconfigurados de caché y la capacidad de la red distribuida para distribuir la carga dinámicamente, la CDN de IBM Cloud con Akamai le proporciona la capacidad de escalar rápidamente para públicos de gran tamaño, tanto si lo había planificado como si no.
 
 La opción **Vídeo on Demand** está optimizada para la distribución de formatos de streaming segmentados, como HLS, DASH, HDS y HSS. El streaming de vídeo en directo **no** está admitido por ahora. Puede habilitar la característica **Vídeo on Demand** seleccionando la opción desde el menú desplegable bajo **Optimizar para** en el separador Valores, o al crear una nueva vía de acceso de origen. Debe habilitar esta característica solo cuando optimice la entrega de archivos de vídeo.
 
@@ -120,3 +120,19 @@ El tipo de acceso `Allow` permite de forma específica el tráfico a regiones se
 Por otro lado, el comportamiento de denegar (`Deny`) bloquea el acceso al servicio al grupo especificado, pero permite el acceso a todas las demás regiones no especificadas. Por ejemplo, si establece el tipo de acceso de control de acceso geográfico en denegar (`Deny`) a los continentes de Europa y Oceanía, los usuarios de dichos continentes **no** podrán utilizar el servicio, mientras que los usuarios de todos los demás continentes tendrán acceso al mismo.
 
 Esta característica es accesible desde la página de **Valores** de su configuración de CDN.
+
+## Hotlink Protection
+
+Hotlink Protection es un comportamiento basado en reglas que le permite controlar si determinados sitios web tienen o no permiso para acceder a su contenido desde su CDN.  El navegador suele incluir una cabecera `Referer` cuando se realiza una solicitud HTTP desde un enlace de una página web y cuando dicho enlace apunta a un activo remoto. El enlace que un sitio web utiliza para acceder a un activo de otro sitio web se denomina enlace activo (hotlink).  Hay dos tipos de comportamientos disponibles: **ALLOW** y **DENY**.
+
+Si el `ProtecType` tiene el valor `ALLOW`:
+* Si el valor de la cabecera `Referer` de una solicitud enviada a su CDN coincide con uno de los `refererValues`
+especificados, la CDN **servirá** el contenido solicitado.
+* De lo contrario, su CDN no servirá el contenido.
+
+Si el `ProtecType` tiene el valor `DENY`:
+* Si el valor de la cabecera `Referer` de una solicitud enviada a su CDN coincide con uno de los `refererValues`
+especificados, la CDN **no servirá** el contenido solicitado.
+* De lo contrario, su CDN servirá el contenido.
+
+**NOTA**: esta característica está disponible actualmente solo a través de nuestra API. Puede consultar la [página de la API](api.html#api-for-hotlink-protection) para obtener más información.
