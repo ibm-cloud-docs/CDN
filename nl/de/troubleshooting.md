@@ -98,35 +98,35 @@ Der folgenden Tabelle können Sie das erwartete Verhalten für die unterstützte
 <tbody>
 <tr>
 <td> `http://hostname` </td>
-<td> Laden erfolgreich</td>
-<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
-<td> Laden erfolgreich</td>
-<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
-<td> Laden erfolgreich</td>
+<td> Laden erfolgreich </td>
+<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
+<td> Laden erfolgreich </td>
+<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
+<td> Laden erfolgreich </td>
 </tr>
 <tr>
 <td> `https://hostname`</td>
-<td> Access denied (Zugriff verweigert)</td>
-<td> Weiterleitung an IBM Cloud-Webseite</td>
-<td> Laden erfolgreich</td>
-<td> Weiterleitung an IBM Cloud-Webseite</td>
-<td> Laden erfolgreich</td>
+<td> Access denied (Zugriff verweigert) </td>
+<td> Weiterleitung an IBM Cloud-Webseite </td>
+<td> Laden erfolgreich </td>
+<td> Weiterleitung an IBM Cloud-Webseite </td>
+<td> Laden erfolgreich </td>
 </tr>
 <tr>
 		<td> `http://cname` </td>
-		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
-		<td> Laden erfolgreich</td>
-		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
-		<td> Laden erfolgreich</td>
-		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
+		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
+		<td> Laden erfolgreich </td>
+		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
+		<td> Laden erfolgreich </td>
+		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
 </tr>
 <tr>
 		<td> `https://cname` </td>
-		<td> Weiterleitung an IBM Cloud-Webseite</td>
-		<td> Laden erfolgreich</td>
-		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben)</td>
-		<td> Laden erfolgreich</td>
-		<td> Weiterleitung an IBM Cloud-Webseite</td>
+		<td> Weiterleitung an IBM Cloud-Webseite </td>
+		<td> Laden erfolgreich </td>
+		<td> 301 Moved permanently (dauerhaft auf neue URL verschoben) </td>
+		<td> Laden erfolgreich </td>
+		<td> Weiterleitung an IBM Cloud-Webseite </td>
 </tr>
 </tbody>
 </table>
@@ -141,4 +141,4 @@ Die Nachricht `Access denied` wird angezeigt, wenn Sie beim Zugriff auf ein CDN 
 
 Das Verhalten mit einer URL-Weiterleitung an die CDN-Webseite von IBM Cloud tritt in der Regel auf, wenn nicht die richtige URL für das Protokoll verwendet wird. Wurde Ihr CDN mit dem HTTPS-Protokoll oder einer Kombination von HTTP- und HTTPS-Protokoll (HTTPS_AND_HTTPS) erstellt, müssen Sie den Wert für CNAME für den Zugriff auf Ihr CDN verwenden. Verwenden Sie beispielsweise `https://examplecname.cdnedge.bluemix.net` für HTTPS-Zuordnungen und `http://examplecname.cdnedge.bluemix.net` oder `https://examplecname.cdnedge.bluemix.net` für HTTP_AND_HTTPS-Zuordnungen.
 
-Die URL wird an die CDN-Webseite von IBM Cloud weitergeleitet, weil Protokoll und Domäne für das Protokoll des CDNs falsch sind. Ein CDN, das _ausschließlich_ für eine Verwendung mit dem HTTP-Protokoll erstellt wurde, kann _nur_ mithilfe des Hostnamens, z. B. `http://example.com`, erreicht werden. 
+Die URL wird an die CDN-Webseite von IBM Cloud weitergeleitet, weil Protokoll und Domäne für das Protokoll des CDNs falsch sind. Ein CDN, das _ausschließlich_ für eine Verwendung mit dem HTTP-Protokoll erstellt wurde, kann _nur_ mithilfe des Hostnamens, z. B. `http://example.com`, erreicht werden.

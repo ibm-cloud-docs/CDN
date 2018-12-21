@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -34,7 +34,7 @@ In gewissen Fällen kann es nützlich sein, bestimmte Inhalte von einem anderen 
 
 ## Pfadbasierte CDN-Zuordnungen
 
-Ihr IBM Cloud CDN-Service kann bei der Erstellung des CDN auf einen bestimmten Verzeichnispfad auf dem Ursprungsserver durch die Angabe des Pfads eingeschränkt werden. Ein Endbenutzer ist nur für den Zugriff auf die Inhalte in diesem Verzeichnispfad berechtigt. Beispiel: Wenn die CDN-Instanz `www.example.com` mit dem Pfad `/videos` erstellt wird, ist ein Zugriff **nur** mit `www.example.com/videos/*` möglich. 
+Ihr IBM Cloud CDN-Service kann bei der Erstellung des CDN auf einen bestimmten Verzeichnispfad auf dem Ursprungsserver durch die Angabe des Pfads eingeschränkt werden. Ein Endbenutzer ist nur für den Zugriff auf die Inhalte in diesem Verzeichnispfad berechtigt. Beispiel: Wenn die CDN-Instanz `www.example.com` mit dem Pfad `/videos` erstellt wird, ist ein Zugriff **nur** mit `www.example.com/videos/*` möglich.
 
 ## Cacheinhalte bereinigen
 
@@ -56,7 +56,7 @@ Sowohl die Aggregatwerte als auch die Diagramme zeigen standardmäßig Metriken 
 
 ## Host-Header-Unterstützung
 
-Vom Edge-Server wird der **Host-Header** für die Kommunikation mit dem Ursprungshost verwendet. Diese Funktion bietet Flexibilität im Hinblick auf die Konfiguration des Web-Service auf dem Ursprungshost. Wenn keine Host-Header-Eingabe angegeben wird, verwendet der Service den Hostnamen des Ursprungsservers als Standard-HTTP-Host-Header, sofern der Ursprungsserver durch den Hostnamen (und nicht durch eine IP-Adresse) angegeben wird. Wenn der Host-Header nicht als Eingabe angegeben wird und der Ursprungsserver durch eine IP-Adresse angegeben wird, wird der CDN-Hostname (auch als CDN-Domänenname bezeichnet) als Standard-HTTP-Host-Header verwendet.
+Vom Edge-Server wird der **Host-Header** für die Kommunikation mit dem Ursprungshost verwendet. Diese Funktion bietet Flexibilität im Hinblick auf die Konfiguration des Web-Service auf dem Ursprungshost. Insbesondere kann ein Anwendungsfall verwendet werden, bei dem ein Client mehrere Web-Server auf demselben Ursprungshost konfiguriert hat. Wenn keine Host-Header-Eingabe angegeben wird, verwendet der Service den Hostnamen des Ursprungsservers als Standard-HTTP-Host-Header, sofern der Ursprungsserver durch den Hostnamen (und nicht durch eine IP-Adresse) angegeben wird. Wenn der Host-Header nicht als Eingabe angegeben wird und der Ursprungsserver durch eine IP-Adresse angegeben wird, wird der CDN-Hostname (auch als CDN-Domänenname bezeichnet) als Standard-HTTP-Host-Header verwendet.
 
 ## Unterstützung für HTTPS-Protokoll
 
@@ -76,11 +76,11 @@ Die Option **Header beibehalten** ermöglicht das Überschreiben der CDN-Konfigu
 
 Wenn der CDN-Edge-Server eine Benutzeranforderung empfängt und der angeforderte Inhalt nicht im Cache enthalten ist, kontaktiert der Edge-Server den Ursprungshost, um den Inhalt abzurufen. Der Inhalt wird anschließend für die Dauer, die durch den TTL-Wert (Time To Live) für den Inhalt angegeben ist, im Cache gespeichert. Wenn eine Benutzeranforderung nach Ablauf der TTL-Dauer empfangen wird, kontaktiert der Edge-Server den Ursprungshost, um den Inhalt abzurufen. Falls der Ursprungsserver nicht erreichbar ist (z. B. weil der Ursprungshost inaktiv ist oder ein Netzproblem vorliegt), stellt der Edge-Server den abgelaufenen (nicht mehr aktuellen) Inhalt als Antwort auf die Anforderung zu. Diese Funktion wird von Akamai unterstützt und **kann nicht** inaktiviert werden.
 
-## Abfrageargumente im Cacheschlüssel
+## Optimierung für Cacheschlüssel
 
-Akamai-Edge-Server speichern Inhalt in einem so genannten **Cachespeicher** ("Cache Store") zwischen. Zur Verwendung der Inhalte aus dem **Cachespeicher** verwenden Edge-Server einen **Cacheschlüssel**. In der Regel wird ein **Cacheschlüssel** als Bestandteil der URL eines Endbenutzers generiert. In einigen Fällen enthält die URL Argumente der Abfragefunktion, die sich für Einzelbenutzer unterscheiden, jedoch ist der zugestellte Inhalt identisch. Standardmäßig verwendet Akamai die Argumente der Abfragefunktion, um den Cacheschlüssel zu generieren, sodass für jeden Benutzer einer eigener Cacheschlüssel generiert wird. Diese Methode ist nicht optimal, da sie zur Folge hat, dass der Edge-Server den Ursprungsserver unter Verwendung eines anderen Cacheschlüssels kontaktiert, um Inhalte abzurufen, die sich bereits im Cache befinden. Durch die Funktion **Abfrageargumente im Cacheschlüssel ignorieren** können Sie angeben, ob die Abfrageargumente beim Generieren eines Cacheschlüssels ignoriert werden sollen. Diese Funktion gilt für jedes `Erstellen` oder `Aktualisieren` einer CDN-Zuordnungskonfiguration sowie für jedes `Erstellen` oder `Aktualisieren` eines Ursprungspfads.
+Akamai-Edge-Server speichern Inhalt in einem so genannten **Cachespeicher** ("Cache Store") zwischen. Zur Verwendung der Inhalte aus dem **Cachespeicher** verwenden Edge-Server einen **Cacheschlüssel**. In der Regel wird ein **Cacheschlüssel** als Bestandteil der URL eines Endbenutzers generiert. In einigen Fällen enthält die URL Argumente der Abfragefunktion, die sich für Einzelbenutzer unterscheiden, jedoch ist der zugestellte Inhalt identisch. Standardmäßig verwendet Akamai die Argumente der Abfragefunktion, um den Cacheschlüssel zu generieren, sodass für jeden Benutzer einer eigener Cacheschlüssel generiert wird. Diese Methode ist nicht optimal, da sie zur Folge hat, dass der Edge-Server den Ursprungsserver unter Verwendung eines anderen Cacheschlüssels kontaktiert, um Inhalte abzurufen, die sich bereits im Cache befinden. Mit der Funktion **Optimierung für Cacheschlüssel** können Sie angeben, welche Abfrageargumente bei der Generierung eines Cacheschlüssels ignoriert/eingeschlossen werden sollen. Diese Funktion gilt für jedes `Erstellen` oder `Aktualisieren` einer CDN-Zuordnungskonfiguration sowie für jedes `Erstellen` oder `Aktualisieren` eines Ursprungspfads.
 
-**Hinweis:** Der Wert für **Abfrageargumente im Cacheschlüssel** kann in der Registerkarte **Einstellungen** nach der Erstellung einer CDN-Zuordnung konfiguriert werden. Für den Ursprungspfad können sie während der Operationen zum Erstellen (`create`) oder Aktualisieren (`update`) eines Ursprungspfads konfiguriert werden.
+**Hinweis:** Der Wert für **Optimierung für Cacheschlüssel** kann nach der Erstellung einer CDN-Zuordnung auf der Registerkarte **Einstellungen** konfiguriert werden. Für den Ursprungspfad können sie während der Operationen zum Erstellen (`create`) oder Aktualisieren (`update`) eines Ursprungspfads konfiguriert werden.
 
 ## Inhaltskomprimierung
 
@@ -107,16 +107,30 @@ Wenn diese Funktion aktiviert ist, entsteht eine geringfügige Leistungsbeeintr�
 
 ## Video-on-Demand
 
-Die Leistungsoptimierung für **Video-on-Demand** liefert ein Streaming mit hoher Qualität über verschiedene Typen von Netzen. Durch die Nutzung der Fähigkeit des verteilten Netzes, die Auslastung dynamisch zu verteilen, bietet IBM Cloud CDN mit Akamai die Möglichkeit, schnelle Skalierungen für geplant oder ungeplant wachsende Benutzergruppen durchzuführen.
+Die Leistungsoptimierung für **Video-on-Demand** liefert ein Streaming mit hoher Qualität über verschiedene Typen von Netzen. Durch die Nutzung der vorkonfigurierten Einstellungen zur Cachesteuerung und der Fähigkeit des verteilten Netzes, die Arbeitslast dynamisch zu verteilen, bietet IBM Cloud CDN mit Akamai die Möglichkeit, schnelle Skalierungen für geplante oder ungeplante große Benutzergruppen durchzuführen. 
 
 **Video-on-Demand** wird für die Verteilung segmentierter Streamingformate wie HLS, DASH, HDS und HSS optimiert. Live-Video-Streams werden gegenwärtig **nicht** unterstützt. Sie können die Funktion **Video-on-Demand** aktivieren, indem Sie die Option im Dropdown-Menü unter **Optimieren für** auf der Registerkarte 'Einstellungen' auswählen oder wenn Sie einen neuen Ursprungspfad erstellen. Sie können diese Funktion nur aktivieren, wenn Sie die Zustellung von Videodateien optimieren.
 
 ## Geografische Zugriffssteuerung (Geographical Access Control)
 
-Bei der Funktion 'Geographical Access Control' handelt es sich um ein auf Regeln basierendes Verhalten, bei dem Sie den Parameter `access-type` ausgerichtet am Standort für eine Gruppe von Benutzern festlegen können. Es stehen zwei Typen von Verhalten zur Auswahl: **Allow** und **Deny**. 
+Bei der Funktion 'Geographical Access Control' handelt es sich um ein auf Regeln basierendes Verhalten, bei dem Sie den Parameter `access-type` ausgerichtet am Standort für eine Gruppe von Benutzern festlegen können. Es stehen zwei Typen von Verhalten zur Auswahl: **Allow** und **Deny**.
 
-Der Zugriffstyp `Allow` ermöglicht es Ihnen, ausgerichtet am Regionstyp gezielt Datenverkehr mit ausgewählten Regionen zuzulassen. Durch das Zulassen von Datenverkehr für bestimmte Regionen wird implizit der Datenverkehr mit allen anderen Regionen blockiert. Sie können beispielsweise über `Allow` den Datenverkehr mit ausgewählten Kontinenten, z. B. mit Europa oder Ozeanien, zulassen und damit den Zugriff für die übrigen Kontinente blockieren. 
+Der Zugriffstyp `Allow` ermöglicht es Ihnen, ausgerichtet am Regionstyp gezielt Datenverkehr mit ausgewählten Regionen zuzulassen. Durch das Zulassen von Datenverkehr für bestimmte Regionen wird implizit der Datenverkehr mit allen anderen Regionen blockiert. Sie können beispielsweise über `Allow` den Datenverkehr mit ausgewählten Kontinenten, z. B. mit Europa oder Ozeanien, zulassen und damit den Zugriff für die übrigen Kontinente blockieren.
 
-Mit dem Verhalten `Deny` wird dagegen der Zugriff auf Ihren Service für die angegebene Gruppe blockiert, für alle übrigen, nicht angegebenen Regionen jedoch zugelassen. Wenn Sie als Zugriffstyp für Geographical Access Control das Verhalten `Deny` für Europa und Ozeanien festlegen, können Benutzer in diesen Kontinenten **nicht** auf Ihren Service zugreifen, während Benutzer in den übrigen Kontinenten über Zugriff verfügen. 
+Mit dem Verhalten `Deny` wird dagegen der Zugriff auf Ihren Service für die angegebene Gruppe blockiert, für alle übrigen, nicht angegebenen Regionen jedoch zugelassen. Wenn Sie als Zugriffstyp für Geographical Access Control das Verhalten `Deny` für Europa und Ozeanien festlegen, können Benutzer in diesen Kontinenten **nicht** auf Ihren Service zugreifen, während Benutzer in den übrigen Kontinenten über Zugriff verfügen.
 
-Diese Funktion kann über die Seite **Einstellungen** der CDN-Konfiguration aufgerufen werden. 
+Diese Funktion kann über die Seite **Einstellungen** der CDN-Konfiguration aufgerufen werden.
+
+## Hotlinkschutz
+
+Hotlinkschutz ist ein regelbasiertes Verhalten, mit dem Sie steuern können, ob bestimmte Websites über Ihr CDN auf Ihre Inhalte zugreifen dürfen oder nicht. Der Browser enthält in der Regel einen `Referer`-Header, wenn eine HTTP-Anforderung von einem Link auf einer Webseite erstellt wird und wenn dieser Link auf eine ferne Ressource verweist. Der Link, den eine Website für den Zugriff auf ein Asset von einer anderen Website verwendet, wird als Hotlink bezeichnet. Zwei Verhaltenstypen sind verfügbar: **ALLOW** und **DENY**. 
+
+Wenn `protectionType` auf `ALLOW` gesetzt ist: 
+* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **bereit**. 
+* Andernfalls stellt Ihr CDN den Inhalt nicht bereit. 
+
+Wenn `protectionType` auf `DENY` gesetzt ist: 
+* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **nicht bereit**. 
+* Andernfalls stellt Ihr CDN den Inhalt bereit. 
+
+**Hinweis**: Diese Funktion ist zurzeit nur über unsere API verfügbar. Weitere Informationen finden Sie auf der [API-Seite](api.html#api-for-hotlink-protection). 

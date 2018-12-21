@@ -60,7 +60,7 @@ Um den CDN-Domänennamen, der dem SAN-Zertifikat hinzugefügt wurde, abrufen zu 
 
 Die im Folgenden beschriebene Methode ist **NUR** empfehlenswert, wenn Ihr CDN **nicht** für Live-Datenverkehr vorgesehen ist. Stellt Ihre Domäne Live-Datenverkehr bereit, ist die Standardmethode oder die Weiterleitungsmethode besser zur Validierung der Domäne geeignet.
 
-Bei dieser Methode müssen Sie einen CNAME-Eintrag für Ihre CDN-Domäne in Ihrer DNS-Konfiguration hinzufügen. Verwenden Sie als CNAME-Wert den Wert für CNAME, den Sie beim Erstellen des CDN verwendet haben. Der Name sollte auf den Domänennamen `cdnedge.bluemix.net` enden. Nun sind keine weiteren Maßnahmen erforderlich. Die Validierung der Domänensteuerung wird von diesem Zeitpunkt an automatisch durchgeführt. Die Validierung kann zwischen zwei und vier Stunden dauern. Sobald das Zertifikat bereitgestellt ist, erhält Ihr CDN sofort den Status 'Aktiv'. 
+Bei dieser Methode müssen Sie einen CNAME-Eintrag für Ihre CDN-Domäne in Ihrer DNS-Konfiguration hinzufügen. Verwenden Sie als CNAME-Wert den Wert für CNAME, den Sie beim Erstellen des CDN verwendet haben. Der Name sollte auf den Domänennamen `cdnedge.bluemix.net` enden. Nun sind keine weiteren Maßnahmen erforderlich. Die Validierung der Domänensteuerung wird von diesem Zeitpunkt an automatisch durchgeführt. Die Validierung kann zwischen zwei und vier Stunden dauern. Sobald das Zertifikat bereitgestellt ist, erhält Ihr CDN sofort den Status 'Aktiv'.
 
 Anweisungen zum Festlegen oder Ändern von CNAME erhalten Sie in der Regel beim DNS-Anbieter. Es folgt ein Beispiel für einen typischen CNAME-Eintrag:
 
@@ -88,7 +88,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Apache2-Server ausgeführt wird.
 
-  * **Schritt 2:** Erstellen Sie die Abfrageantwortdatei für die Antwort auf die Abfrage unter `.well-known/acme-challenge/` in dem Verzeichnis für Ihren Websiteinhalt. Die Standardposition für Apache2-Websiteinhalt ist `/var/www/html/`. In diesem Beispiel wird die Abfrageantwort im Verzeichnis `/var/www/html/.well-known/acme-challenge/` gespeichert.
+  * **Schritt 2:** Erstellen Sie die Abfrageantwortdatei für die Antwort auf die Abfrage unter `.well-known/acme-challenge/` in dem Verzeichnis für Ihren Websiteinhalt.  Die Standardposition für Apache2-Websiteinhalt ist `/var/www/html/`. In diesem Beispiel wird die Abfrageantwort im Verzeichnis `/var/www/html/.well-known/acme-challenge/` gespeichert.
 
       ```
       mkdir -p /var/www/html/.well-known/acme-challenge
@@ -111,7 +111,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Nginx-Server ausgeführt wird.
 
-  * **Schritt 2:** Erstellen Sie die Abfrageantwortdatei für die Antwort auf die Abfrage unter `.well-known/acme-challenge/` in dem Verzeichnis für Ihren Websiteinhalt. Die Standardposition für Nginx-Websiteinhalt ist `/usr/share/nginx/html/`.  In diesem Beispiel wird die Abfrageantwort im Verzeichnis `/usr/share/nginx/html/.well-known/acme-challenge/` gespeichert.
+  * **Schritt 2:** Erstellen Sie die Abfrageantwortdatei für die Antwort auf die Abfrage unter `.well-known/acme-challenge/` in dem Verzeichnis für Ihren Websiteinhalt.  Die Standardposition für Nginx-Websiteinhalt ist `/usr/share/nginx/html/`.  In diesem Beispiel wird die Abfrageantwort im Verzeichnis `/usr/share/nginx/html/.well-known/acme-challenge/` gespeichert.
       ```
       mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
       printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject

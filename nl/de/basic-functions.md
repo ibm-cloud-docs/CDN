@@ -53,7 +53,7 @@ Glückwunsch! Ihr CDN ist nun aktiv. Ab jetzt werden auf der Seite [CDN verwalte
 
 Beim CDN-Start wird das DNS benachrichtigt, dass Datenverkehr vom Ursprungsserver an den Akamai-Edge-Server weitergeleitet werden soll. Sobald die Zuordnung gestartet wurde, wird vom DNS-Cache möglicherweise weiterhin Datenverkehr an den Ursprungsserver geleitet. Die ordnungsgemäße Funktionsweise ist deshalb unmittelbar nach dem Start der Zuordnung möglicherweise nicht sofort für die Domäne erkennbar. Die für die Aktualisierung erforderliche Zeit richtet sich danach, wie oft der DNS-Cache aktualisiert wird, und variiert je nach DNS-Anbieter.
 
-**HINWEIS**: Ein CDN kann nur gestartet werden, wenn es den Status `Gestoppt` aufweist.   
+**HINWEIS**: Ein CDN kann nur gestartet werden, wenn es den Status `Gestoppt` aufweist.  
 
 **Schritt 1:**
 
@@ -82,8 +82,8 @@ Klicken Sie im Überlaufmenü auf **Status abrufen**. Dieser Schritt ändert den
 Wird eine Zuordnung gestoppt, wechselt die DNS-Suche wieder zum Ursprungsserver. Beim Datenverkehr wird der CDN-Edge-Server ausgelassen und Inhalte werden direkt beim Ursprungsserver abgerufen. Nach dem Stoppen einer Zuordnung gibt es möglicherweise einen kurzen Zeitraum, in dem nicht auf Ihre Inhalte zugegriffen werden kann, da der DNS-Cache u. U. Datenverkehr weiterhin an die Akamai-Edge-Server leitet. Zu diesem Zeitpunkt wird der Datenverkehr für die Domäne jedoch vom Akamai-Edge-Server blockiert. Die Länge diese Zeitraums richtet sich danach, wie oft der DNS-Cache aktualisiert wird, und variiert je nach DNS-Anbieter.
 
 **HINWEISE**: 
-* Es empfiehlt sich **NICHT**, ein CDN zu stoppen, das mit einem HTTPS-SAN-Zertifikat konfiguriert ist, da HTTPS-Datenverkehr möglicherweise nach dem erneuten Aktivieren des CDN (Status `Aktiv`) nicht mehr aufgenommen wird.  
-* Ein CDN kann nur gestoppt werden, wenn es den Status `Aktiv` aufweist. 
+* Es empfiehlt sich **NICHT**, ein CDN zu stoppen, das mit einem HTTPS-SAN-Zertifikat konfiguriert ist, da HTTPS-Datenverkehr möglicherweise nach dem erneuten Aktivieren des CDN (Status `Aktiv`) nicht mehr aufgenommen wird. 
+* Ein CDN kann nur gestoppt werden, wenn es den Status `Aktiv` aufweist.
 
 **Schritt 1:**
 

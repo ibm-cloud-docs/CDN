@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ Die folgenden Attribute sind für die Zuordnungsklasse (Mapping) spezifisch:
 Die folgenden Attribute beziehen sich auf Cloud Object Storage (COS):  
 * `bucketName`: Der eindeutige Name Ihres Buckets für den S3-Objektspeicher.  
 * `fileExtension`: Die Dateierweiterungen, die zugelassen werden.
+
+Das folgende Attribut bezieht sich auf die Konfiguration des Hotlinkschutzes: 
+* `hotlinkProtection`: Weitere Informationen finden Sie in [Klasse für Hotlinkschutz](hotlink-protection-behavior.html). 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # Einführung
 
-IBM Cloud Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanforderungen für eine Reihe von Branchenlösungen genutzt werden, zu denen Medien, Unterhaltung, Software, Gaming, Bankwesen und E-Commerce zählen. IBM Cloud hat eine Partnerschaft mit Akamai geschlossen, um möglichst umfassende Content Delivery Network-Funktionen unter höchster Kosteneffizienz anbieten zu können. Im Rahmen dieser Partnerschaft werden Edge-Server in [36 Ländern](edge-servers.html#list-of-edge-servers) bereitgestellt, um die Inhalte denen möglichst nahe zu bringen, die sie benötigen: Ihren Benutzern.
+IBM Cloud Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanforderungen für eine Reihe von Branchenlösungen genutzt werden, zu denen Medien, Unterhaltung, Software, Gaming, Bankwesen und E-Commerce zählen. IBM Cloud hat eine Partnerschaft mit Akamai geschlossen, um möglichst umfassende Content Delivery Network-Funktionen unter höchster Kosteneffizienz anbieten zu können. Im Rahmen dieser Partnerschaft werden Edge-Server in mehr als [50 Ländern](edge-servers.html#list-of-edge-servers) bereitgestellt, um die Inhalte denen möglichst nahe zu bringen, die sie benötigen: Ihren Benutzern. 
 
 ## Vorbereitende Schritte
 
@@ -26,7 +26,7 @@ Falls Sie Hilfe bei der Erstellung eines Kontos zur Verwendung von IBM Cloud Con
 
 ## Lernprogramm
 
-[Hier finden Sie ein Lernprogramm](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
+[Hier finden Sie ein Lernprogramm](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
 
 ## Preisstruktur für CDN-Bandbreite (in US-Dollar)
 
