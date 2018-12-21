@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-26"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -17,6 +17,16 @@ lastupdated: "2018-09-26"
 # 새로운 기능
 
 IBM Cloud에서 2017년 9월 Akamai와 CDN 서비스를 출시했지만 여기에서 멈추지 않았습니다. 귀하와 귀하의 일반 사용자에게 더 나은 서비스를 제공하기 위해 계속하여 서비스를 개선하고 새로운 기능을 추가하고 있습니다. 주기적으로 새로운 기능을 확인하십시오.
+
+## 2018년 11월
+
+  * 핫 링크 보호 [기능 설명](feature-descriptions.html#hotlink-protection)(API를 통해 사용 가능)
+  
+## 2018년 10월
+
+  * [지원되는 원본 경로의 최대 수](known-limitations.html#known-limitations)가 25에서 75로 증가됨
+  * [원본 경로](how-to.html#adding-origin-path-details)를 더 이상 맵핑 경로 접두부로 시작할 필요가 없음
+  * 이제 가능한 최소 [TTL](how-to.html#setting-content-caching-time-using-time-to-live-) 시간 값이 0입니다. 이로 인해 연관된 TTL 경로 아래에 컨텐츠 원본의 쿠키가 보존됩니다.
 
 ## 2018년 9월
 

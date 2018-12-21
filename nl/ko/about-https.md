@@ -35,6 +35,6 @@ HTTPS에 대해 **와일드카드 인증서** 및 **SAN 인증서** 사용 중�
 >
 >HTTPS SAN 인증서를 사용하여 CDN을 주문하면 인증서를 요청하고 도메인 제어 유효성 검증(DCV)을 작성하는 프로세스를 진행합니다. DCV는 인증 기관에서 사용자가 도메인에 액세스하고 제어할 권한이 있도록 설정하는 데 사용하는 프로세스입니다. 이 단계를 완료하려면 조치가 필요합니다. 제어가 설정되고 나면 인증서가 전 세계 CDN 에지 서버에 배치됩니다. 인증서가 성공적으로 배치되고 나면 인증서 갱신이 자동으로 처리됩니다. 이 기능에 대한 자세한 정보는 [기능 설명](feature-descriptions.html#https-protocol-support)에 있습니다. 도메인 제어 유효성 검증 메소드는 [HTTPS용 도메인 제어 유효성 검증 완료](how-to-https.html#initial-steps-to-domain-control-validation) 페이지에서 자세히 설명합니다.
 
-**참고:** CDN이 RUNNING 상태에 도달하면, CDN 호스트 이름 CNAME 레코드를 DNS에 보관하십시오. CNAME 레코드가 제거되는 경우 3일 이내에 SAN 인증서에서 CDN 호스트 이름이 제거될 수 있습니다. 제거되는 경우 HTTPS 트래픽이 더 이상 해당 CDN 호스트 이름으로 제공되지 않습니다. 
+**참고:** CDN이 RUNNING 상태에 도달하면, CDN 호스트 이름 CNAME 레코드를 DNS에 보관하십시오. CNAME 레코드가 제거되는 경우 3일 이내에 SAN 인증서에서 CDN 호스트 이름이 제거될 수 있습니다. 제거되는 경우 HTTPS 트래픽이 더 이상 해당 CDN 호스트 이름으로 제공되지 않습니다.
 
 ![SAN 인증서를 사용하는 HTTPS 다이어그램](images/state-diagram-san.png)

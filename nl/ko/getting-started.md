@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # 시작하기
 
-IBM Cloud Content Delivery Network는 미디어, 엔터테인먼트, 소프트웨어, 게임, 금융 및 전자상거래를 포함한 다양한 업계 솔루션에 사용되어 사용자 비즈니스의 요구를 충족시킬 수 있습니다. IBM Cloud는 Akamai와 파트너 관계를 맺어 적정 가격으로 가장 포괄적인 Content Delivery Network 기능을 제공합니다. 이 파트너십을 통해서는 [36개 국가](edge-servers.html#list-of-edge-servers)에서 에지 서버를 제공하며 사용자가 가장 필요로 하는 곳과 가장 가까운 위치에서 컨텐츠를 제공합니다.
+IBM Cloud Content Delivery Network는 미디어, 엔터테인먼트, 소프트웨어, 게임, 금융 및 전자상거래를 포함한 다양한 업계 솔루션에 사용되어 사용자 비즈니스의 요구를 충족시킬 수 있습니다. IBM Cloud는 Akamai와 파트너 관계를 맺어 적정 가격으로 가장 포괄적인 Content Delivery Network 기능을 제공합니다. 이 파트너십을 통해서는 [50개 국가](edge-servers.html#list-of-edge-servers)에서 에지 서버를 제공하며 사용자가 가장 필요로 하는 곳과 가장 가까운 위치에서 컨텐츠를 제공합니다.
 
 ## 시작하기 전에
 
@@ -26,13 +26,13 @@ IBM Cloud Content Delivery Network 사용을 위한 계정을 얻는 데 도움�
 
 ## 튜토리얼
 
-IBM Cloud Object Storage의 Content Delivery Network 작성 방법에 대한 [튜토리얼](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
+IBM Cloud Object Storage의 Content Delivery Network 작성 방법에 대한 [튜토리얼](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)입니다.
 
-## CDN 대역폭 가격 책정(달러로 표시되는 요금)
+## CDN 대역폭 가격(달러로 표시되는 요금)
 
 IBM Cloud Content Delivery Network with Akamai에는 추가 스토리지 요금이 포함되지 않으며 사용하는 대역폭에 대해서만 요금을 지불합니다.
 
-**참고:** 가격 책정이 GB 단위의 월별 사용량별로 표시됩니다.
+**참고:** 가격이 GB 단위의 월별 사용량별로 표시됩니다.
 
 이 서비스를 시작하기 전에 옆으로 스크롤해서 전체 지역 표를 볼 수 있습니다.
 

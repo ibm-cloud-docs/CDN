@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ IBM Cloud Content Delivery Network 서비스의 주요 기능은 다음과 같�
   * 대형 파일 최적화
   * VoD(Video on Demand)
   * 지리적 액세스 제어
+  * 핫 링크 보호
 
 전체 기능 설명은 [이 문서](feature-descriptions.html#feature-descriptions)를 참조하십시오.
 
