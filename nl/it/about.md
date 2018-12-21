@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ Le funzioni chiave del servizio CDN (Content Delivery Network) IBM Cloud includo
   * Ottimizzazione dei file di grandi dimensioni
   * Video on-demand
   * Controllo dell'accesso geografico
+  * Hotlink Protection
 
 Consulta [questo documento](feature-descriptions.html#feature-descriptions) per le descrizioni complete delle funzioni.
 

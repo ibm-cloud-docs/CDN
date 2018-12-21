@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -56,7 +56,7 @@ Per impostazione predefinita, sia i numeri aggregati che i grafici visualizzano,
 
 ## Supporto dell'intestazione host (Host Header)
 
-Il server edge utilizza l'intestazione host (**Host Header**) quando comunica con l'host di origine. Questa funzione fornisce flessibilità alla modalità di configurazione del servizio web sull'host di origine. Se l'input dell'intestazione host non viene fornito, il servizio utilizza il nome host del server di origine come intestazione host HTTP predefinita se il server di origine viene specificato come nome host (piuttosto che come un indirizzo IP). Se l'intestazione host non viene fornita come input E il server di origine viene fornito come un indirizzo IP, il nome host CDN (detto anche nome dominio CDN) viene utilizzato come intestazione host HTTP predefinita.
+Il server edge utilizza l'intestazione host (**Host Header**) quando comunica con l'host di origine. Questa funzione fornisce flessibilità alla modalità di configurazione del servizio web sull'host di origine. Specificamente, abilita un caso d'uso in cui un cliente ha più server web configurati sullo stesso host di origine. Se l'input dell'intestazione host non viene fornito, il servizio utilizza il nome host del server di origine come intestazione host HTTP predefinita se il server di origine viene specificato come nome host (piuttosto che come un indirizzo IP). Se l'intestazione host non viene fornita come input E il server di origine viene fornito come un indirizzo IP, il nome host CDN (detto anche nome dominio CDN) viene utilizzato come intestazione host HTTP predefinita.
 
 ## Supporto del protocollo HTTPS
 
@@ -76,11 +76,11 @@ L'opzione **Respect Headers** (Rispetta intestazioni) consente alla configurazio
 
 Quando riceve una richiesta utente e il contenuto richiesto non è memorizzato nella cache, il server edge CDN si rivolge all'host di origine per recuperare il contenuto. Il contenuto viene quindi memorizzato in cache per la durata TTL (Time To Live) specificata per il contenuto. Se la richiesta utente viene ricevuta dopo la scadenza del TTL, il server edge si rivolge all'host di origine per recuperare il contenuto. Se il server di origine non è raggiungibile per qualche motivo (ad esempio l'host di origine è inattivo o si è verificato un problema di rete), il server edge fornisce il contenuto scaduto (obsoleto) alla richiesta. Questa funzione è supportata da Akamai e **non può** essere disattivata.
 
-## Argomenti di query della chiave della cache
+## Ottimizzazione delle chiavi della cache
 
-I server edge Akamai memorizzano in cache il contenuto in un **Archivio della cache**. Per utilizzare il contenuto dall'**Archivio della cache**, i server edge utilizzano una **Chiave della cache**. Di norma, una **Chiave della cache** viene generata in base a una parte dell'URL di un utente finale. In alcuni casi, l'URL contiene degli argomenti della funzione di query che sono diversi per i singoli utenti, ma il contenuto distribuito è lo stesso. Per impostazione predefinita, Akamai utilizza gli argomenti della funzione di query per generare la chiave della cache e, pertanto, per generare una chiave della cache univoca per ciascun utente. Questo metodo non è ottimale poiché fa in modo che il server edge contatti il server di origine per del contenuto che è già memorizzato nella cache utilizzando però una chiave della cache differente. La funzione **Ignore Query Args in Cache Key** (Ignora argomenti query nella chiave della cache) ti consente di specificare se gli argomenti di query devono essere ignorati quando si genera una chiave della cache. Questa funzione è valida per qualsiasi operazione di creazione (`create`) o di aggiornamento (`update`) di una configurazione di associazione di CDN, nonché per qualsiasi operazione di creazione (`create`) o aggiornamento (`update`) di un percorso di origine.
+I server edge Akamai memorizzano in cache il contenuto in un **Archivio della cache**. Per utilizzare il contenuto dall'**Archivio della cache**, i server edge utilizzano una **Chiave della cache**. Di norma, una **Chiave della cache** viene generata in base a una parte dell'URL di un utente finale. In alcuni casi, l'URL contiene degli argomenti della funzione di query che sono diversi per i singoli utenti, ma il contenuto distribuito è lo stesso. Per impostazione predefinita, Akamai utilizza gli argomenti della funzione di query per generare la chiave della cache e, pertanto, per generare una chiave della cache univoca per ciascun utente. Questo metodo non è ottimale poiché fa in modo che il server edge contatti il server di origine per del contenuto che è già memorizzato nella cache utilizzando però una chiave della cache differente. La funzione di **ottimizzazione delle chiavi della cache** ti consente di specificare quali argomenti della query includere/ignorare in fase di generazione di una chiave della cache. Questa funzione è valida per qualsiasi operazione di creazione (`create`) o di aggiornamento (`update`) di una configurazione di associazione di CDN, nonché per qualsiasi operazione di creazione (`create`) o aggiornamento (`update`) di un percorso di origine.
 
-**Nota:** il valore degli **Argomenti di query della chiave della cache** può essere configurato dalla scheda **Impostazioni** dopo la creazione di un'associazione CDN. Per il percorso di origine, questo valore può essere configurato durante le operazioni `create` o `update` di un percorso di origine.
+**Nota:** il valore **Cache Key Optimization** può essere configurato dalla scheda **Settings** dopo la creazione di un'associazione CDN. Per il percorso di origine, questo valore può essere configurato durante le operazioni `create` o `update` di un percorso di origine.
 
 ## Compressione del contenuto
 
@@ -107,7 +107,7 @@ Quando questa funzione è abilitata, fornire contenuto inferiore ai 10MB comport
 
 ## Video on-demand
 
-L'ottimizzazione delle prestazioni **Video on-demand** offre uno streaming di alta qualità su una gamma di tipi di rete. Avvalendosi della capacità della rete distribuita di distribuire il carico in modo dinamico, la CDN IBM Cloud con Akamai ti consente di eseguire rapidamente dei ridimensionamenti per vasti pubblici, che tu li abbia inclusi nei tuoi piani o meno.
+L'ottimizzazione delle prestazioni **Video on-demand** offre uno streaming di alta qualità su una gamma di tipi di rete. Avvalendosi delle impostazioni di controllo della cache preconfigurate e della capacità della rete distribuita di distribuire il carico in modo dinamico, la CDN IBM Cloud con Akamai ti consente di eseguire rapidamente dei ridimensionamenti per vasti pubblici, che tu li abbia inclusi nei tuoi piani o meno.
 
 **Video on-demand** è ottimizzato per la distribuzione di formati di streaming segmentati quali HLS, DASH, HDS e HSS. Lo streaming video live **non** è supportato, al momento. È possibile abilitare la funzione **Video On Demand** (Video on-demand) selezionando l'opzione dal menu a discesa in **Optimize for** (Ottimizza per) nella scheda Settings (Impostazioni) o mentre si crea un nuovo percorso di origine. Devi abilitare questa funzione solo quando ottimizzi la fornitura di file video.
 
@@ -120,3 +120,17 @@ L'access-type (tipo di accesso) `Allow` (Consenti) ti permette di consentire spe
 La modalità di funzionamento `Deny` (Nega), invece, blocca l'accesso al tuo servizio per il gruppo specificato, il che consente l'accesso per tutte le altre regioni non specificate. Ad esempio, se imposti l'access-type (tipo di accesso) del Controllo dell'accesso geografico su `Deny` (Nega) per i continenti Europa e Oceania, gli utenti in questi continenti **non** potranno utilizzare il tuo servizio mentre gli utenti in tutti gli altri continenti vi avranno accesso.
 
 Questa funzione è accessibile dalla pagina **Settings** (Impostazioni) della configurazione della tua CDN.
+
+## Hotlink Protection
+
+Hotlink Protection è una modalità di funzionamento basata sulle regole che ti consente di controllare se a specifici siti web è consentito o meno accedere al tuo contenuto dalla tua CDN. Il browser di norma include un'intestazione `Referer` quando una richiesta HTTP viene effettuata da un link su una pagina web e quando tale link punta a un asset remoto. Il link utilizzato da un sito web per accedere a un asset da un altro sito web è chiamato hotlink. Sono disponibili due tipi di modalità di funzionamento: **ALLOW** (CONSENTI) e **DENY** (RIFIUTA).
+
+Se il tuo `protectionType` è impostato su `ALLOW`:
+* Se il valore dell'intestazione `Referer` in una richiesta inviata alla tua CDN corrisponde a uno dei tuoi `refererValues` specificati, la tua CDN **fornirà** il contenuto richiesto.
+* Altrimenti, la tua CDN non fornirà il contenuto.
+
+Se il tuo `protectionType` è impostato su `DENY`:
+* Se il valore dell'intestazione `Referer` in una richiesta inviata alla tua CDN corrisponde a uno dei tuoi `refererValues` specificati, la tua CDN **non fornirà** il contenuto richiesto.
+* Altrimenti, la tua CDN fornirà il contenuto.
+
+**NOTA**: questa funzione è attualmente disponibile solo tramite la nostra API. Per ulteriori informazioni puoi visualizzare la [pagina dell'API](api.html#api-for-hotlink-protection). 
