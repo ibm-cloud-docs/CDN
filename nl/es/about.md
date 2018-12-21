@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-03"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -42,6 +42,7 @@ Las características principales del servicio IBM Cloud Content Delivery Network
   * Optimización de archivos de gran tamaño
   * Vídeo on Demand
   * Control de acceso geográfico
+  * Hotlink Protection
 
 Consulte [este documento](feature-descriptions.html#feature-descriptions) para ver la descripción completa de las características.
 

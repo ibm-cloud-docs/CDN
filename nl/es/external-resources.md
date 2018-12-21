@@ -15,7 +15,7 @@ lastupdated: "2018-10-02"
 
 # Recursos adicionales
 
-Estos recursos han sido creados por IBM y algunos de sus socios y clientes.
+Estos recursos han sido creados por IBM y por algunos de nuestros socios y clientes.
 
 ## Blogs de IBM Tech (sólo interno)
 

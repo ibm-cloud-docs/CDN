@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-11-28"
 
 ---
 
@@ -60,8 +60,7 @@ Seleccione el separador **Orígenes** y luego pulse el botón **Añadir origen**
 
 **Paso 3:**
 
-*Debe* proporcionar una vía de acceso. La vía de acceso *debe* empezar con la vía de acceso de CDN como prefijo, si CDN se ha creado con una vía de acceso.  
-  Por ejemplo, si la CDN se ha creado con una vía de acceso de `/examplePath`, la vía de acceso para el origen debe empezar con el prefijo `/examplePath/`. También puede proporcionar una cabecera de host.  
+*Debe* proporcionar una vía de acceso. También puede proporcionar una cabecera de host.  
 
    ![Orígenes: Añadir origen](images/add-origin-path.png)
 
@@ -172,7 +171,7 @@ Actualice los detalles de **Origen** u **Otras opciones** si es necesario y, a c
 
 Para utilizar objetos almacenados en IBM Cloud Object Storage, debe establecer el valor de la propiedad "acl" (es decir, la lista de control de accesos) para que cada objeto del grupo disponga de acceso "public-read".
 
-Consulte la sección Tools de IBM Cloud Object Storage Developer Center (https://developer.ibm.com/cloudobjectstorage/) para instalar las herramientas o clientes necesarios. Esta guía presupone que ha instalado la interfaz de línea de mandatos AWS oficial, que es compatible con la API de IBM Cloud Object Storage S3.
+Para instalar los clientes o herramientas necesarios, consulte la [sección IBM Cloud Object Storage Developer] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Esta guía presupone que ha instalado la interfaz de línea de mandatos AWS oficial, que es compatible con la API de IBM Cloud Object Storage S3.
 
 El código de ejemplo siguiente es una muestra sobre cómo definir el acceso "public-read" para todos los objetos del grupo mediante la interfaz de línea de mandatos.
 

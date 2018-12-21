@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ Los siguientes atributos son específicos de la clase Correlación:
 Los siguientes atributos están relacionados con Cloud Object Storage (COS):  
 * `bucketName`: nombre exclusivo del grupo para S3 Object Storage.  
 * `fileExtension`: extensiones de archivo permitidas.
+
+El atributo siguiente está relacionado con la configuración de Hotlink Protection:
+* `hotlinkProtection`: consulte la [clase hotlink protection](hotlink-protection-behavior.html) para ver más información.
