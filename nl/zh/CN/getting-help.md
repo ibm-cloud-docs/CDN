@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-11-14"
 
 
 ---
@@ -31,7 +31,7 @@ lastupdated: "2018-04-09"
 # 获得帮助和支持 
 {: #gettinghelp}
 
-上次更新时间：2018 年 4 月 9 日
+上次更新时间：2018 年 11 月 14 日
 {: .last-updated}
 
 如果在使用 CDN 时遇到问题或有任何疑问，可以通过搜索相关信息或者通过下面列出的其中一个论坛来问问题，从而获取帮助。您还可以开具支持凭单。
@@ -45,6 +45,6 @@ lastupdated: "2018-04-09"
 * 如果对服务和入门指示存有疑问，请使用 [IBM developerWorks dW Answers ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} 论坛。请包括“cdn”和“ibm-cloud”标记。
 
 请参阅[获取
-帮助](https://console.bluemix.net/docs/support/index.html#getting-help)了解有关如何使用论坛的更多详细信息。
+帮助](https://{DomainName}/docs/support/index.html#getting-help)了解有关如何使用论坛的更多详细信息。
 
-有关开具 IBM 支持凭单的信息，或有关支持级别和凭单严重性的信息，请参阅[联系支持人员](https://console.bluemix.net/docs/support/index.html#contacting-support)。
+有关开具 IBM 支持凭单的信息，或有关支持级别和凭单严重性的信息，请参阅[联系支持人员](https://{DomainName}/docs/support/index.html#contacting-support)。

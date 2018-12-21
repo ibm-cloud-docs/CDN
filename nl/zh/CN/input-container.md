@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -48,3 +48,6 @@ lastupdated: "2018-07-13"
 以下属性与 Cloud Object Storage (COS) 相关：  
 * `bucketName`：S3 Object Storage 的存储区的唯一名称。  
 * `fileExtension`：允许的文件扩展名。
+
+下列属性与配置热链接保护相关：
+* `hotlinkProtection`：请参阅[热链接保护类](hotlink-protection-behavior.html)以了解更多详细信息。

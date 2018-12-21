@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-13"
+lastupdated: "2018-11-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # 入门
 
-IBM Cloud Content Delivery Network (CDN) 可以用于包括媒体、娱乐、软件、游戏、银行和电子商务在内的各种行业解决方案，以满足企业的需求。IBM Cloud 已经与 Akamai 合作，提供最全面的 Content Delivery Network 功能，同时保持合理的价格。通过此合作伙伴关系，在超过 [36 个国家或地区](edge-servers.html#list-of-edge-servers)拥有边缘服务器，使内容最靠近您最需要处在的位置（您的用户）。
+IBM Cloud Content Delivery Network (CDN) 可以用于包括媒体、娱乐、软件、游戏、银行和电子商务在内的各种行业解决方案，以满足企业的需求。IBM Cloud 已经与 Akamai 合作，提供最全面的 Content Delivery Network 功能，同时保持合理的价格。通过此合作伙伴关系，在超过 [50 个国家或地区](edge-servers.html#list-of-edge-servers)拥有边缘服务器，使内容最靠近您最需要处在的位置（您的用户）。
 
 ## 开始之前
 
@@ -26,7 +26,7 @@ IBM Cloud Content Delivery Network (CDN) 可以用于包括媒体、娱乐、软
 
 ## 教程
 
-请参阅关于如何为 IBM Cloud Object Storage 创建 Content Delivery Network 的[教程](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)。
+请参阅关于如何为 IBM Cloud Object Storage 创建 Content Delivery Network 的[教程](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)。
 
 ## CDN 带宽定价（费率以美元显示）
 

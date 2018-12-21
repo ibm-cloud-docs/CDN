@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-26"
+lastupdated: "2018-11-02"
 
 ---
 
@@ -17,6 +17,16 @@ lastupdated: "2018-09-26"
 # 新增内容
 
 IBM Cloud 于 2017 年 9 月推出了基于 Akamai 的 CDN 服务，但我们并未就此止步。我们在不断改进该服务，为其添加新功能，以便更好地服务于您和您的最终用户。请定期查看以了解新增内容。
+
+## 2018 年 11 月
+
+  * 热链接保护[功能描述](feature-descriptions.html#hotlink-protection)（通过 API 提供）
+  
+## 2018 年 10 月
+
+  * 已将[支持的最大源路径数](known-limitations.html#known-limitations)从 25 增加到 75 
+  * [源路径](how-to.html#adding-origin-path-details)不再需要以映射路径前缀开头
+  * 最小可能 [TTL](how-to.html#setting-content-caching-time-using-time-to-live-) 时间值现在是 0。这样会保留关联的 TTL 路径下内容的源中的 cookie。
 
 ## 2018 年 9 月
 
