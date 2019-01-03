@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017,2018
-lastupdated: "2018-11-19"
+  years: 2017,2018, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -16,17 +16,17 @@ lastupdated: "2018-11-19"
 
 # Order a CDN
 
-Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/).
+Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [IBM Cloud Portal](https://cloud.ibm.com/login).
 
 ## Navigating to the CDN page:
 
 **Step 1:**
 
-Log in to your account from the [IBM Cloud Portal](https://www.ibm.com/cloud-computing/bluemix/)
+Log in to your account from the [IBM Cloud Portal](https://cloud.ibm.com/login)
 
 **Step 2:**
 
-Click on [IBM Cloud Catalog](https://console.bluemix.net/catalog/). From the left-hand navigation bar, select **Network**.
+Click on [IBM Cloud Catalog](https://cloud.ibm.com/catalog/). From the left-hand navigation bar, select **Network**.
 
    ![Bluemix CDN Navigation](images/bluemix_navigation.png)
 
