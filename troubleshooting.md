@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-07-13"
 
 # Troubleshooting
 
-In this document, you will find various ways to troubleshoot your CDN. If you need to contact support, be sure to provide your CDN's reference number.
+In this document, you will find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
 
 ## How do I know my CDN is working?
 Run the following `curl` command by replacing `http://your.cdn.domain/uri` with the respective file path on your CDN:

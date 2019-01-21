@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-20"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,12 +16,13 @@ lastupdated: "2018-11-20"
 
 # Using Cache Control to control an HTTP client's cache duration
 
-## Introduction
 When using a CDN, two levels of caching are available:
+
   * **Caching at the edge** occurs when a CDN edge server caches a piece of content from the origin.
   * **Caching downstream** from the edge network of servers occurs when an end-user or HTTP client, such as a requesting browser, caches a piece of content from an edge server.
 
 The method you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
+
   * Whether the [Respect Header setting](how-to.html#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content. 
 

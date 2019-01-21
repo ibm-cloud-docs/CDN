@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-02"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,8 +16,8 @@ lastupdated: "2018-11-02"
 
 # Known Limitations
 
-The following limitations apply to the new CDN service for the Akamai Vendor:
-* Purge of directory level content or multiple files is currently not supported.
-* Limit of 75 total number of Origins per CDN.
+The following limitations apply to the CDN service for the Akamai Vendor:
+* Purge of directory-level content or multiple files currently is not supported.
+* There's a limit of 75 as the total number of Origins per CDN.
 * HTTPS with DV SAN certificate is available only for new CDNs.
-* Hotlink Protection does not support `refererValues` URL match terms where the character set in front of the first `.` character contain `://`, for example `http://www.example.com` or `www.example.com http://www.example.com`
+* Hotlink Protection does not support `refererValues` URL match terms in which the character set in front of the first `.` character contains the grouping of characters `://`, for example `http://www.example.com` or `www.example.com http://www.example.com`

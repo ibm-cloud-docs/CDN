@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -26,7 +26,7 @@ A CDN achieves its purpose by caching web content on edge servers around the wor
 
 ## Features
 
-The key features of the IBM Cloud Content Delivery Network service include:
+The key features of the {{site.data.keyword.cloud}} Content Delivery Network service include:
   * Host Server Origin support
   * Object Storage Origin support
   * Support for Multiple Origins with distinct paths

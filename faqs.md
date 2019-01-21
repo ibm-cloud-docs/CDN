@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -30,7 +30,7 @@ A CDN achieves its purpose by caching web content on edge servers around the wor
 ## How is my IBM Cloud Content Delivery Network service account created?
 {: faq}
 
-Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network -> CDN page**, your account is created. If you are creating a CDN from the IBM cloud portal, when you click the **Create** button, under the **Catalog -> Network -> Content Delivery Network** page, your account is created.
+Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network -> CDN page**, your account is created. If you are creating a CDN from the {{site.data.keyword.cloud}} portal, when you click the **Create** button, under the **Catalog -> Network -> Content Delivery Network** page, your account is created.
 
 ## What do I do when my CDN is in CNAME Configuration Status?
 {: faq}
@@ -117,7 +117,7 @@ Omitting the slash, for example, using `www.example.com/images` will result in a
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
 {: faq}
 
-[Here's a tutorial](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
+[Here's a tutorial](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 {: faq}
@@ -137,7 +137,19 @@ For non-cacheable content, or any content that is not cached, cookies are preser
 ## How do I use the IBM Cloud Console to give other users permission to create or manage a CDN?
 {: faq}
 
-In the IBM Cloud Console, the account's Master User can provide other users with permission to create and manage a CDN. From the IBM Cloud Console main page, follow these steps to edit permissions:
+The account's Master User can provide other users with permission to create and manage a CDN.
+
+From the IBM Cloud console main page, follow these steps to edit permissions:
+ * Select the **Manage** tab
+ * Select **Access (IAM)**
+ * Click on the **Users** tab from left pane
+ * Click on the desired **User**
+ * Then select the **Classic infrastructure** tab
+ * Then under **Permissions** tab, expand the **Services** category
+ * Select **Manage CDN Account**
+ * Click **Save** button
+
+From the legacy console main page, follow these steps to edit permissions:
  * Select the **Account** tab
  * Select **Users -> User List**
  * Click on the desired **Username**
@@ -145,7 +157,24 @@ In the IBM Cloud Console, the account's Master User can provide other users with
  * Select the **Services** tab
  * Select **Manage CDN Account**
  * Click the **Edit Portal Permissions** button
- * Set the permissions that are needed.
+
+## Why is the Create button not shown or disabled on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
+{: faq}
+
+If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
+ * Open the left navigation pane by clicking the `triple bar` icon in top left corner of web page
+ * Select **Classic Infrastructure**
+ * Click on **Upgrade Account** button and follow the instructions
+
+If you are one of the account's secondary Users, then the account's Master User must give you the `Add/Upgrade Services` permission in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, the account's Master User should follow these steps to edit your permissions:
+ * Select the **Manage** tab
+ * Select **Access (IAM)**
+ * Click on the **Users** tab from left pane
+ * Click on the desired **User**
+ * Then select the **Classic infrastructure** tab
+ * Then under **Permissions** tab, expand the **Account** category
+ * Select **Add/Upgrade Services**
+ * Click **Save** button
 
 ## Why am I unable to reach my webpage through my CDN after configuring Hotlink Protection with `protectionType` `ALLOW`?
 {: faq}

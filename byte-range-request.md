@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-05-03"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -19,7 +19,7 @@ lastupdated: "2018-05-03"
 
 Using a byte-range request, you can retrieve partial content from an origin server. This document can help you understand the response status codes you might see.
 
-When a **Byte-range request** is sent using IBM Cloud CDN with Akamai, the user may receive a `200 (OK)` response code for the first request, and a `206` response code for all subsequent requests, because Akamai edge servers request content from the origin in compressed format. Therefore, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it forwards to the origin and requests the entire object. In return the origin serves the object without the content length header to Akamai, and the end-user is served the whole object even though it was a byte-range request. Thus the `200` Status code. On subsequent requests, the edge server has the object in its cache and serves the `206` status code.
+When a **Byte-range request** is sent using {{site.data.keyword.cloud}} CDN with Akamai, the user may receive a `200 (OK)` response code for the first request, and a `206` response code for all subsequent requests, because Akamai edge servers request content from the origin in compressed format. Therefore, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it forwards to the origin and requests the entire object. In return the origin serves the object without the content length header to Akamai, and the end-user is served the whole object even though it was a byte-range request. Thus the `200` Status code. On subsequent requests, the edge server has the object in its cache and serves the `206` status code.
 
 The **Range HTTP request** header indicates which part of the content the server should return. Several parts can be requested with one range header at once, and the server may send back these ranges in a multipart response. If the server sends back ranges, it responds with a 206 (Partial Content) status.
 

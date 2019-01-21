@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-11-02"
 
 # Feature Descriptions
 
-This page highlights many of the features included with IBM Cloud CDN powered by Akamai.
+This page highlights many of the features included with {{site.data.keyword.cloud}} CDN powered by Akamai.
 
 ## Host Server Origin support
 
@@ -26,7 +26,7 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access.
 
-This tutorial on [How to set up IBM Cloud Object Storage with CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
+This tutorial on [How to set up IBM Cloud Object Storage with CDN](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
 
 ## Support for Multiple Origins with distinct paths
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-10-04"
 
 # Completing Domain Control Validation for HTTPS with DV SAN
 
-The following diagram outlines the various states your CDN will enter from the time it is created, until it gets to running.
+The following diagram outlines the various states your CDN will enter from the time it is created, until it gets to running status.
 
   ![SAN state diagram](images/state-diagram-san.png)
 
@@ -24,7 +24,7 @@ The following diagram outlines the various states your CDN will enter from the t
 
 **Step 1:**
 
-After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, IBM Cloud CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the Certificate Authority (CA).
+After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the Certificate Authority (CA).
 
   * During this time, the CDN status shows as **Requesting Certificate**.
 

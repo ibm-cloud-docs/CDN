@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2019-01-02"
 
 # Order a CDN
 
-Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [IBM Cloud Portal](https://cloud.ibm.com/login).
+Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Portal](https://cloud.ibm.com/login).
 
 ## Navigating to the CDN page:
 

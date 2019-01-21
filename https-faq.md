@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-13"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-11-13"
 ## For my CDN, what is the difference between HTTPS with Wildcard Certificate and HTTPS with SAN certificate?
 {: faq}
 
-With Wildcard certificate, all customers use the same certificate deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdnedge.bluemix.net`, must be used to access the service. For example, `https://www.example-cname.cdnedge.bluemix.net`
+With Wildcard certificates, all customers use the same certificate deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdnedge.bluemix.net`, must be used for access to the service. For example, `https://www.example-cname.cdnedge.bluemix.net`
 
 In the case of SAN certificate, multiple customer domains share a single SAN certificate by adding their domain names into the SAN entries. The service can then be accesses using the hostname, for instance `https://www.example.com`
 
@@ -59,7 +59,7 @@ No, a wildcard mapping cannot be changed to SAN certificate at this time.
 
 A Certificate Authority (CA) is an entity that issues Digital Certificates.
 
-## Which CA does IBM Cloud CDN service for issuing a DV SAN certificate?
+## Which CA does {{site.data.keyword.cloud}} CDN service for issuing a DV SAN certificate?
 {: faq}
 
 IBM Cloud CDN service uses LetsEncrypt Certficate Authority.

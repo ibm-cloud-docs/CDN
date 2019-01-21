@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-24"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -28,7 +28,7 @@ Directly beneath the overview, you will see a graphical representation of Total 
 
 ## Is there a minimum number of days for which I can view metrics? Is there a maximum?
 
-There are a minimum and a maximum number of days for which you can view metrics using IBM Cloud Content Delivery Network with Akamai. Metrics can be gathered for a minimum of 7 days. Metrics can be viewed for a maximum of 90 days. For those using the API, it is recommended to use 89 days as the maximum, to account for any differences in time zones.
+There are a minimum and a maximum number of days for which you can view metrics using {{site.data.keyword.cloud}} Content Delivery Network with Akamai. Metrics can be gathered for a minimum of 7 days. Metrics can be viewed for a maximum of 90 days. For those using the API, it is recommended to use 89 days as the maximum, to account for any differences in time zones.
 
 ## Why is the hit ratio non-zero when total hits are zero?
 Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:

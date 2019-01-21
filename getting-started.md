@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -16,11 +16,11 @@ lastupdated: "2018-11-14"
 
 # Getting Started
 
-IBM Cloud Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
+{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 
-Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through your [IBM Cloud Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai), or through the new [IBM Cloud CDN Console](https://www.ibm.com/cloud/cdn), depending on your preference.
+Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the new [IBM Cloud CDN Console](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
 
 If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
 

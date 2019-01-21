@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2018-11-14"
 # Input Container
 The Input Container is a collection utilized by both the Mapping and (Origin) Path classes.  It provide a consistent set of input attributes for both classes.
 
-* `vendorName`: The name of a valid IBM Cloud CDN provider.
+* `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.
 
 The following attributes are common to the Mapping and (Origin) Path classes:

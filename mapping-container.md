@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -19,7 +19,7 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collectio
 
 class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 
-* `vendorName`: The name of a valid IBM Cloud CDN provider.
+* `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.
 * `uniqueId`: A 10-digit, system-generated, identifier that is unique to each mapping. Generated when a mapping is created.
 * `domain`: Primary CDN name. Also referred to as `hostname`.
 * `protocol`: Protocol used to set up services. It can be HTTP, HTTPS or a combination of the two, HTTP_AND_HTTPS.
