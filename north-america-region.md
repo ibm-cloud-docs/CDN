@@ -6,7 +6,8 @@ lastupdated: "2018-07-26"
 
 ---
 
-## North American region includes:
+# North American region
+{: #north-american-region}
 
 * Antigua and Barbuda
 * Aruba

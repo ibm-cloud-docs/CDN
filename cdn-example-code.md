@@ -20,7 +20,7 @@ This document contains example API calls and the resulting output for numerous C
 
 ## General steps needed for all API calls
 
-The pre-requisite is to download and install the Soap Client from https://github.com/softlayer/softlayer-api-php-client
+The pre-requisite is to download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/softlayer/softlayer-api-php-client)
 
   * You need to get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and may need to be modified appropriately. In PHP the statement will look similar to this: `require_once './../vendor/autoload.php';`
 
@@ -28,7 +28,7 @@ The pre-requisite is to download and install the Soap Client from https://github
       require_once __DIR__.'/vendor/autoload.php';
       ```
 
-  * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Getting Started](https://softlayer.github.io/article/getting-started/) page, under "Getting Your API Key".
+  * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/article/getting-started/) page, under "Getting Your API Key".
 
       ```php
       $apiUsername = '<Your username>' ;
@@ -71,7 +71,7 @@ Array
 
 ## Example Code to Verify Order
 
-The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` will be successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
+The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` will be successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
 In this case, it is the `SoftLayer_Product_Order` class which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Prior to the call to `verifyOrder`, you need to build the `$orderObject` using the `SoftLayer_Product_Package`.
 
@@ -126,7 +126,7 @@ catch (\Exception $e) {
 
 ## Example code to Place Order
 
-This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
+This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
 
 ```php
 
@@ -182,7 +182,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-**NOTE**: if you choose to provide a custom CNAME, it **must** end with `.cdnedge.bluemix.net` or an error will be thrown. See [this description](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+**NOTE**: if you choose to provide a custom CNAME, it **must** end with `.cdnedge.bluemix.net` or an error will be thrown. See [this description](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
 
 ```php
 
@@ -324,7 +324,7 @@ Array
 ```
 {: codeblock}
 
-To be sure your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output should look similar to this:
+To be sure your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output should look similar to this one:
 
 ```
 ;; ANSWER SECTION:

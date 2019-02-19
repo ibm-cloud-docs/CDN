@@ -18,7 +18,7 @@ lastupdated: "2018-11-01"
 
 The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
 
-class `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one the of the terms in `refererValues`. The opposite will occur when there is no match.
   * Possible value for protectionType:
@@ -41,7 +41,7 @@ class `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
     * ` `
       * Empty refererValues
     * `domain1.exa}mple.com domain1.example.com`
-      * Using character(s) not specified in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2)
+      * Using character(s) not specified in [RFC-3986 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc3986#section-2)
     * `www.example.com/path&`
       * `&` character is not supported
     * `www.example.org http://www.example.com`

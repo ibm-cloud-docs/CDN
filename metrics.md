@@ -33,12 +33,12 @@ There are a minimum and a maximum number of days for which you can view metrics 
 ## Why is the hit ratio non-zero when total hits are zero?
 Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
 
-> ((Edge hits - Ingress hits)/Edge hits) * 100
+`((Edge hits - Ingress hits)/Edge hits) * 100`
 
 where:
 
-Edge hits is defined as "All hits to the edge servers from the end-users"  
-Ingress hits is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers"
+_Edge hits_ is defined as "All hits to the edge servers from the end-users."  
+_Ingress hits_ is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers."
 
 Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
 

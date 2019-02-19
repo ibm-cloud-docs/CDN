@@ -27,7 +27,7 @@ Once you've created a CDN, it appears on your CDN dashboard. Here you'll see the
 
 If you ordered your CDN with HTTP or HTTPS with Wildcard certificate, you can proceed to Step 1.
 
-If you created a CDN with HTTPS DV SAN certificate, additional steps may be needed to verify your domain and can be found on the [Completing Domain Control Validation for HTTPS](how-to-https.html#completing-domain-control-validation-for-https) page.
+If you created a CDN with HTTPS DV SAN certificate, additional steps may be needed to verify your domain and can be found on the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https) page.
 
 **Step 1:**
 
@@ -47,7 +47,7 @@ Any time after you've configured the CNAME with your DNS provider, you may check
 
 When the CNAME chaining is complete, selecting **Get Status** will change the status to *RUNNING*, and the CDN is ready to use.
 
-Congratulations! Your CDN is now running. From here, the [Manage your CDN](how-to.html#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](how-to.html#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](how-to.html#purging-cached-content), and [Adding Origin Path details](how-to.html#adding-origin-path-details).
+Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](/docs/infrastructure/CDN/how-to.html#purging-cached-content), and [Adding Origin Path details](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Starting CDN
 

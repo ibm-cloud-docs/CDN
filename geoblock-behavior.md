@@ -17,7 +17,7 @@ lastupdated: "2018-07-25"
 # Geoblocking class
 The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` class contains the attributes utilized by our Geo-blocking APIs. Each one of the Geo-blocking APIs returns an object of this type and are used to set Geographical Access Control behaviors on a CDN.
 
-class `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `accessType`: specifies whether a rule should `ALLOW` or `DENY` a given region.
 * `regionType`: the type of region to apply the geoblocking rule to, either `CONTINENT` or `COUNTRY_OR_REGION`

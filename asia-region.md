@@ -7,7 +7,8 @@ lastupdated: "2018-07-26"
 ---
 
 
-## Asia region includes:
+# Asia region
+{: #asia-region}
 
 * Afghanistan
 * American Samoa

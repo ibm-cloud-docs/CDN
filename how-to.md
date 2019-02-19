@@ -13,6 +13,7 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Manage your CDN
 
@@ -78,11 +79,11 @@ Select either **Server** or **Object Storage**.
 
   * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
 
-    * Choose **Optimization** options from the drop-down menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](feature-descriptions.html#large-file-optimization) and [Video on Demand](feature-descriptions.html#video-on-demand) provide further information.
+    * Choose **Optimization** options from the drop-down menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) and [Video on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) provide further information.
 
         ![Performance configuration options](images/performance-config-options.png)
 
-    * Choose **Cache Key** options from the drop-down menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](feature-descriptions.html#cache-key-query-args) in the feature description.
+    * Choose **Cache Key** options from the drop-down menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) in the feature description.
 
         ![Cache key options](images/cache-key-options.png)
 
@@ -116,7 +117,7 @@ Select the **Purge** tab.
 
 **Step 3:**
 
-Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see the [Rules and Naming Conventions](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
+Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see the [Rules and Naming Conventions](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
 
 **Step 4:**
 
@@ -171,7 +172,7 @@ Update the **Origin** or **Other Options** details if needed, then click the **S
 
 To make use of objects stored in IBM Cloud Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
 
-To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
+To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
 
 The example code below shows how to set "public-read" access for all the objects in your bucket, using the command line interface.
 

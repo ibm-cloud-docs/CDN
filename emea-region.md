@@ -15,8 +15,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # EMEA Region
+{: #emea-region}
 
-## Europe, Middle East, and Africa region includes:
+EMEA is an abbreviation for Europe, Middle East, and Africa.
+
+## Europe, Middle East, and Africa region
   * Albania
   * Algeria
   * Andorra

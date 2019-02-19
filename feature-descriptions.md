@@ -13,6 +13,7 @@ lastupdated: "2019-01-18"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Feature Descriptions
 
@@ -20,13 +21,13 @@ This page highlights many of the features included with {{site.data.keyword.clou
 
 ## Host Server Origin support
 
-IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. Please see the [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for supported port numbers/ranges.
+IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. Please see the [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for supported port numbers/ranges.
 
 ## Object Storage Origin support
 
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access.
 
-This tutorial on [How to set up IBM Cloud Object Storage with CDN](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) provides more detailed information.
+This tutorial on [How to set up IBM Cloud Object Storage with CDN](/docs/tutorials/static-files-cdn.html) provides more detailed information.
 
 ## Support for Multiple Origins with distinct paths
 
@@ -60,9 +61,9 @@ The Edge server uses the **Host Header** when communicating with the Origin host
 
 ## HTTPS Protocol support
 
-CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](about-https.html#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](about-https.html#subject-alternate-name-san-certificate-support). This type also will be referred to as a _SAN certificate_ in this documentation.
+CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support). This type also will be referred to as a _SAN certificate_ in this documentation.
 
-The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](how-to-https.html) during configuration. No cost is associated with using either of these certificates. Please refer to the [Troubleshooting document](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) to understand the implication of selecting a given Certificate type.
+The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](/docs/infrastructure/CDN/how-to-https.html) during configuration. No cost is associated with using either of these certificates. Please refer to the [Troubleshooting document](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) to understand the implication of selecting a given Certificate type.
 
 The Origin Host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized Certificate Authority (CA).
 
@@ -133,4 +134,4 @@ If your `protectionType` is set to `DENY`:
 * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, then your CDN **will not** serve the content requested.
 * Otherwise, your CDN will serve the content.
 
-**NOTE**: This feature is currently available only through our API. You can view the [API page](api.html#api-for-hotlink-protection) for more information.
+**NOTE**: This feature is currently available only through our API. You can view the [API page](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection) for more information.

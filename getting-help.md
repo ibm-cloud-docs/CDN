@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -45,4 +46,4 @@ When using the forums to ask a question, tag your question so that it is seen by
 
 See [Getting help](https://{DomainName}/docs/support/index.html#getting-help) for more details about using the forums.
 
-For information about opening an {{site.data.keyword.cloud}} support ticket, or about support levels and ticket severities, see [Contacting support](https://{DomainName}/docs/support/index.html#contacting-support).
+For information about opening an {{site.data.keyword.cloud}} support ticket, or about support levels and ticket severities, see [Contacting support](/docs/get-support?topic=get-support-getting-customer-support).

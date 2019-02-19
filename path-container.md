@@ -17,7 +17,7 @@ lastupdated: "2017-11-14"
 # Path (Origin) Container
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` collection contains the attributes utilized by our (Origin) Path APIs. Each of the Path APIs returns a collection of this type.
 
-class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: The unique id of the mapping to which this Origin Path belongs.  
 * `path`:  Path relative to the domain that can be used to reach this Origin.  

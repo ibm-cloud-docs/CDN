@@ -212,9 +212,9 @@ However, other browsers on desktop devices may also need support from added Java
 ## Configure the CDN
 Now, let's connect the origin to the CDN to serve content worldwide with optimized throughput, minimized latency, and increased performance.
 
-First, [order](how-to-order.html#order-a-cdn) a CDN.
+First, [order](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) a CDN.
 
-Next, either [configure your CDN](how-to.html#updating-cdn-configuration-details) or [add an origin](how-to.html#adding-origin-path-details).
+Next, either [configure your CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) or [add an origin](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
 
 Finally, under `Optimize For`, select `Video on demand optimization`.
 

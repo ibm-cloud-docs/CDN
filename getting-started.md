@@ -17,31 +17,19 @@ lastupdated: "2019-01-18"
 
 # Getting Started
 
-{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
+{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 
-Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the new [IBM Cloud CDN Console](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
+Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the [IBM Cloud CDN Console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
 
-If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
+If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative ![External link icon](../../icons/launch-glyph.svg "External link icon")]](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
 
 ## Tutorial
 
-[Here's a tutorial](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
+[Here's a tutorial](/docs/tutorials/static-files-cdn.html) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
-## CDN Bandwidth Pricing (Rates shown in USD)
+## Next steps
 
-IBM Cloud Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
+Check out our [pricing](/docs/infrastructure/CDN?topic=CDN-pricing#pricing), and then [order your CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn).
 
-**NOTE:** Pricing is shown per GB of monthly usage.
-
-You can scroll sideways to see the full geographic table prior to getting started using this service.
-
-|Per Month| [North America](north-america-region.html) | [Europe, Middle East, Africa](emea-region.html) | [Asia](asia-region.html) | Japan | [South America](south-america-region.html) | Australia, New Zealand | India |
-|-------|-----|-----|-----|-----|-----|----|-----|
-|First 10 TB| 0.085 | 0.085 | 0.14 | 0.14 | 0.25 | 0.14 | 0.17 |
-|10 - 250 TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |
-|250 - 500 TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
-|500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
-|\>3 PB| 0.02 | 0.02 | 0.06 | 0.06 | 0.125 | 0.085 | 0.085 |
-* select a region to see countries/territories in that region

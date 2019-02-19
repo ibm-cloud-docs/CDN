@@ -18,7 +18,7 @@ lastupdated: "2019-01-18"
 The `SoftLayer_Container_Network_CdnMarketplace_Vendor` collection contains the attributes utilized by our Vendor APIs.
 
 
-class `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
 * `vendorName`: The name of a current {{site.data.keyword.cloud}} CDN provider.  
 * `featureSummary`: A brief summary of the vendor features.  
 * `features`: A list of features which are supported by the vendor.  

@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Troubleshooting
+{: #troubleshooting}
 
 In this document, you will find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
 
@@ -60,12 +61,12 @@ This is the error you may see: `503 Service Unavailable`.
 In conjunction with the 503 error, you may also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number may vary). In this case, the reference number in the error string translates to a SSL handshake failure.
 
 To correct the issue, ensure that your Origin server's SSL certificate(s) meets the following criteria:
-  * The certificate **must** be issued by a Certification Authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
+  * The certificate **must** be issued by a Certification Authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link ![External link icon](../../icons/launch-glyph.svg "External link icon")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
   * It **must** match the *Host header* configured on the CDN
   * It must **not** be self-signed
   * It must **not** be expired
 
-If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](getting-help.html#gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
+If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/infrastructure/CDN/getting-help.html#gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
 
