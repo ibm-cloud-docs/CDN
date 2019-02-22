@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,7 +15,8 @@ lastupdated: "2019-01-18"
 {:download: .download}
 {:faq: data-hd-content-type='faq'}
 
-# FAQ for HTTPS 
+# FAQ for HTTPS
+{: #faq-for-https}
 
 ## For my CDN, what is the difference between HTTPS with Wildcard Certificate and HTTPS with SAN certificate?
 {:faq}

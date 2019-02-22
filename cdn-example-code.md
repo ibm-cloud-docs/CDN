@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Code Examples Using the CDN API
+{: #code-examples-using-the-cdn-api}
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
 

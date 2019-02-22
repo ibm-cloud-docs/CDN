@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,7 +14,9 @@ lastupdated: "2019-01-18"
 {:tip: .tip}
 {:download: .download}  
 
-# Mapping Container  
+# Mapping Container
+{: #mapping-container}
+
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collection contains the attributes utilized by our Mapping APIs. Each of the Mapping APIs returns a collection of this type.
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:

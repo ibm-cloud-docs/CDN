@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,8 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Path (Origin) Container
+{: #path-origin-container}
+
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` collection contains the attributes utilized by our (Origin) Path APIs. Each of the Path APIs returns a collection of this type.
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  

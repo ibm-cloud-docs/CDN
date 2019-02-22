@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2019-01-18"
 {:tip: .tip}
 
 # Additional Resources
+{: #additional-resources}
 
 These resources are created by {{site.data.keyword.cloud}} and some of our partners and customers.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,8 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Input Container
+{ #input-container}
+
 The Input Container is a collection utilized by both the Mapping and (Origin) Path classes.  It provides a consistent set of input attributes for both classes.
 
 * `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.

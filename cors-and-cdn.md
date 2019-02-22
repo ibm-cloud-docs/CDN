@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-26"
 {:download: .download}
 
 # CORS and CORS Requests Through Your CDN
+{ #cors-and-cors-requests-through-your-cdn}
 
 Cross Origin Resource Sharing (CORS) is a mechanism used by browsers, primarily to validate permissions for access to content from a different origin.
 
@@ -23,7 +24,7 @@ When a browser loads a webpage, it enforces the **Same-origin Policy**, which me
 
 This security mechanism exists only if an application has or is an HTTP client, and if that application implements CORS. Nearly all modern browsers, such as Chrome, Firefox, and Safari,  implement CORS.
 
-To clarify, **an origin with respect to CORS does not have to be the same as a CDN origin**. An origin in CORS is defined by a URI scheme, domain, and any possible port number. For example https://www.example.com:1443 is different origin than http://www.example.com. And so, a CDN can also be considered as a CORS origin from a browser's perspective.
+To clarify, **an origin with respect to CORS does not have to be the same as a CDN origin**. An origin in CORS is defined by a URI scheme, domain, and any possible port number. For example `https://www.example.com:1443` is different origin than `http://www.example.com`. And so, a CDN can also be considered as a CORS origin from a browser's perspective.
 
 ## How CORS works
 
@@ -185,7 +186,7 @@ http {
 }
 ```
 
-In the previous example, the `map` directive is used to avoid overusing the `if` Nginx statement. Now, when a CORS request is made to this server and matches that URI path, the server responds with the `Access-Control-Allow-Origin` header containing the value "http://www.example.com", "https://cdn.example.com", or "http://dev.example.com", etc. when the content is requested from "http://www.example.com", "https://cdn.example.com", "http://dev.example.com", and so forth.
+In the previous example, the `map` directive is used to avoid overusing the `if` Nginx statement. Now, when a CORS request is made to this server and matches that URI path, the server responds with the `Access-Control-Allow-Origin` header containing the value `http://www.example.com`, `https://cdn.example.com`, or `http://dev.example.com`, etc. when the content is requested from `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, and so forth.
 
 ## How to set up CORS for CDN
 ![cors-through-cdn](/images/cors-through-cdn.png)

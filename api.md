@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,8 @@ lastupdated: "2018-11-14"
 {:download: .download}
 
 
-
 # CDN API Reference
+{: #cdn-api-reference}
 
 The {{site.data.keyword.BluSoftlayer_notm}} Application Programming Interface (commonly called the SLAPI), provided by {{site.data.keyword.cloud}}, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.BluSoftlayer_notm}} backend system.
 

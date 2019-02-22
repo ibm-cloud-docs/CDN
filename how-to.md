@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-11-28"
 {:DomainName: data-hd-keyref="DomainName"}
 
 # Manage your CDN
+{: #manage-your-cdn}
 
 This document describes common tasks for managing your CDN.
 

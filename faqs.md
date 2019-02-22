@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -17,6 +17,7 @@ lastupdated: "2019-01-18"
 {:DomainName: data-hd-keyref="DomainName"}
 
 # FAQs
+{: #faqs}
 
 ## What is a Content Delivery Network (CDN)?
 {: faq}

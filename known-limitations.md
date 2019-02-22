@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Known Limitations
+{: #known-limitations}
 
 The following limitations apply to the CDN service for the Akamai Vendor:
 * Purge of directory-level content or multiple files currently is not supported.

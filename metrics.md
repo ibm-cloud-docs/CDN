@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Metrics
+{: #metrics}
 
 When you first select your CDN from the list, the Overview page opens. Here you can see the Total Bandwidth, Total Hits and Hit Ratio for the selected time period (default is 30 days).
 

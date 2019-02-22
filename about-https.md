@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,12 +16,15 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # About HTTPS
+{: #about-https}
 
 {{site.data.keyword.cloud}} offers two ways to secure your CDN with HTTPS - Wildcard Certificate and Domain Validation (DV) SAN Certificate. Both HTTPS options can be configured by selecting **HTTPS Port** when configuring your CDN. The default HTTPS Port is 443, or you can choose a different port number to route your HTTPS traffic through. A list of allowed port numbers can be found in the [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
 
 To decide between using **Wildcard Certificate** and **SAN Certificate** for HTTPS, answer this question: Do you want to serve HTTPS traffic from the CDN CNAME or the CDN Domain Name? If you would like to serve HTTPS traffic from the CNAME, select **Wildcard Certificate**. If you want to serve HTTPS traffic from the CDN Domain Name, select **SAN certificate**.
 
 ## Wildcard Certificate support
+{: #wildcard-certificate-support}
+
 The Wildcard certificate is the simplest way to deliver web content to your end-users securely. The full CDN CNAME, including the Wildcard certificate suffix, **must** be used as the service entry point (for example, `https://example.cdnedge.bluemix.net`) in order to use the Wildcard certificate.
 
 IBM Cloud CDN uses the Wildcard certificate `*.cdnedge.bluemix.net`. The CNAME, regardless of whether it was created for you or provided by you, and ending in suffix `*.cdnedge.bluemix.net` is added to the wildcard certificate maintained on the CDN Edge server. And thus CNAME becomes the only way for end users to use HTTPS for your CDN.

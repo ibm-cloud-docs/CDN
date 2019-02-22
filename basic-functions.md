@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Getting your CDN to Running Status
+{: #getting-your-cdn-to-running-status}
 
 Learn how to get your CDN to a RUNNING state by following these guidelines. This document also tells you how to start and stop your CDN.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Completing Domain Control Validation for HTTPS with DV SAN
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
 The following diagram outlines the various states your CDN will enter from the time it is created, until it gets to running status.
 

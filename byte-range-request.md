@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2019-01-18"
 
 
 # Working with Byte-range Requests
+{: #working-with-byte-range-requests}
 
 Using a byte-range request, you can retrieve partial content from an origin server. This document can help you understand the response status codes you might see.
 

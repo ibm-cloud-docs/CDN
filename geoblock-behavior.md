@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,8 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Geoblocking class
+{: #geoblocking-class}
+
 The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` class contains the attributes utilized by our Geo-blocking APIs. Each one of the Geo-blocking APIs returns an object of this type and are used to set Geographical Access Control behaviors on a CDN.
 
 **class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:

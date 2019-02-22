@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -17,6 +17,7 @@ lastupdated: "2019-01-18"
 {:DomainName: data-hd-keyref="DomainName"}
 
 # Pricing
+{: #pricing}
 
 Bandwidth pricing for {{site.data.keyword.cloud}} Cntent Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table prior to getting started using this service.
 

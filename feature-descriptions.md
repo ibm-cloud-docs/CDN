@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2019-01-18"
 {:DomainName: data-hd-keyref="DomainName"}
 
 # Feature Descriptions
+{: #feature-descriptions}
 
 This page highlights many of the features included with {{site.data.keyword.cloud}} CDN powered by Akamai.
 

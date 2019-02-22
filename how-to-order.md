@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Order a CDN
+{ #order-a-cdn}
 
 Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Console](https://cloud.ibm.com/login).
 

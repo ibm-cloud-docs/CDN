@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Rules and Naming Conventions
+{ #rules-and-naming-conventions}
 
 ## What are the rules for the CDN Hostname?
 The CDN `Hostname` input string **must**:

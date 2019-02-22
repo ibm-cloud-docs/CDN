@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2019-01-18"
 {:download: .download}
 
 # Using Cache Control to control an HTTP client's cache duration
+{: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
 When using a CDN, two levels of caching are available:
 

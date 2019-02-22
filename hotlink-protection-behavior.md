@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Hotlink Protection class
+{: #hotlink-protection-class}
 
 The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
 
