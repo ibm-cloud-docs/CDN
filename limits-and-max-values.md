@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: limits, maximum, values, time to live, entries, large file, size, optimization, downloads, years
+
+subcollection: CDN
 
 ---
 
@@ -25,6 +29,6 @@ The maximum value for Time To Live is 2,147,483,647 seconds, which equates to ro
 
 Yes, the combined limit is 75 entries per CDN.
 
-## What is the largest file size that can be delivered via Akamai CDN?
+## What is the largest file size that can be delivered through Akamai CDN?
 
 Attempts to retrieve or deliver files larger than 1.8GB will receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320GB are possible.

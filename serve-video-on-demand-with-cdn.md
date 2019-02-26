@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -36,6 +40,8 @@ $ sudo apt-get update
 ```
 
 ## Prepare Video Files
+{: #prepare-video-files}
+
 In this guide, we'll use `ffmpeg` to prepare the video files. It is a powerful tool for multimedia files that can convert, mux, demux, filter, and so forth, through its various commands.
 
 First, we'll obtain `ffmpeg`.
@@ -45,7 +51,7 @@ $ sudo apt-get -y install ffmpeg
 
 HLS works with two types of files: `.m3u8` and `.ts`. You can think of the `.m3u8` file as the "playlist." At the beginning of the video stream, this file is the first one that is fetched.  The playlist then informs the video player about the video fragments it should fetch, and it provides other data on how to play the streamed content successfully. The `.ts` files are the video "fragments." These fragments are fetched and played by the video player according to details given in the "playlist."
 
-Now, let's check and see the format, bitrate, and other information, for the video and audio streams of our source `.mp4` video.
+Now, let's check and see the format, bit rate, and other information, for the video and audio streams of our source `.mp4` video.
 
 ```
 $ ffprobe test-video.mp4 
@@ -138,6 +144,8 @@ test-video11.ts
 For more complex use cases--such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so forth--`ffmpeg` has many more argument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Prepare the Origin
+{: #prepare-the-origin}
+
 ### Server
 If you're using this server as an additional origin under a second domain from which to stream these HLS, you may need to configure the server to return CORS response headers for potential browser access.
 

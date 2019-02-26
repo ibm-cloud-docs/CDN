@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
+
+subcollection: CDN
 
 ---
 
@@ -45,6 +49,7 @@ After saving, you can **Edit** or **Delete** the TTL setting using the overflow 
   * TTL values can be set only for a specific file name or directory. Regular expressions are not supported, because they may create unpredictable behavior.
 
 ## Adding Origin Path details
+{: #adding-origin-path-details}
 
 When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.
 
@@ -103,6 +108,7 @@ After adding, you can  **Edit** or **Delete** the Origin using the overflow menu
   ![Edit or delete Origin](images/edit-delete-origin.png)
 
 ## Purging Cached Content
+{: #purging-cached-content}
 
 After your CDN is running, you can purge cached content from the Vendor's server.
 
@@ -129,6 +135,7 @@ After purging, the activity is listed under **Purge Activity**. You can **Redo p
    **NOTE:** If there are more than 15 purges, Purge Activity is trimmed every 15 days automatically.
 
 ## Updating CDN Configuration details
+{: #updating-cdn-configuration-details}
 
 After your CDN is running, you can update CDN configuration details.
 
@@ -170,6 +177,7 @@ Update the **Origin** or **Other Options** details if needed, then click the **S
    ![Save button](images/save-button.png)
 
 ## Configure IBM Cloud Object Storage for CDN
+{: #configure-ibm-cloud-object-storage-for-cdn}
 
 To make use of objects stored in IBM Cloud Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
 

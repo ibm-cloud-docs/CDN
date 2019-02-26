@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+
+subcollection: CDN
 
 ---
 
@@ -15,9 +19,9 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Input Container
-{ #input-container}
+{: #input-container}
 
-The Input Container is a collection utilized by both the Mapping and (Origin) Path classes.  It provides a consistent set of input attributes for both classes.
+The Input Container is a collection utilized by both the Mapping and (Origin) Path classes. It provides a consistent set of input attributes for both classes.
 
 * `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.

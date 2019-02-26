@@ -4,6 +4,10 @@ copyright:
   years: 2017, 2018, 2019
 lastupdated: "2019-02-19"
 
+keywords: cache control, cache-control, cache duration, max-age,  edge server, edge-level, respect header, HTTP client
+
+subcollection: CDN
+
 ---
 
 {:shortdesc: .shortdesc}

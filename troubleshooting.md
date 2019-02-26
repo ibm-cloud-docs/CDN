@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
+
+subcollection: CDN
 
 ---
 
@@ -20,6 +24,8 @@ lastupdated: "2019-02-19"
 In this document, you will find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
 
 ## How do I know my CDN is working?
+{: #how-do-I-know-my-cdn-is-working}
+
 Run the following `curl` command by replacing `http://your.cdn.domain/uri` with the respective file path on your CDN:
 
 `curl -I -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" http://your.cdn.domain/uri`
@@ -53,6 +59,7 @@ If the output of the `curl` command is similar to the following example format, 
 ```
 
 ## I received a 503 error. Why?
+{: #i-received-a-503-error-why}
 
 The most common reason we have seen for the 503 error is due to an issue with a certificate in the SSL certificate chain.
 

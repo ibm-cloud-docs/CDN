@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017,2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: order, create, configure, console, origin, preparation, bucket
+
+subcollection: CDN
 
 ---
 
@@ -15,7 +19,7 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Order a CDN
-{ #order-a-cdn}
+{: #order-a-cdn}
 
 Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Console](https://cloud.ibm.com/login).
 
@@ -41,6 +45,7 @@ Click on the **CDN Tile**.
 
 
 ## Order a new CDN
+{: #order-a-new-cdn}
 
 Once you're on the ordering page, here's how to proceed to create and configure your CDN.
 

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
+
+subcollection: CDN
 
 ---
 

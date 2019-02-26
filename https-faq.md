@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
+
+subcollection: CDN
 
 ---
 
@@ -26,11 +30,13 @@ With Wildcard certificates, all customers use the same certificate deployed on t
 In the case of SAN certificate, multiple customer domains share a single SAN certificate by adding their domain names into the SAN entries. The service can then be accesses using the hostname, for instance `https://www.example.com`
 
 ## How is Domain Validation with redirect accomplished?
+{: #how-is-domain-validation-with-redirect-accomplished}
 {:faq}
 
 It depends on your server. The procedure for completing Domain Validation for Apache and Nginx servers can be found on the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN/how-to-https.html#redirect) page.
 
 ## How long does Domain Validation take?
+{: #how-long-does-domain-validation-take}
 {:faq}
 
 Domain Validation normally takes from 2 to 4 hours, but it varies depending on the method chosen for validation. DV with CNAME validation is the fastest, typically taking under an hour. DV using the Standard and Redirect methods typically take ~4 hours, after the challenge has been addressed.
@@ -56,6 +62,7 @@ No. DV SAN certificate configurations are provided to you at no additional charg
 No, a wildcard mapping cannot be changed to SAN certificate at this time.
 
 ## What is a Certificate Authority?
+{: #what-is-a-certificate-authority}
 {:faq}
 
 A Certificate Authority (CA) is an entity that issues Digital Certificates.
@@ -66,6 +73,7 @@ A Certificate Authority (CA) is an entity that issues Digital Certificates.
 IBM Cloud CDN service uses LetsEncrypt Certficate Authority.
 
 ## What SSL certificates are supported for IBM Cloud CDN?
+{: #what-ssl-certificates-are-supported-for-ibm-cloud-cdn}
 {:faq}
 
 The SSL certificates that are supported are Wildcard certificate and Domain Validation (DV) Subject Alternate Name (SAN) certificate. The SAN certificate is shared across multiple customers. IBM Cloud CDN does not support uploading custom certificates.
@@ -83,6 +91,7 @@ For details on how to address any of these, please refer to the [Completing Doma
 If the mapping's state is in DOMAIN_VALIDATION_PENDING state for more than 48 hours, the mapping creation will be cancelled, and the mapping's state will be CREATE_ERROR. And in this state, you can choose to Retry creation or delete the mapping.
 
 ## Does a Wildcard certificate need to validate a domain for my CDN?
+{: #does-a-wildcard-certificate-need-to-validate-a-domain-for-my-cdn}
 {:faq}
 
 No, but you can only use the CNAME to retrieve content from your origin. `https://www.example-cname.cdnedge.bluemix.net`

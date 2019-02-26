@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+
+subcollection: CDN
 
 ---
 
@@ -20,21 +24,25 @@ lastupdated: "2019-02-19"
 {: #faqs}
 
 ## What is a Content Delivery Network (CDN)?
+{: #what-is-a-content-delivery-network-cdn}
 {: faq}
 
 A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Their web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay than we could achieve by delivering the content from one centralized location. It delivers a better overall experience for your customers.
 
 ## How does a Content Delivery Network (CDN) work?
+{: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 
 A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
 
 ## How is my IBM Cloud Content Delivery Network service account created?
+{: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
 
 Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network -> CDN page**, your account is created. If you are creating a CDN from the {{site.data.keyword.cloud}} portal, when you click the **Create** button, under the **Catalog -> Network -> Content Delivery Network** page, your account is created.
 
 ## What do I do when my CDN is in CNAME Configuration Status?
+{: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
 For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
@@ -42,6 +50,8 @@ For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that you
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
 
 ## How do I add a CNAME record for my CDN domain in DNS?
+{: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
+{: faq}
 
 In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdnedge.bluemix.net`.
 
@@ -52,12 +62,14 @@ A typical CNAME record would look like the following on the DNS configuration pa
 | CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
 
 
-## What will I be billed for in my CDN?
+## What will I be billed for in my CDN
+{: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
 You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/infrastructure/CDN?topic=CDN-pricing) for this service.
 
 ## When will I be billed for my CDN?
+{: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
 IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.BluSoftlayer_notm}} Account.
@@ -68,16 +80,19 @@ IBM Cloud Content Delivery Network billing occurs according to the billing perio
 No; it will only delete that CDN. Your account still exists, and you can create additional CDNs.
 
 ## Does content caching use push or pull?
+{: #does-content-caching-use-push-or-pull}
 {: faq}
 
 Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the edge server from the Origin Server, as opposed to manually uploading the content onto the edge server.
 
 ## Is there a recommended browser to use for CDN service configuration?
+{: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
 {: faq}
 
 Yes, Firefox and Chrome are the recommended browsers. It is recommended that you use their latest versions with your IBM Cloud Content Delivery Network.
 
 ## What is the purpose of providing a path when creating my CDN?
+{: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
 If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin Server.

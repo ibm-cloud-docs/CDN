@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: rules, naming, conventions, hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain, valid, string
+
+subcollection: CDN
 
 ---
 
@@ -15,9 +19,11 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Rules and Naming Conventions
-{ #rules-and-naming-conventions}
+{: #rules-and-naming-conventions}
 
 ## What are the rules for the CDN Hostname?
+{: #what-are-the-rules-for-the-cdn-hostname}
+
 The CDN `Hostname` input string **must**:
   * consist of alphanumeric characters
   * be less than 254 characters
@@ -27,9 +33,11 @@ The CDN `Hostname` input string **must**:
 
 Please refer to RFC 1035, section 2.3.4 for more details. 
 
-Furthermore, we highly recommend using a fully-qualified domain name as your CDN Hostname. Choose a name of the form 'www.example.com' rather than a root domain name (also referred as Zone Apex or Naked domain), of the form 'example.com'. You'll need to create a CNAME Record for the CDN Hostname you use, and the DNS RFC 1033 requires the root domain record to be an A Record, not a CNAME. Further clarification is provided in RFC 2181, section 10.1
+Furthermore, we highly recommend using a fully-qualified domain name as your CDN Hostname. Choose a name of the form `www.example.com` rather than a root domain name (also referred as Zone Apex or Naked domain), of the form `example.com`. You'll need to create a CNAME Record for the CDN Hostname you use, and the DNS RFC 1033 requires the root domain record to be an A Record, not a CNAME. Further clarification is provided in RFC 2181, section 10.1
 
 ## What are the custom CNAME naming conventions?
+{: #what-are-the-custom-cname-naming-conventions}
+
 The `CNAME` input string must adhere to the following rules:
   * **must** be unique (it cannot be in use by any other IBM Cloud CDN)
   * less than 64 alphanumeric characters
@@ -39,6 +47,8 @@ The `CNAME` input string must adhere to the following rules:
   * dashes `-` are allowed, but the CNAME cannot begin or end with a dash
 
 ## What are the rules for Bucket names?
+{: #what-are-the-rules-for-bucket-names}
+
 Bucket names:
   * **must** be at least 1 character
   * must be less than 200 characters
@@ -51,11 +61,15 @@ Bucket names:
 **NOTE**: Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
 
 ## What are the rules for the Path string for the Origin?
+{: #what-are-the-rules-for-the-path-string-for-the-origin}
+
 The Path is optional when creating your CDN. However, if provided, the Path **must**:
   * be less than 1000 characters in length
   * begin with `/`
 
 ## What are the rules for the Path string for Purge?
+{: #what-are-the-rules-for-the-path-string-for-purge}
+
 The Purge path:
   * must be less than 1000 characters in length
   * must begin with `/`

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
+
+subcollection: CDN
 
 ---
 
@@ -15,7 +19,7 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # CORS and CORS Requests Through Your CDN
-{ #cors-and-cors-requests-through-your-cdn}
+{: #cors-and-cors-requests-through-your-cdn}
 
 Cross Origin Resource Sharing (CORS) is a mechanism used by browsers, primarily to validate permissions for access to content from a different origin.
 
