@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,20 +13,22 @@ lastupdated: "2018-11-02"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # 功能描述
+{: #feature-descriptions}
 
-此页面重点介绍了基于 Akamai 技术的 IBM Cloud CDN 随附的许多功能。
+此页面重点介绍了基于 Akamai 技术的 {{site.data.keyword.cloud}} CDN 随附的许多功能。
 
 ## 主机服务器源支持
 
-通过提供源主机名、协议、端口号以及可选的提供内容的路径，IBM Cloud Content Delivery Network (CDN) 可以配置为从主机服务器源提供内容。缺省路径为 `/*`。协议可以为 HTTP 和/或 HTTPS。Akamai 仅支持特定端口号。请参阅[常见问题及解答](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取支持的端口号/范围。
+通过提供源主机名、协议、端口号以及可选的提供内容的路径，IBM Cloud Content Delivery Network (CDN) 可以配置为从主机服务器源提供内容。缺省路径为 `/*`。协议可以为 HTTP 和/或 HTTPS。Akamai 仅支持特定端口号。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取支持的端口号/范围。
 
 ## Object Storage 源支持
 
 通过提供端点、存储区名称、协议和端口，IBM Cloud CDN 可以配置为从 Object Storage 端点提供内容。（可选）可以指定文件扩展名列表，以仅允许对具有这些扩展名的文件进行高速缓存。存储区中的所有对象都需要设置有匿名读访问权或公共读访问权。
 
-有关[如何使用 CDN 设置 IBM Cloud Object Storage](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) 的此教程提供了更详细的信息。
+有关[如何使用 CDN 设置 IBM Cloud Object Storage](/docs/tutorials/static-files-cdn.html) 的此教程提供了更详细的信息。
 
 ## 支持具有非重复路径的多个源
 
@@ -60,9 +62,9 @@ IBM Cloud CDN 提供了方便快捷地从边缘服务器中除去或“清除”
 
 ## HTTPS 协议支持
 
-CDN 可配置为使用 HTTPS 协议安全地向最终用户提供内容。此配置要求必须将 SSL 证书作为 CDN 配置的一部分进行设置。有两种类型的 SSL 证书选项可用于 HTTPS：[通配符证书](about-https.html#wildcard-certificate-support)和[域验证 (DV) 主题替代名称 (SAN) 证书](about-https.html#subject-alternate-name-san-certificate-support)。此类型在本文档中也称为 _SAN 证书_。
+CDN 可配置为使用 HTTPS 协议安全地向最终用户提供内容。此配置要求必须将 SSL 证书作为 CDN 配置的一部分进行设置。有两种类型的 SSL 证书选项可用于 HTTPS：[通配符证书](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support)和[域验证 (DV) 主题替代名称 (SAN) 证书](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support)。此类型在本文档中也称为 _SAN 证书_。
 
-对于 HTTPS CDN 来说，要使用的 SSL 证书类型是一个重要的考虑事项。通配符证书配置设置速度较快，但缺点是只能通过 CNAME 访问 CDN。SAN 证书设置过程需要 4 到 8 小时才能完成，但它能将 CDN 用于 CDN 域（即，主机名）。在配置期间，SAN 证书还需要额外的[**域控制验证**](how-to-https.html)步骤。使用其中任一证书都没有关联的成本。请参阅[故障诊断文档](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-)，以了解选择给定证书类型的影响。
+对于 HTTPS CDN 来说，要使用的 SSL 证书类型是一个重要的考虑事项。通配符证书配置设置速度较快，但缺点是只能通过 CNAME 访问 CDN。SAN 证书设置过程需要 4 到 8 小时才能完成，但它能将 CDN 用于 CDN 域（即，主机名）。在配置期间，SAN 证书还需要额外的[**域控制验证**](/docs/infrastructure/CDN/how-to-https.html)步骤。使用其中任一证书都没有关联的成本。请参阅[故障诊断文档](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-)，以了解选择给定证书类型的影响。
 
 源主机还必须具有自己的 SSL 证书以用于 CDN 主机名，并且必须由认可的认证中心 (CA) 签署。
 
@@ -107,7 +109,7 @@ Akamai 边缘服务器在**高速缓存存储**上高速缓存内容。为了使
 
 ## 视频点播
 
-**视频点播**性能优化能够跨多种网络类型提供高质量流。因为基于 Akamai 的 IBM Cloud CDN 具有预配置的高速缓存控制设置和分布式网络，所以无论您是否制定过针对大规模受众进行扩展的计划，都可以快速完成扩展。
+**视频点播**性能优化能够跨多种网络类型提供高质量流。因为基于 Akamai 的 IBM Cloud CDN 具有预配置的高速缓存控制设置和分布式网络，所以无论您是否制定过针对大规模受众进行缩放的计划，都可以快速完成缩放。
 
 **视频点播**针对 HLS、DASH、HDS 和 HSS 等分段流格式的分发进行了优化。目前，**不**支持实时视频流。您可以通过从“设置”选项卡上**优化对象**下的下拉菜单中选择**视频点播**选项来启用此功能，或者在创建新的源路径期间启用此功能。仅当优化视频文件的传递时才应启用此功能。
 
@@ -133,4 +135,4 @@ Akamai 边缘服务器在**高速缓存存储**上高速缓存内容。为了使
 * 如果在发送给 CDN 的请求中的 `Referer` 头值与某个指定的 `refererValues` 匹配，那么 CDN **不会**提供请求的内容。
 * 否则，CDN 会提供内容。
 
-**注**：此功能当前仅通过 API 提供。您可以查看 [API 页面](api.html#api-for-hotlink-protection)以了解更多信息。
+**注**：此功能当前仅通过 API 提供。您可以查看 [API 页面](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection)以了解更多信息。

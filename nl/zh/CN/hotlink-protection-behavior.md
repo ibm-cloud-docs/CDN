@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,11 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # 热链接保护类
+{: #hotlink-protection-class}
 
 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 类包含热链接保护 API 利用的属性。此对象用于通过调用 API 来设置 CDN 的热链接保护行为。在成功调用 API 之后，热链接保护 API 也会返回该值。
 
-`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 类：
+`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` **类**：
 
 * `protectionType`：指定当 HTTP 请求具有与 `refererValues` 中的某一项匹配的 Referer 头值时，允许或拒绝对内容的访问。当没有匹配项时，会发生相反的操作。
   * protectionType 的可能值：
@@ -41,7 +42,7 @@ lastupdated: "2018-11-01"
     * ` `
       * refererValues 为空
     * `domain1.exa}mple.com domain1.example.com`
-      * 使用 [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2) 中未指定的字符
+      * 使用 [RFC-3986 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://tools.ietf.org/html/rfc3986#section-2) 中未指定的字符
     * `www.example.com/path&`
       * 不支持 `&` 字符
     * `www.example.org http://www.example.com`

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-05-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,11 +15,13 @@ lastupdated: "2018-05-09"
 {:download: .download}
 
 # 供应商容器
+{: #vendor-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Vendor` 集合包含供应商 API 利用的属性。
 
 
-`SoftLayer_Container_Network_CdnMarketplace_Vendor` 类  
-* `vendorName`：当前 IBM Cloud CDN 提供者的名称。  
+`SoftLayer_Container_Network_CdnMarketplace_Vendor` **类**  
+* `vendorName`：当前 {{site.data.keyword.cloud}} CDN 提供者的名称。  
 * `featureSummary`：供应商功能的简单摘要。  
 * `features`：供应商支持的功能列表。  
 * `status`：指示供应商是否为通过 IBM Cloud 提供的可用选项。

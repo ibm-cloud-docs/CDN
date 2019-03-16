@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-09"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # EMEA 区域
+{: #emea-region}
 
-## 欧洲、中东和非洲区域包括：
+EMEA 是欧洲、中东和非洲的缩写。
+
+## 欧洲、中东和非洲区域
   * 阿尔巴尼亚
   * 阿尔及利亚
   * 安道尔

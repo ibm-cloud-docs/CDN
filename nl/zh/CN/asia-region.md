@@ -1,13 +1,14 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
 
-## 亚洲区域包括：
+# 亚洲区域
+{: #asia-region}
 
 * 阿富汗
 * 美属萨摩亚

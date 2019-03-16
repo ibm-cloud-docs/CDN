@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # 管理 CDN
+{: #manage-your-cdn}
 
 本文档介绍了管理 CDN 的常见任务。
 
@@ -78,11 +80,11 @@ lastupdated: "2018-11-28"
 
   * “服务器”和 Object Storage 配置的**优化**和**高速缓存键**选项是相同的。
 
-    * 从下拉菜单中选择**优化**选项。**常规 Web 交付**是缺省选项，也可以选择**大型文件**或**视频点播**优化。**常规 Web 交付**支持 CDN 提供不超过 1.8 GB 的内容，而**大型文件**优化支持下载 1.8 GB 到 320 GB 的文件。**视频点播**可优化 CDN 的分段流格式交付。[大型文件优化](feature-descriptions.html#large-file-optimization)和[视频点播](feature-descriptions.html#video-on-demand)的功能描述提供了进一步的信息。
+    * 从下拉菜单中选择**优化**选项。**常规 Web 交付**是缺省选项，也可以选择**大型文件**或**视频点播**优化。**常规 Web 交付**支持 CDN 提供不超过 1.8 GB 的内容，而**大型文件**优化支持下载 1.8 GB 到 320 GB 的文件。**视频点播**可优化 CDN 的分段流格式交付。[大型文件优化](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization)和[视频点播](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand)的功能描述提供了进一步的信息。
 
         ![性能配置选项](images/performance-config-options.png)
 
-    * 从下拉菜单中选择**高速缓存键**选项。缺省选项为**全部包含**。如果选择**包含指定项**或**忽略指定项**，那么**必须**输入要包含或忽略的查询字符串，各字符串之间用空格分隔。例如，对于一个查询字符串，输入 `uuid=123456`，或者对于两个查询字符串，输入 `uuid=123456 issue=important`。可以在功能描述中了解有关[高速缓存键查询自变量](feature-descriptions.html#cache-key-query-args)的更多信息。
+    * 从下拉菜单中选择**高速缓存键**选项。缺省选项为**全部包含**。如果选择**包含指定项**或**忽略指定项**，那么**必须**输入要包含或忽略的查询字符串，各字符串之间用空格分隔。例如，对于一个查询字符串，输入 `uuid=123456`，或者对于两个查询字符串，输入 `uuid=123456 issue=important`。可以在功能描述中了解有关[高速缓存键查询自变量](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args)的更多信息。
 
         ![“高速缓存键”选项](images/cache-key-options.png)
 
@@ -117,7 +119,7 @@ lastupdated: "2018-11-28"
 
 **步骤 3：**
 
-输入标准 Unix 路径语法，以指出您要清除的文件，然后选择**清除**按钮。目前仅允许对单个文件使用清除。请参阅[规则和命名约定](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)页面，以获取有关清除路径所允许语法的更多详细信息。
+输入标准 Unix 路径语法，以指出您要清除的文件，然后选择**清除**按钮。目前仅允许对单个文件使用清除。请参阅[规则和命名约定](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)页面，以获取有关清除路径所允许语法的更多详细信息。
 
 **步骤 4：**
 
@@ -172,7 +174,7 @@ lastupdated: "2018-11-28"
 
 要使用存储在 IBM Cloud Object Storage 中的对象，您必须为存储区中的每个对象设置“acl”（即访问控制表）属性的值，以允许“public-read”访问权。
 
-要安装任何必备客户机或工具，请参阅 [IBM Cloud Object Storage Developer 一节] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)。本指南假设您已安装正式的 AWS 命令行界面，其与 IBM Cloud Object Storage S3 API 兼容。
+要安装任何必备客户机或工具，请参阅 [IBM Cloud Object Storage Developer 部分](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)。本指南假设您已安装正式的 AWS 命令行界面，其与 IBM Cloud Object Storage S3 API 兼容。
 
 下面的示例代码显示如何使用命令行界面，为存储区中的所有对象设置“public-read”访问权。
 

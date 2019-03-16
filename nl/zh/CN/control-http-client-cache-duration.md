@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-20"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,14 +15,16 @@ lastupdated: "2018-11-20"
 {:download: .download}
 
 # 使用 Cache Control 控制 HTTP 客户机的高速缓存持续时间
+{: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
-## 简介
 在使用 CDN 时，有两个级别的高速缓存可用：
+
   * **边缘高速缓存**，在 CDN 边缘服务器高速缓存一段来自源的内容时，发生此级别的高速缓存。
   * **下游高速缓存**，在最终用户或 HTTP 客户机（如提交请求的浏览器）高速缓存一段来自边缘服务器的内容时，从服务器的边缘网络发生此级别的高速缓存。
 
 您选择用哪种方法来控制内容在请求者处（比如浏览器）高速缓存多长时间取决于下列因素：
-  * [考虑标题设置](how-to.html#updating-cdn-configuration-details)是“打开”还是“关闭”。缺省情况下，设为“打开”。
+
+  * [考虑标题设置](/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details)是“打开”还是“关闭”。缺省情况下，设为“打开”。
   * 源服务器是否针对一段特定内容在 Cache-Control 头中提供了 `max-age` 值。 
 
 如果希望边缘服务器针对该内容发送带 Cache-Control 头的 HTTP 响应，那么无论这些因素如何变化，源都必须为边缘提供目标内容的 Cache-Control 头。
@@ -53,5 +55,5 @@ lastupdated: "2018-11-20"
 |关闭|否|基于 CDN 的 TTL 配置的边缘高速缓存持续时间|否|
 
 ## 更多信息
-* 如何[管理 CDN](how-to.html)
-* Cache-Control 在 [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) 的第 14.9 节中进行定义
+* 如何[管理 CDN](/docs/infrastructure/CDN/how-to.html)
+* Cache-Control 在 [RFC 2616 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.ietf.org/rfc/rfc2616.txt) 的第 14.9 节中进行定义

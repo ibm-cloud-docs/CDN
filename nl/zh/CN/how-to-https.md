@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # 通过 DV SAN 完成 HTTPS 的域控制验证
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-下图概述了 CDN 从创建之时起一直到进入正在运行状态之间所进入的各种状态。
+下图概述了 CDN 从创建之时起一直到进入正在运行状态之间将进入的各种状态。
 
   ![SAN 状态图](images/state-diagram-san.png)
 
@@ -24,7 +25,7 @@ lastupdated: "2018-10-04"
 
 **步骤 1：**
 
-使用 DV SAN 证书订购 CDN 后，证书请求过程即开始。在此过程中，IBM Cloud CDN 会向 Akamai 请求证书。证书变为可用后，Akamai 会向认证中心 (CA) 发出请求。
+使用 DV SAN 证书订购 CDN 后，证书请求过程即开始。在此过程中，{{site.data.keyword.cloud}} CDN 会向 Akamai 请求证书。证书变为可用后，Akamai 会向认证中心 (CA) 发出请求。
 
   * 在此期间，CDN 状态将显示为**正在请求证书**。
 
@@ -48,7 +49,7 @@ CA 收到请求后，将发出域验证质询。
 
   * 此过程完成后，所有域（无论使用的是哪种验证方法）都会移至 **CNAME 配置**状态。
 
-有关 CNAME 配置完成情况以及监视 CDN 的其他信息，可以在[进入正在运行状态](basic-functions.html#get-to-running)页面上找到。
+有关 CNAME 配置完成情况以及监视 CDN 的其他信息，可以在[进入正在运行状态](/docs/infrastructure/CDN/basic-functions.html#get-to-running)页面上找到。
 
 
 ## 域控制验证 

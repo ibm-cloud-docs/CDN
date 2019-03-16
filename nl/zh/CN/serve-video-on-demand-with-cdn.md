@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-12"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,8 +16,9 @@ lastupdated: "2018-11-12"
 
 
 # 如何使用 CDN 提供视频点播
+{: #how-to-serve-video-on-demand-with-cdn}
 
-在此指南中，我们将探索一个示例，了解如何利用 IBM Cloud CDN 通过 **HLS** 将 `.mp4` 内容作为视频点播从 Linux-Nginx 源流处理到浏览器。 
+在此指南中，我们将探索一个示例，了解如何利用 {{site.data.keyword.cloud}} CDN 通过 **HLS** 将 `.mp4` 内容作为视频点播从 Linux-Nginx 源传送到浏览器。 
 
 ## 简介
 
@@ -73,20 +74,20 @@ $ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v mai
 |参数|影响|
 |:---|:---|
 | ffmpeg |使用 `ffmpeg` 工具。|
-| -i test-video.mp4 | The source video is located at `test-video.mp4`. |
-| -c:a acc | Use the acc audio codec for the output. |
-| -ar 48000 | Set the audio sample rate to 48000 Hz for the output. |
-| -b:a 128k | Set the audio bitrate to 128000 bits/second for the output. |
-| -c:v h264 | Use the `h.264` video codec for the output. |
-| -profile:v main | Use the "main" format profile of the selected codec for widest device support. |
-| -crf 23 | Attempt to maintain the video quality with varying file size and bitrate.<br/>  The lower the CRF, the higher the quality and file size. |
-| -g 61 -keyint_min 61 | Set a maximum and minimum.<br/> With the example source frame rate as 30.30, a keyframe should be <br/> inserted every 2 seconds (61 frames). |
-| -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that may insert extraneous keyframes into the output. |
-| -b:v 5300k | Sets the output video stream's target bitrate to 5300000 bits/second. |
-| -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
-| -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
-| -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
-| -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
+| -i test-video.mp4 |源视频位于 `test-video.mp4`。|
+| -c:a acc |将 ACC 音频编码解码器用于输出。|
+| -ar 48000 |将输出的音频采样率设置为 48000 赫兹。|
+| -b:a 128k |将输出的音频比特率设置为 128000 比特/秒。|
+| -c:v h264 |将 `h.264` 视频编码解码器用于输出。|
+| -profile:v main |使用所选编码解码器的“主要”格式概要文件，以获得最广泛的设备支持。|
+| -crf 23 |尝试针对不同的文件大小和比特率保持视频质量。<br/>  CRF 越小，质量越高，文件大小越大。|
+| -g 61 -keyint_min 61 |设置最大值和最小值。<br/> 对于示例源帧速率 30.30，应每 2 秒<br/> 插入一个关键帧（61 帧）。|
+| -sc_threshold 0 |禁止 `ffmpeg` 进行场景检测。<br/> 阻止可能将无关关键帧插入输出的第二个进程。|
+| -b:v 5300k |将输出视频流的目标比特率设置为 5300000 比特/秒。|
+| -maxrate 5300k |将编码器的最大输出视频比特率<br/> 限制为 5300000 比特/秒，以防它发生变化。|
+| -bufsize 10600k |将 `ffmpeg` 视频解码器缓冲区大小设置为 10600000 比特。<br/>  对于 5300000 比特率，`ffmpeg` 编码器应检查并<br/> 尝试每经过 2 秒的视频将输出比特率重新调整回目标比特率。|
+| -hls_time 6 |尝试将每个输出视频片段的目标长度设定为 6 秒。<br/> 累积至少 6 秒视频的帧，然后<br/> 在遇到下一个关键帧时停止以中断视频片段。|
+| -hls_playlist_type vod |为视频点播 (vod) 准备输出 `.m3u8` 播放列表文件。|
 | test-video.m3u8 |将输出播放列表/清单文件命名为 `test-video.m3u8`。<br/> 结果是，在缺省情况下，将使用 `test-video0.ts`、`test-video1.ts`、`test-video2.ts`... 以及类似<br/> 内容作为视频片段的名称。|
 
 注：对于 `-` 选项，除非指定了流，否则会选择该类别的“最佳”选项。
@@ -212,9 +213,9 @@ http {
 ## 配置 CDN
 现在，让我们将源连接到 CDN 以在全世界范围内提供内容，并实现优化吞吐量、将等待时间降至最低，并提高性能。
 
-首先，[订购](how-to-order.html#order-a-cdn) CDN。
+首先，[订购](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) CDN。
 
-接下来，[配置 CDN](how-to.html#updating-cdn-configuration-details) 或者[添加源](how-to.html#adding-origin-path-details)。
+接下来，[配置 CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) 或者[添加源](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin)。
 
 最后，在`优化目标`下选择`视频点播优化`。
 

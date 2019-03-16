@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,9 +13,11 @@ lastupdated: "2018-12-05"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
-{: faq: data-hd-content-type=‘faq’}
+{:faq: data-hd-content-type='faq'}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # 常见问题及解答
+{: #faqs}
 
 ## 什么是 Content Delivery Network (CDN)？
 {: faq}
@@ -30,7 +32,7 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 ## 如何创建我的 IBM Cloud Content Delivery Network 服务帐户？
 {: faq}
 
-您的帐户是在 CDN 订购过程中创建的。如果是从原有门户网站创建 CDN，那么单击**网络 -> CDN** 页面下的**订购 CDN** 按钮时，将创建您的帐户。如果是从 IBM Cloud 门户网站创建 CDN，那么单击**目录 -> 网络 -> 内容交付网络**页面下的**创建**按钮时，将创建您的帐户。
+您的帐户是在 CDN 订购过程中创建的。如果是从原有门户网站创建 CDN，那么单击**网络 -> CDN** 页面下的**订购 CDN** 按钮时，将创建您的帐户。如果是从 {{site.data.keyword.cloud}} 门户网站创建 CDN，那么单击**目录 -> 网络 -> 内容交付网络**页面下的**创建**按钮时，将创建您的帐户。
 
 ## 当 CDN 处于 CNAME 配置状态时我该怎么办？
 {: faq}
@@ -53,7 +55,7 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 ## CDN 中需要付费的项有哪些？
 {: faq}
 
-您只需要按 IBM Cloud Content Delivery Network 实例所使用的带宽付费。如果 CDN 未使用带宽，则不会发生收费。带宽价格会根据边缘服务器的区域位置而有所不同。可以在此服务的[入门](getting-started.html#cdn-bandwidth-pricing-rates-shown-in-usd-)部分中，按地理区域查看带宽定价。
+您只需要按 IBM Cloud Content Delivery Network 实例所使用的带宽付费。如果 CDN 未使用带宽，则不会发生收费。带宽价格会根据边缘服务器的区域位置而有所不同。可以在此服务的[定价文档](/docs/infrastructure/CDN?topic=CDN-pricing)中，按地理区域查看带宽定价。
 
 ## 什么时候要为 CDN 付费？
 {: faq}
@@ -83,7 +85,7 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 ## 我的 CDN 处于错误状态。我现在该怎么做？
 {: faq}
 
-请参阅[故障诊断](troubleshooting.html#troubleshooting)或[获取帮助和支持](getting-help.html#gettinghelp)页面，或者在[客户门户网站 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://control.softlayer.com/) 中开具凭单。
+请参阅[故障诊断](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting)或[获取帮助和支持](/docs/infrastructure/CDN/getting-help.html#gettinghelp)页面，或者在[客户门户网站 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://control.softlayer.com/) 中开具凭单。
 
 ## 如果我没有为 CDN 提供 CNAME，那么在哪里能够找到它？
 {: faq}
@@ -117,12 +119,12 @@ CDN 映射或源的路径会被视为目录。因此，尝试访问源路径的�
 ## 如何为 IBM Cloud Object Storage 设置 Content Delivery Network (COS)？
 {: faq}
 
-请参阅关于如何为 IBM Cloud Object Storage 创建 Content Delivery Network 的[教程](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)。
+请参阅关于如何为 IBM Cloud Object Storage 创建 Content Delivery Network 的[教程](/docs/tutorials/static-files-cdn.html)。
 
 ## 我收到源证书即将到期的通知。我现在该怎么做？
 {: faq}
 
-请遵循 Akamai 中[此文章](https://community.akamai.com/docs/DOC-7708)所概述的步骤进行操作。
+请遵循 Akamai 中[此文章 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://community.akamai.com/docs/DOC-7708) 所概述的步骤进行操作。
 
 ## 基于 Akamai 的 IBM CDN 解决方案包含哪些安全性？
 {: faq}
@@ -137,7 +139,19 @@ CDN 映射或源的路径会被视为目录。因此，尝试访问源路径的�
 ## 如何使用 IBM Cloud 控制台为其他用户授予创建或管理 CDN 的许可权？
 {: faq}
 
-在 IBM Cloud 控制台中，帐户的主用户可以为其他用户提供创建和管理 CDN 的许可权。在 IBM Cloud 控制台主页中，执行以下步骤以编辑许可权：
+帐户的主用户可以为其他用户提供创建和管理 CDN 的许可权。
+
+在 IBM Cloud 控制台主页中，执行以下步骤以编辑许可权：
+ * 选择**管理**选项卡
+ * 选择**访问权 (IAM)**
+ * 单击左侧窗格中的**用户**选项卡
+ * 单击所需的**用户**
+ * 然后，选择**经典基础架构**选项卡
+ * 接下来，在**许可权**选项卡下，展开**服务**类别
+ * 选择**管理 CDN 帐户**
+ * 单击**保存**按钮
+
+在原有控制台主页中，执行以下步骤以编辑许可权：
  * 选择**帐户**选项卡
  * 选择**用户 -> 用户列表**
  * 单击所需的**用户名**
@@ -145,7 +159,24 @@ CDN 映射或源的路径会被视为目录。因此，尝试访问源路径的�
  * 选择**服务**选项卡
  * 选择**管理 CDN 帐户**
  * 单击**编辑门户网站许可权**按钮
- * 设置需要的许可权。
+
+## 为什么“创建”按钮未在 https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai 页面上显示或该按钮处于禁用状态？
+{: faq}
+
+如果您是帐户的主用户，那么必须升级帐户后，“创建”按钮才会在此页面上显示或启用。在 IBM Cloud 控制台页面中，以帐户的主用户身份执行以下步骤：
+ * 通过单击 Web 页面左上角的`三横`图标打开左侧导航窗格。
+ * 选择**经典基础架构**
+ * 单击**升级帐户**按钮并遵循指示信息进行操作
+
+如果您是帐户的其中一个辅助用户，那么帐户的主用户必须授予您`添加/升级服务`许可权后，“创建”按钮才会在此页面上显示或启用。在 IBM Cloud 控制台页面中，帐户的主用户应执行以下步骤以编辑您的许可权：
+ * 选择**管理**选项卡
+ * 选择**访问权 (IAM)**
+ * 单击左侧窗格中的**用户**选项卡
+ * 单击所需的**用户**
+ * 然后，选择**经典基础架构**选项卡
+ * 接下来，在**许可权**选项卡下，展开**帐户**类别
+ * 选择**添加/升级服务**
+ * 单击**保存**按钮
 
 ## 为什么我在使用 `protectionType` `ALLOW` 配置了热链接保护之后无法通过 CDN 访问 Web 页面？
 {: faq}

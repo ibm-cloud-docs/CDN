@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # 关于 Content Delivery Network (CDN)
+{: #about-content-delivery-networks-cdn-}
 
 Content Delivery Network (CDN) 是边缘服务器的集合，这些服务器遍布在世界/国家/地区的众多位置。客户请求内容后，哪个地理区域离该客户最近，就会从那个地理区域中的边缘服务器为客户提供 Web 内容。通过这项技术，最终用户收到内容的延迟时间缩短，为客户带来更好的总体体验。
 
@@ -26,7 +27,7 @@ CDN 通过在世界各地的边缘服务器上高速缓存 Web 内容来达成�
 
 ## 功能
 
-IBM Cloud Content Delivery Network 服务包含以下主要功能：
+{{site.data.keyword.cloud}} Content Delivery Network 服务包含以下主要功能：
   * 主机服务器源支持
   * Object Storage 源支持
   * 支持具有非重复路径的多个源
@@ -44,7 +45,7 @@ IBM Cloud Content Delivery Network 服务包含以下主要功能：
   * 地理访问控制
   * 热链接保护
 
-请参阅[此文档](feature-descriptions.html#feature-descriptions)以获取完整的功能描述。
+请参阅[功能描述文档](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions)以获取完整的功能描述。
 
 ## 体系结构图
 

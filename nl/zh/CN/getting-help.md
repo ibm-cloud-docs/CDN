@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 
 ---
@@ -15,6 +15,7 @@ lastupdated: "2018-11-14"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -31,7 +32,7 @@ lastupdated: "2018-11-14"
 # 获得帮助和支持 
 {: #gettinghelp}
 
-上次更新时间：2018 年 11 月 14 日
+上次更新时间：2019 年 1 月 18 日
 {: .last-updated}
 
 如果在使用 CDN 时遇到问题或有任何疑问，可以通过搜索相关信息或者通过下面列出的其中一个论坛来问问题，从而获取帮助。您还可以开具支持凭单。
@@ -47,4 +48,4 @@ lastupdated: "2018-11-14"
 请参阅[获取
 帮助](https://{DomainName}/docs/support/index.html#getting-help)了解有关如何使用论坛的更多详细信息。
 
-有关开具 IBM 支持凭单的信息，或有关支持级别和凭单严重性的信息，请参阅[联系支持人员](https://{DomainName}/docs/support/index.html#contacting-support)。
+有关开具 {{site.data.keyword.cloud}} 支持凭单的信息，或有关支持级别和凭单严重性的信息，请参阅[联系支持人员](/docs/get-support?topic=get-support-getting-customer-support)。
