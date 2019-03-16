@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Informationen zu Content Delivery Networks (CDN)
+{: #about-content-delivery-networks-cdn-}
 
 Content Delivery Network (CDN) ist ein Verbund von Edge-Servern, die über verschiedene Teile eines Landes oder der Welt verteilt sind. Die zugehörigen Webinhalte werden von einem Edge-Server bereitgestellt, dessen geografische Region dem Kunden, der die Inhalte anfordert, am nächsten liegt. Dieses Verfahren minimiert die Verzögerung, mit der Ihre Endbenutzer den Inhalt empfangen, und verbessert die allgemeine Serviceerfahrung Ihrer Kunden.
 
@@ -26,7 +27,7 @@ CDN erreicht sein Ziel durch Caching von Webinhalten auf Edge-Servern rund um di
 
 ## Funktionen
 
-Zu den wichtigsten Funktionen des IBM Cloud Content Delivery Network-Service gehören die folgenden:
+Zu den wichtigsten Features des {{site.data.keyword.cloud}} Content Delivery Network-Service gehört Folgendes: 
   * Unterstützung für den Host-Serverursprung (Host Server Origin)
   * Unterstützung für den Objektspeicherursprung (Object Storage Origin)
   * Unterstützung für mehrere Ursprünge mit unterschiedlichen Pfaden
@@ -42,9 +43,9 @@ Zu den wichtigsten Funktionen des IBM Cloud Content Delivery Network-Service geh
   * Optimierung für große Dateien
   * Video-on-Demand
   * Geografische Zugriffssteuerung (Geographical Access Control)
-  * Hotlinkschutz
+  * Hot-Link-Schutz
 
-Die vollständigen Beschreibungen zu diesen Funktionen finden Sie in [diesem Dokument](feature-descriptions.html#feature-descriptions).
+Umfassende Beschreibungen dieser Features finden Sie in [diesem Dokument](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions). 
 
 ## Diagramm der Architektur
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-09"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # EMEA-Region
+{: #emea-region}
 
-## Zur Region 'Europa, Naher/Mittlerer Osten und Afrika' gehören folgende Länder und Gebiete:
+EMEA ist die Abkürzung für Europa, Naher/Mittlerer Osten und Afrika. 
+
+## Region 'Europa, Naher/Mittlerer Osten und Afrika'
   * Albanien
   * Algerien
   * Andorra

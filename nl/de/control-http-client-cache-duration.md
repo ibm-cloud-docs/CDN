@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-20"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,31 +15,33 @@ lastupdated: "2018-11-20"
 {:download: .download}
 
 # Cachedauer eines HTTP-Clients mit Cachesteuerung steuern
+{: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
-## Einführung
-Bei Verwendung eines CDN sind zwei Caching-Stufen verfügbar: 
-  * **Caching in der Peripherie** tritt auf, wenn ein CDN-Edge-Server Inhalt vom Ursprung zwischenspeichert. 
-  * Ein dem Netz der Edge-Server **nachgeordnetes Caching** tritt auf, wenn ein Endbenutzer oder HTTP-Client, z. B. ein anfordernder Browser, Inhalt von einem Edge-Server zwischenspeichert. 
+Bei Verwendung eines CDN sind zwei Caching-Stufen verfügbar:
 
-Die Methode, die Sie auswählen, um zu steuern, wie lange Inhalte beim Anforderer, z. B. einem Browser, zwischengespeichert werden, hängt von den folgenden Faktoren ab: 
-  * Ob die [Einstellung für 'Header beibehalten'](how-to.html#updating-cdn-configuration-details) EIN oder AUS lautet. Standardmäßig ist sie auf EIN gesetzt. 
-  * Ob der Ursprungsserver einen `max-age`-Wert im Cache-Control-Header für einen bestimmten Inhalt bereitstellt.  
+  * **Caching in der Peripherie** tritt auf, wenn ein CDN-Edge-Server Inhalt vom Ursprung zwischenspeichert.
+  * Ein dem Netz der Edge-Server **nachgeordnetes Caching** tritt auf, wenn ein Endbenutzer oder HTTP-Client, z. B. ein anfordernder Browser, Inhalt von einem Edge-Server zwischenspeichert.
 
-Unabhängig davon, wie sich diese Faktoren ändern, muss Ihr Ursprung einen Cache-Control-Header für den beabsichtigten Inhalt für die Peripherie bereitstellen, wenn Edge-Server HTTP-Antworten mit dem Cache-Control-Header für diesen Inhalt senden sollen. 
+Die Methode, die Sie auswählen, um zu steuern, wie lange Inhalte beim Anforderer, z. B. einem Browser, zwischengespeichert werden, hängt von den folgenden Faktoren ab:
 
-Im Wesentlichen weisen die von einem Edge-Server an nachgeordnete Elemente gesendeten Cache-Control-Header den Anforderer an, die zugehörigen Inhalte gemäß den Caching-Anweisungen oder -Werten zwischenzuspeichern, die vom Edge-Server angegeben werden. 
+  * Ob die [Einstellung für 'Header beibehalten'](/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details) EIN oder AUS lautet. Standardmäßig ist sie auf EIN gesetzt.
+  * Ob der Ursprungsserver einen `max-age`-Wert im Cache-Control-Header für einen bestimmten Inhalt bereitstellt. 
+
+Unabhängig davon, wie sich diese Faktoren ändern, muss Ihr Ursprung einen Cache-Control-Header für den beabsichtigten Inhalt für die Peripherie bereitstellen, wenn Edge-Server HTTP-Antworten mit dem Cache-Control-Header für diesen Inhalt senden sollen.
+
+Im Wesentlichen weisen die von einem Edge-Server an nachgeordnete Elemente gesendeten Cache-Control-Header den Anforderer an, die zugehörigen Inhalte gemäß den Caching-Anweisungen oder -Werten zwischenzuspeichern, die vom Edge-Server angegeben werden.
 
 ## Header beibehalten: Aus
-Wenn Ihr Ursprung einen Cache-Control-Header mit `max-age`-Anweisung und -Wert für einen bestimmten Inhalt bereitstellt, wird die Cachedauer für diesen Inhalt, der in der Peripherie zwischengespeichert wird, dennoch aus den TTL-Einstellungen Ihres CDN abgeleitet. Darüber hinaus antwortet der Edge-Server dem nachgeordneten Anforderer mit einem `max-age`-Wert für die Cachesteuerung, der dem niedrigeren der folgenden Werte entspricht: 
+Wenn Ihr Ursprung einen Cache-Control-Header mit `max-age`-Anweisung und -Wert für einen bestimmten Inhalt bereitstellt, wird die Cachedauer für diesen Inhalt, der in der Peripherie zwischengespeichert wird, dennoch aus den TTL-Einstellungen Ihres CDN abgeleitet. Darüber hinaus antwortet der Edge-Server dem nachgeordneten Anforderer mit einem `max-age`-Wert für die Cachesteuerung, der dem niedrigeren der folgenden Werte entspricht:
   * `max-age`-Wert des Ursprungs für die Cachesteuerung
   * Verbleibende Zeit, bis der Inhalt an der Peripherie veraltet ist
 
-Wenn Ihr Ursprung jedoch keinen Cache-Control-Header für den Edge-Server bereitstellt, stellen die Edge-Server keinen Cache-Control-Header für den Anforderer bereit. Die Cachedauer für den Inhalt an der Peripherie wird dennoch von den TTL-Einstellungen Ihres CDN abgeleitet. 
+Wenn Ihr Ursprung jedoch keinen Cache-Control-Header für den Edge-Server bereitstellt, stellen die Edge-Server keinen Cache-Control-Header für den Anforderer bereit. Die Cachedauer für den Inhalt an der Peripherie wird dennoch von den TTL-Einstellungen Ihres CDN abgeleitet.
 
 ## Header beibehalten: Ein
-Wenn Ihr Ursprung einen Cache-Control-Header mit `max-age` für einen bestimmten Inhalt bereitstellt, bestimmt der `max-age`-Wert des Ursprungs für die Cachesteuerung die Cachedauer für diesen Inhalt in der Peripherie und setzt anwendbare TTL-Einstellungen für diesen Inhalt außer Kraft. Darüber hinaus antwortet die Peripherie dem Anforderer mit einem `max-age`-Wert für die Cachesteuerung, der der verbleibenden Zeit entspricht, bis der Inhalt an der Peripherie veraltet ist. 
+Wenn Ihr Ursprung einen Cache-Control-Header mit `max-age` für einen bestimmten Inhalt bereitstellt, bestimmt der `max-age`-Wert des Ursprungs für die Cachesteuerung die Cachedauer für diesen Inhalt in der Peripherie und setzt anwendbare TTL-Einstellungen für diesen Inhalt außer Kraft. Darüber hinaus antwortet die Peripherie dem Anforderer mit einem `max-age`-Wert für die Cachesteuerung, der der verbleibenden Zeit entspricht, bis der Inhalt an der Peripherie veraltet ist.
 
-Wenn Ihr Ursprung jedoch keinen Cache-Control-Header für den Edge-Server bereitstellt, stellt der Edge-Server keinen Cache-Control-Header für den Anforderer bereit. Die Cachedauer für den Inhalt an der Peripherie wird dennoch von den TTL-Einstellungen Ihres CDN abgeleitet. 
+Wenn Ihr Ursprung jedoch keinen Cache-Control-Header für den Edge-Server bereitstellt, stellt der Edge-Server keinen Cache-Control-Header für den Anforderer bereit. Die Cachedauer für den Inhalt an der Peripherie wird dennoch von den TTL-Einstellungen Ihres CDN abgeleitet.
 
 ## Zusammenfassung
 
@@ -53,5 +55,5 @@ Wenn Ihr Ursprung jedoch keinen Cache-Control-Header für den Edge-Server bereit
 |Aus|Nein|Cachedauer in der Peripherie basiert auf der TTL-Konfiguration des CDN|Nein|
 
 ## Weitere Informationen
-* Informationen zur [Verwaltung des CDN](how-to.html)
-* Cachesteuerung gemäß Abschnitt 14.9 von [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+* Informationen zur [Verwaltung des CDN](/docs/infrastructure/CDN/how-to.html)
+* Cachesteuerung entsprechend der Definiton in Abschnitt 14.9 von [RFC 2616 ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ietf.org/rfc/rfc2616.txt)

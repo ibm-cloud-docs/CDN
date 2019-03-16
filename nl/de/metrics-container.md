@@ -1,15 +1,17 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
-# Containerklasse für Metriken:
+# Containerklasse für Metriken
+{: #container-class-for-metrics}
+
 Die Sammlung `SoftLayer_Container_Network_CdnMarketplace_Metrics` enthält die Attribute, die von den Metrik-APIs verwendet werden. Es gibt drei mögliche Werte für das Attribut `type`: PIECHART (Kreisdiagramm), LINEGRAPH (Kurvendiagramm) oder TOTALS (Summen). Die Ausgabe für die übrigen Attribute in diesem Container hängt vom Typ (`type`) ab. Die Typen werden nachfolgend eingehender beschrieben. Alle Attribute mit Ausnahme von `type` sind Arrays. Nicht alle Attribute werden für alle Typen verwendet.
 
-Klasse `SoftLayer_Container_Network_CdnMarketplace_Metrics`:
+**Klasse** `SoftLayer_Container_Network_CdnMarketplace_Metrics`:
 * `type`
 * `names`
 * `totals`

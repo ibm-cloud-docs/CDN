@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Regeln und Namenskonventionen
+{ #rules-and-naming-conventions}
 
 ## Welche Regeln gelten für den CDN-Hostnamen?
 Die Eingabezeichenfolge für den CDN-Hostnamen`` **muss** die folgenden Voraussetzungen erfüllen:

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Wechsel von CDN in den Ausführungsstatus
+{: #getting-your-cdn-to-running-status}
 
 In diesem Abschnitt erfahren Sie anhand der folgenden Anleitungen, was Sie tun müssen, damit CDN in den Ausführungsstatus (AKTIV) wechselt. Außerdem wird in diesem Dokument beschrieben, wie CDN gestartet und gestoppt wird.
 
@@ -27,7 +28,7 @@ Nachdem Sie ein CDN erstellt haben, wird es in Ihrem CDN-Dashboard aufgeführt. 
 
 Wenn Sie CDN mit HTTP bzw. HTTPS mit einem Wildcard-Zertifikat bestellt haben, können Sie mit Schritt 1 fortfahren.
 
-Wenn Sie CDN mit einem HTTPS-DV-SAN-Zertifikat erstellt haben, können zusätzliche Schritte zum Überprüfen Ihrer Domäne erforderlich sein; Informationen zu diesen Schritten finden Sie auf der Seite [Validierung der Domänensteuerung für HTTPS ausführen](how-to-https.html#completing-domain-control-validation-for-https).
+Wenn Sie CDN mit einem HTTPS-DV-SAN-Zertifikat erstellt haben, können zusätzliche Schritte zum Überprüfen Ihrer Domäne erforderlich sein; Informationen zu diesen Schritten finden Sie auf der Seite [Validierung der Domänensteuerung für HTTPS ausführen](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
 
 **Schritt 1:**
 
@@ -47,7 +48,7 @@ Nach dem Konfigurieren des CNAME-Werts mit Ihrem DNS-Anbieter können Sie jederz
 
 Wenn die CNAME-Verkettung abgeschlossen ist, wechselt der Status bei Auswahl von **Status abrufen** zu *AKTIV* und CDN kann verwendet werden.
 
-Glückwunsch! Ihr CDN ist nun aktiv. Ab jetzt werden auf der Seite [CDN verwalten](how-to.html#manage-your-cdn) zusätzliche Informationen zu Konfigurationsoptionen angezeigt, zum Beispiel [Lebensdauer](how-to.html#setting-content-caching-time-using-time-to-live-), [Cacheinhalt bereinigen](how-to.html#purging-cached-content) und [Details für Ursprungspfad hinzufügen](how-to.html#adding-origin-path-details).
+Glückwunsch! Ihr CDN ist nun aktiv. Ab jetzt werden auf der Seite [CDN verwalten](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) zusätzliche Informationen zu Konfigurationsoptionen angezeigt, zum Beispiel [Lebensdauer](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Cacheinhalt bereinigen](/docs/infrastructure/CDN/how-to.html#purging-cached-content) und [Details für Ursprungspfad hinzufügen](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## CDN starten
 

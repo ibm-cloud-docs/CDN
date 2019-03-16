@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Pfadcontainer (Ursprungspfadcontainer)
+{: #path-origin-container}
+
 Die Sammlung `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` enthält die Attribute, die von den Pfad-APIs (bzw. Ursprungspfad-APIs) genutzt werden. Alle Pfad-APIs geben eine Sammlung dieses Typs zurück.
 
-Klasse `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**Klasse** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: Die eindeutige ID der Zuordnung, zu der dieser Ursprungspfad gehört.  
 * `path`: Der Pfad relativ zur Domäne, über den dieser Ursprung erreicht werden kann.  
