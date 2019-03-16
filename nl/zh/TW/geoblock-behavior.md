@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Geoblocking 類別
+{: #geoblocking-class}
+
 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 類別包含地理封鎖 API 所使用的屬性。每一個地理封鎖 API 都會傳回此類型的物件，並用來設定 CDN 上的「地理存取控制」行為。
 
-類別 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`：
+**類別** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`：
 
 * `accessType`：指定規則應該 `ALLOW` 還是 `DENY` 給定的地區。
 * `regionType`：要套用地理封鎖規則的地區類型，`CONTINENT` 或是 `COUNTRY_OR_REGION`

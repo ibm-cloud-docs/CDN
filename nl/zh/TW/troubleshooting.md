@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # 疑難排解
+{: #troubleshooting}
 
-在本文件中，您將找到進行 CDN 疑難排解的各種方式。如果您需要與支援中心聯絡，請務必提供 CDN 的參照號碼。
+在本文件中，您將找到進行 {{site.data.keyword.cloud}} CDN 疑難排解的各種方式。如果您需要與支援中心聯絡，請務必提供 CDN 的參照號碼。
 
 ## 如何知道 CDN 正常運作？
 請將 `http://your.cdn.domain/uri` 取代為 CDN 上的個別檔案路徑，以執行下列 `curl` 指令：
@@ -60,12 +61,12 @@ lastupdated: "2018-07-13"
 與 503 錯誤一起，您也可能看到類似如下的訊息：`An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff`（實際參照號碼可能改變）。在此情況下，錯誤字串中的參照號碼會轉換成 SSL 信號交換失敗。
 
 若要更正此問題，請確定您的原點伺服器 SSL 憑證符合下列準則：
-  * 憑證**必須**由 Akamai 信任的憑證管理中心發出。您可以在[這個鏈結](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)檢視 Akamai 信任信任憑證管理中心的清單。
+  * 憑證**必須**由 Akamai 信任的憑證管理中心發出。您可以檢視 Akamai 信任的憑證管理中心清單，其位於 [這個鏈結 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
   * 它**必須**符合 CDN 上配置的*主機標頭*
   * 它**不得**為自簽
   * 它**不得**過期
 
-如果您已使用先前的準則驗證原點的憑證鏈，而仍然遇到相同的錯誤，請參閱[取得協助及支援](getting-help.html#gettinghelp)頁面。請記下參照錯誤字串，並將它包含在與我們的任何通訊裡。
+如果您已使用先前的準則驗證原點的憑證鏈，而仍然遇到相同的錯誤，請參閱[取得協助及支援](/docs/infrastructure/CDN/getting-help.html#gettinghelp)頁面。請記下參照錯誤字串，並將它包含在與我們的任何通訊裡。
 
 ## IBM Cloud Object Storage (COS) 為原點時，我的主機名稱無法在瀏覽器上載入。
 

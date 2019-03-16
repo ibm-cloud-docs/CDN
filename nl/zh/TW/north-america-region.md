@@ -1,12 +1,13 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
-## 北美地區包括：
+# 北美地區
+{: #north-american-region}
 
 * 安地卡及巴布達
 * 阿魯巴

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # 讓 CDN 成為執行中狀態
+{: #getting-your-cdn-to-running-status}
 
 瞭解如何遵循這些準則，讓 CDN 進入 RUNNING 狀態。此文件也會告訴您如何啟動和停止 CDN。
 
@@ -27,7 +28,7 @@ lastupdated: "2018-10-11"
 
 如果您訂購的 CDN 具有使用「萬用字元」憑證的 HTTP 或 HTTPS，則可以繼續「步驟 1」。
 
-如果您已建立具有 HTTPS DV SAN 憑證的 CDN，則可能需要執行其他步驟來驗證網域，而這些步驟可以在[完成 HTTPS 的網域控制驗證](how-to-https.html#completing-domain-control-validation-for-https)頁面上找到。
+如果您已建立具有 HTTPS DV SAN 憑證的 CDN，則可能需要執行其他步驟來驗證網域，而這些步驟可以在[完成 HTTPS 的網域控制驗證](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https)頁面上找到。
 
 **步驟 1：**
 
@@ -47,7 +48,7 @@ lastupdated: "2018-10-11"
 
 CNAME 鏈結完成後，選取**取得狀態**會將狀態變更為 *RUNNING*，並且可以開始使用 CDN。
 
-恭喜！您的 CDN 現在正在執行。在這裡，[管理 CDN](how-to.html#manage-your-cdn) 頁面包含關於配置選項（例如[存活時間](how-to.html#setting-content-caching-time-using-time-to-live-)、[清除快取的內容](how-to.html#purging-cached-content)及[新增原點路徑詳細資料](how-to.html#adding-origin-path-details)）的其他資訊。
+恭喜！您的 CDN 現在正在執行。在這裡，[管理 CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) 頁面包含關於配置選項（例如[存活時間](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-)、[清除快取的內容](/docs/infrastructure/CDN/how-to.html#purging-cached-content)及[新增原點路徑詳細資料](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details)）的其他資訊。
 
 ## 啟動 CDN
 

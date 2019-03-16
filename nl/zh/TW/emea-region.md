@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-09"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # EMEA 地區
+{: #emea-region}
 
-## 歐洲、中東及非洲地區包括：
+EMEA 是歐洲、中東及非洲的縮寫。
+
+## 歐洲、中東及非洲地區
   * 阿爾巴尼亞
   * 阿爾及利亞
   * 安道爾

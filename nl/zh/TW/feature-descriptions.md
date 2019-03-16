@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-09-24"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,20 +13,22 @@ lastupdated: "2018-09-24"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # 特性說明
+{: #feature-descriptions}
 
-此頁面會強調顯示採用 Akamai 技術之 IBM Cloud CDN 所含的許多特性。
+此頁面會強調顯示採用 Akamai 技術之 {{site.data.keyword.cloud}} CDN 所含的許多特性。
 
 ## 主伺服器原點支援
 
-IBM Cloud Content Delivery Network (CDN) 可以配置為從「主伺服器原點」提供內容，方法是提供原點主機名稱、通訊協定、埠號，以及選擇性的內容提供路徑。預設路徑是 `/*`。通訊協定可以是 HTTP 及/或 HTTPS。Akamai 只支援特定埠號。如需支援的埠號/範圍，請參閱[常見問題](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+IBM Cloud Content Delivery Network (CDN) 可以配置為從「主伺服器原點」提供內容，方法是提供原點主機名稱、通訊協定、埠號，以及選擇性的內容提供路徑。預設路徑是 `/*`。通訊協定可以是 HTTP 及/或 HTTPS。Akamai 只支援特定埠號。如需支援的埠號/範圍，請參閱[常見問題](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
 
 ## Object Storage 原點支援
 
 IBM Cloud CDN 可以配置為從 Object Storage 端點提供內容，方法是提供端點、「儲存區」名稱、通訊協定和埠。可以選擇性地指定副檔名清單，以便只允許快取具有那些副檔名的檔案。儲存區中的所有物件都需要設定匿名讀取或公用讀取權。
 
-這份關於[如何使用 CDN 設定 IBM Cloud Object Storage](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) 的指導教學提供更詳細的資訊。
+這份關於[如何使用 CDN 設定 IBM Cloud Object Storage](/docs/tutorials/static-files-cdn.html) 的指導教學提供更詳細的資訊。
 
 ## 相異路徑之多原點支援
 
@@ -56,13 +58,13 @@ IBM Cloud CDN 提供方便快速地移除（或「清除」）邊緣伺服器上
 
 ## 主機標頭支援
 
-邊緣伺服器在與「原點」主機通訊時，會使用**主機標頭**。此特性提供 Web 服務在原點主機上的配置方式彈性。如果未提供主機標頭輸入，服務會使用原點伺服器主機名稱作為預設 HTTP 主機標頭（如果原點伺服器指定為主機名稱而不是 IP 位址的話）。如果主機標頭未提供為輸入，並且原點伺服器已提供為 IP 位址，則 CDN 主機名稱（也稱為 CDN 網域名稱）會用來作為預設 HTTP 主機標頭。
+邊緣伺服器在與「原點」主機通訊時，會使用**主機標頭**。此特性提供 Web 服務在原點主機上的配置方式彈性。特別是可以讓用戶端在相同的「原點主機」上配置多個 Web 伺服器。如果未提供主機標頭輸入，服務會使用原點伺服器主機名稱作為預設 HTTP 主機標頭（如果原點伺服器指定為主機名稱而不是 IP 位址的話）。如果主機標頭未提供為輸入，並且原點伺服器已提供為 IP 位址，則 CDN 主機名稱（也稱為 CDN 網域名稱）會用來作為預設 HTTP 主機標頭。
 
 ## HTTPS 通訊協定支援
 
-CDN 可以配置為使用 HTTPS 通訊協定，將內容安全地提供給一般使用者。此配置需要 SSL 憑證必須設定為 CDN 配置的一部分。有兩種類型的 SSL 憑證選項適用於 HTTPS：[萬用字元憑證](about-https.html#wildcard-certificate-support)及[網域驗證 (DV) 主體替代名稱 (SAN) 憑證](about-https.html#subject-alternate-name-san-certificate-support)。在本文件中，此類型也稱為 _SAN 憑證_。
+CDN 可以配置為使用 HTTPS 通訊協定，將內容安全地提供給一般使用者。此配置需要 SSL 憑證必須設定為 CDN 配置的一部分。有兩種類型的 SSL 憑證選項適用於 HTTPS：[萬用字元憑證](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support)及[網域驗證 (DV) 主體替代名稱 (SAN) 憑證](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support)。在本文件中，此類型也稱為 _SAN 憑證_。
 
-要使用的「SSL 憑證」類型是 HTTPS CDN 的重要考量。萬用字元憑證配置設定十分快速，但缺點是只有透過 CNAME 才能存取 CDN。SAN 憑證處理程序需要 4 到 8 小時才能完成，但可以搭配使用 CDN 與「CDN 網域」（即「主機名稱」）。在配置期間，「SAN 憑證」也需要額外的[**網域控制驗證**](how-to-https.html)步驟。使用上述任一憑證沒有任何相關聯的成本。請參閱[疑難排解文件](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-)，以瞭解選取給定「憑證」類型的連帶作用。
+要使用的「SSL 憑證」類型是 HTTPS CDN 的重要考量。萬用字元憑證配置設定十分快速，但缺點是只有透過 CNAME 才能存取 CDN。SAN 憑證處理程序需要 4 到 8 小時才能完成，但可以搭配使用 CDN 與「CDN 網域」（即「主機名稱」）。在配置期間，「SAN 憑證」也需要額外的[**網域控制驗證**](/docs/infrastructure/CDN/how-to-https.html)步驟。使用上述任一憑證沒有任何相關聯的成本。請參閱[疑難排解文件](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-)，以瞭解選取給定「憑證」類型的連帶作用。
 
 「原點主機」也必須將其專屬 SSL 憑證用於 CDN 主機名稱，而且必須由受到認可的「憑證管理中心 (CA)」進行簽署。
 
@@ -76,11 +78,11 @@ CDN 可以配置為使用 HTTPS 通訊協定，將內容安全地提供給一般
 
 當 CDN 邊緣伺服器收到使用者要求，而所要求的內容並未快取，則邊緣伺服器會聯繫原點主機以提取內容。然後該內容便會予以快取，時間是依為內容指定的存活時間 (TTL) 期間。如果 TTL 過期之後收到使用者要求，邊緣伺服器會聯繫原點主機以提取內容。如果因故無法聯繫原點伺服器（例如，原點主機關閉，或是有網路問題），邊緣伺服器會提供過期（陳舊）內容給該要求。此特性由 Akamai 支援，且**無法**關閉。
 
-## 快取金鑰查詢引數
+## 快取金鑰最佳化
 
-Akamai 邊緣伺服器會快取**快取儲存庫**上的內容。若要使用來自**快取儲存庫**的內容，邊緣伺服器會使用**快取金鑰**。通常，會根據一般使用者 URL 的一部分來產生**快取金鑰**。在部分情況下，URL 會包含因個別使用者而異的函數引數，但遞送的內容相同。依預設，Akamai 會使用查詢函數的引數來產生快取金鑰，從而為每位使用者產生唯一的快取金鑰。此方法不是最佳的方法，因為它會使邊緣伺服器與原點伺服器聯絡以取得已快取的內容，但是使用不同的快取金鑰。**忽略快取金鑰中的查詢引數**特性允許您指定在產生快取金鑰時是否應該忽略查詢引數。此特性適用於 CDN 對映配置的任何 `create` 或 `update`，以及原點路徑的任何 `create` 或 `update`。
+Akamai 邊緣伺服器會快取**快取儲存庫**上的內容。若要使用來自**快取儲存庫**的內容，邊緣伺服器會使用**快取金鑰**。通常，會根據一般使用者 URL 的一部分來產生**快取金鑰**。在部分情況下，URL 會包含因個別使用者而異的函數引數，但遞送的內容相同。依預設，Akamai 會使用查詢函數的引數來產生快取金鑰，從而為每位使用者產生唯一的快取金鑰。此方法不是最佳的方法，因為它會使邊緣伺服器與原點伺服器聯絡以取得已快取的內容，但是使用不同的快取金鑰。**快取金鑰最佳化**特性可讓您指定在產生「快取金鑰」時，要包含/忽略哪些查詢引數。此特性適用於 CDN 對映配置的任何 `create` 或 `update`，以及原點路徑的任何 `create` 或 `update`。
 
-**附註：**在建立 CDN 對映之後，可以從**設定**標籤來配置**快取金鑰查詢引數**的值。對於原點路徑，則可以在原點路徑的 `create` 或 `update` 作業期間進行配置。
+**附註：**在建立 CDN 對映之後，可以從**設定**標籤來配置**快取金鑰最佳化**的值。對於原點路徑，則可以在原點路徑的 `create` 或 `update` 作業期間進行配置。
 
 ## 內容壓縮
 
@@ -107,7 +109,7 @@ Akamai 邊緣伺服器會快取**快取儲存庫**上的內容。若要使用來
 
 ## 隨選視訊
 
-**隨選視訊**效能最佳化可在各種網路類型提供高品質的串流。藉由利用分散式網路的能力動態地分散負載，IBM Cloud CDN 與 Akamai 讓您能快速地針對大型對象而擴充，不論您是否為他們規劃。
+**隨選視訊**效能最佳化可在各種網路類型提供高品質的串流。利用預先配置的快取控制設定以及分散式網路的能力，以動態方式分散負載，IBM Cloud CDN 與 Akamai 便可讓您快速地針對大量觀眾進行擴充，不論您是否已為他們規劃。
 
 **隨選視訊**已針對例如 HLS、DASH、HDS 和 HSS 等分段串流格式的分散而最佳化。目前**不支援**即時視訊串流。在「設定」標籤上，從**進行最佳化**下的下拉功能表選取選項，或是在建立新原點路徑時，都可以啟用**隨選視訊**特性。您應該只在最佳化視訊檔案的遞送時才啟用此特性。
 
@@ -120,3 +122,17 @@ access-type `Allow` 讓您明確地容許資料流量根據地區類型，送到
 在另一方面，`Deny` 行為會封鎖指定群組的服務存取，但容許所有其他未指定地區的存取。例如，如果您將「地理存取控制」access-type 設定為針對歐洲和大洋洲的內容加以 `Deny`，則那些大陸上的使用者將**無法**使用您的服務，而所有其他大陸上的使用者將能夠存取。
 
 此特性可從您「CDN 配置」的**設定**頁面存取。
+
+## 快速鏈結保護
+
+「快速鏈結保護」是個規則型行為，可讓您控制是否容許特定網站從您的 CDN 存取內容。從網頁上的鏈結提出一個 HTTP 要求時，以及當該鏈結指向遠端資產時，瀏覽器一般會併入「`Referer` 標頭」。一個網站用來存取另一個網站中資產的鏈結，稱為快速鏈結。有兩種類型的行為可用：**ALLOW** 及 **DENY**。
+
+如果您的 `protectionType` 設為 `ALLOW`：
+* 在傳送至您 CDN 的要求中，如果 `Referer` 標頭值符合您指定的其中一個 `refererValues`，則您的 CDN **會**提供所要求的內容。
+* 否則，您的 CDN 不會提供內容。
+
+如果您的 `protectionType` 設為 `DENY`：
+* 在傳送至您 CDN 的要求中，如果 `Referer` 標頭值符合您指定的其中一個 `refererValues`，則您的 CDN **不會**提供所要求的內容。
+* 否則，您的 CDN 會提供內容。
+
+**附註**：此特性目前只能透過我們的 API 使用。如需相關資訊，您可以檢視 [API 頁面](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection)。

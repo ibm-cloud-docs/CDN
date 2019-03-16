@@ -1,13 +1,14 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
 
-## 南美洲地區包括：
+# 南美地區
+{: #south-american-region}
 
 * 阿根廷
 * 玻利維亞

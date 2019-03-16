@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # 使用 DV SAN 完成 HTTPS 的網域控制驗證
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-下圖概述您的 CDN 從建立之前直到開始執行，將會進入的各種狀態。
+下圖概述您的 CDN 從建立之前直到進入執行狀態，將會進入的各種狀態。
 
   ![SAN 狀態圖](images/state-diagram-san.png)
 
@@ -24,7 +25,7 @@ lastupdated: "2018-10-04"
 
 **步驟 1：**
 
-使用「DV SAN 憑證」訂購 CDN 之後，憑證要求處理程序即會開始。在此處理程序期間，IBM Cloud CDN 會向 Akamai 要求憑證。在憑證變成可用之後，Akamai 即會向「憑證管理中心 (CA)」發出要求。
+使用「DV SAN 憑證」訂購 CDN 之後，憑證要求處理程序即會開始。在此處理程序期間，{{site.data.keyword.cloud}} CDN 會向 Akamai 要求憑證。在憑證變成可用之後，Akamai 即會向「憑證管理中心 (CA)」發出要求。
 
   * 在此期間，CDN 狀態會顯示為**要求憑證**。
 
@@ -48,7 +49,7 @@ lastupdated: "2018-10-04"
 
   * 此處理程序完成後，不論使用哪種驗證方法，所有網域都會移至 **CNAME 配置**狀態。
 
-您可以在[開始執行](basic-functions.html#get-to-running)頁面中，找到有關完成 CNAME 配置以及監督 CDN 的其他資訊。
+您可以在[開始執行](/docs/infrastructure/CDN/basic-functions.html#get-to-running)頁面中，找到有關完成 CNAME 配置以及監督 CDN 的其他資訊。
 
 
 ## 網域控制驗證 

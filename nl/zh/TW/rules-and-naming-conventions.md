@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # 規則及命名慣例
+{ #rules-and-naming-conventions}
 
 ## CDN 主機名稱的規則為何？
 CDN `Hostname` 輸入字串**必須**：

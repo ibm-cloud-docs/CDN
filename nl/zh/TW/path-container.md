@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # 路徑（原點）容器
+{: #path-origin-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 集合包含了我們的（原點）路徑 API 所使用的屬性。每個路徑 API 都會傳回此類型的集合。
 
-類別 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**類別** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`：此原點路徑所屬對映的唯一 ID。  
 * `path`：相對於可用來聯繫此原點之網域的路徑。  

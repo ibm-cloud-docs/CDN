@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-05-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,11 +15,13 @@ lastupdated: "2018-05-09"
 {:download: .download}
 
 # 供應商容器
+{: #vendor-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Vendor` 集合包含了我們的供應商 API 所使用的屬性。
 
 
-類別 `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
-* `vendorName`：現行 IBM Cloud CDN 提供者的名稱。  
+**類別** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
+* `vendorName`：現行 {{site.data.keyword.cloud}} CDN 提供者的名稱。  
 * `featureSummary`：供應商特性的簡短摘要。  
 * `features`：供應商支援的特性清單。  
 * `status`：指出供應商是否是可透過 IBM Cloud 使用的選項。

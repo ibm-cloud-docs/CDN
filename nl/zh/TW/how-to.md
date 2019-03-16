@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-24"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-09-24"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # 管理 CDN
+{: #manage-your-cdn}
 
 本文件說明管理 CDN 的一般作業。
 
@@ -60,8 +62,7 @@ CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原�
 
 **步驟 3：**
 
-您*必須* 提供路徑。路徑*必須* 以 CDN 路徑為字首開始，如果 CDN 建立時有路徑的話。  
-  例如，如果 CDN 建立時路徑為 `/examplePath`，「原點」的路徑開頭必須為字首 `/examplePath/`。您可以選擇性地提供主機標頭。  
+您*必須* 提供路徑。您可以選擇性地提供主機標頭。  
 
    ![原點新增原點](images/add-origin-path.png)
 
@@ -79,11 +80,11 @@ CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原�
 
   * 伺服器及 Object Storage 配置的**最佳化**及**快取金鑰**選項是相同的。
 
-    * 從下拉功能表選擇**最佳化**選項。預設選項是**一般 Web 遞送**，或者您也可以選擇**大型檔案**或**隨選視訊**最佳化。**一般 Web 遞送**允許 CDN 提供最多 1.8GB 的內容，而**大型檔案**最佳化允許下載從 1.8GB 到 320GB 的檔案。**隨選視訊**會將您的 CDN 最佳化以便遞送分段的串流格式。[大型檔案最佳化](feature-descriptions.html#large-file-optimization)和[隨選視訊](feature-descriptions.html#video-on-demand)的特性說明提供進一步的資訊。
+    * 從下拉功能表選擇**最佳化**選項。預設選項是**一般 Web 遞送**，或者您也可以選擇**大型檔案**或**隨選視訊**最佳化。**一般 Web 遞送**允許 CDN 提供最多 1.8GB 的內容，而**大型檔案**最佳化允許下載從 1.8GB 到 320GB 的檔案。**隨選視訊**會將您的 CDN 最佳化以便遞送分段的串流格式。[大型檔案最佳化](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization)和[隨選視訊](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand)的特性說明提供進一步的資訊。
 
         ![效能配置選項](images/performance-config-options.png)
 
-    * 從下拉功能表選擇**快取金鑰**選項。預設選項是 **Include-all**。如果您選取 **Include specified** 或 **Ignore specified**，您**必須**輸入要包含或忽略的查詢字串，並以空格區隔。例如，輸入 `uuid=123456` 作為單一查詢字串，或輸入 `uuid=123456 issue=important` 作為兩個查詢字串。您可以在特性說明中找到[快取金鑰查詢引數](feature-descriptions.html#cache-key-query-args)的詳細資訊。
+    * 從下拉功能表選擇**快取金鑰**選項。預設選項是 **Include-all**。如果您選取 **Include specified** 或 **Ignore specified**，您**必須**輸入要包含或忽略的查詢字串，並以空格區隔。例如，輸入 `uuid=123456` 作為單一查詢字串，或輸入 `uuid=123456 issue=important` 作為兩個查詢字串。您可以在特性說明中找到[快取金鑰查詢引數](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args)的詳細資訊。
 
         ![快取金鑰選項](images/cache-key-options.png)
 
@@ -117,7 +118,7 @@ CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原�
 
 **步驟 3：**
 
-輸入標準 Unix 路徑語法以指出您要清除的檔案，然後選取**清除**按鈕。目前只容許清除單一檔案。如需所容許「清除」路徑語法的詳細資料，請參閱[規則及命名慣例](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)頁面。
+輸入標準 Unix 路徑語法以指出您要清除的檔案，然後選取**清除**按鈕。目前只容許清除單一檔案。如需所容許「清除」路徑語法的詳細資料，請參閱[規則及命名慣例](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)頁面。
 
 **步驟 4：**
 
@@ -172,7 +173,7 @@ CDN 處於 *CNAME_Configuration* 或*執行中* 狀態時，即可新增「原�
 
 若要充分運用 IBM Cloud Object Storage 中所儲存的物件，您必須設定儲存區中每一個物件的 "acl" 內容值（亦即，存取控制清單）來進行 "public-read" 存取。
 
-請參閱「IBM Cloud Object Storage 開發人員中心」(https://developer.ibm.com/cloudobjectstorage/) 的「工具」小節，以安裝所有必要的用戶端或工具。本手冊假設您已安裝正式 AWS 指令行介面，其與 IBM Cloud Object Storage S3 API 相容。
+若要安裝所有必要的用戶端或工具，請參閱 [IBM Cloud Object Storage 開發人員小節](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)。本手冊假設您已安裝正式 AWS 指令行介面，其與 IBM Cloud Object Storage S3 API 相容。
 
 下列程式碼範例示範如何使用指令行介面來設定儲存區中所有物件的 "public-read" 存取權。
 

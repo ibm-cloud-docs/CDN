@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-24"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-07-24"
 {:download: .download}
 
 # 度量值
+{: #metrics}
 
 當您第一次從清單選取 CDN 時，會開啟「概觀」頁面。在這裡您可以看到所選時段（預設值是 30 天）的「頻寬總計」、「總命中數」和「命中率」。
 
@@ -28,19 +29,19 @@ lastupdated: "2018-07-24"
 
 ## 我最少可以檢視度量值幾天？有上限嗎？
 
-您可以使用 IBM Cloud Content Delivery Network 與 Akamai 檢視的度量值有天數的上限和下限。最少可以收集度量值 7 天。最多可以檢視度量值 90 天。如果是使用 API，則建議使用 89 天作為上限，以說明任何時區差異。
+可以使用 {{site.data.keyword.cloud}} Content Delivery Network 與 Akamai 來檢視度量值的天數有上限和下限。最少可以收集度量值 7 天。最多可以檢視度量值 90 天。如果是使用 API，則建議使用 89 天作為上限，以說明任何時區差異。
 
 ## 為什麼當總命中數為零時，命中率不是零？
 命中率代表從邊緣伺服器快取遞送內容，而不是從原點伺服器遞送內容的時間百分比。計算方式如下：
 
-> ((Edge hits - Ingress hits)/Edge hits) * 100
+`((Edge hits - Ingress hits)/Edge hits) * 100
 
-
+`
 
 其中：
 
-Edge hits 定義為「從一般使用者對邊緣伺服器的所有命中」  
-Ingress hits 定義為「原點或進入的命中是針對從您的原點到 Akamai 邊緣伺服器的資料流量」
+_Edge hits_ 定義為「從一般使用者對邊緣伺服器的所有命中」。  
+_Ingress hits_ 定義為「原點或進入的命中是針對從您的原點到 Akamai 邊緣伺服器的資料流量」。
 
 因為命中率的計算是在帳戶層次，而不是針對 CDN，所以在您帳戶中的所有 CDN 命中率都會相同。這一點也解釋了為何當特定 CDN 的邊緣命中數為零時，命中率可能不是零。
 
