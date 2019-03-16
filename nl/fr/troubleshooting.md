@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Traitement des incidents
+{: #troubleshooting}
 
-Ce document présente différentes méthodes permettant de traiter les incidents liés à votre CDN. Si vous avez besoin de contacter le support, prenez soin d'indiquer le numéro de référence de votre CDN.
+Ce document présente différentes méthodes permettant de traiter les incidents liés à votre {{site.data.keyword.cloud}} CDN. Si vous avez besoin de contacter le support, prenez soin d'indiquer le numéro de référence de votre CDN.
 
 ## Comment savoir que mon CDN fonctionne correctement ?
 Exécutez la commande `curl` suivante en remplaçant `http://your.cdn.domain/uri` par le chemin de fichier respectif sur votre CDN :
@@ -60,12 +61,12 @@ L'erreur qui peut s'afficher est la suivante : `503 Service Unavailable`.
 En même temps que l'erreur 503, un message d'erreur semblable au message suivant peut également apparaître : `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (le numéro de référence réel peut être différent). Dans ce cas, le numéro de référence dans la chaîne de l'erreur débouche sur un échec d'établissement de liaison SSL.
 
 Pour remédier au problème, assurez-vous que les certificats SSL de votre serveur d'origine répondent aux critères suivants :
-  * Le certificat **doit** être émis par une autorité de certification sécurisée par Akamai. Vous pouvez afficher la liste de certificats sécurisés Akamai en cliquant sur [ce lien](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
+  * Le certificat **doit** être émis par une autorité de certification sécurisée par Akamai. Vous pouvez afficher la liste de certificats sécurisés Akamai en cliquant sur [ce lien ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
   * Il **doit** correspondre à la valeur *Host header* configurée sur le CDN
   * Il ne doit **pas** être auto-signé
   * Il ne doit **pas** être arrivé à expiration
 
-Si vous avez vérifié la chaîne de certificats de votre serveur d'origine à l'aide des critères précédents et que l'erreur persiste, consultez la rubrique [Aide et support](getting-help.html#gettinghelp). Notez la chaîne d'erreur de référence et mentionnez-la lorsque vous communiquez avec nous.
+Si vous avez vérifié la chaîne de certificats de votre serveur d'origine à l'aide des critères précédents et que l'erreur persiste, consultez la rubrique [Aide et support](/docs/infrastructure/CDN/getting-help.html#gettinghelp). Notez la chaîne d'erreur de référence et mentionnez-la lorsque vous communiquez avec nous.
 
 ## Mon nom d'hôte n'est pas chargé sur le navigateur lorsqu'IBM Cloud Object Storage (COS) est le serveur d'origine
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Lancement de l'exécution de votre CDN
+{: #getting-your-cdn-to-running-status}
 
 Apprenez comment exécuter votre CDN, en suivant les instructions ci-après. Ce document vous indique également comment démarrer et arrêter votre CDN.
 
@@ -27,7 +28,7 @@ Une fois que vous avez créé un CDN, il apparaît sur votre tableau de bord des
 
 Si vous avez commandé votre CDN avec un certificat de caractère générique HTTP ou HTTPS, vous pouvez passer à l'étape 1.
 
-Si vous avez créé un CDN avec un certificat SAN DV HTTPS, des étapes supplémentaires peuvent s'avérer nécessaires pour vérifier votre domaine, décrites dans la page [Exécution de la validation DCV (Domain Control Validation) pour HTTPS](how-to-https.html#completing-domain-control-validation-for-https).
+Si vous avez créé un CDN avec un certificat SAN DV HTTPS, des étapes supplémentaires peuvent s'avérer nécessaires pour vérifier votre domaine, décrites dans la page [Exécution de la validation DCV (Domain Control Validation) pour HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
 
 **Etape 1 :**
 
@@ -47,7 +48,7 @@ Après avoir configuré le CNAME avec votre fournisseur DNS, vous pouvez vérifi
 
 Une fois le chaînage CNAME terminé, la sélection de l'option **Get Status** change le statut en *RUNNING* et le CDN est prêt à être utilisé.
 
-Félicitations ! Votre CDN est désormais actif. Consultez ensuite la page [Gestion de votre CDN](how-to.html#manage-your-cdn) pour obtenir des informations supplémentaires sur les options de configuration, disponibles dans les rubriques [Durée de vie](how-to.html#setting-content-caching-time-using-time-to-live-), [Purge du contenu mis en cache](how-to.html#purging-cached-content) et [Ajout de détails sur le chemin d'origine](how-to.html#adding-origin-path-details).
+Félicitations ! Votre CDN est désormais actif. Consultez ensuite la page [Gestion de votre CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) pour obtenir des informations supplémentaires sur les options de configuration, disponibles dans les rubriques [Durée de vie](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Purge du contenu mis en cache](/docs/infrastructure/CDN/how-to.html#purging-cached-content) et [Ajout de détails sur le chemin d'origine](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Démarrage du CDN
 

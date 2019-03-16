@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,20 +13,22 @@ lastupdated: "2018-11-02"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Description des fonctions
+{: #feature-descriptions}
 
-Cette page présente beaucoup des fonctions incluses avec IBM Cloud CDN optimisé par Akamai.
+Cette page présente beaucoup des fonctions incluses avec {{site.data.keyword.cloud}} CDN optimisé par Akamai.
 
 ## Prise en charge de l'origine du serveur hôte
 
-IBM Cloud Content Delivery Network (CDN) peut être configuré pour traiter les contenus d'une origine de serveur hôte en fournissant le nom d'hôte de l'origine, le protocole, le numéro de port et en option, le chemin à partir duquel le contenu doit être servi. Le chemin par défaut est `/*`. Le protocole peut être HTTP, HTTPS, ou les deux. Seuls certains numéros de ports sont pris en charge par Akamai. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports et les plages pris en charge.
+IBM Cloud Content Delivery Network (CDN) peut être configuré pour traiter les contenus d'une origine de serveur hôte en fournissant le nom d'hôte de l'origine, le protocole, le numéro de port et en option, le chemin à partir duquel le contenu doit être servi. Le chemin par défaut est `/*`. Le protocole peut être HTTP, HTTPS, ou les deux. Seuls certains numéros de ports sont pris en charge par Akamai. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports et les plages pris en charge.
 
 ## Prise en charge de l'origine du stockage d'objet
 
 IBM Cloud CDN peut être configuré pour servir le contenu provenant d'un noeud final de stockage d'objet en fournissant le noeud final, le nom de compartiment, le protocole et le port. Facultativement, une liste des extensions de fichiers peut être spécifiée pour autoriser uniquement la mise en cache des fichiers possédant ces extensions. Tous les objets du compartiment doivent être définis avec un accès en lecture anonyme ou public.
 
-Pour obtenir des informations complémentaires, consultez le tutoriel [Accelerate delivery of static files using a CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn).
+Pour obtenir des informations complémentaires, consultez le tutoriel [Accelerate delivery of static files using a CDN](/docs/tutorials/static-files-cdn.html).
 
 ## Prise en charge de plusieurs origines avec différents chemins
 
@@ -60,9 +62,9 @@ Le serveur d'équilibrage des charges utilise l'en-tête **Host Header**  lors d
 
 ## Prise en charge du protocole HTTPS
 
-CDN peut être configuré afin d'utiliser le protocole HTTPS pour servir le contenu de façon sécurisée vers les utilisateurs finaux. Cette configuration nécessite qu'un certificat soit paramétré en tant qu'élément de la configuration CDN. Deux types d'options de certificats SSL sont disponibles pour HTTPS : [certificat de caractère générique](about-https.html#wildcard-certificate-support) et [certificat SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support), ce dernier type étant aussi appelé _certificat SAN_ dans cette documentation.
+CDN peut être configuré afin d'utiliser le protocole HTTPS pour servir le contenu de façon sécurisée vers les utilisateurs finaux. Cette configuration nécessite qu'un certificat soit paramétré en tant qu'élément de la configuration CDN. Deux types d'options de certificats SSL sont disponibles pour HTTPS : [certificat de caractère générique](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) et [certificat SAN (Subject Alternative Name) DV (Domain Validation)](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support), ce dernier type étant aussi appelé _certificat SAN_ dans cette documentation.
 
-Le type de certificat SSL à utiliser est un choix important pour le CDN HTTPS. La procédure de configuration du certificat de caractère générique est rapide mais a pour inconvénient que le CDN n'est accessible que par le biais d'un enregistrement CNAME. Le processus de certificat SAN peut prendre 4 à 8 heures pour s'exécuter mais il permet d'utiliser le CDN avec le domaine CDN (c'est à dire le nom d'hôte). Le certificat SAN nécessite également une étape supplémentaire dans la procédure de [**validation DCV (Domain Control Validation)**](how-to-https.html) lors de la configuration. L'utilisation de l'un ou l'autre de ces certificats est gratuite. Consultez le document [Traitement des incidents](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) pour comprendre les implications de la sélection de l'un ou l'autre type de certificat.
+Le type de certificat SSL à utiliser est un choix important pour le CDN HTTPS. La procédure de configuration du certificat de caractère générique est rapide mais a pour inconvénient que le CDN n'est accessible que par le biais d'un enregistrement CNAME. Le processus de certificat SAN peut prendre 4 à 8 heures pour s'exécuter mais il permet d'utiliser le CDN avec le domaine CDN (c'est à dire le nom d'hôte). Le certificat SAN nécessite également une étape supplémentaire dans la procédure de [**validation DCV (Domain Control Validation)**](/docs/infrastructure/CDN/how-to-https.html) lors de la configuration. L'utilisation de l'un ou l'autre de ces certificats est gratuite. Consultez le document [Traitement des incidents](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) pour comprendre les implications de la sélection de l'un ou l'autre type de certificat.
 
 L'hôte d'origine doit aussi avoir son propre certificat SSL pour le nom d'hôte CDN et doit être signé par une autorité de certification reconnue.
 
@@ -123,7 +125,7 @@ Cette fonction est accessible à partir de la page **Paramètres** de votre conf
 
 ## Protection des liens dynamiques
 
-La protection des liens dynamiques est un comportement basé sur des règles qui permet de contrôler si certains sites Web sont ou non autorisés à accéder à votre contenu depuis votre CDN. En général, le navigateur inclut un en-tête `Referer` lorsqu'une requête HTTP est émise depuis un lien d'une page Web et si ce lien pointe sur un actif distant. Le lien qu'utilise ce site Web pour accéder à un actif d'un autre site Web est appelé lien dynamique. Deux types de comportement sont disponibles : **ALLOW** (autoriser) et **DENY** (refuser).
+La protection des liens dynamiques est un comportement basé sur des règles qui permet de contrôler si certains sites Web sont ou non autorisés à accéder à votre contenu depuis votre CDN.  En général, le navigateur inclut un en-tête `Referer` lorsqu'une requête HTTP est émise depuis un lien d'une page Web et si ce lien pointe sur un actif distant. Le lien qu'utilise ce site Web pour accéder à un actif d'un autre site Web est appelé lien dynamique.  Deux types de comportement sont disponibles : **ALLOW** (autoriser) et **DENY** (refuser).
 
 Lorsque `protectionType` est défini sur `ALLOW` :
 * Si la valeur de l'en-tête `Referer` d'une requête envoyée à votre CDN correspond à l'une des valeurs `refererValues` spécifiées, votre CNDS **diffusera** le contenu demandé.
@@ -133,4 +135,4 @@ Lorsque `protectionType` est défini sur `DENY` :
 * Si la valeur de l'en-tête `Referer` d'une requête envoyée à votre CDN correspond à l'une des valeurs `refererValues` spécifiées, votre CNDS **ne diffusera pas** le contenu demandé.
 * Sinon, votre CDN diffusera le contenu.
 
-**REMARQUE** : cette fonction n'est actuellement disponible que par le biais de votre API. Pour plus d'informations, affichez la [page de l'API](api.html#api-for-hotlink-protection).
+**REMARQUE** : cette fonction n'est actuellement disponible que par le biais de votre API. Pour plus d'informations, affichez la [page de l'API](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection).

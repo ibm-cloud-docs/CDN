@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Conteneur Path (Origin)
+{: #path-origin-container}
+
 La collection `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` contient les attributs utilisés par nos API Path (Origin). Chacun des API Path renvoie une collection de ce type.
 
-Classe `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**Classe** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` :  
 
 * `mappingUniqueId` : ID unique du mappage auquel appartient ce chemin d'origine.  
 * `path` :  Chemin relatif au domaine qui peut être utilisé pour atteindre cette origine.  

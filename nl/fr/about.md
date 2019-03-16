@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Introduction aux réseaux de distribution de contenu (CDN)
+{: #about-content-delivery-networks-cdn-}
 
 Un réseau de distribution de contenu (CDN - Content Delivery Network) est un ensemble de serveurs d'équilibrage des charges répartis dans différentes parties d'un pays ou du monde. Le contenu Web est distribué à partir d'un serveur d'équilibrage des charges situé dans la zone géographique la plus proche du client qui adresse la demande de contenu. Cette technique permet à vos utilisateurs finaux de recevoir le contenu dans des délais plus courts et offre une meilleure expérience globale à vos clients.
 
@@ -26,7 +27,7 @@ L'objectif d'un CDN est de mettre en cache du contenu Web sur des serveurs d'éq
 
 ## Fonctions
 
-Les fonctions principales du service IBM Cloud Content Delivery Network incluent :
+Les fonctions principales du service {{site.data.keyword.cloud}} Content Delivery Network incluent :
   * La prise en charge de l'origine du serveur hôte
   * La prise en charge de l'origine du stockage d'objet
   * La prise en charge de plusieurs origines avec différents chemins
@@ -44,7 +45,7 @@ Les fonctions principales du service IBM Cloud Content Delivery Network incluent
   * Le contrôle d'accès géographique
   * La protection des liens dynamiques
 
-Consultez [ce document](feature-descriptions.html#feature-descriptions) pour des descriptions complètes des fonctions.
+Consultez le [document de description des fonctions](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions) pour des descriptions complètes des fonctions.
 
 ## Diagramme de l'architecture
 

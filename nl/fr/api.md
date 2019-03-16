@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,10 @@ lastupdated: "2018-10-01"
 {:download: .download}
 
 
-
 # Références de l'API CDN
+{: #cdn-api-reference}
 
-L'interface de programmation {{site.data.keyword.BluSoftlayer_notm}} (généralement appelée SLAPI), fournie par IBM Cloud, est l'interface de développement qui permet aux développeurs et administrateurs système d'interagir directement avec le système back end de {{site.data.keyword.BluSoftlayer_notm}}.
+L'interface de programme d'application (API) {{site.data.keyword.BluSoftlayer_notm}} (généralement appelée SLAPI), fournie par {{site.data.keyword.cloud}}, est l'interface de développement qui permet aux développeurs et administrateurs système d'interagir directement avec le système back end de {{site.data.keyword.BluSoftlayer_notm}}.
 
 SLAPI implémente un grand nombre de fonctionnalités du portail client : si une interaction est possible dans le portail client, elle peut également être exécutée dans SLAPI. Puisque vous pouvez interagir à l'aide d'un programme avec toutes les portions de l'environnement {{site.data.keyword.BluSoftlayer_notm}} au sein de SLAPI, vous pouvez utiliser l'API pour automatiser les tâches.
 
@@ -42,7 +42,7 @@ Pour commencer, vous trouverez ci-dessous la séquence d'appels API recommandée
 
 Vous pouvez utiliser les autres API après avoir suivi la séquence précédente.
 
-[Un exemple de code est disponible pour chaque étape de cette séquence d'appels.](cdn-example-code.html#code-examples-using-the-cdn-api)
+[Un exemple de code est disponible pour chaque étape de cette séquence d'appels.](/docs/infrastructure/CDN/cdn-example-code.html#code-examples-using-the-cdn-api)
 
 **REMARQUE** : vous **devez** utiliser le nom d'utilisateur d'API et la clé d'API d'un utilisateur possédant le droit `CDN_ACCOUNT_MANAGE` pour la plupart des appels d'API affichés dans ce document. Contactez l'utilisateur principal de votre compte si vous avez besoin que ce droit soit activé pour vous. (Chaque compte client IBM Cloud possède un utilisateur principal)
 
@@ -54,7 +54,7 @@ Cette API permet aux utilisateurs de dresser la liste des fournisseurs CDN pris 
 * **Paramètres requis** : Aucun
 * **Retour** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
-  Vous trouverez le conteneur des fournisseurs et un exemple d'utilisation ici : [Conteneur des fournisseurs](vendor-container.html)
+  Vous trouverez le conteneur des fournisseurs et un exemple d'utilisation ici : [Conteneur des fournisseurs](/docs/infrastructure/CDN/vendor-container.html)
 
 ----
 ## API de compte
@@ -67,12 +67,12 @@ Vérifie si un compte CDN existe pour l'utilisateur appelant l'API, pour le nom 
 ----
 ## API pour le mappage de domaine
 ### createDomainMapping
-A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour le fournisseur donné et l'associe à l'{{site.data.keyword.BluSoftlayer_notm}}ID de compte de l'utilisateur. Le compte CDN doit d'abord être créé avec `placeOrder` pour que cette API fonctionne (voir un exemple de l'appel d'API `placeOrder` dans les [Exemples de codes](cdn-example-code.html)). Une fois le compte CDN créé, le paramètre `defaultTTL` est créé avec la valeur 3 600 secondes.
+A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour le fournisseur donné et l'associe à l'{{site.data.keyword.BluSoftlayer_notm}}ID de compte de l'utilisateur. Le compte CDN doit d'abord être créé avec `placeOrder` pour que cette API fonctionne (voir un exemple de l'appel d'API `placeOrder` dans les [Exemples de codes](/docs/infrastructure/CDN/cdn-example-code.html)). Une fois le compte CDN créé, le paramètre `defaultTTL` est créé avec la valeur 3 600 secondes.
 
-* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-  [Afficher le conteneur d'entrée](input-container.html)
+  [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un mappage de domaine (les attributs sont facultatifs sauf indication contraire) :
     * `vendorName` : **obligatoire** Fournissez le nom d'un fournisseur IBM Cloud CDN valide.
@@ -82,9 +82,9 @@ A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour 
     * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
     * `certificateType` : **obligatoire** pour le protocole HTTPS. `SHARED_SAN_CERT` ou `WILDCARD_CERT`
     * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Le chemin d'accès par défaut est `/*`
-    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte) ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte) ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
-    * `respectHeader` : Valeur booléenne qui si définie sur `true` entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
+    * `respectHeader` : Valeur booléenne qui, si elle est définie sur `true`, entraînera le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
     * `cname` : Fournissez un alias pour le nom d'hôte. Il sera généré si aucune valeur n'est fournie.
     * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
     * `fileExtension` : (facultatif pour le stockage d'objet) Extensions de fichiers autorisées à être mises en cache.
@@ -98,7 +98,7 @@ A l'aide des entrées fournies, cette fonction crée un mappage de domaine pour 
 
   **REMARQUE** : La collection fournit une valeur `uniqueId` qui doit être envoyée sous forme d'entrée pour les appels API suivants en relation avec le mappage ou le chemin d'origine.
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### deleteDomainMapping
@@ -106,7 +106,7 @@ Supprime le mappage de domaine sur la base du paramètre `uniqueId`. Le mappage 
 
 * **Paramètres obligatoires** : `uniqueId` : ID unique du mappage à supprimer
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### verifyDomainMapping
@@ -117,7 +117,7 @@ Vous pouvez appeler cette API à tout moment afin d'obtenir le statut du mappage
 * **Paramètres obligatoires** : `uniqueId` : ID unique du mappage que vous souhaitez vérifier
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### startDomainMapping
@@ -126,7 +126,7 @@ Démarre un mappage de domaine CDN sur la base du paramètre `uniqueId`. Pour d�
 * **Paramètres obligatoires** : `uniqueId` : ID unique du mappage devant être démarré
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### stopDomainMapping
@@ -135,15 +135,15 @@ Met fin à un mappage de domaine CDN sur la base du paramètre `uniqueId`. Pour 
 * **Paramètres obligatoires** : `uniqueId` : ID unique du mappage devant être arrêté
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### updateDomainMapping
 Permet à l'utilisateur de mettre à jour les propriétés du mappage identifiées par le paramètre `uniqueId`. Les zones suivantes peuvent être modifiées : les arguments `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` et si votre type d'origine est Stockage d'objet, `bucketName` et `fileExtension` peuvent également être modifiés. Pour être mis à jour, le mappage de domaine doit se trouver à l'état _RUNNING_.
 
-* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
-  [Afficher le conteneur d'entrée](input-container.html)
+  [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et **doivent** être fournis lors de la mise à jour d'un mappage de domaine :
     * `vendorName` : Fournissez le nom du fournisseur de CDN de ce mappage.
@@ -152,7 +152,7 @@ Permet à l'utilisateur de mettre à jour les propriétés du mappage identifié
     * `originType` : Le type d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
     * `domain` : Fournissez votre nom d'hôte.
     * `protocol` : Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
-    * `httpPort` et/ou `httpsPort` : Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `httpPort` et/ou `httpsPort` : Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
     * `respectHeader` : Valeur booléenne qui, si elle définie sur `true`, entraîne le remplacement des paramètres TTL du CDN par les paramètres TTL du serveur d'origine.
     * `uniqueId` : Généré après la création du mappage.
@@ -166,7 +166,7 @@ Permet à l'utilisateur de mettre à jour les propriétés du mappage identifié
       * `include: arguments de requête séparés par des espaces` : inclut ces arguments de requête spécifiques. Par exemple, `include: query1 query2`
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### listDomainMappings
@@ -175,7 +175,7 @@ Renvoie une collection de tous les mappages de domaines pour le client en cours.
 * **Paramètres requis** : Aucun
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### listDomainMappingByUniqueId
@@ -184,17 +184,17 @@ Renvoie une collection avec un objet de domaine unique sur la base du paramètre
 * **Paramètres obligatoires** : `uniqueId`: ID unique du mappage à renvoyer
 * **Retour** : Collection d'objets uniques de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Afficher le conteneur de mappage](mapping-container.html)
+  [Afficher le conteneur de mappage](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ## API du serveur d'origine
 ### createOriginPath
 Crée un chemin d'origine pour un CDN existant et un client particulier. Le chemin d'origine peut être basé sur un serveur hôte ou sur un stockage d'objet. Pour créer le chemin d'origine, le mappage de domaine doit être dans un état _RUNNING_ ou _CNAME_CONFIGURATION_.
 
-* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-  [Afficher le conteneur d'entrée](input-container.html)
+  [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la création d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
     * `vendorName` : **obligatoire** Fournissez le nom d'un fournisseur IBM Cloud CDN valide.
@@ -203,7 +203,7 @@ Crée un chemin d'origine pour un CDN existant et un client particulier. Le chem
     * `domain` : **obligatoire** Fournissez votre nom d'hôte sous forme de chaîne.
     * `protocol` : **obligatoire** Les protocoles pris en charge sont `HTTP`, `HTTPS` ou `HTTP_AND_HTTPS`.
     * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Doit commencer par le chemin de mappage. Par exemple, si le chemin de mappage est `/test`, votre chemin d'origine peut être `/test/media`
-    * `httpPort` et/ou `httpsPort` : **obligatoire** Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `httpPort` et/ou `httpsPort` : **obligatoire** Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `header` : Spécifie les informations relatives aux en-têtes d'hôte utilisés par le serveur d'origine
     * `uniqueId` : **obligatoire** Généré après la création du mappage.
     * `cname` : Fournissez un alias pour le nom d'hôte. Si vous n'avez pas fourni, un cname unique a été généré pour vous lors de la création du mappage.
@@ -217,23 +217,23 @@ Crée un chemin d'origine pour un CDN existant et un client particulier. Le chem
 
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Afficher le conteneur de chemin d'origine](path-container.html)
+  [Afficher le conteneur de chemin d'origine](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ### updateOriginPath
 Met à jour un chemin d'origine existant pour un mappage existant et un client particulier. Le type d'origine ne peut pas être changé avec cette API. Les propriétés suivantes peuvent être modifiées : `path`, `origin`, `httpPort` et `httpsPort`, `header` and `cacheKeyQueryRule` arguments. Pour être mis à jour, le mappage de domaine doit se trouver à l'état _RUNNING_ ou _CNAME_CONFIGURATION_.
 
-* **Paramètres** :  Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-  [Afficher le conteneur d'entrée](input-container.html)
+  [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
   Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la mise à jour d'un chemin d'origine (les attributs sont facultatifs sauf indication contraire) :
     * `oldPath` : **obligatoire** Chemin en cours à modifier
     * `origin` : (**obligatoire** en cas de mise à jour) Fournissez l'adresse du serveur d'origine sous forme de chaîne.
     * `originType` : **obligatoire** Le type du serveur d'origine peut être `HOST_SERVER` ou `OBJECT_STORAGE`.
     * `path` : **obligatoire** Nouveau chemin à ajouter. Relatif au chemin de mappage.
-    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte en cas de mise à jour) Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
+    * `httpPort` et/ou `httpsPort` : (**obligatoire** pour le serveur hôte en cas de mise à jour) Ces deux options doivent correspondre au protocole souhaité. Si le protocole est `HTTP`, alors `httpPort` doit être défini et `httpsPort` ne doit _pas_ être défini. De même, si le protocole est `HTTPS`, alors `httpsPort` doit être défini et `httpPort` ne doit _pas_ être défini. Si le protocole est `HTTP_AND_HTTPS`, alors  `httpPort` et `httpsPort` _doivent_ être définis _à la fois_. Akamai possède certaines limitations au niveau des numéros de port. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour connaître les numéros de ports autorisés.
     * `uniqueId` : **obligatoire** ID unique du mappage auquel appartient cette origine
     * `bucketName` : (**obligatoire** pour le stockage d'objet uniquement) Nom de compartiment de votre stockage d'objet S3.
     * `fileExtension` : (**obligatoire** pour le stockage d'objet uniquement) Extensions de fichiers pouvant être mises en cache.
@@ -245,7 +245,7 @@ Met à jour un chemin d'origine existant pour un mappage existant et un client p
 
 * **Retour** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Afficher le conteneur de chemin d'origine](path-container.html)
+  [Afficher le conteneur de chemin d'origine](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ### deleteOriginPath
@@ -265,7 +265,7 @@ Répertorie les chemins d'origine d'un mappage existant sur la base du paramètr
   * `uniqueId` : Fournissez l'ID unique du mappage pour lequel vous souhaitez répertorier les chemins d'origine.
 * **Retour** : Collection d'objets de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Afficher le conteneur de chemin d'origine](path-container.html)
+  [Afficher le conteneur de chemin d'origine](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ## API pour la purge
@@ -373,7 +373,8 @@ Répertorie les objets `TimeToLive` sur la base du paramètre `uniqueId` du CDN.
 
  ----
 ## API pour Metrics
-[Afficher le conteneur Metrics](metrics-container.html)
+[Afficher le conteneur Metrics](/docs/infrastructure/CDN/metrics-container.html)
+
 ### getCustomerUsageMetrics
 Renvoie le nombre total de statistiques prédéterminées avec affichage direct (non graphique) d'un compte client, au cours d'une période donnée.
 
@@ -443,33 +444,33 @@ Renvoie le nombre total de statistiques prédéterminées avec affichage direct 
 ----
 ## API pour le contrôle d'accès géographique
 ### createGeoblocking
-Crée une nouvelle règle de contrôle d'accès géographique et renvoie la règle nouvellement créée. 
+Crée une nouvelle règle de contrôle d'accès géographique et renvoie la règle nouvellement créée.
 
   * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-    [Afficher le conteneur d'entrée](input-container.html)
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
-    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la création d'une nouvelle règle de contrôle d'accès géographique : 
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la création d'une nouvelle règle de contrôle d'accès géographique :
     * `uniqueId` : ID unique du mappage pour affecter la règle
     * `accessType` : indique si la règle autorisera (`ALLOW`) ou refusera (`DENY`) le trafic vers la région concernée.
     * `regionType` : type de région à laquelle appliquer la règle de contrôle d'accès géographique, à savoir `CONTINENT` ou `COUNTRY_OR_REGION`
     * `regions`: tableau répertoriant les emplacements auxquels le type d'accès (`accessType`) s'appliquera
 
-      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html). 
+      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html).
 
   * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+    [Afficher la classe Geo-blocking](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### updateGeoblocking
 Met à jour une règle de contrôle d'accès géographique existante pour un mappage de domaine existant et renvoie la règle mise à jour.
 
-  * **Paramètres** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-    [Afficher le conteneur d'entrée](input-container.html)
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
     Les attributs suivants appartiennent au conteneur d'entrée et peuvent être fournis lors de la mise à jour d'une règle de contrôle d'accès géographique (les paramètres sont facultatifs sauf indication contraire) :
     * `uniqueId` : ID unique **requis** du mappage auquel appartient la règle à mettre à jour
@@ -477,38 +478,38 @@ Met à jour une règle de contrôle d'accès géographique existante pour un map
     * `regionType` : type de région à laquelle appliquer la règle, à savoir `CONTINENT` ou `COUNTRY_OR_REGION`
     * `regions`: tableau répertoriant les emplacements auxquels le type d'accès (`accessType`) s'appliquera
 
-      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html). 
+      Pour obtenir une liste de régions possibles, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html).
 
   * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+    [Afficher la classe Geo-blocking](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### deleteGeoblocking
-Retirer une règle de contrôle d'accès géographique d'un mappage de domaine existant. 
+Retirer une règle de contrôle d'accès géographique d'un mappage de domaine existant.
 
-  * **Paramètres** : collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
 
-    [Afficher le conteneur d'entrée](input-container.html)
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
 
-    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la suppression d'une règle de contrôle d'accès géographique : 
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la suppression d'une règle de contrôle d'accès géographique :
     * `uniqueId` : fournissez l'ID unique du mappage auquel appartient la règle à supprimer.
 
   * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+    [Afficher la classe Geo-blocking](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### getGeoblocking
-Extrait de la base de données le comportement de contrôle d'accès géographique d'un mappage. 
+Extrait de la base de données le comportement de contrôle d'accès géographique d'un mappage.
 
   * **Paramètres** :
     * `uniqueId` : ID unique du mappage auquel appartient la règle.
 
   * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+    [Afficher la classe Geo-blocking](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -519,4 +520,69 @@ Renvoie une liste des types et des régions admis pour la création de règles d
 
   * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
-    [Afficher la classe Geo-blocking](geoblock-behavior.html)
+    [Afficher la classe Geo-blocking](/docs/infrastructure/CDN/geoblock-behavior.html)
+----
+## API pour la protection des liens dynamiques
+### createHotlinkProtection
+Crée une nouvelle protection des liens dynamiques et renvoie le comportement nouvellement créé.
+
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la création d'une nouvelle protection des liens dynamiques :
+    * `uniqueId` : ID unique du mappage auquel affecter le comportement
+    * `protectionType` : indique s'il convient d'autoriser (ALLOW) ou de refuser (DENY) l'accès à votre contenu lorsqu'une page Web émet une demande de contenu avec une valeur d'en-tête Referer qui correspond à l'un des termes indiqués dans refererValues
+    * `refererValues` : liste de termes de correspondance d'URL de référence séparés par un unique espace auxquels le comportement `protectionType` sera appliqué
+
+      Pour la liste des valeurs de protection des liens dynamiques valides, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html).
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Afficher la classe de protection des liens dynamiques](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+
+----
+### updateHotlinkProtection
+Met à jour un comportement de protection des liens dynamiques existante pour un mappage de domaine existant et renvoie le comportement mis à jour.
+
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la mise à jour d'une protection des liens dynamiques existante :
+    * `uniqueId` : ID unique du mappage auquel appartient le comportement existant
+    * `protectionType` : indique s'il convient d'autoriser (ALLOW) ou de refuser (DENY) l'accès à votre contenu lorsqu'une page Web émet une demande de contenu avec une valeur d'en-tête Referer qui correspond à l'un des termes indiqués dans refererValues 
+    * `refererValues` : liste de termes de correspondance d'URL de référence séparés par un unique espace auxquels le comportement `protectionType` sera appliqué
+
+      Pour la liste des valeurs de protection des liens dynamiques valides, voir la page [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html).
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Afficher la classe de protection des liens dynamiques](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+
+----
+### deleteHotlinkProtection
+Supprime un comportement de protection des liens dynamiques existante d'un mappage de domaine existant.
+
+  * **Paramètres** : Collection de type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Vous pouvez afficher tous les attributs du conteneur d'entrée ici :
+
+    [Afficher le conteneur d'entrée](/docs/infrastructure/CDN/input-container.html)
+
+    Les attributs suivants appartiennent au conteneur d'entrée et sont **requis** lors de la création d'une nouvelle protection des liens dynamiques :
+    * `uniqueId` : ID unique du mappage à partir duquel supprimer le comportement
+
+  * **Retour** : null
+
+----
+### getHotlinkProtection
+Extrait un comportement de protection des liens dynamiques en cours d'un mappage.
+
+  * **Paramètres** :
+    * `uniqueId` : ID unique du mappage auquel appartient le comportement
+
+  * **Retour** : objet de type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Afficher la classe de protection des liens dynamiques](/docs/infrastructure/CDN/hotlink-protection-behavior.html)

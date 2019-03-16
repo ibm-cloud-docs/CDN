@@ -1,15 +1,17 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
-# Classe de conteneur pour Metrics :
+# Classe de conteneur pour Metrics
+{: #container-class-for-metrics}
+
 La collection `SoftLayer_Container_Network_CdnMarketplace_Metrics` contient les attributs utilisés par nos API Metrics. Il existe trois valeurs possibles pour l'attribut `type` : PIECHART, LINEGRAPH ou TOTALS. La sortie du reste des attributs de ce conteneur dépend du `type`, qui est décrit plus en détail ci-dessous. Tous les attributs sauf `type` sont des tableaux. Tous les attributs ne sont pas utilisés pour tous les types.
 
-Classe `SoftLayer_Container_Network_CdnMarketplace_Metrics`:
+**Classe** `SoftLayer_Container_Network_CdnMarketplace_Metrics` :
 * `type`
 * `names`
 * `totals`

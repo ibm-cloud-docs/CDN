@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Règles et conventions de dénomination
+{ #rules-and-naming-conventions}
 
 ## Quelles sont les règles applicables au nom d'hôte de CDN ?
 La chaîne d'entrée `Hostname` de CDN **doit** :

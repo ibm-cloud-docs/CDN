@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-09-05"
 {:tip: .tip}
 
 # Liste des serveurs d'équilibrage des charges
+{: #list-of-edge-servers}
 
 La liste ci-dessous indique les pays possédant les POP Akamai que nous utilisons :
 

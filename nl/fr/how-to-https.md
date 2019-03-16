@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Exécution de la validation DCV (Domain Control Validation) pour HTTPS avec DV SAN
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
 Le diagramme suivant présente les différents états possibles pour votre CDN entre le moment où il est créé et celui où il commence à fonctionner :
 
@@ -24,7 +25,7 @@ Le diagramme suivant présente les différents états possibles pour votre CDN e
 
 **Etape 1 :**
 
-Une fois que vous avez commandé votre CDN avec un certificat SAN DV, le processus de demande de certificat commence. Lors de ce processus, IBM Cloud CDN demande un certificat depuis Akamai. Quand un certificat est disponible, Akamai émet une demande vers l'autorité de certification.
+Une fois que vous avez commandé votre CDN avec un certificat SAN DV, le processus de demande de certificat commence. Au cours de ce processus, {{site.data.keyword.cloud}} CDN demande un certificat depuis Akamai. Quand un certificat est disponible, Akamai émet une demande vers l'autorité de certification.
 
   * Pendant cette période, le statut CDN affiche **Requesting Certificate**.
 
@@ -48,7 +49,7 @@ Cliquez sur le nom du CDN qui doit être validé. Sur la page de présentation q
 
   * Quand ce processus est terminé, tous les domaines, quelle que soit la méthode de validation utilisée, passent à l'état **CNAME Configuration**.
 
-Vous trouverez des informations complémentaires relatives à l'exécution de la configuration CNAME ainsi qu'à la surveillance de votre CDN sur la page [Lancement de l'exécution](basic-functions.html#get-to-running).
+Vous trouverez des informations complémentaires relatives à l'exécution de la configuration CNAME ainsi qu'à la surveillance de votre CDN sur la page [Lancement de l'exécution](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
 
 
 ## Validation DCV (Domain Control Validation) 
@@ -155,7 +156,7 @@ Cliquez sur l'onglet **Redirect** pour afficher toutes les informations permetta
 
 Pour effectuer la procédure de validation de domaine via la méthode Redirect, vous devez configurer votre serveur Web d'une façon particulière. Les exemples de procédure pour les serveurs Apache et Nginx sont présentés dans les sections ci-après.
 
-***Exemple de situation**
+**Exemple de situation**
 * Serveur d'origine : `www.example.com`
 * Domaine CDN : `cdn.example.com`
 * URL de demande d'authentification (option Challenge URL) : `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`

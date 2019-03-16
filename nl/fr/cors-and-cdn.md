@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-26"
 {:download: .download}
 
 # CORS et requêtes CORS via votre CDN
+{ #cors-and-cors-requests-through-your-cdn}
 
 Le partage de ressources d'origine croisée (CORS) est un mécanisme qu'utilisent les navigateurs, principalement pour valider des droits d'accès à des contenus d'une origine différente.
 
@@ -23,7 +24,7 @@ Lorsqu'un navigateur charge une page Web, il impose la **règle same-origin**, c
 
 Ce mécanisme de sécurité existe uniquement si une application a ou est un client HTTP, et si l'application implémente CORS. La plupart des navigateurs modernes, tels que Chrome, Firefox et Safari implémentent CORS.
 
-Pour plus de clarté, **une origine en ce qui concerne CORS n'a pas à être identique à une origine CDN**. Dans CORS, une origine est définie par un schéma URI, un domaine et tout numéro de port possible. Par exemple l'origine https://www.example.com:1443 est différente de http://www.example.com. Par conséquent, un CDN peut également être considéré comme une origine CORS du point de vue du navigateur.
+Pour plus de clarté, **une origine en ce qui concerne CORS n'a pas à être identique à une origine CDN**. Dans CORS, une origine est définie par un schéma URI, un domaine et tout numéro de port possible. Par exemple l'origine `https://www.example.com:1443` est différente de `http://www.example.com`. Par conséquent, un CDN peut également être considéré comme une origine CORS du point de vue du navigateur.
 
 ## Fonctionnement de CORS
 
@@ -34,9 +35,9 @@ Première requête (accès aux ressources) :
 
 ![cors-simple](/images/cors-simple.png)
 
-Les [requêtes simples](https://www.w3.org/TR/cors/#simple-cross-origin-request) via CORS sont des requêtes `GET` ou `POST` émises depuis la page Web d'une origine qui tente d'accéder à l'URL d'une autre origine pour atteindre des ressources.
+Les [requêtes simples ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/cors/#simple-cross-origin-request) via CORS sont des requêtes `GET` ou `POST` émises depuis la page Web d'une origine qui tente d'accéder à l'URL d'une autre origine pour atteindre des ressources.
 
-Avec une requête de ce type, le navigateur définit automatiquement des en-têtes de requête CORS. Il définit principalement l'origine de la page Web qui émet la requête dans l'en-tête HTTP `Origin` automatiquement. La requête CORS peut également contenir une ensemble de [certains en-têtes HTTP standard](https://www.w3.org/TR/cors/#simple-header), tout en conservant sont statut de requête CORS simple, du point de vu du navigateur.
+Avec une requête de ce type, le navigateur définit automatiquement des en-têtes de requête CORS. Il définit principalement l'origine de la page Web qui émet la requête dans l'en-tête HTTP `Origin` automatiquement. La requête CORS peut également contenir un ensemble de [certains en-têtes HTTP standard![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/cors/#simple-header), tout en conservant sont statut de requête CORS simple, du point de vu du navigateur.
 
 Le serveur qui reçoit la requête CORS la traite et peut (ou non) renvoyer un ensemble d'en-têtes de réponse CORS au navigateur, avec le contenu demandé. Ces en-têtes de réponse CORS contiennent des valeurs indiquant si la page Web en cours est autorisée à accéder à ces ressources, si les en-têtes envoyés sont acceptables pour la requête, etc.
 
@@ -51,7 +52,7 @@ Seconde requête (accès aux ressources) :
 
 ![cors-after-preflight](/images/cors-after-preflight.png)
 
-Pour une communication CORS plus complexe entre le navigateur et une origine CORS différente de celle de la page Web qui émet la demande, une [requête préliminaire](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0) est nécessaire avant l'accès effectif aux ressources. Certaines situations peuvent exiger des requêtes CORS préliminaires, telles que des méthodes HTTP autres que `GET` ou `POST`, ou l'utilisation d'en-têtes HTTP non standard avec la requête même s'il s'agit d'une requête `GET` ou `POST`, etc.
+Pour une communication CORS plus complexe entre le navigateur et une origine CORS différente de celle de la page Web qui émet la demande, une [requête préliminaire![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0) est nécessaire avant l'accès effectif aux ressources. Certaines situations peuvent exiger des requêtes CORS préliminaires, telles que des méthodes HTTP autres que `GET` ou `POST`, ou l'utilisation d'en-têtes HTTP non standard avec la requête même s'il s'agit d'une requête `GET` ou `POST`, etc.
 
 Lorsqu'une requête préliminaire est nécessaire, voici comment se déroulent les événements :
 
@@ -127,7 +128,7 @@ http {
 }
 ```
 
-En général, le navigateur doit charger librement du contenu lorsqu'il détecte un en-tête `Access-Control-Allow-Origin: *` dans les en-têtes de réponse CORS du serveur conformément à la [spécification w3 concernant cette valeur de caractère de remplacement](https://www.w3.org/TR/cors/#security). Cependant, les navigateurs ne prennent pas tous en charge `Access-Control-Allow-Origin: *`.
+En général, le navigateur doit charger librement du contenu lorsqu'il détecte un en-tête `Access-Control-Allow-Origin: *` dans les en-têtes de réponse CORS du serveur conformément à la [spécification w3 concernant cette valeur de caractère de remplacement![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/cors/#security). Cependant, les navigateurs ne prennent pas tous en charge `Access-Control-Allow-Origin: *`.
 
 Si le serveur doit prendre en charge l'accès à de multiples pages Web, chacune provenant d'une origine différente, une seule valeur d'origine pour `Access-Control-Allow-Origin` doit être générée dynamiquement pour chaque requête. Exemple basique de ce type d'utilisation pour un serveur Nginx :
 
@@ -155,9 +156,9 @@ http {
 
         # URI path to some content
         location /my-static-content {
-
+        
             # some location context configs
-
+        
             # Handle simple requests
             if ($request_method = 'GET') {
                 add_header 'Access-Control-Allow-Origin' $cors_allowed_origin;
@@ -185,17 +186,17 @@ http {
 }
 ```
 
-Dans l'exemple précédent, la directive `map` est utilisée pour éviter une surutilisation de l'instruction Nginx `if`. Désormais, lorsqu'une requête CORS qui correspond à ce chemin d'URI est envoyée à ce serveur, ce dernier répond avec l'en-tête `Access-Control-Allow-Origin` qui contient la valeur "http://www.example.com", "https://cdn.example.com" ou "http://dev.example.com", etc. lorsque le contenu est demandé depuis "http://www.example.com", "https://cdn.example.com", "http://dev.example.com", etc.
+Dans l'exemple précédent, la directive `map` est utilisée pour éviter une surutilisation de l'instruction Nginx `if`. Désormais, lorsqu'une requête CORS qui correspond à ce chemin d'URI est envoyée à ce serveur, ce dernier répond avec l'en-tête `Access-Control-Allow-Origin` qui contient la valeur `http://www.example.com`, `https://cdn.example.com` ou `http://dev.example.com`, etc. lorsque le contenu est demandé depuis `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, etc.
 
 ## Configuration de CORS pour CDN
 ![cors-through-cdn](/images/cors-through-cdn.png)
 CDN est grandement transparent pour la configuration CORS de l'origine et ne nécessite donc pas une configuration CDN spécifique. Si le serveur d'équilibrage des charges CDN ne parvient pas à trouver une réponse en cache pour la première requête de contenu, il transmet la requête à l'hôte d'origine. Si l'hôte d'origine est configuré de manière à gérer des requêtes CORS et que la requête contient l'en-tête `Origin`, l'hôte doit répondre au serveur d'équilibrage des charges avec l'en-tête CORS `Access-Control-Allow-Origin` et la valeur associée. La réponse globale, y compris l'en-tête et la valeur, seront mis en cache dans le CDN. Toutes les requêtes ultérieures de l'objet au même chemin d'URI seront traitées depuis le cache et incluent la valeur d'en-tête `Access-Control-Allow-Origin` reçu au départ depuis l'origine.
 
-## Traitement des incidents
+## Traitement des incidents liés à CORS et aux requêtes CORS
 Si votre serveur d'origine est configuré pour CORS et que l'en-tête `Access-Control-Allow-Origin` n'est pas renvoyé à la requête du navigateur, il est possible que l'en-tête de réponse mis en cache dans CDN concerne une requête qui ne contenait pas l'en-tête Origin. CDN met en cache les en-têtes de réponse depuis l'hôte d'origine. Toutefois, les en-têtes mis en cache sont basé sur la requête qui a déclenché la requête envoyée à l'origine. Dans ce cas, les en-têtes de réponse peuvent ne pas inclure les en-têtes CORS. Videz le cache dans CDN pour ce chemin à l'aide de la fonction Purge de CDN, puis envoyez de nouveau la requête depuis le client.
 
 L'en-tête de réponse `Vary` de votre serveur d'origine peut également engendrer un comportement inattendu lors de l'extraction de contenu via votre CDN. A l'exception d'une exception très précise, le CDN ne met pas en cache un contenu (et son en-tête de réponse associé) depuis votre serveur d'origine si ce dernier répond avec un en-tête `Vary`. Actuellement, notre service supprime l'en-tête Vary de l'origine pour que l'objet puisse être mis en cache, si l'objet est l'un des types de fichier suivants : `aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, zip, webp, jxr, hdp, wdp, pict, tif, tiff, mid, midi, ttf, eot, woff, otf, svg, svgz, jar, woff2, json`. Si l'objet à mettre en cache n'est pas l'un de ces types de fichier, supprimez l'en-tête `Vary` de la réponse du serveur d'origine pour cet objet et faites une nouvelle tentative après avoir exécuté la commande Purge de CDN.
 
 ## Informations complémentaires
-* https://www.w3.org/TR/cors/
-* https://w3c.github.io/webappsec-cors-for-developers/
+* [https://www.w3.org/TR/cors/ ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/cors/)
+* [https://w3c.github.io/webappsec-cors-for-developers/ ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://w3c.github.io/webappsec-cors-for-developers/)

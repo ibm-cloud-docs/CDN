@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-05-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,11 +15,13 @@ lastupdated: "2018-05-09"
 {:download: .download}
 
 # Conteneur des fournisseurs
+{: #vendor-container}
+
 La collection `SoftLayer_Container_Network_CdnMarketplace_Vendor` contient les attributs utilisés par les API de nos fournisseurs.
 
 
-Classe `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
-* `vendorName` : Nom du fournisseur IBM Cloud CDN en cours.  
+**Classe** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
+* `vendorName` : Nom d'un fournisseur {{site.data.keyword.cloud}} CDN en cours.  
 * `featureSummary` : Récapitulatif des fonctions du fournisseur.  
 * `features` : Liste des fonctions prises en charge par le fournisseur.  
 * `status` : Indique si un fournisseur est une option disponible via IBM Cloud.
