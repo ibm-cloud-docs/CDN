@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # DV SAN を使用する HTTPS のドメイン制御検証の実行
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-以下の図は、CDN が作成されてから実行されるまでの、CDN が通過するさまざまな状態の概要を示しています。
+以下の図は、CDN が作成されてから実行状況になるまでの、CDN が通過するさまざまな状態の概要を示しています。
 
   ![SAN 状態遷移図](images/state-diagram-san.png)
 
@@ -24,7 +25,7 @@ lastupdated: "2018-10-04"
 
 **ステップ 1:**
 
-DV SAN 証明書を使用する CDN を注文した後、証明書要求プロセスが開始されます。 このプロセス中に、IBM Cloud CDN は Akamai からの証明書を要求します。 証明書が使用可能になったら、Akamai は認証局 (CA) に要求を発行します。
+DV SAN 証明書を使用する CDN を注文した後、証明書要求プロセスが開始されます。 このプロセス中に、{{site.data.keyword.cloud}} CDN は Akamai からの証明書を要求します。 証明書が使用可能になったら、Akamai は認証局 (CA) に要求を発行します。
 
   * この期間、CDN の状況は**「証明書要求中 (Requesting Certificate)」**と示されます。
 
@@ -48,7 +49,7 @@ CA は、要求を受け取ると、ドメイン検証チャレンジを発行�
 
   * このプロセスが完了すると、使用する検証方式に関係なく、すべてのドメインが **「CNAME 構成 (CNAME Configuration)」**状況に移ります。
 
-[実行中にする](basic-functions.html#get-to-running)のページに、CNAME 構成を完了し、CDN を監視する方法についての追加情報があります。
+[実行中にする](/docs/infrastructure/CDN/basic-functions.html#get-to-running)のページに、CNAME 構成を完了し、CDN を監視する方法についての追加情報があります。
 
 
 ## ドメイン制御検証 

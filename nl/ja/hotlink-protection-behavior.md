@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,12 +15,13 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # ホット・リンク保護クラス
+{: #hotlink-protection-class}
 
-`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` には、ホット・リンク保護 API によって使用される属性が含まれています。このオブジェクトは、この API を呼び出して CDN のホット・リンク保護の動作を設定するために使用されます。また、正常な API 呼び出しの後にホット・リンク保護 API によって返されます。
+`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` には、ホット・リンク保護 API によって使用される属性が含まれています。 このオブジェクトは、この API を呼び出して CDN のホット・リンク保護の動作を設定するために使用されます。  また、正常な API 呼び出しの後にホット・リンク保護 API によって返されます。
 
-クラス `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**クラス** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
-* `protectionType`: HTTP 要求に `refererValues` 内にあるいずれかの語に一致する Referer ヘッダー値が含まれている場合に、コンテンツへのアクセスを許可または拒否するかを指定します。一致がないときには、逆のことが行われます。
+* `protectionType`: HTTP 要求に `refererValues` 内にあるいずれかの語に一致する Referer ヘッダー値が含まれている場合に、コンテンツへのアクセスを許可または拒否するかを指定します。 一致がないときには、逆のことが行われます。
   * protectionType に指定できる値は以下のとおりです。
     * `ALLOW`
     * `DENY`
@@ -41,7 +42,7 @@ lastupdated: "2018-11-01"
     * ` `
       * 空の refererValues
     * `domain1.exa}mple.com domain1.example.com`
-      * [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2) に指定されていない文字を使用している
+      * [RFC-3986 ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://tools.ietf.org/html/rfc3986#section-2) に指定されていない文字を使用している
     * `www.example.com/path&`
       * `&` 文字はサポートされない
     * `www.example.org http://www.example.com`

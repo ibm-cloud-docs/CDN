@@ -1,13 +1,14 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
 
-## 南米地域には以下が含まれます。
+# 南米地域
+{: #south-american-region}
 
 * アルゼンチン
 * ボリビア

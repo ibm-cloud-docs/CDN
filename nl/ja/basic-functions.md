@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # CDN を実行中状況にする
+{: #getting-your-cdn-to-running-status}
 
 CDN 実行中状態にするためのガイドラインについて説明します。 また、この文書では、CDN の開始および停止の方法についても説明します。
 
@@ -27,7 +28,7 @@ CDN を作成すると、CDN ダッシュボードにそれが表示されます
 
 HTTP、または、ワイルドカード証明書での HTTPS を指定して CDN を注文した場合は、ステップ 1 に進むことができます。
 
-HTTPS DV SAN 証明書での CDN を作成した場合、ドメインを検証するための追加ステップが必要になる場合があります。それについては、『[HTTPS のためのドメイン制御検証の実行](how-to-https.html#completing-domain-control-validation-for-https)』ページに説明があります。
+HTTPS DV SAN 証明書での CDN を作成した場合、ドメインを検証するための追加ステップが必要になる場合があります。それについては、『[HTTPS のためのドメイン制御検証の実行](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https)』ページに説明があります。
 
 **ステップ 1:**
 
@@ -47,7 +48,7 @@ DNS プロバイダーで CNAME を構成したらいつでも、CDN の状況�
 
 CNAME のチェーニングが完了したら、**「状況の取得 (Get Status)」**を選択すると状況が*「実行中 (RUNNING)」*に変わり、CDN は使用する準備ができた状態になります。
 
-これで、CDN は実行中になりました。 ここからは、[「CDN の管理」](how-to.html#manage-your-cdn)ページに、構成オプションについての追加情報が示されるようになります。例えば、[存続時間](how-to.html#setting-content-caching-time-using-time-to-live-)、[キャッシュ・コンテンツのパージ](how-to.html#purging-cached-content)、[オリジン・パスの詳細の追加](how-to.html#adding-origin-path-details)などです。
+これで、CDN は実行中になりました。 ここからは、[「CDN の管理」](/docs/infrastructure/CDN/how-to.html#manage-your-cdn)ページに、構成オプションについての追加情報が示されるようになります。例えば、[存続時間](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-)、[キャッシュ・コンテンツのパージ](/docs/infrastructure/CDN/how-to.html#purging-cached-content)、[オリジン・パスの詳細の追加](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details)などです。
 
 ## CDN の開始
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-02"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,8 +14,9 @@ lastupdated: "2018-10-02"
 {:tip: .tip}
 
 # 追加リソース
+{: #additional-resources}
 
-これらのリソースは、IBM および IBM の一部のパートナーおよびカスタマーによって作成されます。
+これらのリソースは、{{site.data.keyword.cloud}} や、IBM のパートナーおよびお客様によって作成されたものです。
 
 ## IBM Tech ブログ (内部使用限定)
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # パス (オリジン) コンテナー
+{: #path-origin-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` コレクションには、(オリジン) パス API によって使用される属性が含まれています。 それぞれのパス API がこのタイプのコレクションを返します。
 
-クラス `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**クラス** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: このオリジン・パスが属するマッピングの固有 ID。  
 * `path`: このオリジンに到達するために使用できるドメインを基準とした相対パス。  
