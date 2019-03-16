@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Convenios y reglas de nomenclatura
+{ #rules-and-naming-conventions}
 
 ## ¿Cuáles son las reglas para el nombre de host de CDN?
 La entrada para la serie del `Nombre de host` de CDN **debe**:
@@ -26,7 +27,7 @@ La entrada para la serie del `Nombre de host` de CDN **debe**:
 
 Consulte RFC 1035, sección 2.3.4, para obtener más detalles. 
 
-Además, le recomendamos encarecidamente que utilice un nombre de dominio completo como nombre de host de CDN. Elija un nombre con el formato 'www.example.com' en lugar de un nombre de dominio raíz (también denominado como dominio Naked o de zona Apex), con el formato 'example.com'. Necesitará crear un registro CNAME para el nombre de host de CDN que utilice. El DNS RFC 1033 requiere que el registro de dominio raíz sea un registro A, no un CNAME. Consulte la RFC 2181, sección 10.1 para obtener más información.
+Además, le recomendamos encarecidamente que utilice un nombre de dominio completo como nombre de host de CDN. Elija un nombre con el formato 'www.example.com' en lugar de un nombre de dominio raíz (también denominado como dominio Naked o de zona Apex), con el formato 'example.com'. Necesitará crear un registro CNAME para el nombre de host de CDN que utilice. El DNS RFC 1033 requiere que el registro de dominio raíz sea un registro A, no un CNAME. Consulte RFC 2181, sección 10.1 para obtener más información.
 
 ## ¿Cuáles son las convenciones de nomenclatura de CNAME personalizado?
 La serie de entrada `CNAME` debe cumplir las siguientes reglas:

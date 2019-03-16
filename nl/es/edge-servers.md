@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-09-05"
 {:tip: .tip}
 
 # Lista de servidores perimetrales
+{: #list-of-edge-servers}
 
 Esta es la lista de países con POP de Akamai que estamos utilizando:
 

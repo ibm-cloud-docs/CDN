@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Cómo completar la validación de control de dominio (DCV) para HTTPS con DV SAN
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-En el siguiente diagrama se describen los diversos estados por los que pasará su CDN desde que se crea hasta que está en ejecución.
+En el siguiente diagrama se describen los diversos estados por los que pasará su CDN desde que se crea hasta que alcanza el estado de ejecución.
 
   ![Diagrama de estado de SAN](images/state-diagram-san.png)
 
@@ -24,11 +25,11 @@ En el siguiente diagrama se describen los diversos estados por los que pasará s
 
 **Paso 1:**
 
-Una vez que haya solicitado su CDN con un certificado SAN DV, comienza el proceso de solicitud de certificado. Durante este proceso IBM Cloud CDN solicita un certificado de Akamai. Una vez que hay un certificado disponible, Akamai emite una solicitud a la entidad emisora de certificados (CA).
+Una vez que haya solicitado su CDN con un certificado SAN DV, comienza el proceso de solicitud de certificado. Durante este proceso {{site.data.keyword.cloud}} CDN solicita un certificado de Akamai. Una vez que hay un certificado disponible, Akamai emite una solicitud a la entidad emisora de certificados (CA).
 
   * Durante este tiempo, el estado de CDN se muestra como **Solicitando certificado**.
 
-    ![Solicitando certificado](images/requesting-cert.png)
+    ![Solicitando estado del certificado](images/requesting-cert.png)
 
 **Paso 2:**
 
@@ -48,7 +49,7 @@ Pulse en el nombre de la CDN que se debe validar. Se abre la página Visión gen
 
   * Cuando este proceso se haya completado, todos los dominios, independientemente del método de validación utilizado, se trasladan a un estado **Configuración de CNAME**.
 
-Puede encontrar información adicional sobre cómo completar la configuración de CNAME y cómo supervisar la CDN, en la página [Puesta en marcha](basic-functions.html#get-to-running).
+Puede encontrar información adicional sobre cómo completar la configuración de CNAME y cómo supervisar la CDN, en la página [Puesta en marcha](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
 
 
 ## Validación de control de dominio 

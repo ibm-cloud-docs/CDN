@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-12"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,8 +16,9 @@ lastupdated: "2018-11-12"
 
 
 # Cómo ofrecer vídeo bajo demanda con CDN
+{: #how-to-serve-video-on-demand-with-cdn}
 
-En esta guía, estudiaremos un ejemplo de cómo aprovechar la CDN de IBM Cloud para transmitir contenido `.mp4` a través de **HLS** como vídeo bajo demanda a un navegador desde un origen Linux-Nginx. 
+En esta guía, estudiaremos un ejemplo de cómo aprovechar la CDN de {{site.data.keyword.cloud}} para transmitir contenido `.mp4` a través de **HLS** como vídeo bajo demanda a un navegador desde un origen Linux-Nginx. 
 
 ## Introducción
 
@@ -212,9 +213,9 @@ Sin embargo, otros navegadores de dispositivos de escritorio también pueden nec
 ## Configurar la CDN
 Ahora vamos a conectar el origen a la CDN para que sirva contenido en todo el mundo con rendimiento optimizado, latencia minimizada y mayor calidad.
 
-En primer lugar, [solicite](how-to-order.html#order-a-cdn) una CDN.
+En primer lugar, [solicite](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) una CDN.
 
-A continuación, [configure su CDN](how-to.html#updating-cdn-configuration-details) o [añada un origen](how-to.html#adding-origin-path-details).
+A continuación, [configure su CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) o [añada un origen](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
 
 Finalmente, bajo `Optimizar para`, seleccione `Optimización de vídeo bajo demanda`.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,16 +15,18 @@ lastupdated: "2018-11-14"
 {:download: .download}
 
 # Contenedor de entradas
+{ #input-container}
+
 El contenedor de entradas es una recopilación que utilizan las clases de Correlación y Vía de acceso (de origen).  Proporciona un conjunto coherente de atributos de entrada para ambas clases.
 
-* `vendorName`: el nombre del proveedor válido de IBM Cloud CDN.
+* `vendorName`: el nombre de un proveedor válido de {{site.data.keyword.cloud}} CDN.
 * `oldPath`: utilizado por updateOriginPath(). Esta propiedad almacena el nombre de la vía de acceso actual, o antigua.
 
 Los siguientes atributos son comunes en las clases de Correlación y Vía de acceso (de origen):
 * `originType`: tipo del host de origen, actualmente 'HOST_SERVER' u 'OBJECT_STORAGE'.
 * `origin`: dirección del servidor de origen (nombre de host o la dirección IPv4 del servidor de origen), el punto final desde el que captar contenido, o el nombre del grupo donde se almacena el contenido. Debe ser inferior a 511 caracteres.
-* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
-* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
+* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
+* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obtener una lista de los números de puerto permitidos.
 * `status`: el estado de la correlación o vía de acceso. El estado puede ser CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED o ERROR.
 * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. La vía de acceso predeterminada es /\* Cuando la utiliza la API `updateOriginPath`, este atributo se refiere a la nueva vía de acceso que se añadirá.
 * `performanceConfiguration`: especificaciones para la configuración del rendimiento de la correlación.
@@ -50,4 +52,4 @@ Los siguientes atributos están relacionados con Cloud Object Storage (COS):
 * `fileExtension`: extensiones de archivo permitidas.
 
 El atributo siguiente está relacionado con la configuración de Hotlink Protection:
-* `hotlinkProtection`: consulte la [clase hotlink protection](hotlink-protection-behavior.html) para ver más información.
+* `hotlinkProtection`: consulte la [clase hotlink protection](/docs/infrastructure/CDN/hotlink-protection-behavior.html) para ver más información.

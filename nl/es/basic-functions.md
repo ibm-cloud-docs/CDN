@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Cómo llevar la CDN a estado de ejecución
+{: #getting-your-cdn-to-running-status}
 
 Obtenga más información sobre cómo llevar la CDN en un estado de RUNNING siguiendo estas directrices. Este documento también le indica cómo iniciar y detener la CDN.
 
@@ -27,7 +28,7 @@ Después de crear una CDN, se mostrará en el panel de control de CDN. En el pan
 
 Si ha solicitado la CDN con HTTP o HTTPS con el certificado comodín, puede continuar con el Paso 1.
 
-Si ha creado una CDN con un certificado SAN DV HTTPS, es posible que se necesiten pasos adicionales para verificar el dominio; se pueden encontrar en la página [Completar la validación de control de dominio para HTTPS](how-to-https.html#completing-domain-control-validation-for-https).
+Si ha creado una CDN con un certificado SAN DV HTTPS, es posible que se necesiten pasos adicionales para verificar el dominio; se pueden encontrar en la página [Completar la validación de control de dominio para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
 
 **Paso 1:**
 
@@ -47,7 +48,7 @@ En cualquier momento tras haber configurado el CNAME con su proveedor de DNS, pu
 
 Cuando finalice el encadenamiento de CNAME, al seleccionar **Obtener estado** se cambiará el estado a *RUNNING* y la CDN está lista para su uso.
 
-¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](how-to.html#manage-your-cdn) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](how-to.html#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](how-to.html#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](how-to.html#adding-origin-path-details).
+¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](/docs/infrastructure/CDN/how-to.html#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Inicio de la CDN
 

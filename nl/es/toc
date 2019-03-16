@@ -10,8 +10,9 @@ Red de entrega de contenido (CDN)
     feature-descriptions.md
     about-https.md
     naas-video.md
-    [Utilización de una CDN con Cloud Object Storage para proporcionar sus archivos estáticos con mayor rapidez](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+    [Utilizar CDN con Cloud Object Storage para entregar más rápidamente los archivos estáticos](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
     whats-new.md
+    pricing.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
@@ -26,7 +27,6 @@ Red de entrega de contenido (CDN)
     limits-and-max-values.md
     byte-range-request.md
     metrics.md
-    edge-servers.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
@@ -39,6 +39,25 @@ Red de entrega de contenido (CDN)
 
     {: .navgroup id="reference"}
     api.md
+
+ {: .topicgroup}
+    API Class Containers
+        geoblock-behavior.md
+        hotlink-protection-behavior.md
+        input-container.md
+        mapping-container.md
+        metrics-container.md
+        path-container.md
+        vendor-container.md
+        
     cdn-example-code.md
     legacy-portal.md
+    edge-servers.md
+    
+    {: .topicgroup}
+    Regions
+        asia-region.md
+        emea-region.md
+        north-america-region.md
+        south-america-region.md
     {: .navgroup-end}

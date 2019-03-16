@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,11 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Clase Hotlink Protection
+{: #hotlink-protection-class}
 
 La `clase SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` contiene los atributos que utilizan nuestras API de Hotlink Protection. Este objeto se utiliza para definir el comportamiento de Hotlink Protection para una CDN mediante una llamada a la API.  También lo devuelven las API de Hotlink Protection después de una llamada correcta a la API.
 
-Clase `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**clase** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `protectionType`: especifica si se debe permitir o denegar el acceso a contenido cuando una solicitud HTTP tiene un valor de Referer Header que coincide con uno de los términos de `refererValues`. Sucede lo contrario cuando no hay coincidencia.
   * Valor posible para protectionType:
@@ -41,7 +42,7 @@ Clase `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
     * ` `
       * refererValues vacío
     * `domain1.exa}mple.com domain1.example.com`
-      * Utiliza uno o varios caracteres no especificados en [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2)
+      * Utilización de caracteres no especificados en [RFC-3986 ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://tools.ietf.org/html/rfc3986#section-2)
     * `www.example.com/path&`
       * No se da soporte al carácter `&`
     * `www.example.org http://www.example.com`
