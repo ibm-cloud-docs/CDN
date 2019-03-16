@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-04-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 
 ---
@@ -15,6 +15,7 @@ lastupdated: "2018-04-09"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -31,7 +32,7 @@ lastupdated: "2018-04-09"
 # Obtendo Ajuda e Suporte 
 {: #gettinghelp}
 
-Última atualização: 9 de abril de 2018
+Última atualização: 18 de janeiro de 2019
 {: .last-updated}
 
 Se você tiver problemas ou perguntas ao usar o CDN, será possível obter ajuda procurando informações ou fazendo perguntas em um dos fóruns listados abaixo. Também é possível abrir um chamado de suporte.
@@ -48,6 +49,6 @@ identifique a sua pergunta com "cdn" e "ibm-cloud".
 
 Consulte
 [Obtendo
-ajuda](https://console.bluemix.net/docs/support/index.html#getting-help) para obter mais detalhes sobre o uso dos fóruns.
+ajuda](https://{DomainName}/docs/support/index.html#getting-help) para obter mais detalhes sobre o uso dos fóruns.
 
-Para obter informações sobre a abertura de um chamado de suporte IBM ou sobre níveis de suporte e gravidades de chamados, veja [Entrando em contato com o suporte](https://console.bluemix.net/docs/support/index.html#contacting-support).
+Para obter informações sobre como abrir um chamado de suporte do {{site.data.keyword.cloud}} ou sobre níveis de suporte e severidades de chamado, consulte [Entrando em contato com o suporte](/docs/get-support?topic=get-support-getting-customer-support).

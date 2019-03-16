@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Obtendo seu CDN para Status em Execução
+{: #getting-your-cdn-to-running-status}
 
 Saiba como colocar seu CDN em um estado RUNNING seguindo estas diretrizes. Este documento também
 informa como iniciar e parar o CDN.
@@ -31,7 +32,7 @@ com a Etapa 1.
 
 Se você criou um CDN com HTTPS com o certificado SAN DV, etapas adicionais podem ser necessárias
 para verificar seu domínio e podem ser localizadas na página
-[Concluindo Domain Control Validation para HTTPS](how-to-https.html#completing-domain-control-validation-for-https).
+[Concluindo Domain Control Validation para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
 
 **Etapa 1:**
 
@@ -53,10 +54,10 @@ Quando o encadeamento CNAME estiver concluído, a seleção de **Obter status**
 mudará o status para *RUNNING* e o CDN estará pronto para uso.
 
 Parabéns! Agora seu CDN está em execução. A partir de agora, a página
-[Gerenciar seu CDN](how-to.html#manage-your-cdn) tem informações adicionais sobre como
+[Gerenciar seu CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) tem informações adicionais sobre como
 configurar opções, como [Tempo de
-vida](how-to.html#setting-content-caching-time-using-time-to-live-), [Limpando conteúdo em cache](how-to.html#purging-cached-content) e
-[Incluindo detalhes do Caminho de Origem](how-to.html#adding-origin-path-details).
+vida](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Limpando conteúdo em cache](/docs/infrastructure/CDN/how-to.html#purging-cached-content) e
+[Incluindo detalhes do Caminho de Origem](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Iniciando o CDN
 

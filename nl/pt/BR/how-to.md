@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-24"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-09-24"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Gerenciar seu CDN
+{: #manage-your-cdn}
 
 Este documento descreve tarefas comuns para gerenciar seu CDN.
 
@@ -60,8 +62,7 @@ Selecione a guia **Origens** e, em seguida, selecione o botão **Incluir origem*
 
 **Etapa 3:**
 
-*Deve-se* fornecer um caminho. O caminho *deve* começar com o caminho do CDN como o prefixo, se o CDN foi criado com um caminho.  
-  Por exemplo, se o CDN for criado com um caminho de `/examplePath`, o caminho para a origem deverá começar com o prefixo `/examplePath/`. Você pode fornecer opcionalmente um cabeçalho do host.  
+*Deve-se* fornecer um caminho. Você pode fornecer opcionalmente um cabeçalho do host.  
 
    ![Incluir origem de Origens](images/add-origin-path.png)
 
@@ -84,12 +85,12 @@ de servidor e Object Storage.
 é a opção padrão ou é possível escolher as otimizações **Arquivo grande** ou **Vídeo on demand**. **Entrega geral da web** permite que o CDN entregue conteúdo até 1,8 GB, enquanto que a otimização
 **arquivo grande** permite downloads de arquivos de 1,8 GB até 320 GB. **Vídeo on demand**
 otimiza seu CDN para entrega de formatos de fluxo segmentado. As descrições de recurso para
-[Otimização de arquivo grande](feature-descriptions.html#large-file-optimization) e [Vídeo
-on Demand](feature-descriptions.html#video-on-demand) fornecem informações adicionais.
+[Otimização de arquivo grande](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) e [Vídeo
+on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) fornecem informações adicionais.
 
         ![Opções de configuração de desempenho](images/performance-config-options.png)
 
-    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](feature-descriptions.html#cache-key-query-args) na descrição do recurso.
+    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) na descrição do recurso.
 
         ![Opções da chave de cache](images/cache-key-options.png)
 
@@ -125,7 +126,7 @@ Selecione a guia **Limpar**.
 
 Insira a sintaxe de caminho Unix padrão para indicar qual arquivo você gostaria de limpar e, em seguida, selecione o botão **Limpar**. A limpeza é permitida somente para um único arquivo neste momento. Consulte a página
 [Regras e
-convenções de nomenclatura](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obter mais detalhes sobre qual sintaxe é
+convenções de nomenclatura](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obter mais detalhes sobre qual sintaxe é
 permitida para o caminho de Limpeza.
 
 **Etapa 4:**
@@ -181,8 +182,7 @@ Atualize os detalhes de **Origem** ou de **Outras opções** se necessário e, e
 
 Para usar os objetos armazenados no IBM Cloud Object Storage, deve-se configurar o valor da propriedade "acl" (isto é, a lista de controle de acesso) para cada objeto em seu depósito para acesso de "leitura pública".
 
-Consulte a seção Ferramentas do IBM Cloud Object Storage Developer Center
-(https://developer.ibm.com/cloudobjectstorage/) para instalar quaisquer clientes ou ferramentas necessários. Este guia supõe que você tenha instalado a interface da linha de comandos oficial do AWS, que é compatível com a API S3 do IBM Cloud Object Storage.
+Para instalar quaisquer clientes ou ferramentas necessários, consulte a [seção do IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Este guia supõe que você tenha instalado a interface da linha de comandos oficial do AWS, que é compatível com a API S3 do IBM Cloud Object Storage.
 
 O código de exemplo abaixo mostra como configurar o acesso de "leitura pública" para todos os objetos em seu depósito, usando a interface da linha de comandos.
 

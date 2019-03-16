@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-03"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-09-03"
 {:download: .download}
 
 # Sobre o Content Delivery Networks (CDN)
+{: #about-content-delivery-networks-cdn-}
 
 Um Content Delivery Network (CDN) é uma coleção de servidores de ponta distribuídos por várias partes do país ou do mundo. O conteúdo da web é entregue de um servidor de borda, que está localizado na área geográfica mais próxima do cliente
 que solicita o conteúdo. Essa técnica permite que seus usuários finais recebam o conteúdo com menos atraso, o que fornece uma
@@ -31,7 +32,7 @@ solicitado de todo o mundo, com configuração mínima.
 
 ## Recursos
 
-Os recursos-chave do serviço IBM Cloud Content Delivery Network incluem:
+Os recursos-chave do serviço {{site.data.keyword.cloud}} Content Delivery Network incluem:
   * Suporte de origem do servidor host
   * Suporte de origem do Object Storage
   * Suporte para múltiplas origens com caminhos distintos
@@ -47,8 +48,9 @@ Os recursos-chave do serviço IBM Cloud Content Delivery Network incluem:
   * Otimização de arquivo grande
   * Vídeo on demand
   * Controle de acesso geográfico
+  * Hotlink Protection
 
-Consulte [este documento](feature-descriptions.html#feature-descriptions) para obter descrições completas do recurso.
+Consulte [o documento de descrições do recurso](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions) para ver as descrições completas do recurso.
 
 ## Diagrama Arquitetural
 

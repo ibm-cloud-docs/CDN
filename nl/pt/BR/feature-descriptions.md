@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-09-24"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,15 +13,17 @@ lastupdated: "2018-09-24"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Descrições do recurso
+{: #feature-descriptions}
 
-Esta página destaca muitos dos recursos incluídos com o IBM Cloud CDN desenvolvido com o Akamai.
+Esta página destaca muitos dos recursos incluídos com o {{site.data.keyword.cloud}} CDN desenvolvido com a Akamai.
 
 ## Suporte de origem do servidor host
 
 O IBM Cloud Content Delivery Network (CDN) pode ser configurado para entregar conteúdo de uma origem de servidor de host fornecendo
-o nome do host de origem, protocolo, número da porta e, opcionalmente, o caminho do qual entregar o conteúdo. O caminho padrão é  ` / * `. O protocolo pode ser HTTP, HTTPS ou ambos. Somente determinados números de porta são suportados pelo Akamai. Consulte as [Perguntas frequentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números/intervalos de porta suportados.
+o nome do host de origem, protocolo, número da porta e, opcionalmente, o caminho do qual entregar o conteúdo. O caminho padrão é  ` / * `. O protocolo pode ser HTTP, HTTPS ou ambos. Somente determinados números de porta são suportados pelo Akamai. Consulte as [Perguntas frequentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter os números/intervalos de porta suportados.
 
 ## Suporte de origem do Object Storage
 
@@ -31,7 +33,7 @@ lista de extensões de arquivo pode ser especificada para permitir apenas armaze
 
 Este tutorial sobre
 [Como
-configurar o IBM Cloud Object Storage com o CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) fornece informações mais detalhadas.
+configurar o IBM Cloud Object Storage com o CDN](/docs/tutorials/static-files-cdn.html) fornece informações mais detalhadas.
 
 ## Suporte para múltiplas origens com caminhos distintos
 
@@ -73,7 +75,7 @@ Por padrão, ambos os números agregados e os gráficos padronizam a exibição 
 ## Suporte do cabeçalho do host
 
 O servidor Edge usa o **Cabeçalho do host** ao comunicar-se com o host de Origem. Este recurso fornece flexibilidade em como o
-serviço da web é configurado no host de origem. Se a entrada do cabeçalho do host não for fornecida, o serviço usará o nome do host
+serviço da web é configurado no host de origem. Especificamente, ele ativa um caso de uso em que um cliente tenha vários servidores da web configurados no mesmo Host de origem. Se a entrada do cabeçalho do host não for fornecida, o serviço usará o nome do host
 do servidor de origem como Cabeçalho do host HTTP padrão se o servidor de origem for especificado como nome do host (em vez de como um
 endereço IP). Se o cabeçalho do host não for fornecido como entrada E o servidor de origem for fornecido como um endereço IP, o nome
 do host CDN (também chamado de nome de domínio CDN) será usado como o cabeçalho do host HTTP padrão.
@@ -83,19 +85,19 @@ do host CDN (também chamado de nome de domínio CDN) será usado como o cabeça
 O CDN pode ser configurado para usar o protocolo HTTPS para entregar o conteúdo com segurança aos
 usuários finais. Essa configuração requer que um certificado SSL seja definido como parte da
 configuração do CDN. Dois tipos de opções de certificado SSL estão disponíveis para HTTPS:
-[Certificado curinga](about-https.html#wildcard-certificate-support) e
+[Certificado curinga](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) e
 [Certificado Subject Alternative
-Name (SAN) de Domínio Validado (DV)](about-https.html#subject-alternate-name-san-certificate-support). Esse tipo também será referido como um Certificado
+Name (SAN) de Domínio Validado (DV)](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support). Esse tipo também será referido como um Certificado
 SAN_ nesta documentação.
 
 O tipo de Certificado SSL a ser usado é uma consideração importante para o CDN HTTPS. A definição da
 configuração do certificado curinga é rápida, mas com a desvantagem de que o CDN é acessível apenas por
 meio de um CNAME. O processo de certificado SAN leva de 4 a 8 horas para ser concluído, mas permite
 usar o CDN com o Domínio do CDN (ou seja, o Nome do host). O Certificado SAN também requer uma etapa adicional
-de [**Domain Control Validation** ](how-to-https.html) durante
+de [**Domain Control Validation** ](/docs/infrastructure/CDN/how-to-https.html) durante
 a configuração. Nenhum custo está associado ao uso de qualquer um desses certificados. Consulte o
 [Documento
-de resolução de problemas](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) para entender a implicação da seleção de um determinado tipo de
+de resolução de problemas](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) para entender a implicação da seleção de um determinado tipo de
 Certificado.
 
 O Host de origem também deve ter seu próprio certificado SSL para o nome do host do CDN e deve ser
@@ -120,21 +122,18 @@ servidor de borda alcançará o host de origem para buscar o conteúdo. Se o ser
 alguma razão (por exemplo, o host de origem está inativo ou há um problema de rede), o servidor de borda entregará o conteúdo expirado
 (antigo) para a solicitação. Esse recurso é suportado pelo Akamai e **não pode** ser desligado.
 
-## Args de Consulta de Chave de Cache
+## Otimização da chave de cache
 
 Os servidores Edge do Akamai armazenam em cache o conteúdo em um **Armazenamento de
 cache**. Para usar o conteúdo do **Armazenamento em cache**, os
 servidores Edge usam uma **Chave de cache**. Geralmente, uma **Chave de cache**
 é gerada com base em uma parte da URL de um usuário final. Em alguns casos, a URL contém argumentos da função de consulta que são diferentes para
 usuários individuais, mas o conteúdo entregue é o mesmo. Por padrão, o Akamai utiliza os argumentos da função de consulta para gerar a chave de cache e, portanto, para gerar uma chave de cache exclusiva para cada usuário. Este método não é ideal porque ele faz com
-que o servidor de borda entre em contato com o servidor de origem para conteúdo que já está em cache, mas usando uma chave de cache diferente. O recurso **Ignorar argumentos de consulta na chave do cache** permite especificar se os argumentos da consulta
-devem ser ignorados ao gerar uma chave de cache. Esse recurso se aplica a qualquer `create` ou
+que o servidor de borda entre em contato com o servidor de origem para conteúdo que já está em cache, mas usando uma chave de cache diferente. O recurso **Otimização da chave de cache** permite especificar quais argumentos de consulta incluir/ignorar ao gerar uma Chave de cache. Esse recurso se aplica a qualquer `create` ou
 `update` de uma configuração de mapeamento de CDN, bem como para qualquer
 `create` ou `update` de um caminho de origem.
 
-**Nota:** o valor de **Argumentos de consulta de chave de cache**
-pode ser definido na guia **Configurações** após a criação de um mapeamento
-de CDN. Para o caminho de Origem, esse valor pode ser configurado durante as operações `create`
+**Nota:** o valor de **Otimização da chave de cache** pode ser configurado na guia **Configurações** após a criação de um mapeamento de CDN. Para o caminho de Origem, esse valor pode ser configurado durante as operações `create`
 ou `update` de um caminho de Origem.
 
 ## Compactação de conteúdo
@@ -169,17 +168,30 @@ origem na configuração do CDN e ativar a otimização de arquivo grande para e
 ## Vídeo on demand
 
 **Vídeo on Demand** otimização de desempenho fornece fluxo de alta qualidade em uma variedade de
-tipos de rede. Aproveitando a capacidade da rede distribuída para distribuir a carga dinamicamente, o IBM Cloud CDN com o Akamai
-oferece a capacidade de escalar rapidamente para grandes públicos, independentemente de você ter ou não se planejado para eles.
+tipos de rede. Ao utilizar as configurações de controle de cache pré-configuradas e a capacidade da rede distribuída para distribuir a carga dinamicamente, o IBM Cloud CDN com o Akamai fornece a capacidade de escalar rapidamente para grandes públicos, quer você tenha planejado isso ou não.
 
 **Vídeo On Demand** é otimizado para distribuição de formatos de fluxo segmentado como HLS, DASH, HDS e HSS. A transmissão de vídeo em tempo real **não** é suportada neste momento. É possível ativar o recurso **Vídeo on Demand** selecionando a opção do menu suspenso em **Otimizar para** na guia Configurações ou ao criar um novo caminho de origem. É necessário ativar esse recurso apenas ao otimizar a entrega de arquivos de vídeo.
 
 ## Controle de acesso geográfico
 
-O Controle de acesso geográfico é um comportamento baseado em regra que permite configurar o parâmetro `access-type` para um grupo de usuários, com base em sua localização geográfica. Dois tipos de comportamentos estão disponíveis: **Permitir** e **Negar**.
+O Controle de acesso geográfico é um comportamento baseado em regra que permite configurar o parâmetro `access-type` para um grupo de usuários, com base em sua localização geográfica. Dois tipos de comportamentos estão disponíveis: **Allow** e **Deny**.
 
 O tipo de acesso `Allow` deixa permitir especificamente o tráfego para regiões selecionadas, com base no tipo de região. Permitir tráfego para regiões específicas bloqueia implicitamente o tráfego para todas as outras. Por exemplo, você pode optar por usar `Allow` para permitir tráfego para continentes selecionados, como Europa e Oceania, que bloqueia o acesso a todos os outros continentes.
 
 Por outro lado, o comportamento `Deny` bloqueia o acesso a seu serviço para o grupo especificado, mas permite acesso a todas as outras regiões não especificadas. Por exemplo, se você configurar o tipo de acesso Controle de acesso geográfico como `Deny` para os continentes da Europa e Oceania, os usuários nesses continentes **não** poderão usar seu serviço, enquanto os usuários em todos os outros continentes terão acesso a ele.
 
 Esse recurso é acessível na página **Configurações** de sua Configuração do CDN.
+
+## Hotlink Protection
+
+Hotlink Protection é um comportamento baseado em regras que permite controlar se determinados websites têm permissão ou não para acessar seu conteúdo por meio do CDN.  Geralmente, o navegador inclui um cabeçalho `Referer` quando uma solicitação de HTTP é feita de um link em uma página da web e quando esse link aponta para um ativo remoto. O link usado por um website para acessar um ativo por meio de outro website chama-se hotlink.  Dois tipos de comportamentos estão disponíveis: **ALLOW** e **DENY**.
+
+Se o `protectionType` estiver configurado como `ALLOW`:
+* Se o valor do cabeçalho `Referer` em uma solicitação enviada para seu CDN corresponder a um de seus `refererValues` especificados, seu CDN **entregará** o conteúdo solicitado.
+* Caso contrário, o seu CDN não entregará o conteúdo.
+
+Se o `protectionType` estiver configurado como `DENY`:
+* Se o valor do cabeçalho `Referer` em uma solicitação enviada para seu CDN corresponder a um de seus `refererValues` especificados, seu CDN **não** entregará o conteúdo solicitado.
+* Caso contrário, seu CDN entregará o conteúdo.
+
+**NOTA**: esse recurso está disponível atualmente apenas por meio de nossa API. É possível visualizar a [página da API](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection) para obter mais informações.

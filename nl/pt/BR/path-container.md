@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,12 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Contêiner de caminho (origem)
+{: #path-origin-container}
+
 A coleção `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` contém os atributos
 utilizados pelas nossas APIs de caminho (origem). Cada uma das APIs de caminho retorna uma coleção desse tipo.
 
-classe `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: o ID exclusivo do mapeamento ao qual esse caminho de origem pertence.  
 * `path`: caminho relativo ao domínio que pode ser usado para alcançar essa origem.  

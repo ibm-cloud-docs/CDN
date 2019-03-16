@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Regras e Convenções de Nomenclatura
+{ #rules-and-naming-conventions}
 
 ## Quais são as regras para o Nome do host do CDN?
 A sequência de entrada `Hostname` do CDN **deve**:

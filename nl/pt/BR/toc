@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html"}
+{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
 Content Delivery Network (CDN)
 
     {: .navgroup id="learn"}
@@ -10,8 +10,9 @@ Content Delivery Network (CDN)
     feature-descriptions.md
     about-https.md
     naas-video.md
-    [Usar o CDN com o Cloud Object Storage para entregar seus arquivos estáticos mais rapidamente](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+    [Usar o CDN com o Cloud Object Storage para entregar seus arquivos estáticos mais rapidamente](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
     whats-new.md
+    pricing.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
@@ -19,12 +20,13 @@ Content Delivery Network (CDN)
     basic-functions.md
     how-to.md
     how-to-https.md
-    control-browser-caching-duration.md
+    cors-and-cdn.md
+    control-http-client-cache-duration.md
+    serve-video-on-demand-with-cdn.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md
     metrics.md
-    edge-servers.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
@@ -37,6 +39,25 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="reference"}
     api.md
+
+ {: .topicgroup}
+    Contêineres de classe de API
+        geoblock-behavior.md
+        hotlink-protection-behavior.md
+        input-container.md
+        mapping-container.md
+        metrics-container.md
+        path-container.md
+        vendor-container.md
+        
     cdn-example-code.md
     legacy-portal.md
+    edge-servers.md
+    
+    {: .topicgroup}
+    Regiões
+        asia-region.md
+        emea-region.md
+        north-america-region.md
+        south-america-region.md
     {: .navgroup-end}
