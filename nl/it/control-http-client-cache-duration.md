@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-20"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,14 +15,16 @@ lastupdated: "2018-11-20"
 {:download: .download}
 
 # Utilizzo di Cache Control per controllare la durata della memorizzazione in cache di un client HTTP
+{: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
-## Introduzione
 Quando si utilizza una CDN, sono disponibili due livelli di memorizzazione nella cache:
+
   * La **Caching at the edge** (Memorizzazione in cache all'edge) si verifica quando un server edge CDN memorizza in cache del contenuto dall'origine.
   * La **Caching downstream** (Memorizzazione in cache di downstream) dalla rete edge di server si verifica quando un utente finale o un client HTTP, come ad esempio un browser richiedente, memorizza in cache del contenuto da un server edge.
 
 Il metodo che scegli per controllare la durata della memorizzazione in cache presso il richiedente, come ad esempio un browser, dipende dai seguenti fattori:
-  * Se l'[intestazione Respect Header](how-to.html#updating-cdn-configuration-details) è ON oppure OFF. Per impostazione predefinita è impostata su ON.
+
+  * Se l'[intestazione Respect Header](/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details) è ON oppure OFF. Per impostazione predefinita è impostata su ON.
   * Se il server di origine fornisce un valore `max-age` nell'intestazione Cache-Control per del contenuto specifico. 
 
 Indipendentemente da come variano questi fattori, la tua origine deve fornire un'intestazione Cache-Control per il contenuto previsto all'edge, se vuoi che i server edge inviino delle risposte HTTP con l'intestazione Cache-Control per tale contenuto.
@@ -53,5 +55,5 @@ Tuttavia, se la tua origine non fornisce un'intestazione Cache-Control al server
 |Off|No|Durata della cache edge basata sulla configurazione TTL della CDN|No|
 
 ## Ulteriori informazioni
-* Come [gestire la tua CDN](how-to.html)
-* Cache-Control come definito nella sezione 14.9 della [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+* Come [gestire la tua CDN](/docs/infrastructure/CDN/how-to.html)
+* Cache-Control come definito nella sezione 14.9 di [RFC 2616 ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://www.ietf.org/rfc/rfc2616.txt)

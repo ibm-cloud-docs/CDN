@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # Regole e convenzioni di denominazione
+{ #rules-and-naming-conventions}
 
 ## Quali sono le regole per l'Hostname (Nome host) CDN?
 La stringa di input `Hostname` **deve**:
@@ -30,7 +31,7 @@ Inoltre, consigliamo vivamente di utilizzare un FQDN (fully-qualified domain nam
 
 ## Quali sono le convenzioni di denominazione CNAME personalizzate?
 La stringa di input `CNAME` deve rispettare le seguenti regole:
-  * **deve** essere univoca (non può essere utilizzata da altre CDN IBM Cloud)
+  * **deve** essere univoca (non può essere utilizzata da altre IBM Cloud CDN)
   * inferiore ai 64 caratteri alfanumerici
   * i caratteri speciali `! @ # $ % ^ & *` **non** sono consentiti
   * i caratteri di sottolineatura (`_`) **non** sono consentiti

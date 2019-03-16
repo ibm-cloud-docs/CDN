@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-21"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-11-21"
 # Video: Rete come un servizio
 {: #naas-video}
 
-I servizi IBM Cloud Network, compresi Load Balancers, i gruppi di sicurezza e CDN semplificano la creazione di applicazioni native del cloud con un più elevato grado di sicurezza, prestazioni e resilienza. In questa demo, imparerai a usare questi servizi per creare una semplice applicazione web a tre livelli in pochi clic.
+I servizi di rete {{site.data.keyword.cloud}}, compresi i programmi di bilanciamento del carico, i gruppi di sicurezza e CDN semplificano la creazione di applicazioni native del cloud con un più elevato grado di sicurezza, prestazioni e resilienza. In questa demo, imparerai a usare questi servizi per creare una semplice applicazione web a tre livelli in pochi clic.
 
 <p>
   <div class="embed-responsive embed-responsive-16by9">

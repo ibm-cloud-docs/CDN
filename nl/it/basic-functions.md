@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-11"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-11"
 {:download: .download}
 
 # Passaggio allo stato di esecuzione per la tua CDN
+{: #getting-your-cdn-to-running-status}
 
 Scopri come portare la tua CDN in uno stato di ESECUZIONE seguendo queste linee guida. Questo documento ti indica anche come avviare e arrestare la tua CDN.
 
@@ -27,7 +28,7 @@ Una volta che hai creato una CDN, essa viene visualizzata nel tuo dashboard CDN.
 
 Se hai ordinato la tua CDN con HTTP o HTTPS con il certificato jolly, puoi procedere al passo 1.
 
-Se hai creato una CDN con HTTPS con il certificato SAN DV, potrebbero essere necessari ulteriori passi per verificare il tuo dominio; questi passi sono descritti nella pagina [Completamento della convalida del controllo del dominio per HTTPS](how-to-https.html#completing-domain-control-validation-for-https).
+Se hai creato una CDN con HTTPS con il certificato SAN DV, potrebbero essere necessari ulteriori passi per verificare il tuo dominio; questi passi sono descritti nella pagina [Completamento della convalida del controllo del dominio per HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
 
 **Passo 1:**
 
@@ -47,7 +48,7 @@ Dopo aver configurato il CNAME con il tuo provider DNS, puoi controllare lo stat
 
 Una volta completato il concatenamento CNAME, la selezione di **Ottieni stato** modificherà lo stato in *RUNNING* e la CDN è pronta per l'uso.
 
-Complimenti! La tua CDN è ora in esecuzione. Da qui, la pagina [Gestisci la tua CDN](how-to.html#manage-your-cdn) include ulteriori informazioni sulle opzioni di configurazione, come [TTL (Time-to-live)](how-to.html#setting-content-caching-time-using-time-to-live-), [Eliminazione del contenuto memorizzato nella cache](how-to.html#purging-cached-content) e [Aggiunta dei dettagli del percorso di origine](how-to.html#adding-origin-path-details).
+Complimenti! La tua CDN è ora in esecuzione. Da qui, la pagina [Gestisci la tua CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) include ulteriori informazioni sulle opzioni di configurazione, come [TTL (Time-to-live)](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Eliminazione del contenuto memorizzato nella cache](/docs/infrastructure/CDN/how-to.html#purging-cached-content) e [Aggiunta dei dettagli del percorso di origine](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Avvio di CDN
 

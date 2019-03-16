@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Contenitore percorso (origine)
+{: #path-origin-container}
+
 La raccolta `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` contiene gli attributi utilizzati dalle nostre API Path (Origin). Ciascuna delle API Path restituisce una raccolta di questo tipo.
 
-class `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: l'ID univoco dell'associazione a cui appartiene questo Origin Path.  
 * `path`:  il percorso relativo al dominio che può essere utilizzato per raggiungere questa origine.  

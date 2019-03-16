@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Completamento della convalida del controllo del dominio per HTTPS con SAN DV
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
 Il seguente diagramma descrive i vari stati a cui passerà la tua CDN dal momento in cui viene creata e fino al raggiungimento dello stato di esecuzione (running).
 
@@ -24,7 +25,7 @@ Il seguente diagramma descrive i vari stati a cui passerà la tua CDN dal moment
 
 **Passo 1:**
 
-Dopo aver ordinato la tua CDN con un certificato SAN DV, inizia il processo di richiesta del certificato. Durante questo processo, la CDN IBM Cloud richiede un certificato da Akamai. Una volta che un certificato diventa disponibile, Akamai invia una richiesta all'Autorità di certificazione (CA).
+Dopo aver ordinato la tua CDN con un certificato SAN DV, inizia il processo di richiesta del certificato. Durante questo processo, la {{site.data.keyword.cloud}} CDN richiede un certificato da Akamai. Una volta che un certificato diventa disponibile, Akamai invia una richiesta all'Autorità di certificazione (CA).
 
   * Durante questo tempo, lo stato della CDN viene visualizzato come **Requesting Certificate**.
 
@@ -48,7 +49,7 @@ Fai clic sul nome della CDN che deve essere convalidata. Si apre la pagina di pa
 
   * Al termine di questo processo, tutti i domini, indipendentemente dal metodo di convalida utilizzato, passano a uno stato **CNAME Configuration**.
 
-Ulteriori informazioni sul completamento della tua configurazione di CNAME e sulla supervisione della tua CDN sono disponibili nella pagina [Passa allo stato di esecuzione](basic-functions.html#get-to-running).
+Ulteriori informazioni sul completamento della tua configurazione di CNAME e sulla supervisione della tua CDN sono disponibili nella pagina [Passa allo stato di esecuzione](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
 
 
 ## DCV (Domain Control Validation, convalida del controllo del dominio) 

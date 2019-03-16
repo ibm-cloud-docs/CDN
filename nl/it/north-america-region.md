@@ -1,12 +1,13 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
-## La regione Nord America include:
+# Regione Nord America
+{: #north-american-region}
 
 * Antigua e Barbuda
 * Aruba

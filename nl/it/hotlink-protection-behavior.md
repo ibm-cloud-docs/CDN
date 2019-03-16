@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,11 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Classe Hotlink Protection
+{: #hotlink-protection-class}
 
-La `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` contiene gli attributi utilizzati dalle nostre API Hotlink Protection. Questo oggetto viene utilizzato per impostare la modalità di funzionamento di Hotlink Protection per una CDN mediante il richiamo dell'API. Viene anche restituito dalle API Hotlink Protection dopo una chiamata API eseguita correttamente.
+La `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` contiene gli attributi utilizzati dalle nostre API Hotlink Protection. Questo oggetto viene utilizzato per impostare la modalità di funzionamento di Hotlink Protection per una CDN mediante il richiamo dell'API.  Viene anche restituito dalle API Hotlink Protection dopo una chiamata API eseguita correttamente.
 
-class `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `protectionType`: specifica di consentire o rifiutare l'accesso al contenuto quando una richiesta HTTP ha un valore Referer Header che corrisponde a uno dei termini in `refererValues`. Si verificherà il contrario quando non c'è alcuna corrispondenza.
   * Valore possibile per protectionType:
@@ -41,7 +42,7 @@ class `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
     * ` `
       * refererValues vuoti
     * `domain1.exa}mple.com domain1.example.com`
-      * Utilizzo di carattere(i) non specificato(i) in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2)
+      * Utilizzo di carattere(i) non specificato(i) in [RFC-3986 ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://tools.ietf.org/html/rfc3986#section-2)
     * `www.example.com/path&`
       * Il carattere `&` non è supportato
     * `www.example.org http://www.example.com`

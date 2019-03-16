@@ -1,13 +1,14 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
 
-## La regione Sud America include:
+# Regione Sud America
+{: #south-american-region}
 
 * Argentina
 * Bolivia

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Gestisci la tua CDN
+{: #manage-your-cdn}
 
 Questo documento descrive le attività comuni per gestire la tua CDN.
 
@@ -40,7 +42,7 @@ Dopo aver salvato, puoi modificare (**Edit**) o eliminare (**Delete**) l'imposta
 
   * Quando il contenuto corrisponde a più regole, ha la precedenza la configurazione aggiunta più di recente.
 
-  * I valori TTL possono essere impostati solo per uno specifico nome file o directory. Le espressioni regolari non sono supportate perché potrebbero creare comportamenti imprevedibili.
+  * I valori TTL possono essere impostati solo per uno specifico nome file o directory. Le espressioni regolari non sono supportate perché potrebbero creare una modalità di funzionamento imprevedibile.
 
 ## Aggiunta dei dettagli del percorso di origine
 
@@ -76,21 +78,21 @@ Seleziona **Server** o **Object Storage**.
 
        ![Aggiungi origine - Object Storage](images/add-origin-object-storage.png)
 
-  * Le opzioni **Ottimizzazione** e **Chiave della cache** sono uguali per le configurazioni di server e Object Storage.
+  * Le opzioni **Optimization** e **Cache Key** sono uguali per le configurazioni di server e Object Storage.
 
-    * Scegli le opzioni di **Ottimizzazione** dal menu a discesa. **Fornitura web generale** è l'opzione predefinita, oppure puoi scegliere le ottimizzazioni **File di grandi dimensioni** o **Video on-demand**. **Fornitura web generale** consente alla CDN di fornire contenuto fino a 1,8GB, mentre l'ottimizzazione **File di grandi dimensioni** consente download di file da 1,8GB a 320GB. **Video on-demand** ottimizza la tua CDN per la fornitura di formati di streaming segmentati. Le descrizioni delle funzioni per l'[Ottimizzazione dei file di grandi dimensioni](feature-descriptions.html#large-file-optimization) e [Video on-demand](feature-descriptions.html#video-on-demand) forniscono ulteriori informazioni.
+    * Scegli le opzioni di **Optimization** dal menu a discesa. **General web delivery** è l'opzione predefinita, oppure puoi scegliere le ottimizzazioni **Large file** o **Video on demand**. **General web delivery** consente alla CDN di fornire contenuto fino a 1,8GB, mentre l'ottimizzazione **Large file** consente download di file da 1,8GB a 320GB. **Video on demand** ottimizza la tua CDN per la fornitura di formati di streaming segmentati. Le descrizioni delle funzioni per l'[Ottimizzazione dei file di grandi dimensioni](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) e [Video on-demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) forniscono ulteriori informazioni.
 
         ![Opzioni di configurazione delle prestazioni](images/performance-config-options.png)
 
-    * Scegli le opzioni **Chiave della cache** dal menu a discesa. L'opzione predefinita è **Includi tutto**. Se selezioni **Includi specificato** o **Ignora specificato**, **devi** immettere le stringhe di query da includere o ignorare, separate da uno spazio. Ad esempio, immetti `uuid=123456` per una singola stringa di query oppure `uuid=123456 issue=important` per due stringhe di query.  Puoi saperne di più sugli [Argomenti di query della chiave della cache](feature-descriptions.html#cache-key-query-args) nella descrizione della funzione.
+    * Scegli le opzioni **Cache Key** dal menu a discesa. L'opzione predefinita è **Include-all**. Se selezioni **Include specified** o **Ignore specified**, **devi** immettere le stringhe di query da includere o ignorare, separate da uno spazio. Ad esempio, immetti `uuid=123456` per una singola stringa di query oppure `uuid=123456 issue=important` per due stringhe di query.  Puoi saperne di più sugli [Argomenti di query della chiave della cache](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) nella descrizione della funzione.
 
         ![Opzioni della chiave della cache](images/cache-key-options.png)
 
-**NOTA**: le opzioni protocollo e porta visualizzate dall'IU corrisponderanno a quanto selezionato quando è stata ordinata la CDN. Ad esempio, se è stata selezionata la **Porta HTTP** come parte dell'ordinazione di una CDN, come parte di Aggiungi origine viene visualizzata solo l'opzione **Porta HTTP**.
+**NOTA**: le opzioni protocollo e porta visualizzate dall'IU corrisponderanno a quanto selezionato quando è stata ordinata la CDN. Ad esempio, se è stata selezionata la porta HTTP (**HTTP port**) come parte dell'ordinazione di una CDN, come parte di Add Origin viene visualizzata solo l'opzione **HTTP port**.
 
 **Passo 5:**
 
-Seleziona il pulsante **Aggiungi** per aggiungere il tuo percorso di origine.
+Seleziona il pulsante **Add** per aggiungere il tuo percorso di origine.
 
   **Nota**: quando fornisci le estensioni file per un percorso di origine Object Storage, l'impostazione TTL che ha lo stesso URL del percorso di origine è definita con un ambito per includere tutti i file che hanno tali estensioni file specificate. Ad esempio, se crei un percorso di origine `/example` e specifichi l'estensione file "jpg png gif", il valore TTL del percorso TTL `/example` avrà un ambito che include tutti i file JPG/PNG/GIF nella directory `/example` e nelle sue sottodirectory.
 
@@ -110,17 +112,17 @@ Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.
 
 **Passo 2:**
 
-Seleziona la scheda **Elimina**.
+Seleziona la scheda **Purge**.
 
-   ![Pagina Elimina](images/purge_tab.png)
+   ![Pagina Purge](images/purge_tab.png)
 
 **Passo 3:**
 
-Immetti la sintassi del percorso unix standard per indicare quale file vuoi eliminare, quindi seleziona il pulsante **Elimina**. L'eliminazione è consentita solo per un singolo file in questo momento. Consulta la pagina [Regole e convenzioni di denominazione](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) per ulteriori dettagli su quale sintassi è consentita per il percorso di eliminazione.
+Immetti la sintassi del percorso unix standard per indicare quale file vuoi eliminare, quindi seleziona il pulsante **Purge**. L'eliminazione è consentita solo per un singolo file in questo momento. Consulta la pagina [Regole e convenzioni di denominazione](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) per ulteriori dettagli su quale sintassi è consentita per il percorso di eliminazione.
 
 **Passo 4:**
 
-Dopo l'eliminazione, l'attività viene elencata in **Attività di eliminazione**. Puoi selezionare **Ripeti eliminazione** o **Favorito** per il percorso utilizzando le opzioni del menu di overflow.
+Dopo l'eliminazione, l'attività viene elencata in **Purge Activity**. Puoi selezionare **Redo purge** o **Favorite** per il percorso utilizzando le opzioni del menu Overflow.
 
    ![Attività di eliminazione](images/purge-activity.png)
 
@@ -136,42 +138,42 @@ Nella pagina CDN, seleziona la tua CDN; verrà aperta la pagina **Overview**.
 
 **Passo 2:**
 
-Seleziona la scheda **Impostazioni**. Vengono visualizzati i dettagli della tua configurazione CDN.
+Seleziona la scheda **Settings**. Vengono visualizzati i dettagli della tua configurazione CDN.
 
-   ![Scheda Impostazioni](images/settings-tab.png)  
+   ![Scheda Settings](images/settings-tab.png)  
    **NOTA**: vedrai il certificato SSL solo se la tua CDN è stata configurata con HTTPS.
 
 Per **Server**, è possibile modificare i seguenti campi:
-  * Intestazione host
-  * Indirizzo server di origine
-  * Porta HTTP/HTTPS
-  * Utilizzo di contenuto obsoleto
-  * Respect Headers (Rispetta intestazioni)
-  * Opzioni di ottimizzazione
+  * Host header
+  * Origin server address
+  * HTTP/HTTPS Port
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
   * Cache-query    
 
 Per **Object Storage**, è possibile modificare i seguenti campi:
-  * Intestazione host
+  * Host header
   * Endpoint
-  * Nome bucket
-  * Porta HTTPS
-  * Estensioni file consentite
-  * Utilizzo di contenuto obsoleto
-  * Respect Headers (Rispetta intestazioni)
-  * Opzioni di ottimizzazione
+  * Bucket name
+  * HTTPS Port
+  * Allowed file extensions
+  * Serve Stale Content
+  * Respect Headers
+  * Optimization options
   * Cache-query
 
 **Passo 3:**
 
-Aggiorna i dettagli **Origine** o **Altre opzioni** laddove necessario, quindi fai clic sul pulsante **Salva** nell'angolo inferiore destro per aggiornare i dettagli della tua configurazione CDN.
+Aggiorna i dettagli **Origin** o **Other Options** laddove necessario, quindi fai clic sul pulsante **Save** nell'angolo inferiore destro per aggiornare i dettagli della tua configurazione CDN.
 
-   ![Pulsante Salva](images/save-button.png)
+   ![Pulsante Save](images/save-button.png)
 
 ## Configura IBM Cloud Object Storage per CDN
 
 Per utilizzare gli oggetti memorizzati in IBM Cloud Object Storage, devi impostare il valore della proprietà "acl" (ossia, l'elenco di controllo degli accessi) per ogni oggetto nel tuo bucket per l'accesso "public-read".
 
-Per installare gli eventuali client o strumenti necessari, consulta la sezione [IBM Cloud Object Storage Developer] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Questa guida presume che tu abbia installato l'interfaccia della riga di comando AWS ufficiale, che è compatibile con l'API IBM Cloud Object Storage S3.
+Per installare gli eventuali client o strumenti necessari, consulta la [sezione IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Questa guida presume che tu abbia installato l'interfaccia della riga di comando AWS ufficiale, che è compatibile con l'API IBM Cloud Object Storage S3.
 
 Il codice di esempio riportato di seguito mostra come impostare l'accesso "public-read" per tutti gli oggetti presenti nel tuo bucket, utilizzando l'interfaccia riga di comando.
 
