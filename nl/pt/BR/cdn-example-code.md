@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,12 +15,13 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Exemplos de Códigos Usando a API CDN
+{: #code-examples-using-the-cdn-api}
 
 Este documento contém chamadas API de exemplo e a saída resultante para várias APIs do CDN.
 
 ## Etapas gerais necessárias para todas as chamadas API
 
-O pré-requisito é fazer download e instalar o Soap Client de https://github.com/softlayer/softlayer-api-php-client
+O pré-requisito é fazer download e instalar o Soap Client por meio do [https://github.com/softlayer/softlayer-api-php-client ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/softlayer/softlayer-api-php-client)
 
   * É necessário obter acesso ao SoapClient por meio de `vendor/autoload`. O caminho é
 relativo ao local em que o script é executado e pode precisar ser modificado apropriadamente. Em PHP, a
@@ -30,10 +31,7 @@ instrução será semelhante a esta: `require_once './../vendor/autoload.php';`
       require_once __DIR__.'/vendor/autoload.php ';
       ```
 
-  * Todas as chamadas API são autenticadas com seu nome de usuário e com uma apiKey. Mais informações
-sobre como gerar uma apiKey podem ser localizadas na página
-[Introdução](https://softlayer.github.io/article/getting-started/), em "Obtendo sua chave
-API".
+  * Todas as chamadas API são autenticadas com seu nome de usuário e com uma apiKey. Mais informações sobre como gerar uma apiKey podem ser localizadas na [Página de introdução da API do Softlayer ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://softlayer.github.io/article/getting-started/), em "Obtendo sua chave de API".
 
       ```php
       $apiUsername = '<Your username>' ;
@@ -79,9 +77,7 @@ Matriz (
 
 A chamada para `verifyOrder` não é obrigatória antes de fazer um pedido, mas é
 recomendada. Ela pode ser usada para verificar se uma chamada subsequente para `placeOrder`
-será bem-sucedida. Mais informações sobre `verifyOrder` podem ser localizadas na
-[Documentação
-da API do SoftLayer](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
+será bem-sucedida. Mais informações sobre `verifyOrder` podem ser localizadas na [Documentação da API do SoftLayer ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
 Nesse caso, ela é a classe `SoftLayer_Product_Order`, que define o método
 verifyOrder e deve ser transmitida como um parâmetro para `\SoftLayer\SoapClient::getClient()`. Antes da chamada para `verifyOrder`, é necessário construir o `$orderObject` usando
@@ -133,10 +129,7 @@ catch (\Exception $e) {
 ## Código de exemplo para fazer pedido
 
 Esta chamada API é idêntica ao exemplo de código anterior, exceto que ela chama `placeOrder`,
-em vez de `verifyOrder`. Mais informações sobre `placeOrder` podem ser
-localizadas na
-[Documentação
-da API do SoftLayer](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
+em vez de `verifyOrder`. Mais informações sobre `placeOrder` podem ser localizadas na [Documentação da API do SoftLayer ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
 
 ```php
 
@@ -190,7 +183,7 @@ mostrado no exemplo.
 
 **NOTA**: se você optar por fornecer um CNAME customizado, ele
 **deverá** terminar com `.cdnedge.bluemix.net` ou um erro será lançado. Consulte [esta
-descrição](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) para obter as regras sobre como fornecer seu próprio CNAME.
+descrição](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) para obter as regras sobre como fornecer seu próprio CNAME.
 
 ```php
 

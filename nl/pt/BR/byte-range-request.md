@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-05-03"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,14 +16,12 @@ lastupdated: "2018-05-03"
 
 
 # Trabalhando com Pedidos de Byte-range
+{: #working-with-byte-range-requests}
 
 Usando uma solicitação de intervalo de bytes, é possível recuperar conteúdo parcial de um servidor de
 origem. Este documento pode ajudar a entender os códigos de status de resposta que são exibidos.
 
-Quando uma **Solicitação de intervalo de byte** é enviada usando o IBM Cloud
-CDN com o Akamai, o usuário pode receber um código de resposta `200 (OK)` para a primeira
-solicitação e um código de resposta `206` para todas as solicitações subsequentes, já que os
-servidores de borda Akamai solicitam conteúdo por meio da origem em formato compactado. Portanto, quando um
+Quando uma **Solicitação de intervalo de bytes** é enviada usando o {{site.data.keyword.cloud}} CDN com a Akamai, o usuário pode receber um código de resposta `200 (OK)` para a primeira solicitação e um código de resposta `206` para todas as solicitações subsequentes, pois os servidores de borda da Akamai solicitam conteúdo da origem no formato compactado. Portanto, quando um
 servidor de borda não tem um objeto em seu cache nem informações sobre o comprimento do conteúdo
 do objeto, ele encaminha para a origem e solicita o objeto inteiro. Por sua vez, a origem entrega o objeto sem o
 cabeçalho de comprimento de conteúdo para o Akamai e o usuário final recebe o objeto inteiro, mesmo que tenha

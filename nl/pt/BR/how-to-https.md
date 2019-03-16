@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Concluindo a Domain Control Validation para HTTPS com DV SAN
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-O diagrama a seguir descreve os vários estados em que seu CDN entrará a partir do momento em que for criado, até que possa ser executado.
+O diagrama a seguir descreve os vários estados em que seu CDN entrará a partir do momento em que ele for criado, até que ele atinja o status de execução.
 
   ![Diagrama de estado do SAN](images/state-diagram-san.png)
 
@@ -24,7 +25,7 @@ O diagrama a seguir descreve os vários estados em que seu CDN entrará a partir
 
 **Etapa 1:**
 
-Depois de ter pedido seu CDN com um Certificado SAN DV, o processo de solicitação de certificado será iniciado. Durante esse processo, o IBM Cloud CDN solicita um certificado do Akamai. Quando um certificado se torna disponível, o Akamai emite uma solicitação para a Autoridade de Certificação (CA).
+Depois de ter pedido seu CDN com um Certificado SAN DV, o processo de solicitação de certificado será iniciado. Durante esse processo, o {{site.data.keyword.cloud}} CDN solicita um certificado da Akamai. Quando um certificado se torna disponível, o Akamai emite uma solicitação para a Autoridade de Certificação (CA).
 
   * Durante esse tempo, o status do CDN é mostrado como **Solicitando certificado**.
 
@@ -48,7 +49,7 @@ Clique no nome do CDN que precisa ser validado. A página Visão geral é aberta
 
   * Quando esse processo é concluído, todos os domínios, independentemente do método de validação usado, mudam para um estado **Configuração do CNAME**.
 
-Informações adicionais sobre como concluir sua Configuração de CNAME e supervisionar seu CDN podem ser localizadas na página [Começando a execução](basic-functions.html#get-to-running).
+Informações adicionais sobre como concluir sua Configuração de CNAME e supervisionar seu CDN podem ser localizadas na página [Começando a execução](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
 
 
 ## Domain Control Validation 

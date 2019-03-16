@@ -1,13 +1,14 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
 
-## A região da Ásia inclui:
+# Região da Ásia
+{: #asia-region}
 
 * Afeganistão
 * Samoa Americana

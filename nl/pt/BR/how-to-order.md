@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017,2018
-lastupdated: "2018-07-17"
+  years: 2017,2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,37 +15,42 @@ lastupdated: "2018-07-17"
 {:download: .download}
 
 # Pedir um CDN
+{ #order-a-cdn}
 
-Aqui você aprenderá como pedir um Content Delivery Network (CDN). Seu CDN pode ser pedido no [Portal do IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/).
+Aqui você aprenderá como pedir um Content Delivery Network (CDN). Seu CDN pode ser pedido por meio do [Console do {{site.data.keyword.cloud}}](https://cloud.ibm.com/login).
 
-## Navegando para a página CDN:
+## Preparação para pedir
 
-**Etapa 1:**
+Veja aqui como navegar para a página do CDN para fazer seu pedido.
 
-Efetue login em sua conta no [Portal do IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/)
+### Etapa 1
 
-**Etapa 2:**
+* Efetue login na sua conta por meio do [Console do IBM Cloud](https://cloud.ibm.com/login)
 
-Clique em  [ IBM Cloud Catalog ](https://console.bluemix.net/catalog/). Na barra de navegação esquerda, selecione **Rede**.
+### Etapa 2
 
-   ![Navegação no CDN do Bluemix](images/bluemix_navigation.png)
+Clique em  [ IBM Cloud Catalog ](https://cloud.ibm.com/catalog/). Na barra de navegação esquerda, selecione **Rede**.
 
-**Etapa 3:**
+   ![Navegação no IBM Cloud CDN](images/bluemix_navigation.png)
+
+### Etapa 3
 
 Clique no **Quadro CDN**.
 
-   ![Ícone CDN do Bluemix](images/bluemix_tile.png)
+   ![Ícone do IBM Cloud CDN](images/bluemix_tile.png)
 
 
-## Pedir um novo CDN:
+## Pedir um novo CDN
 
-**Etapa 1:**
+Depois de estar na página de pedido, aqui está como proceder para criar e configurar seu CDN.
+
+### Etapa 1: Criar sua conta do CDN
 
 Clique em **Criar** na parte inferior direita, que criará sua conta do CDN se você ainda não tiver uma e redirecionará você para a tela Configuração do CDN.
 
    ![Visão geral do CDN](images/content-delivery.png)
 
-**Etapa 2:**
+### Etapa 2: Nomear seu CDN 
 
 Preencha o campo **Configurar nome**:  
 
@@ -57,7 +62,7 @@ identificador primário para o seu CDN (por exemplo, `example.testingcdn.net`).
 
     **Nota**: depois de provisionar seu novo CDN, você **deverá** configurar o CNAME com seu provedor DNS.
 
-**Etapa 3:**
+### Etapa 3: Configurar sua origem
 
 Preencha o campo **Configurar sua origem**: para configurar esse campo, deve-se selecionar a opção **Servidor** ou **Object Storage**.  
 
@@ -68,17 +73,17 @@ Preencha o campo **Configurar sua origem**: para configurar esse campo, deve-se 
       * Deve-se especificar o **Endereço do servidor de origem** (nome do host ou endereço IPv4 do Servidor de origem). Se **Porta HTTPS** também for selecionada, o **Endereço do servidor de origem** deverá ser o nome do host e não um endereço IP.
 
       * Especifique o **Cabeçalho do host** (opcional). Se nenhum for fornecido, ele será padronizado para o **Nome do host**. Consulte a descrição do recurso para [Suporte do
-cabeçalho do host](feature-descriptions.html#host-header-support) para obter mais informações sobre o cabeçalho do host.
+cabeçalho do host](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) para obter mais informações sobre o cabeçalho do host.
 
-      * Forneça um **Caminho** no qual o conteúdo possa ser recuperado da Origem (opcional). Consulte a descrição do recurso para [Mapeamentos de CDN baseados em caminho](feature-descriptions.html#path-based-cdn-mappings) para entender as implicações da inclusão de um caminho neste momento.
+      * Forneça um **Caminho** no qual o conteúdo possa ser recuperado da Origem (opcional). Consulte a descrição do recurso para [Mapeamentos de CDN baseados em caminho](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) para entender as implicações da inclusão de um caminho neste momento.
 
-      * Também é possível fornecer uma **Porta HTTP**, uma **Porta HTTPS** ou ambas. Esses campos indicam qual protocolo e número de porta podem ser usados para entrar em contato com o Servidor de Origem. Para números de porta não padrão, consulte [Perguntas Frequentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista dos números de porta permitidos.
+      * Também é possível fornecer uma **Porta HTTP**, uma **Porta HTTPS** ou ambas. Esses campos indicam qual protocolo e número de porta podem ser usados para entrar em contato com o Servidor de Origem. Para números de porta não padrão, consulte [Perguntas Frequentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista dos números de porta permitidos.
 
       * **Certificado SSL** - Essa opção aparece _somente_ quando a Porta HTTPS é selecionada. Se você selecionar **Porta HTTPS** para o Servidor ou o Object Storage, será possível escolher **Curinga** ou **Certificado DV SAN** como a opção de Certificado SSL. Ambos oferecem a segurança aprimorada fornecida por HTTPS.
         * O **Certificado curinga** permite o tráfego HTTPS apenas ao usar o
 **CNAME** e não requer nenhuma ação adicional de sua parte
         * O **Certificado SAN DV** permite o tráfego HTTPS sobre seu domínio, mas
-requer etapas adicionais para a verificação. Consulte a página [Concluindo a Domain Control Validation para HTTPS](how-to-https.html#completing-domain-control-validation-for-https) para entender as etapas necessárias e as restrições de tempo envolvidas na escolha dessa opção.
+requer etapas adicionais para a verificação. Consulte a página [Concluindo a Domain Control Validation para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https) para entender as etapas necessárias e as restrições de tempo envolvidas na escolha dessa opção.
 
 	     ![Configurar o servidor de origem](images/ssl-cert-options.png)
 
@@ -89,21 +94,25 @@ requer etapas adicionais para a verificação. Consulte a página [Concluindo a 
       * **Deve-se** especificar o **Terminal** do qual buscar o objeto.
 
       * Especifique o **Cabeçalho do host** (opcional). Se nenhum for fornecido, ele será padronizado para o **Nome do host**. Consulte a descrição do recurso para [Suporte do
-cabeçalho do host](feature-descriptions.html#host-header-support) para obter mais informações sobre o cabeçalho do host.
+cabeçalho do host](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) para obter mais informações sobre o cabeçalho do host.
 
-      * Forneça um **Caminho** no qual o conteúdo possa ser recuperado da Origem (opcional). Consulte a descrição do recurso para [Mapeamentos de CDN baseados em caminho](feature-descriptions.html#path-based-cdn-mappings) para entender as implicações da inclusão de um caminho aqui.
+      * Forneça um **Caminho** no qual o conteúdo possa ser recuperado da Origem (opcional). Consulte a descrição do recurso para [Mapeamentos de CDN baseados em caminho](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) para entender as implicações da inclusão de um caminho aqui.
 
       * **Deve-se** fornecer o nome do **Depósito** no qual seu conteúdo é armazenado.
 
-      * Também é possível fornecer uma **Porta HTTP**, uma **Porta HTTPS** ou ambas. Esses campos indicam qual protocolo e número de porta podem ser usados para entrar em contato com o Servidor de Origem. Para números de porta não padrão, consulte [Perguntas Frequentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista dos números de porta permitidos.
+      * Também é possível fornecer uma **Porta HTTP**, uma **Porta HTTPS** ou ambas. Esses campos indicam qual protocolo e número de porta podem ser usados para entrar em contato com o Servidor de Origem. Para números de porta não padrão, consulte [Perguntas Frequentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para obter uma lista dos números de porta permitidos.
 
       * **Certificado SSL** - Essa opção aparece _somente_ quando a Porta HTTPS é selecionada. Se você selecionar **Porta HTTPS** para o Servidor ou o Object Storage, será possível escolher **Curinga** ou **Certificado DV SAN** como a opção de Certificado SSL. Ambos oferecem a segurança aprimorada fornecida por HTTPS.
         * O **Certificado curinga** permite o tráfego HTTPS apenas ao usar o
 **CNAME** e não requer nenhuma ação adicional de sua parte
-        * O **Certificado DV SAN** permite o tráfego HTTPS sobre seu domínio, mas requer etapas adicionais para verificação. Consulte a página [Concluindo a Domain Control Validation para HTTPS](how-to-https.html#completing-domain-control-validation-for-https) para entender as etapas necessárias e as restrições de tempo envolvidas na escolha dessa opção.
+        * O **Certificado DV SAN** permite o tráfego HTTPS sobre seu domínio, mas requer etapas adicionais para verificação. Consulte a página [Concluindo a Domain Control Validation para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https) para entender as etapas necessárias e as restrições de tempo envolvidas na escolha dessa opção.
 
         ![Configure HTTPS](images/ssl-cert-options.png)
 
       **NOTA** - Deve-se configurar a **Lista de controle de acesso** (ACL) de cada Objeto em seu Depósito como de "leitura pública" com seu provedor de armazenamento de objeto de nuvem.
+      
+**Etapa 4:**
 
-Selecione o botão **Criar** no canto inferior direito para criar seu CDN.
+* Deve-se selecionar **Eu li o Contrato de serviço principal e concordo com seus termos** na parte inferior direita, acima do botão **Criar**.
+
+* Em seguida, selecione o botão **Criar** no canto inferior direito para criar seu CDN.

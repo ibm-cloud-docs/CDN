@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-24"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-07-24"
 {:download: .download}
 
 # Métricas
+{: #metrics}
 
 Quando você seleciona seu CDN pela primeira vez na lista, a página Visão geral é aberta. Aqui é possível ver a Largura total da banda, o Total de ocorrências e a Taxa de acertos do período selecionado (o padrão é 30 dias).
 
@@ -28,19 +29,17 @@ Diretamente abaixo da visão geral, você verá uma representação gráfica da 
 
 ## Há um número mínimo de dias durante os quais eu posso visualizar as métricas? Há um máximo?
 
-Há um número mínimo e um número máximo de dias para os quais é possível visualizar as métricas usando o IBM Cloud Content
-Delivery Network com o Akamai. As métricas podem ser reunidas por um mínimo de 7 dias. As métricas podem ser visualizadas por um máximo de 90 dias. Para aqueles que usam a API, recomenda-se usar 89 dias como o máximo, para considerar quaisquer diferenças em fusos horários.
+Há um número mínimo e um número máximo de dias para os quais é possível visualizar as métricas usando o {{site.data.keyword.cloud}} Content Delivery Network com a Akamai. As métricas podem ser reunidas por um mínimo de 7 dias. As métricas podem ser visualizadas por um máximo de 90 dias. Para aqueles que usam a API, recomenda-se usar 89 dias como o máximo, para considerar quaisquer diferenças em fusos horários.
 
 ## Por que a taxa de acertos é diferente de zero quando o total de ocorrências é zero?
 A taxa de acertos representa a porcentagem de vezes que o conteúdo foi entregue no Cache Edge Server, em vez de ser entregue do Servidor de Origem. Ela é calculada da seguinte maneira:
 
-> ((Ocorrências do Edge - Ocorrências de ingresso)/Ocorrências do Edge) * 100
+`((Ocorrências do Edge - Ocorrências de ingresso)/Ocorrências do Edge) * 100`
 
 em que:
 
-As ocorrências de borda são definidas como "Todas as ocorrências dos servidores de borda por meio dos usuários finais"  
-As ocorrências de ingresso são definidas como "Ocorrências de origem ou de ingresso são para o tráfego de sua
-origem para os servidores de borda Akamai"
+_Ocorrências de borda_ são definidas como "Todas as ocorrências dos servidores de borda dos usuários finais".  
+_Ocorrências de ingresso_ são definidas como "Ocorrências de origem ou ingresso são relativas ao tráfego de sua origem para servidores de borda da Akamai."
 
 Como a taxa de acertos é calculada no nível de conta e não por CDN, a taxa de acertos será a mesma para todos os CDNs em sua
 conta. Este fato também explica por que a Taxa de Acertos pode ser diferente de zero quando o número de ocorrências do Edge para um CDN particular é zero.

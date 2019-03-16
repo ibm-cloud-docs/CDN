@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Limites e Valores Máximos
+{: #limits-and-maximum-values}
 
 ## Há um valor máximo para o Tempo de vida? Um mínimo?
 
