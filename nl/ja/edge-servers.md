@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-09-05"
 {:tip: .tip}
 
 # エッジ・サーバーのリスト
+{: #list-of-edge-servers}
 
 以下に、使用中の Akamai の POP を利用する国のリストを示します。
 

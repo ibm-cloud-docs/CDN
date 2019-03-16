@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-05-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,11 +15,13 @@ lastupdated: "2018-05-09"
 {:download: .download}
 
 # ベンダー・コンテナー
+{: #vendor-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Vendor` コレクションには、ベンダー API によって使用される属性が含まれています。
 
 
-クラス `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
-* `vendorName`: 現行の IBM Cloud CDN プロバイダーの名前。  
+**クラス** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
+* `vendorName`: 現行の {{site.data.keyword.cloud}} CDN プロバイダーの名前。  
 * `featureSummary`: ベンダー機能の簡単な要約。  
 * `features`: ベンダーによってサポートされる機能のリスト。  
 * `status`: ベンダーが IBM Cloud から使用可能なオプションであるかどうかを示します。

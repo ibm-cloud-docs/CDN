@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # ルールおよび命名規則
+{ #rules-and-naming-conventions}
 
 ## CDN ホスト名に関するルールは何ですか
 CDN `ホスト名`の入力ストリングは以下のとおり**でなければなりません**。

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # コンテンツ配信ネットワーク (CDN) について
+{: #about-content-delivery-networks-cdn-}
 
 コンテンツ配信ネットワーク (CDN) は、全国または世界中に分散されたエッジ・サーバーの集合です。 その Web コンテンツは、要求元のユーザーに最も近い地理的領域にあるエッジ・サーバーから提供されます。 この技術により、エンド・ユーザーは少ない遅延時間でコンテンツを受け取ることができ、より優れた総合的な経験をカスタマーに提供することができます。
 
@@ -26,7 +27,7 @@ CDN は、世界中のエッジ・サーバー上に Web コンテンツをキ�
 
 ## 機能
 
-IBM Cloud Content Delivery Network サービスの主要機能は、以下のとおりです。
+{{site.data.keyword.cloud}} Content Delivery Network サービスの主要機能は、以下のとおりです。
   * ホスト・サーバー・オリジンのサポート
   * オブジェクト・ストレージ・オリジンのサポート
   * 明確なパスを使用した複数オリジンのサポート
@@ -44,7 +45,7 @@ IBM Cloud Content Delivery Network サービスの主要機能は、以下のと
   * 地理的アクセス制御
   * ホット・リンク保護
 
-機能の完全な説明については、[この文書](feature-descriptions.html#feature-descriptions)を参照してください。
+機能の完全な説明については、[機能の説明文書](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions)を参照してください。
 
 ## アーキテクチャー図
 

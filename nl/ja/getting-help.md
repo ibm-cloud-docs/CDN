@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 
 ---
@@ -15,6 +15,7 @@ lastupdated: "2018-11-14"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -31,7 +32,7 @@ lastupdated: "2018-11-14"
 # ヘルプとサポートの利用 
 {: #gettinghelp}
 
-最終更新: 2018 年 11 月14 日
+最終更新: 2019 年 1 月 18 日
 {: .last-updated}
 
 CDN を使用しているときに問題や質問がある場合は、情報を検索したり、以下にリストしたいずれかのフォーラムで質問したりして、支援を得ることができます。 サポート・チケットをオープンすることもできます。
@@ -45,4 +46,4 @@ CDN を使用しているときに問題や質問がある場合は、情報を�
 
 フォーラムの使用について詳しくは、[「ヘルプの取得」](https://{DomainName}/docs/support/index.html#getting-help)を参照してください。
 
-IBM サポート・チケットのオープンや、サポート・レベルおよびチケットの重大度について詳しくは、[「サポートへの問い合わせ」](https://{DomainName}/docs/support/index.html#contacting-support)を参照してください。
+{{site.data.keyword.cloud}} サポート・チケットのオープンや、サポート・レベルおよびチケットの重大度について詳しくは、[「サポートへの問い合わせ」](/docs/get-support?topic=get-support-getting-customer-support)を参照してください。

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # CDN の管理
+{: #manage-your-cdn}
 
 本資料では、CDN を管理するための一般的なタスクについて説明します。
 
@@ -78,11 +80,11 @@ CDN ページで、CDN を選択します。これにより、**「概要」**�
 
   * **「最適化 (Optimization)」**オプションと**「キャッシュ・キー (Cache Key)」**オプションは、サーバー構成とオブジェクト・ストレージ構成で同じです。
 
-    * ドロップダウン・メニューから**「最適化 (Optimization)」**オプションを選択します。 **「一般 Web 配信 (General web delivery)」**がデフォルト・オプションです。**「ラージ・ファイル (Large file)」**または**「ビデオ・オンデマンド (Video on demand)」**の最適化を選択することもできます。 **「一般 Web 配信 (General web delivery)」**を使用すると、CDN は 1.8 GB までのコンテンツを提供でき、**「ラージ・ファイル (Large file)」**最適化を使用すると、1.8 GB から 320 GB までのファイルをダウンロードできます。 **「ビデオ・オンデマンド (Video on demand)」**は、セグメント化されたストリーミング形式の配信用に CDN を最適化します。 [ラージ・ファイルの最適化](feature-descriptions.html#large-file-optimization)と[ビデオ・オンデマンド](feature-descriptions.html#video-on-demand)の機能の説明に、詳細情報が記載されています。
+    * ドロップダウン・メニューから**「最適化 (Optimization)」**オプションを選択します。 **「一般 Web 配信 (General web delivery)」**がデフォルト・オプションです。**「ラージ・ファイル (Large file)」**または**「ビデオ・オンデマンド (Video on demand)」**の最適化を選択することもできます。 **「一般 Web 配信 (General web delivery)」**を使用すると、CDN は 1.8 GB までのコンテンツを提供でき、**「ラージ・ファイル (Large file)」**最適化を使用すると、1.8 GB から 320 GB までのファイルをダウンロードできます。 **「ビデオ・オンデマンド (Video on demand)」**は、セグメント化されたストリーミング形式の配信用に CDN を最適化します。 [ラージ・ファイルの最適化](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization)と[ビデオ・オンデマンド](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand)の機能の説明に、詳細情報が記載されています。
 
         ![パフォーマンス構成オプション](images/performance-config-options.png)
 
-    * ドロップダウン・メニューから**「キャッシュ・キー (Cache Key)」**オプションを選択します。 デフォルト・オプションは**「すべてを含める (Include-all)」**です。 **「指定を含める (Include specified)」**または**「指定を無視 (Ignore specified)」**を選択した場合、含めるか無視する照会ストリングをスペースで区切って入力する **必要があります**。 例えば、単一の照会ストリングの場合は `uuid=123456` と入力し、2 つの照会ストリングの場合は `uuid=123456 issue=important` と入力します。  機能の説明に、[キャッシュ・キーの照会引数](feature-descriptions.html#cache-key-query-args)に関する詳細が記載されています。
+    * ドロップダウン・メニューから**「キャッシュ・キー (Cache Key)」**オプションを選択します。 デフォルト・オプションは**「すべてを含める (Include-all)」**です。 **「指定を含める (Include specified)」**または**「指定を無視 (Ignore specified)」**を選択した場合、含めるか無視する照会ストリングをスペースで区切って入力する **必要があります**。 例えば、単一の照会ストリングの場合は `uuid=123456` と入力し、2 つの照会ストリングの場合は `uuid=123456 issue=important` と入力します。  機能の説明に、[キャッシュ・キーの照会引数](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args)に関する詳細が記載されています。
 
         ![キャッシュ・キー・オプション](images/cache-key-options.png)
 
@@ -116,7 +118,7 @@ CDN ページで、CDN を選択します。これにより、**「概要」**�
 
 **ステップ 3:**
 
-パージするファイルを示した標準の UNIX パス構文を入力し、**「パージ (Purge)」**ボタンを選択します。 現時点では、単一ファイルのパージのみが可能です。 パージ・パスに使用できる構文について詳しくは、『[ルールおよび命名規則](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)』ページを参照してください。
+パージするファイルを示した標準の UNIX パス構文を入力し、**「パージ (Purge)」**ボタンを選択します。 現時点では、単一ファイルのパージのみが可能です。 パージ・パスに使用できる構文について詳しくは、『[ルールおよび命名規則](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)』ページを参照してください。
 
 **ステップ 4:**
 
@@ -171,7 +173,7 @@ CDN ページで、CDN を選択します。これにより、**「概要」**�
 
 IBM Cloud Object Storage に保管されたオブジェクトを利用するには、バケット内の各オブジェクトについて「acl」プロパティー (つまり、アクセス制御リスト) の値を「public-read」のアクセス権限に設定する必要があります。
 
-必要なクライアントまたはツールをインストールするには、[IBM Cloud Object Storage Developer セクション] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers) を参照してください。このガイドでは、IBM Cloud Object Storage S3 API と互換の公式 AWS コマンド・ライン・インターフェースがインストールされていることを前提としています。
+必要なクライアントまたはツールをインストールするには、[IBM Cloud Object Storage Developer セクション](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)を参照してください。 このガイドでは、IBM Cloud Object Storage S3 API と互換の公式 AWS コマンド・ライン・インターフェースがインストールされていることを前提としています。
 
 以下のサンプル・コードは、コマンド・ライン・インターフェースを使用して、バケット内のすべてのオブジェクトに「public-read」のアクセス権限を設定する方法を示しています。
 

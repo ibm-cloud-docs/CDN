@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Geoblocking クラス
+{: #geoblocking-class}
+
 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` クラスには、ジオブロッキング API によって使用される属性が含まれています。 各ジオブロッキング API は、このタイプのオブジェクトを返し、CDN の地理的アクセス制御の動作を設定するために使用されます。
 
-クラス `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**クラス** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `accessType`: ルールが、特定の地域を許可すべきか (`ALLOW`)、拒否すべきか (`DENY`) を指定します。
 * `regionType`: Geoblocking ルールを適用する地域のタイプ。`CONTINENT` または `COUNTRY_OR_REGION` のいずれか。

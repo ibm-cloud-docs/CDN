@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,16 +15,18 @@ lastupdated: "2018-11-14"
 {:download: .download}
 
 # 入力コンテナー
+{ #input-container}
+
 入力コンテナーは、マッピング・クラスと (オリジン) パス・クラスの両方によって使用されるコレクションです。  これは、両方のクラスに対して一貫性のある入力属性のセットを提供します。
 
-* `vendorName`: 有効な IBM Cloud CDN プロバイダーの名前。
+* `vendorName`: 有効な {{site.data.keyword.cloud}} CDN プロバイダーの名前。
 * `oldPath`: updateOriginPath() によって使用されます。 このプロパティーは、現行パスまたは「古い」パスの名前を保管します。
 
 以下の属性は、マッピング・クラスと (オリジン) パス・クラスに共通です。
 * `originType`: オリジン・ホストのタイプ。現在、「HOST_SERVER」または「OBJECT_STORAGE」です。
 * `origin`: オリジン・サーバー・アドレス (オリジン・サーバーのホスト名または IPv4 アドレスのいずれか)。これは、コンテンツのフェッチ元のエンドポイントまたはコンテンツが保管されているバケットの名前です。 511 文字未満でなければなりません。
-* `httpPort`: HTTP プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
-* `httpsPort`: HTTPS プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
+* `httpPort`: HTTP プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
+* `httpsPort`: HTTPS プロトコルに使用されるポートの番号。 Akamai には、HTTP ポートと HTTPS ポートのポート番号に関する特定の制限があります。 許可されるポート番号のリストについては、[よくある質問](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)を参照してください。
 * `status`: マッピングまたはパスの状況。 状況は、CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED、または ERROR になります。
 * `path`: キャッシュに入れられたコンテンツの配信元のパス。 デフォルトのパスは /\* です。`updateOriginPath` API によって使用される場合、この属性は追加される新規パスを指します。
 * `performanceConfiguration`: マッピングのパフォーマンス構成の仕様。
@@ -50,4 +52,4 @@ lastupdated: "2018-11-14"
 * `fileExtension`: 許可されるファイル拡張子。
 
 以下の属性は、ホット・リンク保護の構成に関連しています。
-* `hotlinkProtection`: 詳細についは、『[ホット・リンク保護クラス](hotlink-protection-behavior.html)』を参照してください。
+* `hotlinkProtection`: 詳細についは、『[ホット・リンク保護クラス](/docs/infrastructure/CDN/hotlink-protection-behavior.html)』を参照してください。
