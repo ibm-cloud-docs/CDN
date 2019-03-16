@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,9 +13,11 @@ lastupdated: "2018-12-05"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
-{: faq: data-hd-content-type=‘faq’}
+{:faq: data-hd-content-type='faq'}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Domande frequenti
+{: #faqs}
 
 ## Cos'è una CDN (Content Delivery Network)?
 {: faq}
@@ -30,7 +32,7 @@ Una CDN raggiunge il suo scopo memorizzando in cache il contenuto web sui server
 ## Come viene creato il mio account di servizio CDN (Content Delivery Network) IBM Cloud?
 {: faq}
 
-Il tuo account viene creato durante il processo dell'ordine CDN. Se stai creando una CDN dal portale legacy, quando fai clic sul pulsante **Order CDN** nella **pagina Network -> CDN**, il tuo account viene creato. Se stai creando una CDN dal portale cloud IBM, quando fai clic sul pulsante **Crea** nella pagina **Catalogo -> Rete -> Content Delivery Network**, il tuo account viene creato.
+Il tuo account viene creato durante il processo dell'ordine CDN. Se stai creando una CDN dal portale legacy, quando fai clic sul pulsante **Order CDN** nella **pagina Network -> CDN**, il tuo account viene creato. Se stai creando una CDN dal portale {{site.data.keyword.cloud}}, quando fai clic sul pulsante **Create** nella **pagina Network -> Content**, il tuo account viene creato.
 
 ## Cosa devo fare quando la mia CDN è nello stato CNAME Configuration?
 {: faq}
@@ -53,7 +55,7 @@ Ecco come si presenta un tipico record CNAME nella pagina di configurazione DNS:
 ## Cosa mi verrà addebitato in fattura nella mia CDN?
 {: faq}
 
-Ti viene addebitata solo la larghezza di banda utilizzata per l'istanza CDN (Content Delivery Network) IBM Cloud. Se il tuo CDN non utilizza alcuna larghezza di banda, non ti verranno addebitate spese. I prezzi della larghezza di banda variano a seconda della posizione regionale del server edge. Puoi vedere i prezzi per regione geografica nella sezione [Introduzione](getting-started.html#cdn-bandwidth-pricing-rates-shown-in-usd-) per questo servizio.
+Ti viene addebitata solo la larghezza di banda utilizzata per l'istanza CDN (Content Delivery Network) IBM Cloud. Se il tuo CDN non utilizza alcuna larghezza di banda, non ti verranno addebitate spese. I prezzi della larghezza di banda variano a seconda della posizione regionale del server edge. Puoi visualizzare i prezzi della larghezza di banda per regione geografica nel [documento dei prezzi](/docs/infrastructure/CDN?topic=CDN-pricing) per questo servizio.
 
 ## Quando riceverò l'addebito in fattura per la mia CDN?
 {: faq}
@@ -83,7 +85,7 @@ Fornire un percorso mentre crei la tua CDN ti consente di isolare i file che pos
 ## La mia CDN è in uno stato di errore. Cosa faccio adesso?
 {: faq}
 
-Fai riferimento alle pagine [Risoluzione dei problemi](troubleshooting.html#troubleshooting) o [Come ottenere aiuto e supporto](getting-help.html#gettinghelp) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
+Fai riferimento alle pagine [Risoluzione dei problemi](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) o [Come ottenere aiuto e supporto](/docs/infrastructure/CDN/getting-help.html#gettinghelp) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
 
 ## Dove trovo il CNAME per la mia CDN se non ne ho fornito uno?
 {: faq}
@@ -99,7 +101,7 @@ No. Ci può essere una sola richiesta di eliminazione attiva per un determinato 
 
 IPv6 (o supporto dual stack) è supportato dai server edge di Akamai. È progettato per aiutare i clienti solo con origine IPv4 ad accettare le connessioni dai client IPv6, eseguire la conversione da IPv6 e IPv4 ai margini e andare avanti all'origine con IPv4.
 
-**NOTA:** la creazione di una CDN IBM Cloud utilizzando un indirizzo IPv6 come indirizzo del server di origine non è supportata.
+**NOTA:** la creazione di una IBM Cloud CDN utilizzando un indirizzo IPv6 come indirizzo del server di origine non è supportata.
 
 ## Esistono delle limitazioni sui numeri porta HTTP e HTTPS consentiti per Akamai?
 {: faq}
@@ -117,12 +119,12 @@ L'omissione della barra, ad esempio, utilizzando `www.example.com/images` provoc
 ## Come configuro la mia CDN (Content Delivery Network) per IBM COS (Cloud Object Storage)?
 {: faq}
 
-[Ecco un'esercitazione](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sulla creazione di una CDN (Content Delivery Network) per IBM Cloud Object Storage
+[Ecco un'esercitazione](/docs/tutorials/static-files-cdn.html) sulla creazione di una CDN (Content Delivery Network) per IBM Cloud Object Storage
 
 ## Ho ricevuto una notifica che il mio certificato di origine sta per scadere. Cosa faccio adesso?
 {: faq}
 
-Attieniti alla procedura indicata in [questo articolo](https://community.akamai.com/docs/DOC-7708) da Akamai.
+Attieniti alla procedura indicata in [questo articolo![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://community.akamai.com/docs/DOC-7708) di Akamai.
 
 ## Quale sicurezza è inclusa con la soluzione IBM CDN con Akamai?
 {: faq}
@@ -137,7 +139,19 @@ Per il contenuto non memorizzabile in cache, o qualsiasi contenuto che non viene
 ## Come utilizzo la console IBM Cloud per dare ad altri utenti l'autorizzazione a creare o gestire una CDN?
 {: faq}
 
-Nella console IBM Cloud, l'utente master dell'account può fornire ad altri utenti l'autorizzazione a creare e gestire una CDN. Dalla pagina principale della console IBM Cloud, attieniti alla seguente procedura per modificare le autorizzazioni:
+L'utente master dell'account può fornire ad altri utenti l'autorizzazione a creare e gestire una CDN.
+
+Dalla pagina principale della console IBM Cloud, attieniti alla seguente procedura per modificare le autorizzazioni:
+ * Seleziona la scheda **Gestisci**
+ * Seleziona **Accesso (IAM)**
+ * Fai clic sulla scheda **Utenti** dal riquadro di sinistra
+ * Fai clic sull'**Utente** desiderato
+ * Seleziona quindi la scheda **Infrastruttura classica**
+ * Quindi, nella scheda **Autorizzazioni**, espandi la categoria **Servizi**
+ * Seleziona **Gestisci account CDN**
+ * Fai clic sul pulsante **Salva**
+
+Dalla pagina principale della console legacy, attieniti alla seguente procedura per modificare le autorizzazioni:
  * Seleziona la scheda **Account**
  * Seleziona **Utenti -> Elenco utenti**
  * Fai clic sul **Nome utente** desiderato
@@ -145,7 +159,24 @@ Nella console IBM Cloud, l'utente master dell'account può fornire ad altri uten
  * Seleziona la scheda **Servizi**
  * Seleziona **Gestisci account CDN**
  * Fai clic sul pulsante **Modifica autorizzazioni portale**
- * Imposta le autorizzazioni necessarie.
+
+## Perché il pulsante Create non viene visualizzato o è disabilitato nella pagina https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai?
+{: faq}
+
+Se sei l'utente master dell'account, devi eseguire un upgrade dell'account perché il pulsante Create sia visualizzato o abilitato in questa pagina. Dalla pagina della console IBM Cloud, attieniti alla seguente procedura come utente master dell'account:
+ * Apri il riquadro di navigazione di sinistra facendo clic sull'icona `tripla barra` nell'angolo superiore sinistro della pagina web
+ * Seleziona **Infrastruttura classica**
+ * Fai clic sul pulsante **Esegui upgrade dell'account** e attieniti alle istruzioni
+
+Se sei uno degli utenti secondari dell'account, l'utente master dell'account ti deve concedere l'autorizzazione `Aggiungi/esegui upgrade dei servizi` perché il pulsante Create sia visualizzato o abilitato in questa pagina. Dalla pagina della console IBM Cloud, l'utente master dell'account deve attenersi alla seguente procedura per modificare le tue autorizzazioni:
+ * Seleziona la scheda **Gestisci**
+ * Seleziona **Accesso (IAM)**
+ * Fai clic sulla scheda **Utenti** dal riquadro di sinistra
+ * Fai clic sull'**Utente** desiderato
+ * Seleziona quindi la scheda **Infrastruttura classica**
+ * Quindi, nella scheda **Autorizzazioni**, espandi la categoria **Account**
+ * Seleziona **Aggiungi/esegui upgrade dei servizi**
+ * Fai clic sul pulsante **Salva**
 
 ## Perché non riesco a raggiungere la mia pagina web tramite la mia CDN dopo la configurazione di Hotlink Protection con `protectionType` `ALLOW`?
 {: faq}

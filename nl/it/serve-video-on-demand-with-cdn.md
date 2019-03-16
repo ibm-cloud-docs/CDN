@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-12"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,8 +16,9 @@ lastupdated: "2018-11-12"
 
 
 # Come servire video on demand con CDN
+{: #how-to-serve-video-on-demand-with-cdn}
 
-In questa guida, esploreremo un esempio di come avvalersi di una CDN IBM Cloud per riprodurre in streaming del contenuto `.mp4` tramite **HLS** come video on demand, a un browser, da un'origine Linux-Nginx. 
+In questa guida, esploreremo un esempio di come avvalersi di una {{site.data.keyword.cloud}} CDN per riprodurre in streaming del contenuto `.mp4` tramite **HLS** come video on demand, a un browser, da un'origine Linux-Nginx. 
 
 ## Introduzione
 
@@ -25,7 +26,7 @@ Per riprodurre in streaming dei video, sono disponibili diversi formati, come HL
 
 Concettualmente, la configurazione che stiamo utilizzando è mostrata nel seguente diagramma.
 
-![CDN IBM Cloud per video on demand](images/ibmcdn-vod-example-model.png)
+![IBM Cloud CDN per video on demand](images/ibmcdn-vod-example-model.png)
 
 Useremo anche l'origine come luogo di preparazione. A tale riguardo, avremo anche bisogno di ottenere alcuni pacchetti affinché la cosa funzioni.
 
@@ -42,12 +43,12 @@ Ci procureremo innanzitutto `ffmpeg`.
 $ sudo apt-get -y install ffmpeg
 ```
 
-HLS funziona con due tipi di file: `.m3u8` e `.ts`. Puoi pensare al file `.m3u8` come a una "playlist". All'inizio della riproduzione in streaming del video, questo file è il primo che viene recuperato. La playlist informa quindi il lettore video in merito ai frammenti video che deve recuperare e fornisce altri dati su come riprodurre correttamente il contenuto oggetto dello streaming. I file `.ts` sono i "frammenti" video. Questi frammenti vengono recuperati e riprodotti dal lettore video in base ai dettagli forniti nella "playlist".
+HLS funziona con due tipi di file: `.m3u8` e `.ts`. Puoi pensare al file `.m3u8` come a una "playlist". All'inizio della riproduzione in streaming del video, questo file è il primo che viene recuperato.  La playlist informa quindi il lettore video in merito ai frammenti video che deve recuperare e fornisce altri dati su come riprodurre correttamente il contenuto oggetto dello streaming. I file `.ts` sono i "frammenti" video. Questi frammenti vengono recuperati e riprodotti dal lettore video in base ai dettagli forniti nella "playlist".
 
 Controlliamo e vediamo ora formato, velocità di bit e altre informazioni per i flussi video e audio del nostro video `.mp4` di origine.
 
 ```
-$ ffprobe test-video.mp4
+$ ffprobe test-video.mp4 
 ```
 
 In questo esempio, prendiamo in considerazione le seguenti informazioni di streaming per `test-video.mp4`:
@@ -87,7 +88,7 @@ Qui di seguito viene riportata una suddivisione di quello che questo comando ha 
 | -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
 | -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
 | -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
-| test-video.m3u8 | Denomina la play list/il file manifest di output come `test-video.m3u8`.<br/> Di conseguenza, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., e simili<br/> saranno i nomi del frammento video per impostazione predefinita. |
+| test-video.m3u8 | Denomina la play list/il file manifest di output come `test-video.m3u8`.<br/> Di conseguenza, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., e simili<br/> saranno i nomi del frammento video per impostazione predefinita.|
 
 Nota: per le opzioni `-`, a meno che non venga specificato un flusso, viene scelto il "migliore" per la sua categoria.
 
@@ -195,13 +196,14 @@ http {
 Non tutti i formati video in streaming possono essere riproducibili in modo nativo su tutte le applicazioni. L'esempio in questa guida configura lo streaming utilizzando HLS e CDN.
 
 Ad esempio, Safari supporterà una riproduzione HLS nativa. Pertanto, il lettore video sulla pagina web può essere tanto semplice quanto il seguente esempio con elementi HTML5 `<video>`:
+
 ```
 <!DOCTYPE html>
 <html>
   <!-- Some HTML elements... -->
-
+  
   <video src="https://cdn.example.com/hls/test-video.m3u8"></video>
-
+  
   <!-- Some more HTML elements... -->
 </html>
 ```
@@ -211,9 +213,9 @@ Tuttavia, anche altri browser o dispositivi desktop potrebbero aver bisogno di s
 ## Configura la CDN
 Connettiamo ora l'origine alla CDN per gestire del contenuto in tutto il mondo con una velocità effettiva ottimizzata, una latenza ridotta al minimo e delle prestazioni migliorate.
 
-Innanzitutto, [ordina](how-to-order.html#order-a-cdn) una CDN.
+Innanzitutto, [ordina](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) una CDN.
 
-Procedi quindi [configurando la tua CDN](how-to.html#updating-cdn-configuration-details) oppure [aggiungendo un'origine](how-to.html#adding-origin-path-details).
+Procedi quindi [configurando la tua CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) oppure [aggiungendo un'origine](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
 
 Infine, sotto `Optimize For`, seleziona `Video on demand optimization`.
 

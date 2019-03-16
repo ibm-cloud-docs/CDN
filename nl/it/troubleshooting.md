@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Risoluzione dei problemi
+{: #troubleshooting}
 
-In questo documento, troverai diversi modi per risolvere i problemi della tua CDN. Se devi contattare il supporto, assicurati di fornire il tuo numero di riferimento della CDN.
+In questo documento, troverai diversi modi per risolvere i problemi della tua CDN {{site.data.keyword.cloud}}. Se devi contattare il supporto, assicurati di fornire il tuo numero di riferimento della CDN.
 
 ## Come faccio a sapere se la mia CDN funziona?
 Esegui il seguente comando `curl` sostituendo `http://your.cdn.domain/uri` con il percorso file rispettivo sulla tua CDN.
@@ -60,16 +61,16 @@ Questo è l'errore che potresti vedere: `503 Service Unavailable`.
 Insieme all'errore 503, puoi anche vedere un messaggio simile al seguente: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (il numero di riferimento effettivo può variare). In questo caso, il numero di riferimento nella stringa di errore si traduce in un errore di handshake SSL.
 
 Per correggere il problema, assicurati che il certificato SSL del server di origine soddisfi i seguenti criteri:
-  * Il certificato **deve** essere emesso da un'autorità di certificazione ritenuta attendibile da Akamai. Puoi visualizzare l'elenco di certificati ritenuti attendibili da Akamai a [questo link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
+  * Il certificato **deve** essere emesso da un'autorità di certificazione ritenuta attendibile da Akamai. Puoi visualizzare l'elenco di certificati ritenuti attendibili da Akamai a [questo link ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
   * **Deve** corrispondere all'*Host header* (Intestazione host) configurata sulla CDN
   * **Non** deve essere autofirmato
   * **Non** deve essere scaduto
 
-Se hai verificato la catena di certificati della tua origine utilizzando i criteri precedenti e continui a riscontrare lo stesso errore, consulta la nostra pagina [Come ottenere aiuto e supporto](getting-help.html#gettinghelp) . Prendi nota della stringa di errore di riferimento e includila in qualsiasi comunicazione con noi.
+Se hai verificato la catena di certificati della tua origine utilizzando i criteri precedenti e continui a riscontrare lo stesso errore, consulta la nostra pagina [Come ottenere aiuto e supporto](/docs/infrastructure/CDN/getting-help.html#gettinghelp) . Prendi nota della stringa di errore di riferimento e includila in qualsiasi comunicazione con noi.
 
 ## Il mio nome host non viene caricato sul browser quando IBM COS (Cloud Object Storage) è l'origine.
 
-Quando la tua CDN IBM Cloud è configurata per utilizzare IBM COS come archivio oggetti, l'accesso diretto al sito web non funzionerà. Devi specificare il percorso della richiesta completo nella barra dell'indirizzo del browser (ad esempio, `www.example.com/index.html`). Questa modalità di funzionamento è dovuta alla limitazione del documento di indice in IBM COS.
+Quando la tua IBM Cloud CDN è configurata per utilizzare IBM COS come archivio oggetti, l'accesso diretto al sito web non funzionerà. Devi specificare il percorso della richiesta completo nella barra dell'indirizzo del browser (ad esempio, `www.example.com/index.html`). Questa modalità di funzionamento è dovuta alla limitazione del documento di indice in IBM COS.
 
 ## Non riesco a stabilire una connessione tramite un comando `curl` o il browser utilizzando il nome host con HTTPS.
 
@@ -139,6 +140,6 @@ Con un protocollo **solo** HTTP, riceverai il messaggio `301 Moved permanently` 
 
 Il messaggio `Access denied` viene generato quando provi a raggiungere una CDN utilizzando un protocollo non corretto. Assicurati che stai utilizzando `http` per le CDN create con il protocollo HTTP oppure `https` per le CDN create con il protocollo HTTPS.
 
-Un comportamento che vede un URL reindirizzato alla pagina web di CDN IBM Cloud si osserva con maggiore frequenza quando l'URL non è corretto per il protocollo. Se la tua CDN viene creata con un protocollo di HTTPS o HTTPS_AND_HTTPS, devi utilizzare il CNAME per l'accesso alla tua CDN. Ad esempio, `https://examplecname.cdnedge.bluemix.net` per le associazioni HTTPS o `http://examplecname.cdnedge.bluemix.net` oppure `https://examplecname.cdnedge.bluemix.net` per le associazioni HTTP_AND_HTTPS.
+La modalità di funzionamento che vede un URL reindirizzato alla pagina web di IBM Cloud CDN si osserva con maggiore frequenza quando l'URL non è corretto per il protocollo. Se la tua CDN viene creata con un protocollo di HTTPS o HTTPS_AND_HTTPS, devi utilizzare il CNAME per l'accesso alla tua CDN. Ad esempio, `https://examplecname.cdnedge.bluemix.net` per le associazioni HTTPS o `http://examplecname.cdnedge.bluemix.net` oppure `https://examplecname.cdnedge.bluemix.net` per le associazioni HTTP_AND_HTTPS.
 
-In questo caso, l'URL viene reindirizzato alla pagina web di CDN IBM Cloud perché sia il protocollo che il dominio non sono corretti per il protocollo della CDN. Una CDN creata con HTTP come _solo_ protocollo può essere raggiunta _solo_ tramite il nome host. Ad esempio, `http://example.com`.
+In questo caso, l'URL viene reindirizzato alla pagina web di IBM Cloud CDN perché sia il protocollo che il dominio non sono corretti per il protocollo della CDN. Una CDN creata con HTTP come _solo_ protocollo può essere raggiunta _solo_ tramite il nome host. Ad esempio, `http://example.com`.

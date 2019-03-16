@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Informazioni sulla CDN (Content Delivery Network)
+{: #about-content-delivery-networks-cdn-}
 
 Una CDN (Content Delivery Network) è una raccolta di server edge distribuiti in varie parti del paese o del mondo. Il contenuto web viene fornito da un server edge che si trova nella zona geografica più vicina al cliente che richiede il contenuto. Questa tecnica consente ai tuoi utenti finali di ricevere il contenuto con meno ritardo e offre un'esperienza complessiva migliore ai tuoi clienti.
 
@@ -26,7 +27,7 @@ Una CDN raggiunge il suo scopo memorizzando in cache il contenuto web sui server
 
 ## Funzioni
 
-Le funzioni chiave del servizio CDN (Content Delivery Network) IBM Cloud includono:
+Le funzioni chiave del servizio CDN (Content Delivery Network) {{site.data.keyword.cloud}} includono:
   * Supporto dell'origine server host
   * Supporto dell'origine Object Storage
   * Supporto per più origini con percorsi distinti
@@ -44,10 +45,10 @@ Le funzioni chiave del servizio CDN (Content Delivery Network) IBM Cloud includo
   * Controllo dell'accesso geografico
   * Hotlink Protection
 
-Consulta [questo documento](feature-descriptions.html#feature-descriptions) per le descrizioni complete delle funzioni.
+Consulta [il documento delle descrizioni delle funzioni](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions) per le descrizioni complete delle funzioni.
 
 ## Digramma dell'architettura
 
-Il seguente diagramma offre una panoramica schematica dell'architettura a tre livelli di CDN IBM Cloud.
+Il seguente diagramma offre una panoramica schematica dell'architettura a tre livelli di IBM Cloud CDN.
 
 ![Digramma dell'architettura](images/3-tier-architecture.png)

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,32 +13,34 @@ lastupdated: "2018-11-02"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Descrizioni delle funzioni
+{: #feature-descriptions}
 
-Questa pagina evidenzia molte delle funzioni incluse con CDN IBM Cloud con tecnologia Akamai.
+Questa pagina evidenzia molte delle funzioni incluse con {{site.data.keyword.cloud}} CDN con tecnologia Akamai.
 
 ## Supporto dell'origine server host
 
-La CDN (Content Delivery Network) IBM Cloud può essere configurata per fornire contenuto da un'origine server host fornendo il nome host, il protocollo, il numero porta e, facoltativamente, il percorso dell'origine da cui fornire il contenuto. Il percorso predefinito è `/*`. Il protocollo può essere HTTP, HTTPS o entrambi. Akamai supporta solo degli specifici numeri porta. Consulta [Domande frequenti (FAQ)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per i numeri porta o gli intervalli di porte supportati.
+IBM Cloud CDN (Content Delivery Network) può essere configurata per fornire contenuto da un'origine server host fornendo il nome host, il protocollo, il numero porta e, facoltativamente, il percorso dell'origine da cui fornire il contenuto. Il percorso predefinito è `/*`. Il protocollo può essere HTTP, HTTPS o entrambi. Akamai supporta solo degli specifici numeri porta. Consulta [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per i numeri porta o gli intervalli di porte supportati.
 
 ## Supporto dell'origine Object Storage
 
-La CDN IBM Cloud può essere configurata per offrire contenuto da un endpoint Object Storage fornendo l'endpoint, il nome bucket, il protocollo e la porta. Facoltativamente, è possibile specificare un elenco di estensioni file per consentire la memorizzazione in cache dei soli file che hanno tali estensioni. Tutti gli oggetti nel bucket devono essere impostati con un accesso in lettura anonimo o in lettura pubblico.
+IBM Cloud CDN può essere configurata per offrire contenuto da un endpoint Object Storage fornendo l'endpoint, il nome bucket, il protocollo e la porta. Facoltativamente, è possibile specificare un elenco di estensioni file per consentire la memorizzazione in cache dei soli file che hanno tali estensioni. Tutti gli oggetti nel bucket devono essere impostati con un accesso in lettura anonimo o in lettura pubblico.
 
-Questa esercitazione su [come configurare IBM Cloud Object Storage con CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) fornisce informazioni più dettagliate.
+Questa esercitazione su [come configurare IBM Cloud Object Storage con CDN](/docs/tutorials/static-files-cdn.html) fornisce informazioni più dettagliate.
 
 ## Supporto per più origini con percorsi distinti
 
-In specifici casi, potresti voler fornire del contenuto da un server di origine differente. Ad esempio, potresti volere che specifiche foto o specifici video vengano forniti da server di origine differenti. La CDN IBM Cloud consente di configurare più server di origine con più percorsi. Questo offre flessibilità per quanto riguarda come e dove sono memorizzati i dati. Il percorso fornito per il server di origine deve essere univoco rispetto alla CDN. Il server di origine stesso non deve necessariamente essere univoco.
+In specifici casi, potresti voler fornire del contenuto da un server di origine differente. Ad esempio, potresti volere che specifiche foto o specifici video vengano forniti da server di origine differenti. IBM Cloud CDN consente di configurare più server di origine con più percorsi. Questo offre flessibilità per quanto riguarda come e dove sono memorizzati i dati. Il percorso fornito per il server di origine deve essere univoco rispetto alla CDN. Il server di origine stesso non deve necessariamente essere univoco.
 
 ## Associazioni di CDN basate sui percorsi
 
-Il servizio di CDN IBM Cloud può essere limitato a uno specifico percorso di directory sul server di origine fornendo il percorso quando si crea la CDN. A un utente finale è consentito l'accesso solo ai contenuti in tale percorso di directory. Ad esempio, se viene creata una CDN `www.example.com` con il percorso `/videos`, è accessibile **solo** tramite `www.example.com/videos/*`.
+Il servizio di IBM Cloud CDN può essere limitato a uno specifico percorso di directory sul server di origine fornendo il percorso quando si crea la CDN. A un utente finale è consentito l'accesso solo ai contenuti in tale percorso di directory. Ad esempio, se viene creata una CDN `www.example.com` con il percorso `/videos`, è accessibile **solo** tramite `www.example.com/videos/*`.
 
 ## Eliminazione del contenuto presente nella cache
 
-La CDN IBM Cloud consente di rimuovere in modo rapido e facile, o "eliminare", il contenuto memorizzato nella cache dai server edge. Attualmente, l'eliminazione è consentita solo per un percorso file. Attualmente, l'implementazione di eliminazione con Akamai elimina il file in circa 5 secondi. L'IU consente anche di visualizzare la cronologia delle eliminazioni e di contrassegnare degli specifici percorsi di eliminazione come preferiti.
+IBM Cloud CDN consente di rimuovere in modo rapido e facile, o "eliminare", il contenuto memorizzato nella cache dai server edge. Attualmente, l'eliminazione è consentita solo per un percorso file. Attualmente, l'implementazione di eliminazione con Akamai elimina il file in circa 5 secondi. L'IU consente anche di visualizzare la cronologia delle eliminazioni e di contrassegnare degli specifici percorsi di eliminazione come preferiti.
 
 ## TTL (Time to Live)
 
@@ -60,15 +62,15 @@ Il server edge utilizza l'intestazione host (**Host Header**) quando comunica co
 
 ## Supporto del protocollo HTTPS
 
-La CDN può essere configurata per utilizzare il protocollo HTTPS per fornire il contenuto in modo sicuro agli utenti finali. Questa configurazione richiede che un certificato SSL debba essere impostato come parte della configurazione CDN. Per HTTPS sono disponibili due tipi di opzioni di certificato SSL: [Certificato jolly](about-https.html#wildcard-certificate-support) e [Certificato SAN (Subject Alternative Name) DV (Domain Validation)](about-https.html#subject-alternate-name-san-certificate-support). All'interno di questa documentazione, questo tipo sarà indicato anche come _Certificato SAN_.
+La CDN può essere configurata per utilizzare il protocollo HTTPS per fornire il contenuto in modo sicuro agli utenti finali. Questa configurazione richiede che un certificato SSL debba essere impostato come parte della configurazione CDN. Per HTTPS sono disponibili due tipi di opzioni di certificato SSL: [Certificato jolly](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) e [Certificato SAN (Subject Alternative Name) DV (Domain Validation)](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support). All'interno di questa documentazione, questo tipo sarà indicato anche come _Certificato SAN_.
 
-Il tipo di certificato SSL da utilizzare è una considerazione importante per la rete CDN HTTPS. L'impostazione della configurazione del certificato jolly è veloce, ma come lato negativo vi è il fatto che la CDN è accessibile solo tramite un CNAME. Il completamento del processo del certificato SAN richiede da 4 a 8 ore, ma offre la possibilità di utilizzare la CDN con il dominio CDN (ovvero, il nome host). Il certificato SAN richiede anche un ulteriore passo di [**Convalida del controllo del dominio**](how-to-https.html) durante la configurazione. Nessun costo è associato all'utilizzo di uno di questi certificati. Fai riferimento al [documento relativo alla risoluzione dei problemi](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) per comprendere l'implicazione della selezione di un determinato tipo di certificato.
+Il tipo di certificato SSL da utilizzare è una considerazione importante per la rete CDN HTTPS. L'impostazione della configurazione del certificato jolly è veloce, ma come lato negativo vi è il fatto che la CDN è accessibile solo tramite un CNAME. Il completamento del processo del certificato SAN richiede da 4 a 8 ore, ma offre la possibilità di utilizzare la CDN con il dominio CDN (ovvero, il nome host). Il certificato SAN richiede anche un ulteriore passo di [**Convalida del controllo del dominio**](/docs/infrastructure/CDN/how-to-https.html) durante la configurazione. Nessun costo è associato all'utilizzo di uno di questi certificati. Fai riferimento al [documento relativo alla risoluzione dei problemi](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) per comprendere l'implicazione della selezione di un determinato tipo di certificato.
 
 L'host di origine deve inoltre avere il suo proprio certificato SSL per il nome host CDN e deve essere firmato da un'autorità di certificazione (CA) riconosciuta.
 
 Come prassi ottimale del settore, Akamai ritiene attendibili solo i certificati root e non i certificati intermediari, poiché l'insieme di certificati intermediari attendibili cambia di frequente. Puoi trovare i certificati attendibili Akamai [sul Web in questa ubicazione](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
 
-## Respect Headers (Rispetta intestazioni)
+## Respect Headers
 
 L'opzione **Respect Headers** (Rispetta intestazioni) consente alla configurazione dell'intestazione HTTP nell'origine di sovrascrivere la configurazione della CDN. Questa funzione è attivata per impostazione predefinita, ma può essere disattivata.
 
@@ -107,7 +109,7 @@ Quando questa funzione è abilitata, fornire contenuto inferiore ai 10MB comport
 
 ## Video on-demand
 
-L'ottimizzazione delle prestazioni **Video on-demand** offre uno streaming di alta qualità su una gamma di tipi di rete. Avvalendosi delle impostazioni di controllo della cache preconfigurate e della capacità della rete distribuita di distribuire il carico in modo dinamico, la CDN IBM Cloud con Akamai ti consente di eseguire rapidamente dei ridimensionamenti per vasti pubblici, che tu li abbia inclusi nei tuoi piani o meno.
+L'ottimizzazione delle prestazioni **Video on-demand** offre uno streaming di alta qualità su una gamma di tipi di rete. Avvalendosi delle impostazioni di controllo della cache preconfigurate e della capacità della rete distribuita di distribuire il carico in modo dinamico, la IBM Cloud CDN con Akamai ti consente di eseguire rapidamente dei ridimensionamenti per vasti pubblici, che tu li abbia inclusi nei tuoi piani o meno.
 
 **Video on-demand** è ottimizzato per la distribuzione di formati di streaming segmentati quali HLS, DASH, HDS e HSS. Lo streaming video live **non** è supportato, al momento. È possibile abilitare la funzione **Video On Demand** (Video on-demand) selezionando l'opzione dal menu a discesa in **Optimize for** (Ottimizza per) nella scheda Settings (Impostazioni) o mentre si crea un nuovo percorso di origine. Devi abilitare questa funzione solo quando ottimizzi la fornitura di file video.
 
@@ -123,7 +125,7 @@ Questa funzione è accessibile dalla pagina **Settings** (Impostazioni) della co
 
 ## Hotlink Protection
 
-Hotlink Protection è una modalità di funzionamento basata sulle regole che ti consente di controllare se a specifici siti web è consentito o meno accedere al tuo contenuto dalla tua CDN. Il browser di norma include un'intestazione `Referer` quando una richiesta HTTP viene effettuata da un link su una pagina web e quando tale link punta a un asset remoto. Il link utilizzato da un sito web per accedere a un asset da un altro sito web è chiamato hotlink. Sono disponibili due tipi di modalità di funzionamento: **ALLOW** (CONSENTI) e **DENY** (RIFIUTA).
+Hotlink Protection è una modalità di funzionamento basata sulle regole che ti consente di controllare se a specifici siti web è consentito o meno accedere al tuo contenuto dalla tua CDN.  Il browser di norma include un'intestazione `Referer` quando una richiesta HTTP viene effettuata da un link su una pagina web e quando tale link punta a un asset remoto. Il link utilizzato da un sito web per accedere a un asset da un altro sito web è chiamato hotlink.  Sono disponibili due tipi di modalità di funzionamento: **ALLOW** (CONSENTI) e **DENY** (RIFIUTA).
 
 Se il tuo `protectionType` è impostato su `ALLOW`:
 * Se il valore dell'intestazione `Referer` in una richiesta inviata alla tua CDN corrisponde a uno dei tuoi `refererValues` specificati, la tua CDN **fornirà** il contenuto richiesto.
@@ -133,4 +135,4 @@ Se il tuo `protectionType` è impostato su `DENY`:
 * Se il valore dell'intestazione `Referer` in una richiesta inviata alla tua CDN corrisponde a uno dei tuoi `refererValues` specificati, la tua CDN **non fornirà** il contenuto richiesto.
 * Altrimenti, la tua CDN fornirà il contenuto.
 
-**NOTA**: questa funzione è attualmente disponibile solo tramite la nostra API. Per ulteriori informazioni puoi visualizzare la [pagina dell'API](api.html#api-for-hotlink-protection). 
+**NOTA**: questa funzione è attualmente disponibile solo tramite la nostra API. Per ulteriori informazioni puoi visualizzare la [pagina dell'API](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection).
