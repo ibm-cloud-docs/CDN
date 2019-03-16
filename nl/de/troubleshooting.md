@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Fehlerbehebung
+{: #troubleshooting}
 
-Im Folgenden werden verschiedene Vorgehensweisen zum Beheben von Fehlern beschrieben, die bei Ihrem CDN auftreten. Wenn es erforderlich sein sollte, Unterstützung anzufordern, achten Sie darauf, dass Sie dabei die Referenznummer Ihres CDN angeben.
+Im vorliegenden Dokument werden verschiedene Fehlerbehebungsverfahren für {{site.data.keyword.cloud}} CDN beschrieben. Wenn es erforderlich sein sollte, Unterstützung anzufordern, achten Sie darauf, dass Sie dabei die Referenznummer Ihres CDN angeben.
 
 ## Wie weiß ich, dass mein CDN ordnungsgemäß ausgeführt wird?
 Führen Sie den folgenden `curl`-Befehl aus und ersetzen Sie dabei den Pfad `http://your.cdn.domain/uri` durch den entsprechenden Dateipfad in Ihrem CDN:
@@ -60,12 +61,12 @@ Als Fehlernachricht wird möglicherweise die folgende Nachricht angezeigt: `503 
 In Verbindung mit dem Fehlercode 503 wird möglicherweise auch eine Nachricht ähnlich der folgenden angezeigt: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff (Bei der Verarbeitung Ihrer Anforderung ist ein Fehler aufgetreten. Referenz #30.3598c0ba.1521745157.87201fff)`. Als Referenznummer wird möglicherweise eine andere Nummer angezeigt. In diesem Fall wird die Referenznummer in der Fehlerzeichenfolge in einen SSL-Handshake-Fehler umgesetzt.
 
 Beheben Sie diesen Fehler, indem Sie sicherstellen, dass das SSL-Zertifikat bzw. die SSL-Zertifikate des Ursprungsservers den folgenden Kriterien entsprechen:
-  * Das Zertifikat **muss** von einer Zertifizierungsstelle stammen, die von Akamai als vertrauenswürdig anerkannt wird. Eine Liste der von Akamai als vertrauenswürdig anerkannten Zertifikate können Sie über diesen [Link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates) aufrufen.
+  * Das Zertifikat **muss** von einer Zertifizierungsstelle stammen, die von Akamai als vertrauenswürdig anerkannt wird. Eine Liste der von Akamai als vertrauenswürdig anerkannten Zertifikate können Sie über [diesen Link ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates) abrufen. 
   * Das Zertifikat **muss** dem für das CDN konfigurierten *Host-Header* entsprechen.
   * Es darf sich **nicht** um ein selbst signiertes Zertifikat handeln.
   * Das Zertifikat darf **nicht** abgelaufen sein.
 
-Rufen Sie die Seite [Hilfe und Unterstützung anfordern](getting-help.html#gettinghelp) auf, wenn Sie die Zertifikatskette des Ursprungsservers anhand der oben angegebenen Kriterien überprüft haben und der Fehler trotzdem weiterhin auftritt. Notieren Sie sich die Referenzfehlerzeichenfolge und geben Sie diese Zeichenfolge bei allen Mitteilungen an den Support an.
+Rufen Sie die Seite [Hilfe und Unterstützung anfordern](/docs/infrastructure/CDN/getting-help.html#gettinghelp) auf, wenn Sie die Zertifikatskette des Ursprungsservers anhand der oben angegebenen Kriterien überprüft haben und der Fehler trotzdem weiterhin auftritt. Notieren Sie sich die Referenzfehlerzeichenfolge und geben Sie diese Zeichenfolge bei allen Mitteilungen an den Support an.
 
 ## Mein Hostname wird im Browser nicht geladen, wenn IBM Cloud Object Storage (COS) der Ursprungsobjektspeicher ist.
 

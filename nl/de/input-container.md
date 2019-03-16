@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,16 +15,18 @@ lastupdated: "2018-11-14"
 {:download: .download}
 
 # Eingabecontainer
+{ #input-container}
+
 Der Eingabecontainer (Input Container) ist eine Attributsammlung, die sowohl von Zuordnungsklassen (Mapping) als auch von Pfadklassen (Ursprungspfadklassen - Path) genutzt wird.  Er stellt eine konsistente Gruppe von Eingabeattributen für beide Klassen bereit.
 
-* `vendorName`: Der Name eines gültigen IBM Cloud CDN-Anbieters.
+* `vendorName`: Der Name eines gültigen {{site.data.keyword.cloud}} CDN-Anbieters. 
 * `oldPath`: Wird von updateOriginPath() verwendet. Diese Eigenschaft speichert den Namen des aktuellen oder des 'alten' Pfads.
 
 Die folgenden Attribute gehören zur Mapping-Klasse und zur Path-Klasse (bzw. OriginPath-Klasse):
 * `originType`: Der Typ des Ursprungshosts, gegenwärtig 'HOST_SERVER' oder 'OBJECT_STORAGE'.
 * `origin`: Die Ursprungsserveradresse (entweder der Hostname oder die IPv4-Adresse des Ursprungsservers), von dessen Endpunkt Inhalte oder der Name des Buckets, in dem Inhalte gespeichert sind, abgerufen werden sollen. Muss weniger als 511 Zeichen lang sein.
-* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie eine der Liste der zulässigen Portnummern.
-* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie eine der Liste der zulässigen Portnummern.
+* `httpPort`: Die Nummer des Ports, der für das HTTP-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie eine der Liste der zulässigen Portnummern.
+* `httpsPort`: Die Nummer des Ports, der für das HTTPS-Protokoll verwendet wird. Akamai besitzt bestimmte Einschränkungen in Bezug auf Portnummern für HTTP- und HTTPS-Ports. In den [häufig gestellten Fragen (FAQs)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) finden Sie eine der Liste der zulässigen Portnummern.
 * `status`: Der Status der Zuordnung bzw. des Pfads. Der Status kann den Wert CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED oder ERROR haben.
 * `path`: Der Pfad, aus dem der im Cache gespeicherte Inhalt zugestellt wird. Der Standardpfad ist /\*. Bei Verwendung durch die API `updateOriginPath` gibt dieses Attribut den neuen Pfad an, der hinzugefügt werden soll.
 * `performanceConfiguration`: Spezifikationen für die Leistungskonfiguration der Zuordnung.
@@ -49,5 +51,5 @@ Die folgenden Attribute beziehen sich auf Cloud Object Storage (COS):
 * `bucketName`: Der eindeutige Name Ihres Buckets für den S3-Objektspeicher.  
 * `fileExtension`: Die Dateierweiterungen, die zugelassen werden.
 
-Das folgende Attribut bezieht sich auf die Konfiguration des Hotlinkschutzes: 
-* `hotlinkProtection`: Weitere Informationen finden Sie in [Klasse für Hotlinkschutz](hotlink-protection-behavior.html). 
+Das folgende Attribut bezieht sich auf die Konfiguration des Hot-Link-Schutzes:
+* `hotlinkProtection`: Weitere Informationen finden Sie in [Klasse für Hot-Link-Schutz](/docs/infrastructure/CDN/hotlink-protection-behavior.html).

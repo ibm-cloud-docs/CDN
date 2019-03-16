@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,12 +15,13 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Codebeispiele mit der CDN-API
+{: #code-examples-using-the-cdn-api}
 
 Dieses Dokument enthält API-Beispielaufrufe und die sich daraus ergebende Ausgabe für eine Vielzahl an CDN-APIs.
 
 ## Für alle API-Aufrufe erforderliche allgemeine Schritte
 
-Als Voraussetzung muss der SOAP-Client von 'https://github.com/softlayer/softlayer-api-php-client' heruntergeladen und installiert werden.
+Als Voraussetzung muss der SOAP-Client von [https://github.com/softlayer/softlayer-api-php-client ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/softlayer/softlayer-api-php-client) heruntergeladen und installiert werden. 
 
   * Sie müssen über `vendor/autoload` Zugriff auf den SOAP-Client erhalten. Der Pfad ist relativ zu der Position, an der das Script ausgeführt wird; es kann erforderlich sein, ihn entsprechend zu ändern. In PHP ähnelt die Anweisung der folgenden Zeichenfolge: `require_once './../vendor/autoload.php';`
 
@@ -28,7 +29,7 @@ Als Voraussetzung muss der SOAP-Client von 'https://github.com/softlayer/softlay
       require_once __VERZEICHNIS__.'/vendor/autoload.php';
       ```
 
-  * Alle API-Aufrufe werden mit dem Benutzernamen und einem API-Schlüssel authentifiziert. Weitere Informationen zum Generieren eines API-Schlüssels finden Sie auf der Seite [Einführung](https://softlayer.github.io/article/getting-started/) unter 'API-Schlüssel abrufen'.
+  * Alle API-Aufrufe werden mit dem Benutzernamen und einem API-Schlüssel authentifiziert. Weitere Informationen zum Generieren eines API-Schlüssels finden Sie auf der Seite [Softlayer-API - Einführung ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://softlayer.github.io/article/getting-started/) unter "API-Schlüssel abrufen". 
 
       ```php
       $apiUsername = '<Ihr Benutzername>' ;
@@ -71,7 +72,7 @@ Array
 
 ## Beispielcode zum Prüfen der Bestellung
 
-Der Aufruf für `verifyOrder` muss nicht verbindlich vor der Erteilung eines Auftrags ausgeführt werden, diese Reihenfolge wird jedoch empfohlen. So kann überprüft werden, ob ein nachfolgender Aufruf für `placeOrder` erfolgreich ist. Weitere Informationen zu `verifyOrder` finden Sie in der [Dokumentation zur SoftLayer-API](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
+Der Aufruf für `verifyOrder` muss nicht verbindlich vor der Erteilung eines Auftrags ausgeführt werden, diese Reihenfolge wird jedoch empfohlen. So kann überprüft werden, ob ein nachfolgender Aufruf für `placeOrder` erfolgreich ist. Weitere Informationen zu `verifyOrder` finden Sie in der [Dokumentation zur SoftLayer-API ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/). 
 
 In diesem Fall definiert die Klasse `SoftLayer_Product_Order` die Methode 'verifyOrder' und muss als Parameter an `\SoftLayer\SoapClient::getClient()` übergeben werden. Vor dem Aufruf für `verifyOrder` müssen Sie `$orderObject` mithilfe von `SoftLayer_Product_Package` erstellen.
 
@@ -126,7 +127,7 @@ catch (\Exception $e) {
 
 ## Beispielcode zum Aufgeben einer Bestellung
 
-Abgesehen davon, dass `placeOrder` anstatt `verifyOrder` aufgerufen wird, ist dieser API-Aufruf mit dem vorherigen Codebeispiel identisch. Weitere Informationen zu `placeOrder` finden Sie in der [Dokumentation zur SoftLayer-API](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
+Abgesehen davon, dass `placeOrder` anstatt `verifyOrder` aufgerufen wird, ist dieser API-Aufruf mit dem vorherigen Codebeispiel identisch. Weitere Informationen zu `placeOrder` finden Sie in der [Dokumentation zur SoftLayer-API ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/). 
 
 ```php
 
@@ -182,7 +183,7 @@ catch (\Exception $e) {
 
 Im folgenden Beispiel wird dargestellt, wie mithilfe der API `createDomainMapping` eine neue CDN-Zuordnung erstellt wird. Hierbei wird ein einzelner Parameter des Objekts `stdClass` verwendet. Der SOAP-Client muss mithilfe der Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` wie im Beispiel beschrieben initialisiert werden.
 
-**HINWEIS:** Falls Sie einen angepassten CNAME angeben, **muss** dieser mit `.cdnedge.bluemix.net` enden; andernfalls wird ein Fehler ausgelöst. Informationen zu den Regeln zum Angeben eines eigenen CNAME finden Sie in [dieser Beschreibung](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-).
+**HINWEIS:** Falls Sie einen angepassten CNAME angeben, **muss** dieser mit `.cdnedge.bluemix.net` enden; andernfalls wird ein Fehler ausgelöst. Informationen zu den Regeln zum Angeben eines eigenen CNAME finden Sie in [dieser Beschreibung](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-).
 
 ```php
 
@@ -227,7 +228,7 @@ try {
 ```
 {: codeblock}
 
-Im Beispiel `createDomainMapping` werden die Attribute der neu erstellten CDN-Instanz angezeigt. Notieren Sie sich den Wert für `uniqueId`, da Sie ihn als Parameter für viele andere APIs angeben müssen. Die Ausgabe sollte der nachfolgenden ähneln:
+Im Beispiel `createDomainMapping` werden die Attribute der neu erstellten CDN-Instanz angezeigt. Notieren Sie sich den Wert für `uniqueId`, da Sie ihn als Parameter für viele andere APIs angeben müssen. Die Ausgabe sollte der nachfolgenden ähnlich sein:
 
 ```php
 Array

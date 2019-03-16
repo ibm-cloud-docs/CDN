@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # CDN verwalten
+{: #manage-your-cdn}
 
 In diesem Dokument werden allgemeine Tasks für die Verwaltung Ihres CDN beschrieben.
 
@@ -78,11 +80,11 @@ Wählen Sie entweder **Server** oder **Objektspeicher** aus.
 
   * Die Optionen **Optimierung** und **Cacheschlüssel** sind für die Serverkonfiguration und die Objektspeicherkonfiguration (Object Storage) gleich.
 
-    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](feature-descriptions.html#large-file-optimization) und [Video-on-Demand](feature-descriptions.html#video-on-demand) enthalten weitere Informationen.
+    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) und [Video-on-Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) enthalten weitere Informationen.
 
         ![Optionen für die Leistungskonfiguration](images/performance-config-options.png)
 
-    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](feature-descriptions.html#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
+    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
 
         ![Optionen für Cacheschlüssel](images/cache-key-options.png)
 
@@ -116,7 +118,7 @@ Wählen Sie die Registerkarte **Bereinigen** aus.
 
 **Schritt 3:**
 
-Geben Sie unter Verwendung der UNIX-Standardpfadsyntax an, welche Datei bereinigt werden soll, und wählen Sie anschließend die Schaltfläche **Bereinigen** aus. Das Bereinigungen ist gegenwärtig nur für eine einzelne Datei zulässig. Weitere Details zur zulässigen Syntax für den Bereinigungspfad finden Sie auf der Seite [Regeln und Namenskonventionen](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-).
+Geben Sie unter Verwendung der UNIX-Standardpfadsyntax an, welche Datei bereinigt werden soll, und wählen Sie anschließend die Schaltfläche **Bereinigen** aus. Das Bereinigungen ist gegenwärtig nur für eine einzelne Datei zulässig. Weitere Details zur zulässigen Syntax für den Bereinigungspfad finden Sie auf der Seite [Regeln und Namenskonventionen](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-).
 
 **Schritt 4:**
 
@@ -171,7 +173,7 @@ Aktualisieren Sie bei Bedarf die Details für **Ursprung** oder **Weitere Option
 
 Um in IBM Cloud Object Storage gespeicherte Objekte zu verwenden, müssen Sie als Wert für die Eigenschaft 'acl' (Access Control List, Zugriffssteuerungsliste) für jedes Objekt in Ihrem Bucket den Zugriff 'public-read' festlegen.
 
-Informationen zum Installieren der erforderlichen Clients oder Tools finden Sie im [Abschnitt für IBM Cloud Object Storage-Entwickler] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
+Informationen zum Installieren der erforderlichen Clients oder Tools finden Sie im Abschnitt für [IBM Cloud Object Storage-Entwickler](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
 
 Der folgende Beispielcode zeigt, wie der Zugriff 'public-read' für alle Objekt in Ihrem Bucket über die Befehlszeilenschnittstelle festgelegt wird.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,34 +13,24 @@ lastupdated: "2018-11-14"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Einführung
+{: #getting-started}
 
-IBM Cloud Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanforderungen für eine Reihe von Branchenlösungen genutzt werden, zu denen Medien, Unterhaltung, Software, Gaming, Bankwesen und E-Commerce zählen. IBM Cloud hat eine Partnerschaft mit Akamai geschlossen, um möglichst umfassende Content Delivery Network-Funktionen unter höchster Kosteneffizienz anbieten zu können. Im Rahmen dieser Partnerschaft werden Edge-Server in mehr als [50 Ländern](edge-servers.html#list-of-edge-servers) bereitgestellt, um die Inhalte denen möglichst nahe zu bringen, die sie benötigen: Ihren Benutzern. 
+{{site.data.keyword.cloud}} Content Delivery Network (CDN) kann zur Erfüllung Ihrer Geschäftsanforderungen für eine Reihe von Branchenlösungen genutzt werden, zu denen Medien, Unterhaltung, Software, Gaming, Bankwesen und E-Commerce zählen. IBM Cloud hat eine Partnerschaft mit Akamai geschlossen, um möglichst umfassende Content Delivery Network-Funktionen unter höchster Kosteneffizienz anbieten zu können. Im Rahmen dieser Partnerschaft werden Edge-Server in mehr als [50 Ländern](/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers) bereitgestellt, um die Inhalte denen möglichst nahe zu bringen, die sie benötigen: Ihren Benutzern.
 
 ## Vorbereitende Schritte
 
-Bevor Sie mit der Verwendung von IBM Cloud Content Delivery Network beginnen, benötigen Sie zunächst eine [IBMid](https://www.ibm.com/account/us-en/signup/register.html). Anschließend können Sie den Content Delivery Network-Service über das [IBM Cloud-Dashboard](https://console.bluemix.net/catalog/infrastructure/cdn-powered-by-akamai) oder über die neue [CDN-Konsole von IBM Cloud](https://www.ibm.com/cloud/cdn) je nach Präferenz bestellen.
+Bevor Sie mit der Verwendung von IBM Cloud Content Delivery Network beginnen, benötigen Sie zuerst eine [IBMid ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/account/us-en/signup/register.html). Dann können Sie den Content Delivery Network-Service über die [IBM Cloud CDN-Konsole ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai) bestellen. 
 
-Falls Sie Hilfe bei der Erstellung eines Kontos zur Verwendung von IBM Cloud Content Delivery Network benötigen, können Sie [Ihren IBM Vertriebsbeauftragten kontaktieren](https://www.ibm.com/cloud-computing/bluemix/contact-us), um weitere Anleitungen für den Einstieg zu erhalten.
+Wenn Sie Unterstützung bei der Erstellung eines Kontos für die Verwendung von IBM Cloud Content Delivery Network benötigen, können Sie den [IBM Vertriebsbeauftragten ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")]](https://www.ibm.com/cloud-computing/bluemix/contact-us) kontaktieren, um zusätzliche Anleitungen zum Einstieg zu erhalten. 
 
 ## Lernprogramm
 
-[Hier finden Sie ein Lernprogramm](https://{DomainName}/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
+[Hier finden Sie ein Lernprogramm](/docs/tutorials/static-files-cdn.html) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
 
-## Preisstruktur für CDN-Bandbreite (in US-Dollar)
+## Weitere Schritte
 
-IBM Cloud Content Delivery Network mit Akamai schließt keine zusätzlichen Speichergebühren ein. Sie bezahlen nur die Bandbreite, die Sie nutzen.
+Lesen Sie die Informationen zur [Preisstruktur](/docs/infrastructure/CDN?topic=CDN-pricing#pricing) und dann können Sie [Ihr CDN bestellen](/docs/infrastructure/CDN?topic=CDN-order-a-cdn). 
 
-**HINWEIS:** Die Preise werden abhängig von den pro Monat genutzten GB angezeigt.
-
-Sie können die Anzeige seitwärts verschieben, um die geografische Tabelle vollständig einzublenden, bevor Sie mit der Nutzung dieses Service beginnen.
-
-|Pro Monat| [Nordamerika](north-america-region.html) | [Europa, Naher und Mittlerer Osten, Afrika](emea-region.html) | [Asien](asia-region.html) | Japan | [Südamerika](south-america-region.html) | Australien, Neuseeland | Indien |
-|-------|-----|-----|-----|-----|-----|----|-----|
-|Erste 10 TB| 0,085 | 0,085 | 0,14 | 0,14 | 0,25 | 0,14 | 0,17 |
-|10 - 250 TB | 0,05 | 0,05 | 0,12 | 0,12 | 0,18 | 0,12 | 0,11 |
-|250 - 500 TB| 0,04 | 0,04 | 0,10 | 0,10 | 0,16 | 0,10 | 0,10 |
-|500 TB - 3 PB| 0,025 | 0,025| 0,07 | 0,07 | 0,13 | 0,09 | 0,09 |
-|\>3 PB| 0,02 | 0,02 | 0,06 | 0,06 | 0,125 | 0,085 | 0,085 |
-* Wählen Sie eine Region aus, um die Länder bzw. Gebiete in dieser Region anzuzeigen.

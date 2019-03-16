@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Klasse für geografische Zugriffsblockierung
+{: #geoblocking-class}
+
 Die Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` enthält die Attribute, die von den IBM APIs für geografische Zugriffsblockierung verwendet werden. Die einzelnen APIs für geografische Zugriffsblockierung geben ein Objekt des entsprechenden Typs zurück und werden dazu verwendet, das Geographical Access Control-Verhalten in einem CDN festzulegen.
 
-Klasse `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**Klasse** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `accessType`: Gibt an, ob eine Regel eine bestimmte Region zulassen (`ALLOW`) oder blockieren (`DENY`) soll.
 * `regionType`: Der Typ der Region, auf die die Regel für die geografische Zugriffsblockierung angewendet werden soll. Mögliche Typen sind `CONTINENT` und `COUNTRY_OR_REGION`.

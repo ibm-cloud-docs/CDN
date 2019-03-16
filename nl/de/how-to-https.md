@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Validierung der Domänensteuerung für HTTPS mit DV-SAN-Zertifikat durchführen
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
-Das folgende Diagramm veranschaulicht die verschiedenen Stufen, die eine CDN-Instanz vom Erstellen bis zum aktiven Zustand durchläuft.
+Das folgende Diagramm veranschaulicht die verschiedenen Stufen, die eine CDN-Instanz vom Erstellen bis zum aktiven Status durchläuft. 
 
   ![SAN-Zustandsdiagramm](images/state-diagram-san.png)
 
@@ -24,7 +25,7 @@ Das folgende Diagramm veranschaulicht die verschiedenen Stufen, die eine CDN-Ins
 
 **Schritt 1:**
 
-Nachdem Sie CDN mit einem DV-SAN-Zertifikat bestellt haben, beginnt die Anforderungsverarbeitung für das Zertifikat. Während dieses Prozesses wird von IBM Cloud CDN ein Zertifikat von Akamai angefordert. Sobald ein Zertifikat verfügbar wird, wird von Akamai eine Anforderung an die Zertifizierungsstelle (Certificate Authority, CA) übergeben.
+Nachdem Sie CDN mit einem DV-SAN-Zertifikat bestellt haben, beginnt die Anforderungsverarbeitung für das Zertifikat. Während dieses Prozesses wird von {{site.data.keyword.cloud}} CDN ein Zertifikat von Akamai angefordert. Sobald ein Zertifikat verfügbar wird, wird von Akamai eine Anforderung an die Zertifizierungsstelle (Certificate Authority, CA) übergeben.
 
   * Während dieser Zeit wird der CDN-Status **Zertifikat wird angefordert** angezeigt.
 
@@ -48,7 +49,7 @@ Klicken Sie auf den Namen der CDN-Instanz, die validiert werden soll. Die Seite 
 
   * Wenn dieser Prozess abgeschlossen ist, wechselt der Status aller Domänen unabhängig von der jeweils verwendeten Validierungsmethode zu **CNAME-Konfiguration**.
 
-Weitere Informationen zur CNAME-Konfiguration sowie zur Überwachung der CDN-Instanz finden Sie auf der Seite [In den Ausführungsstatus wechseln](basic-functions.html#get-to-running).
+Weitere Informationen zur CNAME-Konfiguration sowie zur Überwachung der CDN-Instanz finden Sie auf der Seite [In den Ausführungsstatus wechseln](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
 
 
 ## Validierung der Domänensteuerung 
@@ -249,7 +250,7 @@ In beiden Fällen sollten Sie in der Lage sein, die Kopie des Dateiobjekts für 
 
 #### Bereinigung für Weiterleitungsmethode
 
-Gehen Sie wie folgt vor, wenn für die CDN-Instanz der Status **Zertifikat wird bereitgestellt wird** angezeigt wird:
+Gehen Sie wie folgt vor, wenn für die CDN-Instanz der Status **Zertifikat wird bereitgestellt** angezeigt wird:
 1. Entfernen Sie die Weiterleitungsanweisungen aus der Konfigurationsdatei (optional).
 1. Entfernen Sie den hinzugefügten Serveralias (ServerAlias für Apache2) oder den Servernamen (server_name für Nginx) aus der Serverkonfiguration, sofern dies erforderlich ist (optional).
 1. Entfernen Sie den A-Datensatz zwischen der CDN-Domäne und der IP-Adresse des Ursprungsservers.

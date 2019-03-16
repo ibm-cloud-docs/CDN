@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-12"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,41 +16,42 @@ lastupdated: "2018-11-12"
 
 
 # Vorgehensweise zum Bereitstellen von Video-on-Demand mit CDN
+{: #how-to-serve-video-on-demand-with-cdn}
 
-In diesem Abschnitt wird anhand eines Beispiels erläutert, wie mit IBM Cloud CDN `.mp4`-Inhalte über **HLS** als Video-on-Demand von einem Linux-Nginx-Ursprung an einen Browser gestreamt werden.  
+In dieser Anleitung wird anhand eines Beispiels erläutert, wie mit {{site.data.keyword.cloud}} CDN `.mp4`-Inhalte über **HLS** als Video-on-Demand von einem Linux-Nginx-Ursprung an einen Browser gestreamt werden.  
 
 ## Einführung
 
-Für das Streaming von Video stehen eine Reihe von Formaten zur Verfügung, wie HLS, MPEG-DASH usw.  
+Für das Streaming von Video stehen eine Reihe von Formaten zur Verfügung, wie HLS, MPEG-DASH usw. 
 
-Konzeptionell wird die Konfiguration, die wir verwenden, in dem folgenden Diagramm dargestellt: 
+Konzeptionell wird die Konfiguration, die wir verwenden, in dem folgenden Diagramm dargestellt:
 
 ![IBM Cloud CDN für Video-on-Demand](images/ibmcdn-vod-example-model.png)
 
-Die Vorbereitungen führen wir am Ursprung durch. Hier müssen wir einige Pakete abrufen, damit das Vorhaben gelingt. 
+Die Vorbereitungen führen wir am Ursprung durch. Hier müssen wir einige Pakete abrufen, damit das Vorhaben gelingt.
 
-Beginnen wir also mit der Aktualisierung der Paketliste des Ursprungs. 
+Beginnen wir also mit der Aktualisierung der Paketliste des Ursprungs.
 ```
 $ sudo apt-get update
 ```
 
 ## Videodateien vorbereiten
-In diesem Abschnitt verwenden wir `ffmpeg`, um die Videodateien vorzubereiten. Mit den verschiedenen Befehlen dieses leistungsfähigen Tools für Multimediadateien können Sie Dateien konvertieren, muxen, demuxen, filtern usw. 
+In diesem Abschnitt verwenden wir `ffmpeg`, um die Videodateien vorzubereiten. Mit den verschiedenen Befehlen dieses leistungsfähigen Tools für Multimediadateien können Sie Dateien konvertieren, muxen, demuxen, filtern usw.
 
-Zunächst installieren wir `ffmpeg`. 
+Zunächst installieren wir `ffmpeg`.
 ```
 $ sudo apt-get -y install ffmpeg
 ```
 
-HLS funktioniert mit zwei Typen von Dateien: `.m3u8` und `.ts`. Die Datei `.m3u8` können Sie sich wie eine Wiedergabeliste vorstellen. Am Anfang des Videodatenstroms ist diese Datei die erste, die abgerufen wird. Die "Wiedergabeliste" informiert den Videoplayer dann über die Videofragmente, die er abrufen soll, und stellt weitere Daten zur erfolgreichen Wiedergabe der gestreamten Inhalte bereit. Die `.ts`-Dateien sind die "Fragmente" des Videos. Diese Fragmente werden vom Videoplayer gemäß den in der Wiedergabeliste angegebenen Details abgerufen und wiedergegeben. 
+HLS funktioniert mit zwei Typen von Dateien: `.m3u8` und `.ts`. Die Datei `.m3u8` können Sie sich wie eine Wiedergabeliste vorstellen. Am Anfang des Videodatenstroms ist diese Datei die erste, die abgerufen wird.  Die "Wiedergabeliste" informiert den Videoplayer dann über die Videofragmente, die er abrufen soll, und stellt weitere Daten zur erfolgreichen Wiedergabe der gestreamten Inhalte bereit. Die `.ts`-Dateien sind die "Fragmente" des Videos. Diese Fragmente werden vom Videoplayer gemäß den in der Wiedergabeliste angegebenen Details abgerufen und wiedergegeben.
 
-Lassen Sie uns jetzt das Format, die Bitübertragungsrate und andere Informationen für die Video- und Audiodatenströme unseres Quellenvideos `.mp4` überprüfen. 
+Lassen Sie uns jetzt das Format, die Bitübertragungsrate und andere Informationen für die Video- und Audiodatenströme unseres Quellenvideos `.mp4` überprüfen.
 
 ```
 $ ffprobe test-video.mp4 
 ```
 
-In diesem Beispiel nehmen wir die folgenden Datenstrominformationen für `test-video.mp4` an: 
+In diesem Beispiel nehmen wir die folgenden Datenstrominformationen für `test-video.mp4` an:
   * Videodatenstrom 0
     * Format: h264
     * Formatprofil: Hoch
@@ -62,13 +63,13 @@ In diesem Beispiel nehmen wir die folgenden Datenstrominformationen für `test-v
     * Abtastrate: 48000
     * Bitübertragungsrate: 128 k
 
-Nun konvertieren wir unsere Datei `test-video.mp4` in die Formate für HLS. 
+Nun konvertieren wir unsere Datei `test-video.mp4` in die Formate für HLS.
 
 ```
 $ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod test-video.m3u8
 ```
 
-Die folgende Aufgliederung enthält die Aktionen, die durch diesen Befehl ausgeführt wurden: 
+Die folgende Aufgliederung enthält die Aktionen, die durch diesen Befehl ausgeführt wurden:
 
 |Argument(e)|Auswirkung|
 |:---|:---|
@@ -87,19 +88,19 @@ Die folgende Aufgliederung enthält die Aktionen, die durch diesen Befehl ausgef
 | -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
 | -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
 | -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
-| test-video.m3u8 | Der Name der ausgegebenen Wiedergabelisten-/Manifestdatei lautet `test-video.m3u8`. <br/> Die Folge davon ist, dass die Namen der Videofragmente standardmäßig `test-video0.ts`, `test-video1.ts`, `test-video2.ts` ... und ähnlich<br/> lauten. |
+| test-video.m3u8 | Der Name der ausgegebenen Wiedergabelisten-/Manifestdatei lautet `test-video.m3u8`.<br/> Die Folge davon ist, dass die Namen der Videofragmente standardmäßig `test-video0.ts`, `test-video1.ts`, `test-video2.ts` ... und ähnlich<br/> lauten.|
 
-Hinweis: Für die Optionen, die mit `-` beginnen, wird der beste Wert für die jeweilige Kategorie ausgewählt, wenn kein Datenstrom angegeben wird. 
+Hinweis: Für die Optionen, die mit `-` beginnen, wird der beste Wert für die jeweilige Kategorie ausgewählt, wenn kein Datenstrom angegeben wird.
 
-Beispiele: 
-  * Mit `-c:a` wird der Audiodatenstrom mit den meisten Kanälen ausgewählt. 
-  * Mit `-c:v` wird der Videodatenstrom mit der höchsten Auflösung ausgewählt. 
-  * Mit `-c:a:0` wird Audiodatenstrom 0 ausgewählt. 
-  * Mit `-c:v:0` wird Videodatenstrom 0 ausgewählt. 
+Beispiele:
+  * Mit `-c:a` wird der Audiodatenstrom mit den meisten Kanälen ausgewählt.
+  * Mit `-c:v` wird der Videodatenstrom mit der höchsten Auflösung ausgewählt.
+  * Mit `-c:a:0` wird Audiodatenstrom 0 ausgewählt.
+  * Mit `-c:v:0` wird Videodatenstrom 0 ausgewählt.
 
-Bei dem in diesem Abschnitt beschriebenen Beispiel besteht die Datei `test-video.mp4` aus nur einem Audiodatenstrom und einem Videodatenstrom. Daher ist der Unterschied im Folgenden nicht relevant. 
+Bei dem in diesem Abschnitt beschriebenen Beispiel besteht die Datei `test-video.mp4` aus nur einem Audiodatenstrom und einem Videodatenstrom. Daher ist der Unterschied im Folgenden nicht relevant.
 
-Nach der Ausführung des Befehls sind eine Reihe von `.ts`-Dateien vorhanden. Außerdem ist eine `.m3u8`-Datei vorhanden, die etwa wie folgt aussieht: 
+Nach der Ausführung des Befehls sind eine Reihe von `.ts`-Dateien vorhanden.  Außerdem ist eine `.m3u8`-Datei vorhanden, die etwa wie folgt aussieht:
 
 ```
 $ cat test-video.m3u8 
@@ -134,15 +135,15 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
-Für komplexere Anwendungsfälle wie die Skalierung der Videoauflösung, das Arbeiten mit Untertiteln, die HLS-AES-Verschlüsselung der Videofragmente für Sicherheit und Autorisierung usw. verfügt `ffmpeg` über viele weitere Argumentoptionen für komplexere und spezifischere Funktionen. Beschreibungen dieser Argumente finden Sie in der [allgemeinen Dokumentation zu ffmpeg](https://ffmpeg.org/ffmpeg.html) und in der [ffmpeg-Dokumentation zu bestimmten Formaten wie HLS](https://ffmpeg.org/ffmpeg-formats.html#hls). 
+Für komplexere Anwendungsfälle wie die Skalierung der Videoauflösung, das Arbeiten mit Untertiteln, die HLS-AES-Verschlüsselung der Videofragmente für Sicherheit und Autorisierung usw. verfügt `ffmpeg` über viele weitere Argumentoptionen für komplexere und spezifischere Funktionen. Beschreibungen dieser Argumente finden Sie in der [allgemeinen Dokumentation zu ffmpeg](https://ffmpeg.org/ffmpeg.html) und in der [ffmpeg-Dokumentation zu bestimmten Formaten wie HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Ursprung vorbereiten
 ### Server
-Wenn Sie diesen Server als zusätzlichen Ursprung unter einer zweiten Domäne verwenden, von der diese HLS-Dateien gestreamt werden sollen, müssen Sie möglicherweise den Server so konfigurieren, dass er CORS-Antwortheader für den potenziellen Browserzugriff zurückgibt. 
+Wenn Sie diesen Server als zusätzlichen Ursprung unter einer zweiten Domäne verwenden, von der diese HLS-Dateien gestreamt werden sollen, müssen Sie möglicherweise den Server so konfigurieren, dass er CORS-Antwortheader für den potenziellen Browserzugriff zurückgibt.
 
-Sie können die HLS-Dateien in ein beliebiges Verzeichnis oder Unterverzeichnis stellen. In diesem Beispiel stellen wir die HLS-Dateien in das Verzeichnis `/usr/share/nginx/hls/`. 
+Sie können die HLS-Dateien in ein beliebiges Verzeichnis oder Unterverzeichnis stellen. In diesem Beispiel stellen wir die HLS-Dateien in das Verzeichnis `/usr/share/nginx/hls/`.
 
-Die folgende grundlegende Nginx-Konfiguration reicht in diesem Fall aus: 
+Die folgende grundlegende Nginx-Konfiguration reicht in diesem Fall aus:
 
 ```
 # Einige Konfigurationen für diesen Hauptkontext...
@@ -192,30 +193,30 @@ http {
 
 ### Videoplayer auf der Webseite
 
-Nicht alle Streaming-Videoformate können mit allen Anwendungen nativ abgespielt werden. Mit dem Beispiel in diesem Abschnitt wird Streaming mit HLS und CDN konfiguriert. 
+Nicht alle Streaming-Videoformate können mit allen Anwendungen nativ abgespielt werden. Mit dem Beispiel in diesem Abschnitt wird Streaming mit HLS und CDN konfiguriert.
 
-Safari unterstützt beispielsweise die native HLS-Wiedergabe. Daher kann der Videoplayer auf der Webseite so einfach sein wie im folgenden Beispiel mit HTML5-`<video>`-Elementen: 
+Safari unterstützt beispielsweise die native HLS-Wiedergabe. Daher kann der Videoplayer auf der Webseite so einfach sein wie im folgenden Beispiel mit HTML5-`<video>`-Elementen:
 
 ```
 <!DOCTYPE html>
 <html>
   <!-- Einige HTML-Elemente... -->
-
+  
   <video src="https://cdn.example.com/hls/test-video.m3u8"></video>
   
   <!-- Einige weitere HTML-Elemente... -->
 </html>
 ```
 
-Für andere Browser auf Desktopgeräten sind jedoch möglicherweise zusätzliche JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/) erforderlich, die entweder intern entwickelt oder von einem vertrauenswürdigen Dritten bezogen wurden, um Inhaltsströme zu generieren, die über HTML5 abspielbar sind. 
+Für andere Browser auf Desktopgeräten sind jedoch möglicherweise zusätzliche JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/) erforderlich, die entweder intern entwickelt oder von einem vertrauenswürdigen Dritten bezogen wurden, um Inhaltsströme zu generieren, die über HTML5 abspielbar sind.
 
 ## CDN konfigurieren
-Jetzt verbinden wir den Ursprung mit dem CDN, um Inhalte weltweit mit optimiertem Durchsatz, minimaler Latenz und hoher Leistung bereitzustellen. 
+Jetzt verbinden wir den Ursprung mit dem CDN, um Inhalte weltweit mit optimiertem Durchsatz, minimaler Latenz und hoher Leistung bereitzustellen.
 
-Zuerst [bestellen](how-to-order.html#order-a-cdn) Sie ein CDN. 
+Zuerst [bestellen](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) Sie ein CDN.
 
-Anschließend [konfigurieren Sie Ihr CDN](how-to.html#updating-cdn-configuration-details) oder [fügen Sie einen Ursprung hinzu](how-to.html#adding-origin-path-details). 
+Anschließend [konfigurieren Sie Ihr CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) oder [fügen Sie einen Ursprung hinzu](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
 
-Schließlich wählen Sie unter `Optimieren für` die Option `Optimierung für Video-on-Demand` aus. 
+Schließlich wählen Sie unter `Optimieren für` die Option `Optimierung für Video-on-Demand` aus.
 
 ![Optimieren für Video-on-Demand](images/optimize-for-video-on-demand.png)

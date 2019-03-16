@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # Grenzwerte und Maximalwerte
+{: #limits-and-maximum-values}
 
 ## Gibt es einen Maximalwert für die Lebensdauer? Gibt es einen Mindestwert?
 

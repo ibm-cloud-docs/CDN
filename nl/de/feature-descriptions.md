@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,20 +13,22 @@ lastupdated: "2018-11-02"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Funktionsbeschreibungen
+{: #feature-descriptions}
 
-Auf dieser Seite werden viele Funktionen ausführlich besprochen, die von IBM Cloud CDN mit Unterstützung von Akamai bereitgestellt werden.
+Auf dieser Seite werden zahlreiche Features ausführlicher erläutert, die in {{site.data.keyword.cloud}} CDN mit Unterstüzung von Akamai bereitgestellt werden. 
 
 ## Unterstützung für den Host-Serverursprung (Host Server Origin)
 
-IBM Cloud Content Delivery Network (CDN) kann so konfiguriert werden, dass Inhalte von einem Host-Serverursprung (Host Server Origin) aus zugestellt werden. Dazu werden der Hostname des Ursprungsservers, das Protokoll, die Portnummer und optional der Pfad, aus dem die Inhalte zustellt werden sollen, angegeben. Der Standardpfad lautet `/*`. Das Protokoll kann HTTP, HTTPS oder beides sein. Von Akamai werden nur bestimmte Portnummern unterstützt. Informationen zu unterstützten Portnummern/Portnummernbereichen finden Sie in den [häufig gestellten Fragen (FAQs)](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
+IBM Cloud Content Delivery Network (CDN) kann so konfiguriert werden, dass Inhalte von einem Host-Serverursprung (Host Server Origin) aus zugestellt werden. Dazu werden der Hostname des Ursprungsservers, das Protokoll, die Portnummer und optional der Pfad, aus dem die Inhalte zustellt werden sollen, angegeben. Der Standardpfad lautet `/*`. Das Protokoll kann HTTP, HTTPS oder beides sein. Von Akamai werden nur bestimmte Portnummern unterstützt. Informationen zu unterstützten Portnummern/Portnummernbereichen finden Sie in den [häufig gestellten Fragen (FAQs)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
 
 ## Unterstützung für den Objektspeicherursprung (Object Storage Origin)
 
 IBM Cloud CDN kann so konfiguriert werden, dass Inhalt aus einem Object Storage-Endpunkt durch Angeben des Endpunkts, des Bucketnamens, des Protokolls und des Ports bereitgestellt werden. Optional kann eine Liste der Dateierweiterungen angegeben werden, um das Caching nur für Dateien mit diesen Erweiterungen zuzulassen. Alle Objekte im Bucket müssen auf anonymen oder öffentlichen Lesezugriff eingestellt werden.
 
-In diesem Lernprogramm zum Thema [Vorgehensweise zum Konfigurieren von IBM Cloud Object Storage mit CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) werden detailliertere Informationen bereitgestellt.
+In diesem Lernprogramm zum Thema [Vorgehensweise zum Konfigurieren von IBM Cloud Object Storage mit CDN](/docs/tutorials/static-files-cdn.html) werden detailliertere Informationen bereitgestellt.
 
 ## Unterstützung für mehrere Ursprünge mit unterschiedlichen Pfaden
 
@@ -60,9 +62,9 @@ Vom Edge-Server wird der **Host-Header** für die Kommunikation mit dem Ursprung
 
 ## Unterstützung für HTTPS-Protokoll
 
-CDN kann so konfiguriert werden, dass das HTTPS-Protokoll zum sicheren Bereitstellen des Inhalts für die Endbenutzer verwendet wird. Für diese Konfiguration ist das Einrichten eines SSL-Zertifikats im Rahmen der CDN-Konfiguration erforderlich. Für HTTPS stehen zwei Arten von SSL-Zertifikatsoptionen zur Verfügung: ein [Wildcard-Zertifikat](about-https.html#wildcard-certificate-support) und ein [DV-SAN-Zertifikat](about-https.html#subject-alternate-name-san-certificate-support). Dieser Typ wird in dieser Dokumentation auch als _SAN-Zertifikat_ bezeichnet.
+CDN kann so konfiguriert werden, dass das HTTPS-Protokoll zum sicheren Bereitstellen des Inhalts für die Endbenutzer verwendet wird. Für diese Konfiguration ist das Einrichten eines SSL-Zertifikats im Rahmen der CDN-Konfiguration erforderlich. Für HTTPS stehen zwei Arten von SSL-Zertifikatsoptionen zur Verfügung: ein [Wildcard-Zertifikat](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) und ein [DV-SAN-Zertifikat](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support). Dieser Typ wird in dieser Dokumentation auch als _SAN-Zertifikat_ bezeichnet.
 
-Der Typ des SSL-Zertifikats für HTTPS-CDN sollte mit Bedacht ausgewählt werden. Die Konfiguration eines Wildcard-Zertifikats ist zwar schnell, der Nachteil ist jedoch, dass auf CDN nur über einen CNAME zugegriffen werden kann. Die Durchführung des Prozesses für ein SAN-Zertifikat dauert zwar vier bis acht Stunden, dafür kann CDN mit der CDN-Domäne (also dem Hostnamen) verwendet werden. Für ein SAN-Zertifikat ist auch ein weiterer Schritt für eine [**Validierung der Domänensteuerung**](how-to-https.html) während der Konfiguration erforderlich. Für die Verwendung beider Zertifikate fallen keine Kosten an. Informationen zu den Auswirkungen bei der Auswahl eines bestimmten Zertifikats finden Sie unter [Fehlerbehebung für Dokumente](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-).
+Der Typ des SSL-Zertifikats für HTTPS-CDN sollte mit Bedacht ausgewählt werden. Die Konfiguration eines Wildcard-Zertifikats ist zwar schnell, der Nachteil ist jedoch, dass auf CDN nur über einen CNAME zugegriffen werden kann. Die Durchführung des Prozesses für ein SAN-Zertifikat dauert zwar vier bis acht Stunden, dafür kann CDN mit der CDN-Domäne (also dem Hostnamen) verwendet werden. Für ein SAN-Zertifikat ist auch ein weiterer Schritt für eine [**Validierung der Domänensteuerung**](/docs/infrastructure/CDN/how-to-https.html) während der Konfiguration erforderlich. Für die Verwendung beider Zertifikate fallen keine Kosten an. Informationen zu den Auswirkungen bei der Auswahl eines bestimmten Zertifikats finden Sie unter [Fehlerbehebung für Dokumente](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-).
 
 Der Ursprungshost muss auch über ein eigenes SSL-Zertifikat für den CDN-Hostnamen verfügen; das Zertifikat muss auch von einer anerkannten Zertifizierungsstelle (Certificate Authority, CA) signiert sein.
 
@@ -107,7 +109,7 @@ Wenn diese Funktion aktiviert ist, entsteht eine geringfügige Leistungsbeeintr�
 
 ## Video-on-Demand
 
-Die Leistungsoptimierung für **Video-on-Demand** liefert ein Streaming mit hoher Qualität über verschiedene Typen von Netzen. Durch die Nutzung der vorkonfigurierten Einstellungen zur Cachesteuerung und der Fähigkeit des verteilten Netzes, die Arbeitslast dynamisch zu verteilen, bietet IBM Cloud CDN mit Akamai die Möglichkeit, schnelle Skalierungen für geplante oder ungeplante große Benutzergruppen durchzuführen. 
+Die Leistungsoptimierung für **Video-on-Demand** liefert ein Streaming mit hoher Qualität über verschiedene Typen von Netzen. Durch die Nutzung der vorkonfigurierten Einstellungen zur Cachesteuerung und der Fähigkeit des verteilten Netzes, die Arbeitslast dynamisch zu verteilen, bietet IBM Cloud CDN mit Akamai die Möglichkeit, schnelle Skalierungen für geplante oder ungeplante große Benutzergruppen durchzuführen.
 
 **Video-on-Demand** wird für die Verteilung segmentierter Streamingformate wie HLS, DASH, HDS und HSS optimiert. Live-Video-Streams werden gegenwärtig **nicht** unterstützt. Sie können die Funktion **Video-on-Demand** aktivieren, indem Sie die Option im Dropdown-Menü unter **Optimieren für** auf der Registerkarte 'Einstellungen' auswählen oder wenn Sie einen neuen Ursprungspfad erstellen. Sie können diese Funktion nur aktivieren, wenn Sie die Zustellung von Videodateien optimieren.
 
@@ -121,16 +123,16 @@ Mit dem Verhalten `Deny` wird dagegen der Zugriff auf Ihren Service für die ang
 
 Diese Funktion kann über die Seite **Einstellungen** der CDN-Konfiguration aufgerufen werden.
 
-## Hotlinkschutz
+## Hot-Link-Schutz
 
-Hotlinkschutz ist ein regelbasiertes Verhalten, mit dem Sie steuern können, ob bestimmte Websites über Ihr CDN auf Ihre Inhalte zugreifen dürfen oder nicht. Der Browser enthält in der Regel einen `Referer`-Header, wenn eine HTTP-Anforderung von einem Link auf einer Webseite erstellt wird und wenn dieser Link auf eine ferne Ressource verweist. Der Link, den eine Website für den Zugriff auf ein Asset von einer anderen Website verwendet, wird als Hotlink bezeichnet. Zwei Verhaltenstypen sind verfügbar: **ALLOW** und **DENY**. 
+Hot-Link-Schutz ist ein regelbasiertes Verhalten, mit dem Sie steuern können, ob bestimmte Websites über Ihr CDN auf Ihre Inhalte zugreifen dürfen oder nicht.  Der Browser enthält in der Regel einen `Referer`-Header, wenn eine HTTP-Anforderung von einem Link auf einer Webseite erstellt wird und wenn dieser Link auf eine ferne Ressource verweist. Der Link, den eine Website für den Zugriff auf ein Asset von einer anderen Website verwendet, wird als Hotlink bezeichnet.  Zwei Verhaltenstypen sind verfügbar: **ALLOW** und **DENY**.
 
-Wenn `protectionType` auf `ALLOW` gesetzt ist: 
-* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **bereit**. 
-* Andernfalls stellt Ihr CDN den Inhalt nicht bereit. 
+Wenn `protectionType` auf `ALLOW` gesetzt ist:
+* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **bereit**.
+* Andernfalls stellt Ihr CDN den Inhalt nicht bereit.
 
-Wenn `protectionType` auf `DENY` gesetzt ist: 
-* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **nicht bereit**. 
-* Andernfalls stellt Ihr CDN den Inhalt bereit. 
+Wenn `protectionType` auf `DENY` gesetzt ist:
+* Wenn der Wert des `Referer`-Headers in einer an Ihr CDN gesendeten Anforderung mit einem der von Ihnen angegebenen `refererValues` übereinstimmt, stellt Ihr CDN den angeforderten Inhalt **nicht bereit**.
+* Andernfalls stellt Ihr CDN den Inhalt bereit.
 
-**Hinweis**: Diese Funktion ist zurzeit nur über unsere API verfügbar. Weitere Informationen finden Sie auf der [API-Seite](api.html#api-for-hotlink-protection). 
+**Hinweis**: Diese Funktion ist zurzeit nur über unsere API verfügbar. Weitere Informationen finden Sie auf der [API-Seite](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection).

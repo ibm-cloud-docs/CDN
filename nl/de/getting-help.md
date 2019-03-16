@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 
 ---
@@ -15,6 +15,7 @@ lastupdated: "2018-11-14"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -31,7 +32,7 @@ lastupdated: "2018-11-14"
 # Hilfe und Unterstützung anfordern 
 {: #gettinghelp}
 
-Letzte Aktualisierung: 14. November 2018
+Letzte Aktualisierung: 18. Januar 2019
 {: .last-updated}
 
 Bei Problemen oder Fragen im Umgang mit CDN können Sie nach Informationen suchen oder Fragen in einem der unten aufgeführten Foren stellen. Sie haben auch die Möglichkeit, ein Support-Ticket zu öffnen.
@@ -45,4 +46,4 @@ Wenn Sie eine Frage über die Foren stellen, kennzeichnen Sie Ihre Frage, damit 
 
 Weitere Details zur Nutzung der Foren finden Sie unter [Hilfe anfordern](https://{DomainName}/docs/support/index.html#getting-help):
 
-Weitere Informationen zum Öffnen eines IBM Support-Tickets oder zu Supportebenen und zur Priorität von Tickets finden Sie unter [Support kontaktieren](https://{DomainName}/docs/support/index.html#contacting-support).
+Weitere Informationen zum Öffnen eines Support-Tickets für {{site.data.keyword.cloud}} oder zu Supportebenen und zur Priorität von Tickets finden Sie unter [Support kontaktieren](/docs/get-support?topic=get-support-getting-customer-support). 
