@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # Resolución de problemas
+{: #troubleshooting}
 
-En este documento, encontrará varias formas de resolver problemas en su CDN. Si necesita ponerse en contacto con el soporte, asegúrese de proporcionar el número de referencia de la CDN.
+En este documento, encontrará varias formas de resolver problemas en su {{site.data.keyword.cloud}} CDN. Si necesita ponerse en contacto con el soporte, asegúrese de proporcionar el número de referencia de la CDN.
 
 ## ¿Cómo se si mi CDN está funcionando?
 Ejecute el siguiente mandato `curl` sustituyendo `http://your.cdn.domain/uri` por la vía de acceso de archivos correspondiente a su CDN:
@@ -60,12 +61,12 @@ Este es el error que podría ver: `503 - Servicio no disponible`.
 Conjuntamente con el error 503, también puede ver un mensaje similar al siguiente: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (el número real de la referencia puede ser otro). En este caso, el número de referencia de la serie de error corresponde a un error de reconocimiento SSL.
 
 Para corregir el problema, asegúrese de que el certificado o los certificados SSL del servidor de origen cumplen los siguientes criterios:
-  * El certificado lo **debe** emitir una entidad emisora de certificados (CA) en la que Akamai confíe. Puede ver la lista de certificados de confianza de Akamai en [este enlace](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
+  * El certificado lo **debe** emitir una entidad emisora de certificados (CA) en la que Akamai confíe. Puede ver la lista de certificados de confianza de Akamai en [este enlace ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
   * **Debe** coincidir con la *Cabecera de host* configurada en la CDN
   * **No** debe ser autofirmado
   * **No** debe haber caducado
 
-Si ha verificado que la cadena de certificados de origen utilizando el criterio anterior y sigue encontrando el mismo error, consulte la página [Obtención de soporte y ayuda](getting-help.html#gettinghelp). Anote la serie del error de Referencia e inclúyalo al comunicarse con nosotros.
+Si ha verificado que la cadena de certificados de origen utilizando el criterio anterior y sigue encontrando el mismo error, consulte la página [Obtención de soporte y ayuda](/docs/infrastructure/CDN/getting-help.html#gettinghelp). Anote la serie del error de Referencia e inclúyalo al comunicarse con nosotros.
 
 ## Mi nombre de host no se carga en el navegador cuando IBM Cloud Object Storage (COS) es el origen.
 

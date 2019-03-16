@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,10 @@ lastupdated: "2018-10-01"
 {:download: .download}
 
 
-
 # Referencia de la API de la CDN
+{: #cdn-api-reference}
 
-La interfaz de programación de aplicaciones de {{site.data.keyword.BluSoftlayer_notm}} (habitualmente llamada SLAPI), proporcionada por IBM Cloud, es la interfaz de desarrollo que da a los desarrolladores y administradores del sistema una interacción directa con el sistema de fondo {{site.data.keyword.BluSoftlayer_notm}}.
+La interfaz de programación de aplicaciones de {{site.data.keyword.BluSoftlayer_notm}} (habitualmente llamada SLAPI), proporcionada por {{site.data.keyword.cloud}}, es la interfaz de desarrollo que da a los desarrolladores y administradores del sistema una interacción directa con el sistema de fondo {{site.data.keyword.BluSoftlayer_notm}}.
 
 La SLAPI implementa muchas funciones en el Portal de clientes: si es posible una interacción en el Portal de cliente, también puede cumplirse en la SLAPI. Como puede interactuar con todas las porciones del entorno {{site.data.keyword.BluSoftlayer_notm}} mediante programación, dentro de la SLAPI, puede utilizar la API para automatizar tareas.
 
@@ -42,7 +42,7 @@ Para empezar, aquí tiene una secuencia de llamada de API recomendada para segui
 
 Puede utilizar las otras API una vez ha seguido la secuencia anterior.
 
-[El código de ejemplo está disponible para cada paso en esta secuencia de llamada.](cdn-example-code.html#code-examples-using-the-cdn-api)
+[El código de ejemplo está disponible para cada paso en esta secuencia de llamada.](/docs/infrastructure/CDN/cdn-example-code.html#code-examples-using-the-cdn-api)
 
 **NOTA**: **debe** utilizar el nombre de usuario de la API y la clave de API de un usuario con permiso `CDN_ACCOUNT_MANAGE` para la mayoría de las llamadas de API que se muestran en este documento. Compruebe con el usuario maestro de su cuenta si necesita permiso para habilitarlas (cada cuenta de cliente de IBM Cloud se proporciona con un usuario maestro).
 
@@ -54,7 +54,7 @@ Esta API permite al usuario enumerar los proveedores de CDN soportados. `vendorN
 * **Parámetros necesarios**: Ninguno
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
-  Aquí puede verse el contenedor de proveedor y un ejemplo de uso: [Proveedor de contenedor](vendor-container.html)
+  Aquí puede verse el contenedor de proveedor y un ejemplo de uso: [Proveedor de contenedor](/docs/infrastructure/CDN/vendor-container.html)
 
 ----
 ## API para cuenta
@@ -67,12 +67,12 @@ Comprueba si existe una cuenta CDN del usuario que llama a la API para el `vendo
 ----
 ## API para la correlación de dominios
 ### createDomainMapping
-Usando las entradas proporcionadas, esta función crea una correlación de dominios para el proveedor dado y la asocia con el ID de cuenta de {{site.data.keyword.BluSoftlayer_notm}} del usuario. La cuenta de CDN debe crearse primero utilizando `placeOrder` para que esta API funcione (vea un ejemplo de la llamada de API `placeOrder` en los [Ejemplos de código](cdn-example-code.html)). Después de crear correctamente la CDN, se crea `defaultTTL` con un valor de 3600 segundos.
+Usando las entradas proporcionadas, esta función crea una correlación de dominios para el proveedor dado y la asocia con el ID de cuenta de {{site.data.keyword.BluSoftlayer_notm}} del usuario. La cuenta de CDN debe crearse primero utilizando `placeOrder` para que esta API funcione (vea un ejemplo de la llamada de API `placeOrder` en los [Ejemplos de código](/docs/infrastructure/CDN/cdn-example-code.html)). Después de crear correctamente la CDN, se crea `defaultTTL` con un valor de 3600 segundos.
 
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Aquí puede ver todos los atributos del Contenedor de entrada:
 
-  [Ver el contenedor de entrada](input-container.html)
+  [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al crearse una correlación de dominios (los atributos son opcionales a menos que se indique lo contrario):
     * `vendorName`: **necesario** Proporcione el nombre de un proveedor de IBM Cloud CDN válido.
@@ -82,7 +82,7 @@ Usando las entradas proporcionadas, esta función crea una correlación de domin
     * `protocol`: **necesario** Los protocolos soportados son `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
     * `certificateType`: **obligatorio** para el protocolo HTTPS. `SHARED_SAN_CERT` o `WILDCARD_CERT`
     * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. La vía de acceso predeterminada es `/*`
-    * `httpPort` y/o `httpsPort`: (**necesario** para el servidor de host) Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+    * `httpPort` y/o `httpsPort`: (**necesario** para el servidor de host) Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
     * `header`: especifica la información de cabecera de host utilizada por el servidor de origen.
     * `respectHeader`: un valor booleano que, si se establece en `true`, provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.
     * `cname`: proporcione un alias para el nombre de host. Se generará si no se proporciona ninguno.
@@ -98,7 +98,7 @@ Usando las entradas proporcionadas, esta función crea una correlación de domin
 
   **NOTA**: La recopilación proporciona un valor `uniqueId` que debe enviarse como entrada para las llamadas API posteriores relacionadas con la vía de acceso de origen y la correlación.
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### deleteDomainMapping
@@ -106,18 +106,18 @@ Suprime la correlación de dominios basada en `uniqueId`. El estado de correlaci
 
 * **Parámetros necesarios**: `uniqueId`: el ID exclusivo de la correlación que se va a suprimir
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Ver contenedor de correlaciones](mapping-container.html)
+  [Ver contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### verifyDomainMapping
-Verifica el estado de la CDN y actualiza el `estado` de la correlación de CDN si ha cambiado. Cuando se crea una correlación de CDN inicial, su estado se muestra como _CNAME_CONFIGURATION_. En este punto, debe actualizar el registro DNS para que la correlación de CDN apunte el nombre de host a CNAME. Consulte a su proveedor de DNS si tiene dudas sobre cómo se realiza la actualización y cuanto puede durar la propagación del cambio en Internet. En general, dura de 15 a 30 minutos. Una vez transcurrido este tiempo, esta API `verifyDomainMapping` debe llamarse para verificar si la cadena de CNAME está completa. Si la cadena de CNAME está completa, el estado de la correlación de CDN cambia al estado _RUNNING_.
+Verifica el estado de la CDN y actualiza el `estado` de la correlación de CDN si ha cambiado. Cuando se crea una correlación de CDN inicial, su estado se muestra como _CNAME_CONFIGURATION_. En este punto, debe actualizar el registro DNS para que la correlación de CDN apunte el nombre de host a CNAME. Consulte a su proveedor de DNS si tiene dudas sobre cómo se realiza la actualización y cuánto puede durar la propagación del cambio en Internet. En general, dura de 15 a 30 minutos. Una vez transcurrido este tiempo, esta API `verifyDomainMapping` debe llamarse para verificar si la cadena de CNAME está completa. Si la cadena de CNAME está completa, el estado de la correlación de CDN cambia al estado _RUNNING_.
 
 Puede llamar a esta API en cualquier momento para obtener el estado más reciente de la correlación de la CDN. El estado de correlación de dominios debe ser uno de los siguientes: _RUNNING_ o _CNAME_CONFIGURATION_.
 
-* **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que desea verificar.
+* **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que desea verificar
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### startDomainMapping
@@ -126,7 +126,7 @@ Inicia una correlación de dominios de CDN basada en `uniqueId`. Para que se ini
 * **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que se va a iniciar
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### stopDomainMapping
@@ -135,14 +135,14 @@ Detiene una correlación de dominios de CDN basada en `uniqueId`. Para que se in
 * **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que se va a detener
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### updateDomainMapping
 Habilita al usuario para que actualice las propiedades de la correlación identificadas con `uniqueId`. Pueden modificarse los campos siguientes: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, argumentos `cacheKeyQueryRule`, y si el tipo de origen es Object Storage, también pueden cambiarse `bucketName` y `fileExtension`. Para que se produzca una actualización, el estado de la correlación de dominios debe ser _RUNNING_.
 
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
-  Puede ver todos los atributos del contenedor de entradas aquí: [Ver el contenedor de entradas](input-container.html)
+  Puede ver todos los atributos del contenedor de entradas aquí: [Ver el contenedor de entradas](/docs/infrastructure/CDN/input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y es **necesario** proporcionarlos al actualizar una correlación de dominios:
     * `vendorName`: Proporcione el nombre del proveedor de CDN para esta correlación.
@@ -151,21 +151,21 @@ Habilita al usuario para que actualice las propiedades de la correlación identi
     * `originType`: El tipo de origen puede ser `HOST_SERVER` u `OBJECT_STORAGE`.
     * `domain`: Proporcione el nombre de host.
     * `protocol`: Los protocolos soportados son `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
-    * `httpPort` y/o `httpsPort`: Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+    * `httpPort` y/o `httpsPort`: Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
     * `header`: especifica la información de cabecera de host utilizada por el servidor de origen.
     * `respectHeader`: un valor booleano que, si se establece en `true`, provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.
     * `uniqueId`: generado después de crear la correlación.
     * `cname`: proporcione el cname. Se genera uno cuando se crea la correlación si no ha proporcionado uno.
     * `bucketName`: (**necesario** solo para Object Storage) Nombre de grupo para S3 Object Storage.
     * `fileExtension`: (**necesario** solo para Object Storage) Extensiones de archivo que se pueden almacenar en memoria caché.
-    * `cacheKeyQueryRule`: las reglas de comportamiento de clave de caché solo pueden actualizarse para las correlaciones de CDN creadas _después del _ 16/11/17. Las siguientes opciones están disponibles para configurar el comportamiento de clave de caché:
+    * `cacheKeyQueryRule`: las reglas de comportamiento de clave de caché solo pueden actualizarse para las correlaciones de CDN creadas _después del_ 16/11/17. Las siguientes opciones están disponibles para configurar el comportamiento de clave de caché:
       * `include-all` - incluye todos los argumentos de consulta **predeterminados**
       * `ignore-all` - ignora todos los argumentos de consulta
       * `ignore: space separated query-args` - ignora argumentos de consulta específicos. Por ejemplo, `ignore: query1 query2`
       * `include: space separated query-args`: incluye argumentos de consulta específicos. Por ejemplo, `include: query1 query2`
 * **Devuelve** una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### listDomainMappings
@@ -174,7 +174,7 @@ Devuelve una recopilación de todas las correlaciones de dominio para el cliente
 * **Parámetros necesarios**: Ninguno
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ### listDomainMappingByUniqueId
@@ -183,7 +183,7 @@ Devuelve una recopilación con un objeto de dominio único basado en el `uniqueI
 * **Parámetros necesarios**: `uniqueId`: ID exclusivo de la correlación que se va a devolver
 * **Devuelve**: una recopilación de un solo objeto de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Ver el contenedor de correlaciones](mapping-container.html)
+  [Ver el contenedor de correlaciones](/docs/infrastructure/CDN/mapping-container.html)
 
 ----
 ## API para origen
@@ -193,7 +193,7 @@ Crea una vía de acceso de origen para una CDN existente y un cliente determinad
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Aquí puede ver todos los atributos del Contenedor de entrada:
 
-  [Ver el contenedor de entrada](input-container.html)
+  [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al crearse una vía de acceso de origen (los atributos son opcionales a menos que se indique lo contrario):
     * `vendorName`: **necesario** Proporcione el nombre de un proveedor de IBM Cloud CDN válido.
@@ -202,7 +202,7 @@ Crea una vía de acceso de origen para una CDN existente y un cliente determinad
     * `domain`: **necesario** Proporcione el nombre de host como una serie.
     * `protocol`: **necesario** Los protocolos soportados son `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
     * `path`: vía de acceso desde la cual se servirá el contenido almacenado en memoria caché. Debe empezar por la vía de acceso de correlación. Por ejemplo, si la vía de acceso de correlación es `/test`, la vía de acceso de origen debe ser `/test/media`
-    * `httpPort` y/o `httpsPort`: **necesario** Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+    * `httpPort` y/o `httpsPort`: **necesario** Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
     * `header`: especifica la información de cabecera de host utilizada por el servidor de origen.
     * `uniqueId`: **necesario** generado después de crear la correlación.
     * `cname`: proporcione un alias para el nombre de host. Si no proporciona un cname exclusivo, uno que se haya generado para usted al crear la correlación.
@@ -216,7 +216,7 @@ Crea una vía de acceso de origen para una CDN existente y un cliente determinad
 
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Ver contenedor de vías de acceso de origen](path-container.html)
+  [Ver contenedor de vías de acceso de origen](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ### updateOriginPath
@@ -225,14 +225,14 @@ Actualiza una vía de acceso de origen para una correlación existente y un clie
 * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Aquí puede ver todos los atributos del Contenedor de entrada:
 
-  [Ver el contenedor de entrada](input-container.html)
+  [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
   Los siguientes atributos forman parte del contenedor de entradas y pueden proporcionarse al actualizar una vía de acceso de origen (los atributos son opcionales a menos que se indique lo contrario):
     * `oldPath`: **necesario** vía de acceso actual que se cambiará
     * `origin`: (**necesario** si se está actualizando) Proporcione una dirección de servidor de origen como una serie.
     * `originType`: **necesario** El tipo de origen puede ser `HOST_SERVER` u `OBJECT_STORAGE`.
     * `path`: **necesario** Nueva vía de acceso que se va a añadir. Relativa a la vía de acceso de correlación.
-    * `httpPort` y/o `httpsPort`: (**necesario** para el servidor de host, si se está actualizando) Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+    * `httpPort` y/o `httpsPort`: (**necesario** para el servidor de host, si se está actualizando) Estas dos opciones deben corresponder al protocolo deseado. Si el protocolo es `HTTP`, debe establecerse `httpPort` y `httpsPort` _no_ debe establecerse. Del mismo modo, si el protocolo es `HTTPS`, debe establecerse `httpsPort` y `httpPort` _no_ debe establecerse. Si el protocolo es `HTTP_AND_HTTPS`, _ambos atributos_ `httpPort` y `httpsPort` _deben_ estar establecidos. Akamai tiene ciertas limitaciones en los números de puerto. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
     * `uniqueId`: **necesario** ID exclusivo de la correlación a la que pertenece este origen
     * `bucketName`: (**necesario** solo para Object Storage) Nombre de grupo para S3 Object Storage.
     * `fileExtension`: (**necesario** solo para Object Storage) Extensiones de archivo que se pueden almacenar en memoria caché.
@@ -244,7 +244,7 @@ Actualiza una vía de acceso de origen para una correlación existente y un clie
 
 * **Devuelve**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Ver contenedor de vías de acceso de origen](path-container.html)
+  [Ver contenedor de vías de acceso de origen](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ### deleteOriginPath
@@ -264,7 +264,7 @@ Lista las vías de acceso de origen para una correlación existente basándose e
   * `uniqueId`: proporcione el ID exclusivo de la correlación para la que desea listar las vías de acceso de origen.
 * **Devuelve**: una recopilación de objetos de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Ver contenedor de vías de acceso de origen](path-container.html)
+  [Ver contenedor de vías de acceso de origen](/docs/infrastructure/CDN/path-container.html)
 
 ----
 ## API para la depuración
@@ -372,7 +372,8 @@ Lista los objetos `TimeToLive` existentes según un valor de `uniqueId` de la CD
 
  ----
 ## API para métricas
-[Visualizar el contenedor de métricas](metrics-container.html)
+[Visualizar el contenedor de métricas](/docs/infrastructure/CDN/metrics-container.html)
+
 ### getCustomerUsageMetrics
 Devuelve el número total de estadísticas predeterminadas para su visualización directa (sin gráficos), correspondientes a la cuenta de un cliente durante un periodo de tiempo determinado.
 
@@ -447,7 +448,7 @@ Crea una nueva regla de control de acceso geográfico, y devuelve la regla reci�
   * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Aquí puede ver todos los atributos del Contenedor de entrada:
 
-    [Ver el contenedor de entrada](input-container.html)
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
     Los siguientes atributos forman parte del contenedor de entrada y son **necesarios** cuando se crea una nueva regla de control de acceso geográfico:
     * `uniqueId`: ID exclusivo de la correlación para asignar a la regla
@@ -455,11 +456,11 @@ Crea una nueva regla de control de acceso geográfico, y devuelve la regla reci�
     * `regionType`: tipo de región que se aplicará a la regla de control de acceso geográfico, `CONTINENT` o `COUNTRY_OR_REGION`
     * `regions`: una matriz con una lista de ubicaciones a las que se aplicará el `accessType`
 
-      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver una lista de las posibles regiones.
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) para ver una lista de las posibles regiones.
 
   * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+    [Ver la clase de bloqueo geográfico](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### updateGeoblocking
@@ -468,7 +469,7 @@ Actualiza una regla de control de acceso geográfico existente para una correlac
   * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Aquí puede ver todos los atributos del Contenedor de entrada:
 
-    [Ver el contenedor de entrada](input-container.html)
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
     Los siguientes atributos forman parte del Contenedor de entrada y se pueden proporcionar al actualizar una regla de control de acceso geográfico (los parámetros son opcionales a menos que se indique lo contrario):
     * `uniqueId`: ID exclusivo **necesario** de la correlación a la que pertenece la regla a actualizar
@@ -476,11 +477,11 @@ Actualiza una regla de control de acceso geográfico existente para una correlac
     * `regionType`: tipo de región que se aplicará a la regla, `CONTINENT` o `COUNTRY_OR_REGION`
     * `regions`: una matriz con una lista de ubicaciones a las que se aplicará el `accessType`
 
-      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](geoblock-behavior.html) para ver una lista de las posibles regiones.
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) para ver una lista de las posibles regiones.
 
   * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+    [Ver la clase de bloqueo geográfico](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### deleteGeoblocking
@@ -489,14 +490,14 @@ Elimina una regla de control de acceso geográfico existente de una correlación
   * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Aquí puede ver todos los atributos del Contenedor de entrada:
 
-    [Ver el contenedor de entrada](input-container.html)
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
 
     El siguiente atributo forma parte del contenedor de entrada y es **necesario** al suprimir una regla de control de acceso geográfico:
     * `uniqueId`: proporcione el ID exclusivo de la correlación a la que pertenece la regla a suprimir.
 
   * **Devuelve**: objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+    [Ver la clase de bloqueo geográfico](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### getGeoblocking
@@ -507,7 +508,7 @@ Recupera de la base de datos un comportamiento del control de acceso geográfico
 
   * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+    [Ver la clase de bloqueo geográfico](/docs/infrastructure/CDN/geoblock-behavior.html)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -518,4 +519,69 @@ Devuelve una lista de los tipos y regiones que están permitidos para crear regl
 
   * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
-    [Ver la clase de bloqueo geográfico](geoblock-behavior.html)
+    [Ver la clase de bloqueo geográfico](/docs/infrastructure/CDN/geoblock-behavior.html)
+----
+## API para protección de hotlink
+### createHotlinkProtection
+Crea una nueva protección de hotlink y devuelve el nuevo comportamiento creado.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
+
+    Los siguientes atributos forman parte del contenedor de entrada y son **necesarios** cuando se crea una nueva protección de hotlink:
+    * `uniqueId`: ID exclusivo de la correlación a la que asignar el comportamiento
+    * `protectionType`: Especifica si permitir ("ALLOW") o denegar ("DENY") el acceso al contenido cuando una página web realiza una solicitud de contenido con una cabecera Referer que coincide con uno de los términos especificados en refererValues
+    * `refererValues`: Una lista separada por un único espacio de términos coincidentes con el URL de Referer para los que tendrá efecto el comportamiento `protectionType`
+
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) para ver una lista de los valores válidos para la protección de hotlink.
+
+  * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Ver la clase de protección de hotlink](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+
+----
+### updateHotlinkProtection
+Actualiza un comportamiento de protección de hotlink existente para una correlación de dominio existente y devuelve el comportamiento actualizado.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
+
+    Los siguientes atributos forman parte del contenedor de entrada y son **necesarios** cuando se actualiza una protección de hotlink existente:
+    * `uniqueId`: ID exclusivo de la correlación a la que pertenece el comportamiento existente
+    * `protectionType`: Especifica si permitir ("ALLOW") o denegar ("DENY") el acceso al contenido cuando una página web realiza una solicitud de contenido con una cabecera Referer que coincide con uno de los términos especificados en refererValues 
+    * `refererValues`: Una lista separada por un único espacio de términos coincidentes con el URL de Referer para los que tendrá efecto el comportamiento `protectionType`
+
+      Consulte la página [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) para ver una lista de los valores válidos para la protección de hotlink.
+
+  * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Ver la clase de protección de hotlink](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+
+----
+### deleteHotlinkProtection
+Elimina un comportamiento de protección de hotlink existente de una correlación de dominio existente.
+
+  * **Parámetros**: una recopilación de tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+    Aquí puede ver todos los atributos del Contenedor de entrada:
+
+    [Ver el contenedor de entrada](/docs/infrastructure/CDN/input-container.html)
+
+    Los siguientes atributos forman parte del contenedor de entrada y son **necesarios** cuando se crea una nueva protección de hotlink:
+    * `uniqueId`: ID exclusivo de la correlación de la que eliminar el comportamiento
+
+  * **Devuelve**: null
+
+----
+### getHotlinkProtection
+Recupera el comportamiento de protección de hotlink actual de una correlación.
+
+  * **Parámetros**:
+    * `uniqueId`: ID exclusivo de la correlación a la que pertenece el comportamiento
+
+  * **Devuelve**: un objeto del tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+
+    [Ver la clase de protección de hotlink](/docs/infrastructure/CDN/hotlink-protection-behavior.html)

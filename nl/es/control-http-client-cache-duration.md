@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-20"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,14 +15,16 @@ lastupdated: "2018-11-20"
 {:download: .download}
 
 # Utilización de Cache Control para controlar la duración en caché de un cliente HTTP
+{: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
-## Introducción
 Cuando se utiliza una CDN, están disponibles dos niveles de almacenamiento en memoria caché:
+
   * La **colocación en caché perimetral** se produce cuando un servidor perimetral de la CDN coloca en caché un elemento de contenido procedente del origen.
   * La **colocación en caché descendente** desde la red perimetral de servidores se produce cuando un usuario final o un cliente HTTP, como un navegador solicitante, coloca en caché un elemento de contenido procedente de un servidor perimetral.
 
 El método que elija para controlar el tiempo que el contenido se almacena en la memoria en el solicitante, como por ejemplo un navegador, depende de los factores siguientes:
-  * Si el [valor Respect Header](how-to.html#updating-cdn-configuration-details) está activado (ON) o desactivado (OFF). De forma predeterminada está activado.
+
+  * Si el [valor Respect Header](/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details) está activado (ON) o desactivado (OFF). De forma predeterminada está activado.
   * Si el servidor de origen proporciona un valor `max-age` con la cabecera Cache-Control para un determinado elemento de contenido. 
 
 Independientemente de cómo cambien estos factores, el origen debe proporcionar una cabecera Cache-Control para el contenido deseado al servidor perimetral, si desea que los servidores perimetrales envíen respuestas HTTP con la cabecera Cache-Control para ese contenido.
@@ -53,5 +55,5 @@ Sin embargo, si su origen no proporciona una cabecera Cache-Control al servidor 
 |Desactivado|No|Duración en caché en servidor perimetral basada en la configuración de TTL de la CDN|No|
 
 ## Más información
-* Cómo [gestionar su CDN](how-to.html)
-* Cache-Control tal como se define en la sección 14.9 del [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+* Cómo [gestionar su CDN](/docs/infrastructure/CDN/how-to.html)
+* Cache-Control tal como se define en la sección 14.9 de [RFC 2616 ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.ietf.org/rfc/rfc2616.txt)

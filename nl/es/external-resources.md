@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-02"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,8 +14,9 @@ lastupdated: "2018-10-02"
 {:tip: .tip}
 
 # Recursos adicionales
+{: #additional-resources}
 
-Estos recursos han sido creados por IBM y por algunos de nuestros socios y clientes.
+Estos recursos han sido creados por {{site.data.keyword.cloud}} y por algunos de nuestros socios y clientes.
 
 ## Blogs de IBM Tech (sólo interno)
 

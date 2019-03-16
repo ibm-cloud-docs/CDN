@@ -48,7 +48,7 @@ Cuando **Respect Header** se establece en **On**, la duración en la caché en e
 
 ## Resumen
 
-|Respetar cabecera|Origen proporciona Cache-Control|Duración en caché de contenido específico en servidor perimetral|Servidor perimetral proporciona Cache-Control|
+|Respect Header|Origen proporciona Cache-Control|Duración en caché de contenido específico en servidor perimetral|Servidor perimetral proporciona Cache-Control|
 |---|---|---|---|
 |Activado|Si, especifica un `max-age`|Sobrescrito con el valor `max-age` del origen|Si, `max-age` es el tiempo antes de que sea necesario volver a validar en el contenido del perímetro desde el origen|
 |Activado|Si, no especifica un `max-age`|Se basa en la configuración TTL de la CDN|Si, `max-age` es el tiempo antes de que sea necesario volver a validar en el contenido del perímetro desde el origen|
@@ -59,4 +59,4 @@ Cuando **Respect Header** se establece en **On**, la duración en la caché en e
 
 ## Más información
 * Cómo [gestionar su CDN](https://console.bluemix.net/docs/infrastructure/CDN/how-to.html)
-* Cache-Control tal como se define en la sección 14.9 del [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+* Cache-Control tal como se define en la sección 14.9 de [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)

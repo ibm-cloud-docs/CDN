@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Gestión de la CDN
+{: #manage-your-cdn}
 
 En este documento se describen las tareas comunes para gestionar la CDN.
 
@@ -78,11 +80,11 @@ Seleccione **Servidor** u **Object Storage**.
 
   * Las opciones **Optimización** y **Clave de caché** son las mismas para las configuraciones de Servidor y de Object Storage.
 
-    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](feature-descriptions.html#large-file-optimization) y [Vídeo on Demand](feature-descriptions.html#video-on-demand) proporcionan más información.
+    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) y [Vídeo on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) proporcionan más información.
 
         ![Opciones de configuración del rendimiento](images/performance-config-options.png)
 
-    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](feature-descriptions.html#cache-key-query-args) en la descripción de la característica.
+    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) en la descripción de la característica.
 
         ![Opciones de clave de caché](images/cache-key-options.png)
 
@@ -116,7 +118,7 @@ Seleccione el separador **Depurar**.
 
 **Paso 3:**
 
-Especifique la sintaxis de vía de acceso unix estándar para indicar qué archivo desea depurar y, a continuación, seleccione el botón **Depurar**. La depuración se permite para un solo archivo en este momento. Consulte la página [Convenios de reglas y denominación](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obtener más detalles sobre qué sintaxis se permite para la vía de acceso de depuración.
+Especifique la sintaxis de vía de acceso unix estándar para indicar qué archivo desea depurar y, a continuación, seleccione el botón **Depurar**. La depuración se permite para un solo archivo en este momento. Consulte la página [Convenios de reglas y denominación](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obtener más detalles sobre qué sintaxis se permite para la vía de acceso de depuración.
 
 **Paso 4:**
 
@@ -171,7 +173,7 @@ Actualice los detalles de **Origen** u **Otras opciones** si es necesario y, a c
 
 Para utilizar objetos almacenados en IBM Cloud Object Storage, debe establecer el valor de la propiedad "acl" (es decir, la lista de control de accesos) para que cada objeto del grupo disponga de acceso "public-read".
 
-Para instalar los clientes o herramientas necesarios, consulte la [sección IBM Cloud Object Storage Developer] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Esta guía presupone que ha instalado la interfaz de línea de mandatos AWS oficial, que es compatible con la API de IBM Cloud Object Storage S3.
+Para instalar los clientes y herramientas necesarios, consulte la [sección de IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Esta guía presupone que ha instalado la interfaz de línea de mandatos AWS oficial, que es compatible con la API de IBM Cloud Object Storage S3.
 
 El código de ejemplo siguiente es una muestra sobre cómo definir el acceso "public-read" para todos los objetos del grupo mediante la interfaz de línea de mandatos.
 

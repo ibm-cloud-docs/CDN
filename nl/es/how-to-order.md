@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017,2018
-lastupdated: "2018-11-19"
+  years: 2017,2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,37 +15,42 @@ lastupdated: "2018-11-19"
 {:download: .download}
 
 # Cómo solicitar una CDN
+{ #order-a-cdn}
 
-A continuación, aprenderá a solicitar una red de entrega de contenido (CDN). La CDN se puede solicitar desde el [Portal de IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/).
+A continuación, aprenderá a solicitar una red de entrega de contenido (CDN). La CDN se puede solicitar desde la [consola de {{site.data.keyword.cloud}}](https://cloud.ibm.com/login).
 
-## Navegación a la página de CDN:
+## Preparación para la solicitud
 
-**Paso 1:**
+A continuación se detalla cómo navegar hasta la página de CDN para realizar el pedido.
 
-Inicie una sesión en su cuenta desde el [Portal de IBM Cloud](https://www.ibm.com/cloud-computing/bluemix/)
+### Paso 1
 
-**Paso 2:**
+* Inicie una sesión en su cuenta desde la [Consola de IBM Cloud](https://cloud.ibm.com/login)
 
-Haga clic en [IBM Cloud Catalog](https://console.bluemix.net/catalog/). En la barra de navegación de la izquierda, seleccione **Red**.
+### Paso 2
 
-   ![Navegación en la CDN de Bluemix](images/bluemix_navigation.png)
+Haga clic en [IBM Cloud Catalog](https://cloud.ibm.com/catalog/). En la barra de navegación de la izquierda, seleccione **Red**.
 
-**Paso 3:**
+   ![Navegación de IBM Cloud CDN](images/bluemix_navigation.png)
+
+### Paso 3
 
 Pulse el **mosaico de CDN**.
 
-   ![Icono CDN de Bluemix](images/bluemix_tile.png)
+   ![Icono de IBM Cloud CDN](images/bluemix_tile.png)
 
 
-## Solicite una nueva CDN:
+## Solicite una nueva CDN
 
-**Paso 1:**
+Una vez está en la página de pedidos, ésta es la forma de proceder a crear y configurar su CDN.
+
+### Paso 1: Crear la cuenta de CDN
 
 Pulse **Crear** en la parte inferior derecha, para crear su cuenta de CDN si aún no tiene una y redirigirle a la pantalla Configurar CDN.
 
    ![Visión general de CDN](images/content-delivery.png)
 
-**Paso 2:**
+### Paso 2: Dar nombre al CDN 
 
 Rellene el campo **Configurar nombre**:  
 
@@ -56,25 +61,25 @@ Rellene el campo **Configurar nombre**:
 
     **Nota**: Después de suministrar su nueva CDN, **debe** configurar el CNAME con su proveedor de DNS.
 
-**Paso 3:**
+### Paso 3: Configurar el origen
 
 Rellene el campo **Configure el origen**: para configurar este campo, debe seleccionar la opción **Servidor** u **Object Storage**.  
 
-  * **Paso 3, Opción 1: Opción de servidor **
+  * **Paso 3, Opción 1: Opción de servidor**
 
      ![Configurar origen](images/configure-origin-server.png)
 
       * Debe especificar la **Dirección del servidor de origen** (nombre de host o dirección IPv4 del servidor de origen). Si también se selecciona **puerto HTTPS**, la **Dirección del servidor de origen** debe ser el nombre de host y no la dirección IP.
 
-      * Especifique la **Cabecera de host** (opcional). Si no se proporciona ninguna, se establece el valor predeterminado de **Nombre de host**. Consulte la descripción de la característica para [Soporte de la cabecera de host](feature-descriptions.html#host-header-support) para obtener más información sobre la cabecera de host.  
+      * Especifique la **Cabecera de host** (opcional). Si no se proporciona ninguna, se establece el valor predeterminado de **Nombre de host**. Consulte la descripción de la característica para [Soporte de la cabecera de host](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) para obtener más información sobre la cabecera de host.  
 
-      * Proporcione una **Vía de acceso** en la que el contenido se pueda recuperar del origen (opcional). Consulte la descripción de la característica para [Correlaciones de CDN basadas en vías de acceso](feature-descriptions.html#path-based-cdn-mappings) para entender las implicaciones de añadir una vía de acceso en este instante.
+      * Proporcione una **Vía de acceso** en la que el contenido se pueda recuperar del origen (opcional). Consulte la descripción de la característica para [Correlaciones de CDN basadas en vías de acceso](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) para entender las implicaciones de añadir una vía de acceso en este instante.
 
-      * También puede proporcionar un **Puerto HTTP**, un **Puerto HTTPS** o ambos. Estos campos indican el protocolo y el número de puerto que pueden utilizarse para contactar con el servidor de origen. Para los números de puerto no predeterminados, consulte [las Preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para ver una lista de los números de puerto permitidos.
+      * También puede proporcionar un **Puerto HTTP**, un **Puerto HTTPS** o ambos. Estos campos indican el protocolo y el número de puerto que pueden utilizarse para contactar con el servidor de origen. Para los números de puerto no predeterminados, consulte [las Preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para ver una lista de los números de puerto permitidos.
 
       * **Certificado SSL** Esta opción aparece _sólo_ cuando se seleccione el puerto HTTPS. Si selecciona **Puerto HTTPS** para Servidor o para Object Storage, puede elegir **Comodín** o **Certificado SAN DV** como la opción de certificado SSL. Ambos ofrecen la seguridad mejorada proporcionada por HTTPS.
         * El **Certificado comodín** permite el tráfico HTTPS sólo cuando se utiliza el **CNAME** y no requiere ninguna acción adicional por su parte
-        * El **Certificado SAN DV** permite el tráfico HTTPS sobre el dominio, pero requiere pasos adicionales para su verificación. Consulte [Completar la validación de control de dominio para HTTPS](how-to-https.html#completing-domain-control-validation-for-https) para entender los pasos necesarios y las restricciones de tiempo que suponen esta opción.
+        * El **Certificado SAN DV** permite el tráfico HTTPS sobre el dominio, pero requiere pasos adicionales para su verificación. Consulte [Completar la validación de control de dominio para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https) para entender los pasos necesarios y las restricciones de tiempo que suponen esta opción.
 
 	     ![Configuración del servidor de origen](images/ssl-cert-options.png)
 
@@ -84,17 +89,17 @@ Rellene el campo **Configure el origen**: para configurar este campo, debe selec
 
       * **Debe** especificar el **Punto final** desde el que recuperar los objetos.
 
-      * Especifique la **Cabecera de host** (opcional). Si no se proporciona ninguna, se establece el valor predeterminado de **Nombre de host**. Consulte la descripción de la característica para [Soporte de la cabecera de host](feature-descriptions.html#host-header-support) para obtener más información sobre la cabecera de host.  
+      * Especifique la **Cabecera de host** (opcional). Si no se proporciona ninguna, se establece el valor predeterminado de **Nombre de host**. Consulte la descripción de la característica para [Soporte de la cabecera de host](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) para obtener más información sobre la cabecera de host.  
 
-      * Proporcione una **Vía de acceso** en la que el contenido se pueda recuperar del origen (opcional). Consulte la descripción de la característica para [Correlaciones de CDN basadas en vías de acceso](feature-descriptions.html#path-based-cdn-mappings) para entender las implicaciones de añadir aquí una vía de acceso.
+      * Proporcione una **Vía de acceso** en la que el contenido se pueda recuperar del origen (opcional). Consulte la descripción de la característica para [Correlaciones de CDN basadas en vías de acceso](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) para entender las implicaciones de añadir aquí una vía de acceso.
 
       * **Debe** proporcionar el nombre del **Grupo** en el que se almacena su contenido.
 
-      * También puede proporcionar un **Puerto HTTP**, un **Puerto HTTPS** o ambos. Estos campos indican el protocolo y el número de puerto que pueden utilizarse para contactar con el servidor de origen. Para los números de puerto no predeterminados, consulte [las Preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para ver una lista de los números de puerto permitidos.
+      * También puede proporcionar un **Puerto HTTP**, un **Puerto HTTPS** o ambos. Estos campos indican el protocolo y el número de puerto que pueden utilizarse para contactar con el servidor de origen. Para los números de puerto no predeterminados, consulte [las Preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para ver una lista de los números de puerto permitidos.
 
       * **Certificado SSL** Esta opción aparece _sólo_ cuando se seleccione el puerto HTTPS. Si selecciona **Puerto HTTPS** para Servidor o para Object Storage, puede elegir **Comodín** o **Certificado SAN DV** como la opción de certificado SSL. Ambos ofrecen la seguridad mejorada proporcionada por HTTPS.
         * El **Certificado comodín** permite el tráfico HTTPS sólo cuando se utiliza el **CNAME** y no requiere ninguna acción adicional por su parte
-        * El **Certificado SAN DV** permite el tráfico HTTPS sobre el dominio, pero requiere pasos adicionales para su verificación. Consulte [Completar la validación de control de dominio para HTTPS](how-to-https.html#completing-domain-control-validation-for-https) para entender los pasos necesarios y las restricciones de tiempo que suponen esta opción.
+        * El **Certificado SAN DV** permite el tráfico HTTPS sobre el dominio, pero requiere pasos adicionales para su verificación. Consulte [Completar la validación de control de dominio para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https) para entender los pasos necesarios y las restricciones de tiempo que suponen esta opción.
 
         ![Configurar HTTPS](images/ssl-cert-options.png)
 

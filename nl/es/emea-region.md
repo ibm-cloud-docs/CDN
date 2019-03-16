@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-09"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # Región de EMEA
+{: #emea-region}
 
-## La región de Europa, Oriente Medio y África incluye:
+EMEA es una abreviatura de Europa, Oriente medio (Middle East) y África.
+
+## Región de Europa, Oriente medio y África
   * Albania
   * Algeria
   * Andorra

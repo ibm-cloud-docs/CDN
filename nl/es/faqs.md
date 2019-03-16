@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,9 +13,11 @@ lastupdated: "2018-12-05"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
-{: faq: data-hd-content-type=‘faq’}
+{:faq: data-hd-content-type='faq'}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Preguntas más frecuentes
+{: #faqs}
 
 ## ¿Qué es una red de entrega de contenido (CDN)?
 {: faq}
@@ -30,7 +32,7 @@ Una CDN logra su objetivo almacenando contenido en la memoria caché de servidor
 ## ¿Cómo se crea mi cuenta de servicio de IBM Cloud Content Delivery Network?
 {: faq}
 
-La cuenta se crea durante el proceso de pedido de la CDN. Si está creando una CDN desde el portal antiguo, cuando pulsa el botón **Pedir CDN**, bajo **Red -> Página CDN**, se crea su cuenta. Si está creando una CDN desde el portal IBM Cloud, al pulsar el botón **Crear**, bajo la página **Catálogo -> Red -> Content Delivery Network**, se crea su cuenta.
+La cuenta se crea durante el proceso de pedido de la CDN. Si está creando una CDN desde el portal antiguo, cuando pulsa el botón **Pedir CDN**, bajo **Red -> Página CDN**, se crea su cuenta. Si está creando una CDN desde el portal de {{site.data.keyword.cloud}}, al pulsar el botón **Crear**, bajo la página **Catálogo -> Red -> Content Delivery Network**, se crea su cuenta.
 
 ## ¿Qué debo hacer cuando mi CDN está en el estado de configuración de CNAME?
 {: faq}
@@ -53,7 +55,7 @@ Un registro CNAME típico se parecería a lo siguiente en la página de configur
 ## ¿Qué se me facturará por mi CDN?
 {: faq}
 
-Solo se le facturará por el ancho de banda utilizado por instancia de IBM Cloud Content Delivery Network. Si la CDN no utiliza ancho de banda, no incurrirá en gastos. Los precios del ancho de banda varían en función de la ubicación regional del servidor perimetral. Puede consultar los precios del ancho de banda por región geográfica en la sección [Cómo empezar](getting-started.html#cdn-bandwidth-pricing-rates-shown-in-usd-) para este servicio.
+Solo se le facturará por el ancho de banda utilizado por instancia de IBM Cloud Content Delivery Network. Si la CDN no utiliza ancho de banda, no incurrirá en gastos. Los precios del ancho de banda varían en función de la ubicación regional del servidor perimetral. Puede consultar los precios del ancho de banda por región geográfica en el [documento de precios](/docs/infrastructure/CDN?topic=CDN-pricing) para este servicio.
 
 ## ¿Cuándo se me facturará por mi CDN?
 {: faq}
@@ -83,7 +85,7 @@ Proporcionar una vía de acceso durante la creación de una CDN permite aislar l
 ## El estado de la CDN es Error. ¿Qué hago ahora?
 {: faq}
 
-Consulte las páginas [Resolución de problemas](troubleshooting.html#troubleshooting) u [Obtención de ayuda y soporte](getting-help.html#gettinghelp), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
+Consulte las páginas [Resolución de problemas](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) u [Obtención de ayuda y soporte](/docs/infrastructure/CDN/getting-help.html#gettinghelp), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
 
 ## ¿Dónde puedo encontrar el CNAME de mi CDN si no he proporcionado ninguno?
 {: faq}
@@ -117,12 +119,12 @@ Si omite la barra inclinada, por ejemplo, si utiliza `www.example.com/images` se
 ## ¿Cómo configuro mi red de entrega de contenido para IBM Cloud Object Storage (COS)?
 {: faq}
 
-[Aquí se incluye una guía de aprendizaje](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
+[Aquí se incluye una guía de aprendizaje](/docs/tutorials/static-files-cdn.html) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
 
 ## He recibido una notificación de que mi certificado de origen caduca. ¿Qué hago ahora?
 {: faq}
 
-Siga los pasos indicados en [este artículo](https://community.akamai.com/docs/DOC-7708) de Akamai.
+Siga los pasos indicados en [este artículo ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://community.akamai.com/docs/DOC-7708) de Akamai.
 
 ## ¿Qué seguridad se incluye con la solución IBM CDN con Akamai?
 {: faq}
@@ -137,7 +139,19 @@ Para el contenido que no puede colocarse en caché, o cualquier contenido que no
 ## ¿Cómo utilizo la consola de IBM Cloud para dar permiso a otros usuarios para crear o gestionar una CDN?
 {: faq}
 
-En la consola de IBM Cloud, el usuario maestro de la cuenta puede proporcionar a otros usuarios permiso para crear y gestionar una CDN. Desde la página principal de la consola de IBM Cloud, siga estos pasos para editar los permisos:
+El usuario maestro de la cuenta puede proporcionar a otros usuarios permiso para crear y gestionar una CDN.
+
+Desde la página principal de la consola de IBM Cloud, siga estos pasos para editar los permisos:
+ * Seleccione el separador **Gestionar**
+ * Seleccione **Acceso (IAM)**
+ * Pulse en el separador **Usuarios** del panel izquierdo
+ * Pulse en el **Usuario** deseado
+ * A continuación, seleccione el separador **Infraestructura clásica**
+ * Después, en el separador **Permisos**, expanda la categoría **Servicios**
+ * Seleccione **Gestionar cuenta de CDN**
+ * Pulse el botón **Guardar**
+
+Desde la página principal de la consola heredada, siga estos pasos para editar los permisos:
  * Seleccione el separador **Cuenta**
  * Seleccione **Usuarios -> Lista de usuarios**
  * Pulse en el **Nombre de usuario** que desee
@@ -145,7 +159,24 @@ En la consola de IBM Cloud, el usuario maestro de la cuenta puede proporcionar a
  * Seleccione el separador **Servicios**
  * Seleccione **Gestionar cuenta de CDN**
  * Pulse el botón **Editar permisos de portal**
- * Establezca los permisos que sean necesarios.
+
+## ¿Por qué el botón Crear no aparece o está inhabilitado en la página https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai?
+{: faq}
+
+Si es usted el usuario maestro de la cuenta, debe actualizarla para que aparezca el botón Crear habilitado en esta página. Desde la página de la consola de IBM Cloud, siga estos pasos como usuario maestro de la cuenta:
+ * Abra el panel de navegación izquierdo pulsando el icono de la `triple barra` en la esquina superior izquierda de la página
+ * Seleccione **Infraestructura clásica**
+ * Pulse el botón **Actualizar cuenta** y siga las instrucciones
+
+Si es usted uno de los usuarios secundarios de la cuenta, el usuario maestro debe darle el permiso para `Añadir/Actualizar servicios` para que el botón Crear aparezca habilitado en esta página. Desde la página de la consola de IBM Cloud, el usuario maestro de la cuenta tiene que seguir estos pasos para editar sus permisos:
+ * Seleccione el separador **Gestionar**
+ * Seleccione **Acceso (IAM)**
+ * Pulse en el separador **Usuarios** del panel izquierdo
+ * Pulse en el **Usuario** deseado
+ * A continuación, seleccione el separador **Infraestructura clásica**
+ * Después, en el separador **Permisos**, expanda la categoría **Cuenta**
+ * Seleccione **Añadir/Actualizar servicios**
+ * Pulse el botón **Guardar**
 
 ## ¿Por qué no puedo acceder a mi página web a través de mi CDN después de configurar Hotlink Protection con `proteccionType` `ALLOW`?
 {: faq}

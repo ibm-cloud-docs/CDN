@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # Contenedor de vías de acceso (origen)
+{: #path-origin-container}
+
 La recopilación `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` contiene los atributos utilizados por nuestras API de vía de acceso (origen). Cada una de las API de vía de acceso devuelve una recopilación de este tipo.
 
-clase `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**clase** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: ID exclusivo de la correlación a la cual pertenece esta vía de acceso de origen.  
 * `path`: vía de acceso relativa al dominio que puede utilizarse para alcanzar este origen.  

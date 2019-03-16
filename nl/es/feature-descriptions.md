@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-02"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,20 +13,22 @@ lastupdated: "2018-11-02"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Descripciones de características
+{: #feature-descriptions}
 
-En esta página se destacan muchas de las características incluidas con IBM Cloud CDN basado en Akamai.
+En esta página se destacan muchas de las características incluidas con {{site.data.keyword.cloud}} CDN basadas en Akamai.
 
 ## Soporte al origen de servidor de host
 
-IBM Cloud Content Delivery Network (CDN) se puede configurar para que sirva contenido desde un origen de servidor de host proporcionando el nombre de host del origen, protocolo, número de puerto y, opcionalmente, la vía de acceso desde la cual servir el contenido. La vía de acceso predeterminada es `/*`. El protocolo puede ser HTTP, HTTPS o ambos. Akamai solo admite determinados números de puerto. Consulte las [preguntas más frecuentes](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto/rangos soportados.
+IBM Cloud Content Delivery Network (CDN) se puede configurar para que sirva contenido desde un origen de servidor de host proporcionando el nombre de host del origen, protocolo, número de puerto y, opcionalmente, la vía de acceso desde la cual servir el contenido. La vía de acceso predeterminada es `/*`. El protocolo puede ser HTTP, HTTPS o ambos. Akamai solo admite determinados números de puerto. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto/rangos soportados.
 
 ## Soporte al origen de Object Storage
 
 IBM Cloud CDN se puede configurar para servir contenido desde un punto final de Object Storage proporcionando el punto final, el nombre de grupo, protocolo, y puerto. Opcionalmente, se puede especificar una lista de extensiones de archivo para que permitan únicamente el almacenamiento en caché de archivos con dichas extensiones. Todos los objetos del grupo tienen que configurarse con acceso de lectura público o anónimo.
 
-Esta guía de aprendizaje sobre [Cómo configurar IBM Cloud Object Storage con CDN](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) proporciona información más detallada.
+Esta guía de aprendizaje sobre [Cómo configurar IBM Cloud Object Storage con CDN](/docs/tutorials/static-files-cdn.html) proporciona información más detallada.
 
 ## Soporte para múltiples orígenes con distintas vías de acceso
 
@@ -60,9 +62,9 @@ El servidor perimetral utiliza la **cabecera de host** cuando se comunica con el
 
 ## Soporte de protocolo HTTPS
 
-La CDN se puede configurar para que utilice el protocolo HTTPS para servir el contenido de forma segura a los usuarios finales. Esta configuración requiere que se configure un certificado SSL como parte de la configuración de la CDN. Hay dos tipos de opciones de certificado SSL disponibles para HTTPS: [Certificado de comodín](about-https.html#wildcard-certificate-support) y [Certificado de nombre alternativo (SAN) validado](about-https.html#subject-alternate-name-san-certificate-support). Este tipo también se denominará _certificado SAN_ en esta documentación.
+La CDN se puede configurar para que utilice el protocolo HTTPS para servir el contenido de forma segura a los usuarios finales. Esta configuración requiere que se configure un certificado SSL como parte de la configuración de la CDN. Hay dos tipos de opciones de certificado SSL disponibles para HTTPS: [Certificado de comodín](/docs/infrastructure/CDN/about-https.html#wildcard-certificate-support) y [Certificado de nombre alternativo (SAN) validado](/docs/infrastructure/CDN/about-https.html#subject-alternate-name-san-certificate-support). Este tipo también se denominará _certificado SAN_ en esta documentación.
 
-El tipo de certificado SSL que se debe utilizar es una consideración importante para la CDN de HTTPS. La configuración por certificado comodín es rápida, pero tiene la desventaja de que sólo se puede acceder a la CDN por medio de un CNAME. El proceso de certificado SAN tarda de 4 a 8 horas en completarse, pero proporciona la capacidad de utilizar la CDN con su dominio de CDN (es decir, el nombre de host). El certificado SAN también requiere un paso adicional de [**Validación de control de dominio**](how-to-https.html) durante la configuración. No hay ningún coste asociado a utilizar ninguno de estos certificados. Consulte el [Documento de resolución de problemas](troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) para entender las implicaciones de la selección de un determinado tipo de certificado.
+El tipo de certificado SSL que se debe utilizar es una consideración importante para la CDN de HTTPS. La configuración por certificado comodín es rápida, pero tiene la desventaja de que sólo se puede acceder a la CDN por medio de un CNAME. El proceso de certificado SAN tarda de 4 a 8 horas en completarse, pero proporciona la capacidad de utilizar la CDN con su dominio de CDN (es decir, el nombre de host). El certificado SAN también requiere un paso adicional de [**Validación de control de dominio**](/docs/infrastructure/CDN/how-to-https.html) durante la configuración. No hay ningún coste asociado a utilizar ninguno de estos certificados. Consulte el [Documento de resolución de problemas](/docs/infrastructure/CDN/troubleshooting.html#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) para entender las implicaciones de la selección de un determinado tipo de certificado.
 
 El host de origen también debe tener su propio certificado SSL para el nombre de host de la CDN, y debe estar firmado por una autoridad certificadora (CA) reconocida.
 
@@ -135,4 +137,4 @@ Si el `ProtecType` tiene el valor `DENY`:
 especificados, la CDN **no servirá** el contenido solicitado.
 * De lo contrario, su CDN servirá el contenido.
 
-**NOTA**: esta característica está disponible actualmente solo a través de nuestra API. Puede consultar la [página de la API](api.html#api-for-hotlink-protection) para obtener más información.
+**NOTA**: esta característica está disponible actualmente solo a través de nuestra API. Puede consultar la [página de la API](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection) para obtener más información.
