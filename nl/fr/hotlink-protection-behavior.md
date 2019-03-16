@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-01"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,10 +15,11 @@ lastupdated: "2018-11-01"
 {:download: .download}
 
 # Classe de protection des liens dynamiques
+{: #hotlink-protection-class}
 
-La `classe SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` contient les attributs utilisés par vos API de protection des liens dynamiques. Cet objet est utilisé pour définir le comportement de protection des liens dynamiques pour un CDN en appelant l'API. Il est également renvoyé par les API de protection des liens dynamiques après un appel d'API réussi.
+La `classe SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` contient les attributs utilisés par vos API de protection des liens dynamiques. Cet objet est utilisé pour définir le comportement de protection des liens dynamiques pour un CDN en appelant l'API.  Il est également renvoyé par les API de protection des liens dynamiques après un appel d'API réussi.
 
-Classe `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` :
+**Classe** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` :
 
 * `protectionType` : indique d'autoriser ou de refuser l'accès au contenu lorsqu'une requête HTTP contient une valeur d'en-tête Referer qui correspond à l'un des termes dans les valeurs `refererValues`. L'inverse se produit lorsqu'aucune correspondance n'est trouvée.
   * Valeurs possibles de protectionType :
@@ -41,7 +42,7 @@ Classe `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` :
     * ` `
       * refererValues vide
     * `domain1.exa}mple.com domain1.example.com`
-      * Utilisation d'un ou plusieurs caractères non spécifié(s) dans [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2)
+      * Utilisation d'un ou plusieurs caractères non spécifié(s) dans [RFC-3986 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tools.ietf.org/html/rfc3986#section-2)
     * `www.example.com/path&`
       * Le caractères ` & ` n'est pas pris en charge
     * `www.example.org http://www.example.com`

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,9 +13,11 @@ lastupdated: "2018-12-05"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
-{: faq: data-hd-content-type=‘faq’}
+{:faq: data-hd-content-type='faq'}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # FAQ (Foire aux questions)
+{: #faqs}
 
 ## Qu'est-ce-qu'un réseau de distribution de contenu (CDN)?
 {: faq}
@@ -30,7 +32,7 @@ L'objectif d'un CDN est de mettre en cache du contenu Web sur des serveurs d'éq
 ## Comment mon compte de service IBM Cloud Content Delivery Network est-il créé ?
 {: faq}
 
-Votre compte est créé lors du processus de commande du CDN. Si vous créez un CDN à partir du portail existant, lorsque vous cliquez sur le bouton **Commander CDN**, sous la page **Réseau -> Réseau de diffusion de contenu (CDN)**, votre compte est créé. Si vous créez un CDN à partir du portail IBM Cloud, lorsque vous cliquez sur le bouton **Créer**, sous la page **Catalogue -> Réseau -> Réseau de diffusion de contenu (CDN)**, votre compte est créé.
+Votre compte est créé lors du processus de commande du CDN. Si vous créez un CDN à partir du portail existant, lorsque vous cliquez sur le bouton **Commander CDN**, sous la page **Réseau -> Réseau de diffusion de contenu (CDN)**, votre compte est créé. Si vous créez un CDN à partir du portail {{site.data.keyword.cloud}}, lorsque vous cliquez sur le bouton **Créer** sous la page **Catalogue -> Réseau -> Réseau de diffusion de contenu (CDN)**, votre compte est créé.
 
 ## Que dois-je faire lorsque mon CDN a pour statut CNAME Configuration ?
 {: faq}
@@ -53,7 +55,7 @@ Un enregistrement CNAME standard se présente comme suit sur la page de configur
 ## Quels frais me seront facturés pour mon CDN ?
 {: faq}
 
-Vous n'êtes facturé que pour la bande passante utilisée par l'instance IBM Cloud Content Delivery Network. Si votre CDN n'utilise pas de bande passante, aucun frais ne vous sera facturé. Le prix de la bande passante est variable en fonction de la zone géographique où se trouve le serveur d'équilibrage des charges. Vous pouvez voir le prix de la bande passante par région géographique dans la section [Mise en route](getting-started.html#cdn-bandwidth-pricing-rates-shown-in-usd-) de ce service.
+Vous n'êtes facturé que pour la bande passante utilisée par l'instance IBM Cloud Content Delivery Network. Si votre CDN n'utilise pas de bande passante, aucun frais ne vous sera facturé. Le prix de la bande passante est variable en fonction de la zone géographique où se trouve le serveur d'équilibrage des charges. Vous pouvez voir le prix de la bande passante par région géographique dans le [document de tarification](/docs/infrastructure/CDN?topic=CDN-pricing) de ce service.
 
 ## Quand serais-je facturé pour mon CDN ?
 {: faq}
@@ -83,7 +85,7 @@ Si vous fournissez un chemin d'accès lors de la création de votre CDN, celui-c
 ## Mon CDN indique un état erreur. Que dois-je faire maintenant ?
 {: faq}
 
-Consultez les pages [Traitement des incidents](troubleshooting.html#troubleshooting) ou [Aide et support](getting-help.html#gettinghelp), ou ouvrez un ticket sur le [portail client![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://control.softlayer.com/).
+Consultez les pages [Traitement des incidents](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) ou [Aide et support](/docs/infrastructure/CDN/getting-help.html#gettinghelp), ou ouvrez un ticket sur le [portail client![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://control.softlayer.com/).
 
 ## Où puis-je trouver le CNAME de mon CDN si je n'en ai pas fourni ?
 {: faq}
@@ -117,12 +119,12 @@ Si vous oubliez la barre oblique, en tapant par exemple `www.example.com/images`
 ## Comment puis-je configurer mon réseau de distribution de contenu pour le stockage d'objets IBM Cloud (COS) ?
 {: faq}
 
-[Voir le didacticiel](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn) sur la création d'un réseau de distribution de contenu (CDN) pour le stockage d'objets IBM Cloud.
+[Voir le didacticiel](/docs/tutorials/static-files-cdn.html) sur la création d'un réseau de distribution de contenu (CDN) pour le stockage d'objets IBM Cloud.
 
 ## J'ai reçu une notification indiquant que mon certificat d'origine est arrivé à expiration. Que dois-je faire maintenant ?
 {: faq}
 
-Suivez les étapes décrites dans [cet article](https://community.akamai.com/docs/DOC-7708) d'Akamai.
+Suivez les étapes décrites dans [cet article ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://community.akamai.com/docs/DOC-7708) d'Akamai.
 
 ## Quelle sécurité offre la solution IBM CDN avec Akamai ?
 {: faq}
@@ -137,7 +139,19 @@ Pour un contenu qui ne peut pas être mis en cache ou pour n'importe quel conten
 ## Comment puis-je utiliser la console IBM Cloud pour autoriser d'autres utilisateurs à créer ou gérer un CDN ?
 {: faq}
 
-Dans la console IBM Cloud, l'utilisateur principal du compte peut fournir aux autres utilisateurs les droits leur permettant de créer et gérer un CDN. Sur la page principale de la console IBM Cloud, procédez comme suit pour éditer les droits :
+L'utilisateur principal du compte peut fournir aux autres utilisateurs les droits leur permettant de créer et gérer un CDN.
+
+Sur la page principale de la console IBM Cloud, procédez comme suit pour éditer des droits :
+ * Sélectionnez l'onglet **Gérer**
+ * Sélectionnez **Accès (IAM)**
+ * Cliquez sur l'onglet **Utilisateurs** dans le panneau de gauche
+ * Cliquez sur l'**Utilisateur** concerné
+ * Puis sélectionnez l'onglet **Infrastructure classique**
+ * Ensuite, sous l'onglet **Droits**, développez la catégorie **Services**
+ * Sélectionnez **Gérer un compte CDN**.
+ * Cliquez sur le bouton **Sauvegarder**
+
+Sur la page principale de la console existante, procédez comme suit pour éditer des droits :
  * Sélectionnez l'onglet **Compte**.
  * Sélectionnez **Utilisateurs -> Liste d'utilisateurs**.
  * Cliquez sur le **nom d'utilisateur** souhaité.
@@ -145,7 +159,24 @@ Dans la console IBM Cloud, l'utilisateur principal du compte peut fournir aux au
  * Sélectionnez l'onglet **Services**.
  * Sélectionnez **Gérer un compte CDN**.
  * Cliquez sur le bouton **Modifier droits pour le portail**.
- * Définissez les droits nécessaires.
+
+## Pourquoi le bouton Créer est-il absent ou désactivé sur la page https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai ?
+{: faq}
+
+Si vous êtes l'utilisateur principal du compte, vous devez mettre à niveau le compte pour que le bouton Créer s'affiche ou soit activé sur cette page. Sur la page de la console IBM Cloud, effectuez les opérations suivantes en tant qu'utilisateur principal du compte :
+ * Ouvrez le panneau de navigation de gauche en cliquant sur l'icône `triple barre` dans l'angle supérieur gauche de la page Web
+ * Sélectionnez **Infrastructure classique**
+ * Cliquez sur le bouton **Mise à niveau du compte** et suivez les instructions
+
+Si vous êtes l'un des utilisateurs secondaires du compte, l'utilisateur principal doit vous accorder le droit `Ajouter/mettre à niveau des services` pour que le bouton Créer s'affiche ou soit activé sur cet page. Sur la page de la console IBM Cloud, l'utilisateur principa du compte doit effectuer les opérations suivantes pour éditer vos droits :
+ * Sélectionner l'onglet **Gérer**
+ * Sélectionner **Accès (IAM)**
+ * Cliquer sur l'onglet **Utilisateurs** dans le panneau de gauche
+ * Cliquer sur l'**Utilisateur** concerné
+ * Puis sélectionner l'onglet **Infrastructure classique**
+ * Ensuite, sous l'onglet **Droits**, développer la catégorie **Account**
+ * Sélectionner **Ajouter/mettre à niveau des services**
+ * Cliquer sur le bouton **Sauvegarder**
 
 ## Pourquoi ne puis-je pas accéder à ma page Web via mon CDN après avoir configuré la protection des liens dynamiques avec `protectionType` `ALLOW` ?
 {: faq}

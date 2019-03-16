@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-21"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-11-21"
 # Vidéo : le réseau en tant que service
 {: #naas-video}
 
-Les services d'IBM Cloud Network, notamment l'équilibrage des charges, les groupes de sécurité et le CDN, vous aident à créer des applications natives dans le Cloud tout en bénéficiant d'une sécurité, d'une performance et d'une résilience accrues. Dans cette démonstration, vous allez apprendre à utiliser ces services pour créer une application Web simple à trois niveaux en quelques clics.
+Les services d'{{site.data.keyword.cloud}} Network, notamment l'équilibrage des charges, les groupes de sécurité et le CDN, vous aident à créer des applications natives dans le Cloud tout en bénéficiant d'une sécurité, d'une performance et d'une résilience accrues. Dans cette démonstration, vous allez apprendre à utiliser ces services pour créer une application Web simple à trois niveaux en quelques clics.
 
 <p>
   <div class="embed-responsive embed-responsive-16by9">

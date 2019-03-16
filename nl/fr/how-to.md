@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-28"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -13,8 +13,10 @@ lastupdated: "2018-11-28"
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Gestion de votre CDN
+{: #manage-your-cdn}
 
 Ce document décrit les tâches courantes de gestion de votre CDN.
 
@@ -78,11 +80,11 @@ Sélectionnez soit **Server**, soit **Object Storage**.
 
   * Les options d'**optimisation** et de **clé de cache** sont les mêmes pour la configuration du serveur et du stockage d'objet.
 
-    * Sélectionnez les options d'**optimisation** dans le menu déroulant. La **livraison Web générale** est l'option par défaut, mais vous pouvez aussi sélectionner les **optimisations de fichiers volumineux** ou la **vidéo à la demande**. L'optimisation de la **livraison Web générale** permet au CDN de servir un contenu de jusqu'à 1,8 Go, alors que l'optimisation des **fichiers volumineux** permet des téléchargements de fichiers de 1,8 Go à 320 Go. La **vidéo à la demande** optimise votre CDN pour la livraison de formats de diffusion en flux segmentés. Pour tout renseignement additionnel, voir les descriptions des fonctions [Optimisation des fichiers volumineux](feature-descriptions.html#large-file-optimization) et [Vidéo à la demande](feature-descriptions.html#video-on-demand).
+    * Sélectionnez les options d'**optimisation** dans le menu déroulant. La **livraison Web générale** est l'option par défaut, mais vous pouvez aussi sélectionner les **optimisations de fichiers volumineux** ou la **vidéo à la demande**. L'optimisation de la **livraison Web générale** permet au CDN de servir un contenu de jusqu'à 1,8 Go, alors que l'optimisation des **fichiers volumineux** permet des téléchargements de fichiers de 1,8 Go à 320 Go. La **vidéo à la demande** optimise votre CDN pour la livraison de formats de diffusion en flux segmentés. Pour tout renseignement additionnel, voir les descriptions des fonctions [Optimisation des fichiers volumineux](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) et [Vidéo à la demande](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand).
 
         ![Options de configuration des performances](images/performance-config-options.png)
 
-    * Sélectionnez les options de **clé de cache** dans le menu déroulant. L'option par défaut est **Include-all**. Si vous sélectionnez **Include specified** ou **Ignore specified**, vous **devez** entrer des chaînes de requête à inclure ou à ignorer, séparées par un espace. Par exemple, entrez `uuid=123456` pour une chaîne de requête unique, ou `uuid=123456 issue=important` pour deux chaînes de requête.  Pour en savoir plus sur la fonction [Cache Key Query Args](feature-descriptions.html#cache-key-query-args), consultez la description de la fonction.
+    * Sélectionnez les options de **clé de cache** dans le menu déroulant. L'option par défaut est **Include-all**. Si vous sélectionnez **Include specified** ou **Ignore specified**, vous **devez** entrer des chaînes de requête à inclure ou à ignorer, séparées par un espace. Par exemple, entrez `uuid=123456` pour une chaîne de requête unique, ou `uuid=123456 issue=important` pour deux chaînes de requête.  Pour en savoir plus sur la fonction [Cache Key Query Args](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args), consultez la description de la fonction.
 
         ![Options de clés de cache](images/cache-key-options.png)
 
@@ -116,7 +118,7 @@ Sélectionnez l'onglet **Purge**.
 
 **Etape 3 :**
 
-Entrez le chemin d'accès du fichier à purger au format UNIX, puis cliquez sur le bouton **Purge**. Pour l'instant, seule la purge d'un fichier unique est prise en charge. Consultez la page [Règles et conventions de dénomination](rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) pour plus de détails sur la syntaxe autorisée pour le chemin de purge.
+Entrez le chemin d'accès du fichier à purger au format UNIX, puis cliquez sur le bouton **Purge**. Pour l'instant, seule la purge d'un fichier unique est prise en charge. Consultez la page [Règles et conventions de dénomination](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) pour plus de détails sur la syntaxe autorisée pour le chemin de purge.
 
 **Etape 4 :**
 
@@ -171,7 +173,7 @@ Mettez à jour les détails relatifs aux zones **Origin** ou **Other Options** l
 
 Pour pouvoir utiliser des objets stockés dans IBM Cloud Object Storage, définissez la propriété "acl" (à savoir, la liste de contrôle d'accès) pour chacun des objets contenus dans votre compartiment sur la valeur d'accès "public-read".
 
-Pour installer tous les clients ou outils nécessaires, voir la section [IBM Cloud Object Storage Developer] (https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Ce guide suppose que vous avez installé l'interface de ligne de commande AWS officielle, compatible avec l'API IBM Cloud Object Storage S3.
+Pour installer tous les clients ou outils nécessaires, voir la [section IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Ce guide suppose que vous avez installé l'interface de ligne de commande AWS officielle, compatible avec l'API IBM Cloud Object Storage S3.
 
 L'exemple de code ci-dessous indique comment configurer l'accès "public-read" pour tous les objets de votre compartiment à l'aide de l'interface de ligne de commande.
 

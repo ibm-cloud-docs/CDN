@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-12"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -16,8 +16,9 @@ lastupdated: "2018-11-12"
 
 
 # Comment diffuser de la vidéo à la demande avec CDN
+{: #how-to-serve-video-on-demand-with-cdn}
 
-Dans ce guide, nous examinerons un exemple d'optimisation d'IBM Cloud CDN afin de diffuser du contenu `.mp4` via **HLS** en vidéo à la demande sur un navigateur à partir d'un serveur d'origine Linux-Nginx. 
+Dans ce guide, nous examinerons un exemple d'optimisation d'{{site.data.keyword.cloud}} CDN afin de diffuser du contenu `.mp4` via **HLS** en vidéo à la demande sur un navigateur à partir d'un serveur d'origine Linux-Nginx. 
 
 ## Introduction
 
@@ -42,7 +43,7 @@ Procurons-nous d'abord `ffmpeg`.
 $ sudo apt-get -y install ffmpeg
 ```
 
-HLS travaille avec deux types de fichier : `.m3u8` et `.ts`. Vous pouvez considérer le fichier `.m3u8` comme la "liste de lecture". Lorsque commence la diffusion vidéo, ce fichier est le premier extrait. La liste de lecture indique ensuite au lecteur vidéo les fragments vidéo qu'il doit extraire et fournit d'autres données sur la manière de lire avec succès le contenu diffusé. Les fichiers `.ts` sont les "fragments" vidéo. Ces fragments sont extraits et lus par le lecteur vidéo selon les informations fournies dans la "liste de lecture". 
+HLS travaille avec deux types de fichier : `.m3u8` et `.ts`. Vous pouvez considérer le fichier `.m3u8` comme la "liste de lecture". Lorsque commence la diffusion vidéo, ce fichier est le premier extrait.  La liste de lecture indique ensuite au lecteur vidéo les fragments vidéo qu'il doit extraire et fournit d'autres données sur la manière de lire avec succès le contenu diffusé. Les fichiers `.ts` sont les "fragments" vidéo. Ces fragments sont extraits et lus par le lecteur vidéo selon les informations fournies dans la "liste de lecture".
 
 Maintenant, vérifions et examinons le format, le débit binaire et d'autres informations, concernant les flux vidéo et audio de votre vidéo `.mp4` source.
 
@@ -79,13 +80,13 @@ Voici le détail de ce que cette commande a effectué :
 | -b:a 128k | Définition du débit binaire audio sur 128000 octets par seconde pour la sortie. |
 | -c:v h264 | Utilisation du codec vidéo `h.264` pour la sortie. |
 | -profile:v main | Utilisation du profil de format "main" du codec sélectionné pour la plus large prise en charge de périphériques. |
-| -crf 23 | Tentative de conservation de la qualité vidéo avec des tailles de fichier et débits binaires variables. <br/>  Plus la valeur de CRF est élevée, plus la qualité est bonne et la taille de fichier élevée. |
-| -g 61 -keyint_min 61 | Définition d'un maximum et d'un minimum.<br/> Avec une fréquence des images source dans l'exemple de 30,30, une image clé devrait être  <br/> insérée toutes les 2 secondes (61 trames). |
+| -crf 23 | Tentative de conservation de la qualité vidéo avec des tailles de fichier et débits binaires variables.<br/>  Plus la valeur de CRF est élevée, plus la qualité est bonne et la taille de fichier élevée. |
+| -g 61 -keyint_min 61 | Définition d'un maximum et d'un minimum.<br/> Avec une fréquence des images source dans l'exemple de 30,30, une image clé devrait être <br/> insérée toutes les 2 secondes (61 trames). |
 | -sc_threshold 0 | Désactivation de la détection des scènes par `ffmpeg`.<br/> Evite un second traitement qui pourrait insérer des images clés superflues dans la sortie. |
 | -b:v 5300k | Définition du débit binaire cible du flux vidéo de sortie à 5300000 octets/seconde. |
 | -maxrate 5300k | Limitation du débit binaire vidéo de sortie maximum au niveau<br/> du décodeur à 5300000 octets/seconde, au cas où il varie. |
 | -bufsize 10600k | Définition de la taille de la mémoire tampon du décodeur vidéo `ffmpeg` sur 10600000 octets.<br/>  Avec un débit binaire de 5300k, le décodeur `ffmpeg` devrait vérifier et tenter de réajuster le <br/> débit binaire de sortie au niveau du débit binaire cible toutes les 2 secondes de vidéo. |
-| -hls_time 6 | Tentative de ciblage de la longueur de chaque fragment vidéo en sortie à 6 secondes.<br/> Accumule des trames pour au moins 6 secondes de vidéo, puis arrête <br/> de séparer un fragment vidéo lorsqu'il arrive à l'image clé suivante. |
+| -hls_time 6 | Tentative de ciblage de la longueur de chaque fragment vidéo en sortie à 6 secondes.<br/> Accumule des trames pour au moins 6 secondes de vidéo, puis<br/> arrête de séparer un fragment vidéo lorsqu'il arrive à l'image clé suivante. |
 | -hls_playlist_type vod | Préparation du fichier de liste de lecture `.m3u8` de sortie pour la vidéo à la demande (VOD). |
 | test-video.m3u8 | Nom du fichier de liste de lecture/manifeste de sortie `test-video.m3u8`.<br/> Par conséquent, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., et noms similaires,<br/> seront les noms de fragment vidéo par défaut.|
 
@@ -99,7 +100,7 @@ Par exemple :
 
 Dans ce guide, seul le flux audio 1 et le flux vidéo 1 sont indiquées dans l'exemple `test-video.mp4`. Par conséquent, la diversité n'est pas actuellement une préoccupation.
 
-Dans l'avenir, vous pouvez vous attendre à voir un certain nombre de fichiers `.ts`. En outre, vous verrez des fichiers `.m3u8` qui ressembleront sensiblement aux suivants :
+Dans l'avenir, vous pouvez vous attendre à voir un certain nombre de fichiers `.ts`.  En outre, vous verrez des fichiers `.m3u8` qui ressembleront sensiblement aux suivants :
 
 ```
 $ cat test-video.m3u8 
@@ -212,9 +213,9 @@ Toutefois, d'autres navigateurs sur des périphériques de bureau peuvent égale
 ## Configuration du CDN
 Connectons maintenant le serveur d'origine au CDN afin de diffuser du contenu dans le monde entier avec débit optimal, une latence réduite et de meilleures performances.
 
-Tout d'abord, [commandez](how-to-order.html#order-a-cdn) un CDN.
+Tout d'abord, [commandez](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) un CDN.
 
-Ensuite, [configurez votre CDN](how-to.html#updating-cdn-configuration-details) ou [ajoutez un serveur d'origine](how-to.html#adding-origin-path-details).
+Ensuite, [configurez votre CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) ou [ajoutez un serveur d'origine](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
 
 Enfin, sous `Optimize For`, sélectionnez `Video on demand optimization`.
 
