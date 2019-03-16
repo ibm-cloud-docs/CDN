@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-13"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,8 +15,9 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # 故障诊断
+{: #troubleshooting}
 
-在本文档中，您将找到多种方法来对 CDN 进行故障诊断。如果您需要联系支持人员，请务必提供您的 CDN 引用号。
+在本文档中，您将找到多种方法来对 {{site.data.keyword.cloud}} CDN 进行故障诊断。如果您需要联系支持人员，请务必提供您的 CDN 引用号。
 
 ## 如何知道 CDN 在正常运行？
 运行以下 `curl` 命令，并将 `http://your.cdn.domain/uri` 替换为您的 CDN 上的相应文件路径：
@@ -60,12 +61,12 @@ lastupdated: "2018-07-13"
 除了 503 错误，您可能还会看到类似于以下内容的消息：`处理请求时发生错误。引用号 30.3598c0ba.1521745157.87201fff`（实际引用号可能会有所不同）。在本例中，错误字符串中的引用号解释为 SSL 握手失败。
 
 要更正此问题，请确保源服务器的 SSL 证书符合以下条件：
-  * 证书**必须**是由 Akamai 信任的认证机构颁发的。您可以在[此链接](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)中查看 Akamai 可信证书列表
+  * 证书**必须**是由 Akamai 信任的认证机构颁发的。您可以在[此链接 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates) 中查看 Akamai 可信证书列表
   * 证书**必须**与 CDN 上配置的*主机头*相匹配
   * 证书**不能**为自签名证书
   * 证书**不能**到期
 
-如果使用上述条件验证了源的证书链，但仍然遇到相同的错误，请参阅[获取帮助和支持](getting-help.html#gettinghelp)页面。请记下参考错误字符串，并在与我们进行的任何通信中包含此字符串。
+如果使用上述条件验证了源的证书链，但仍然遇到相同的错误，请参阅[获取帮助和支持](/docs/infrastructure/CDN/getting-help.html#gettinghelp)页面。请记下参考错误字符串，并在与我们进行的任何通信中包含此字符串。
 
 ## 源为 IBM Cloud Object Storage (COS) 时，我的主机名不会在浏览器上装入。
 

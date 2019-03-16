@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-02"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,8 +14,9 @@ lastupdated: "2018-10-02"
 {:tip: .tip}
 
 # 其他资源
+{: #additional-resources}
 
-这些资源由 IBM 及我们的一些合作伙伴和客户创建。
+这些资源由 {{site.data.keyword.cloud}} 及我们的一些合作伙伴和客户创建。
 
 ## IBM 技术博客（仅限内部）
 

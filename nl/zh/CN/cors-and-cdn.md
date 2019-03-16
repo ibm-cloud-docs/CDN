@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-11-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-11-26"
 {:download: .download}
 
 # 通过 CDN 的 CORS 和 CORS 请求
+{ #cors-and-cors-requests-through-your-cdn}
 
 跨源资源共享 (CORS) 是浏览器使用的一种机制，主要用于验证从不同源访问内容的权限。
 
@@ -23,7 +24,7 @@ lastupdated: "2018-11-26"
 
 只有在应用程序具有 HTTP 客户机或本身就是 HTTP 客户机，并且该应用程序实现 CORS 时，才存在此安全性机制。几乎所有的现代浏览器（如 Chrome、Firefox 和 Safari）都实现 CORS。
 
-再次重申一下，**针对 CORS 的源并非必须跟 CDN 源相同**。CORS 中的源是由 URI 方案、域以及任意可能的端口号定义的。例如 https://www.example.com:1443 和 http://www.example.com 是不同的源。此外，CDN 还可以被视为来自浏览器透视图的 CORS 源。
+再次重申一下，**针对 CORS 的源并非必须跟 CDN 源相同**。CORS 中的源是由 URI 方案、域以及任意可能的端口号定义的。例如，`https://www.example.com:1443` 是不同于 `http://www.example.com` 的源。此外，CDN 还可以被视为来自浏览器透视图的 CORS 源。
 
 ## CORS 的工作原理
 
@@ -34,9 +35,9 @@ CORS 可以处理两种类型的请求：_简单请求_和_预检请求_，这�
 
 ![cors-simple](/images/cors-simple.png)
 
-通过 CORS 的[简单请求](https://www.w3.org/TR/cors/#simple-cross-origin-request)是来自某个源的 Web 页面的 `GET` 或者 `POST` 请求，该源尝试获取对资源的另一个源的 URL 的访问权。
+通过 CORS 的[简单请求 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/cors/#simple-cross-origin-request) 是来自某个源的 Web 页面的 `GET` 或 `POST` 请求，该源尝试获取对资源的另一个源的 URL 的访问权。
 
-在发出此类请求时，浏览器会自动设置 CORS 请求头。主要是在 `Origin` HTTP 头中自动设置发出请求的 Web 页面的源。CORS 请求中也可能包含一组[特定的标准 HTTP 头](https://www.w3.org/TR/cors/#simple-header)，同时在浏览器透视图中将其状态保持为简单 CORS 请求。
+在发出此类请求时，浏览器会自动设置 CORS 请求头。主要是在 `Origin` HTTP 头中自动设置发出请求的 Web 页面的源。CORS 请求中也可能包含一组[特定的标准 HTTP 头 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/cors/#simple-header)，同时在浏览器透视图中将其状态保持为简单 CORS 请求。
 
 收到 CORS 请求的服务器将处理请求，而且可能会（也可能不会）将一组 CORS 响应头以及所请求的内容发送回浏览器。这些 CORS 响应头中包含的值指定是否允许当前 Web 页面访问那些资源，发送的头是不是该请求可接受的，等等。
 
@@ -51,7 +52,7 @@ CORS 可以处理两种类型的请求：_简单请求_和_预检请求_，这�
 
 ![cors-after-preflight](/images/cors-after-preflight.png)
 
-有关浏览器与不同于请求 Web 页面的 CORS 源之间更复杂的 CORS 通信，要在进行实际资源访问之前先使用[预检请求](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0)。在特定情况下，可能需要预检 CORS 请求，如不是 `GET` 或 `POST` 方法的 HTTP 方法，或将非标准 HTTP 头用于该请求（即使是 `GET` 或 `POST` 请求），等等。
+有关浏览器及与请求 Web 页面不同的 CORS 源之间更复杂的 CORS 通信，需要在进行实际资源访问之前先发出[预检请求 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0)。在特定情况下，可能需要预检 CORS 请求，如不是 `GET` 或 `POST` 方法的 HTTP 方法，或将非标准 HTTP 头用于该请求（即使是 `GET` 或 `POST` 请求），等等。
 
 如果需要预检请求，下面是具体操作方法：
 
@@ -127,7 +128,7 @@ http {
 }
 ```
 
-一般情况下，当浏览器在服务器的 CORS 响应头中看到 `Access-Control-Allow-Origin: *` 时，根据[关于通配符值的 w3 规范](https://www.w3.org/TR/cors/#security)，应自由加载内容。但不是所有的浏览器都支持 `Access-Control-Allow-Origin: *`。
+一般情况下，当浏览器在服务器的 CORS 响应头中看到 `Access-Control-Allow-Origin: *` 时，应根据[关于通配符值的 w3 规范 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/cors/#security) 自由装入内容。但不是所有的浏览器都支持 `Access-Control-Allow-Origin: *`。
 
 如果服务器必须支持来自多个 Web 页面的访问，那么将从不同的源提供每个页面，`Access-Control-Allow-Origin` 的单个源值应按照请求动态生成。下面是 Nginx 服务器此类用例的基本示例：
 
@@ -185,17 +186,17 @@ http {
 }
 ```
 
-在前面的示例中，`map` 伪指令用于避免过度使用 `if` Nginx 语句。现在，当向此服务器发出 CORS 请求并匹配 URI 路径，当从“http://www.example.com”、“https://cdn.example.com”、“http://dev.example.com”等请求内容时，服务器会以包含“http://www.example.com”、“https://cdn.example.com”或“http://dev.example.com”等值的 `Access-Control-Allow-Origin` 头响应。
+在前面的示例中，`map` 伪指令用于避免过度使用 `if` Nginx 语句。现在，向此服务器发出 CORS 请求并且该请求匹配该 URI 路径时，如果是向 `http://www.example.com`、`https://cdn.example.com`、`http://dev.example.com` 等请求内容，服务器会以包含 `http://www.example.com`、`https://cdn.example.com` 或 `http://dev.example.com` 等值的 `Access-Control-Allow-Origin` 头进行响应。
 
 ## 如何针对 CDN 设置 CORS
 ![cors-through-cdn](/images/cors-through-cdn.png)
 CDN 对源的 CORS 设置基本是透明的，所以不需要特定的 CDN 配置。如果 CDN 边缘找不到针对某些内容的第一个请求的高速缓存的响应，那么会将请求转发给源主机。如果源主机设置为处理 CORS 请求，并且此请求有 `Origin` 头，那么它应以 CORS 头 `Access-Control-Allow-Origin` 和关联的值来返回响应给边缘服务器。总体响应（包括该头和值）将高速缓存在 CDN 中。在相同 URI 路径中针对该对象的任何后续请求，都会从高速缓存提供服务，并且包含最初从源接收的 `Access-Control-Allow-Origin` 头值。
 
-## 故障诊断
+## 关于 CORS 和 CORS 请求的故障诊断信息
 如果源服务器进行了针对 CORS 的设置，但看不到返回给浏览器请求的 `Access-Control-Allow-Origin` 头，那么高速缓存在 CDN 中的响应头可能会是针对请求中没有源头的请求的。CDN 高速缓存来自源主机的响应头。但高速缓存的头所基于的请求是触发请求到源的请求。在这种情况下，响应头中可能不包含 CORS 头。请使用 CDN 的清除功能清除 CDN 中的针对该路径的高速缓存，然后从客户机重试该请求。
 
 来自源服务器的 `Vary` 响应头也可能导致在通过 CDN 访存内容时发生异常行为。除了一个非常特定的异常以外，如果以 `Vary` 头响应，那么CDN 不会高速缓存来自源服务器的内容（及其关联的响应）。目前我们的服务将 Vary 头从源中除去，那么如果属于以下某种文件类型，就会呈现可高速缓存的对象：`aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, zip, webp, jxr, hdp, wdp, pict, tif, tiff, mid, midi, ttf, eot, woff, otf, svg, svgz, jar, woff2, json`。如果要高速缓存的对象不属于这些文件类型，请将 `Vary` 头从源服务器的针对该对象的响应中除去，然后在使用 CDN 的清除功能之后重试。
 
 ## 更多信息
-* https://www.w3.org/TR/cors/
-* https://w3c.github.io/webappsec-cors-for-developers/
+* [https://www.w3.org/TR/cors/ ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/cors/)
+* [https://w3c.github.io/webappsec-cors-for-developers/ ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://w3c.github.io/webappsec-cors-for-developers/)

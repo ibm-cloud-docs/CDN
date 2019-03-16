@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-08-29"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,6 +15,7 @@ lastupdated: "2018-08-29"
 {:download: .download}
 
 # 规则和命名约定
+{ #rules-and-naming-conventions}
 
 ## CDN 主机名的规则是什么？
 CDN `主机名`输入字符串**必须**符合以下规则：

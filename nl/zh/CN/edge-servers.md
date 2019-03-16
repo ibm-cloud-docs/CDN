@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-09-05"
 {:tip: .tip}
 
 # 边缘服务器列表
+{: #list-of-edge-servers}
 
 下面是具有我们将使用 Akamai 的 POP 的国家/地区列表：
 

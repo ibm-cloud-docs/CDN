@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # Geoblocking 类
+{: #geoblocking-class}
+
 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 类包含地 Geo-blocking API 利用的属性。每个 Geo-blocking API 都会返回此类型的对象，并用于在 CDN 上设置地理访问控制行为。
 
-`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 类：
+`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` **类**：
 
 * `accessType`：指定在给定区域，规则应该为 `ALLOW` 还是 `DENY`。
 * `regionType`：应用地理锁定规则的区域类型 - `CONTINENT` 或 `COUNTRY_OR_REGION`

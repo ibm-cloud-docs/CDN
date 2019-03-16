@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,9 +15,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # 路径（源）容器
+{: #path-origin-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 集合包含（源）路径 API 利用的属性。每一个路径 API 都会返回此类型的集合。
 
-`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类  
+`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` **类**  
 
 * `mappingUniqueId`：此源路径所属的映射的唯一标识  
 * `path`：可用于访问此源的域的相对路径。  
