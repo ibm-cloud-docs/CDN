@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
@@ -15,12 +15,13 @@ lastupdated: "2018-07-13"
 {:download: .download}
 
 # 使用 CDN API 的程式碼範例
+{: #code-examples-using-the-cdn-api}
 
 本文件包含範例 API 呼叫以及眾多 CDN API 的產生輸出。
 
 ## 所有 API 呼叫都需要的一般步驟
 
-必要條件是從 https://github.com/softlayer/softlayer-api-php-client 下載並安裝 Soap Client
+必要條件是從 [https://github.com/softlayer/softlayer-api-php-client ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/softlayer/softlayer-api-php-client) 下載並安裝 Soap Client
 
   * 您需要透過 `vendor/autoload` 來取得 SoapClient 的存取權。此路徑相對於從中執行 Script 的位置，而且可能需要適當地修改。在 PHP 中，此陳述式看起來如下：`require_once './../vendor/autoload.php';`
 
@@ -28,7 +29,7 @@ lastupdated: "2018-07-13"
       require_once __DIR__.'/vendor/autoload.php';
       ```
 
-  * 所有 API 呼叫都會使用您的使用者名稱及 apiKey 進行鑑別。您可以在[入門](https://softlayer.github.io/article/getting-started/)頁面的「取得 API 金鑰」下，找到如何產生 apiKey 的相關資訊。
+  * 所有 API 呼叫都會使用您的使用者名稱及 apiKey 進行鑑別。您可以在 [Softlayer API 起始頁 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://softlayer.github.io/article/getting-started/) 的「取得 API 金鑰」下，找到如何產生 apiKey 的相關資訊。
 
       ```php
       $apiUsername = '<Your username>' ;
@@ -72,7 +73,7 @@ Array
 
 ## 驗證順序的程式碼範例
 
-在下訂單之前，不需要呼叫 `verifyOrder`，但建議您呼叫它。它可以用來驗證後續的 `placeOrder` 呼叫將成功。您可以在 [SoftLayer API 文件](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/)中，找到 `verifyOrder` 的相關資訊。
+在下訂單之前，不需要呼叫 `verifyOrder`，但建議您呼叫它。它可以用來驗證後續的 `placeOrder` 呼叫將成功。您可以在 [SoftLayer API 文件 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/) 中，找到 `verifyOrder` 的相關資訊。
 
 在此情況下，它是 `SoftLayer_Product_Order` 類別，可定義 verifyOrder 方法而且必須以參數形式傳遞至 `\SoftLayer\SoapClient::getClient()`。在呼叫 `verifyOrder` 之前，您需要使用 `SoftLayer_Product_Package` 來建置 `$orderObject`。
 
@@ -127,7 +128,7 @@ catch (\Exception $e) {
 
 ## 下單的程式碼範例
 
-此 API 呼叫與前一個程式碼範例相同，但它呼叫 `placeOrder`，而非 `verifyOrder`。您可以在 [SoftLayer API 文件](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/)中，找到 `placeOrder` 的相關資訊。
+此 API 呼叫與前一個程式碼範例相同，但它呼叫 `placeOrder`，而非 `verifyOrder`。您可以在 [SoftLayer API 文件 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/) 中，找到 `placeOrder` 的相關資訊。
 
 ```php
 
@@ -183,7 +184,7 @@ catch (\Exception $e) {
 
 此範例顯示如何使用 `createDomainMapping` API 來建立新的 CDN 對映。它採用 `stdClass` 物件的單一參數。應該使用 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 類別來起始設定 SoapClient，如此範例所示。
 
-**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)。
+**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)。
 
 ```php
 
@@ -284,6 +285,7 @@ try {
 } catch (\Exception $e) {
     die('verifyDomainMapping failed with an exception: ' . $e->getMessage());
 }
+
 ```
 {: codeblock}
 

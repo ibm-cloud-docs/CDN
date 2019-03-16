@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-04-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-19"
 
 
 ---
@@ -15,6 +15,7 @@ lastupdated: "2018-04-09"
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
 {: #ts} -->
@@ -31,7 +32,7 @@ lastupdated: "2018-04-09"
 # 取得協助及支援 
 {: #gettinghelp}
 
-前次更新：2018 年 4 月 9 日
+前次更新：2019 年 1 月 18 日
 {: .last-updated}
 
 如果您在使用 CDN 時有問題或疑問，可以搜尋資訊或透過下列其中一個討論區提問來取得協助。您也可以開立支援問題單。
@@ -43,6 +44,6 @@ lastupdated: "2018-04-09"
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * 若為服務及開始使用指示的相關問題，請使用 [IBM developerWorks dW Answers ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} 討論區。請包含 "cdn" 和 "ibm-cloud" 標籤。
 
-如需使用討論區的詳細資料，請參閱[取得協助](https://console.bluemix.net/docs/support/index.html#getting-help)。
+如需使用討論區的詳細資料，請參閱[取得協助](https://{DomainName}/docs/support/index.html#getting-help)。
 
-如需開立 IBM 支援問題單的相關資訊，或支援層次與問題單嚴重性的相關資訊，請參閱[與支援中心聯絡](https://console.bluemix.net/docs/support/index.html#contacting-support)。
+如需開立 {{site.data.keyword.cloud}} 支援問題單的相關資訊，或支援層次與問題單嚴重性的相關資訊，請參閱[與支援中心聯絡](/docs/get-support?topic=get-support-getting-customer-support)。

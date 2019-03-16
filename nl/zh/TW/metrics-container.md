@@ -1,15 +1,17 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-19"
 
 ---
 
-### 度量值的容器類別
+# 度量值的容器類別
+{: #container-class-for-metrics}
+
 `SoftLayer_Container_Network_CdnMarketplace_Metrics` 集合包含了我們的度量值 API 所使用的屬性。`type` 屬性有三個可能值：PIECHART、LINEGRAPH 或 TOTALS。此容器中其餘的屬性輸出取決於 `type`，這在底下會更詳細地說明。除了 `type` 以外的所有屬性都是陣列。並非所有屬性都會用於所有類型。
 
-類別 `SoftLayer_Container_Network_CdnMarketplace_Metrics`：
+**類別** `SoftLayer_Container_Network_CdnMarketplace_Metrics`：
 * `type`
 * `names`
 * `totals`
