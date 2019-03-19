@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-03-18"
 
 keywords: pricing, bandwidth, rates, region, geographic, monthly, fees
 
@@ -41,4 +41,4 @@ Select a region to see a list of countries or territories in that region.
 |10 - 250 TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |
 |250 - 500 TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
 |500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
-|\>3 PB| 0.02 | 0.02 | 0.06 | 0.06 | 0.125 | 0.085 | 0.085 |
+|\>3 PB| [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) |
