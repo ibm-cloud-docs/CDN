@@ -40,7 +40,9 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` 
     * `https*www.example.com`
   * Some examples of an **invalid** string for `refererValues`:
     * `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...
-      * Contains more than 2100 characters
+      * Contains more than 2100 characters, total
+    * `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org`
+      * Contains at least one URL match term that has greater than 255 characters
     * `domain1.example.com domain1.example.com`
       * Contains duplicates in the list
     * ` `
