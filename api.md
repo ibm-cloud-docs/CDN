@@ -541,7 +541,7 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
     * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
     * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) page to see a list of valid Hotlink Protection values.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlink-protection-behavior.html) page to see a list of valid Hotlink Protection values.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
@@ -561,7 +561,7 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
     * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues 
     * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) page to see a list of valid Hotlink Protection values.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlink-protection-behavior.html) page to see a list of valid Hotlink Protection values.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
