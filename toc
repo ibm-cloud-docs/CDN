@@ -22,6 +22,7 @@ Content Delivery Network (CDN)
     how-to-https.md
     cors-and-cdn.md
     control-http-client-cache-duration.md
+    how-to-configure-object-storage.md
     serve-video-on-demand-with-cdn.md
     rules-and-naming-conventions.md
     limits-and-max-values.md

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-03-29"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -197,3 +197,18 @@ If you are one of the account's secondary Users, then the account's Master User 
 {: faq}
 
 Let's consider an example in which your website's domain for end-users is configured to be your CDN's domain/host name: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN will deny access, rather than 'ALLOW'.
+
+## Can I use private endpoint of object storage in CDN settings?
+{: faq}
+
+No, CDN can only connect to Object Storage on Public endpoints.
+
+## Can I use Brotli feature in CDN service?
+{: faq}
+
+No, Brotli feature is not supported with our CDN service with Akamai.
+
+## How do I create a CDN endpoint without using the domain?
+{: faq}
+
+You can create a CDN endpoint without using the Domain, but ONLY for a CDN of type **Wildcard HTTPS**. While creating a CDN of type **Wildcard HTTPS**, your **CNAME** acts as the CDN endpoint, and the **CNAME** is used to serve the traffic.

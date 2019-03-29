@@ -175,22 +175,3 @@ For **Object Storage**, the following fields can be changed:
 Update the **Origin** or **Other Options** details if needed, then click the **Save** button in the bottom right corner to update your CDN configuration details.
 
    ![Save button](images/save-button.png)
-
-## Configure IBM Cloud Object Storage for CDN
-{: #configure-ibm-cloud-object-storage-for-cdn}
-
-To make use of objects stored in IBM Cloud Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
-
-To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
-
-The example code below shows how to set "public-read" access for all the objects in your bucket, using the command line interface.
-
-```
-$ export ENDPOINT="YOUR_ENDPOINT"
-$ export BUCKET="YOUR_BUCKET"
-$ KEYS=( "$(aws --endpoint-url "$ENDPOINT" s3api list-objects --no-paginate --query 'Contents[].{key: Key}' --output text --bucket "$BUCKET")" )
-$ for KEY in "${KEYS[@]}"
-  > do
-  >   aws --endpoint-url "$ENDPOINT" s3api put-object-acl --bucket "$BUCKET" --key "$KEY" --acl "public-read"
-  > done
-```
