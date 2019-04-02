@@ -23,6 +23,10 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 
+## March 2019
+
+* Hotlink Protection [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
+
 ## November 2018
 {: #november-2018}
 

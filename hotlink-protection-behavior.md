@@ -21,9 +21,13 @@ subcollection: CDN
 # Hotlink Protection class
 {: #hotlink-protection-class}
 
-The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
+The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
 
-**class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`:
+
+* `://` in the first label of the URL is **not** supported.
+   * **Valid**: `http*www.example.com`
+   * **Invalid**: `http://www.example.com`
 
 * `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one the of the terms in `refererValues`. The opposite will occur when there is no match.
   * Possible value for protectionType:

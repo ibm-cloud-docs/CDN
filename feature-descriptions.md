@@ -138,5 +138,3 @@ If your `protectionType` is set to `ALLOW`:
 If your `protectionType` is set to `DENY`:
 * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, then your CDN **will not** serve the content requested.
 * Otherwise, your CDN will serve the content.
-
-**NOTE**: This feature is currently available only through our API. You can view the [API page](/docs/infrastructure/CDN/api.html#api-for-hotlink-protection) for more information.

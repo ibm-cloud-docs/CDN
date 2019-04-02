@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-01"
 
 keywords: cache control, cache-control, cache duration, max-age,  edge server, edge-level, respect header, HTTP client
 
@@ -36,6 +36,8 @@ Regardless of how these factors change, your origin must provide a Cache-Control
 Essentially, Cache-Control headers sent from an edge server downstream ask the requester to cache the associated content according to the caching directives or values specified by the edge server.
 
 ## Respect Header: Off
+{: #respect-header-off}
+
 If your origin does provide a Cache-Control header with a `max-age` directive and value for a specific piece of content, then the cache duration for the specific piece of content cached on the edge is still derived from your CDN's TTL settings. Additionally, the edge server responds to the requester downstream with a Cache-Control `max-age` value equal to the lesser of:
   * The origin's Cache-Control `max-age` value.
   * The remaining time left until the content goes stale on the edge.
@@ -43,6 +45,8 @@ If your origin does provide a Cache-Control header with a `max-age` directive an
 However, if your origin does not provide a Cache-Control header to the edge server, then edge servers will not provide a Cache-Control header to the requester. The edge cache duration for your content is still derived from your CDN's TTL Settings.
 
 ## Respect Header: On
+{: #respect-header-on}
+
 If your origin does provide a Cache-Control header with `max-age` for a specific piece of content, the origin's Cache-Control `max-age` value becomes the cache duration for that specific piece of content cached on the edge, overriding any applicable TTL settings for that piece of content. Additionally, the edge responds to the requester with a Cache-Control `max-age` value equal to the remaining time left until the content goes stale on the edge server.
 
 However, if your origin does not provide a Cache-Control header to the edge server, then the edge server will not provide a  Cache-Control header to the requester. The edge cache duration for your content is still derived from your CDN's TTL Settings.
@@ -58,6 +62,8 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 |Off|Yes, but origin does not specify a `max-age`|Edge cache duration based on the CDN's TTL configuration|Yes, edge also provides a `max-age` with a that is the time before the edge needs to refresh the content from the origin|
 |Off|No|Edge cache duration based on the CDN's TTL configuration|No|
 
-## More Information
+## More information on cache control
+{: #more-information-on-cache-control}
+
 * How to [manage your CDN](/docs/infrastructure/CDN/how-to.html)
 * Cache-Control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt)
