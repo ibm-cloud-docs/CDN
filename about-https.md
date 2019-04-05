@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-03"
 
 keywords: wildcard certificate, https, san certificate
 
@@ -36,6 +36,7 @@ IBM Cloud CDN uses the Wildcard certificate `*.cdnedge.bluemix.net`. The CNAME, 
 ![Diagram for Http and Wildcard](images/state-diagram-wildcard.png)
 
 ## Subject Alternate Name (SAN) Certificate Support
+{: #san-certificate-suport}
 
 Subject Alternative Name (SAN) Certificate is a digital SSL certificate that allows multiple domains, or hostnames, to be protected by a single certificate.
 

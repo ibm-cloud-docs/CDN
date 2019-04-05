@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-03"
 
-keywords: code examples, example API calls, CDN API
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
 subcollection: CDN
 
@@ -16,6 +16,8 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # Code Examples Using the CDN API
@@ -24,10 +26,11 @@ subcollection: CDN
 This document contains example API calls and the resulting output for numerous CDN APIs.
 
 ## General steps needed for all API calls
+{: #general-steps-needed-for-all-api-calls}
 
 The pre-requisite is to download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/softlayer/softlayer-api-php-client)
 
-  * You need to get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and may need to be modified appropriately. In PHP the statement will look similar to this: `require_once './../vendor/autoload.php';`
+  * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and may need to be modified appropriately. In PHP the statement will look similar to this: `require_once './../vendor/autoload.php';`
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
@@ -42,6 +45,7 @@ The pre-requisite is to download and install the Soap Client from [https://githu
   * Initialize SoapClient for the appropriate class.
 
 ## Example Code for Listing Vendors
+{: #example-code-for-listing-vendors}
 
 In this case, it is the SoftLayer_Network_CdnMarketplace_Vendor class which defines the `listVendors` API and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. You will need the name of an active vendor later, when you create a Domain Mapping
 
@@ -75,6 +79,7 @@ Array
 {: codeblock}
 
 ## Example Code to Verify Order
+{: #example-code-to-verify-order}
 
 The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` will be successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
@@ -130,6 +135,7 @@ catch (\Exception $e) {
 
 
 ## Example code to Place Order
+{: #example-code-to-place-order}
 
 This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
 
@@ -184,10 +190,12 @@ catch (\Exception $e) {
 
 
 ## Example code to create CDN or Create Domain Mapping
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-**NOTE**: if you choose to provide a custom CNAME, it **must** end with `.cdnedge.bluemix.net` or an error will be thrown. See [this description](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it **must** end with `.cdnedge.bluemix.net` or an error will be thrown. See [this description](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+{: important}
 
 ```php
 
@@ -264,6 +272,7 @@ Array
 {: codeblock}
 
 ## Example Code to Verify Domain Mapping
+{: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status. Before calling `verifyDomainMapping`, you must add a CNAME record of the custom Hostname to your DNS server.
 
@@ -310,7 +319,8 @@ If your CNAME record has been added to your DNS server, the `status` of your CDN
 
 If your CNAME record has not been added to your DNS server, or your server has not yet updated, the `status` of your CDN will be CNAME_CONFIGURATION, as shown in the following example.
 
-**Note** It may take several minutes (up to 30) for the CNAME chaining to complete.
+It may take several minutes (up to 30) for the CNAME chaining to complete.
+{: note}
 
 ```php
 Array

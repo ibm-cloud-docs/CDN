@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-03"
 
 keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
 
@@ -16,6 +16,8 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # Getting your CDN to Running Status
@@ -24,6 +26,7 @@ subcollection: CDN
 Learn how to get your CDN to a RUNNING state by following these guidelines. This document also tells you how to start and stop your CDN.
 
 ## Get to Running
+{: #get-to-running}
 
 Once you've created a CDN, it appears on your CDN dashboard. Here you'll see the name of your CDN, the Origin, the Provider, and the status.  
 
@@ -55,10 +58,12 @@ When the CNAME chaining is complete, selecting **Get Status** will change the st
 Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](/docs/infrastructure/CDN/how-to.html#purging-cached-content), and [Adding Origin Path details](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
 
 ## Starting CDN
+{: #starting-cdn}
 
 Starting your CDN informs the DNS to direct traffic from your origin to the Akamai edge server. Once the mapping is started, the DNS cache may still direct traffic to the origin so the functionality may not be seen by the domain immediately after the mapping is started. The time it takes to update depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 
-**NOTE**: A CDN can be started only when in `Stopped` status  
+A CDN can be started only when it is in `Stopped` status.
+{: note}
 
 **Step 1:**
 
@@ -68,7 +73,7 @@ Click **Start CDN** from the Overflow menu, which appears as three dots to the r
 
 **Step 2:**
 
-A larger dialog window appears, asking to confirm that you want to start the service. Select **Confirm** to Proceed.
+A larger dialog window appears, asking to confirm that you want to start the service. Select **Confirm** to proceed.
 
 **Step 3:**
 
@@ -82,13 +87,16 @@ This step changes the Status to `CNAME Configuration`
 
 Click **Get Status** from Overflow menu. This step changes the status to `Running`. Your CDN becomes operational.
 
-## Stopping CDN
+## Stopping a CDN
+{: #stopping-a-cdn}
+
+Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status.
+{: important}
 
 Once a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN edge servers and content is fetched directly from the origin. After a mapping is stopped, there may be a brief period of time where your content is not accessible. This is because the DNS cache may still be directing traffic to the Akamai edge servers. However, during this time, the Akamai edge server will deny traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 
-**NOTES**: 
-* Stopping CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status. 
-* A CDN can be stopped only when in `Running` state.
+A CDN can be stopped only when in `Running` state.
+{: note}
 
 **Step 1:**
 
@@ -97,17 +105,19 @@ Click 'Stop CDN' from the Overflow menu (3 vertical dots to the right of the CDN
 
 **Step 2:**
 
-A larger dialog window appears, asking you to confirm that you want to stop the service. Select **Confirm** to Proceed.
+A larger dialog window appears, asking you to confirm that you want to stop the service. Select **Confirm** to proceed.
 
 **Step 3:**
 
 After about 5 to 15 seconds, the status should change to 'Stopped'
 
-## Deleting CDN
+## Deleting a CDN
+{: #deleting-a-cdn}
 
 To delete a CDN follow these steps:
 
-**NOTE**: Selecting `Delete` from the overflow menu only deletes the CDN; it does not delete your account.
+Selecting `Delete` from the overflow menu only deletes the CDN; it does not delete your account.
+{: note}
 
 **Step 1:**
 
@@ -119,7 +129,8 @@ Click 'Delete' from the overflow menu.
 
 A larger dialog window appears, asking to confirm that you want to delete. Click **Delete** to proceed.
 
-**NOTE**: If your CDN is configured using HTTPS with DV SAN Certificate, it may take up to 5 hours to complete the delete process.
+If your CDN is configured using HTTPS with DV SAN Certificate, it may take up to 5 hours to complete the delete process.
+{: note}
 
   ![Delete with Warning](images/delete-with-warning.png)
 

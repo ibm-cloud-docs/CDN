@@ -42,9 +42,9 @@ Last updated: 18 January 2019
 If you have problems or questions when using CDN, you can get help by searching for information or by asking questions through one of the forums listed below. You can also open a support ticket.
 {:shortdesc}
 
-When using the forums to ask a question, tag your question so that it is seen by the {{site.data.keyword.Bluemix_notm}} development teams.
+When using the forums to ask a question, tag your question so that it is seen by the {{site.data.keyword.cloud_notm}} development teams.
 
-* If you have technical questions about CDN, post your question on [Stack Overflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} and tag your question with "cdn" and "ibm-cloud".
+* If you have technical questions about CDN, post your question on [Stack Overflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://stackoverflow.com/search?q=cdn+ibm-cloud){:new_window} and tag your question with "cdn" and "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * For questions about the service and getting started instructions, use the [IBM developerWorks dW Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} forum. Include the  "cdn" and "ibm-cloud" tags.
 

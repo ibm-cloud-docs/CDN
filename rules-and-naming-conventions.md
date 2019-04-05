@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: rules, naming, conventions, hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain, valid, string
 
@@ -16,6 +16,7 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 
 # Rules and Naming Conventions
@@ -58,7 +59,8 @@ Bucket names:
   * may end with a period (.)
   * only one period (.) is allowed between labels (for example, my..ibmcloud.bucket is not allowed).
 
-**NOTE**: Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
+Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
+{: note}
 
 ## What are the rules for the Path string for the Origin?
 {: #what-are-the-rules-for-the-path-string-for-the-origin}
@@ -77,10 +79,15 @@ The Purge path:
   * cannot end with a period (.)
   * cannot contain `*`
 
-**NOTE**: Purge is allowed for single files only. Directory-level purge is not supported at this time.
+Purge is allowed for single files only. Directory-level purge is not supported at this time.
+{; note}
 
 ## For the **Add Origin** command, are there any rules to follow for the Path string?
+{: #for-the-add-origin-command-are-there-any-rules-to-follow-for-the-path-string}
+
 For **Add Origin**, the path is **mandatory**. Also if your CDN was created with a path, the path for **Add Origin** must start with the CDN path as the prefix. For example, if the CDN path was specified as `/storage`, to invoke **Add Origin** with a path called `/examplePath`, the path provided would be `/storage/examplePath`.
 
 ## What are the rules for providing file extensions?
+{: #what-are-the-rules-for-providing-file-extensions}
+
 When creating an Origin with Object Storage, file extensions should be comma separated. For example, `txt, jpg, xml` is a valid list. Any one particular extension cannot be longer than 10 characters.

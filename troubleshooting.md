@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
 
@@ -57,6 +57,7 @@ If the output of the `curl` command is similar to the following example format, 
 
     X-Check-Cacheable: YES
 ```
+{: screen}
 
 ## I received a 503 error. Why?
 {: #i-received-a-503-error-why}
@@ -73,17 +74,20 @@ To correct the issue, ensure that your Origin server's SSL certificate(s) meets 
   * It must **not** be self-signed
   * It must **not** be expired
 
-If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/infrastructure/CDN/getting-help.html#gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
+If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/infrastructure/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
+{: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}
 
-When your IBM Cloud CDN is configured to use IBM COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
+When your I{{site.data.keyword.cloud_notm}} CDN is configured to use COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
 
 ## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
+{: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
 
 If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdnedge.bluemix.net`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
 
 ## What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?
+{: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
 
 This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
 
@@ -139,7 +143,7 @@ This table shows the behavior expected for the supported protocols when loading 
 </tbody>
 </table>
 
-**Notes:**
+**Common error messages:**
 
 A `301 Moved permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
 
@@ -147,6 +151,8 @@ With an HTTP **only** protocol, you will receive the `301 Moved permanently` mes
 
 The `Access denied` message is seen when you're trying to reach a CDN using an incorrect protocol. Ensure that you're using `http` for CDNs created with HTTP protocol, or `https` for CDNs created with HTTPS protocol.
 
-The behavior of a URL redirecting to IBM Cloud CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdnedge.bluemix.net` for HTTPS mappings or `http://examplecname.cdnedge.bluemix.net` or `https://examplecname.cdnedge.bluemix.net` for HTTP_AND_HTTPS mappings.
+**A possible redirect error:**
 
-The URL redirects to IBM Cloud CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by means of the hostname. For example, `http://example.com`.
+The behavior of a URL redirecting to {{site.data.keyword.cloud_notm}} CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdnedge.bluemix.net` for HTTPS mappings or `http://examplecname.cdnedge.bluemix.net` or `https://examplecname.cdnedge.bluemix.net` for HTTP_AND_HTTPS mappings.
+
+The URL redirects to {{site.data.keyword.cloud_notm}} CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by means of the hostname. For example, `http://example.com`.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: order, create, configure, console, origin, preparation, bucket
 
@@ -16,6 +16,7 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 
 # Order a CDN
@@ -24,20 +25,21 @@ subcollection: CDN
 Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Console](https://cloud.ibm.com/login).
 
 ## Preparation for ordering
+{: #preparation-for-ordering}
 
 Here's how to navigate to the CDN page to place your order.
 
-### Step 1
+**Step 1**
 
 * Log in to your account from the [IBM Cloud Console](https://cloud.ibm.com/login)
 
-### Step 2
+**Step 2**
 
 Click on [IBM Cloud Catalog](https://cloud.ibm.com/catalog/). From the left-hand navigation bar, select **Network**.
 
    ![IBM Cloud CDN Navigation](images/bluemix_navigation.png)
 
-### Step 3
+**Step 3**
 
 Click on the **CDN Tile**.
 
@@ -50,12 +52,14 @@ Click on the **CDN Tile**.
 Once you're on the ordering page, here's how to proceed to create and configure your CDN.
 
 ### Step 1: Create your CDN account
+{: #create-your-cdn-account}
 
 Click **Create** at the bottom right, which creates your CDN account if you don't have one already and redirects you to the CDN Configure screen.
 
    ![CDN overview](images/content-delivery.png)
 
-### Step 2: Name your CDN 
+### Step 2: Name your CDN
+{: #step-2-name-your-cdn}
 
 Fill out the **Configure Name** field:  
 
@@ -64,9 +68,10 @@ Fill out the **Configure Name** field:
 
        ![Configure Name](images/configure-hostname-cname.png)  
 
-    **Note**: After provisioning your new CDN, you **must** configure the CNAME with your DNS provider.
-
+After provisioning your new CDN, you **must** configure the CNAME with your DNS provider.
+{: note}
 ### Step 3: Configure your origin
+{: #step-3-configure-your-origin}
 
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
 
@@ -76,11 +81,11 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
       * You must specify the **Origin Server Address** (hostname or IPv4 address of the Origin Server). If **HTTPS port** is also selected, the **Origin Server Address** must be the hostname and not IP address.
 
-      * Specify the **Host header** (optional). If one is not provided, it defaults to the **Hostname**. Please see the feature description for [Host header support](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) for more information about the Host header.  
+      * Specify the **Host header** (optional). If one is not provided, it defaults to the **Hostname**. Please see the feature description for [Host header support](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#host-header-support) for more information about the Host header.  
 
-      * Provide a **Path** where content can be retrieved from on the Origin (optional). Please see the feature description for [Path-based CDN mappings](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) to understand the implications of adding a path at this time.
+      * Provide a **Path** where content can be retrieved from on the Origin (optional). Please see the feature description for [Path-based CDN mappings](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
-      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
         * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
@@ -94,13 +99,13 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
       * You **must** specify the **Endpoint** from which to fetch the object.
 
-      * Specify the **Host header** (optional). If one is not provided, it defaults to the **Hostname**. Please see the feature description for [Host header support](/docs/infrastructure/CDN/feature-descriptions.html#host-header-support) for more information about the Host header.  
+      * Specify the **Host header** (optional). If one is not provided, it defaults to the **Hostname**. Please see the feature description for [Host header support](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#host-header-support) for more information about the Host header.  
 
-      * Provide a **Path** where content can be retrieved from on the Origin (optional). Please see the feature description for [Path-based CDN mappings](/docs/infrastructure/CDN/feature-descriptions.html#path-based-cdn-mappings) to understand the implications of adding a path here.
+      * Provide a **Path** where content can be retrieved from on the Origin (optional). Please see the feature description for [Path-based CDN mappings](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#path-based-cdn-mappings) to understand the implications of adding a path here.
 
       * You **must** provide the name of the **Bucket** in which your content is stored.
 
-      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * You may also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, please refer to [the FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
         * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
@@ -108,9 +113,11 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
         ![Configure HTTPS](images/ssl-cert-options.png)
 
-      **NOTE** You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your cloud object storage provider.
+You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your cloud object storage provider.
+{: note}
       
-**Step 4:**
+### Step 4
+{: #step-4}
 
 * You must select **I have read the Master Service Agreement and agree to the terms therein** at the bottom right, above the **Create** button.
 

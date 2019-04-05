@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
 
@@ -25,6 +25,7 @@ subcollection: CDN
 In this guide, we'll explore an example of how to leverage {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin. 
 
 ## Introduction
+{: #introduction}
 
 A number of formats, such as HLS, MPEG-DASH, and so forth, are available to stream video. 
 
@@ -141,12 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 For more complex use cases--such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so forth--`ffmpeg` has many more argument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Prepare the Origin
 {: #prepare-the-origin}
 
 ### Server
+{: #server}
+
 If you're using this server as an additional origin under a second domain from which to stream these HLS, you may need to configure the server to return CORS response headers for potential browser access.
 
 You can place the HLS files under any directory or sub-directory you like. For this example, let's place the HLS files under `/usr/share/nginx/hls/`.
@@ -198,8 +203,10 @@ http {
 
 # Some more configurations for this main context...
 ```
+{: screen}
 
 ### Video Player on the Webpage
+{: #video-player-on-the-webpage}
 
 Not all streaming video formats may be natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
 
@@ -215,15 +222,18 @@ For example, Safari would support native, HLS playback. And so, the video player
   <!-- Some more HTML elements... -->
 </html>
 ```
+{: screen}
 
 However, other browsers on desktop devices may also need support from added JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/), whether developed in-house or from a trusted third party, to generate content streams playable through HTML5.
 
 ## Configure the CDN
+{: #configure-the-cdn}
+
 Now, let's connect the origin to the CDN to serve content worldwide with optimized throughput, minimized latency, and increased performance.
 
 First, [order](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) a CDN.
 
-Next, either [configure your CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) or [add an origin](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
+Next, either [configure your CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
 Finally, under `Optimize For`, select `Video on demand optimization`.
 

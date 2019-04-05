@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-04-03"
 
 keywords: object storage, bucket, configuration, details, updating
 
@@ -22,9 +22,9 @@ subcollection: CDN
 # Configure IBM Cloud Object Storage for CDN
 {: #configure-ibm-cloud-object-storage-for-cdn}
 
-To make use of objects stored in IBM Cloud Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
+To make use of objects stored in {{site.data.keyword.cloud}} Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
 
-To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with IBM Cloud Object Storage S3 API.
+To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](/docs/services/cloud-object-storage/basics/developers.html#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
 
 The example code below shows how to set "public-read" access for all the objects in your bucket, using the command line interface.
 
@@ -38,4 +38,4 @@ $ for KEY in "${KEYS[@]}"
   > done
 ```
 
-For more information on how to use Cloud Object Storage please refer to [Using CDN with Cloud Object Storage to deliver your static files faster](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-static-files-cdn#accelerate-delivery-of-static-files-using-a-cdn)
+For more information on how to use {{site.data.keyword.cloud_notm}} Object Storage please refer to [Using CDN with Cloud Object Storage to deliver your static files faster](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-static-files-cdn#accelerate-delivery-of-static-files-using-a-cdn)

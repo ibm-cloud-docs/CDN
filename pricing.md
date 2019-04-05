@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-03-18"
+lastupdated: "2019-04-04"
 
 keywords: pricing, bandwidth, rates, region, geographic, monthly, fees
 
@@ -23,11 +23,12 @@ subcollection: CDN
 # Pricing
 {: #pricing}
 
-Bandwidth pricing for {{site.data.keyword.cloud}} Cntent Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table prior to getting started using this service.
+Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table prior to getting started using this service.
 
 ## CDN Bandwidth Pricing (Rates shown in USD)
+{: #cdn-bandwidth-pricing}
 
-IBM Cloud Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
+{{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
 
 Pricing is shown per GB of monthly usage.
 {:note}
@@ -35,7 +36,7 @@ Pricing is shown per GB of monthly usage.
 Select a region to see a list of countries or territories in that region.
 
 
-|Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-america-region) | Australia, New Zealand | India |
+|Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
 |-------|-----|-----|-----|-----|-----|----|-----|
 |First 10 TB| 0.085 | 0.085 | 0.14 | 0.14 | 0.25 | 0.14 | 0.17 |
 |10 - 250 TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |

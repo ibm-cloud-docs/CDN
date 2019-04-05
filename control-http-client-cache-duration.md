@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-04-01"
+lastupdated: "2019-04-04"
 
 keywords: cache control, cache-control, cache duration, max-age,  edge server, edge-level, respect header, HTTP client
 
@@ -28,7 +28,7 @@ When using a CDN, two levels of caching are available:
 
 The method you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
 
-  * Whether the [Respect Header setting](/docs/infrastructure/CDN/how-to.html#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
+  * Whether the [Respect Header setting](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content. 
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the edge, if you want edge servers to send HTTP responses with the Cache-Control header for that content.
@@ -52,6 +52,7 @@ If your origin does provide a Cache-Control header with `max-age` for a specific
 However, if your origin does not provide a Cache-Control header to the edge server, then the edge server will not provide a  Cache-Control header to the requester. The edge cache duration for your content is still derived from your CDN's TTL Settings.
 
 ## Summary
+{: #summary}
 
 |Respect Header|Origin Provides Cache-Control|Specific Content's Cache Duration on Edge Server|Edge Server Provides Cache-Control|
 |---|---|---|---|
@@ -65,5 +66,5 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 ## More information on cache control
 {: #more-information-on-cache-control}
 
-* How to [manage your CDN](/docs/infrastructure/CDN/how-to.html)
+* How to [manage your CDN](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn)
 * Cache-Control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt)

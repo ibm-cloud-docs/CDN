@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
 
@@ -16,6 +16,7 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -25,6 +26,7 @@ subcollection: CDN
 This document describes common tasks for managing your CDN.
 
 ## Setting content caching time using "Time To Live"
+{: #setting-content-caching-time-using-time-to-live}
 
 After your CDN is running, you can set your content caching time using Time To Live (TTL). The Time To Live for a particular file or directory path indicates how long that content should be cached. When you created the CDN Mapping, a default global TTL of 3600 seconds (1 hour) was created.
 
@@ -53,7 +55,8 @@ After saving, you can **Edit** or **Delete** the TTL setting using the overflow 
 
 When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.
 
-**Note:** The CDN makes a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server retrieves the content from `xyz.example.com/*`.
+The CDN makes a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server retrieves the content from `xyz.example.com/*`.
+{: note}
 
 **Step 1:**
 
@@ -85,7 +88,7 @@ Select either **Server** or **Object Storage**.
 
   * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
 
-    * Choose **Optimization** options from the drop-down menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) and [Video on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) provide further information.
+    * Choose **Optimization** options from the drop-down menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization) and [Video on Demand](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#videl-on-demand) provide further information.
 
         ![Performance configuration options](images/performance-config-options.png)
 
@@ -93,13 +96,15 @@ Select either **Server** or **Object Storage**.
 
         ![Cache key options](images/cache-key-options.png)
 
-**NOTE**: The Protocol and Port options shown by the UI will match what was selected when you ordered the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option is shown as part of Add Origin.
+The Protocol and Port options shown by the UI will match what was selected when you ordered the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option is shown as part of Add Origin.
+{: note}
 
 **Step 5:**
 
 Select the **Add** button to add your Origin Path.
 
-  **Note**: When you provide file extensions for an Object Storage origin path, the TTL setting with the same URL as the origin path is scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and you specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
+When you provide file extensions for an Object Storage origin path, the TTL setting with the same URL as the origin path is scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and you specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
+{: note}
 
 **Step 6:**
 
@@ -124,7 +129,7 @@ Select the **Purge** tab.
 
 **Step 3:**
 
-Enter standard unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at this time. Please see the [Rules and Naming Conventions](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
+Enter standard Unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at a time. Please see the [Rules and Naming Conventions](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
 
 **Step 4:**
 
@@ -132,7 +137,8 @@ After purging, the activity is listed under **Purge Activity**. You can **Redo p
 
    ![Purge activity](images/purge-activity.png)
 
-   **NOTE:** If there are more than 15 purges, Purge Activity is trimmed every 15 days automatically.
+If there are more than 15 purges, Purge Activity is trimmed every 15 days automatically.
+{: note}
 
 ## Updating CDN Configuration details
 {: #updating-cdn-configuration-details}
@@ -148,7 +154,9 @@ On the CDN page, select your CDN, which takes you to the **Overview** page.
 Select the **Settings** tab. Your CDN configuration details are displayed.
 
    ![Settings tab](images/settings-tab.png)  
-   **NOTE**: You will only see SSL Certificate if your CDN was configured with HTTPS.
+
+You will only see SSL Certificate if your CDN was configured with HTTPS.
+{: note}
 
 For **Server**, the following fields can be changed:
   * Host header

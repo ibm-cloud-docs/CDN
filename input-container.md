@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-04"
 
 keywords: input, container, class, API, mapping, origin, path, provider, hotlink
 
@@ -29,8 +29,8 @@ The Input Container is a collection utilized by both the Mapping and (Origin) Pa
 The following attributes are common to the Mapping and (Origin) Path classes:
 * `originType`: Type of the Origin host, currently 'HOST_SERVER' or 'OBJECT_STORAGE'.
 * `origin`: Origin server address (either the hostname or the IPv4 address of the Origin Server), the endpoint from which to fetch content, or the name of the bucket where content is stored. Must be less than 511 characters.
-* `httpPort`: Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
-* `httpsPort`: Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+* `httpPort`: Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+* `httpsPort`: Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 * `status`:  The status of the mapping or path. Status can be CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED, or ERROR.
 * `path`: Path from which the cached content will be served. The default path is /\* When used by the `updateOriginPath` API, this attribute refers to the new path to be added.
 * `performanceConfiguration`: Specifications for the performance configuration of the mapping.
@@ -56,4 +56,4 @@ The following attributes are related to Cloud Object Storage (COS):
 * `fileExtension`: File extensions that are allowed.
 
 The following attribute is related to configuring Hotlink Protection:
-* `hotlinkProtection`: Please see the [hotlink protection class](/docs/infrastructure/CDN/hotlink-protection-behavior.html) for more details.
+* `hotlinkProtection`: Please see the [hotlink protection class](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) for more details.

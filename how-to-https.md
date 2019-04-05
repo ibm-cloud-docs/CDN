@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-03"
 
 keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
 
@@ -26,6 +26,7 @@ The following diagram outlines the various states your CDN will enter from the t
   ![SAN state diagram](images/state-diagram-san.png)
 
 ## Initial steps to Domain Control Validation
+{: #initial-steps-to-domain-control-validation}
 
 **Step 1:**
 
@@ -56,12 +57,14 @@ Click on the name of the CDN that needs to be validated. The Overview page opens
 Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](/docs/infrastructure/CDN/basic-functions.html#get-to-running) page.
 
 
-## Domain Control Validation 
+## Domain Control Validation
+{: #domain-control-validation}
 
 To get your CDN domain name added to the SAN certificate, you must prove that you have adminitrative control over your domain. This process of proof is referred to as addressing the Domain Control Validation (DCV). You must address the DCV within 48 hours. If you fail to do so, your request expires, and you must begin the order process again. The three different ways to address DCV are described in the sections that follow.
 
 
 ### CNAME
+{: #cname}
 
 This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
@@ -76,6 +79,7 @@ Most DNS providers can give you instructions on setting or changing the CNAME. H
 
 ---
 ### Standard
+{: #standard}
 
 If you choose the Standard method for Domain Validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the Domain Validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, Domain Validation can take 2 to 4 hours.
 
@@ -90,6 +94,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 * Challenge Response: `examplechallenge`
 
 #### Apache Configuration
+{: #apache-configuration}
 
   * **Step 1:** Log into the machine running the Apache2 server.
 
@@ -113,6 +118,7 @@ To successfully complete the Domain Validation through the Standard method, you 
   * **Step 6:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Nginx Configuration
+{: #nginx-configuration}
 
   * **Step 1:** Log into the machine running the Nginx server.
 
@@ -135,6 +141,7 @@ To successfully complete the Domain Validation through the Standard method, you 
   * **Step 6:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Verify that this Standard method to address Domain Validation is ready for the CA
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * To verify this method works through `curl`, execute that command for the Challenge URL.
     ```
@@ -145,6 +152,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 In either case, you should be able to retrieve the copy of the Domain Validation Challenge file object stored on your origin server.
 
 #### Clean-up for the Standard method
+{: #clean-up-for-the-standard-method}
 
 After your CDN has reached **Certificate deploying** status:
 1. Remove the `examplechallenge-fileobject` file. (optional)
@@ -153,6 +161,7 @@ After your CDN has reached **Certificate deploying** status:
 
 ---
 ### Redirect
+{: #redirect}
 
 Clicking on the **Redirect** tab displays all the information needed to address the Domain Validation through redirect. This information allows the CA to retrieve a copy of the **Challenge response** from Akamai through your origin server. After your server is configured correctly, Domain Validation can take 2 to 4 hours.
 
@@ -167,6 +176,7 @@ To successfully complete the Domain Validation through the Redirect method, you 
 * URL Redirect: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Apache Redirect Configuration
+{: #apache-redirect-configuration}
 
   * **Step 1:** Log into the machine running the Apache2 server.
 
@@ -188,6 +198,7 @@ To successfully complete the Domain Validation through the Redirect method, you 
 Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Nginx Redirect Configuration
+{: #nginx-redirect-confguration}
 
   * **Step 1:** Log into the machine running the Nginx server.
 
@@ -240,6 +251,7 @@ Create an A record in your DNS between the CDN domain and the origin server's IP
   * **Step 5:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Verify that the redirect is occurring
+{: #verify-that-the-redirect-is-occurring}
 
 Completing these steps redirects _only_ the traffic for the specific Challenge URL to the URL Redirect. You can verify that the redirect worked appropriately either through `curl` or through the browser.
 
@@ -254,6 +266,7 @@ Completing these steps redirects _only_ the traffic for the specific Challenge U
 In either case, you should be able to retrieve the copy of the Domain Validation Challenge file object from Akamai at the `dcv.akamai.com` domain, to which the original request was redirected.
 
 #### Clean-up for the Redirect method
+{: #clean-up-for-the-redirect-method}
 
 After your CDN has reached **Certificate deploying** status:
 1. Remove the redirect statements or blocks from the configuration file. (optional)
