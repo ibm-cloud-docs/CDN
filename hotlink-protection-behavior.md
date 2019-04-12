@@ -43,17 +43,14 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     * `*.example.com *.example.net`
     * `https*www.example.com`
   * Some examples of an **invalid** string for `refererValues`:
-    * `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...
-      * Contains more than 2100 characters, total
-    * `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org`
-      * Contains at least one URL match term that has greater than 255 characters
-    * `domain1.example.com domain1.example.com`
-      * Contains duplicates in the list
-    * ` `
-      * Empty refererValues
-    * `domain1.exa}mple.com domain1.example.com`
-      * Using character(s) not specified in [RFC-3986 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc3986#section-2)
-    * `www.example.com/path&`
-      * `&` character is not supported
-    * `www.example.org http://www.example.com`
-      * A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported
+   
+      |**Description of invalid Example**| Example
+      |-------|-----|
+      | Contains more than 2100 characters, total| `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...|
+      |Contains at least one URL match term that has greater than 255 characters | `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org` |
+      |Contains duplicates in the list | `domain1.example.com domain1.example.com`|
+      |Empty refererValues | ` `|
+      |Using character(s) not specified in [RFC-3986 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc3986#section-2) | `domain1.exa}mple.com domain1.example.com`|
+      |`&` character is not supported| `www.example.com/path&`|
+      |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
+
