@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-04-26"
 
 keywords: tutorial, Akamai, edge servers, pricing, content delivery network, comprehensive, account
 
@@ -34,7 +34,7 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 ## Tutorial
 {: #tutorial}
 
-[Here's a tutorial](/docs/tutorials/static-files-cdn.html) on creating a Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage.
+[Here's a tutorial](docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage.
 
 ## Next steps
 {: #next-steps}
