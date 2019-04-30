@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-30"
 
 keywords: wildcard certificate, https, san certificate
 
@@ -28,6 +28,9 @@ To decide between using **Wildcard Certificate** and **SAN Certificate** for HTT
 
 ## Wildcard Certificate support
 {: #wildcard-certificate-support}
+
+**Note**:
+New CDN mappings with Wildcard Certificate are NOT supported at this time.
 
 The Wildcard certificate is the simplest way to deliver web content to your end-users securely. The full CDN CNAME, including the Wildcard certificate suffix, **must** be used as the service entry point (for example, `https://example.cdnedge.bluemix.net`) in order to use the Wildcard certificate.
 

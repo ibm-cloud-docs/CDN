@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-30"
 
 keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
 
@@ -18,6 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
+{:warning: .warning}
 {:download: .download}
 
 # Getting your CDN to Running Status
@@ -90,13 +91,19 @@ Click **Get Status** from Overflow menu. This step changes the status to `Runnin
 ## Stopping a CDN
 {: #stopping-a-cdn}
 
-Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status.
+STOP CDN functionality is intended for maintenance windows not exceeding 7 days. After 7 days, the CDN must be started, or it will be disabled, and traffic to the CDN CNAME will not be redirected to the origin server.
 {: important}
 
 Once a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN edge servers and content is fetched directly from the origin. After a mapping is stopped, there may be a brief period of time where your content is not accessible. This is because the DNS cache may still be directing traffic to the Akamai edge servers. However, during this time, the Akamai edge server will deny traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 
 A CDN can be stopped only when in `Running` state.
 {: note}
+
+Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status.
+{: important}
+
+Stopping a CDN for a Wildcard domain is **NOT** allowed at this time.
+{: important}
 
 **Step 1:**
 
