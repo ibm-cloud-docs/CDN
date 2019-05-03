@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-04-26"
+lastupdated: "2019-05-30"
 
 keywords: tutorial, Akamai, edge servers, pricing, content delivery network, comprehensive, account
 
@@ -19,7 +19,7 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-# Getting Started
+# Getting started tutorial
 {: #getting-started}
 
 {{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
