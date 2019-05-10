@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-05-05"
 
 keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -103,6 +103,14 @@ If the mapping's state is in DOMAIN_VALIDATION_PENDING state for more than 48 ho
 {:faq}
 
 No, but you can only use the CNAME to retrieve content from your origin. `https://www.example-cname.cdnedge.bluemix.net`
+
+## I received an email indicating that my domains is not pointed to IBM CDN CNAME. What do I do now?
+{: #i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME}
+{:faq}
+
+This email means that your CDN is not being used. To use the CDN and make the domain(s) active in the certificate(s), you must set the listed CNAME DNS record(s) in your DNS provider system.
+If you complete this action within 7 days, both HTTP and HTTPS traffic will be restored for your CDN and the CDN will go to RUNNING status. If the CDN is still unused after 7 days, we must permanently disable HTTPS for your CDN domain, to prevent your unused domain from blocking new CDN domain requests to be added to the Shared SAN certificate. HTTP traffic access through the CDN could still be restored later by adding a CNAME record for your domain.
+For details on how to address this situation, please refer to the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#cname) document.
 
 ## If I use the SAN certificate type for my CDN, can I still use the CNAME for access to my service?
 {: #if-i-use-a-san-certificate-type-for-my-cdn-can-i-still-use-the-cname-for-access-to-my-service}
