@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-03-29"
+lastupdated: "2019-05-21"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -100,7 +100,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 ## My CDN is in an Error State. What do I do now?
 {: faq}
 
-Please refer to the [Troubleshooting](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) or [Getting Help and Support](/docs/infrastructure/CDN/getting-help.html#gettinghelp) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
+Please refer to the [Troubleshooting](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting Help and Support](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
 {: faq}
@@ -134,7 +134,7 @@ Omitting the slash, for example, using `www.example.com/images` will result in a
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
 {: faq}
 
-[Here's a tutorial](/docs/tutorials/static-files-cdn.html) on creating a Content Delivery Network for IBM Cloud Object Storage.
+[Here's a tutorial](/docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 {: faq}

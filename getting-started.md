@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-05-30"
+lastupdated: "2019-05-23"
 
 keywords: tutorial, Akamai, edge servers, pricing, content delivery network, comprehensive, account
 
@@ -22,7 +22,7 @@ subcollection: CDN
 # Getting started tutorial
 {: #getting-started}
 
-{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/infrastructure/CDN/edge-servers.html#list-of-edge-servers), to bring the content closest to where you need it most--your users.
+{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/infrastructure/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers), to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 {: #before-you-begin}
@@ -34,7 +34,7 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 ## Tutorial
 {: #tutorial}
 
-[Here's a tutorial](docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage.
+[Here's a tutorial](/docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage.
 
 ## Next steps
 {: #next-steps}

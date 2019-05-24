@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-21"
 
 keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
 
@@ -198,7 +198,7 @@ http {
     # more http context configs
 }
 ```
-{; screen}
+{: screen}
 
 The previous example uses the `map` directive, to avoid overusing the `if` Nginx statement. Now, when a CORS request is made to this server and matches that URI path, the server responds with the `Access-Control-Allow-Origin` header containing the value `http://www.example.com`, `https://cdn.example.com`, or `http://dev.example.com`, etc. when the content is requested from `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, and so forth.
 

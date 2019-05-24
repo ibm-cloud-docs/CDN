@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-21"
 
 keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
 
@@ -54,7 +54,7 @@ Click on the name of the CDN that needs to be validated. The Overview page opens
 
   * When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
 
-Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](/docs/infrastructure/CDN/basic-functions.html#get-to-running) page.
+Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running) page.
 
 
 ## Domain Control Validation
