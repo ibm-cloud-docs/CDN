@@ -116,7 +116,7 @@ For details on how to address this situation, please refer to the [Completing Do
 {: #if-i-use-a-san-certificate-type-for-my-cdn-can-i-still-use-the-cname-for-access-to-my-service}
 {:faq}
 
-No. For the SAN certificate you can only use the custom domain to access the content from the origin. `https://www.example.com`
+No. For the SAN certificate you can only use the custom domain to access the content from the origin.
 
 ## Are all of my IBM Cloud CDN domains added into one certificate?
 {: #are-all-of-my-ibm-cloud-cdn-domains-added-into-one-certificate}

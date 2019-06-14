@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
+{: .toc subcollection="CDN" category="network" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
 Content Delivery Network (CDN)
 
     {: .navgroup id="learn"}
