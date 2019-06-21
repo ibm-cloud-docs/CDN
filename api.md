@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-19"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -23,7 +23,7 @@ subcollection: CDN
 # CDN API Reference
 {: #cdn-api-reference}
 
-The {{site.data.keyword.cloud}} Infrastructure Application Programming Interface (commonly called the SLAPI), provided by {{site.data.keyword.cloud}}, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.cloud_notm}} Infrastructure backend system.
+The SoftLayer Application Programming Interface (commonly called the SLAPI), provided by {{site.data.keyword.cloud}}, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.cloud_notm}} Infrastructure backend system.
 
 The SLAPI implements many of the features in the Customer Portal: if an interaction is possible in the Customer Portal, it also can be accomplished in the SLAPI. Because you can interact with all portions of the {{site.data.keyword.cloud_notm}} Infrastructure environment programmatically, within the SLAPI, you can use the API to automate tasks.
 
