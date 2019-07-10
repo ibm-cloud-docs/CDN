@@ -1,8 +1,8 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
-Content Delivery Network (CDN)
+{: .toc subcollection="CDN" category="network" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
+Content Delivery Network(CDN)
 
     {: .navgroup id="learn"}
     getting-started.md
@@ -10,8 +10,9 @@ Content Delivery Network (CDN)
     feature-descriptions.md
     about-https.md
     naas-video.md
-    [정적 파일을 더 빠르게 제공하기 위해 Cloud Object Storage와 함께 CDN 사용](https://console.bluemix.net/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+    [Use CDN with Cloud Object Storage to deliver your static files faster](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
     whats-new.md
+    pricing.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
@@ -21,12 +22,12 @@ Content Delivery Network (CDN)
     how-to-https.md
     cors-and-cdn.md
     control-http-client-cache-duration.md
+    how-to-configure-object-storage.md
     serve-video-on-demand-with-cdn.md
     rules-and-naming-conventions.md
     limits-and-max-values.md
     byte-range-request.md
     metrics.md
-    edge-servers.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
@@ -39,6 +40,25 @@ Content Delivery Network (CDN)
 
     {: .navgroup id="reference"}
     api.md
+
+ {: .topicgroup}
+    API 클래스 컨테이너
+        geoblock-behavior.md
+        hotlink-protection-behavior.md
+        input-container.md
+        mapping-container.md
+        metrics-container.md
+        path-container.md
+        vendor-container.md
+        
     cdn-example-code.md
     legacy-portal.md
+    edge-servers.md
+    
+    {: .topicgroup}
+    지역
+        asia-region.md
+        emea-region.md
+        north-america-region.md
+        south-america-region.md
     {: .navgroup-end}

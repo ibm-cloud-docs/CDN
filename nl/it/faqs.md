@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+
+subcollection: CDN
 
 ---
 
@@ -20,21 +24,25 @@ lastupdated: "2019-02-19"
 {: #faqs}
 
 ## Cos'è una CDN (Content Delivery Network)?
+{: #what-is-a-content-delivery-network-cdn}
 {: faq}
 
 Una CDN (Content Delivery Network) è una raccolta di server edge distribuiti in varie parti del paese o del mondo. Il contenuto web viene fornito da un server edge che si trova nella zona geografica più vicina al cliente che richiede il contenuto. Questa tecnica consente agli utenti di ricevere il contenuto con meno ritardi di quanto possiamo ottenere consegnando il contenuto da una posizione centralizzata. Fornisce un'esperienza complessiva migliore per i tuoi clienti.
 
 ## Come funziona una CDN (Content Delivery Network)?
+{: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 
 Una CDN raggiunge il suo scopo memorizzando in cache il contenuto web sui server edge in tutto il mondo. Quando un utente richiede dei contenuti web, la richiesta di contenuto viene indirizzata al server edge geograficamente più vicino a tale utente. Riducendo la distanza che il contenuto deve percorrere, il CDN offre un rendimento ottimizzato, una latenza ridotta e prestazioni più elevate.
 
 ## Come viene creato il mio account di servizio CDN (Content Delivery Network) IBM Cloud?
+{: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
 
 Il tuo account viene creato durante il processo dell'ordine CDN. Se stai creando una CDN dal portale legacy, quando fai clic sul pulsante **Order CDN** nella **pagina Network -> CDN**, il tuo account viene creato. Se stai creando una CDN dal portale {{site.data.keyword.cloud}}, quando fai clic sul pulsante **Create** nella **pagina Network -> Content**, il tuo account viene creato.
 
 ## Cosa devo fare quando la mia CDN è nello stato CNAME Configuration?
+{: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
 Per la CDN HTTPS basata sul certificato SAN e HTTP, aggiorna il tuo record DNS in modo che il tuo sito web punti al `CNAME` associato alla tua nuova associazione CDN. Per la CDN HTTPS basata sul certificato jolly, questo aggiornamento del DNS **NON** è necessario.
@@ -42,6 +50,8 @@ Per la CDN HTTPS basata sul certificato SAN e HTTP, aggiorna il tuo record DNS i
 **Nota**: l'attivazione dell'aggiornamento potrebbe richiedere fino a 15-30 minuti. Contatta il tuo provider DNS per ottenere una stima di tempo accurata.
 
 ## Come aggiungo un record CNAME per il mio dominio CDN in DNS?
+{: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
+{: faq}
 
 Nella tua pagina di configurazione DNS per il tuo dominio CDN, puoi creare un record CNAME con il nome dominio CDN come Host e il CNAME IBM che hai utilizzato per configurare la CDN come CNAME. Il CNAME IBM termina con `cdnedge.bluemix.net`.
 
@@ -52,12 +62,14 @@ Ecco come si presenta un tipico record CNAME nella pagina di configurazione DNS:
 | CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minuti |
 
 
-## Cosa mi verrà addebitato in fattura nella mia CDN?
+## Cosa mi verrà addebitato in fattura per la mia CDN
+{: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
 Ti viene addebitata solo la larghezza di banda utilizzata per l'istanza CDN (Content Delivery Network) IBM Cloud. Se il tuo CDN non utilizza alcuna larghezza di banda, non ti verranno addebitate spese. I prezzi della larghezza di banda variano a seconda della posizione regionale del server edge. Puoi visualizzare i prezzi della larghezza di banda per regione geografica nel [documento dei prezzi](/docs/infrastructure/CDN?topic=CDN-pricing) per questo servizio.
 
 ## Quando riceverò l'addebito in fattura per la mia CDN?
+{: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
 La fatturazione di IBM Cloud Content Delivery Network avviene in base al periodo di fatturazione stabilito nel tuo account {{site.data.keyword.BluSoftlayer_notm}}.
@@ -68,24 +80,27 @@ La fatturazione di IBM Cloud Content Delivery Network avviene in base al periodo
 No; verrà eliminato solo quel CDN. Il tuo account esiste ancora e puoi creare altri CDN.
 
 ## La memorizzazione in cache di contenuto utilizza il push o il pull?
+{: #does-content-caching-use-push-or-pull}
 {: faq}
 
 La memorizzazione del contenuto nella cache viene effettuata utilizzando il modello _pull di origine_. Il pull di origine è un metodo con cui i dati vengono "estratti" dal server edge dall'interno del server di origine, a differenza del caricamento manuale del contenuto sul server edge.
 
 ## C'è un browser consigliato da utilizzare per la configurazione del servizio CDN?
+{: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
 {: faq}
 
 Sì, Firefox e Chrome sono i browser consigliati. Ti consigliamo di utilizzare le loro versioni più recenti con la tua CDN (Content Delivery Network) IBM Cloud.
 
 ## Qual è lo scopo di fornire un percorso quando creo la mia CDN?
+{: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
 Fornire un percorso mentre crei la tua CDN ti consente di isolare i file che possono essere forniti tramite la CDN da uno specifico server di origine.
 
-## La mia CDN è in uno stato di errore. Cosa faccio adesso?
+## Il mio CDN è in uno stato di errore. Cosa faccio adesso?
 {: faq}
 
-Fai riferimento alle pagine [Risoluzione dei problemi](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) o [Come ottenere aiuto e supporto](/docs/infrastructure/CDN/getting-help.html#gettinghelp) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
+Fai riferimento alle pagine [Risoluzione dei problemi](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) o [Come ottenere aiuto e supporto](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp) oppure apri un ticket nel [Portale del cliente ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://control.softlayer.com/).
 
 ## Dove trovo il CNAME per la mia CDN se non ne ho fornito uno?
 {: faq}
@@ -119,7 +134,7 @@ L'omissione della barra, ad esempio, utilizzando `www.example.com/images` provoc
 ## Come configuro la mia CDN (Content Delivery Network) per IBM COS (Cloud Object Storage)?
 {: faq}
 
-[Ecco un'esercitazione](/docs/tutorials/static-files-cdn.html) sulla creazione di una CDN (Content Delivery Network) per IBM Cloud Object Storage
+[Ecco un'esercitazione](/docs/tutorials?topic=solution-tutorials-static-files-cdn) sulla creazione di una CDN (Content Delivery Network) per IBM Cloud Object Storage
 
 ## Ho ricevuto una notifica che il mio certificato di origine sta per scadere. Cosa faccio adesso?
 {: faq}
@@ -182,3 +197,18 @@ Se sei uno degli utenti secondari dell'account, l'utente master dell'account ti 
 {: faq}
 
 Consideriamo un esempio in cui il dominio del tuo sito web per gli utenti finali è configurato per essere il dominio/nome host della tua CDN: `cdn.example.com`. Quando qualcuno cerca di raggiungere una pagina web navigando direttamente dalla barra di navigazione del browser, il browser in genere non invia le intestazioni Referer nella sua richiesta HTTP. Ad esempio, quando navighi direttamente in questo modo a `https://cdn.example.com/`, la tua CDN considera che la richiesta contiene una non corrispondenza rispetto al `refererValues` specificato. Quando valuta l'effetto o la risposta appropriati tramite il tuo Hotlink Protection, la CDN determina che si è verificata una non corrispondenza. Pertanto, la tua CDN rifiuterà l'accesso, piuttosto che consentirlo ('ALLOW').
+
+## Posso utilizzare l'endpoint privato dell'archiviazione oggetti nelle impostazioni della CDN?
+{: faq}
+
+No, la CDN può connettersi solo a Object Storage su endpoint pubblici.
+
+## Posso utilizzare la funzione Brotli nel servizio CDN?
+{: faq}
+
+No, la funzione Brotli non è supportata con il nostro servizio CDN con Akamai.
+
+## Come creo un endpoint CDN senza utilizzare il dominio?
+{: faq}
+
+Puoi creare un endpoint CDN senza utilizzare il dominio, ma SOLO per una CDN del tipo **Wildcard HTTPS**. Durante la creazione di una CDN del tipo **Wildcard HTTPS**, il tuo **CNAME** agisce come l'endpoint CDN e il **CNAME** viene utilizzato per fornire il traffico.

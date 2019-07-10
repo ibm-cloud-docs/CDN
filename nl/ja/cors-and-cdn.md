@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
+
+subcollection: CDN
 
 ---
 
@@ -15,11 +19,13 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # CORS および CDN からの CORS 要求
-{ #cors-and-cors-requests-through-your-cdn}
+{: #cors-and-cors-requests-through-your-cdn}
 
 Cross Origin Resource Sharing (CORS) は、主として、異なるオリジンからコンテンツへのアクセスの許可を検証するためにブラウザーによって使用されるメカニズムです。
 
 ## CORS とは何ですか?
+{: #what-is-cors}
+
 ブラウザーは Web ページをロードするときに、**同一生成元ポリシー**を適用します。これは、Web ページと同じオリジンからのコンテンツの取り出しのみを許可することを意味します。 しかし、場合によっては、Web ページは、その Web サイトを信頼する複数のオリジンからのアセットにアクセスする必要があることがあります。 この場合に、CORS が使用されます。 
 
 このセキュリティー・メカニズムは、アプリケーションが HTTP クライアントであるか、HTTP クライアントを持っている場合で、かつそのアプリケーションが CORS を実装している場合にのみ存在します。 Chrome、Firefox、および Safari など、ほとんどすべての最新ブラウザーは CORS を実装しています。
@@ -31,7 +37,9 @@ Cross Origin Resource Sharing (CORS) は、主として、異なるオリジン�
 CORS は、_単純要求_と、より複雑な _プリフライト要求_という 2 つのタイプの要求を処理できます。
 
 ### 単純要求
-最初の要求 (リソース・アクセス):
+{: #simple-requessts}
+
+**最初の要求 (リソース・アクセス):**
 
 ![cors-simple](/images/cors-simple.png)
 
@@ -44,7 +52,9 @@ CORS 要求を受信したサーバーは、その要求を処理し、要求さ
 ブラウザーは、CORS 応答ヘッダーによってその CORS 要求が満たされていることを確認できないと、コンテンツへのアクセス、およびコンテンツのロードを自動的に阻止します。 そうでない場合は、CORS オリジンがリソースの使用許可を与えていることを確認して、要求されたコンテンツへのアクセスおよびコンテンツのロードを許可します。
 
 ### プリフライト要求
-最初の要求 (プリフライト):
+{: #preflighted-requests}
+
+**最初の要求 (プリフライト):**
 
 ![cors-preflight](/images/cors-preflight.png)
 
@@ -64,6 +74,8 @@ CORS 要求を受信したサーバーは、その要求を処理し、要求さ
 その後、ブラウザーと CORS オリジン (Web ページのオリジンとは異なる) の間の通信は、単純 CORS 要求であるかのように処理されます。 この 2 番目の CORS 要求も許可される場合、単純 CORS 要求と同様に、コンテンツとリソースはアクセス可能であり、ロードできます。
 
 ## オリジンでの CORS のセットアップ方法
+{: #how-to-set-up-cors-at-your-origin}
+
 前の図に示されているように、CORS は、要求側の HTTP クライアントによって開始されます。 ただし、その効果は、要求されたオリジンによって決まります。 コンテンツを CORS 要求対応にするには、正しい CORS 応答ヘッダーと正しいアクセス許可を使用して応答するようにオリジンが正しく構成されている必要があります。
 
 Nginx サーバーの基本 CORS 構成の例を以下に示します。
@@ -127,6 +139,7 @@ http {
     # more http context configs
 }
 ```
+{: screen}
 
 [w3 specification regarding that wildcard value ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.w3.org/TR/cors/#security) によると、通常、ブラウザーは、サーバーの CORS 応答ヘッダーで `Access-Control-Allow-Origin: *` を確認すると、自由にコンテンツをロードできるはずです。 ただし、必ずしもすべてのブラウザーが `Access-Control-Allow-Origin: *` をサポートしているわけではありません。
 
@@ -185,18 +198,25 @@ http {
     # more http context configs
 }
 ```
+{: screen}
 
-前の例では、`if` Nginx ステートメントの過剰使用を避けるために、`map` ディレクティブが使用されています。 CORS 要求がこのサーバーに対して行われ、その URI パスに一致すると、`http://www.example.com`、`https://cdn.example.com`、または `http://dev.example.com` などからコンテンツが要求されたとき、サーバーは、`http://www.example.com`、`https://cdn.example.com`、`http://dev.example.com` などの値を含む `Access-Control-Allow-Origin` ヘッダーで応答します。
+前の例では、`if` Nginx ステートメントの過剰使用を避けるために、`map` ディレクティブが使用されています。CORS 要求がこのサーバーに対して行われ、その URI パスに一致すると、`http://www.example.com`、`https://cdn.example.com`、または `http://dev.example.com` などからコンテンツが要求されたとき、サーバーは、`http://www.example.com`、`https://cdn.example.com`、`http://dev.example.com` などの値を含む `Access-Control-Allow-Origin` ヘッダーで応答します。
 
 ## CDN 用の CORS のセットアップ方法
+{: #how-to-set-up-cors-for-cdn}
+
 ![cors-through-cdn](/images/cors-through-cdn.png)
 CDN はオリジンの CORS セットアップからほとんど認識されないため、特定の CDN 構成は必要ありません。 CDN エッジは、あるコンテンツの最初の要求に対して、キャッシュされた応答を見つけられない場合、要求をオリジン・ホストに転送します。 オリジン・ホストが CORS 要求を処理するようにセットアップされており、この要求に `Origin` ヘッダーがある場合、オリジン・ホストは `Access-Control-Allow-Origin` の CORS ヘッダーと関連値を使用してエッジに応答するはずです。 ヘッダーと値を含めて応答全体が CDN にキャッシュされます。 同じ URI パスのオブジェクトに対する後続の要求は、このキャッシュから提供され、もともとオリジンから受信された `Access-Control-Allow-Origin` ヘッダー値を含みます。
 
 ## CORS および CORS 要求のトラブルシューティング
+{: #troubleshooting-cors-and-cors-requests}
+
 オリジン・サーバーが CORS 用にセットアップされており、ブラウザーの要求に対して `Access-Control-Allow-Origin` ヘッダーが返されない場合、CDN にキャッシュされている応答ヘッダーは、要求内に Origin ヘッダーを持っていなかった要求用のものだった可能性があります。 CDN は、オリジン・ホストからの応答ヘッダーをキャッシュに入れます。 しかし、キャッシュされたヘッダーは、オリジンへの要求をトリガーした要求に基づきます。 その場合、応答ヘッダーに、CORS ヘッダーが含まれていない可能性があります。 CDN のパージ機能を使用してそのパスの CDN 内のキャッシュをクリアし、クライアントから要求を再試行してください。
 
 オリジン・サーバーからの `Vary` 応答ヘッダーも、CDN からコンテンツを取得するときに、予期しない動作を引き起こす可能性があります。 サーバーが `Vary` ヘッダーを使用して応答した場合、CDN は、1 つの非常に特定の例外を除き、オリジン・サーバーからのコンテンツ (およびその関連応答ヘッダー) をキャッシュに入れません。 現在、オブジェクトが次のいずれかのファイル・タイプの場合、サービスは、Vary ヘッダーをオリジンから削除して、オブジェクトをキャッシング可能にします: `aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, zip, webp, jxr, hdp, wdp, pict, tif, tiff, mid, midi, ttf, eot, woff, otf, svg, svgz, jar, woff2, json`。 キャッシュするオブジェクトがこれらのどのファイル・タイプでもない場合は、そのオブジェクトに対するオリジン・サーバーの応答から `Vary` ヘッダーを削除して、CDN のパージ機能を使用した後に再試行してください。
 
 ## 詳細情報
+{: #more-information}
+
 * [https://www.w3.org/TR/cors/ ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.w3.org/TR/cors/)
 * [https://w3c.github.io/webappsec-cors-for-developers/ ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://w3c.github.io/webappsec-cors-for-developers/)

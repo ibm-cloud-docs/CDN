@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -22,6 +26,7 @@ lastupdated: "2019-02-19"
   ![SAN 狀態圖](images/state-diagram-san.png)
 
 ## 網域控制驗證的起始步驟
+{: #initial-steps-to-domain-control-validation}
 
 **步驟 1：**
 
@@ -49,15 +54,17 @@ lastupdated: "2019-02-19"
 
   * 此處理程序完成後，不論使用哪種驗證方法，所有網域都會移至 **CNAME 配置**狀態。
 
-您可以在[開始執行](/docs/infrastructure/CDN/basic-functions.html#get-to-running)頁面中，找到有關完成 CNAME 配置以及監督 CDN 的其他資訊。
+您可以在[開始執行](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running)頁面中，找到有關完成 CNAME 配置以及監督 CDN 的其他資訊。
 
 
-## 網域控制驗證 
+## 網域控制驗證
+{: #domain-control-validation}
 
 若要讓您的 CDN 網域名稱新增至 SAN 憑證，您必須證明您對網域具有管理控制權。這個證明的程序稱為定址「網域控制驗證 (DCV)」。您必須在 48 小時內定址 DCV。如果未這樣做，您的要求會到期，且必須重新開始訂購程序。有三種不同的方式可定址 DCV，如下列各節所述。
 
 
 ### CNAME
+{: #cname}
 
 如果您的 CDN **不**負責處理即時資料流量，則**僅**建議使用此方法。如果您的網域負責處理即時資料流量，則我們建議使用「標準」或「重新導向」方法來驗證網域。
 
@@ -72,6 +79,7 @@ lastupdated: "2019-02-19"
 
 ---
 ### 標準
+{: #standard}
 
 如果您選擇「網域驗證」的「標準」方法，則「網域驗證」視窗會顯示**盤查 URL** 及**盤查回應**。若要完成「網域驗證」處理程序，請將提供的**盤查回應**新增至原點伺服器。新增之後，CA 可以使用**盤查 URL** 中所指定的 URL，從原點伺服器擷取**盤查回應**。正確配置原點伺服器之後，「網域驗證」可能需要 2 到 4 小時。
 
@@ -86,6 +94,7 @@ lastupdated: "2019-02-19"
 * 盤查回應：`examplechallenge`
 
 #### Apache 配置
+{: #apache-configuration}
 
   * **步驟 1：**登入執行 Apache2 伺服器的機器。
 
@@ -109,6 +118,7 @@ lastupdated: "2019-02-19"
   * **步驟 6：**在 CDN 網域與原點伺服器 IP 位址之間的 DNS 中建立一筆 A 記錄。
 
 #### Nginx 配置
+{: #nginx-configuration}
 
   * **步驟 1：**登入執行 Nginx 伺服器的機器。
 
@@ -131,6 +141,7 @@ lastupdated: "2019-02-19"
   * **步驟 6：**在 CDN 網域與原點伺服器 IP 位址之間的 DNS 中建立一筆 A 記錄。
 
 #### 驗證 CA 已可使用此標準方法來處理網域驗證
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * 若要驗證此方法可透過 `curl` 運作，請執行「盤查 URL」的指令。
     ```
@@ -141,6 +152,7 @@ lastupdated: "2019-02-19"
 在任一情況下，您都應該能夠擷取原點伺服器上所儲存的「網域驗證盤查」檔案物件副本。
 
 #### 標準方法的清除
+{: #clean-up-for-the-standard-method}
 
 在您的 CDN 已達到**憑證部署**狀態之後，請執行下列動作：
 1. 移除 `examplechallenge-fileobject` 檔案。（選用）
@@ -149,6 +161,7 @@ lastupdated: "2019-02-19"
 
 ---
 ### 重新導向
+{: #redirect}
 
 按一下**重新導向**標籤，即會顯示透過重新導向來處理「網域驗證」所需的所有資訊。此資訊容許 CA 透過原點伺服器，從 Akamai 擷取**盤查回應**的副本。正確配置伺服器之後，「網域驗證」可能需要 2 到 4 小時。
 
@@ -163,6 +176,7 @@ lastupdated: "2019-02-19"
 * URL 重新導向：`http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Apache 重新導向配置
+{: #apache-redirect-configuration}
 
   * **步驟 1：**登入執行 Apache2 伺服器的機器。
 
@@ -184,6 +198,7 @@ lastupdated: "2019-02-19"
   * **步驟 5：**在 CDN 網域與原點伺服器 IP 位址之間的 DNS 中建立一筆 A 記錄。
 
 #### Nginx 重新導向配置
+{: #nginx-redirect-confguration}
 
   * **步驟 1：**登入執行 Nginx 伺服器的機器。
 
@@ -236,6 +251,7 @@ lastupdated: "2019-02-19"
   * **步驟 5：**在 CDN 網域與原點伺服器 IP 位址之間的 DNS 中建立一筆 A 記錄。
 
 #### 驗證重新導向正在進行
+{: #verify-that-the-redirect-is-occurring}
 
 完成這些步驟，_只會_ 將特定「盤查 URL」的資料流量重新導向至「URL 重新導向」。您可以驗證重新導向是透過 `curl` 還是透過瀏覽器適當地運作。
 
@@ -250,6 +266,7 @@ lastupdated: "2019-02-19"
 在任一情況下，您都應該能夠從原始要求會重新導向至的 `dcv.akamai.com` 網域的 Akamai 中擷取「網域驗證盤查」檔案物件的副本。
 
 #### 重新導向方法的清除
+{: #clean-up-for-the-redirect-method}
 
 在您的 CDN 已達到**憑證部署**狀態之後，請執行下列動作：
 1. 從配置檔中移除重新導向陳述式或區塊。（選用）

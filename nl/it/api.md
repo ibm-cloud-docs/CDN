@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: application programming interface, api, slapi, reference, development interface
+
+subcollection: CDN
 
 ---
 
@@ -12,19 +16,20 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 
 
 # Guida di riferimento alle API CDN
 {: #cdn-api-reference}
 
-L'API (Application Programming Interface) {{site.data.keyword.BluSoftlayer_notm}} (comunemente conosciuta come SLAPI), fornita da {{site.data.keyword.cloud}}, è l'interfaccia di sviluppo che fornisce agli sviluppatori e agli amministratori di sistema l'interazione diretta con il sistema di backend {{site.data.keyword.BluSoftlayer_notm}}.
+L'API (Application Programming Interface) dell'infrastruttura {{site.data.keyword.cloud}} (comunemente conosciuta come SLAPI), fornita da {{site.data.keyword.cloud}}, è l'interfaccia di sviluppo che fornisce agli sviluppatori e agli amministratori di sistema l'interazione diretta con il sistema di backend dell'infrastruttura {{site.data.keyword.cloud_notm}}.
 
-La SLAPI implementa molte delle funzioni nel portale del cliente: se è possibile un'interazione nel portale del cliente, può anche essere eseguita nella SLAPI. Poiché puoi interagire con tutte le parti dell'ambiente {{site.data.keyword.BluSoftlayer_notm}} in modo programmatico, nella SLAPI, puoi utilizzare l'API per automatizzare le attività.
+La SLAPI implementa molte delle funzioni nel portale del cliente: se è possibile un'interazione nel portale del cliente, può anche essere eseguita nella SLAPI. Poiché puoi interagire con tutte le parti dell'ambiente dell'infrastruttura {{site.data.keyword.cloud_notm}} in modo programmatico, nella SLAPI, puoi utilizzare l'API per automatizzare le attività.
 
 La SLAPI è un sistema RPC (Remote Procedure Call). Ogni chiamata comporta l'invio di dati tramite l'endpoint API e la ricezione dei dati strutturati come ritorno. Il formato utilizzato per inviare e ricevere i dati con la SLAPI dipende da quale implementazione dell'API scegli. La SLAPI al momento utilizza SOAP, XML-RPC o REST per la trasmissione dei dati.
 
-Per ulteriori informazioni sulla SLAPI o sulle API del servizio CDN (Content Delivery Network) IBM Cloud, consulta le seguenti risorse nella rete di sviluppo IBM Cloud:
+Per ulteriori informazioni sulla SLAPI o sulle API del servizio CDN (Content Delivery Network) {{site.data.keyword.cloud_notm}}, consulta le seguenti risorse nella rete di sviluppo {{site.data.keyword.cloud_notm}}:
 
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
@@ -42,22 +47,27 @@ Per iniziare, questa è una sequenza di chiamata API consigliata da seguire:
 
 Puoi utilizzare altre API dopo aver seguito la precedente sequenza.
 
-[Il codice di esempio è disponibile per tutti i passi in questa sequenza di chiamata.](/docs/infrastructure/CDN/cdn-example-code.html#code-examples-using-the-cdn-api)
+[Il codice di esempio è disponibile per tutti i passi in questa sequenza di chiamata.](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)
 
-**NOTA**: **devi** utilizzare il nome utente API e la chiave API di un utente con l'autorizzazione `CDN_ACCOUNT_MANAGE` per la maggior parte delle chiamate API presentate in questo documento. Controlla l'utente Master del tuo account se hai bisogno che ti venga abilitata questa autorizzazione. (A ogni account cliente IBM Cloud è fornito un utente Master).
+**Devi** utilizzare il nome utente API e la chiave API di un utente con l'autorizzazione `CDN_ACCOUNT_MANAGE` per la maggior parte delle chiamate API presentate in questo documento. Controlla l'utente Master del tuo account se hai bisogno che ti venga abilitata questa autorizzazione. (A ogni account cliente IBM Cloud è fornito un utente Master).
+{: note}
 
 ----
 ## API per fornitore
+{: #api-for-vendor}
+
 ### listVendors
 Questa API consente all'utente di elencare i fornitori CDN supportati. Il `vendorName` è necessario per creare un account CDN e per un'introduzione all'ordinazione della tua CDN.
 
 * **Parametri obbligatori**: Nessuno
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
-  Il Contenitore fornitore e un esempio di utilizzo possono essere visualizzati qui: [Contenitore fornitore](/docs/infrastructure/CDN/vendor-container.html)
+  Il Contenitore fornitore e un esempio di utilizzo possono essere visualizzati qui: [Contenitore fornitore](/docs/infrastructure/CDN?topic=CDN-vendor-container)
 
 ----
 ## API per Account
+{: #api-for-account}
+
 ### verifyCdnAccountExists
 Verifica che esista un account CDN per l'utente che richiama l'API, per il `vendorName` fornito.
 
@@ -66,13 +76,15 @@ Verifica che esista un account CDN per l'utente che richiama l'API, per il `vend
 
 ----
 ## API per Associazione dominio
+{: #api-for-domain-mapping}
+
 ### createDomainMapping
-Utilizzando gli input forniti, questa funzione crea un'associazione dominio per il fornitore indicato e la unisce all'ID account {{site.data.keyword.BluSoftlayer_notm}} dell'utente. L'account CDN deve prima essere creato utilizzando `placeOrder` perché questa API funzioni (vedi un esempio della chiamata API `placeOrder` negli [Esempi di codice](/docs/infrastructure/CDN/cdn-example-code.html)). Una volta creato il CDN, viene creato un `defaultTTL` con un valore di 3600 secondi.
+Utilizzando gli input forniti, questa funzione crea un'associazione dominio per il fornitore indicato e la unisce all'ID account dell'infrastruttura {{site.data.keyword.cloud_notm}} dell'utente. L'account CDN deve prima essere creato utilizzando `placeOrder` perché questa API funzioni (vedi un esempio della chiamata API `placeOrder` negli [Esempi di codice](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)). Una volta creato il CDN, viene creato un `defaultTTL` con un valore di 3600 secondi.
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-  [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+  [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un'associazione dominio (gli attributi sono facoltativi se non diversamente indicato):
     * `vendorName`: **obbligatorio** Fornisce il nome di un provider di IBM Cloud CDN valido.
@@ -82,7 +94,7 @@ Utilizzando gli input forniti, questa funzione crea un'associazione dominio per 
     * `protocol`: **obbligatorio** I protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
     * `certificateType`: **obbligatorio** per il protocollo HTTPS. `SHARED_SAN_CERT` o `WILDCARD_CERT`
     * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Il percorso predefinito è `/*`
-    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
     * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
     * `respectHeader`: un valore booleano che, se impostato su `true`, farà in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
     * `cname`: fornisce un alias al nome host. Sarà generato se non ne viene fornito uno.
@@ -98,7 +110,7 @@ Utilizzando gli input forniti, questa funzione crea un'associazione dominio per 
 
   **NOTE**: la raccolta fornisce un valore `uniqueId`, che deve essere inviato come input per le successive chiamate API correlate all'associazione e al percorso di origine.
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### deleteDomainMapping
@@ -106,7 +118,7 @@ Elimina l'associazione dominio in base all'`uniqueId`. L'associazione dominio de
 
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da eliminare
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### verifyDomainMapping
@@ -117,7 +129,7 @@ Questa API può venire richiamata in qualsiasi momento per ottenere l'ultimo sta
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione che desideri verificare
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### startDomainMapping
@@ -126,7 +138,7 @@ Avvia un'associazione dominio CDN in base all'`uniqueId`. Per essere avviata, l'
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da avviare
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### stopDomainMapping
@@ -135,7 +147,7 @@ Arresta un'associazione dominio CDN in base all'`uniqueId`. Per iniziare l'arres
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da arrestare
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### updateDomainMapping
@@ -143,7 +155,7 @@ Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Puoi visualizzare tutti gli attributi nel Contenitore di input qui:
-  [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+  [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   I seguenti attributi fanno parte del Contenitore di input e devono essere forniti **obbligatoriamente** quando si aggiorna un'associazione dominio:
     * `vendorName`: fornisce il nome del provider CDN per questa associazione.
@@ -152,7 +164,7 @@ Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall
     * `originType`: il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
     * `domain`: fornisce il tuo nome host.
     * `protocol`: i protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
-    * `httpPort` e/o `httpsPort`: queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `httpPort` e/o `httpsPort`: queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
     * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
     * `respectHeader`: un valore booleano che, se impostato su `true`, farà in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
     * `uniqueId`: generato dopo la creazione dell'associazione.
@@ -166,7 +178,7 @@ Abilita l'utente ad aggiornare le proprietà dell'associazione identificata dall
       * `include: space separated query-args`: include questi specifici argomenti della query. Ad esempio, `include: query1 query2`
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappings
@@ -175,7 +187,7 @@ Restituisce una raccolta di tutte le associazioni dominio per l'attuale cliente.
 * **Parametri obbligatori**: Nessuno
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappingByUniqueId
@@ -184,17 +196,19 @@ Restituisce una raccolta con un singolo oggetto dominio in base all'`uniqueId` d
 * **Parametri obbligatori**: `uniqueId`: l'ID univoco dell'associazione da restituire
 * **Restituzione**: una raccolta di singoli oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN/mapping-container.html)
+  [Visualizza il Contenitore associazione](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ## API per origine
+{: #apis-for-origin}
+
 ### createOriginPath
 Crea un percorso di origine per una CDN esistente e per un particolare cliente. Il percorso di origine può essere basato su un server host o un Object Storage. Per creare il percorso di origine, l'associazione dominio deve essere in uno stato _RUNNING_ o _CNAME_CONFIGURATION_.
 
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-  [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+  [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si crea un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
     * `vendorName`: **obbligatorio** Fornisce il nome di un provider di IBM Cloud CDN valido.
@@ -203,7 +217,7 @@ Crea un percorso di origine per una CDN esistente e per un particolare cliente. 
     * `domain`: **obbligatorio** Fornisce il tuo nome host come una stringa.
     * `protocol`: **obbligatorio** I protocolli supportati sono `HTTP`, `HTTPS` o `HTTP_AND_HTTPS`.
     * `path`: il percorso da cui verrà fornito il contenuto memorizzato in cache. Deve iniziare con il percorso associazione. Ad esempio, se il percorso associazione è `/test`, il tuo percorso di origine può essere `/test/media`
-    * `httpPort` e/o `httpsPort`: **obbligatorio** Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `httpPort` e/o `httpsPort`: **obbligatorio** Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
     * `header`: specifica le informazioni sull'intestazione host utilizzata dal server di origine
     * `uniqueId`: **obbligatorio** Generato dopo la creazione dell'associazione.
     * `cname`: fornisce un alias al nome host. Se non avevi fornito un nome univoco, ne è stato generato uno per te quando è stata creata l'associazione.
@@ -217,7 +231,7 @@ Crea un percorso di origine per una CDN esistente e per un particolare cliente. 
 
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN/path-container.html)
+  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### updateOriginPath
@@ -226,14 +240,14 @@ Aggiorna un percorso di origine per un'associazione esistente e per un particola
 * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-  [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+  [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna un percorso di origine (gli attributi sono facoltativi se non diversamente indicato):
     * `oldPath`: **obbligatorio** L'attuale percorso da modificare
     * `origin`: (**obbligatorio** se in fase di aggiornamento) Fornisce l'indirizzo del server di origine come una stringa.
     * `originType`: **obbligatorio** Il tipo di origine può essere `HOST_SERVER` o `OBJECT_STORAGE`.
     * `path`: **obbligatorio** Nuovo percorso da aggiungere. Relativo al percorso di associazione.
-    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host, se in fase di aggiornamento) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+    * `httpPort` e/o `httpsPort`: (**obbligatorio** per il server host, se in fase di aggiornamento) Queste due opzioni devono corrispondere al protocollo desiderato. Se il protocollo è `HTTP`, `httpPort` deve essere impostato e `httpsPort` _non_ deve essere impostato. In modo analogo, se il protocollo è `HTTPS`, `httpsPort` deve essere impostato e `httpPort` _non_ deve essere impostato. Se il protocollo è `HTTP_AND_HTTPS`, _sia_ `httpPort` che `httpsPort` _devono_ essere impostati. Akamai ha delle specifiche limitazioni sui numeri porta. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
     * `uniqueId`: **obbligatorio** L'ID univoco dell'associazione a cui appartiene questa origine
     * `bucketName`: (**obbligatorio** solo per l'Object Storage) Il nome bucket per il tuo Object Storage S3.
     * `fileExtension`: (**obbligatorio** solo per Object Storage) Le estensioni file di cui è consentita la memorizzazione in cache.
@@ -245,7 +259,7 @@ Aggiorna un percorso di origine per un'associazione esistente e per un particola
 
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN/path-container.html)
+  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### deleteOriginPath
@@ -265,10 +279,12 @@ Elenca i percorsi di origine per un'associazione esistente in base all'`uniqueId
   * `uniqueId`: fornisce l'ID univoco dell'associazione per cui vuoi elencare i percorsi di origine.
 * **Restituzione**: una raccolta di oggetti di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN/path-container.html)
+  [Visualizza il Contenitore percorso di origine](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ## API per Eliminazione
+{: #api-for-purge}
+
 ### Classe contenitore per l'eliminazione:
 ```
 class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
@@ -326,7 +342,9 @@ Aggiorna lo stato della voce di percorso di eliminazione per indicare se questo 
 * **Restituzione**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
 
 ----
-## API per Time to Live  
+## API per Time to Live
+{: #api-for-time-to-live}
+
 ### Variabili classe TimeToLive:  
 ```  
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
@@ -373,7 +391,9 @@ Elenca gli oggetti `TimeToLive` esistenti in base all'`uniqueId` di una CDN.
 
  ----
 ## API per Metriche
-[Visualizza il Contenitore di metriche](/docs/infrastructure/CDN/metrics-container.html)
+{: #api-for-metrics}
+
+[Visualizza il Contenitore di metriche](/docs/infrastructure/CDN?topic=CDN-container-class-for-metrics)
 
 ### getCustomerUsageMetrics
 Restituisce il numero totale di statistiche predeterminate per la visualizzazione diretta (senza grafici) per l'account di un cliente, per un determinato periodo di tempo.
@@ -443,13 +463,15 @@ Restituisce il numero totale di statistiche predeterminate per la visualizzazion
 
 ----
 ## API per Controllo dell'accesso geografico
+{: #api-for-geographical-access-control}
+
 ### createGeoblocking
 Crea una nuova regola di Controllo dell'accesso geografico e restituisce la regola appena creata.
 
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     I seguenti attributi fanno parte del Contenitore di input e sono **obbligatori** quando si crea una nuova regola di Controllo dell'accesso geografico.
     * `uniqueId`: ID univoco dell'associazione per assegnare la regola
@@ -457,11 +479,11 @@ Crea una nuova regola di Controllo dell'accesso geografico e restituisce la rego
     * `regionType`: il tipo di regione a cui applicare la regola di Controllo dell'accesso geografico, `CONTINENT` o `COUNTRY_OR_REGION`
     * `regions`: un array che elenca le ubicazioni a cui si applicherà l'`accessType`
 
-      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) per visualizzare un elenco di possibili regioni.
+      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) per visualizzare un elenco di possibili regioni.
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### updateGeoblocking
@@ -470,7 +492,7 @@ Aggiorna una regola di Controllo dell'accesso geografico esistente per un'associ
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     I seguenti attributi fanno parte del Contenitore di input e possono essere forniti quando si aggiorna una regola di Controllo dell'accesso geografico (i parametri sono facoltativi se non diversamente indicato):
     * `uniqueId`: ID univoco **obbligatorio** dell'associazione a cui appartiene la regola da aggiornare
@@ -478,11 +500,11 @@ Aggiorna una regola di Controllo dell'accesso geografico esistente per un'associ
     * `regionType`: il tipo di regione a cui applicare la regola, `CONTINENT` o `COUNTRY_OR_REGION`
     * `regions`: un array che elenca le ubicazioni a cui si applicherà l'`accessType`
 
-      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) per visualizzare un elenco di possibili regioni.
+      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) per visualizzare un elenco di possibili regioni.
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### deleteGeoblocking
@@ -491,14 +513,14 @@ Rimuove una regola di Controllo dell'accesso geografico esistente da un'associaz
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     Il seguente attributo fa parte del Contenitore di input ed è **obbligatorio** quando si elimina una regola di Controllo dell'accesso geografico:
     * `uniqueId`: fornisce l'ID univoco dell'associazione a cui appartiene la regola da eliminare.
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblocking
@@ -510,7 +532,7 @@ Richiama la modalità di funzionamento di Controllo dell'accesso geografico di u
   * **Restituisce**: un oggetto di tipo
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -521,27 +543,29 @@ Restituisce un elenco dei tipi e delle regioni consentiti per la creazione di re
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
-    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [Visualizza la classe di blocco geografico (geo-blocking)](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 ----
 ## API per Hotlink Protection
+{: #api-for-hotlink-protection}
+
 ### createHotlinkProtection
 Crea una nuova Hotlink Protection e restituisce la modalità di funzionamento appena creata.
 
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     I seguenti attributi sono parte del Contenitore di input e sono **obbligatori** quando si crea una nuova Hotlink Protection:
     * `uniqueId`: ID univoco dell'associazione a cui assegnare la modalità di funzionamento
     * `protectionType`: specifica se consentire ("ALLOW") o rifiutare ("DENY") l'accesso al tuo contenuto quando una pagina web fa una richiesta di contenuto con un valore di intestazione Referer corrispondente a uno dei termini nei refererValues specificati.
     * `refererValues`: un elenco separato da spazi singoli di termini di corrispondenza di URL Referer per cui diventerà effettiva la modalità di funzionamento `protectionType`
 
-      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) per visualizzare un elenco di valori Hotlink Protection validi.
+      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) per visualizzare un elenco di valori Hotlink Protection validi.
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### updateHotlinkProtection
@@ -550,18 +574,18 @@ Aggiorna una modalità di funzionamento Hotlink Protection esistente per un'asso
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     I seguenti attributi sono parte del Contenitore di input e sono **obbligatori** quando si aggiorna una Hotlink Protection esistente:
     * `uniqueId`: l'ID univoco dell'associazione a cui appartiene la modalità di funzionamento esistente
     * `protectionType`: specifica se consentire ("ALLOW") o rifiutare ("DENY") l'accesso al tuo contenuto quando una pagina web fa una richiesta di contenuto con un valore di intestazione Referer corrispondente a uno dei termini nei refererValues specificati. 
     * `refererValues`: un elenco separato da spazi singoli di termini di corrispondenza di URL Referer per cui diventerà effettiva la modalità di funzionamento `protectionType`
 
-      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) per visualizzare un elenco di valori Hotlink Protection validi.
+      Vedi la pagina [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) per visualizzare un elenco di valori Hotlink Protection validi.
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### deleteHotlinkProtection
@@ -570,7 +594,7 @@ Rimuove una modalità di funzionamento Hotlink Protection esistente da un'associ
   * **Parametri**: una raccolta di tipo `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     Puoi visualizzare tutti gli attributi nel Contenitore di input qui di seguito:
 
-    [Visualizza il Contenitore di input](/docs/infrastructure/CDN/input-container.html)
+    [Visualizza il Contenitore di input](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     I seguenti attributi sono parte del Contenitore di input e sono **obbligatori** quando si crea una nuova Hotlink Protection:
     * `uniqueId`: ID univoco dell'associazione da cui rimuovere la modalità di funzionamento
@@ -586,4 +610,4 @@ Richiama la modalità di funzionamento Hotlink Protection corrente di un'associa
 
   * **Restituisce**: un oggetto di tipo `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [Visualizza la classe Hotlink Protection](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)

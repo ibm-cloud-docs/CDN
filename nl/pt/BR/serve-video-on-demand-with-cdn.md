@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -21,6 +25,7 @@ lastupdated: "2019-02-19"
 Neste guia, exploraremos um exemplo de como alavancar o {{site.data.keyword.cloud}} CDN para transmitir o conteúdo `.mp4` por meio do **HLS** como vídeo sob demanda, para um navegador de uma origem Linux-Nginx. 
 
 ## Introdução
+{: #introduction}
 
 Vários formatos, como HLS, MPEG-DASH e assim por diante, estão disponíveis para transmitir vídeo. 
 
@@ -36,6 +41,8 @@ $ sudo apt-get update
 ```
 
 ## Preparar arquivos de vídeo
+{: #prepare-video-files}
+
 Neste guia, usaremos `ffmpeg` para preparar os arquivos de vídeo. É uma ferramenta poderosa para arquivos multimídia que pode converter, multiplexar, demultiplexar, filtrar, e assim por diante, por meio de seus vários comandos.
 
 Primeiro, obteremos `ffmpeg`.
@@ -45,7 +52,7 @@ $ sudo apt-get -y install ffmpeg
 
 O HLS funciona com dois tipos de arquivos: `.m3u8` e `.ts`. É possível pensar no arquivo `.m3u8` como a "lista de execução". No início das conexões de vídeo, esse arquivo é o primeiro buscado.  Em seguida, a lista de execução informa ao reprodutor de vídeo sobre os fragmentos de vídeo que ele deve buscar e fornece outros dados sobre como reproduzir o conteúdo transmitido com êxito. Os arquivos `.ts` são os "fragmentos" de vídeo. Esses fragmentos são buscados e reproduzidos pelo reprodutor de vídeo de acordo com os detalhes fornecidos na "lista de execução".
 
-Agora, vamos verificar e ver o formato, a taxa de bits e outras informações para as conexões de vídeo e fluxos de áudio de nosso vídeo de origem `.mp4`.
+Agora, vamos verificar e ver o formato, a taxa de bits e outras informações para os fluxos de vídeo e áudio do vídeo de origem `.mp4`.
 
 ```
 $ ffprobe test-video.mp4 
@@ -74,21 +81,21 @@ Aqui está o detalhamento do que esse comando fez:
 |Argumento(s)|Efeito|
 |:---|:---|
 | ffmpeg | Use a ferramenta `ffmpeg`. |
-| -i test-video.mp4 | The source video is located at `test-video.mp4`. |
-| -c:a acc | Use the acc audio codec for the output. |
-| -ar 48000 | Set the audio sample rate to 48000 Hz for the output. |
-| -b:a 128k | Set the audio bitrate to 128000 bits/second for the output. |
-| -c:v h264 | Use the `h.264` video codec for the output. |
-| -profile:v main | Use the "main" format profile of the selected codec for widest device support. |
-| -crf 23 | Attempt to maintain the video quality with varying file size and bitrate.<br/>  The lower the CRF, the higher the quality and file size. |
-| -g 61 -keyint_min 61 | Set a maximum and minimum.<br/> With the example source frame rate as 30.30, a keyframe should be <br/> inserted every 2 seconds (61 frames). |
-| -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that may insert extraneous keyframes into the output. |
-| -b:v 5300k | Sets the output video stream's target bitrate to 5300000 bits/second. |
-| -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
-| -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
-| -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
-| -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
-| test-video.m3u8 | Nomeie o arquivo de lista de execução/manifest de saída como `test-video.m3u8`.<br/> Como resultado, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ... e semelhantes,<br/> serão os nomes do fragmento de vídeo por padrão.|
+| -i test-video.mp4 | O vídeo de origem está localizado em `test-video.mp4`. |
+| -c:a acc | Use o codec de áudio acc para a saída. |
+| -ar 48000 | Configure a taxa de amostra de áudio para 48000 Hz para a saída. |
+| -b:a 128k | Configure a taxa de bits de áudio para 128000 bits/segundo para a saída. |
+| -c:v h264 | Use o codec de vídeo `h.264` para a saída. |
+| -profile:v main | Use o perfil de formato "principal" do codec selecionado para o suporte de dispositivo mais amplo. |
+| -crf 23 | Tente manter a qualidade do vídeo com tamanho de arquivo e taxa de bits variáveis.<br/>  Quanto menor o CRF, maior a qualidade e o tamanho do arquivo. |
+| -g 61 -keyint_min 61 | Configure um máximo e mínimo.<br/> Com a taxa de quadros de origem de amostra como 30,30, um quadro chave seria <br/> inserido a cada dois segundos (61 quadros). |
+| -sc_threshold 0 | Desativar detecção de cena por `ffmpeg`.<br/> Evita um segundo processo que pode inserir quadros chaves externos na saída. |
+| -b:v 5300k | Configura a taxa de bits de destino do fluxo de vídeo de saída para 5300000 bits/segundo. |
+| -maxrate 5300k | Limita a taxa de bits máxima de vídeo de vídeo de saída no<br/> codificador para 5300000 bits/segundo, no caso de variar. |
+| -bufsize 10600k | Configura o tamanho do buffer do decodificador de vídeo `ffmpeg` para 10600000 bits.<br/>  Com taxa de bits de 5300 k, o codificador `ffmpeg` deve verificar e <br/> tentar reajustar a taxa de bits de saída de volta para a taxa de bits de destino para cada dois segundos de vídeo. |
+| -hls_time 6 | Tente destinar seis segundos para cada comprimento de fragmento de vídeo de saída.<br/> Acumula quadros por pelo menos seis segundos de vídeo e, em seguida,<br/> para interrompendo um fragmento de vídeo quando encontra o próximo quadro chave. |
+| -hls_playlist_type vod | Prepara o arquivo de lista de execução `.m3u8` de saída para vídeo sob demanda (vod). |
+| test-video.m3u8 | Nomeie o arquivo manifest/lista de execução de saída para `test-video.m3u8`.<br/> Como resultado, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ... e semelhantes,<br/> serão os nomes do fragmento de vídeo por padrão.|
 
 Observe que, para as opções `-`, a menos que um fluxo seja especificado, o "melhor" para sua categoria será escolhido.
 
@@ -135,10 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 Para casos de uso mais complexos -- como o ajuste de escala de resolução de vídeo, o trabalho com subtítulos, a criptografia HLS AES em fragmentos de vídeo para segurança e autorização, e assim por diante -- `ffmpeg` tem muito mais opções de argumentos que manipulam os recursos mais complexos e específicos. É possível localizar descrições desses argumentos na [documentação geral do ffmpeg](https://ffmpeg.org/ffmpeg.html) e em sua [documentação sobre formatos específicos, como HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Preparar a origem
+{: #prepare-the-origin}
+
 ### Servidor
+{: #server}
+
 Se você estiver usando esse servidor como uma origem adicional em um segundo domínio do qual transmitir esse HLS, poderá ser necessário configurar o servidor para retornar cabeçalhos de resposta do CORS para acesso potencial ao navegador.
 
 É possível colocar os arquivos HLS em qualquer diretório ou subdiretório que você desejar. Para esse exemplo, vamos colocar os arquivos HLS em `/usr/share/nginx/hls/`.
@@ -190,8 +203,10 @@ http {
 
 # Some more configurations for this main context...
 ```
+{: screen}
 
 ### Reprodutor de vídeo na página da web
+{: #video-player-on-the-webpage}
 
 Nem todos os formatos de vídeo de fluxo podem ser nativamente reproduzíveis em todos os aplicativos. O exemplo neste guia configura o fluxo usando HLS e CDN.
 
@@ -207,15 +222,18 @@ Por exemplo, o Safari suportaria reprodução HLS nativa. E assim, o reprodutor 
   <!-- Some more HTML elements... -->
 </html>
 ```
+{: screen}
 
 No entanto, outros navegadores em dispositivos de área de trabalho também poderão precisar do suporte de [Extensões de origem das mídias](https://www.w3.org/TR/media-source/) JavaScript incluídas, sejam elas desenvolvidas internamente ou por meio de um terceiro confiável, para gerar fluxos de conteúdo reproduzíveis por meio de HTML5.
 
 ## Configurar o CDN
+{: #configure-the-cdn}
+
 Agora, vamos conectar a origem ao CDN para servir entregar em todo o mundo com rendimento otimizado, latência minimizada e maior desempenho.
 
 Primeiro, [peça](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) um CDN.
 
-Em seguida, [configure seu CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) ou [inclua uma origem](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
+Em seguida, [configure seu CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) ou [inclua uma origem](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
 Finalmente, em `Optimize for`, selecione `Video on demand optimization`.
 

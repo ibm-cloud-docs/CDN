@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
+{: .toc subcollection="CDN" category="network" audience="service" arm="3662730" href="/docs/infrastructure/cdn/getting-started.html" path="infrastructure/CDN"}
 コンテンツ配信ネットワーク (CDN)
 
     {: .navgroup id="learn"}
@@ -22,6 +22,7 @@
     how-to-https.md
     cors-and-cdn.md
     control-http-client-cache-duration.md
+    how-to-configure-object-storage.md
     serve-video-on-demand-with-cdn.md
     rules-and-naming-conventions.md
     limits-and-max-values.md

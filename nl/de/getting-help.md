@@ -4,7 +4,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-15"
+
+keywords: help, support, troubleshooting, stack overflow, forum, ticket, questions
+
+subcollection: CDN
 
 
 ---
@@ -38,12 +42,12 @@ Letzte Aktualisierung: 18. Januar 2019
 Bei Problemen oder Fragen im Umgang mit CDN können Sie nach Informationen suchen oder Fragen in einem der unten aufgeführten Foren stellen. Sie haben auch die Möglichkeit, ein Support-Ticket zu öffnen.
 {:shortdesc}
 
-Wenn Sie eine Frage über die Foren stellen, kennzeichnen Sie Ihre Frage, damit sie von den {{site.data.keyword.Bluemix_notm}}-Entwicklerteams gesehen wird.
+Wenn Sie eine Frage über die Foren stellen, kennzeichnen Sie Ihre Frage, damit sie von den {{site.data.keyword.cloud_notm}}-Entwicklerteams gesehen wird.
 
-* Wenn Sie technische Fragen zu CDN haben, reichen Sie Ihre Frage bei [Stack Overflow ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} ein und versehen Sie sie mit den Tags "cdn" und "ibm-cloud".
+* Wenn Sie technische Fragen zu CDN haben, reichen Sie Ihre Frage bei [Stack Overflow ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://stackoverflow.com/search?q=cdn+ibm-cloud){:new_window} ein und versehen Sie sie mit den Tags "cdn" und "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * Bei Fragen zu dem Service und zu Anweisungen für den Einstieg verwenden Sie das Forum [IBM developerWorks dW Answers ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Schließen Sie die Tags "cdn" und "ibm-cloud" ein.
 
-Weitere Details zur Nutzung der Foren finden Sie unter [Hilfe anfordern](https://{DomainName}/docs/support/index.html#getting-help):
+Weitere Details zur Nutzung der Foren finden Sie unter [Hilfe anfordern](/docs/get-support?topic=get-support-using-avatar#using-avatar):
 
-Weitere Informationen zum Öffnen eines Support-Tickets für {{site.data.keyword.cloud}} oder zu Supportebenen und zur Priorität von Tickets finden Sie unter [Support kontaktieren](/docs/get-support?topic=get-support-getting-customer-support). 
+Weitere Informationen zum Öffnen eines Support-Tickets für {{site.data.keyword.cloud}} oder zu Supportebenen und zur Priorität von Tickets finden Sie unter [Support kontaktieren](/docs/get-support?topic=get-support-getting-customer-support).

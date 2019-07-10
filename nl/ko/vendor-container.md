@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-05-09"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-25"
+
+keywords: vendor, container, collection, class, API, attributes, provider
+
+subcollection: CDN
 
 ---
 
@@ -15,11 +19,13 @@ lastupdated: "2018-05-09"
 {:download: .download}
 
 # 벤더 컨테이너
+{: #vendor-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Vendor` 콜렉션에는 벤더 API에서 이용하는 속성이 포함됩니다.
 
 
-클래스 `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
-* `vendorName`: 현재 IBM Cloud CDN 제공자의 이름입니다.  
+**클래스** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
+* `vendorName`: 현재 {{site.data.keyword.cloud}} CDN 제공자의 이름입니다.  
 * `featureSummary`: 벤더 기능에 대한 간단한 요약입니다.  
 * `features`: 벤더에서 지원하는 기능 목록입니다.  
 * `status`: 벤더가 IBM Cloud에서 사용 가능한 옵션인지 여부를 표시합니다.

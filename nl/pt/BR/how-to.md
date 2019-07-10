@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,7 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -21,6 +26,7 @@ lastupdated: "2019-02-19"
 Este documento descreve tarefas comuns para gerenciar seu CDN.
 
 ## Configurando o tempo de armazenamento em cache de conteúdo usando "Tempo de vida"
+{: #setting-content-caching-time-using-time-to-live}
 
 Depois que seu CDN estiver em execução, será possível configurar o tempo de armazenamento em cache de conteúdo usando o Tempo de vida (TTL). O Tempo de vida de um determinado caminho de arquivo ou diretório indica quanto tempo esse conteúdo deve ficar armazenado em cache. Quando você criou o Mapeamento de CDN, um TTL global padrão de 3.600 segundos (1 hora) foi criado.
 
@@ -45,10 +51,12 @@ Depois de salvar, será possível **Editar** ou **Excluir** a configuração TTL
   * Os valores de TTL podem ser configurados apenas para um nome de arquivo ou um diretório específico. As expressões comuns não são suportadas, porque podem criar um comportamento imprevisível.
 
 ## Incluindo detalhes do caminho de origem
+{: #adding-origin-path-details}
 
 Quando seu CDN estiver no status *CNAME_Configuration* ou *Em execução*, será possível incluir detalhes do Caminho de origem. É possível optar por fornecer conteúdo de múltiplos Servidores de origem. Por exemplo, é possível entregar fotos de um servidor diferente de vídeo. A Origem pode se basear em um Servidor host ou um Object Storage.
 
-**Nota:** O CDN faz uma transformação de URL para o servidor de origem. Por exemplo, se a origem `xyz.example.com` for incluída com o caminho `/example/*` quando um usuário abrir URL `www.example.com/example/*`, o servidor de borda CDN recuperará o conteúdo de `xyz.example.com/*`.
+O CDN faz uma transformação de URL para o servidor de origem. Por exemplo, se a origem `xyz.example.com` for incluída com o caminho `/example/*` quando um usuário abrir URL `www.example.com/example/*`, o servidor de borda CDN recuperará o conteúdo de `xyz.example.com/*`.
+{: note}
 
 **Etapa 1:**
 
@@ -85,22 +93,24 @@ de servidor e Object Storage.
 é a opção padrão ou é possível escolher as otimizações **Arquivo grande** ou **Vídeo on demand**. **Entrega geral da web** permite que o CDN entregue conteúdo até 1,8 GB, enquanto que a otimização
 **arquivo grande** permite downloads de arquivos de 1,8 GB até 320 GB. **Vídeo on demand**
 otimiza seu CDN para entrega de formatos de fluxo segmentado. As descrições de recurso para
-[Otimização de arquivo grande](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) e [Vídeo
-on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) fornecem informações adicionais.
+[Otimização de arquivo grande](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization) e [Vídeo
+on Demand](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand) fornecem informações adicionais.
 
         ![Opções de configuração de desempenho](images/performance-config-options.png)
 
-    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) na descrição do recurso.
+    * Escolha as opções de **Chave de cache** no menu suspenso. A opção padrão é **Include-all**. Se você selecionar **Incluir especificado** ou **Ignorar especificado**, **deverá** inserir sequências de consulta a serem incluídas ou ignoradas, separadas por um espaço. Por exemplo, insira `uuid=123456` para uma sequência de consulta única ou `uuid=123456 issue=important` para duas sequências de consultas.  É possível descobrir mais sobre os [Argumentos de consulta de chave de cache](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-query-args) na descrição do recurso.
 
         ![Opções da chave de cache](images/cache-key-options.png)
 
-**NOTA**: as opções de protocolo e de porta mostradas pela UI corresponderão ao que foi selecionado durante o pedido do CDN. Por exemplo, se **Porta HTTP** foi selecionada como parte do pedido de um CDN, apenas a opção de **Porta HTTP** será mostrada como parte de Incluir origem.
+As opções de protocolo e de porta mostradas pela IU corresponderão ao que foi selecionado durante o pedido do CDN. Por exemplo, se **Porta HTTP** foi selecionada como parte do pedido de um CDN, apenas a opção de **Porta HTTP** será mostrada como parte de Incluir origem.
+{: note}
 
 **Etapa 5:**
 
 Selecione o botão **Incluir** para incluir seu Caminho de origem.
 
-  **Nota**: ao fornecer extensões de arquivo para um caminho de origem do Object Storage, a configuração de TTL com a mesma URL como o caminho de origem terá o escopo definido para incluir todos os arquivos que tenham essas extensões de arquivo especificadas. Por exemplo, se você criar um caminho de origem de `/example` e especificar extensões de arquivo de "jpg png gif", o valor de TTL do caminho de TTL `/example` terá um escopo que incluirá todos os arquivos JPG/PNG/GIF sob o diretório `/example` e seus subdiretórios.
+Quando você fornece extensões de arquivo para um caminho de origem do Object Storage, a configuração TTL com a mesma URL que o caminho de origem tem o escopo definido para incluir todos os arquivos que têm essas extensões de arquivo especificadas. Por exemplo, se você criar um caminho de origem de `/example` e especificar extensões de arquivo de "jpg png gif", o valor de TTL do caminho de TTL `/example` terá um escopo que incluirá todos os arquivos JPG/PNG/GIF sob o diretório `/example` e seus subdiretórios.
+{: note}
 
 **Etapa 6:**
 
@@ -109,6 +119,7 @@ Depois de incluir, será possível **Editar** ou **Excluir** a Origem usando as 
   ![Editar ou excluir Origem](images/edit-delete-origin.png)
 
 ## Limpando conteúdo em cache
+{: #purging-cached-content}
 
 Depois que seu CDN estiver em execução, será possível limpar o conteúdo em cache do servidor do Fornecedor.
 
@@ -124,9 +135,9 @@ Selecione a guia **Limpar**.
 
 **Etapa 3:**
 
-Insira a sintaxe de caminho Unix padrão para indicar qual arquivo você gostaria de limpar e, em seguida, selecione o botão **Limpar**. A limpeza é permitida somente para um único arquivo neste momento. Consulte a página
+Insira a sintaxe de caminho Unix padrão para indicar qual arquivo você gostaria de limpar e, em seguida, selecione o botão **Limpar**. A limpeza é permitida somente para um único arquivo por vez. Consulte a página
 [Regras e
-convenções de nomenclatura](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obter mais detalhes sobre qual sintaxe é
+convenções de nomenclatura](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) para obter mais detalhes sobre qual sintaxe é
 permitida para o caminho de Limpeza.
 
 **Etapa 4:**
@@ -135,9 +146,11 @@ Após a limpeza, a atividade é listada sob **Limpar atividade**. É possível *
 
    ![Limpar atividade](images/purge-activity.png)
 
-   **NOTA:** se houver mais de 15 limpezas, Limpar atividade será cortada a cada 15 dias, automaticamente.
+Se houver mais de 15 limpezas, a atividade de limpeza será cortada a cada 15 dias automaticamente.
+{: note}
 
 ## Atualizando os detalhes de configuração do CDN
+{: #updating-cdn-configuration-details}
 
 Depois que seu CDN estiver em execução, será possível atualizar os detalhes de configuração do CDN.
 
@@ -150,7 +163,9 @@ Na página CDN, selecione seu CDN, que o levará à página **Visão geral**.
 Selecione a guia **Configurações**. Os detalhes de configuração do CDN são exibidos.
 
    ![Guia Configurações](images/settings-tab.png)  
-   **NOTA**: o Certificado SSL é exibido somente quando seu CDN é configurado com HTTPS.
+
+Você verá apenas o certificado SSL se o seu CDN foi configurado com HTTPS.
+{: note}
 
 Para **Servidor**, os campos a seguir podem mudar:
   * Cabeçalho do host
@@ -177,21 +192,3 @@ Para **Object Storage**, os campos a seguir podem mudar:
 Atualize os detalhes de **Origem** ou de **Outras opções** se necessário e, em seguida, clique no botão **Salvar** no canto inferior direito para atualizar os detalhes de configuração do CDN.
 
    ![Botão Salvar](images/save-button.png)
-
-## Configure o IBM Cloud Object Storage para CDN
-
-Para usar os objetos armazenados no IBM Cloud Object Storage, deve-se configurar o valor da propriedade "acl" (isto é, a lista de controle de acesso) para cada objeto em seu depósito para acesso de "leitura pública".
-
-Para instalar quaisquer clientes ou ferramentas necessários, consulte a [seção do IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Este guia supõe que você tenha instalado a interface da linha de comandos oficial do AWS, que é compatível com a API S3 do IBM Cloud Object Storage.
-
-O código de exemplo abaixo mostra como configurar o acesso de "leitura pública" para todos os objetos em seu depósito, usando a interface da linha de comandos.
-
-```
-$ export ENDPOINT="YOUR_ENDPOINT"
-$ export BUCKET="YOUR_BUCKET"
-$ KEYS=( "$(aws --endpoint-url "$ENDPOINT" s3api list-objects --no-paginate --query 'Contents[].{key: Key}' --output text --bucket "$BUCKET")" )
-$ for KEY in "${KEYS[@]}"
-  > do
-  >   aws --endpoint-url "$ENDPOINT" s3api put-object-acl --bucket "$BUCKET" --key "$KEY" --acl "public-read"
-  > done
-```

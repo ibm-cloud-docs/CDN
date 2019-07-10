@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+
+subcollection: CDN
 
 ---
 
@@ -20,21 +24,25 @@ lastupdated: "2019-02-19"
 {: #faqs}
 
 ## Was ist ein Content Delivery Network (CDN)?
+{: #what-is-a-content-delivery-network-cdn}
 {: faq}
 
 Content Delivery Network (CDN) ist ein Verbund von Edge-Servern, die über verschiedene Teile eines Landes oder der Welt verteilt sind. Die zugehörigen Webinhalte werden von einem Edge-Server bereitgestellt, dessen geografische Region dem Kunden, der die Inhalte anfordert, am nächsten liegt. Dieses Verfahren ermöglicht eine schnellere Zustellung der Inhalte als bei der Bereitstellung an einem zentralen Standort. Dies führt zu einer besserer Serviceerfahrung für Ihre Kunden.
 
 ## Wie funktioniert ein Content Delivery Network (CDN)?
+{: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 
 CDN erreicht sein Ziel durch Caching von Webinhalten auf Edge-Servern rund um die Welt. Wenn ein Benutzer Webinhalte anfordert, wird die Anfrage an den Edge-Server weitergeleitet, dessen geografischer Standort dem Benutzer am nächsten liegt. Durch das Verkürzen des Übertragungswegs für die angeforderten Inhalte, bietet das CDN optimierten Durchsatz, minimierte Latenzzeiten und ein besseres Leistungsverhalten.
 
 ## Wie wird das Konto für den IBM Cloud Content Delivery Network-Service erstellt?
+{: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
 
-Ihr Konto wird während des CDN-Bestellprozesses erstellt. Wenn Sie ein CDN über das traditionelle Portal erstellen, wird Ihr Konto erstellt, wenn Sie unter **Netz -> Seite 'CDN'** auf die Schaltfläche **CDN bestellen** klicken. Wenn Sie ein CDN über das {{site.data.keyword.cloud}}-Portal erstellen, wird Ihr Konto erstellt, wenn Sie auf der Seite **Katalog -> Netz -> Content Delivery Network** auf die Schaltfläche **Erstellen** klicken. 
+Ihr Konto wird während des CDN-Bestellprozesses erstellt. Wenn Sie ein CDN über das traditionelle Portal erstellen, wird Ihr Konto erstellt, wenn Sie unter **Netz -> Seite 'CDN'** auf die Schaltfläche **CDN bestellen** klicken. Wenn Sie ein CDN über das {{site.data.keyword.cloud}}-Portal erstellen, wird Ihr Konto erstellt, wenn Sie auf der Seite **Katalog -> Netz -> Content Delivery Network** auf die Schaltfläche **Erstellen** klicken.
 
 ## Was kann ich tun, wenn mein CDN den Status 'CNAME-Konfiguration' aufweist?
+{: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
 Aktualisieren Sie für ein HTTPS-CDN Ihren DNS-Eintrag so, dass Ihre Website auf den Wert für `CNAME` verweist, der Ihrer neuen CDN-Zuordnung zugeordnet ist. Für ein CDN, das auf HTTPS mit Wildcard-Zertifikat basiert, ist diese DNS-Aktualisierung **NICHT** erforderlich.
@@ -42,6 +50,8 @@ Aktualisieren Sie für ein HTTPS-CDN Ihren DNS-Eintrag so, dass Ihre Website auf
 **Hinweis**: Es kann 15 bis 30 Minuten dauern, bis die Aktualisierung wirksam wird. Eine genaue Zeitschätzung können Sie von Ihrem DNS-Provider erhalten.
 
 ## Wie füge ich einen CNAME-Datensatz für meine CDN-Domäne in DNS hinzu?
+{: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
+{: faq}
 
 Auf der DNS-Konfigurationsseite für Ihre CDN-Domäne können Sie einen CNAME-Datensatz erstellen, der den CDN-Domänennamen als Host und den IBM CNAME, den Sie zum Konfigurieren des CDN verwendet haben, als CNAME enthält. Der IBM CNAME endet mit `cdnedge.bluemix.net`.
 
@@ -53,12 +63,13 @@ Ein typischer CNAME-Datensatz auf der Seite für die DNS-Konfiguration weist fol
 
 
 ## Was wird mir in meinem CDN in Rechnung gestellt?
+{: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
-Sie erhalten nur eine Rechnung über die Bandbreite, die pro IBM Cloud Content Delivery Network-Instanz genutzt wird. Wenn Ihr CDN keine Bandbreite nutzt, fallen keine Gebühren an. Der Preis für die Bandbreite variiert je nach regionalem Standort des Edge-Servers. 
-Die Preisstruktur für die Bandbreite nach geografischer Region finden Sie im [Preisstrukturdokument](/docs/infrastructure/CDN?topic=CDN-pricing) für diesen Service. 
+Sie erhalten nur eine Rechnung über die Bandbreite, die pro IBM Cloud Content Delivery Network-Instanz genutzt wird. Wenn Ihr CDN keine Bandbreite nutzt, fallen keine Gebühren an. Der Preis für die Bandbreite variiert je nach regionalem Standort des Edge-Servers. Die Preisstruktur für die Bandbreite nach geografischer Region finden Sie im [Preisstrukturdokument](/docs/infrastructure/CDN?topic=CDN-pricing) für diesen Service.
 
 ## Wann erhalte ich die Rechnung für mein CDN?
+{: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
 Die Rechnungsstellung für IBM Cloud Content Delivery Network erfolgt gemäß dem Abrechnungszeitraum, der in Ihrem {{site.data.keyword.BluSoftlayer_notm}}-Konto festgelegt ist.
@@ -69,16 +80,19 @@ Die Rechnungsstellung für IBM Cloud Content Delivery Network erfolgt gemäß de
 Nein, das betreffende CDN wird nicht gelöscht. Ihr Konto ist weiterhin vorhanden und Sie können weitere CDN-Instanzen erstellen.
 
 ## Werden beim Inhalts-Caching Push- oder Pull-Operationen verwendet?
+{: #does-content-caching-use-push-or-pull}
 {: faq}
 
 Für das Caching von Inhalten wird ein Modell _Extrahieren aus Quelle_ verwendet. Bei diesem Modell extrahiert der Edge-Server durch eine Pull-Operation Daten aus dem Ursprungsserver, d. h. die Inhalte werden nicht manuell auf den Edge-Server hochgeladen.
 
 ## Gibt es empfohlene Browser für die CDN-Servicekonfiguration?
+{: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
 {: faq}
 
 Ja, Firefox und Chrome sind die empfohlenen Browser. Es wird empfohlen, jeweils die aktuellsten Versionen der Browser mit IBM Cloud Content Delivery Network zu verwenden.
 
 ## Wozu dient die Angabe eines Pfads beim Erstellen eines CDN?
+{: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
 Wenn Sie einen Pfad beim Erstellen Ihres CDN angeben, können Sie dadurch die Dateien isolieren, die über das CDN von einem bestimmten Ursprungsserver zugestellt werden.
@@ -86,7 +100,7 @@ Wenn Sie einen Pfad beim Erstellen Ihres CDN angeben, können Sie dadurch die Da
 ## Mein CDN weist einen Fehlerstatus auf. Was kann ich tun?
 {: faq}
 
-Informationen finden Sie auf den Seiten [Fehlerbehebung](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) oder [Hilfe und Support anfordern](/docs/infrastructure/CDN/getting-help.html#gettinghelp); alternativ können Sie ein Ticket im [Kundenportal![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) öffnen.
+Informationen finden Sie auf den Seiten [Fehlerbehebung](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) oder [Hilfe und Support anfordern](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp); alternativ können Sie ein Ticket im [Kundenportal![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://control.softlayer.com/) öffnen.
 
 ## Wo finde ich den CNAME für mein CDN, wenn ich keinen CNAME bereitgestellt habe?
 {: faq}
@@ -120,12 +134,12 @@ Durch das Auslassen des Schrägstrichs (wie z. B. bei `www.example.com/images`) 
 ## Wie wird das Content Delivery Network für IBM Cloud Object Storage (COS) eingerichtet?
 {: faq}
 
-[Hier finden Sie ein Lernprogramm](/docs/tutorials/static-files-cdn.html) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
+[Hier finden Sie ein Lernprogramm](/docs/tutorials?topic=solution-tutorials-static-files-cdn) zum Erstellen eines Content Delivery Network (CDN) für IBM Cloud Object Storage.
 
 ## Ich habe eine Benachrichtigung empfangen, dass mein Ursprungszertifikat abläuft. Was kann ich tun?
 {: faq}
 
-Führen Sie die in [diesem Artikel ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://community.akamai.com/docs/DOC-7708) von Akamai beschriebenen Schritte aus. 
+Führen Sie die in [diesem Artikel ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://community.akamai.com/docs/DOC-7708) von Akamai beschriebenen Schritte aus.
 
 ## Welche Sicherheit ist in der IBM CDN-Lösung mit Akamai enthalten?
 {: faq}
@@ -140,19 +154,19 @@ Für nicht zwischenspeicherbare Inhalte bzw. Inhalte, die nicht zwischengespeich
 ## Wie kann ich anderen Benutzern über die IBM Cloud-Konsole die Berechtigung zum Erstellen und Verwalten eines CDN erteilen?
 {: faq}
 
-Der Masterbenutzer des Kontos kann anderen Benutzern die Berechtigung zum Erstellen oder Verwalten eines CDN erteilen. 
+Der Masterbenutzer des Kontos kann anderen Benutzern die Berechtigung zum Erstellen oder Verwalten eines CDN erteilen.
 
 Führen Sie in der Hauptseite der IBM Cloud-Konsole zum Bearbeiten von Berechtigungen die folgenden Schritte aus:
- * Wählen Sie die Registerkarte **Verwalten** aus. 
- * Wählen Sie **Zugriff (IAM)** aus. 
- * Klicken Sie im linken Fensterbereich auf die Registerkarte **Benutzer**. 
- * Klicken Sie auf den gewünschten **Benutzer**. 
- * Wählen Sie anschließend die Registerkarte **Klassische Infrastruktur** aus. 
- * Erweitern Sie dann auf der Registerkarte **Berechtigungen** die Kategorie **Services**. 
- * Wählen Sie **CDN-Konto verwalten** aus. 
- * Klicken Sie auf die Schaltfläche **Speichern**. 
+ * Wählen Sie die Registerkarte **Verwalten** aus.
+ * Wählen Sie **Zugriff (IAM)** aus.
+ * Klicken Sie im linken Fensterbereich auf die Registerkarte **Benutzer**.
+ * Klicken Sie auf den gewünschten **Benutzer**.
+ * Wählen Sie anschließend die Registerkarte **Klassische Infrastruktur** aus.
+ * Erweitern Sie dann auf der Registerkarte **Berechtigungen** die Kategorie **Services**.
+ * Wählen Sie **CDN-Konto verwalten** aus.
+ * Klicken Sie auf die Schaltfläche **Speichern**.
 
-Führen Sie auf der Hauptseite der traditionellen Konsole die folgenden Schritte aus, um Berechtigungen zu bearbeiten: 
+Führen Sie auf der Hauptseite der traditionellen Konsole die folgenden Schritte aus, um Berechtigungen zu bearbeiten:
  * Wählen Sie die Registerkarte **Konto** aus.
  * Wählen Sie **Benutzer -> Benutzerliste** aus.
  * Klicken Sie in der Rubrik **Benutzername** auf den gewünschten Namen.
@@ -161,25 +175,40 @@ Führen Sie auf der Hauptseite der traditionellen Konsole die folgenden Schritte
  * Wählen Sie **CDN-Konto verwalten** aus.
  * Klicken Sie auf die Schaltfläche **Portalberechtigungen bearbeiten**.
 
-## Warum ist die Schaltfläche 'Erstellen' auf der Seite 'https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai' inaktiviert oder wird gar nicht angezeigt? 
+## Warum ist die Schaltfläche 'Erstellen' auf der Seite 'https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai' inaktiviert oder wird gar nicht angezeigt?
 {: faq}
 
-Wenn Sie der Masterbenutzer des Kontos sind, müssen Sie ein Upgrade für das Konto durchführen, damit die Schaltfläche 'Erstellen' auf der Seite angezeigt bzw. aktiviert wird. Führen Sie auf der IBM Cloud-Konsolenseite diese Schritte als Masterbenutzer des Kontos aus: 
- * Öffnen Sie den linken Navigationsbereich, indem Sie auf das Symbol mit den `drei Balken` in der linken oberen Ecke der Webseite klicken. 
- * Wählen Sie **Klassische Infrastruktur** aus. 
- * Klicken Sie auf die Schaltfläche **Upgrade für Konto durchführen** und gehen Sie den Anweisungen entsprechend vor. 
+Wenn Sie der Masterbenutzer des Kontos sind, müssen Sie ein Upgrade für das Konto durchführen, damit die Schaltfläche 'Erstellen' auf der Seite angezeigt bzw. aktiviert wird. Führen Sie auf der IBM Cloud-Konsolenseite diese Schritte als Masterbenutzer des Kontos aus:
+ * Öffnen Sie den linken Navigationsbereich, indem Sie auf das Symbol mit den `drei Balken` in der linken oberen Ecke der Webseite klicken.
+ * Wählen Sie **Klassische Infrastruktur** aus.
+ * Klicken Sie auf die Schaltfläche **Upgrade für Konto durchführen** und gehen Sie den Anweisungen entsprechend vor.
 
-Wenn Sie einer der sekundären Benutzer des Kontos sind, muss Ihnen der Masterbenutzer des Kontos die Berechtigung für die Aktion `Services hinzufügen/Upgrades für Services durchführen` erteilen, damit die Schaltfläche 'Erstellen' auf der Seite angezeigt bzw. aktiviert wird. Der Masterbenutzer des Kontos muss auf der IBM Cloud-Konsolenseite diese Schritte ausführen, um Ihre Berechtigungen zu bearbeiten: 
- * Wählen Sie die Registerkarte **Verwalten** aus. 
- * Wählen Sie **Zugriff (IAM)** aus. 
- * Klicken Sie im linken Fensterbereich auf die Registerkarte **Benutzer**. 
- * Klicken Sie auf den gewünschten **Benutzer**. 
- * Wählen Sie anschließend die Registerkarte **Klassische Infrastruktur** aus. 
- * Erweitern Sie dann auf der Registerkarte **Berechtigungen** die Kategorie **Konto**. 
- * Wählen Sie **Services hinzufügen/Upgrade für Services durchführen** aus. 
- * Klicken Sie auf die Schaltfläche **Speichern**. 
+Wenn Sie einer der sekundären Benutzer des Kontos sind, muss Ihnen der Masterbenutzer des Kontos die Berechtigung für die Aktion `Services hinzufügen/Upgrades für Services durchführen` erteilen, damit die Schaltfläche 'Erstellen' auf der Seite angezeigt bzw. aktiviert wird. Der Masterbenutzer des Kontos muss auf der IBM Cloud-Konsolenseite diese Schritte ausführen, um Ihre Berechtigungen zu bearbeiten:
+ * Wählen Sie die Registerkarte **Verwalten** aus.
+ * Wählen Sie **Zugriff (IAM)** aus.
+ * Klicken Sie im linken Fensterbereich auf die Registerkarte **Benutzer**.
+ * Klicken Sie auf den gewünschten **Benutzer**.
+ * Wählen Sie anschließend die Registerkarte **Klassische Infrastruktur** aus.
+ * Erweitern Sie dann auf der Registerkarte **Berechtigungen** die Kategorie **Konto**.
+ * Wählen Sie **Services hinzufügen/Upgrade für Services durchführen** aus.
+ * Klicken Sie auf die Schaltfläche **Speichern**.
 
 ## Warum kann ich meine Webseite nicht über mein CDN erreichen, nachdem ich Hot-Link-Schutz mit `protectionType` `ALLOW` konfiguriert habe?
 {: faq}
 
 Lassen Sie uns ein Beispiel betrachten, bei dem die Domäne Ihrer Website für Endbenutzer als Domänen-/Hostname Ihres CDN konfiguriert ist: `cdn.example.com`. Wenn ein Benutzer versucht, eine Webseite durch direkte Navigation über die Navigationsleiste des Browsers zu erreichen, sendet der Browser in der Regel keine Referer-Header in seiner HTTP-Anforderung. Wenn Sie beispielsweise versuchen, auf diese Weise direkt zu `https://cdn.example.com/` zu navigieren, geht Ihr CDN davon aus, dass die Anforderung eine Nichtübereinstimmung mit den angegebenen `refererValues` enthält. Wenn das CDN den entsprechenden Effekt oder die entsprechende Antwort über den Hot-Link-Schutz auswertet, wird festgestellt, dass eine Nichtübereinstimmung aufgetreten ist. Daher verweigert Ihr CDN den Zugriff, obwohl 'ALLOW' konfiguriert ist.
+
+## Kann ich den privaten Endpunkt des Objektspeichers in den CDN-Einstellungen verwenden?
+{: faq}
+
+Nein, CDN kann nur eine Verbindung zum Objektspeicher für öffentliche Endpunkte herstellen.
+
+## Kann ich die Brotli-Funktion im CDN-Service verwenden?
+{: faq}
+
+Nein, die Brotli-Funktion wird von unserem CDN-Service mit Akamai nicht unterstützt.
+
+## Wie erstelle ich einen CDN-Endpunkt ohne die Verwendung der Domain?
+{: faq}
+
+Sie können einen CDN-Endpunkt ohne die Verwendung der Domäne erstellen, aber nur für einen CDN des Typs **Wildcard HTTPS**. Beim Erstellen eines CDN vom Typ **Wildcard HTTPS**fungiert Ihr **CNAME** als CDN-Endpunkt. Der **CNAME** wird verwendet, um den Datenverkehr zu bedienen.

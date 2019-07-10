@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -22,6 +26,7 @@ O diagrama a seguir descreve os vários estados em que seu CDN entrará a partir
   ![Diagrama de estado do SAN](images/state-diagram-san.png)
 
 ## Etapas Iniciais para Validação de Controle de
+{: #initial-steps-to-domain-control-validation}
 
 **Etapa 1:**
 
@@ -49,15 +54,17 @@ Clique no nome do CDN que precisa ser validado. A página Visão geral é aberta
 
   * Quando esse processo é concluído, todos os domínios, independentemente do método de validação usado, mudam para um estado **Configuração do CNAME**.
 
-Informações adicionais sobre como concluir sua Configuração de CNAME e supervisionar seu CDN podem ser localizadas na página [Começando a execução](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
+Informações adicionais sobre como concluir sua Configuração de CNAME e supervisionar seu CDN podem ser localizadas na página [Começando a execução](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running).
 
 
-## Domain Control Validation 
+## Domain Control Validation
+{: #domain-control-validation}
 
 Para que seu nome de domínio do CDN seja incluído no certificado SAN, deve-se provar que você tem controle administrativo sobre seu domínio. Esse processo de prova é conhecido como tratamento da Domain Control Validation (DCV). Deve-se tratar da DCV em 48 horas. Se houver falhar ao fazer isso, sua solicitação expirará e será necessário iniciar o processo de pedido novamente. As três maneiras diferentes de tratar da DCV são descritas nas seções a seguir.
 
 
 ### CNAME
+{: #cname}
 
 Esse método é recomendado **SOMENTE** se o seu CDN **não** está entregando tráfego em tempo real. Se o seu domínio estiver entregando tráfego em tempo real, recomendamos usar o método Padrão ou de Redirecionamento para validar seu domínio.
 
@@ -72,6 +79,7 @@ A maioria dos provedores DNS pode fornecer instruções sobre como configurar ou
 
 ---
 ### Padrão
+{: #standard}
 
 Se você escolher o método Padrão para a Validação de Domínio, a janela Validação de Domínio mostrará uma **URL de desafio** e uma **Resposta de segurança**. Para concluir o processo de Validação de domínio, inclua a **Resposta desafio** fornecida no servidor de origem. Após a inclusão, a CA pode recuperar a **Resposta desafio** do servidor de origem usando a URL especificada na **URL de desafio**. Depois que o servidor de origem estiver configurado corretamente, a Validação de Domínio poderá levar de 2 a 4 horas.
 
@@ -86,6 +94,7 @@ Para concluir com sucesso a Validação de domínio por meio do método Padrão,
 * Resposta de Desafio:  ` examplechallenge `
 
 #### Configuração do Apache
+{: #apache-configuration}
 
   * **Etapa 1:** efetue login na máquina que está executando o servidor Apache2.
 
@@ -109,6 +118,7 @@ Para concluir com sucesso a Validação de domínio por meio do método Padrão,
   * **Etapa 6:** crie um registro A em seu DNS entre o domínio do CDN e o endereço IP do servidor de origem.
 
 #### Configuração de Nginx
+{: #nginx-configuration}
 
   * **Etapa 1:** efetue login na máquina que está executando o servidor Nginx.
 
@@ -131,6 +141,7 @@ Para concluir com sucesso a Validação de domínio por meio do método Padrão,
   * **Etapa 6:** crie um registro A em seu DNS entre o domínio do CDN e o endereço IP do servidor de origem.
 
 #### Verifique se este método Padrão para resolver a Validação de Domínio está pronto para a CA
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * Para verificar se esse método funciona por meio de `curl`, execute esse comando para a URL de Desafio.
     ```
@@ -141,6 +152,7 @@ Para concluir com sucesso a Validação de domínio por meio do método Padrão,
 Em qualquer um dos casos, é necessário ser capaz de recuperar a cópia do objeto de arquivo do Desafio de Validação de Domínio, que é armazenada em seu servidor de origem.
 
 #### Limpeza para o método Standard
+{: #clean-up-for-the-standard-method}
 
 Após o seu CDN ter atingido o status **Implementação de certificado**:
 1. Remova o arquivo  ` examplechallenge-fileobject ` . (opcional)
@@ -149,6 +161,7 @@ Após o seu CDN ter atingido o status **Implementação de certificado**:
 
 ---
 ### Redirecionar
+{: #redirect}
 
 Clicar na guia **Redirecionar** exibe todas as informações necessárias para resolver a Validação de Domínio por meio de redirecionamento. Essas informações permitem que a CA recupere uma cópia da **Resposta de segurança** do Akamai por meio do servidor de origem. Depois que o servidor estiver configurado corretamente, a Validação de Domínio poderá levar de 2 a 4 horas.
 
@@ -163,6 +176,7 @@ Para concluir com sucesso a Validação de Domínio por meio do método Redireci
 * Redirecionamento de URL:  ` http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject `
 
 #### Configuração de Redirecionamento do Apache
+{: #apache-redirect-configuration}
 
   * **Etapa 1:** efetue login na máquina que está executando o servidor Apache2.
 
@@ -184,6 +198,7 @@ Para concluir com sucesso a Validação de Domínio por meio do método Redireci
 IP do servidor de origem.
 
 #### Configuração de redirecionamento do Nginx
+{: #nginx-redirect-confguration}
 
   * **Etapa 1:** efetue login na máquina que está executando o servidor Nginx.
 
@@ -233,6 +248,7 @@ IP do servidor de origem.
 IP do servidor de origem.
 
 #### Verifique se o redirecionamento está ocorrendo
+{: #verify-that-the-redirect-is-occurring}
 
 A conclusão dessas etapas redireciona _somente_ o tráfego da URL de desafio específica para o Redirecionamento de URL. É possível verificar se o redirecionamento funcionou adequadamente por meio de `curl` ou por meio do navegador.
 
@@ -247,6 +263,7 @@ A conclusão dessas etapas redireciona _somente_ o tráfego da URL de desafio es
 Em qualquer um dos casos, será necessário recuperar a cópia do objeto de arquivo do Desafio de validação de domínio do Akamai no domínio `dcv.akamai.com`, para o qual a solicitação original foi redirecionada.
 
 #### Limpeza para o método Redirect
+{: #clean-up-for-the-redirect-method}
 
 Após o seu CDN ter atingido o status **Implementação de certificado**:
 1. Remova as instruções ou os blocos de redirecionamento do arquivo de configuração. (opcional)

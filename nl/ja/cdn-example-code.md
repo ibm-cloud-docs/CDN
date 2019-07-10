@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,8 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # CDN API 使用のコード例
@@ -20,10 +26,11 @@ lastupdated: "2019-02-19"
 この文書では、多くの CDN API について、API 呼び出しの例および結果の出力を示します。
 
 ## すべての API 呼び出しに必要な一般的なステップ
+{: #general-steps-needed-for-all-api-calls}
 
 前提条件として、Soap Client を [https://github.com/softlayer/softlayer-api-php-client ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/softlayer/softlayer-api-php-client) からダウンロードしてインストールします
 
-  * `vendor/autoload` を介して SoapClient にアクセスする必要があります。 パスは、スクリプトが実行される場所に対する相対パスであり、場合によっては適切に変更する必要があります。 PHP では、ステートメントは `require_once './../vendor/autoload.php';` のようになります。
+  * `vendor/autoload` を介して SoapClient にアクセスする必要があります。パスは、スクリプトが実行される場所に対する相対パスであり、場合によっては適切に変更する必要があります。 PHP では、ステートメントは `require_once './../vendor/autoload.php';` のようになります。
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
@@ -38,6 +45,7 @@ lastupdated: "2019-02-19"
   * 適切なクラス用に SoapClient を初期化します。
 
 ## ベンダーのリスト表示のコード例
+{: #example-code-for-listing-vendors}
 
 このケースでは、SoftLayer_Network_CdnMarketplace_Vendor クラスが `listVendors` API を定義し、`\SoftLayer\SoapClient::getClient()` にパラメーターとして渡される必要があります。 後で、ドメイン・マッピングを作成するときに、アクティブ・ベンダーの名前が必要になります。
 
@@ -71,6 +79,7 @@ Array
 {: codeblock}
 
 ## 注文の確認のコード例
+{: #example-code-to-verify-order}
 
 注文する前に `verifyOrder` を呼び出すことは必須ではありませんが、推奨されます。 後続の `placeOrder` 呼び出しが正常終了することを検証するためにこれを使用できます。 `verifyOrder` については [SoftLayer API 資料 ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/) に詳しく説明されています。
 
@@ -126,6 +135,7 @@ catch (\Exception $e) {
 
 
 ## 発注のコード例
+{: #example-code-to-place-order}
 
 この API 呼び出しは、`verifyOrder` ではなく `placeOrder` を呼び出すことを除いて、前のコード例と同じです。 `placeOrder` については、[SoftLayer API 資料 ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/) に詳しく説明されています。
 
@@ -180,10 +190,12 @@ catch (\Exception $e) {
 
 
 ## CDN の作成またはドメイン・マッピングの作成のコード例
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 この例は、`createDomainMapping` API を使用して新規 CDN マッピングを作成する方法を示しています。 これは、`stdClass` オブジェクトの単一パラメーターを使用します。 例に示されているように、SoapClient は `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` クラスを使用して初期化される必要があります。
 
-**注:** カスタム CNAME を指定することを選択する場合は、`.cdnedge.bluemix.net` で終わらなければ**なりません**。そうしないとエラーがスローされます。 独自の CNAME を指定する際のルールについては、[この説明](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)を参照してください。
+カスタム CNAME を指定することを選択する場合は、`.cdnedge.bluemix.net` で終わらなければ**なりません**。そうしないとエラーがスローされます。独自の CNAME を指定する際のルールについては、[この説明](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-)を参照してください。
+{: important}
 
 ```php
 
@@ -260,6 +272,7 @@ Array
 {: codeblock}
 
 ## ドメイン・マッピングの確認のコード例
+{: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping は、CNAME 構成が完了しているかどうかをチェックし、完了している場合は CDN 状況を RUNNING 状況に移します。 `verifyDomainMapping` を呼び出す前に、カスタム・ホスト名の CNAME レコードを DNS サーバーに追加する必要があります。
 
@@ -306,7 +319,8 @@ CNAME レコードが DNS サーバーに追加済みの場合、以下の例に
 
 CNAME レコードが DNS サーバーに追加されていない場合、またはサーバーがまだ更新されていない場合、以下の例に示されているように、CDN の `status` は CNAME_CONFIGURATION になります。
 
-**注:** CNAME チェーニングが完了するまで、数分 (最大 30 分) かかることがあります。
+CNAME チェーニングが完了するまで、数分 (最大 30 分) かかることがあります。
+{: note}
 
 ```php
 Array

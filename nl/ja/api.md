@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: application programming interface, api, slapi, reference, development interface
+
+subcollection: CDN
 
 ---
 
@@ -12,19 +16,20 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 
 
 # CDN API リファレンス
 {: #cdn-api-reference}
 
-{{site.data.keyword.cloud}} で提供される {{site.data.keyword.BluSoftlayer_notm}} アプリケーション・プログラミング・インターフェース (通常 SLAPI と呼ばれる) は、開発者やシステム管理者が {{site.data.keyword.BluSoftlayer_notm}} バックエンド・システムと直接対話することができる開発用インターフェースです。
+{{site.data.keyword.cloud}} で提供される {{site.data.keyword.cloud}} Infrastructure アプリケーション・プログラミング・インターフェース (通常 SLAPI と呼ばれる) は、開発者やシステム管理者が {{site.data.keyword.cloud_notm}} Infrastructure バックエンド・システムと直接対話することができる開発用インターフェースです。
 
-SLAPI は、カスタマー・ポータルにある多くの機能を実装しています。カスタマー・ポータルで対話が可能であれば、SLAPI でも実現できます。 SLAPI 内で {{site.data.keyword.BluSoftlayer_notm}} 環境のすべての部分とプログラムで対話できるため、API を使用してタスクを自動化することができます。
+SLAPI は、カスタマー・ポータルにある多くの機能を実装しています。カスタマー・ポータルで対話が可能であれば、SLAPI でも実現できます。 SLAPI 内で {{site.data.keyword.cloud_notm}} Infrastructure 環境のすべての部分とプログラムで対話できるため、API を使用してタスクを自動化することができます。
 
 SLAPI は、リモート・プロシージャー・コール (RPC) システムです。 各呼び出しでは、API エンドポイントにデータが送信され、戻りとして構造化データを受け取ります。 SLAPI でのデータの送受信に使用される形式は、選択した API の実装によって異なります。 SLAPI は現在、データ伝送に SOAP、XML-RPC、または REST を使用しています。
 
-SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API について詳しくは、IBM Cloud Development Network にある以下のリソースを参照してください。
+SLAPI、または {{site.data.keyword.cloud_notm}} Content Delivery Network (CDN) サービス API について詳しくは、{{site.data.keyword.cloud_notm}} Development Network にある以下のリソースを参照してください。
 
 * [SLAPI Overview](https://softlayer.github.io/ )
 * [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ )
@@ -42,22 +47,27 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
 
 前述の手順に従った後、その他の API を使用できます。
 
-[この呼び出し手順の各ステップについて、コード例が用意されています。](/docs/infrastructure/CDN/cdn-example-code.html#code-examples-using-the-cdn-api)
+[この呼び出し手順の各ステップについて、コード例が用意されています。](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)
 
-**注**: この文書にあるほとんどの API 呼び出しで、`CDN_ACCOUNT_MANAGE` アクセス権を備えたユーザーの API ユーザー名と API キーを使用する**必要があります**。 このアクセス権を自分用に有効にする必要がある場合は、ご使用のアカウントのマスター・ユーザーにお問い合わせください。 (各 IBM Cloud カスタマー・アカウントに 1 つのマスター・ユーザーが指定されます)。
+この文書にあるほとんどの API 呼び出しで、`CDN_ACCOUNT_MANAGE` アクセス権を備えたユーザーの API ユーザー名と API キーを使用する**必要があります**。このアクセス権を自分用に有効にする必要がある場合は、ご使用のアカウントのマスター・ユーザーにお問い合わせください。 (各 IBM Cloud カスタマー・アカウントに 1 つのマスター・ユーザーが指定されます)。
+{: note}
 
 ----
 ## ベンダー用の API
+{: #api-for-vendor}
+
 ### listVendors
 この API で、ユーザーはサポートされている CDN ベンダーをリストできます。 CDN アカウントを作成し、CDN の注文を開始するには、`vendorName` が必要です。
 
 * **必須パラメーター**: なし
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Vendor` のコレクション
 
-  ベンダー・コンテナーと使用例は、[ベンダー・コンテナー](/docs/infrastructure/CDN/vendor-container.html)で表示されます。
+  ベンダー・コンテナーと使用例は、[ベンダー・コンテナー](/docs/infrastructure/CDN?topic=CDN-vendor-container)で表示されます。
 
 ----
 ## アカウント用の API
+{: #api-for-account}
+
 ### verifyCdnAccountExists
 指定された `vendorName` について、API を呼び出しているユーザーの CDN アカウントが存在するかどうかを確認します。
 
@@ -66,13 +76,15 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
 
 ----
 ## ドメイン・マッピング用の API
+{: #api-for-domain-mapping}
+
 ### createDomainMapping
-この関数は、提供された入力を使用して、指定のベンダー用のドメイン・マッピングを作成し、ユーザーの {{site.data.keyword.BluSoftlayer_notm}} アカウント ID と関連付けます。 CDN アカウントは、この API が動作するように、`placeOrder` を使用して最初に作成される必要があります ([コード例](/docs/infrastructure/CDN/cdn-example-code.html)の `placeOrder` API 呼び出しの例を参照してください)。 CDN が正常に作成されると、`defaultTTL` が 3600 秒の値で作成されます。
+この関数は、提供された入力を使用して、指定のベンダー用のドメイン・マッピングを作成し、ユーザーの {{site.data.keyword.cloud_notm}} Infrastructure アカウント ID と関連付けます。CDN アカウントは、この API が動作するように、`placeOrder` を使用して最初に作成される必要があります ([コード例](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)の `placeOrder` API 呼び出しの例を参照してください。CDN が正常に作成されると、`defaultTTL` が 3600 秒の値で作成されます。
 
 * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
   入力コンテナーのすべての属性を次の場所で表示できます。
 
-  [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+  [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   次の属性は入力コンテナーの一部で、ドメイン・マッピングの作成時に指定できます (特に記載がない限り属性はオプションです)。
     * `vendorName`: **必須** 有効な IBM Cloud CDN プロバイダーの名前を指定します。
@@ -82,7 +94,7 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
     * `protocol`: **必須** サポート対象のプロトコルは、`HTTP`、`HTTPS`、または`HTTP_AND_HTTPS` です。
     * `certificateType`: HTTPS プロトコルの場合は**必須**。 `SHARED_SAN_CERT` または `WILDCARD_CERT`。
     * `path`: キャッシュに入れられたコンテンツの配信元のパス。 デフォルトのパスは `/*` です。
-    * `httpPort` および/または `httpsPort`: (ホスト・サーバーでは**必須**) これらの 2 つのオプションは、要求されたプロトコルに対応している必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
+    * `httpPort` および/または `httpsPort`: (ホスト・サーバーでは**必須**) これらの 2 つのオプションは、要求されたプロトコルに対応している必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
     * `header`: オリジン・サーバーによって使用されるホスト・ヘッダー情報を指定します。
     * `respectHeader`: `true` に設定された場合はオリジンの TTL 設定によって CDN TTL 設定がオーバーライドされるようになるブール値。
     * `cname`: ホスト名に別名を指定します。 指定しなかった場合は、生成されます。
@@ -98,7 +110,7 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
 
   **注**: このコレクションは `uniqueId` 値を提供します。この値を、マッピングとオリジン・パスに関連した後続の API 呼び出しの入力として送信する必要があります。
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### deleteDomainMapping
@@ -106,7 +118,7 @@ SLAPI、または IBM Cloud Content Delivery Network (CDN) サービス API に�
 
 * **必須パラメーター**: `uniqueId`: 削除するマッピングの固有 ID
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### verifyDomainMapping
@@ -117,7 +129,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
 * **必須パラメーター**: `uniqueId`: 検証するマッピングの固有 ID
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### startDomainMapping
@@ -126,7 +138,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
 * **必須パラメーター**: `uniqueId`: 開始するマッピングの固有 ID
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### stopDomainMapping
@@ -135,7 +147,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
 * **必須パラメーター**: `uniqueId`: 停止するマッピングの固有 ID
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### updateDomainMapping
@@ -143,7 +155,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
 
 * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
   入力コンテナーのすべての属性を、
-  [入力コンテナーの表示 (View the Input Container)](/docs/infrastructure/CDN/input-container.html) で表示することができます。
+  [入力コンテナーの表示 (View the Input Container)](/docs/infrastructure/CDN?topic=CDN-input-container) で表示することができます。
 
   次の属性は入力コンテナーの一部で、ドメイン・マッピングの更新時に提供される**必要があります**。
     * `vendorName`: このマッピング用の CDN プロバイダーの名前を指定します。
@@ -152,7 +164,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
     * `originType`: オリジン・タイプは `HOST_SERVER` または `OBJECT_STORAGE` の可能性があります。
     * `domain`: ホスト名を指定します。
     * `protocol`: サポート対象のプロトコルは、`HTTP`、`HTTPS`、または `HTTP_AND_HTTPS` です。
-    * `httpPort` および/または `httpsPort`: これらの 2 つのオプションは、要求されたプロトコルに対応する必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
+    * `httpPort` および/または `httpsPort`: これらの 2 つのオプションは、要求されたプロトコルに対応する必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
     * `header`: オリジン・サーバーによって使用されるホスト・ヘッダー情報を指定します。
     * `respectHeader`: `true` に設定された場合はオリジンの TTL 設定によって CDN TTL 設定がオーバーライドされるようになるブール値。
     * `uniqueId`: マッピングの作成後に生成されます。
@@ -166,7 +178,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
       * `include: space separated query-args`: スペースで区切られた特定の照会引数を含めます。 例えば、`include: query1 query2` です
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション。
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappings
@@ -175,7 +187,7 @@ CDN の状況を確認し、CDN マッピングの `status` が変更されて�
 * **必須パラメーター**: なし
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` のコレクション
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappingByUniqueId
@@ -184,17 +196,19 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
 * **必須パラメーター**: `uniqueId`: 返されるマッピングの固有 ID
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` の単一オブジェクト・コレクション
 
-  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN/mapping-container.html)
+  [マッピング・コンテナーの表示 (View the Mapping Container)](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ## オリジン用の API
+{: #apis-for-origin}
+
 ### createOriginPath
 既存の CDN および特定のお客様用のオリジン・パスを作成します。 オリジン・パスは、ホスト・サーバーまたはオブジェクト・ストレージに基づくことができます。 オリジン・パスを作成するには、ドメイン・マッピングの状態が _RUNNING_ または _CNAME_CONFIGURATION_ のいずれかでなければなりません。
 
 * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
   入力コンテナーのすべての属性を次の場所で表示できます。
 
-  [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+  [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   次の属性は入力コンテナーの一部で、オリジン・パスの作成時に提供される場合があります (特に記載がない限り属性はオプションです)。
     * `vendorName`: **必須** 有効な IBM Cloud CDN プロバイダーの名前を指定します。
@@ -203,7 +217,7 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
     * `domain`: **必須** ホスト名を文字列として指定します。
     * `protocol`: **必須** サポート対象のプロトコルは、`HTTP`、`HTTPS`、または`HTTP_AND_HTTPS` です。
     * `path`: キャッシュに入れられたコンテンツの配信元のパス。 マッピング・パスで始める必要があります。 例えば、マッピング・パスが `/test` の場合、オリジン・パスは `/test/media` になります。
-    * `httpPort` および/または `httpsPort`: **必須** これらの 2 つのオプションは、要求されたプロトコルに対応する必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
+    * `httpPort` および/または `httpsPort`: **必須** これらの 2 つのオプションは、要求されたプロトコルに対応する必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
     * `header`: オリジン・サーバーによって使用されるホスト・ヘッダー情報を指定します。
     * `uniqueId`: **必須** マッピングの作成後に生成されます。
     * `cname`: ホスト名に別名を指定します。 固有の cname を指定しなかった場合は、マッピングの作成時に生成されています。
@@ -217,7 +231,7 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
 
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` のコレクション
 
-  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN/path-container.html)
+  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### updateOriginPath
@@ -226,14 +240,14 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
 * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
   入力コンテナーのすべての属性を次の場所で表示できます。
 
-  [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+  [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   次の属性は入力コンテナーの一部で、オリジン・パスの更新時に提供される場合があります (特に記載がない限り属性はオプションです)。
     * `oldPath`: **必須** 変更する現行パス。
     * `origin`: (更新中の場合は**必須**) オリジン・サーバー・アドレスを文字列として指定します。
     * `originType`: **必須** オリジン・タイプは `HOST_SERVER` または `OBJECT_STORAGE` の可能性があります。
     * `path`: **必須** 追加する新規のパス。 マッピング・パスを基準とした相対パス。
-    * `httpPort` および/または `httpsPort`: (更新中の場合はホスト・サーバーでは**必須**) これらの 2 つのオプションは、要求されたプロトコルに対応している必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
+    * `httpPort` および/または `httpsPort`: (更新中の場合はホスト・サーバーでは**必須**) これらの 2 つのオプションは、要求されたプロトコルに対応している必要があります。 プロトコルが `HTTP` の場合は、`httpPort` が設定される必要があり、`httpsPort` は設定されては_なりません_。 同様に、プロトコルが `HTTPS` の場合は、`httpsPort` が設定される必要があり、`httpPort` は設定されては_なりません_。 プロトコルが `HTTP_AND_HTTPS` の場合は、`httpPort` と `httpsPort` の_両方_を設定する_必要があります_。 Akamai はポート番号に制限があります。 許可ポート番号については、[FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) を参照してください。
     * `uniqueId`: **必須**: このオリジンが属するマッピングの固有 ID
     * `bucketName`: (オブジェクト・ストレージのみ**必須**) S3 オブジェクト・ストレージのバケット名。
     * `fileExtension`: (オブジェクト・ストレージのみ**必須**) キャッシュに入れることができるファイル拡張子。
@@ -245,7 +259,7 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
 
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` のコレクション
 
-  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN/path-container.html)
+  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### deleteOriginPath
@@ -265,10 +279,12 @@ CDN の `uniqueId` に基づいて、単一のドメイン・オブジェクト�
   * `uniqueId`: オリジン・パスをリスト表示するマッピングの固有 ID を指定します。
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` のオブジェクトのコレクション
 
-  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN/path-container.html)
+  [オリジン・パス・コンテナーの表示 (View the Origin Path Container)](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ## パージ用の API
+{: #api-for-purge}
+
 ### パージするコンテナーのクラス:
 ```
 class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
@@ -326,7 +342,9 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 * **戻り**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge` のコレクション
 
 ----
-## 存続時間用の API  
+## 存続時間用の API
+{: #api-for-time-to-live}
+
 ### TimeToLive クラス変数:  
 ```  
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
@@ -373,7 +391,9 @@ CDN の `uniqueId` に基づいて、既存の `TimeToLive` オブジェクト�
 
  ----
 ## メトリック用の API
-[メトリック・コンテナーの概要](/docs/infrastructure/CDN/metrics-container.html)
+{: #api-for-metrics}
+
+[メトリック・コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-container-class-for-metrics)
 
 ### getCustomerUsageMetrics
 指定された期間について、お客様のアカウントに関して直接表示 (グラフなし) するための事前定義された統計の総数を返します。
@@ -443,13 +463,15 @@ ___
 
 ----
 ## 地理的アクセス制御用の API
+{: #api-for-geographical-access-control}
+
 ### createGeoblocking
 新しい地理的アクセス制御のルールを作成し、新しく作成されたルールを返します。
 
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下の属性は入力コンテナーの一部であり、新しい地理的アクセス制御のルールを作成するときは**必須**です。
     * `uniqueId`: ルールを割り当てるマッピングの固有 ID
@@ -457,11 +479,11 @@ ___
     * `regionType`: 地理的アクセス制御のルールを適用する地域のタイプ。`CONTINENT` または `COUNTRY_OR_REGION` のいずれか。
     * `regions`: `accessType` が適用されるロケーションをリストした配列
 
-      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) ページを参照してください。
+      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) ページを参照してください。
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
 
-    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### updateGeoblocking
@@ -470,7 +492,7 @@ ___
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     次の属性は入力コンテナーの一部であり、地理的アクセス制御のルールを更新するときに指定できます (特に記載がない限りパラメーターはオプションです)。
     * `uniqueId`: **必須**。更新対象のルールが属するマッピングの固有 ID
@@ -478,11 +500,11 @@ ___
     * `regionType`: ルールを適用する地域のタイプ。`CONTINENT` または `COUNTRY_OR_REGION` のいずれか。
     * `regions`: `accessType` が適用されるロケーションをリストした配列
 
-      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) ページを参照してください。
+      指定可能な地域のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) ページを参照してください。
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
 
-    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### deleteGeoblocking
@@ -491,14 +513,14 @@ ___
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下の属性は入力コンテナーの一部であり、地理的アクセス制御のルールを削除するときは**必須**です。
     * `uniqueId`: 削除するルールが属するマッピングの固有 ID を指定します。
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
 
-    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblocking
@@ -510,7 +532,7 @@ ___
   * **戻り**: タイプ
          `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` のオブジェクト
 
-    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -521,27 +543,29 @@ ___
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` のオブジェクト
 
-    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [ジオブロッキング・クラスの表示](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 ----
 ## ホット・リンク保護用の API
+{: #api-for-hotlink-protection}
+
 ### createHotlinkProtection
 新しいホット・リンク保護を作成し、新しく作成された動作を返します。
 
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下の属性は入力コンテナーの一部であり、新しいホット・リンク保護を作成するときは**必須**です。
     * `uniqueId`: 動作を割り当てるマッピングの固有 ID
     * `protectionType`: 指定された refererValues 内にあるいずれかの語に一致する Referer ヘッダー値が含まれているコンテンツを Web ページが要求したときに、そのコンテンツへのアクセスを許可する (ALLOW) か、拒否する (DENY) かを指定します
     * `refererValues`: `protectionType` の動作が有効になるリファラー URL 一致語のスペース区切りリスト
 
-      有効なホット・リンク保護値のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) ページを参照してください。
+      有効なホット・リンク保護値のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) ページを参照してください。
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` のオブジェクト
 
-    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### updateHotlinkProtection
@@ -550,18 +574,18 @@ ___
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下の属性は入力コンテナーの一部であり、既存のホット・リンク保護を更新するときは**必須**です。
     * `uniqueId`: 既存の動作が属するマッピングの固有 ID
     * `protectionType`: 指定された refererValues 内にあるいずれかの語に一致する Referer ヘッダー値が含まれているコンテンツを Web ページが要求したときに、そのコンテンツへのアクセスを許可する (ALLOW) か、拒否する (DENY) かを指定します 
     * `refererValues`: `protectionType` の動作が有効になるリファラー URL 一致語のスペース区切りリスト
 
-      有効なホット・リンク保護値のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) ページを参照してください。
+      有効なホット・リンク保護値のリストを確認するには、[`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) ページを参照してください。
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` のオブジェクト
 
-    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### deleteHotlinkProtection
@@ -570,7 +594,7 @@ ___
   * **パラメーター**: タイプ `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` のコレクション。
     入力コンテナーのすべての属性を次の場所で表示できます。
 
-    [入力コンテナーの概要](/docs/infrastructure/CDN/input-container.html)
+    [入力コンテナーの概要](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下の属性は入力コンテナーの一部であり、新しいホット・リンク保護を作成するときは**必須**です。
     * `uniqueId`: 動作を削除するマッピングの固有 ID
@@ -586,4 +610,4 @@ ___
 
   * **戻り**: タイプ `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` のオブジェクト
 
-    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [ホット・リンク保護クラスの表示](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)

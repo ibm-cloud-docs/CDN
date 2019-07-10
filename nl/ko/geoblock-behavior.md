@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-25"
+  years: 2018, 2019
+lastupdated: "2019-02-25"
+
+keywords: geoblocking, class, API, attributes, object, region
+
+subcollection: CDN
 
 ---
 
@@ -15,9 +19,11 @@ lastupdated: "2018-07-25"
 {:download: .download}
 
 # 지역 차단 클래스
+{: #geoblocking-class}
+
 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 클래스에는 지역 차단 API가 이용하는 속성이 포함되어 있습니다. 지역 차단 API의 각각은 이 유형의 오브젝트를 리턴하고 CDN에서 지리적 액세스 제어 동작을 설정하는 데 사용됩니다.
 
-클래스 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
+**클래스** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`:
 
 * `accessType`: 규칙이 지정된 지역을 `ALLOW` 또는 `DENY`해야 하는지 지정합니다.
 * `regionType`: 지역 차단 규칙을 적용할 지역의 유형(`CONTINENT` 또는 `COUNTRY_OR_REGION`)

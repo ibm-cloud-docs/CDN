@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-06-11"
+
+keywords: customer portal, Softlayer, login, legacy
+
+subcollection: CDN
 
 ---
 
@@ -15,8 +19,8 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Portail client existant
-{ #legacy-customer-portal}
+{: #legacy-customer-portal}
 
-Certains clients existants ne peuvent accéder au portail client {{site.data.keyword.cloud}} que via `https://control.softlayer.com/`. Suivez les instructions décrites ci-après pour vous connecter, puis effectuez des activités comme indiqué dans la documentation CDN.
+Certains clients existants peuvent accéder au portail client {{site.data.keyword.cloud}} uniquement via `https://control.softlayer.com/`. Suivez les instructions décrites ci-après pour vous connecter, puis effectuez des activités comme indiqué dans la documentation CDN.
 
-A partir de votre navigateur, ouvrez le [portail client ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://control.softlayer.com/){: new_window} et connectez-vous à votre compte.
+Depuis votre navigateur, ouvrez le [portail client ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://control.softlayer.com/){: new_window} et connectez-vous à votre compte.

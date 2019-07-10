@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,7 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -21,6 +26,7 @@ lastupdated: "2019-02-19"
 En este documento se describen las tareas comunes para gestionar la CDN.
 
 ## Definición del tiempo de almacenamiento de contenido en memoria caché usando "Tiempo de duración"
+{: #setting-content-caching-time-using-time-to-live}
 
 Cuando la CDN se está ejecutando, puede definir el tiempo de almacenamiento de contenido en memoria caché usando Tiempo de duración (TTL). El Tiempo de duración de una vía de acceso de directorio o archivo determinado indica cuánto tiempo debería almacenarse el contenido en memoria caché. Cuando ha creado la correlación de CDN, se ha generado un TTL global predeterminado de 3600 segundos (1 hora).
 
@@ -45,10 +51,12 @@ Después de guardar, puede **Editar** o **Suprimir** el parámetro de TTL desde 
   * Los valores de TTL pueden definirse solo para un directorio o nombre de archivo específico. No se admiten las expresiones regulares, porque pueden crear un comportamiento imprevisible.
 
 ## Adición de detalles de la vía de acceso de origen
+{: #adding-origin-path-details}
 
 Cuando el estado de la CDN es *CNAME_Configuration* o *Running*, puede agregar detalles de la vía de acceso de origen. Puede optar por proporcionar contenido de varios servidores de origen. Por ejemplo, se pueden suministrar fotografías desde un servidor distinto del servidor de vídeos. El origen puede basarse en un servidor de host o en Object Storage.
 
-**Nota:** la CDN realiza una transformación del URL para el servidor de origen. Por ejemplo, si se añade el origen `xyz.example.com` con la vía de acceso `/example/*` cuando un usuario abre el URL `www.example.com/example/*`, el servidor perimetral de la CDN recupera el contenido de `xyz.example.com/*`.
+La CDN realiza una transformación del URL para el servidor de origen. Por ejemplo, si se añade el origen `xyz.example.com` con la vía de acceso `/example/*` cuando un usuario abre el URL `www.example.com/example/*`, el servidor perimetral de la CDN recupera el contenido de `xyz.example.com/*`.
+{: note}
 
 **Paso 1:**
 
@@ -80,21 +88,23 @@ Seleccione **Servidor** u **Object Storage**.
 
   * Las opciones **Optimización** y **Clave de caché** son las mismas para las configuraciones de Servidor y de Object Storage.
 
-    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) y [Vídeo on Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) proporcionan más información.
+    * Elija las opciones de **Optimización** desde el menú desplegable. **Distribución web general** es la opción predeterminada, o puede elegir las optimizaciones **Archivo de gran tamaño** o **Vídeo on demand**. **Distribución web general** permite a la CDN servir contenido de hasta 1,8 GB, mientras que la optimización **Archivo de gran tamaño** permite descargas de archivos de 1,8 GB a 320 GB. **Vídeo on demand** optimiza su CDN para la distribución de formatos de streaming segmentados. Las descripciones de característica para [Optimización de archivos de gran tamaño](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization) y [Vídeo on Demand](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand) proporcionan más información.
 
         ![Opciones de configuración del rendimiento](images/performance-config-options.png)
 
-    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) en la descripción de la característica.
+    * Seleccione las opciones de **Clave de caché** desde el menú desplegable. La opción predeterminada es **Incluir todo**. Si selecciona **Incluir especificado** o **Ignorar especificado**, **debe** introducir las series de consulta que se incluirán o ignorarán, separadas por un espacio. Por ejemplo, especifique `uuid=123456` para una sola serie de consulta, o `uuid=123456 issue=important` para dos series de consulta.  Puede obtener más información sobre los [argumentos de consulta de clave de caché](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-query-args) en la descripción de la característica.
 
         ![Opciones de clave de caché](images/cache-key-options.png)
 
-**NOTA**: las opciones de protocolo y puerto que muestra la interfaz de usuario coinciden con lo que se ha seleccionado al realizar el pedido de la CDN. Por ejemplo, si ha seleccionado **Puerto HTTP** como parte de la solicitud de la CDN, la opción **Puerto HTTP** se mostrará solo como parte de Añadir origen.
+Las opciones de protocolo y puerto que muestra la interfaz de usuario coinciden con lo que se ha seleccionado al realizar el pedido de la CDN. Por ejemplo, si ha seleccionado **Puerto HTTP** como parte de la solicitud de la CDN, la opción **Puerto HTTP** se mostrará solo como parte de Añadir origen.
+{: note}
 
 **Paso 5:**
 
 Seleccione el botón **Añadir** para añadir la vía de acceso de origen.
 
-  **Nota**: cuando proporciona extensiones de archivo para una vía de acceso de origen de Object Storage, se incluirá en el ámbito la opción de TTL con el mismo URL que la vía de acceso de origen, de forma que se incorporen todos los archivos con esas extensiones especificadas. Por ejemplo, si crea una vía de acceso de origen de `/example` y especifica las extensiones de archivo "jpg png gif", el valor de TTL de la vía de acceso de TTL `/example` tendrá un ámbito que incluye todos los archivos JPG/PNG/GIF del directorio `/example` y sus subdirectorios.
+Cuando proporciona extensiones de archivo para una vía de acceso de origen de Object Storage, se incluirá en el ámbito la opción de TTL con el mismo URL que la vía de acceso de origen, de forma que se incorporen todos los archivos con esas extensiones especificadas. Por ejemplo, si crea una vía de acceso de origen de `/example` y especifica las extensiones de archivo "jpg png gif", el valor de TTL de la vía de acceso de TTL `/example` tendrá un ámbito que incluye todos los archivos JPG/PNG/GIF del directorio `/example` y sus subdirectorios.
+{: note}
 
 **Paso 6:**
 
@@ -103,6 +113,7 @@ Después de la adición, puede **Editar** o **Suprimir** el origen desde las opc
   ![Editar o suprimir origen](images/edit-delete-origin.png)
 
 ## Depuración de contenido almacenado en memoria caché
+{: #purging-cached-content}
 
 Cuando la CDN se está ejecutando, puede depurar el contenido almacenado en memoria caché desde el servidor del proveedor.
 
@@ -118,7 +129,7 @@ Seleccione el separador **Depurar**.
 
 **Paso 3:**
 
-Especifique la sintaxis de vía de acceso unix estándar para indicar qué archivo desea depurar y, a continuación, seleccione el botón **Depurar**. La depuración se permite para un solo archivo en este momento. Consulte la página [Convenios de reglas y denominación](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-) para obtener más detalles sobre qué sintaxis se permite para la vía de acceso de depuración.
+Especifique la sintaxis de vía de acceso Unix estándar para indicar qué archivo desea depurar y, a continuación, seleccione el botón **Depurar**. La depuración se permite para un solo archivo a la vez. Consulte la página [Convenios de reglas y denominación](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) para obtener más detalles sobre qué sintaxis se permite para la vía de acceso de depuración.
 
 **Paso 4:**
 
@@ -126,9 +137,11 @@ Tras la depuración, la actividad se lista en **Depurar actividad**. Puede **reh
 
    ![Actividad de depuración](images/purge-activity.png)
 
-   **NOTA:** si hay más de 15 depuraciones, la actividad de depuración se recorta cada 15 días de forma automática.
+Si hay más de 15 depuraciones, la actividad de depuración se recorta cada 15 días de forma automática.
+{: note}
 
 ## Actualización de los detalles de configuración de la CDN
+{: #updating-cdn-configuration-details}
 
 Cuando la CDN se está ejecutando, puede actualizar los detalles de configuración de la CDN.
 
@@ -141,7 +154,9 @@ En la página CDN, seleccione su CDN para ir a la página **Visión general**.
 Seleccione el separador **Valores**. Se mostrarán los detalles de configuración de la CDN.
 
    ![Separador Valores](images/settings-tab.png)  
-   **NOTA**: Sólo verá el certificado SSL si la CDN se ha configurado con HTTPS.
+
+Sólo verá el certificado SSL si la CDN se ha configurado con HTTPS.
+{: note}
 
 Para **Servidor**, se pueden cambiar los campos siguientes:
   * Cabecera de host
@@ -168,21 +183,3 @@ Para **Object Storage**, se pueden modificar los campos siguientes:
 Actualice los detalles de **Origen** u **Otras opciones** si es necesario y, a continuación, haga clic en el botón **Guardar** de la esquina inferior derecha para que se actualicen los detalles de configuración de la CDN.
 
    ![Botón Guardar](images/save-button.png)
-
-## Configuración de IBM Cloud Object Storage for CDN
-
-Para utilizar objetos almacenados en IBM Cloud Object Storage, debe establecer el valor de la propiedad "acl" (es decir, la lista de control de accesos) para que cada objeto del grupo disponga de acceso "public-read".
-
-Para instalar los clientes y herramientas necesarios, consulte la [sección de IBM Cloud Object Storage Developer](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Esta guía presupone que ha instalado la interfaz de línea de mandatos AWS oficial, que es compatible con la API de IBM Cloud Object Storage S3.
-
-El código de ejemplo siguiente es una muestra sobre cómo definir el acceso "public-read" para todos los objetos del grupo mediante la interfaz de línea de mandatos.
-
-```
-$ export ENDPOINT="YOUR_ENDPOINT"
-$ export BUCKET="YOUR_BUCKET"
-$ KEYS=( "$(aws --endpoint-url "$ENDPOINT" s3api list-objects --no-paginate --query 'Contents[].{key: Key}' --output text --bucket "$BUCKET")" )
-$ for KEY in "${KEYS[@]}"
-  > do
-  >   aws --endpoint-url "$ENDPOINT" s3api put-object-acl --bucket "$BUCKET" --key "$KEY" --acl "public-read"
-  > done
-```

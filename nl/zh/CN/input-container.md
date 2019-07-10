@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+
+subcollection: CDN
 
 ---
 
@@ -15,7 +19,7 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # 输入容器
-{ #input-container}
+{: #input-container}
 
 输入容器是映射和（源）路径类所利用的集合。输入容器为这两个类提供了一组一致的输入属性。
 
@@ -25,8 +29,8 @@ lastupdated: "2019-02-19"
 下面是映射和（源）路径类的公共属性：
 * `originType`：源主机的类型，当前为“HOST_SERVER”或“OBJECT_STORAGE”。
 * `origin`：源服务器地址（源服务器的主机名或 IPv4 地址）、从中访存内容的端点或存储内容的存储区的名称。必须少于 511 个字符。
-* `httpPort`：用于 HTTP 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
-* `httpsPort`：用于 HTTPS 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
+* `httpPort`：用于 HTTP 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
+* `httpsPort`：用于 HTTPS 协议的端口号。Akamai 对 HTTP 和 HTTPS 端口的端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以获取允许的端口号列表。
 * `status`：映射或路径的状态。状态可以为 CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED 或 ERROR。
 * `path`：将从中提供高速缓存内容的路径。缺省路径为 /\*。由 `updateOriginPath` API 使用时，此属性是指要添加的新路径。
 * `performanceConfiguration`：映射的性能配置的规范。
@@ -52,4 +56,4 @@ lastupdated: "2019-02-19"
 * `fileExtension`：允许的文件扩展名。
 
 下列属性与配置热链接保护相关：
-* `hotlinkProtection`：请参阅[热链接保护类](/docs/infrastructure/CDN/hotlink-protection-behavior.html)以了解更多详细信息。
+* `hotlinkProtection`：请参阅[热链接保护类](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)以了解更多详细信息。

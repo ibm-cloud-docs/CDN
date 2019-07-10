@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,8 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # Exemples de code basé sur l'API du CDN
@@ -20,6 +26,7 @@ lastupdated: "2019-02-19"
 Ce document contient des appels API et la sortie résultante pour de nombreuses API CDN.
 
 ## Etapes générales nécessaires pour tous les appels API
+{: #general-steps-needed-for-all-api-calls}
 
 Vous devez au préalable avoir téléchargé et installé le client SOAP depuis la page [https://github.com/softlayer/softlayer-api-php-client ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://github.com/softlayer/softlayer-api-php-client)
 
@@ -38,6 +45,7 @@ Vous devez au préalable avoir téléchargé et installé le client SOAP depuis 
   * Initialisez SoapClient pour la classe appropriée.
 
 ## Exemple de code permettant de répertorier les fournisseurs
+{: #example-code-for-listing-vendors}
 
 Dans ce cas, c'est la classe SoftLayer_Network_CdnMarketplace_Vendor qui définit l'API `listVendors` API ; elle doit être passée en tant que paramètre à `\SoftLayer\SoapClient::getClient()`. Vous aurez besoin du nom d'un fournisseur actif plus tard, quand vous créerez un mappage de domaine.
 
@@ -71,6 +79,7 @@ Array
 {: codeblock}
 
 ## Exemple de code permettant de vérifier la commande
+{: #example-code-to-verify-order}
 
 L'appel vers `verifyOrder` n'est pas obligatoire avant de passer une commande mais il est conseillé. Il peut être utilisé pour vérifier qu'un autre appel vers `placeOrder` aboutira. Vous trouverez plus d'informations sur `verifyOrder` dans la [documentation SoftLayer API![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
 
@@ -126,6 +135,7 @@ catch (\Exception $e) {
 
 
 ## Exemple de code permettant de passer la commande
+{: #example-code-to-place-order}
 
 Cet appel API est identique à l'exemple de code précédent, sauf qu'il appelle `placeOrder` plutôt que `verifyOrder.` Vous trouverez plus d'informations sur `placeOrder` dans la [documentation SoftLayer API![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
 
@@ -180,10 +190,12 @@ catch (\Exception $e) {
 
 
 ## Exemple de code permettant de créer un CDN ou un mappage de domaine
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 Cet exemple vous montre comment créer un nouveau mappage CDN en utilisant l'API `createDomainMapping`. Il accepte un paramètre unique de l'objet `stdClass`. SoapClient doit être initialisé via la classe `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`, comme illustré dans l'exemple.
 
-**Remarque**: si vous choisissez de fournir un nom CNAME personnalisé, il **doit** se terminer par `.cdnedge.bluemix.net` ou une erreur est émise. Voir [cette description](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) pour savoir comment fournir votre propre nom CNAME.
+Si vous choisissez de fournir un nom CNAME personnalisé, il **doit** se terminer par `.cdnedge.bluemix.net` ou une erreur est émise.  Voir [cette description](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) pour savoir comment fournir votre propre nom CNAME.
+{: important}
 
 ```php
 
@@ -260,6 +272,7 @@ Array
 {: codeblock}
 
 ## Exemple de code permettant de vérifier le mappage de domaine
+{: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping vérifie si la configuration CNAME est terminée et, si c'est la cas, change le statut CDN en RUNNING. Avant d'appeler `verifyDomainMapping`, vous devez ajouter un enregistrement CNAME du nom d'hôte Hostname personnalisé à votre serveur DNS.
 
@@ -306,7 +319,8 @@ Si votre enregistrement CNAME a été ajouté à votre serveur DNS, le statut `s
 
 Si votre enregistrement CNAME n'a pas été ajouté à votre serveur DNS ou que votre serveur n'a pas encore été mis à jour, le statut `status` de votre CDN passe à CNAME_CONFIGURATION, comme illustré dans l'exemple suivant.
 
-**Remarque** : l'exécution du chaînage CNAME peut prendre plusieurs minutes (jusqu'à 30).
+L'exécution du chaînage CNAME peut prendre plusieurs minutes (jusqu'à 30).
+{: note}
 
 ```php
 Array

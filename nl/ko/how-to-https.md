@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-04"
+  years: 2018, 2019
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -15,16 +19,18 @@ lastupdated: "2018-10-04"
 {:download: .download}
 
 # DV SAN으로 HTTP에 대한 도메인 제어 유효성 검증 완료
+{: #completing-domain-control-validation-for-https-with-dv-san}
 
 다음 다이어그램은 CDN이 작성된 시간부터 실행 중 상태가 될 때까지의 다양한 상태에 대해 간략히 정의합니다.
 
   ![SAN 상태 다이어그램](images/state-diagram-san.png)
 
 ## 도메인 제어 유효성 검증의 초기 단계
+{: #initial-steps-to-domain-control-validation}
 
 **단계 1:**
 
-DV SAN 인증서를 사용하여 CDN을 주문하고 나면 인증서 요청 프로세스가 시작됩니다. 이 프로세스 중에 IBM Cloud CDN에서 Akamai의 인증서를 요청합니다. 인증서를 사용할 수 있게 되면 Akamai에서 인증 기관(CA)에 요청을 합니다.
+DV SAN 인증서를 사용하여 CDN을 주문하고 나면 인증서 요청 프로세스가 시작됩니다. 이 프로세스 중에 {{site.data.keyword.cloud}} CDN에서 Akamai의 인증서를 요청합니다. 인증서를 사용할 수 있게 되면 Akamai에서 인증 기관(CA)에 요청을 합니다.
 
   * 이 시간 동안 CDN 상태는 **인증서 요청 중**으로 표시됩니다.
 
@@ -48,15 +54,17 @@ CA에서 요청을 받으면 도메인 유효성 검증 인증 확인을 발행�
 
   * 이 프로세스가 완료되면 사용한 유효성 검증 메소드와 상관없이 모든 도메인이 **CNAME 구성** 상태로 이동합니다.
 
-CNAME 구성 완료 및 CDN 감독에 대한 추가 정보는 [실행하기](basic-functions.html#get-to-running) 페이지에서 찾을 수 있습니다.
+CNAME 구성 완료 및 CDN 감독에 대한 추가 정보는 [실행하기](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running) 페이지에서 찾을 수 있습니다.
 
 
-## 도메인 제어 유효성 검증 
+## 도메인 제어 유효성 검증
+{: #domain-control-validation}
 
 SAN 인증서에 추가된 CDN 도메인 이름을 가져오려면, 도메인에 대한 관리 제어 권한이 있음을 증명해야 합니다. 이 증거 프로세스는 도메인 제어 유효성 검증(DCV) 처리라고 합니다. 48시간 이내에 DCV를 처리해야 합니다. 검증 처리에 실패하는 경우 요청이 만료되고 주문 프로세스를 다시 시작해야 합니다. DCV를 처리하는 세 가지 다른 방법이 다음 섹션에 설명되어 있습니다.
 
 
 ### CNAME
+{: #cname}
 
 이 메소드는 CDN이 라이브 트래픽을 제공하지 **않는** **경우에만** 사용하는 것이 좋습니다. 도메인에서 라이브 트래픽을 제공하는 경우에는 도메인의 유효성을 검증하는 데 표준 또는 경로 재지정 메소드 중 하나를 사용하는 것이 좋습니다.
 
@@ -71,6 +79,7 @@ SAN 인증서에 추가된 CDN 도메인 이름을 가져오려면, 도메인에
 
 ---
 ### 표준
+{: #standard}
 
 도메인 유효성 검증의 표준 메소드를 선택하면 도메인 유효성 검증 창에 **인증 확인 URL** 및 **인증 확인 응답**이 표시됩니다. 도메인 유효성 검증 프로세스를 완료하려면, 제공된 **인증 확인 응답**을 원본 서버에 추가하십시오. 추가되고 나면, CA가 **인증 확인 URL**에 지정된 URL을 사용하여 원본 서버에서 **인증 확인 응답**을 검색할 수 있습니다. 원본 서버가 올바르게 구성되고 나면 도메인 유효성 검증을 수행하는 데 2 - 4시간이 걸릴 수 있습니다.
 
@@ -85,6 +94,7 @@ SAN 인증서에 추가된 CDN 도메인 이름을 가져오려면, 도메인에
 * 인증 확인 응답: `examplechallenge`
 
 #### Apache 구성
+{: #apache-configuration}
 
   * **1단계:** Apache2 서버를 실행 중인 시스템에 로그인하십시오.
 
@@ -108,6 +118,7 @@ apachectl -k graceful
   * **6단계:** CDN 도메인과 원본 서버의 IP 주소 사이의 DNS에 A 레코드를 작성하십시오.
 
 #### Nginx 구성
+{: #nginx-configuration}
 
   * **1단계:** Nginx 서버를 실행 중인 시스템에 로그인하십시오.
 
@@ -130,6 +141,7 @@ nginx -s reload
   * **6단계:** CDN 도메인과 원본 서버의 IP 주소 사이의 DNS에 A 레코드를 작성하십시오.
 
 #### 도메인 유효성 검증을 처리하는 이 표준 메소드가 CA에 준비되었는지 확인하십시오.
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * 이 메소드가 `curl`을 통해 작동하는지 확인하려면 인증 확인 URL의 명령을 실행하십시오.
     ```
@@ -140,6 +152,7 @@ nginx -s reload
 두 경우 모두 원본 서버에 저장된 도메인 유효성 검증 인증 확인 파일 오브젝트의 사본을 검색할 수 있어야 합니다.
 
 #### 표준 메소드 정리
+{: #clean-up-for-the-standard-method}
 
 CDN이 **인증서 배치 중** 상태가 되면 다음을 수행하십시오.
 1. `examplechallenge-fileobject` 파일을 제거하십시오 (선택사항).
@@ -148,6 +161,7 @@ CDN이 **인증서 배치 중** 상태가 되면 다음을 수행하십시오.
 
 ---
 ### 경로 재지정
+{: #redirect}
 
 **경로 재지정** 탭을 클릭하면 경로 재지정을 통해 도메인 유효성 검증을 처리하는 데 필요한 모든 정보가 표시됩니다. 이 정보를 사용하면 CA에서 원본 서버를 통해 Akamai에서 **인증 확인 응답**의 사본을 검색할 수 있습니다. 서버가 올바르게 구성되고 나면 도메인 유효성 검증을 수행하는 데 2 - 4시간이 걸릴 수 있습니다.
 
@@ -162,6 +176,7 @@ CDN이 **인증서 배치 중** 상태가 되면 다음을 수행하십시오.
 * URL 경로 재지정: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Apache 경로 재지정 구성
+{: #apache-redirect-configuration}
 
   * **1단계:** Apache2 서버를 실행 중인 시스템에 로그인하십시오.
 
@@ -183,6 +198,7 @@ apachectl -k graceful
 CDN 도메인과 원본 서버의 IP 주소 사이의 DNS에 A 레코드를 작성하십시오.
 
 #### Nginx 경로 재지정 구성
+{: #nginx-redirect-confguration}
 
   * **1단계:** Nginx 서버를 실행 중인 시스템에 로그인하십시오.
 
@@ -232,10 +248,10 @@ server {
 nginx -s reload
     ```
 
-  * **5단계:**
-CDN 도메인과 원본 서버의 IP 주소 사이의 DNS에 A 레코드를 작성하십시오.
+  * **5단계:** CDN 도메인과 원본 서버의 IP 주소 사이의 DNS에 A 레코드를 작성하십시오.
 
 #### 경로 재지정이 수행되는지 확인
+{: #verify-that-the-redirect-is-occurring}
 
 이 단계를 완료하면 특정 인증 유형 URL에 대한 트래픽_만_ URL 경로 재지정으로 경로가 재지정됩니다. `curl` 또는 브라우저를 통해 경로 재지정이 제대로 작동하는지 확인할 수 있습니다.
 
@@ -250,6 +266,7 @@ curl -vL http://cdn.example.com/.well-known/acme-challenge/examplechallenge-file
 두 경우 모두, 원본 요청의 경로가 재지정되는 `dcv.akamai.com`의 Akamai에서 도메인 유효성 검증 인증 확인 파일 오브젝트의 사본을 검색할 수 있어야 합니다.
 
 #### 경로 재지정 메소드 정리
+{: #clean-up-for-the-redirect-method}
 
 CDN이 **인증서 배치 중** 상태가 되면 다음을 수행하십시오.
 1. 구성 파일에서 경로 재지정 명령문 또는 블록을 제거하십시오 (선택사항).

@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-14"
+  years: 2017, 2019
+lastupdated: "2019-02-25"
+
+keywords: origin, path, container, collection, attributes, query, arguments, class, API
+
+subcollection: CDN
 
 ---
 
@@ -15,9 +19,11 @@ lastupdated: "2017-11-14"
 {:download: .download}  
 
 # 경로(원본) 컨테이너
+{: #path-origin-container}
+
 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 콜렉션에는 (원본) 경로 API에서 이용하는 속성이 포함됩니다. 각 경로 API는 이 유형의 콜렉션을 리턴합니다.
 
-클래스 `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
+**클래스** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
 * `mappingUniqueId`: 이 원본 경로가 속한 맵핑의 고유 ID입니다.  
 * `path`:  이 원본에 연결하는 데 사용할 수 있는 도메인의 상대 경로입니다.  

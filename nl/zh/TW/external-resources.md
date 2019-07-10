@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: blogs
+
+subcollection: CDN
 
 ---
 
@@ -19,6 +23,7 @@ lastupdated: "2019-02-19"
 這些資源由 {{site.data.keyword.cloud}} 以及一些夥伴和客戶所建立。
 
 ## IBM 技術部落格（僅限內部）
+{: #ibm-tech-blogs}
 
  * [如何提供 IBM Cloud CDN 上廣域應用程式的良好效能，作者 Ketan Pancholi 及 Nikhil Gupta](https://www.ibm.com/w3-techblog/use-cases/2018/05/content-delivery-service/)
  
@@ -28,5 +33,6 @@ lastupdated: "2019-02-19"
 
 
 ## 外部部落格
+{: #external-blogs}
 
 * 即將推出

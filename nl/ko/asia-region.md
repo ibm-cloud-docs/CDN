@@ -1,13 +1,18 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-26"
+  years: 2018, 2019
+lastupdated: "2019-02-25"
+
+keywords: asia region, asia, geographic region
+
+subcollection: CDN
 
 ---
 
 
-## 아시아 지역에는 다음이 포함됩니다.
+# 아시아 지역
+{: #asia-region}
 
 * 아프가니스탄
 * 미국령 사모아

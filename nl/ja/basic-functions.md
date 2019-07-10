@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:warning: .warning}
 {:download: .download}
 
 # CDN を実行中状況にする
@@ -20,6 +27,7 @@ lastupdated: "2019-02-19"
 CDN 実行中状態にするためのガイドラインについて説明します。 また、この文書では、CDN の開始および停止の方法についても説明します。
 
 ## 実行中にする
+{: #get-to-running}
 
 CDN を作成すると、CDN ダッシュボードにそれが表示されます。 ここには、CDN の名前、オリジン、プロバイダー、状況が示されます。  
 
@@ -28,7 +36,7 @@ CDN を作成すると、CDN ダッシュボードにそれが表示されます
 
 HTTP、または、ワイルドカード証明書での HTTPS を指定して CDN を注文した場合は、ステップ 1 に進むことができます。
 
-HTTPS DV SAN 証明書での CDN を作成した場合、ドメインを検証するための追加ステップが必要になる場合があります。それについては、『[HTTPS のためのドメイン制御検証の実行](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https)』ページに説明があります。
+HTTPS DV SAN 証明書での CDN を作成した場合、ドメインを検証するための追加ステップが必要になる場合があります。それについては、『[HTTPS のためのドメイン制御検証の実行](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#completing-domain-control-validation-for-https)』ページに説明があります。
 
 **ステップ 1:**
 
@@ -48,13 +56,15 @@ DNS プロバイダーで CNAME を構成したらいつでも、CDN の状況�
 
 CNAME のチェーニングが完了したら、**「状況の取得 (Get Status)」**を選択すると状況が*「実行中 (RUNNING)」*に変わり、CDN は使用する準備ができた状態になります。
 
-これで、CDN は実行中になりました。 ここからは、[「CDN の管理」](/docs/infrastructure/CDN/how-to.html#manage-your-cdn)ページに、構成オプションについての追加情報が示されるようになります。例えば、[存続時間](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-)、[キャッシュ・コンテンツのパージ](/docs/infrastructure/CDN/how-to.html#purging-cached-content)、[オリジン・パスの詳細の追加](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details)などです。
+これで、CDN は実行中になりました。 ここからは、[「CDN の管理」](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#manage-your-cdn)ページに、構成オプションについての追加情報が示されるようになります。例えば、[存続時間](docs/infrastructure/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-)、[キャッシュ・コンテンツのパージ](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#purging-cached-content)、[オリジン・パスの詳細の追加](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details)などです。
 
 ## CDN の開始
+{: #starting-cdn}
 
 CDN を開始すると、トラフィックをオリジンから Akamai エッジ・サーバーへ送信するよう DNS に通知されます。 マッピングが開始された後、DNS キャッシュは引き続きトラフィックをオリジンに送信する可能性があるため、マッピングの開始直後は、ドメインによって機能が認識されない場合があります。 更新にかかる時間は、DNS キャッシュがリフレッシュされる頻度に依存し、DNS プロバイダーによっても異なります。
 
-**注**: CDN を開始できるのは、`「停止」`状況の場合のみです。  
+CDN を開始できるのは、`「停止」`状況の場合のみです。
+{: note}
 
 **ステップ 1:**
 
@@ -79,12 +89,21 @@ CDN を開始すると、トラフィックをオリジンから Akamai エッ�
 オーバーフロー・メニューから**「状況の取得 (Get Status)」**をクリックします。 このステップにより、状況が`「実行中」`に変わります。 CDN は作動可能になります。
 
 ## CDN の停止
+{: #stopping-a-cdn}
+
+STOP CDN 機能は、7 日以内の保守ウィンドウを対象としています。7 日後に CDN を起動する必要があります。そうしないと、この機能は無効になり、CDN CNAME へのトラフィックはオリジン・サーバーにリダイレクトされません。
+{: important}
 
 マッピングが停止すると、DNS 参照はオリジンに切り替わります。 トラフィックは CDN エッジ・サーバーをスキップし、コンテンツはオリジンから直接フェッチされます。 マッピングが停止した後は、短時間、コンテンツにアクセスできないことがあります。 これは、DNS キャッシュが引き続きトラフィックを Akamai エッジ・サーバーに送信している可能性があるためです。 ただし、この間、Akamai エッジ・サーバーはドメインのトラフィックを拒否します。 この期間がどれくらい続くかは、DNS キャッシュがリフレッシュされる頻度に依存し、DNS プロバイダーによっても異なります。
 
-**注**: 
-* HTTPS SAN 証明書を使用して構成された CDN では、CDN を`「実行中」`状況に戻したときに HTTPS トラフィックが機能しなくなる可能性があるため、CDN を停止することは推奨**されません**。 
-* CDN の停止は、状況が`「実行中」`のときにのみ行えます。
+CDN の停止は、状況が`「実行中」`のときにのみ行えます。
+{: note}
+
+HTTPS SAN 証明書を使用して構成された CDN では、CDN を`「実行中」`状況に戻したときに HTTPS トラフィックが機能しなくなる可能性があるため、CDN を停止することは推奨**されません**。
+{: important}
+
+ワイルドカード・ドメインの CDN の停止は、現時点では許可**されていません**。
+{: important}
 
 **ステップ 1:**
 
@@ -100,10 +119,12 @@ CDN を開始すると、トラフィックをオリジンから Akamai エッ�
 およそ 5 秒から 15 秒後に、状況が「停止 (Stopped)」に変わります。
 
 ## CDN の削除
+{: #deleting-a-cdn}
 
 CDN を削除するには、以下のステップを実行します。
 
-**注**: オーバーフロー・メニューから`「削除」`を選択すると、CDN のみが削除されます。ご使用のアカウントは削除されません。
+オーバーフロー・メニューから`「削除」`を選択すると、CDN のみが削除されます。ご使用のアカウントは削除されません。
+{: note}
 
 **ステップ 1:**
 
@@ -115,7 +136,8 @@ CDN を削除するには、以下のステップを実行します。
 
 削除の確認を求める大きめのダイアログ・ウィンドウが表示されます。 **「削除」**をクリックして続行します。
 
-**注:** CDN が DV SAN 証明書で HTTPS を使用して構成されている場合、削除処理が完了するまでに最大 5 時間かかることがあります。
+CDN が DV SAN 証明書で HTTPS を使用して構成されている場合、削除処理が完了するまでに最大 5 時間かかることがあります。
+{: note}
 
   ![警告を伴う削除](images/delete-with-warning.png)
 

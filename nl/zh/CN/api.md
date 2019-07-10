@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: application programming interface, api, slapi, reference, development interface
+
+subcollection: CDN
 
 ---
 
@@ -12,19 +16,20 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 
 
 # CDN API 参考
 {: #cdn-api-reference}
 
-{{site.data.keyword.cloud}} 提供的 {{site.data.keyword.BluSoftlayer_notm}} 应用程序编程接口（通常称为 SLAPI）是开发接口，可让开发者和系统管理员直接与 {{site.data.keyword.BluSoftlayer_notm}} 后端系统进行交互。
+{{site.data.keyword.cloud}} 提供的 {{site.data.keyword.cloud}} 基础架构应用程序编程接口（通常称为 SLAPI）是开发接口，可让开发者和系统管理员直接与 {{site.data.keyword.cloud_notm}} 基础架构后端系统进行交互。
 
-SLAPI 在客户门户网站中可实现许多功能：如果可以在客户门户网站中进行交互，那么该交互也可以在 SLAPI 中完成。由于您可以通过编程方式，与 {{site.data.keyword.BluSoftlayer_notm}} 环境的所有部分进行交互，因此在 SLAPI 中，您可以使用 API 来自动化任务。
+SLAPI 在客户门户网站中可实现许多功能：如果可以在客户门户网站中进行交互，那么该交互也可以在 SLAPI 中完成。由于您可以通过编程方式与 {{site.data.keyword.cloud_notm}} 基础架构环境的所有部分进行交互，因此在 SLAPI 中，您可以使用 API 来自动执行任务。
 
 SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送到 API 端点并在返回时接收结构化数据。使用 SLAPI 进行发送和接收数据的格式取决于您所选择的 API 实施。SLAPI 当前使用 SOAP、XML-RPC 或 REST 进行数据传输。
 
-有关 SLAPI 或 IBM Cloud Content Delivery Network (CDN) 服务 API 的更多信息，请参阅 IBM Cloud Development Network 中的以下资源：
+有关 SLAPI 或 {{site.data.keyword.cloud_notm}} Content Delivery Network (CDN) 服务 API 的更多信息，请参阅 {{site.data.keyword.cloud_notm}} Development Network 中的以下资源：
 
 * [SLAPI 概述](https://softlayer.github.io/ )
 * [SLAPI 入门](https://softlayer.github.io/article/getting-started/ )
@@ -42,22 +47,27 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 在您已遵循之前的序列之后，您可以使用其他 API。
 
-[此调用序列中的每个步骤都有可用的示例代码。](/docs/infrastructure/CDN/cdn-example-code.html#code-examples-using-the-cdn-api)
+[此调用序列中的每个步骤都有可用的示例代码。](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)
 
-**注**：对于本文档中显示的大多数 API 调用，**必须**使用具有 `CDN_ACCOUNT_MANAGE` 权限的用户的 API 用户名和 API 密钥。如果您需要启用此许可权，请咨询您帐户的主用户。（每个 IBM Cloud 客户帐户都提供一个主用户。）
+对于本文档中显示的大多数 API 调用，**必须**使用具有 `CDN_ACCOUNT_MANAGE` 许可权的用户的 API 用户名和 API 密钥。如果您需要启用此许可权，请咨询您帐户的主用户。（每个 IBM Cloud 客户帐户都提供一个主用户。）
+{: note}
 
 ----
 ## 供应商的 API
+{: #api-for-vendor}
+
 ### listVendors
 此 API 允许用户列出受支持的 CDN 供应商。需要 `vendorName` 才能创建 CDN 帐户并开始订购 CDN。
 
 * **必需参数**：无
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Vendor` 类型的集合
 
-  可以在此查看供应商容器和用法示例：[供应商容器](/docs/infrastructure/CDN/vendor-container.html)
+  可以在此查看供应商容器和用法示例：[供应商容器](/docs/infrastructure/CDN?topic=CDN-vendor-container)
 
 ----
 ## 帐户的 API
+{: #api-for-account}
+
 ### verifyCdnAccountExists
 检查针对给定的 `vendorName`，调用 API 的用户是否存在 CDN 帐户。
 
@@ -66,12 +76,14 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 ----
 ## 域映射的 API
+{: #api-for-domain-mapping}
+
 ### createDomainMapping
-使用提供的输入，此函数可创建给定供应商的域映射，并将其与用户的 {{site.data.keyword.BluSoftlayer_notm}} 帐户标识相关联。必须先使用 `placeOrder` 创建 CDN 帐户，此 API 才有效（请参阅[代码示例](/docs/infrastructure/CDN/cdn-example-code.html)中的 `placeOrder` API 调用示例）。成功创建 CDN 后，会创建 `defaultTTL`，其值为 3600 秒。
+使用提供的输入，此函数可创建给定供应商的域映射，并将其与用户的 {{site.data.keyword.cloud_notm}} 基础架构帐户标识相关联。必须先使用 `placeOrder` 创建 CDN 帐户，此 API 才有效（请参阅[代码示例](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)中的 `placeOrder` API 调用示例）。成功创建 CDN 后，会创建 `defaultTTL`，其值为 3600 秒。
 
 * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-  [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+  [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   以下属性是输入容器的一部分，可在创建域映射时提供（属性是可选的，除非另有说明）：
     * `vendorName`：（**必需**）提供有效 IBM Cloud CDN 提供者的名称。
@@ -81,7 +93,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
     * `protocol`：（**必需**）支持的协议为 `HTTP`、`HTTPS` 或 `HTTP_AND_HTTPS`。
     * `certificateType`：对于 HTTPS 协议是**必需**的。`SHARED_SAN_CERT` 或 `WILDCARD_CERT`
     * `path`：将从中提供高速缓存内容的路径。缺省路径为 `/*`
-    * `httpPort` 和/或 `httpsPort`：（对于主机服务器为**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
+    * `httpPort` 和/或 `httpsPort`：（对于主机服务器为**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
     * `header`：指定源服务器使用的主机头信息
     * `respectHeader`：布尔值，如果设置为 `true`，将导致源中的 TTL 设置覆盖 CDN TTL 设置。
     * `cname`：为主机名提供别名。如果未提供，会生成别名。
@@ -97,7 +109,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
   **注**：该集合提供 `uniqueId` 值，需要发送该值以作为与映射和源路径相关的后续 API 调用的输入。
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### deleteDomainMapping
@@ -105,7 +117,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 * **必需参数**：`uniqueId`：要删除的映射的 uniqueId
 * **返回**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### verifyDomainMapping
@@ -116,7 +128,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * **必需参数**：`uniqueId`：要验证的映射的 uniqueId
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### startDomainMapping
@@ -125,7 +137,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * **必需参数**：`uniqueId`：要启动的映射的 uniqueId
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### stopDomainMapping
@@ -134,14 +146,14 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * **必需参数**：`uniqueId`：要停止的映射的 uniqueId
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### updateDomainMapping
 使用户能够更新 `uniqueId` 所识别的映射的属性。可以更改以下字段：`originHost`、`httpPort`、`httpsPort`、`respectHeader`、`header` 和 `cacheKeyQueryRule` 自变量，如果源类型为 Object Storage，那么也可以更改 `bucketName` 和 `fileExtension`。要进行更新，域映射必须处于 _RUNNING_ 状态。
 
 * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此查看输入容器中的所有属性：
-  [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+  [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   以下属性是输入容器的一部分，在更新域映射时**必需**提供：
     * `vendorName`：提供此映射的 CDN 提供者的名称。
@@ -150,7 +162,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
     * `originType`：源类型可以为 `HOST_SERVER` 或 `OBJECT_STORAGE`。
     * `domain`：提供主机名。
     * `protocol`：支持的协议为 `HTTP`、`HTTPS` 或 `HTTP_AND_HTTPS`。
-    * `httpPort` 和/或 `httpsPort`：这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
+    * `httpPort` 和/或 `httpsPort`：这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
     * `header`：指定源服务器使用的主机头信息
     * `respectHeader`：布尔值，如果设置为 `true`，将导致源中的 TTL 设置覆盖 CDN TTL 设置。
     * `uniqueId`：创建映射后生成。
@@ -164,7 +176,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
       * `include: 空格分隔的查询自变量`：包含这些特定查询自变量。例如，`include: query1 query2`
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappings
@@ -173,7 +185,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * **必需参数**：无
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappingByUniqueId
@@ -182,16 +194,18 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 * **必需参数**：`uniqueId`：要返回的映射的 uniqueId
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` 类型的单对象集合
 
-  [查看映射容器](/docs/infrastructure/CDN/mapping-container.html)
+  [查看映射容器](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
 ----
 ## 源的 API
+{: #apis-for-origin}
+
 ### createOriginPath
 为现有 CDN 和特定客户创建源路径。源路径可以基于主机服务器或 Object Storage。要创建源路径，域映射必须处于 _RUNNING_ 或 _CNAME_CONFIGURATION_ 状态。
 
 * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-  [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+  [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   以下属性是输入容器的一部分，可在创建源路径时提供（属性是可选的，除非另有说明）：
     * `vendorName`：（**必需**）提供有效 IBM Cloud CDN 提供者的名称。
@@ -200,7 +214,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
     * `domain`：（**必需**）以字符串形式提供主机名。
     * `protocol`：（**必需**）支持的协议为 `HTTP`、`HTTPS` 或 `HTTP_AND_HTTPS`。
     * `path`：将从中提供高速缓存内容的路径。必须以映射路径开头。例如，如果映射路径为 `/test`，那么源路径可能为 `/test/media`
-    * `httpPort` 和/或 `httpsPort`：（**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
+    * `httpPort` 和/或 `httpsPort`：（**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
     * `header`：指定源服务器使用的主机头信息
     * `uniqueId`：（**必需**）创建映射后生成。
     * `cname`：为主机名提供别名。如果未提供唯一 CNAME，会在创建映射时生成 CNAME。
@@ -214,7 +228,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类型的集合
 
-  [查看源路径容器](/docs/infrastructure/CDN/path-container.html)
+  [查看源路径容器](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### updateOriginPath
@@ -222,14 +236,14 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-  [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+  [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
   以下属性是输入容器的一部分，可在更新源路径时提供（属性是可选的，除非另有说明）：
     * `oldPath`：（**必需**）要更改的当前路径
     * `origin`：（如果是进行更新，就是**必需**的）以字符串形式提供源服务器地址。
     * `originType`：（**必需**）源类型可以为 `HOST_SERVER` 或 `OBJECT_STORAGE`。
     * `path`：（**必需**）要添加的新路径。此路径相对于映射路径。
-    * `httpPort` 和/或 `httpsPort`：（如果是进行更新，对于主机服务器为**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
+    * `httpPort` 和/或 `httpsPort`：（如果是进行更新，对于主机服务器为**必需**）这两个选项必须对应所需协议。如果协议为 `HTTP`，那么必须设置 `httpPort`，_不能_设置 `httpsPort`。同样，如果协议为 `HTTPS`，那么必须设置 `httpsPort`，_不能_设置 `httpPort`。如果协议为 `HTTP_AND_HTTPS`，那么_必须__同时_设置 `httpPort` 和 `httpsPort`。Akamai 对端口号有特定限制。请参阅[常见问题及解答](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)，以了解允许的端口号。
     * `uniqueId`：（**必需**）此源所属的映射的 uniqueId
     * `bucketName`：（仅对于 Object Storage 为**必需**）S3 Object Storage 的存储区名称。
     * `fileExtension`：（仅对于 Object Storage 为**必需**）允许进行高速缓存的文件扩展名。
@@ -241,7 +255,7 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
 
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类型的集合
 
-  [查看源路径容器](/docs/infrastructure/CDN/path-container.html)
+  [查看源路径容器](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ### deleteOriginPath
@@ -261,10 +275,12 @@ SLAPI 是远程过程调用 (RPC) 系统。每个调用都涉及将数据发送�
   * `uniqueId`：提供要列出其源路径的映射的 uniqueId。
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` 类型的对象的集合
 
-  [查看源路径容器](/docs/infrastructure/CDN/path-container.html)
+  [查看源路径容器](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
 
 ----
 ## 清除的 API
+{: #api-for-purge}
+
 ### 清除的容器类
 ```
 class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
@@ -322,7 +338,9 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 * **返回值**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge` 类型的集合
 
 ----
-## 生存时间的 API  
+## 生存时间的 API
+{: #api-for-time-to-live}
+
 ### TimeToLive 类变量：  
 ```  
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
@@ -369,7 +387,9 @@ ___
 
  ----
 ## 度量值 API
-[查看度量值容器](/docs/infrastructure/CDN/metrics-container.html)
+{: #api-for-metrics}
+
+[查看度量值容器](/docs/infrastructure/CDN?topic=CDN-container-class-for-metrics)
 
 ### getCustomerUsageMetrics
 返回给定时间段内预先确定的统计信息的总数，以向客户帐户直接显示（无图形）。
@@ -439,12 +459,14 @@ ___
 
 ----
 ## 地理访问控制的 API
+{: #api-for-geographical-access-control}
+
 ### createGeoblocking
 创建新的地理访问控制规则，并返回新创建的规则。
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，在创建新的地理访问控制规则时是**必需**的：
     * `uniqueId`：要为其分配规则的映射的 uniqueId
@@ -452,11 +474,11 @@ ___
     * `regionType`：应用地理访问控制规则的区域类型 - `CONTINENT` 或 `COUNTRY_OR_REGION`
     * `regions`：列出将应用 `accessType` 的位置的数组
 
-      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) 页面，以查看可能区域的列表。
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) 页面，以查看可能区域的列表。
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
 
-    [查看 Geo-blocking 类](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [查看 Geo-blocking 类](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### updateGeoblocking
@@ -464,7 +486,7 @@ ___
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，可在更新地理访问控制规则时提供（参数是可选的，除非另有说明）：
     * `uniqueId`：（**必需**）要更新的规则所属的映射的 uniqueId
@@ -472,11 +494,11 @@ ___
     * `regionType`：应用规则的区域类型 - `CONTINENT` 或 `COUNTRY_OR_REGION`
     * `regions`：列出将应用 `accessType` 的位置的数组
 
-      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN/geoblock-behavior.html) 页面，以查看可能区域的列表。
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) 页面，以查看可能区域的列表。
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
 
-    [查看 Geo-blocking 类](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [查看 Geo-blocking 类](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### deleteGeoblocking
@@ -484,14 +506,14 @@ ___
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，在删除地理访问控制规则时是**必需**的：
     * `uniqueId`：提供要删除的规则所属的映射的 uniqueId。
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
 
-    [查看 Geo-blocking 类](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [查看 Geo-blocking 类](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblocking
@@ -502,7 +524,7 @@ ___
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` 的对象
 
-    [查看 Geo-blocking 类](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [查看 Geo-blocking 类](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -513,26 +535,28 @@ ___
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type` 的对象
 
-    [查看 Geo-blocking 类](/docs/infrastructure/CDN/geoblock-behavior.html)
+    [查看 Geo-blocking 类](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
 ----
 ## 热链接保护的 API
+{: #api-for-hotlink-protection}
+
 ### createHotlinkProtection
 创建新的热链接保护，并返回新创建的行为。
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，在创建新的热链接保护时是**必需**的：
     * `uniqueId`：要为其分配行为的映射的 uniqueId
     * `protectionType`：指定在 Web 页面针对具有与指定 refererValues 中某项匹配的 Referer 头值的内容发出请求时，是允许（“ALLOW”）还是拒绝（“DENY”）对内容的访问权
     * `refererValues`：`protectionType` 行为将对其生效的 Referer URL 匹配项的单空格分隔列表
 
-      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) 页面，以查看有效热链接保护值的列表。
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) 页面，以查看有效热链接保护值的列表。
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` 的对象
 
-    [查看热链接保护类](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [查看热链接保护类](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### updateHotlinkProtection
@@ -540,18 +564,18 @@ ___
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，在更新现有热链接保护时是**必需**的：
     * `uniqueId`：现有行为所属的映射的 uniqueId
     * `protectionType`：指定在 Web 页面针对具有与指定 refererValues 中某项匹配的 Referer 头值的内容发出请求时，是允许（“ALLOW”）还是拒绝（“DENY”）对内容的访问权 
     * `refererValues`：`protectionType` 行为将对其生效的 Referer URL 匹配项的单空格分隔列表
 
-      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN/hotlinkprotection-behavior.html) 页面，以查看有效热链接保护值的列表。
+      请参阅 [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) 页面，以查看有效热链接保护值的列表。
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` 的对象
 
-    [查看热链接保护类](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [查看热链接保护类](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### deleteHotlinkProtection
@@ -559,7 +583,7 @@ ___
 
   * **参数**：`SoftLayer_Container_Network_CdnMarketplace_Configuration_Input` 类型的集合。可以在此处查看输入容器中的所有属性：
 
-    [查看输入容器](/docs/infrastructure/CDN/input-container.html)
+    [查看输入容器](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     以下属性是输入容器的一部分，在创建新的热链接保护时是**必需**的：
     * `uniqueId`：要从中除去行为的映射的 uniqueId
@@ -575,4 +599,4 @@ ___
 
   * **返回**：类型为 `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection` 的对象
 
-    [查看热链接保护类](/docs/infrastructure/CDN/hotlink-protection-behavior.html)
+    [查看热链接保护类](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)

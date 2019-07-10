@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: Europe, Middle East, Africa, servers, EMEA, region
+
+subcollection: CDN
 
 ---
 
@@ -17,7 +21,7 @@ lastupdated: "2019-02-19"
 # EMEA-Region
 {: #emea-region}
 
-EMEA ist die Abkürzung für Europa, Naher/Mittlerer Osten und Afrika. 
+EMEA ist die Abkürzung für Europa, Naher/Mittlerer Osten und Afrika.
 
 ## Region 'Europa, Naher/Mittlerer Osten und Afrika'
   * Albanien

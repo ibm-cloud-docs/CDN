@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:warning: .warning}
 {:download: .download}
 
 # Cómo llevar la CDN a estado de ejecución
@@ -20,6 +27,7 @@ lastupdated: "2019-02-19"
 Obtenga más información sobre cómo llevar la CDN en un estado de RUNNING siguiendo estas directrices. Este documento también le indica cómo iniciar y detener la CDN.
 
 ## Ponerla en ejecución
+{: #get-to-running}
 
 Después de crear una CDN, se mostrará en el panel de control de CDN. En el panel, verá el nombre de la CDN, el origen, el proveedor y el estado.  
 
@@ -28,7 +36,7 @@ Después de crear una CDN, se mostrará en el panel de control de CDN. En el pan
 
 Si ha solicitado la CDN con HTTP o HTTPS con el certificado comodín, puede continuar con el Paso 1.
 
-Si ha creado una CDN con un certificado SAN DV HTTPS, es posible que se necesiten pasos adicionales para verificar el dominio; se pueden encontrar en la página [Completar la validación de control de dominio para HTTPS](/docs/infrastructure/CDN/how-to-https.html#completing-domain-control-validation-for-https).
+Si ha creado una CDN con un certificado SAN DV HTTPS, es posible que se necesiten pasos adicionales para verificar el dominio; se pueden encontrar en la página [Completar la validación de control de dominio para HTTPS](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#completing-domain-control-validation-for-https).
 
 **Paso 1:**
 
@@ -48,13 +56,15 @@ En cualquier momento tras haber configurado el CNAME con su proveedor de DNS, pu
 
 Cuando finalice el encadenamiento de CNAME, al seleccionar **Obtener estado** se cambiará el estado a *RUNNING* y la CDN está lista para su uso.
 
-¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](/docs/infrastructure/CDN/how-to.html#manage-your-cdn) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](/docs/infrastructure/CDN/how-to.html#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](/docs/infrastructure/CDN/how-to.html#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](/docs/infrastructure/CDN/how-to.html#adding-origin-path-details).
+¡Enhorabuena! La CDN se está ejecutando. Desde aquí, la página [Gestionar la CDN](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#manage-your-cdn) contiene información adicional sobre cómo configurar opciones como por ejemplo [Tiempo de vida](docs/infrastructure/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-), [Depuración de contenido en memoria caché](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#purging-cached-content) y [Adición de detalles de la vía de acceso de origen](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details).
 
 ## Inicio de la CDN
+{: #starting-cdn}
 
 Cuando se inicia la CDN se informa al DNS para que direccione el tráfico desde su origen al servidor perimetral Akamai. Una vez iniciada la correlación, la caché del DNS todavía podría redirigir tráfico al origen de forma que la funcionalidad podría no ser vista por el dominio inmediatamente después del inicio. El tiempo necesario para la actualización depende de la frecuencia con la que se renueva la caché de DNS, y varía según cada proveedor de DNS.
 
-**NOTA**: Una CDN únicamente se puede iniciar cuando está en un estado `Stopped`  
+Una CDN solo se puede iniciar cuando su estado es `Stopped`.
+{: note}
 
 **Paso 1:**
 
@@ -78,13 +88,22 @@ Este paso cambia el estado a `CNAME Configuration`
 
 Pulse **Obtener estado** en el menú de desbordamiento. Este paso cambia el estado a `Running`. Su CDN entrará en funcionamiento.
 
-## Detención de la CDN
+## Detener una CDN
+{: #stopping-a-cdn}
+
+La funcionalidad DETENER CDN está pensada para ventanas de mantenimiento que no superen los 7 días. Después de 7 días, se debe iniciar la CDN o se inhabilitará y el tráfico al CNAME de CDN no se redirigirá al servidor de origen.
+{: important}
 
 Una vez detenida la correlación, la búsqueda de DNS se conmuta al origen. El tráfico omite los servidores perimetrales de la CDN y el contenido se recupera directamente del origen. Una vez detenida la correlación, puede haber un periodo de tiempo breve en el que el contenido podría no ser accesible. Esto se debe a que la caché de DNS todavía podría redirigir el tráfico a los servidores perimetrales de Akamai. Sin embargo, durante este tiempo, el servidor perimetral Akamai denegará el tráfico para el dominio. Este periodo de tiempo depende de la frecuencia con la que se renueva la caché de DNS, y varía según cada proveedor de DNS.
 
-**NOTAS**: 
-* **NO** se recomienda detener la CDN si está configurada con un certificado SAN de HTTPS puesto que el tráfico HTTPS podría no funcionar al pasar de nuevo la CDN de nuevo al estado `Running`. 
-* Una CDN se puede detener solo cuando su estado es `Running`.
+Una CDN se puede detener solo cuando su estado es `Running`.
+{: note}
+
+**NO** se recomienda detener una CDN si está configurada con un certificado SAN de HTTPS puesto que el tráfico HTTPS podría no funcionar al volver a pasar la CDN de nuevo al estado `Running`.
+{: important}
+
+Detener una CDN para un dominio comodín **NO** se permite en este momento.
+{: important}
 
 **Paso 1:**
 
@@ -99,11 +118,13 @@ Se mostrará una ventana de diálogo más grande para que confirme que desea det
 
 Transcurridos entre 5 y 15 segundos, el estado debería cambiar a "Stopped".
 
-## Supresión de la CDN
+## Suprimir una CDN
+{: #deleting-a-cdn}
 
 Para suprimir una CDN, siga estos pasos:
 
-**NOTA**: al seleccionar `Suprimir` en el menú de desbordamiento, solo se suprime la CDN; no se suprime la cuenta.
+Al seleccionar `Suprimir` en el menú de desbordamiento, solo se suprime la CDN; no se suprime la cuenta.
+{: note}
 
 **Paso 1:**
 
@@ -115,7 +136,8 @@ Pulse "Suprimir" en el menú de desbordamiento.
 
 Se mostrará una ventana de diálogo más grande para que confirme que desea efectuar la supresión. Pulse **Suprimir** para continuar.
 
-**NOTA**: Si la CDN está configurada utilizando HTTPS con Certificado SAN DV, podría tardar hasta 5 horas en completar el proceso de supresión.
+Si la CDN está configurada utilizando HTTPS con Certificado SAN DV, se podría tardar hasta 5 horas en completar el proceso de supresión.
+{: note}
 
   ![Supresión con advertencia](images/delete-with-warning.png)
 

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,7 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -21,6 +26,7 @@ lastupdated: "2019-02-19"
 本文档介绍了管理 CDN 的常见任务。
 
 ## 使用“生存时间”设置内容高速缓存时间
+{: #setting-content-caching-time-using-time-to-live}
 
 在您的 CDN 运行后，您可以使用生存时间 (TTL) 设置内容高速缓存。特定文件或目录路径的生存时间指出该内容应该高速缓存的时间。在您创建 CDN 映射时，即已创建 3600 秒（1 小时）的缺省全局 TTL。
 
@@ -45,10 +51,12 @@ lastupdated: "2019-02-19"
   * 仅可以针对特定文件名或目录设置 TTL 值。不支持正则表达式，因为它们可能会产生不可预测的行为。
 
 ## 添加源路径详细信息
+{: #adding-origin-path-details}
 
 当您的 CDN 处于 *CNAME 配置*或*正在运行*状态时，您可以添加源路径详细信息。您可以选择从多个源服务器提供内容。例如，可以从不同于视频的服务器提供照片。源可以基于主机服务器或 Object Storage。
 
-**注：**CDN 将为源服务器进行 URL 转换。例如，当用户打开 URL `www.example.com/example/*` 时，如果源 `xyz.example.com` 添加了路径 `/example/*`，那么 CDN 边缘服务器将会从 `xyz.example.com/*` 中检索内容。
+CDN 将为源服务器执行 URL 变换。例如，当用户打开 URL `www.example.com/example/*` 时，如果源 `xyz.example.com` 添加了路径 `/example/*`，那么 CDN 边缘服务器将会从 `xyz.example.com/*` 中检索内容。
+{: note}
 
 **步骤 1：**
 
@@ -80,21 +88,23 @@ lastupdated: "2019-02-19"
 
   * “服务器”和 Object Storage 配置的**优化**和**高速缓存键**选项是相同的。
 
-    * 从下拉菜单中选择**优化**选项。**常规 Web 交付**是缺省选项，也可以选择**大型文件**或**视频点播**优化。**常规 Web 交付**支持 CDN 提供不超过 1.8 GB 的内容，而**大型文件**优化支持下载 1.8 GB 到 320 GB 的文件。**视频点播**可优化 CDN 的分段流格式交付。[大型文件优化](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization)和[视频点播](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand)的功能描述提供了进一步的信息。
+    * 从下拉菜单中选择**优化**选项。**常规 Web 交付**是缺省选项，也可以选择**大型文件**或**视频点播**优化。**常规 Web 交付**支持 CDN 提供不超过 1.8 GB 的内容，而**大型文件**优化支持下载 1.8 GB 到 320 GB 的文件。**视频点播**可优化 CDN 的分段流格式交付。[大型文件优化](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization)和[视频点播](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand)的功能描述提供了进一步的信息。
 
         ![性能配置选项](images/performance-config-options.png)
 
-    * 从下拉菜单中选择**高速缓存键**选项。缺省选项为**全部包含**。如果选择**包含指定项**或**忽略指定项**，那么**必须**输入要包含或忽略的查询字符串，各字符串之间用空格分隔。例如，对于一个查询字符串，输入 `uuid=123456`，或者对于两个查询字符串，输入 `uuid=123456 issue=important`。可以在功能描述中了解有关[高速缓存键查询自变量](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args)的更多信息。
+    * 从下拉菜单中选择**高速缓存键**选项。缺省选项为**全部包含**。如果选择**包含指定项**或**忽略指定项**，那么**必须**输入要包含或忽略的查询字符串，各字符串之间用空格分隔。例如，对于一个查询字符串，输入 `uuid=123456`，或者对于两个查询字符串，输入 `uuid=123456 issue=important`。可以在功能描述中了解有关[高速缓存键查询自变量](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-query-args)的更多信息。
 
         ![“高速缓存键”选项](images/cache-key-options.png)
 
-**注**：UI 所显示的“协议”和“端口”选项将与订购 CDN 期间所选的内容相匹配。例如，如果在订购 CDN 的过程中选择了 **HTTP 端口**，那么在“添加源”的过程中，仅会显示 **HTTP 端口**选项。
+UI 所显示的“协议”和“端口”选项将与订购 CDN 时所选的内容相匹配。例如，如果在订购 CDN 的过程中选择了 **HTTP 端口**，那么在“添加源”的过程中，仅会显示 **HTTP 端口**选项。
+{: note}
 
 **步骤 5：**
 
 选择**添加**按钮以添加源路径。
 
-  **注**：为 Object Storage 源路径提供文件扩展名时，具有与源路径相同 URL 的 TTL 设置的范围将会扩展，以包含具有这些指定文件扩展名的所有文件。例如，如果您创建源路径 `/example` 并指定文件扩展名为“jpg png gif”，那么 TTL 路径 `/example` 的 TTL 值的范围将会包含 `/example` 目录及其子目录下的所有 JPG/PNG/GIF 文件。
+为 Object Storage 源路径提供文件扩展名时，其 URL 与源路径相同的 TTL 设置的范围限定为包含具有这些指定文件扩展名的所有文件。例如，如果您创建源路径 `/example` 并指定文件扩展名为“jpg png gif”，那么 TTL 路径 `/example` 的 TTL 值的范围将会包含 `/example` 目录及其子目录下的所有 JPG/PNG/GIF 文件。
+{: note}
 
 **步骤 6：**
 
@@ -103,6 +113,7 @@ lastupdated: "2019-02-19"
   ![编辑或删除源](images/edit-delete-origin.png)
 
 ## 清除高速缓存内容
+{: #purging-cached-content}
 
 在您的 CDN 运行后，您可以从供应商的服务器清除高速缓存内容。
 
@@ -119,7 +130,7 @@ lastupdated: "2019-02-19"
 
 **步骤 3：**
 
-输入标准 Unix 路径语法，以指出您要清除的文件，然后选择**清除**按钮。目前仅允许对单个文件使用清除。请参阅[规则和命名约定](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-)页面，以获取有关清除路径所允许语法的更多详细信息。
+输入标准 Unix 路径语法，以指示您要清除的文件，然后选择**清除**按钮。仅允许一次清除一个文件。请参阅[规则和命名约定](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-)页面，以获取有关清除路径所允许语法的更多详细信息。
 
 **步骤 4：**
 
@@ -127,9 +138,11 @@ lastupdated: "2019-02-19"
 
    ![清除活动](images/purge-activity.png)
 
-   **注：**如果有超过 15 个清除，那么每 15 天会自动裁剪一次“清除活动”。
+如果有超过 15 个清除，那么每 15 天会自动裁剪一次“清除活动”。
+{: note}
 
 ## 更新 CDN 配置详细信息
+{: #updating-cdn-configuration-details}
 
 在您的 CDN 运行后，您可以更新 CDN 配置详细信息。
 
@@ -142,7 +155,9 @@ lastupdated: "2019-02-19"
 选择**设置**选项卡。此时将显示 CDN 配置详细信息。
 
    ![“设置”选项卡](images/settings-tab.png)  
-   **注**：仅当 CDN 配置为使用 HTTPS 时，您才会看到 SSL 证书。
+
+仅当 CDN 配置为使用 HTTPS 时，您才会看到 SSL 证书。
+{: note}
 
 对于**服务器**，可以更改以下字段：
   * 主机头
@@ -169,21 +184,3 @@ lastupdated: "2019-02-19"
 如果必要，请更新**源**或**其他选项**详细信息，然后单击右下角的**保存**按钮，以更新 CDN 配置详细信息。
 
    ![“保存”按钮](images/save-button.png)
-
-## 为 CDN 配置 IBM Cloud Object Storage
-
-要使用存储在 IBM Cloud Object Storage 中的对象，您必须为存储区中的每个对象设置“acl”（即访问控制表）属性的值，以允许“public-read”访问权。
-
-要安装任何必备客户机或工具，请参阅 [IBM Cloud Object Storage Developer 部分](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers)。本指南假设您已安装正式的 AWS 命令行界面，其与 IBM Cloud Object Storage S3 API 兼容。
-
-下面的示例代码显示如何使用命令行界面，为存储区中的所有对象设置“public-read”访问权。
-
-```
-$ export ENDPOINT="YOUR_ENDPOINT"
-$ export BUCKET="YOUR_BUCKET"
-$ KEYS=( "$(aws --endpoint-url "$ENDPOINT" s3api list-objects --no-paginate --query 'Contents[].{key: Key}' --output text --bucket "$BUCKET")" )
-$ for KEY in "${KEYS[@]}"
-  > do
-  >   aws --endpoint-url "$ENDPOINT" s3api put-object-acl --bucket "$BUCKET" --key "$KEY" --acl "public-read"
-  > done
-```

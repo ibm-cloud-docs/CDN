@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: blogs
+
+subcollection: CDN
 
 ---
 
@@ -19,6 +23,7 @@ lastupdated: "2019-02-19"
 これらのリソースは、{{site.data.keyword.cloud}} や、IBM のパートナーおよびお客様によって作成されたものです。
 
 ## IBM Tech ブログ (内部使用限定)
+{: #ibm-tech-blogs}
 
  * [How to deliver great performance for global apps on IBM Cloud CDN, by Ketan Pancholi and Nikhil Gupta](https://www.ibm.com/w3-techblog/use-cases/2018/05/content-delivery-service/)
  
@@ -28,5 +33,6 @@ lastupdated: "2019-02-19"
 
 
 ## 外部ブログ
+{: #external-blogs}
 
 * 近日公開

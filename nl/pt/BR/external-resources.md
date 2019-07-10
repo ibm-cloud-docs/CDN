@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: blogs
+
+subcollection: CDN
 
 ---
 
@@ -19,6 +23,7 @@ lastupdated: "2019-02-19"
 Esses recursos são criados pelo {{site.data.keyword.cloud}} e alguns de nossos parceiros e clientes.
 
 ## IBM Tech Blogs (Apenas Interno)
+{: #ibm-tech-blogs}
 
  * [Como
 entregar um ótimo desempenho para aplicativos globais no IBM Cloud CDN, por Ketan Pancholi e Nikhil Gupta](https://www.ibm.com/w3-techblog/use-cases/2018/05/content-delivery-service/)
@@ -29,5 +34,6 @@ entregar um ótimo desempenho para aplicativos globais no IBM Cloud CDN, por Ket
 
 
 ## Blogs Externos
+{: #external-blogs}
 
 * Em breve

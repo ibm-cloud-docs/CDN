@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -21,6 +25,7 @@ lastupdated: "2019-02-19"
 In questa guida, esploreremo un esempio di come avvalersi di una {{site.data.keyword.cloud}} CDN per riprodurre in streaming del contenuto `.mp4` tramite **HLS** come video on demand, a un browser, da un'origine Linux-Nginx. 
 
 ## Introduzione
+{: #introduction}
 
 Per riprodurre in streaming dei video, sono disponibili diversi formati, come HLS, MPEG-DASH e così via. 
 
@@ -36,6 +41,8 @@ $ sudo apt-get update
 ```
 
 ## Prepara i file video
+{: #prepare-video-files}
+
 In questa guida, useremo `ffmpeg` per preparare i file video. È un potente strumento per i file multimediali che può eseguire operazioni di conversione, multiplazione, demultiplazione, filtraggio e così via servendosi della sua gamma di comandi.
 
 Ci procureremo innanzitutto `ffmpeg`.
@@ -74,21 +81,21 @@ Qui di seguito viene riportata una suddivisione di quello che questo comando ha 
 |Argomento (i)|Effetto|
 |:---|:---|
 | ffmpeg | Utilizza lo strumento `ffmpeg`. |
-| -i test-video.mp4 | The source video is located at `test-video.mp4`. |
-| -c:a acc | Use the acc audio codec for the output. |
-| -ar 48000 | Set the audio sample rate to 48000 Hz for the output. |
-| -b:a 128k | Set the audio bitrate to 128000 bits/second for the output. |
-| -c:v h264 | Use the `h.264` video codec for the output. |
-| -profile:v main | Use the "main" format profile of the selected codec for widest device support. |
-| -crf 23 | Attempt to maintain the video quality with varying file size and bitrate.<br/>  The lower the CRF, the higher the quality and file size. |
-| -g 61 -keyint_min 61 | Set a maximum and minimum.<br/> With the example source frame rate as 30.30, a keyframe should be <br/> inserted every 2 seconds (61 frames). |
-| -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that may insert extraneous keyframes into the output. |
-| -b:v 5300k | Sets the output video stream's target bitrate to 5300000 bits/second. |
-| -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
-| -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
-| -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
-| -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
-| test-video.m3u8 | Denomina la play list/il file manifest di output come `test-video.m3u8`.<br/> Di conseguenza, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., e simili<br/> saranno i nomi del frammento video per impostazione predefinita.|
+| -i test-video.mp4 | Il video di origine è ubicato in `test-video.mp4`. |
+| -c:a acc | Utilizza il codec audio acc per l'output. |
+| -ar 48000 | Imposta la frequenza di campionamento audio su 48000 Hz per l'output. |
+| -b:a 128k | Imposta la velocità di bit su 128000 bit/secondo per l'output. |
+| -c:v h264 | Utilizza il codec video `h.264` per l'output. |
+| -profile:v main | Utilizza il profilo di formato "main" del codec selezionato per un supporto del dispositivo più ampio. |
+| -crf 23 | Tenta di conservare la qualità video con dimensioni di file e velocità di bit variabili.<br/>  Più basso è il CFR e maggiore è la qualità e la dimensione file. |
+| -g 61 -keyint_min 61 | Imposta un minimo e un massimo.<br/> Con la frequenza fotogrammi di origine di esempio di 30,30, dovrebbe essere inserito un fotogramma chiave <br/> ogni 2 secondi (61 fotogrammi). |
+| -sc_threshold 0 | Disabilita il rilevamento della scena da `ffmpeg`.<br/> Evita che un secondo processo possa inserire fotogrammi chiave estranei nell'output. |
+| -b:v 5300k | Imposta la velocità di bit della destinazione del flusso video di output su 5300000 bit/secondo. |
+| -maxrate 5300k | Limita la velocità di bit del video di output massima per<br/> il codificatore a 5300000 bit/secondo, nel caso vari. |
+| -bufsize 10600k | Imposta la dimensione di buffer del decoder video `ffmpeg` su 10600000 bit.<br/>  Con la velocità di bit di 5300k, il codificatore `ffmpeg` dovrebbe controllare e <br/>tentare di riportare la velocità di bit dell'output alla velocità di bit di destinazione ogni 2 secondi di video. |
+| -hls_time 6 | Tenta di impostare ogni lunghezza di frammento del video di output su 6 secondi.<br/> Accumula i fotogrammi per almeno 6 secondi di video e poi<br/> si arresta per interrompere un fotogramma di video quando rileva il successivo fotogramma chiave. |
+| -hls_playlist_type vod | Prepara il file della playlist `.m3u8` di output per il video-on-demand (vod). |
+| test-video.m3u8 | Denomina la play list/il file manifest di output come `test-video.m3u8`.<br/> Di conseguenza, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ... e simili,<br/> saranno i nomi del frammento video per impostazione predefinita.|
 
 Nota: per le opzioni `-`, a meno che non venga specificato un flusso, viene scelto il "migliore" per la sua categoria.
 
@@ -135,10 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 Per casi d'uso più complessi, come ad esempio il ridimensionamento della risoluzione video, le operazioni con i sottotitoli, la crittografia HLS AES sui frammenti video per la sicurezza e l'autorizzazione e così via, `ffmpeg` ha molte più opzioni di argomento che gestiscono le funzioni più complesse e specifiche. Puoi trovare le descrizioni di questi argomenti nella [documentazione generale di ffmpeg](https://ffmpeg.org/ffmpeg.html) e nella relativa [documentazione su formati specifici quali HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Prepara l'origine
+{: #prepare-the-origin}
+
 ### Server
+{: #server}
+
 Se stai utilizzando questo server come un'origine aggiuntiva sotto un secondo dominio da cui riprodurre in streaming questi HLS, potresti aver bisogno di configurare il server per restituire intestazioni di risposta CORS per un potenziale accesso al browser.
 
 Puoi posizionare i file HLS in qualsiasi directory o sottodirectory tu voglia. Per questo esempio, posizioniamo i file HLS in `/usr/share/nginx/hls/`.
@@ -190,8 +203,10 @@ http {
 
 # Some more configurations for this main context...
 ```
+{: screen}
 
 ### Lettore video sulla pagina web
+{: #video-player-on-the-webpage}
 
 Non tutti i formati video in streaming possono essere riproducibili in modo nativo su tutte le applicazioni. L'esempio in questa guida configura lo streaming utilizzando HLS e CDN.
 
@@ -207,15 +222,18 @@ Ad esempio, Safari supporterà una riproduzione HLS nativa. Pertanto, il lettore
   <!-- Some more HTML elements... -->
 </html>
 ```
+{: screen}
 
 Tuttavia, anche altri browser o dispositivi desktop potrebbero aver bisogno di supporto da [Media Source Extensions](https://www.w3.org/TR/media-source/) JavaScript aggiunto, sia sviluppato internamente che da terze parti affidabili, per generare dei flussi di contenuto riproducibili tramite HTML5.
 
 ## Configura la CDN
+{: #configure-the-cdn}
+
 Connettiamo ora l'origine alla CDN per gestire del contenuto in tutto il mondo con una velocità effettiva ottimizzata, una latenza ridotta al minimo e delle prestazioni migliorate.
 
 Innanzitutto, [ordina](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) una CDN.
 
-Procedi quindi [configurando la tua CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) oppure [aggiungendo un'origine](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
+Procedi quindi [configurando la tua CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) oppure [aggiungendo un'origine](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
 Infine, sotto `Optimize For`, seleziona `Video on demand optimization`.
 

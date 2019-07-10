@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: mapping, container, class, collection, object, API
+
+subcollection: CDN
 
 ---
 
@@ -27,8 +31,8 @@ lastupdated: "2019-02-19"
 * `protocol`：用來設定服務的通訊協定。它可以是 HTTP、HTTPS，或兩者的組合 - HTTP_AND_HTTPS。
 * `originType`：原點主機的類型，目前為 'HOST_SERVER' 或 'OBJECT_STORAGE'。
 * `originHost`：原點伺服器位址（原點伺服器的主機名稱或 IPv4 位址），這是要從該處提取內容的端點，或是內容儲存所在儲存區的名稱。它必須少於 511 個字元。
-* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
-* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號，請參閱[常見問題](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
 * `certificateType`：對映所使用的憑證類型。可能是 `WILDCARD_CERT` 或 `SHARED_SAN_CERT`。對於 HTTP 對映，值將為 0。
 * `cname`：主機名稱別名的標準名稱記錄。它可以由使用者提供，也可以由系統產生。如果由使用者提供，則應該少於 64 個英數字元，且必須是唯一的。如果未提供，將會在建立對映時產生一個。
 * `respectHeaders`：布林值，如果設為 'true' 會導致原點的 TTL 設定置換 CDN TTL 設定。

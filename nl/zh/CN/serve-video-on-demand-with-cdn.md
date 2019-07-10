@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -21,6 +25,7 @@ lastupdated: "2019-02-19"
 在此指南中，我们将探索一个示例，了解如何利用 {{site.data.keyword.cloud}} CDN 通过 **HLS** 将 `.mp4` 内容作为视频点播从 Linux-Nginx 源传送到浏览器。 
 
 ## 简介
+{: #introduction}
 
 很多格式（如 HLS、MPEG-DASH 等）都可用于流处理视频。 
 
@@ -36,6 +41,8 @@ $ sudo apt-get update
 ```
 
 ## 准备视频文件
+{: #prepare-video-files}
+
 在此指南中，我们将使用 `ffmpeg` 来准备视频文件。此工具功能强大，可通过多种命令用于多媒体文件的转换、mux、demux、过滤等。
 
 首先，我们要获取 `ffmpeg`。
@@ -80,15 +87,15 @@ $ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v mai
 | -b:a 128k |将输出的音频比特率设置为 128000 比特/秒。|
 | -c:v h264 |将 `h.264` 视频编码解码器用于输出。|
 | -profile:v main |使用所选编码解码器的“主要”格式概要文件，以获得最广泛的设备支持。|
-| -crf 23 |尝试针对不同的文件大小和比特率保持视频质量。<br/>  CRF 越小，质量越高，文件大小越大。|
-| -g 61 -keyint_min 61 |设置最大值和最小值。<br/> 对于示例源帧速率 30.30，应每 2 秒<br/> 插入一个关键帧（61 帧）。|
-| -sc_threshold 0 |禁止 `ffmpeg` 进行场景检测。<br/> 阻止可能将无关关键帧插入输出的第二个进程。|
+| -crf 23 |尝试针对不同的文件大小和比特率保持视频质量。<br/>CRF 越小，质量越高，文件大小越大。|
+| -g 61 -keyint_min 61 |设置最大值和最小值。<br/>对于示例源帧速率 30.30，<br/>应每 2 秒插入一个关键帧（61 个帧）|
+| -sc_threshold 0 |禁止 `ffmpeg` 进行场景检测。<br/>阻止可能将无关关键帧插入输出的第二个进程。|
 | -b:v 5300k |将输出视频流的目标比特率设置为 5300000 比特/秒。|
-| -maxrate 5300k |将编码器的最大输出视频比特率<br/> 限制为 5300000 比特/秒，以防它发生变化。|
-| -bufsize 10600k |将 `ffmpeg` 视频解码器缓冲区大小设置为 10600000 比特。<br/>  对于 5300000 比特率，`ffmpeg` 编码器应检查并<br/> 尝试每经过 2 秒的视频将输出比特率重新调整回目标比特率。|
-| -hls_time 6 |尝试将每个输出视频片段的目标长度设定为 6 秒。<br/> 累积至少 6 秒视频的帧，然后<br/> 在遇到下一个关键帧时停止以中断视频片段。|
+| -maxrate 5300k |将编码器的最大输出视频比特率<br/>限制为 5300000 比特/秒，以防它变化。|
+| -bufsize 10600k |将 `ffmpeg` 视频解码器缓冲区大小设置为 10600000 比特。<br/>对于 5300000 比特率，`ffmpeg` 编码器应检查并尝试<br/>每经过 2 秒的视频将输出比特率重新调整回目标比特率。|
+| -hls_time 6 |尝试将每个输出视频片段的目标长度设定为 6 秒。<br/>累积至少 6 秒视频的帧，然后<br/>在遇到下一个关键帧时停止以中断视频片段。|
 | -hls_playlist_type vod |为视频点播 (vod) 准备输出 `.m3u8` 播放列表文件。|
-| test-video.m3u8 |将输出播放列表/清单文件命名为 `test-video.m3u8`。<br/> 结果是，在缺省情况下，将使用 `test-video0.ts`、`test-video1.ts`、`test-video2.ts`... 以及类似<br/> 内容作为视频片段的名称。|
+| test-video.m3u8 |将输出播放列表/清单文件命名为 `test-video.m3u8`。<br/>结果是，在缺省情况下，将使用 `test-video0.ts`、`test-video1.ts`、`test-video2.ts`.... 以及类似值<br/>作为视频片段的名称。|
 
 注：对于 `-` 选项，除非指定了流，否则会选择该类别的“最佳”选项。
 
@@ -135,10 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 对于更复杂的用例（如缩放视频分辨率、使用子标题、在视频片段上使用 HLS AES 加密来保护安全和进行授权，等等），`ffmpeg` 有很多其他参数选项可用于处理更复杂的功能和特定功能。有关这些参数的说明，您可以在 [ffmpeg 的通用文档](https://ffmpeg.org/ffmpeg.html)中及其[有关特定格式（如 HLS）的文档](https://ffmpeg.org/ffmpeg-formats.html#hls)中找到。
 
 ## 准备源
+{: #prepare-the-origin}
+
 ### 服务器
+{: #server}
+
 如果使用此服务器作为用于流处理这些 HLS 的另一个域下的其他源，可能需要配置服务器以针对可能的浏览器访问返回 CORS 响应头。
 
 您可以将 HLS 文件放在您希望的任何目录或子目录下。对于此示例，我们将 HLS 文件放在 `/usr/share/nginx/hls/` 下。
@@ -190,8 +203,10 @@ http {
 
 # 此主要上下文的其他一些配置...
 ```
+{: screen}
 
 ### Web 页面上的视频播放器
+{: #video-player-on-the-webpage}
 
 并不是所有的流式视频格式都可以在所有应用程序上本机播放。此指南中的示例使用 HLS 和 CDN 来设置流式方法。
 
@@ -207,15 +222,18 @@ http {
   <!-- 其他一些 HTML 元素... -->
 </html>
 ```
+{: screen}
 
 但是，台式机设备上的其他浏览器可能也需要来自已添加的 JavaScript [介质源扩展名](https://www.w3.org/TR/media-source/)的支持（无论是内部开发的还是来自受信任的第三方），这样才能生成可通过 HTML5 播放的内容流。
 
 ## 配置 CDN
+{: #configure-the-cdn}
+
 现在，让我们将源连接到 CDN 以在全世界范围内提供内容，并实现优化吞吐量、将等待时间降至最低，并提高性能。
 
 首先，[订购](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) CDN。
 
-接下来，[配置 CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) 或者[添加源](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin)。
+接下来，[配置 CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) 或者[添加源](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin)。
 
 最后，在`优化目标`下选择`视频点播优化`。
 

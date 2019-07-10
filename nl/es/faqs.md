@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+
+subcollection: CDN
 
 ---
 
@@ -20,21 +24,25 @@ lastupdated: "2019-02-19"
 {: #faqs}
 
 ## ¿Qué es una red de entrega de contenido (CDN)?
+{: #what-is-a-content-delivery-network-cdn}
 {: faq}
 
 Una red de entrega de contenido (CDN) es un conjunto de servidores perimetrales que se distribuyen por diversas regiones del país o del mundo. Su contenido web se proporciona desde un servidor perimetral, que se encuentra en el área geográfica más cercana al cliente que solicita el contenido. Con esta técnica, los usuarios reciben el contenido con menos retraso del que cabría esperar cuando se entrega el contenido desde una ubicación centralizada. Ofrece una mejor experiencia global a sus clientes.
 
 ## ¿Cómo funciona una red de entrega de contenido (CDN)?
+{: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 
 Una CDN logra su objetivo almacenando contenido en la memoria caché de servidores perimetrales en todo el mundo. Cuando un usuario solicita contenido web, la solicitud se direcciona al servidor perimetral más cercano al usuario desde el punto de vista geográfico. Al reducir la distancia que debe desplazarse el contenido, la CDN ofrece rendimiento optimizado, latencia minimizada y aumento de rendimiento.
 
 ## ¿Cómo se crea mi cuenta de servicio de IBM Cloud Content Delivery Network?
+{: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
 
 La cuenta se crea durante el proceso de pedido de la CDN. Si está creando una CDN desde el portal antiguo, cuando pulsa el botón **Pedir CDN**, bajo **Red -> Página CDN**, se crea su cuenta. Si está creando una CDN desde el portal de {{site.data.keyword.cloud}}, al pulsar el botón **Crear**, bajo la página **Catálogo -> Red -> Content Delivery Network**, se crea su cuenta.
 
 ## ¿Qué debo hacer cuando mi CDN está en el estado de configuración de CNAME?
+{: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
 Para CDN HTTP y HTTPS basadas en certificados SAN, actualice el registro de DNS para que el sitio web apunte al `CNAME` asociado con la nueva correlación de CDN. Para CDN HTTPS basadas en certificados comodín, esta actualización de DNS **NO** es necesaria.
@@ -42,6 +50,8 @@ Para CDN HTTP y HTTPS basadas en certificados SAN, actualice el registro de DNS 
 **Nota**: puede tardar entre 15 -30 minutos hasta que se active la actualización. Consulte a su proveedor de DNS el momento estimado.
 
 ## ¿Cómo añado un registro CNAME para mi dominio CDN en DNS?
+{: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
+{: faq}
 
 En la página de configuración de DNS para el dominio de CDN, puede crear un registro CNAME con el nombre de dominio CDN como Host y el CNAME de IBM que ha utilizado para configurar la CDN, como CNAME. El CNAME de IBM termina por `cdnedge.bluemix.net`.
 
@@ -53,11 +63,13 @@ Un registro CNAME típico se parecería a lo siguiente en la página de configur
 
 
 ## ¿Qué se me facturará por mi CDN?
+{: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
 Solo se le facturará por el ancho de banda utilizado por instancia de IBM Cloud Content Delivery Network. Si la CDN no utiliza ancho de banda, no incurrirá en gastos. Los precios del ancho de banda varían en función de la ubicación regional del servidor perimetral. Puede consultar los precios del ancho de banda por región geográfica en el [documento de precios](/docs/infrastructure/CDN?topic=CDN-pricing) para este servicio.
 
 ## ¿Cuándo se me facturará por mi CDN?
+{: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
 La facturación de IBM Cloud Content Delivery Network se produce según el periodo de facturación establecido en su cuenta de {{site.data.keyword.BluSoftlayer_notm}}.
@@ -68,16 +80,19 @@ La facturación de IBM Cloud Content Delivery Network se produce según el perio
 No, solo se suprimirá esa CDN. Su cuenta seguirá existiendo y podrá crear CDN adicionales.
 
 ## ¿El almacenamiento de contenido en memoria caché utiliza la transferencia o la extracción?
+{: #does-content-caching-use-push-or-pull}
 {: faq}
 
 El almacenamiento de contenido en memoria caché se realiza utilizando el modelo de _extracción de origen_. La extracción de origen es un método mediante el cual el servidor perimetral "extrae" datos del servidor de origen, en contraposición a la carga manual de contenido al servidor perimetral.
 
 ## ¿Se recomienda algún navegador para utilizar la configuración del servicio de la CDN?
+{: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
 {: faq}
 
 Sí, los navegadores recomendados son Firefox y Chrome. Se recomienda utilizar las últimas versiones con IBM Cloud Content Delivery Network.
 
 ## ¿Cuál es el objetivo de proporcionar una vía de acceso al crear la CDN?
+{: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
 Proporcionar una vía de acceso durante la creación de una CDN permite aislar los archivos que se pueden suministrar a través de la CDN desde un servidor de origen determinado.
@@ -85,7 +100,7 @@ Proporcionar una vía de acceso durante la creación de una CDN permite aislar l
 ## El estado de la CDN es Error. ¿Qué hago ahora?
 {: faq}
 
-Consulte las páginas [Resolución de problemas](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting) u [Obtención de ayuda y soporte](/docs/infrastructure/CDN/getting-help.html#gettinghelp), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
+Consulte las páginas [Resolución de problemas](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) u [Obtención de ayuda y soporte](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp), o bien abra un tíquet en el [Portal de clientes ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://control.softlayer.com/).
 
 ## ¿Dónde puedo encontrar el CNAME de mi CDN si no he proporcionado ninguno?
 {: faq}
@@ -119,7 +134,7 @@ Si omite la barra inclinada, por ejemplo, si utiliza `www.example.com/images` se
 ## ¿Cómo configuro mi red de entrega de contenido para IBM Cloud Object Storage (COS)?
 {: faq}
 
-[Aquí se incluye una guía de aprendizaje](/docs/tutorials/static-files-cdn.html) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
+[Aquí se incluye una guía de aprendizaje](/docs/tutorials?topic=solution-tutorials-static-files-cdn) sobre cómo crear una red de entrega de contenido para IBM Cloud Object Storage.
 
 ## He recibido una notificación de que mi certificado de origen caduca. ¿Qué hago ahora?
 {: faq}
@@ -178,7 +193,22 @@ Si es usted uno de los usuarios secundarios de la cuenta, el usuario maestro deb
  * Seleccione **Añadir/Actualizar servicios**
  * Pulse el botón **Guardar**
 
-## ¿Por qué no puedo acceder a mi página web a través de mi CDN después de configurar Hotlink Protection con `proteccionType` `ALLOW`?
+## ¿Por qué no puedo acceder a mi página web a través de mi CDN después de configurar Hotlink Protection con `protectionType` `ALLOW`?
 {: faq}
 
 Veamos un ejemplo en el que el dominio de su sitio web para usuarios finales se ha configurado para que sea el nombre de dominio/host de su CDN: `cdn.example.com`. Cuando alguien intenta acceder a una página web navegando directamente desde la barra de navegación del navegador, el navegador normalmente no envía cabeceras Referer en su solicitud HTTP. Por ejemplo, cuando navega directamente de este modo a `https://cdn.example.com/`, su CDN considera que la solicitud contiene una no coincidencia (non-match) con los `refererValues` especificados. Cuando la CDN evalúa el efecto o la respuesta apropiados a través de Hotlink Protection, determina que no hay coincidencia. Por lo tanto, su CDN denegará el acceso, en lugar de respectar el valor 'ALLOW'.
+
+## ¿Puedo utilizar un punto final privado de Object Storage en los Valores de CDN?
+{: faq}
+
+No, CDN sólo se puede conectar a Object Storage en puntos finales públicos.
+
+## ¿Puedo utilizar la característica Brotli en el servicio de CDN?
+{: faq}
+
+No, la característica Brotli no está soportada con nuestro servicio de CDN con Akamai.
+
+## ¿Cómo puedo crear un punto final de CDN sin utilizar el dominio?
+{: faq}
+
+Puede crear un punto final de CDN sin utilizar el dominio, pero SÓLO para una CDN de tipo **HTTPS Comodín**. Al crear una CDN de tipo **HTTPS Comodín**, su **CNAME** actúa de punto final de la CDN, y el **CNAME** se utiliza para dar servicio al tráfico.

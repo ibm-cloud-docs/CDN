@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: metrics, bandwidth, overview, hit ratio, edge server, cache, ingress, hits
+
+subcollection: CDN
 
 ---
 

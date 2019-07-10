@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: mapping, container, class, collection, object, API
+
+subcollection: CDN
 
 ---
 
@@ -27,8 +31,8 @@ La recopilación `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mappi
 * `protocol`: protocolo utilizado para configurar servicios. Puede ser HTTP, HTTPS o una combinación de ambos, HTTP_AND_HTTPS.
 * `originType`: tipo del host de origen, actualmente 'HOST_SERVER' u 'OBJECT_STORAGE'.
 * `originHost`: dirección del servidor de origen (nombre de host o la dirección IPv4 del servidor de origen), que es el punto final desde el que captar contenido, o el nombre del grupo donde se almacena el contenido. Debe ser inferior a 511 caracteres.
-* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
-* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+* `httpPort`: número del puerto utilizado para el protocolo HTTP. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
+* `httpsPort`: número del puerto utilizado para el protocolo HTTPS. Akamai tiene ciertas limitaciones en los números de puerto para puertos HTTP y HTTPS. Consulte las [preguntas más frecuentes](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) para conocer los números de puerto permitidos.
 * `certificateType`: tipo de certificado utilizado por una correlación. Puede ser `WILDCARD_CERT` o `SHARED_SAN_CERT`. El valor será 0 para correlaciones HTTP.
 * `cname`: registro de nombre canónico que da alias al nombre de host. Puede ser proporcionado por el usuario o generado por el sistema. Si es proporcionado por el usuario, debe tener menos de 64 caracteres alfanuméricos y ser exclusivo. Si no se proporciona, se generará uno cuando se crea la correlación.
 * `respectHeaders`: un valor booleano que, si se establece en 'true', provocará que los valores de TTL en el origen sustituyan a los valores de TTL de CDN.

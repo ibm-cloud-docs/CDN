@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-14"
+  years: 2017, 2018, 2019
+lastupdated: "2019-04-04"
+
+keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+
+subcollection: CDN
 
 ---
 
@@ -15,16 +19,18 @@ lastupdated: "2018-11-14"
 {:download: .download}
 
 # 입력 컨테이너
-입력 컨테이너는 맵핑과 (원본) 경로 클래스에서 이용하는 콜렉션입니다.  두 클래스에 대한 입력 속성의 일관된 세트를 제공합니다.
+{: #input-container}
 
-* `vendorName`: 올바른 IBM Cloud CDN 제공자의 이름입니다.
+입력 컨테이너는 맵핑과 (원본) 경로 클래스에서 이용하는 콜렉션입니다. 두 클래스에 대한 입력 속성의 일관된 세트를 제공합니다.
+
+* `vendorName`: 올바른 {{site.data.keyword.cloud}} CDN 제공자의 이름입니다.
 * `oldPath`: updateOriginPath()에서 사용됩니다. 이 특성은 현재 또는 '이전' 경로의 이름을 저장합니다.
 
 다음 속성은 맵핑 및 (원본) 경로 클래스에 공통됩니다.
 * `originType`: 원본 호스트의 유형(현재 'HOST_SERVER' 또는 'OBJECT_STORAGE')입니다.
 * `origin`: 원본 서버 주소(원본 서버의 호스트 이름 또는 IPv4 주소), 컨텐츠를 페치할 엔드포인트 또는 컨텐츠가 저장되는 버킷의 이름입니다. 511자 미만이어야 합니다.
-* `httpPort`: HTTP 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
-* `httpsPort`: HTTPS 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
+* `httpPort`: HTTP 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
+* `httpsPort`: HTTPS 프로토콜에 사용되는 포트의 번호입니다. Akamai에는 HTTP 및 HTTPS 포트의 포트 번호에 대한 특정 제한사항이 있습니다. 허용되는 포트 번호 목록은 [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)를 참조하십시오.
 * `status`:  맵핑 또는 경로의 상태입니다. 상태는 CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED 또는 ERROR입니다.
 * `path`: 캐시된 컨텐츠를 제공하는 데 사용할 경로입니다. 기본 경로는 /\*이며 `updateOriginPath` API에서 사용될 때 이 속성은 추가할 새 경로를 참조합니다.
 * `performanceConfiguration`: 맵핑의 성능 구성에 대한 스펙입니다.
@@ -50,4 +56,4 @@ lastupdated: "2018-11-14"
 * `fileExtension`: 허용되는 파일 확장자입니다.
 
 다음 속성이 핫 링크 보호 구성과 관련됩니다.
-* `hotlinkProtection`: 세부사항은 [핫 링크 보호 클래스](hotlink-protection-behavior.html)를 참조하십시오.
+* `hotlinkProtection`: 세부사항은 [핫 링크 보호 클래스](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)를 참조하십시오.

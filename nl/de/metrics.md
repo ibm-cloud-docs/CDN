@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: metrics, bandwidth, overview, hit ratio, edge server, cache, ingress, hits
+
+subcollection: CDN
 
 ---
 
@@ -38,8 +42,8 @@ Die Trefferquote stellt den Prozentsatz der Male dar, die Inhalte anstatt aus de
 
 Dabei gilt:
 
-Die Definition für _Edge-Treffer_ lautet "Alle Treffer für Edge-Server von Endbenutzern".   
-Die Definition für _Eingangstreffer_ lautet "Ursprungs- oder Eingangstreffer im Datenverkehr vom Ursprungsserver zu Akamai-Edge-Servern". 
+Die Definition für _Edge-Treffer_ lautet "Alle Treffer für Edge-Server von Endbenutzern".  
+Die Definition für _Eingangstreffer_ lautet "Ursprungs- oder Eingangstreffer im Datenverkehr vom Ursprungsserver zu Akamai-Edge-Servern".
 
 Da die Trefferquote nicht pro CDN, sondern auf Kontoebene berechnet wird, ist die Trefferquote für alle CDNs in Ihrem Konto gleich. Diese Tatsache erklärt auch, warum die Trefferrate ungleich null sein kann, wenn die Anzahl der Edge-Treffer für einen bestimmten CDN Null ist.
 

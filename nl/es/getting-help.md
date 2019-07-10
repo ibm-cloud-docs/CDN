@@ -4,7 +4,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-15"
+
+keywords: help, support, troubleshooting, stack overflow, forum, ticket, questions
+
+subcollection: CDN
 
 
 ---
@@ -38,12 +42,12 @@ lastupdated: "2019-02-19"
 Si tiene problemas o preguntas sobre el uso de la CDN, puede obtener ayuda buscando información o planteando preguntas a través de uno de los foros listados más abajo. También puede abrir una incidencia de soporte.
 {:shortdesc}
 
-Cuando utilice los foros para formular una pregunta, etiquétela para que la vean los equipos de desarrollo de {{site.data.keyword.Bluemix_notm}}.
+Cuando utilice los foros para formular una pregunta, etiquétela para que la vean los equipos de desarrollo de {{site.data.keyword.cloud_notm}}.
 
-* Si desea formular preguntas técnicas sobre las CDN, publíquelas en [Stack Overflow ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://stackoverflow.com/search?q=cdn+ibm-bluemix){:new_window} y utilice las etiquetas "cdn" e "ibm-cloud".
+* Si desea formular preguntas técnicas sobre las CDN, publíquelas en [Stack Overflow ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://stackoverflow.com/search?q=cdn+ibm-cloud){:new_window} y utilice las etiquetas "cdn" e "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
 * Para formular preguntas sobre el servicio y obtener instrucciones de iniciación, utilice el foro [IBM developerWorks dW Answers ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window}. Incluya las etiquetas "cdn" e "ibm-cloud".
 
-Consulte [Obtención de ayuda](https://{DomainName}/docs/support/index.html#getting-help) para obtener más detalles sobre el uso de los foros.
+Consulte [Obtención de ayuda](/docs/get-support?topic=get-support-using-avatar#using-avatar) para obtener más detalles sobre el uso de los foros.
 
 Para obtener información sobre cómo abrir una incidencia de soporte de {{site.data.keyword.cloud}}, o sobre los niveles de soporte y la gravedad de las incidencias, consulte [Cómo obtener soporte](/docs/get-support?topic=get-support-getting-customer-support).

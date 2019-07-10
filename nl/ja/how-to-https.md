@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -22,6 +26,7 @@ lastupdated: "2019-02-19"
   ![SAN 状態遷移図](images/state-diagram-san.png)
 
 ## ドメイン制御検証の初期手順
+{: #initial-steps-to-domain-control-validation}
 
 **ステップ 1:**
 
@@ -49,15 +54,17 @@ CA は、要求を受け取ると、ドメイン検証チャレンジを発行�
 
   * このプロセスが完了すると、使用する検証方式に関係なく、すべてのドメインが **「CNAME 構成 (CNAME Configuration)」**状況に移ります。
 
-[実行中にする](/docs/infrastructure/CDN/basic-functions.html#get-to-running)のページに、CNAME 構成を完了し、CDN を監視する方法についての追加情報があります。
+[実行中にする](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running)のページに、CNAME 構成を完了し、CDN を監視する方法についての追加情報があります。
 
 
-## ドメイン制御検証 
+## ドメイン制御検証
+{: #domain-control-validation}
 
 CDN ドメイン・ネームを SAN 証明書に追加するには、ドメインを管理制御する権限があることを証明する必要があります。 この証明プロセスを、ドメイン制御検証 (DCV) の対処と呼びます。 DCV には、48 時間以内に対処する必要があります。 それができなかった場合、要求の有効期限が切れ、注文処理を再度開始する必要があります。 DCV に対処する 3 つの異なる方法について、以降のセクションで説明します。
 
 
 ### CNAME
+{: #cname}
 
 この方式は、CDN がライブ・トラフィックを提供**していない**場合に**のみ**推奨されます。 ライブ・トラフィックを提供しているドメインの場合は、標準方式またはリダイレクト方式を使用してドメインの検証を行うことをお勧めします。
 
@@ -72,6 +79,7 @@ CDN ドメイン・ネームを SAN 証明書に追加するには、ドメイ�
 
 ---
 ### 標準
+{: #standard}
 
 ドメイン検証に「標準 (Standard)」方式を選択すると、「ドメイン検証 (Domain Validation)」ウィンドウに**チャレンジ URL** と**チャレンジ応答**が表示されます。 ドメイン検証プロセスを実行するために、提供された**チャレンジ応答**をオリジン・サーバーに追加します。 それが追加されると、CA は、**チャレンジ URL** に指定された URL を使用してオリジン・サーバーから**チャレンジ応答**を取得できます。 オリジン・サーバーが正しく構成された後、ドメイン検証には 2 時間から 4 時間かかる可能性があります。
 
@@ -86,6 +94,7 @@ CDN ドメイン・ネームを SAN 証明書に追加するには、ドメイ�
 * チャレンジ応答: `examplechallenge`
 
 #### Apache 構成
+{: #apache-configuration}
 
   * **ステップ 1:** Apache2 サーバーが実行されているマシンにログインします。
 
@@ -109,6 +118,7 @@ CDN ドメイン・ネームを SAN 証明書に追加するには、ドメイ�
   * **ステップ 6:** DNS で CDN ドメインとオリジン・サーバーの IP アドレスとの間に、A レコードを作成します。
 
 #### Nginx 構成
+{: #nginx-configuration}
 
   * **ステップ 1:** Nginx サーバーが実行されているマシンにログインします。
 
@@ -131,6 +141,7 @@ CDN ドメイン・ネームを SAN 証明書に追加するには、ドメイ�
   * **ステップ 6:** DNS で CDN ドメインとオリジン・サーバーの IP アドレスとの間に、A レコードを作成します。
 
 #### ドメイン検証に対処するこの標準方式が CA に対して準備ができていることを検証する
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * この方式が機能することを `curl` を介して検証するには、チャレンジ URL に対して次のコマンドを実行します。
     ```
@@ -141,6 +152,7 @@ CDN ドメイン・ネームを SAN 証明書に追加するには、ドメイ�
 どちらの場合も、オリジン・サーバーに保管されたドメイン検証チャレンジ・ファイル・オブジェクトのコピーを取得できなければなりません。
 
 #### 標準方式の場合のクリーンアップ
+{: #clean-up-for-the-standard-method}
 
 CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達した後、以下を行います。
 1. (オプション) `examplechallenge-fileobject` ファイルを削除します。
@@ -149,6 +161,7 @@ CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達し
 
 ---
 ### リダイレクト
+{: #redirect}
 
 **「リダイレクト (Redirect)」**タブをクリックすると、リダイレクトによってドメイン検証に対処するために必要なすべての情報が表示されます。 この情報により、CA はオリジン・サーバーを通して Akamai から**チャレンジ応答**のコピーを取得できます。 サーバーが正しく構成された後、ドメイン検証には 2 時間から 4 時間かかる可能性があります。
 
@@ -163,6 +176,7 @@ CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達し
 * URL リダイレクト: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Apache リダイレクト構成
+{: #apache-redirect-configuration}
 
   * **ステップ 1:** Apache2 サーバーが実行されているマシンにログインします。
 
@@ -183,6 +197,7 @@ CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達し
   * **ステップ 5:** DNS で CDN ドメインとオリジン・サーバーの IP アドレスとの間に、A レコードを作成します。
 
 #### Nginx リダイレクト構成
+{: #nginx-redirect-confguration}
 
   * **ステップ 1:** Nginx サーバーが実行されているマシンにログインします。
 
@@ -235,6 +250,7 @@ CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達し
   * **ステップ 5:** DNS で CDN ドメインとオリジン・サーバーの IP アドレスとの間に、A レコードを作成します。
 
 #### リダイレクトが起こっていることの検証
+{: #verify-that-the-redirect-is-occurring}
 
 上記のステップを完了すると、特定のチャレンジ URL のトラフィック_のみ_ が URL リダイレクトに転送されます。 `curl` またはブラウザーのいずれかを使用して、リダイレクトが適切に機能したことを検証できます。
 
@@ -249,6 +265,7 @@ CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達し
 どちらの場合も、元の要求がリダイレクトされた先の Akamai (`dcv.akamai.com` ドメイン) から、ドメイン検証チャレンジ・ファイル・オブジェクトのコピーを取得できなければなりません。
 
 #### リダイレクト方式の場合のクリーンアップ
+{: #clean-up-for-the-redirect-method}
 
 CDN が**「証明書デプロイ中 (Certificate deploying)」**状況に達した後、以下を行います。
 1. (オプション) 構成ファイルから redirect ステートメントまたは redirect ブロックを削除します。

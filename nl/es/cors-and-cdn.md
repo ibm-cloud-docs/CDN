@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
+
+subcollection: CDN
 
 ---
 
@@ -15,11 +19,13 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Solicitudes CORS y CORS a través de su CDN
-{ #cors-and-cors-requests-through-your-cdn}
+{: #cors-and-cors-requests-through-your-cdn}
 
 Cross Origin Resource Sharing (CORS) es un mecanismo que utilizan los navegadores, principalmente para validar permisos de acceso a contenido procedente un otro diferente.
 
 ## ¿Qué es CORS?
+{: #what-is-cors}
+
 Cuando un navegador carga una página web, aplica la **política de mismo origen**, lo que significa que solo permite que se capte contenido del mismo origen que la página web. Sin embargo, en algunos casos una página web puede tener que acceder a activos de diversos orígenes que confían en ese sitio web. Aquí es donde entra CORS. 
 
 Este mecanismo de seguridad solo existe si una aplicación tiene o es un cliente HTTP y si dicha aplicación implementa CORS. Casi todos los navegadores modernos, como Chrome, Firefox y Safari, implementan CORS.
@@ -31,7 +37,9 @@ Para que quede claro, **un origen con respecto a CORS no tiene que ser el mismo 
 CORS puede manejar dos tipos de solicitudes: _solicitudes simples_ y _solicitudes previas_, que son más complejas.
 
 ### Solicitudes simples
-Primera solicitud (acceso a recurso):
+{: #simple-requessts}
+
+**Primera solicitud (acceso a recurso):**
 
 ![cors-simple](/images/cors-simple.png)
 
@@ -44,7 +52,9 @@ El servidor que recibe la solicitud de CORS procesará la solicitud y puede (o n
 Si el navegador no ve su solicitud de CORS satisfecha por parte de las cabeceras de respuesta de CORS, impide automáticamente el acceso al contenido e impide también que se cargue. De lo contrario, ve que el origen de CORS da permiso para utilizar el recurso, y permite el acceso y la carga del contenido solicitado.
 
 ### Solicitudes previas
-Primera solicitud (previa):
+{: #preflighted-requests}
+
+**Primera solicitud (previa):**
 
 ![cors-preflight](/images/cors-preflight.png)
 
@@ -65,9 +75,11 @@ Si se necesita una solicitud previa, así es como se desarrollan los sucesos:
 Después, la comunicación entre el navegador y el origen de CORS (distinto del de la página web) continúa como si se tratara de una solicitud CORS simple. Al igual que sucede en una solicitud CORS simple, el contenido y los recursos resultan accesibles y se pueden cargar si también se permite esta segunda solicitud CORS.
 
 ## Cómo configurar CORS en el origen
+{: #how-to-set-up-cors-at-your-origin}
+
 Tal como se ha mostrado en los diagramas anteriores, el cliente HTTP solicitante inicia CORS. Sin embargo, los efectos dependen del origen solicitado. Para que su contenido esté preparado para solicitudes CORS, el origen debe estar correctamente configurado de modo que responsa con las cabeceras de respuesta CORS correctas y los permisos de acceso correctos.
 
-A continuación se muestra un ejemplo de una configuración básica de CORS para un servidor Nginx:
+El ejemplo siguiente muestra una configuración básica de CORS para un servidor Nginx:
 
 ```nginx
 http {
@@ -128,6 +140,7 @@ http {
     # más configuraciones de contexto de http
 }
 ```
+{: screen}
 
 En general, el navegador carga libremente el contenido cuando ve `Access-Control-Allow-Origin: *` en las cabeceras de respuesta de CORS del servidor, de acuerdo con la [especificación w3 sobre este valor de carácter comodín ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.w3.org/TR/cors/#security). Sin embargo, no todos los navegadores dan soporte a `Access-Control-Allow-Origin: *`.
 
@@ -186,19 +199,26 @@ http {
     # más configuraciones de contexto de http
 }
 ```
+{: screen}
 
-En el ejemplo anterior, se utiliza la directriz `map` para evitar un uso excesivo de la sentencia `if` de Nginx. Ahora, cuando se realiza una solicitud CORS a este servidor y coincide con esta vía de acceso de URI, el servidor responde con la cabecera `Access-Control-Allow-Origin` que contiene el valor `http://www.example.com`, `https://cdn.example.com` o `http://dev.example.com`, etc. cuando el contenido se solicita desde `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, etc.
+En el ejemplo anterior se utiliza la directriz `map` para evitar un uso excesivo de la sentencia Nginx `if`. Ahora, cuando se realiza una solicitud CORS a este servidor y coincide con esta vía de acceso de URI, el servidor responde con la cabecera `Access-Control-Allow-Origin` que contiene el valor `http://www.example.com`, `https://cdn.example.com` o `http://dev.example.com`, etc. cuando el contenido se solicita desde `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, etc.
 
 ## Cómo configurar CORS para CDN
+{: #how-to-set-up-cors-for-cdn}
+
 ![cors-through-cdn](/images/cors-through-cdn.png)
 CDN resulta en gran medida transparente para la configuración de CORS del origen, de modo que no requiere ninguna configuración especial de CDN. Si el servidor perimetral de CDN no encuentra una respuesta en caché para la primera solicitud de contenido, reenvía la solicitud al host de origen. Si el host de origen está configurado para manejar las solicitudes de CORS y esta solicitud tiene la cabecera `Origin`,
 debería responder de nuevo al servidor perimetral con la cabecera CORS `Access-Control-Allow-Origin` y el valor asociado. La respuesta global, incluida la cabecera y el valor, se colocará en memoria caché en la CDN. Las siguientes solicitudes del objeto en la misma vía de acceso de URI se sirven desde la memoria caché e incluyen el valor de cabecera `Access-Control-Allow-Origin` que se ha recibido originalmente desde el origen.
 
 ## Resolución de problemas de CORS y de las solicitudes CORS
+{: #troubleshooting-cors-and-cors-requests}
+
 Si el servidor de origen está configurado para CORS y no ve que se devuelva la cabecera `Access-Control-Allow-Origin` a la solicitud del navegador, es posible que la cabecera de respuesta almacenada en memoria caché en CDN fuera para una solicitud que no tenía la cabecera Origin en la solicitud. CDN almacena en memoria caché las cabeceras de respuesta procedentes del host de origen. Sin embargo, las cabeceras almacenadas en memoria caché se basan en la solicitud que ha desencadenado la solicitud a Origin. En ese caso, es posible que las cabeceras de respuesta no incluyan las cabeceras CORS. Borre la memoria caché en la CDN para esa vía de acceso utilizando la función Purge de CDN y vuelva a intentar la solicitud procedente del cliente.
 
 La cabecera de respuesta `Vary` desde el servidor de origen también puede provocar un comportamiento inesperado cuando se capta contenido a través de su CDN. Aparte de una excepción muy específica, la CDN no almacena en memoria caché contenido (y su cabecera de respuesta asociada) procedente de su servidor de origen, si el servidor responde con una cabecera `Vary`. Actualmente, nuestro servicio elimina la cabecera Vary del origen para mostrar el objeto de la memoria caché, si el objeto es uno de los siguientes tipos de archivos: `aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, zip, webp, jxr, hdp, wdp, pict, tif, tiff, mid, midi, ttf, eot, woff, otf, svg, svgz, jar, woff2, json`. Si el objeto que hay que almacenar en caché no tiene uno de estos tipos de archivo, elimine la cabecera `Vary` de la respuesta del servidor de origen para dicho objeto y vuélvalo a intentar después de utilizar la función Purge de CDN.
 
 ## Más información
+{: #more-information}
+
 * [https://www.w3.org/TR/cors/ ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.w3.org/TR/cors/)
 * [https://w3c.github.io/webappsec-cors-for-developers/ ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://w3c.github.io/webappsec-cors-for-developers/)

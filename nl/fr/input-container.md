@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+
+subcollection: CDN
 
 ---
 
@@ -15,9 +19,9 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Conteneur d'entrée
-{ #input-container}
+{: #input-container}
 
-Le conteneur d'entrée est une collection utilisée par les classes Mapping et (Origin) Path.  Il offre à ces classes un ensemble cohérent d'attributs d'entrée.
+Le conteneur d'entrée est une collection utilisée par les classes Mapping et (Origin) Path. Il offre à ces classes un ensemble cohérent d'attributs d'entrée.
 
 * `vendorName` : Nom d'un fournisseur {{site.data.keyword.cloud}} CDN valide.
 * `oldPath` : Utilisé par updateOriginPath(). Cette propriété stocke le nom du chemin en cours (old).
@@ -25,8 +29,8 @@ Le conteneur d'entrée est une collection utilisée par les classes Mapping et (
 Les attributs suivants sont communs aux classes Mapping et (Origin) Path :
 * `originType` : Type de l'hôte d'origine, actuellement 'HOST_SERVER' ou 'OBJECT_STORAGE'.
 * `origin` : Adresse du serveur d'origine (nom d'hôte ou adresse IPv4 du serveur d'origine), point de terminaison à partir duquel le contenu est extrait ou nom du compartiment dans lequel le contenu est stocké. La longueur doit être inférieure à 511 caractères.
-* `httpPort` :  Numéro du port utilisé pour le protocole HTTP. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
-* `httpsPort` :  Numéro du port utilisé pour le protocole HTTPS. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
+* `httpPort` :  Numéro du port utilisé pour le protocole HTTP. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
+* `httpsPort` :  Numéro du port utilisé pour le protocole HTTPS. Akamai possède certaines limitations au niveau des numéros de ports pour les ports HTTP et HTTPS. Consultez la [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) pour obtenir une liste des numéros de ports autorisés.
 * `status` :  Statut du mappage ou du chemin. Le statut peut être CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED ou ERROR.
 * `path` : Chemin d'accès à partir duquel le contenu mis en cache sera distribué. Le chemin par défaut est /\* . Lorsqu'il est utilisé par l'API `updateOriginPath`, cet attribut se réfère au nouveau chemin devant être ajouté.
 * `performanceConfiguration` : Spécifications pour la configuration des performances du mappage.
@@ -52,4 +56,4 @@ Les attributs suivants sont liés au stockage d'objet dans le Cloud :
 * `fileExtension` : Extensions de fichiers autorisées.
 
 L'attribut suivant est associé à la configuration de la protection des liens dynamiques :
-* `hotlinkProtection` : Pour plus d'informations, voir la [classe de protection des liens dynamiques](/docs/infrastructure/CDN/hotlink-protection-behavior.html).
+* `hotlinkProtection` : Pour plus d'informations, voir la [classe de protection des liens dynamiques](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class).

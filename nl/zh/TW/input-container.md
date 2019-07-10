@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+
+subcollection: CDN
 
 ---
 
@@ -15,7 +19,7 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # 輸入容器
-{ #input-container}
+{: #input-container}
 
 輸入容器是對映和（原點）路徑類別都使用的集合。它為這兩個類別提供了一組一致的輸入屬性。
 
@@ -25,8 +29,8 @@ lastupdated: "2019-02-19"
 下列屬性是對映和（原點）路徑類別共同的屬性：
 * `originType`：原點主機的類型，目前為 'HOST_SERVER' 或 'OBJECT_STORAGE'。
 * `origin`：原點伺服器位址（原點伺服器的主機名稱或 IPv4 位址），這是要從該處提取內容的端點，或是內容儲存所在儲存區的名稱。它必須少於 511 個字元。
-* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
-* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpPort`：用於 HTTP 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
+* `httpsPort`：用於 HTTPS 通訊協定的埠號。Akamai 對於 HTTP 和 HTTPS 埠的埠號有特定的限制。如需允許的埠號清單，請參閱[常見問題](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-)。
 * `status`：對映或路徑的狀態。狀態可以是 CNAME_CONFIGURATION、SSL_CONFIGURATION、RUNNING、STOPPED、DELETED 或 ERROR。
 * `path`：將從該處提供快取內容的路徑。預設路徑是 /\*。由 `updateOriginPath` API 使用時，這個屬性是指要新增的新路徑。
 * `performanceConfiguration`：對映效能配置的規格。
@@ -52,4 +56,4 @@ lastupdated: "2019-02-19"
 * `fileExtension`：允許的副檔名。
 
 下列屬性與配置「快速鏈結保護」相關：
-* `hotlinkProtection`：如需詳細資料，請參閱[快速鏈結保護類別](/docs/infrastructure/CDN/hotlink-protection-behavior.html)。
+* `hotlinkProtection`：如需詳細資料，請參閱[快速鏈結保護類別](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)。

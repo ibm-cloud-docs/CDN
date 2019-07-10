@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -22,6 +26,7 @@ Il seguente diagramma descrive i vari stati a cui passerà la tua CDN dal moment
   ![Diagramma degli stati di SAN](images/state-diagram-san.png)
 
 ## Passi iniziali per la convalida del controllo del dominio
+{: #initial-steps-to-domain-control-validation}
 
 **Passo 1:**
 
@@ -49,15 +54,17 @@ Fai clic sul nome della CDN che deve essere convalidata. Si apre la pagina di pa
 
   * Al termine di questo processo, tutti i domini, indipendentemente dal metodo di convalida utilizzato, passano a uno stato **CNAME Configuration**.
 
-Ulteriori informazioni sul completamento della tua configurazione di CNAME e sulla supervisione della tua CDN sono disponibili nella pagina [Passa allo stato di esecuzione](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
+Ulteriori informazioni sul completamento della tua configurazione di CNAME e sulla supervisione della tua CDN sono disponibili nella pagina [Passa allo stato di esecuzione](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running).
 
 
-## DCV (Domain Control Validation, convalida del controllo del dominio) 
+## DCV (Domain Control Validation, convalida del controllo del dominio)
+{: #domain-control-validation}
 
 Per fare in modo che il tuo nome dominio CDN venga aggiunto al certificato SAN, devi provare che hai il controllo amministrativo sul tuo dominio. Questo processo di prova viene indicato come indirizzamento alla DCV (Domain Control Validation). Devi eseguire l'indirizzamento alla DCV entro 48 ore. In caso contrario, la tua richiesta scade e devi iniziare di nuovo il processo di ordine. I tre diversi modi per eseguire l'indirizzamento alla DCV sono descritti nelle sezioni qui di seguito.
 
 
 ### CNAME
+{: #cname}
 
 Questo metodo è consigliato **SOLO** se la tua CDN **non** sta gestendo il traffico in tempo reale. Se il tuo dominio sta gestendo traffico in tempo reale, consigliamo di utilizzare il metodo standard (Standard) o di reindirizzamento (Redirect) per convalidare il tuo dominio.
 
@@ -72,6 +79,7 @@ La maggior parte dei provider DNS può fornirti istruzioni sull'impostazione o s
 
 ---
 ### Standard
+{: #standard}
 
 Se per la convalida del dominio scegli il metodo Standard, la finestra di convalida del dominio mostra un URL di verifica (**Challenge URL**) e una risposta di verifica (**Challenge response**). Per completare il processo di convalida del dominio, aggiungi la **risposta di verifica** al tuo server di origine. Dopo che è stata aggiunta, la CA può richiamare la **risposta di verifica** dal tuo server di origine utilizzando l'URL specificato nell'**URL di verifica**. Una volta che il tuo server di origine è configurato correttamente, la convalida del dominio può richiedere da 2 a 4 ore.
 
@@ -86,6 +94,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Standard
 * Risposta di verifica: `examplechallenge`
 
 #### Configurazione di Apache
+{: #apache-configuration}
 
   * **Passo 1:** accedi alla macchina su cui è in esecuzione il server Apache2.
 
@@ -109,6 +118,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Standard
   * **Passo 6:** crea un record A nel tuo DNS tra il dominio CDN e l'indirizzo IP del server di origine.
 
 #### Configurazione di Nginx
+{: #nginx-configuration}
 
   * **Passo 1:** accedi alla macchina su cui è in esecuzione il server Nginx.
 
@@ -131,6 +141,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Standard
   * **Passo 6:** crea un record A nel tuo DNS tra il dominio CDN e l'indirizzo IP del server di origine.
 
 #### Verifica che questo metodo standard per indirizzare la convalida del dominio sia pronto per la CA.
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * Per verificare che questo metodo funzioni tramite `curl`, esegui tale comando per l'URL di verifica.
     ```
@@ -141,6 +152,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Standard
 In entrambi i casi, dovresti essere in grado di richiamare la copia dell'oggetto file di verifica della convalida del dominio memorizzata sul tuo server di origine.
 
 #### Pulizia per il metodo Standard
+{: #clean-up-for-the-standard-method}
 
 Dopo che la tua CDN ha raggiunto lo stato **Certificate deploying**:
 1. Rimuovi il file `examplechallenge-fileobject`. (Facoltativo)
@@ -149,6 +161,7 @@ Dopo che la tua CDN ha raggiunto lo stato **Certificate deploying**:
 
 ---
 ### Reindirizzamento
+{: #redirect}
 
 Facendo clic sulla scheda **Redirect**, vengono visualizzate tutte le informazioni necessarie per indirizzare la convalida del dominio tramite reindirizzamento. Queste informazioni consentono alla CA di richiamare una copia della **risposta di verifica** da Akamai attraverso il tuo server di origine. Una volta che il tuo server è configurato correttamente, la convalida del dominio può richiedere da 2 a 4 ore.
 
@@ -163,6 +176,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Redirect
 * Reindirizzamento URL: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Configurazione del reindirizzamento Apache
+{: #apache-redirect-configuration}
 
   * **Passo 1:** accedi alla macchina su cui è in esecuzione il server Apache2.
 
@@ -184,6 +198,7 @@ Per completare correttamente la convalida del dominio tramite il metodo Redirect
 crea un record A nel tuo DNS tra il dominio CDN e l'indirizzo IP del server di origine.
 
 #### Configurazione del reindirizzamento Nginx
+{: #nginx-redirect-confguration}
 
   * **Passo 1:** accedi alla macchina su cui è in esecuzione il server Nginx.
 
@@ -237,6 +252,7 @@ crea un record A nel tuo DNS tra il dominio CDN e l'indirizzo IP del server di o
 crea un record A nel tuo DNS tra il dominio CDN e l'indirizzo IP del server di origine.
 
 #### Verifica che il reindirizzamento stia avvenendo
+{: #verify-that-the-redirect-is-occurring}
 
 Il completamento di questa procedura reindirizza _solo_ il traffico dall'URL di verifica specificato al reindirizzamento URL. Puoi verificare che il reindirizzamento abbia funzionato correttamente tramite `curl` o tramite il browser.
 
@@ -251,6 +267,7 @@ Il completamento di questa procedura reindirizza _solo_ il traffico dall'URL di 
 In entrambi i casi, dovresti essere in grado di richiamare la copia dell'oggetto file di verifica della convalida del dominio da Akamai al dominio `dcv.akamai.com`, a cui è stata reindirizzata la richiesta originale.
 
 #### Pulizia per il metodo Redirect
+{: #clean-up-for-the-redirect-method}
 
 Dopo che la tua CDN ha raggiunto lo stato **Certificate deploying**:
 1. Rimuovi le istruzioni di reindirizzamento o i blocchi dal file di configurazione. (Facoltativo)

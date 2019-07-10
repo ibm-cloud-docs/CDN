@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-07-09"
+  years: 2018, 2019
+lastupdated: "2019-02-25"
+
+keywords: Europe, Middle East, Africa, servers, EMEA, region
+
+subcollection: CDN
 
 ---
 
@@ -15,8 +19,11 @@ lastupdated: "2018-07-09"
 {:download: .download}
 
 # EMEA 지역
+{: #emea-region}
 
-## 유럽, 중동 및 아프리카 지역에는 다음이 포함됩니다.
+EMEA는 유럽, 중동 및 아프리카의 약어입니다.
+
+## 유럽, 중동 및 아프리카 지역
   * 알바니아
   * 알제리
   * 안도라

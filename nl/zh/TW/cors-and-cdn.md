@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
+
+subcollection: CDN
 
 ---
 
@@ -15,11 +19,13 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # 透過 CDN 的 CORS 及 CORS 要求
-{ #cors-and-cors-requests-through-your-cdn}
+{: #cors-and-cors-requests-through-your-cdn}
 
 「跨原點資源共用 (CORS)」是瀏覽器所使用的機制，主要用來驗證從不同原點存取內容的許可權。
 
 ## 何謂 CORS？
+{: #what-is-cors}
+
 當瀏覽器載入網頁時，會施行**同源政策**，這表示其只容許從網頁的相同原點提取內容。然而，在一些情況下，網頁可能需要從信任該網站的多個原點，存取資產。這時便需要 CORS。 
 
 只有在應用程式具有 HTTP 用戶端或者本身是 HTTP 用戶端，並且該應用程式實作 CORS 時，這個安全機制才存在。幾乎所有現代瀏覽器（例如，Chrome、Firefox 以及 Safari）都實作 CORS。
@@ -31,7 +37,9 @@ lastupdated: "2019-02-19"
 CORS 可以處理兩種類型的要求：_簡單要求_ 以及較複雜的_預檢要求_。
 
 ### 簡單要求
-第一個要求（資源存取）：
+{: #simple-requessts}
+
+**第一個要求（資源存取）：**
 
 ![cors-simple](/images/cors-simple.png)
 
@@ -44,7 +52,9 @@ CORS 可以處理兩種類型的要求：_簡單要求_ 以及較複雜的_預�
 如果瀏覽器無法看到 CORS 回應標頭滿足其 CORS 要求，則會自動防止存取及載入內容。否則，會看到 CORS 原點提供資源的使用許可權，並容許存取及載入所要求的內容。
 
 ### 預檢要求
-第一個要求（預檢）：
+{: #preflighted-requests}
+
+**第一個要求（預檢）：**
 
 ![cors-preflight](/images/cors-preflight.png)
 
@@ -64,9 +74,11 @@ CORS 可以處理兩種類型的要求：_簡單要求_ 以及較複雜的_預�
 之後，瀏覽器與 CORS 原點之間的通訊（不同於網頁的通訊）會繼續進行，就像是簡單 CORS 要求一樣。類似簡單 CORS 要求，如果這個第二個 CORS 要求也被接受，則可存取及載入內容與資源。
 
 ## 如何在您的原點設定 CORS
+{: #how-to-set-up-cors-at-your-origin}
+
 如之前圖表中所示，CORS 由發出要求的 HTTP 用戶端所起始。但是，結果取決於所要求的原點。為了讓您的內容準備好以用於 CORS 要求，您的原點必須正確配置，才能以正確的 CORS 回應標頭以及正確的存取許可權進行回應。
 
-下列為 Nginx 伺服器的基本 CORS 配置範例：
+下列範例顯示 Nginx 伺服器的基本 CORS 配置：
 
 ```nginx
 http {
@@ -127,6 +139,7 @@ http {
     # more http context configs
 }
 ```
+{: screen}
 
 一般而言，根據[關於萬用字元值的 w3 規格 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/cors/#security)，瀏覽器在伺服器的 CORS 回應標頭中看到 `Access-Control-Allow-Origin: *` 時，應可自由載入內容。然而，並非所有瀏覽器都支援 `Access-Control-Allow-Origin: *`。
 
@@ -185,18 +198,25 @@ http {
     # more http context configs
 }
 ```
+{: screen}
 
-在前一個範例中，`map` 指引用來避免過度使用 `if` Nginx 陳述式。現在，對此伺服器提出一個 CORS 要求，並符合該 URI 路徑時，當內容要求自 `http://www.example.com`、`https://cdn.example.com`、`http://dev.example.com` 等等時，伺服器會以 `Access-Control-Allow-Origin` 標頭回應，該標頭包含 `http://www.example.com`、`https://cdn.example.com` 或 `http://dev.example.com` 等等的值。
+前一個範例使用 `map` 指引來避免過度使用 `if` Nginx 陳述式。現在，對此伺服器提出一個 CORS 要求，並符合該 URI 路徑時，當內容要求自 `http://www.example.com`、`https://cdn.example.com`、`http://dev.example.com` 等等時，伺服器會以 `Access-Control-Allow-Origin` 標頭回應，該標頭包含 `http://www.example.com`、`https://cdn.example.com` 或 `http://dev.example.com` 等等的值。
 
 ## 如何設定 CDN 的 CORS
+{: #how-to-set-up-cors-for-cdn}
+
 ![cors-through-cdn](/images/cors-through-cdn.png)
 對「原點」的 CORS 設定而言，CDN 大多是透通的，因此它不需要特定的 CDN 配置。如果 CDN 邊緣找不到一些內容第一個要求的已快取回應，則會將要求轉遞給「原點主機」。如果「原點主機」設定為處理 CORS 要求，而且此要求具有 `Origin` 標頭，則原點主機應該以 CORS 標頭 `Access-Control-Allow-Origin` 及相關聯的值回應邊緣。整體回應（包括該標頭及值）都會快取在 CDN 中。該物件在相同 URI 路徑中旳所有後續要求都會從快取中提供，且會包含原本從「原點」接收到的 `Access-Control-Allow-Origin` 標頭值。
 
 ## 疑難排解 CORS 及 CORS 要求
+{: #troubleshooting-cors-and-cors-requests}
+
 如果您的「原點」伺服器已針對 CORS 進行設定，且您沒有看到 `Access-Control-Allow-Origin` 標頭傳回到瀏覽器的要求，則可能是因為在 CDN 中快取的回應標頭適用於在要求中沒有 Origin 標頭的要求。CDN 從「原點主機」快取回應標頭。然而，快取的標頭取決於向「原點」觸發要求的要求。在該案例中，回應標頭可能不包含 CORS 標頭。請使用 CDN 的「清除」功能來清除 CDN 中該路徑的快取，然後再從用戶端重試一次要求。
 
 透過 CDN 提取內容時，您的「原點」伺服器中的 `Vary` 回應標頭也可能會造成非預期的行為。除了一個非常特定的異常狀況之外，如果伺服器以 `Vary` 標頭進行回應，則 CDN 不會從您的「原點」伺服器快取內容（及其相關聯回應標頭）。目前，我們的服務從「原點」移除 Vary 標頭，以在物件是下列其中一種檔案類型時，呈現該物件是可快取的：`aif、aiff、au、avi、bin、bmp、cab、carb、cct、cdf、class、css、doc、dcr、dtd、exe、flv、gcf、gff、gif、grv、hdml、hqx、ico、ini、jpeg、jpg、js、mov、mp3、nc、pct、pdf、png、ppc、pws、swa、swf、txt、vbs、w32、wav、wbmp、wml、wmlc、wmls、wmlsc、xsd、zip、webp、jxr、hdp、wdp、pict、tif、tiff、mid、midi、ttf、eot, woff、otf、svg、svgz、jar、woff2、json`。如果要快取的物件不是這些檔案類型中的其中一種，請從「原點」伺服器對於該物件的回應中移除 `Vary` 標頭，然後在使用 CDN 的「清除」功能之後，再試一次。
 
 ## 相關資訊
+{: #more-information}
+
 * [https://www.w3.org/TR/cors/ ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/cors/)
 * [https://w3c.github.io/webappsec-cors-for-developers/ ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://w3c.github.io/webappsec-cors-for-developers/)

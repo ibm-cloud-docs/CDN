@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: mapping, container, class, collection, object, API
+
+subcollection: CDN
 
 ---
 
@@ -27,8 +31,8 @@ La raccolta `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` c
 * `protocol`: il protocollo utilizzato per configurare i servizi. Può essere HTTP, HTTPS o una combinazione dei due, HTTP_AND_HTTPS.
 * `originType`: tipo dell'host di origine, attualmente 'HOST_SERVER' o 'OBJECT_STORAGE'.
 * `originHost`: l'indirizzo del server di origine (il nome host o l'indirizzo IPv4 del server di origine), che è l'endpoint da cui recuperare il contenuto oppure il nome del bucket dove è memorizzato il contenuto. Deve avere una lunghezza inferiore ai 511.
-* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
-* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN/faqs.html#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpPort`: il numero della porta utilizzata per il protocollo HTTP. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
+* `httpsPort`: il numero della porta utilizzata per il protocollo HTTPS. Akamai ha delle specifiche limitazioni sui numeri porta per le porte HTTP e HTTPS. Consulta le [Domande frequenti (FAQ)](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) per un elenco dei numeri porta consentiti.
 * `certificateType`: il tipo di certificato utilizzato da un'associazione. Può essere `WILDCARD_CERT` o `SHARED_SAN_CERT`. Il valore sarà 0 per le associazioni HTTP.
 * `cname`: il record di nome canonico che funge da alias del nome host. Può essere fornito dall'utente oppure generato dal sistema. Se viene fornito dall'utente, deve avere una lunghezza inferiore ai 64 caratteri alfanumerici e deve essere univoco. Se non viene fornito, ne viene generato uno quando viene creata l'associazione.
 * `respectHeaders`: un valore booleano che, se impostato su 'true', fa in modo che le impostazioni TTL nell'origine sovrascrivano le impostazioni TTL di CDN.
@@ -36,7 +40,7 @@ La raccolta `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` c
 * `status`: lo stato dell'associazione. Lo stato può essere CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED o ERROR.
 * `bucketName`: il nome bucket per l'Object Storage S3.
 * `fileExtension`: le estensioni file di cui è consentita la memorizzazione in cache.
-* `percorso`: Il percorso al tuo Object Storage S3. Si trova di solito nella sezione API o URL dell'archivio oggetti del tuo servizio.
+* `percorso`: Il percorso al tuo Object Storage S3. Si trova di solito nella sezione API o URL dell'archiviazione oggetti del tuo servizio.
 * `cacheKeyQueryRule`: per configurare la modalità di funzionamento della chiave della cache sono disponibili le seguenti opzioni:
   * `include-all`: include tutti gli argomenti della query **Valore predefinito**
   * `ignore-all`: ignora tutti gli argomenti della query

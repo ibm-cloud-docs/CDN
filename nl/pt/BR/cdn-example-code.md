@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,8 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # Exemplos de Códigos Usando a API CDN
@@ -20,10 +26,11 @@ lastupdated: "2019-02-19"
 Este documento contém chamadas API de exemplo e a saída resultante para várias APIs do CDN.
 
 ## Etapas gerais necessárias para todas as chamadas API
+{: #general-steps-needed-for-all-api-calls}
 
 O pré-requisito é fazer download e instalar o Soap Client por meio do [https://github.com/softlayer/softlayer-api-php-client ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/softlayer/softlayer-api-php-client)
 
-  * É necessário obter acesso ao SoapClient por meio de `vendor/autoload`. O caminho é
+  * Deve-se obter acesso ao SoapClient por meio de `vendor/autoload`. O caminho é
 relativo ao local em que o script é executado e pode precisar ser modificado apropriadamente. Em PHP, a
 instrução será semelhante a esta: `require_once './../vendor/autoload.php';`
 
@@ -40,6 +47,7 @@ instrução será semelhante a esta: `require_once './../vendor/autoload.php';`
   * Inicialize o SoapClient para a classe apropriada.
 
 ## Código de Exemplo para Vendors de Listagem
+{: #example-code-for-listing-vendors}
 
 Nesse caso, é a classe SoftLayer_Network_CdnMarketplace_Vendor que define a API
 `listVendors` e deve ser transmitida como um parâmetro para
@@ -74,6 +82,7 @@ Matriz (
 {: codeblock}
 
 ## Código de exemplo para verificar o pedido
+{: #example-code-to-verify-order}
 
 A chamada para `verifyOrder` não é obrigatória antes de fazer um pedido, mas é
 recomendada. Ela pode ser usada para verificar se uma chamada subsequente para `placeOrder`
@@ -127,6 +136,7 @@ catch (\Exception $e) {
 
 
 ## Código de exemplo para fazer pedido
+{: #example-code-to-place-order}
 
 Esta chamada API é idêntica ao exemplo de código anterior, exceto que ela chama `placeOrder`,
 em vez de `verifyOrder`. Mais informações sobre `placeOrder` podem ser localizadas na [Documentação da API do SoftLayer ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
@@ -176,14 +186,15 @@ catch (\Exception $e) {
 
 
 ## Código de exemplo para criar CDN ou Criar Mapeamento de Domínio
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 Este exemplo mostra como criar um novo mapeamento de CDN utilizando a API `createDomainMapping`. Ele utiliza um único parâmetro de um objeto `stdClass`. O SoapClient deve ser inicializado
 usando a classe `SoftLayer_Network_CdnMarketplace_Configuration_Mapping`, conforme
 mostrado no exemplo.
 
-**NOTA**: se você optar por fornecer um CNAME customizado, ele
-**deverá** terminar com `.cdnedge.bluemix.net` ou um erro será lançado. Consulte [esta
-descrição](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-) para obter as regras sobre como fornecer seu próprio CNAME.
+Se você optar por fornecer um CNAME customizado, ele **deverá** terminar com `.cdnedge.bluemix.net` ou um erro será lançado. Consulte [esta
+descrição](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) para obter as regras sobre como fornecer seu próprio CNAME.
+{: important}
 
 ```php
 
@@ -252,6 +263,7 @@ Matriz (
 {: codeblock}
 
 ## Código de Exemplo para Verificar Mapeamento de Domínio
+{: #example-code-to-verify-domain-mapping}
 
 O VerifyDomainMapping verifica se a configuração do CNAME está concluída e, em caso afirmativo, muda
 o status do CDN para RUNNING. Antes de chamar `verifyDomainMapping`, deve-se incluir um
@@ -300,8 +312,8 @@ Se seu registro do CNAME não tiver sido incluído no servidor DNS ou seu servid
 atualizado, o `status` de seu CDN será CNAME_CONFIGURATION, conforme mostrado no exemplo
 a seguir.
 
-**Nota:** pode levar alguns minutos (até 30) para que o encadeamento do CNAME seja
-concluído.
+Pode levar vários minutos (até 30) para que o encadeamento de CNAME seja concluído.
+{: note}
 
 ```php
 Matriz (
@@ -318,7 +330,7 @@ Matriz (
 ```
 {: codeblock}
 
-Para ter certeza de que seu registro CNAME está configurado corretamente, execute `dig <your domain>`  na linha de comandos. A saída deve ser semelhante a esta:
+Para certificar-se de que o seu registro CNAME esteja configurado corretamente, execute `dig <your domain>` na linha de comandos. A saída deve ser semelhante a esta:
 
 ```
 ;; ANSWER SECTION: api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdnedge.bluemix.net.

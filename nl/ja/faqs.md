@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+
+subcollection: CDN
 
 ---
 
@@ -20,21 +24,25 @@ lastupdated: "2019-02-19"
 {: #faqs}
 
 ## コンテンツ配信ネットワーク (CDN) とは何ですか
+{: #what-is-a-content-delivery-network-cdn}
 {: faq}
 
 コンテンツ配信ネットワーク (CDN) は、全国または世界中に分散されたエッジ・サーバーの集合です。 その Web コンテンツは、要求元のユーザーに最も近い地理的領域にあるエッジ・サーバーから提供されます。 この技法を使用すると、1 カ所の集中管理された場所からコンテンツを配信する場合に比べて、ユーザーはより短い遅延でコンテンツを受け取ることができます。 これにより、カスタマー・エクスペリエンス全体が改善されます。
 
 ## コンテンツ配信ネットワーク (CDN) はどのように動作しますか
+{: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 
 CDN は、世界中のエッジ・サーバー上に Web コンテンツをキャッシュすることで、その目的を果たします。 ユーザーが Web コンテンツを要求すると、そのユーザーに地理的に最も近いエッジ・サーバーに、コンテンツ要求がルーティングされます。 CDN では、コンテンツの必要移動距離を削減することで、スループットの最適化、最小限の遅延、パフォーマンスの向上が実現されます。
 
 ## IBM Cloud コンテンツ配信ネットワーク・サービスのアカウントはどのように作成されますか
+{: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
 
 アカウントは、CDN 注文処理時に作成されます。 レガシー・ポータルから CDN を作成する場合は、**「ネットワーク」->「CDN」**ページの下で**「CDN の注文」**ボタンをクリックすると、アカウントが作成されます。 {{site.data.keyword.cloud}} ポータルから CDN を作成する場合は、**「カタログ」->「ネットワーク」->「コンテンツ・デリバリー・ネットワーク」**ページの下で**「作成」**ボタンをクリックすると、アカウントが作成されます。
 
 ## CDN が「CNAME 構成 (CNAME Configuration)」状況の場合は何をすればよいのですか
+{: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
 HTTP および SAN 証明書ベースの HTTPS CDN では、ご使用の Web サイトが新規 CDN マッピングに関連付けられた `CNAME` を指すように、DNS レコードを更新してください。 ワイルドカード証明書ベースの HTTPS CDN では、この DNS の更新は必要**ありません**。
@@ -42,6 +50,8 @@ HTTP および SAN 証明書ベースの HTTPS CDN では、ご使用の Web サ
 **注**: 更新がアクティブになるまでに 15 分から 30 分かかることがあります。 DNS プロバイダーに確認して、正確な推定時刻を入手してください。
 
 ## DNS で CDN ドメインの CNAME レコードを追加するにはどうすればいいですか?
+{: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
+{: faq}
 
 CDN ドメインの DNS 構成ページで、CDN ドメイン名をホストとして指定し、CDN の構成に使用した IBM CNAME を CNAME として指定して CNAME レコードを作成できます。 IBM CNAME の末尾は `cdnedge.bluemix.net` になります。
 
@@ -52,12 +62,14 @@ CDN ドメインの DNS 構成ページで、CDN ドメイン名をホストと�
 | CNAME | www.example.com | example.cdnedge.bluemix.net | 15 分 |
 
 
-## CDN での請求対象は何ですか?
+## CDN での請求対象は何ですか
+{: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
 IBM Cloud コンテンツ配信ネットワークの各インスタンスで使用された帯域幅のみが請求対象となります。 ご使用の CDN で帯域幅が使用されていない場合、料金は発生しません。 帯域幅の価格は、エッジ・サーバーの地域によって異なります。 地理的領域別の帯域幅の料金は、このサービスの[価格設定の資料](/docs/infrastructure/CDN?topic=CDN-pricing)で確認できます。
 
 ## CDN の請求処理はいつ行われますか?
+{: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
 IBM Cloud コンテンツ配信ネットワークの請求処理は、{{site.data.keyword.BluSoftlayer_notm}} アカウントで設定された請求対象期間に従って実施されます。
@@ -68,16 +80,19 @@ IBM Cloud コンテンツ配信ネットワークの請求処理は、{{site.dat
 いいえ。その CDN のみが削除されます。 ご使用のアカウントは引き続き存在し、追加の CDN を作成できます。
 
 ## コンテンツ・キャッシングでは、push と pull のどちらが使用されますか?
+{: #does-content-caching-use-push-or-pull}
 {: faq}
 
 コンテンツ・キャッシングは、_origin pull_ モデルを使用して行われます。 Origin Pull は、手動でコンテンツをエッジ・サーバーにアップロードするのとは対照的に、エッジ・サーバーによってオリジン・サーバーからデータが「プル」されるメソッドです。
 
 ## CDN サービスの構成に使用する推奨ブラウザーはありますか
+{: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
 {: faq}
 
 はい。Firefox と Chrome が推奨ブラウザーです。 これらのブラウザーの最新バージョンを IBM Cloud コンテンツ配信ネットワークで使用することをお勧めします。
 
 ## CDN の作成時にパスを指定する目的は何ですか
+{: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
 CDN の作成時にパスを指定すると、特定のオリジン・サーバーから CDN を介して処理できるファイルを隔離することができます。
@@ -85,7 +100,7 @@ CDN の作成時にパスを指定すると、特定のオリジン・サーバ�
 ## CDN がエラー状態です。 この後、どうすればよいですか
 {: faq}
 
-『[トラブルシューティング](/docs/infrastructure/CDN/troubleshooting.html#troubleshooting)』ページまたは『[ヘルプとサポートの利用](/docs/infrastructure/CDN/getting-help.html#gettinghelp)』ページを参照するか、[カスタマー・ポータル ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://control.softlayer.com/) でチケットをオープンしてください。
+『[トラブルシューティング](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting)』ページまたは『[ヘルプとサポートの利用](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp)』ページを参照するか、[カスタマー・ポータル ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://control.softlayer.com/) でチケットをオープンしてください。
 
 ## CDN の CNAME を指定しなかった場合、どこで見つかりますか?
 {: faq}
@@ -118,7 +133,7 @@ CDN マッピングまたはオリジンのパスは、ディレクトリーと�
 ## IBM Cloud Object Storage (COS) のコンテンツ配信ネットワークはどのようにしてセットアップしますか
 {: faq}
 
-IBM Cloud Object Storage 用にコンテンツ配信ネットワークを作成する場合の[チュートリアル](/docs/tutorials/static-files-cdn.html)があります。
+IBM Cloud Object Storage 用にコンテンツ配信ネットワークを作成する場合の[チュートリアル](/docs/tutorials?topic=solution-tutorials-static-files-cdn)があります。
 
 ## オリジン証明書の有効期限が切れるという通知を受信しました。 この後、どうすればよいですか
 {: faq}
@@ -162,12 +177,12 @@ IBM Cloud コンソールのメインページから、以下のステップに�
 ## https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai ページで「作成」ボタンが表示されないか、無効になるのはなぜですか
 {: faq}
 
-アカウントのマスター・ユーザーである場合は、このページで「作成」ボタンを表示または有効にするには、アカウントをアップグレードする必要があります。IBM Cloud コンソールのページから、アカウントのマスター・ユーザーとして以下のステップを実行します。
+アカウントのマスター・ユーザーである場合は、このページで「作成」ボタンを表示または有効にするには、アカウントをアップグレードする必要があります。 IBM Cloud コンソールのページから、アカウントのマスター・ユーザーとして以下のステップを実行します。
  * Web ページの左上隅にある`トリプル・バー`・アイコンをクリックして、左側のナビゲーション・ペインを開きます。
  * **「クラシック・インフラストラクチャー」**を選択します。
  * **「アカウントのアップグレード」**ボタンをクリックして、指示に従います。
 
-アカウントの 2 次ユーザーである場合、このページで「作成」ボタンを表示または有効にするには、アカウントのマスター・ユーザーから`「サービスの追加/アップグレード」`許可を付与してもらう必要があります。IBM Cloud コンソールのページから、アカウントのマスター・ユーザーは以下のステップに従って許可を編集する必要があります。
+アカウントの 2 次ユーザーである場合、このページで「作成」ボタンを表示または有効にするには、アカウントのマスター・ユーザーから`「サービスの追加/アップグレード」`許可を付与してもらう必要があります。 IBM Cloud コンソールのページから、アカウントのマスター・ユーザーは以下のステップに従って許可を編集する必要があります。
  * **「管理」**タブを選択します。
  * **「アクセス (IAM)」**を選択します。
  * 左ペインの**「ユーザー」**タブをクリックします。
@@ -181,3 +196,18 @@ IBM Cloud コンソールのメインページから、以下のステップに�
 {: faq}
 
 エンド・ユーザー向けの Web サイトのドメインが CDN のドメイン/ホスト名 `cdn.example.com` になるように構成されている例について検討してみましょう。 誰かがブラウザーのナビゲーション・バーから直接ナビゲートして Web ページにアクセスしようとしたとき、通常、ブラウザーは HTTP 要求で Referer ヘッダーを送信しません。 例えば、この方法で `https://cdn.example.com/` に直接ナビゲートすると、CDN は、要求が、指定された `refererValues` に対して不一致を含んでいると見なします。 CDN は、ホット・リンク保護を通じて適切な効果または応答を評価するときに、不一致が発生したと判断します。 そのため、CDN は、アクセスを「許可 (ALLOW)」するのではなく、拒否します。
+
+## CDN 設定でオブジェクト・ストレージのプライベート・エンドポイントを使用できますか?
+{: faq}
+
+いいえ、CDN はパブリック・エンドポイント上のオブジェクト・ストレージにのみ接続できます。
+
+## CDN サービスで Brotli 機能を使用できますか?
+{: faq}
+
+いいえ、Brotli 機能は Akamai を使用した CDN サービスではサポートされていません。
+
+## ドメインを使用せずに CDN エンドポイントを作成するにはどうすればよいですか?
+{: faq}
+
+ドメインを使用しなくても CDN エンドポイントを作成することはできますが、CDN のタイプが **Wildcard HTTPS** の場合に限られます。タイプが **Wildcard HTTPS** の CDN の作成時に、**CNAME** は CDN エンドポイントとして機能し、**CNAME** はトラフィックを処理するために使用されます。

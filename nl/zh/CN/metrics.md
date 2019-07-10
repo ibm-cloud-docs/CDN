@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: metrics, bandwidth, overview, hit ratio, edge server, cache, ingress, hits
+
+subcollection: CDN
 
 ---
 
@@ -34,9 +38,7 @@ lastupdated: "2019-02-19"
 ## 当总命中数为零时，为什么命中率不为零。
 命中率代表从边缘服务器高速缓存传递而非从源服务器传递内容的次数百分比。其计算方式如下：
 
-`((边缘命中数 - Ingress 命中数)/边缘命中数) * 100
-
-`
+`((边缘命中数 - Ingress 命中数)/边缘命中数) * 100`
 
 其中：
 

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,8 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # 使用 CDN API 的程式碼範例
@@ -20,10 +26,11 @@ lastupdated: "2019-02-19"
 本文件包含範例 API 呼叫以及眾多 CDN API 的產生輸出。
 
 ## 所有 API 呼叫都需要的一般步驟
+{: #general-steps-needed-for-all-api-calls}
 
 必要條件是從 [https://github.com/softlayer/softlayer-api-php-client ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/softlayer/softlayer-api-php-client) 下載並安裝 Soap Client
 
-  * 您需要透過 `vendor/autoload` 來取得 SoapClient 的存取權。此路徑相對於從中執行 Script 的位置，而且可能需要適當地修改。在 PHP 中，此陳述式看起來如下：`require_once './../vendor/autoload.php';`
+  * 您必須透過 `vendor/autoload` 來取得 SoapClient 的存取權。此路徑相對於從中執行 Script 的位置，而且可能需要適當地修改。在 PHP 中，此陳述式看起來如下：`require_once './../vendor/autoload.php';`
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
@@ -38,6 +45,7 @@ lastupdated: "2019-02-19"
   * 針對適當的類別，起始設定 SoapClient。
 
 ## 列出供應商的程式碼範例
+{: #example-code-for-listing-vendors}
 
 在此情況下，它是 SoftLayer_Network_CdnMarketplace_Vendor 類別，可定義 `listVendors` API 而且必須以參數形式傳遞至 `\SoftLayer\SoapClient::getClient()`。當您建立「網域對映」時，稍後會需要作用中供應商的名稱。
 
@@ -72,6 +80,7 @@ Array
 {: codeblock}
 
 ## 驗證順序的程式碼範例
+{: #example-code-to-verify-order}
 
 在下訂單之前，不需要呼叫 `verifyOrder`，但建議您呼叫它。它可以用來驗證後續的 `placeOrder` 呼叫將成功。您可以在 [SoftLayer API 文件 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/) 中，找到 `verifyOrder` 的相關資訊。
 
@@ -127,6 +136,7 @@ catch (\Exception $e) {
 
 
 ## 下單的程式碼範例
+{: #example-code-to-place-order}
 
 此 API 呼叫與前一個程式碼範例相同，但它呼叫 `placeOrder`，而非 `verifyOrder`。您可以在 [SoftLayer API 文件 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/) 中，找到 `placeOrder` 的相關資訊。
 
@@ -181,10 +191,12 @@ catch (\Exception $e) {
 
 
 ## 建立 CDN 或建立網域對映的程式碼範例
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 此範例顯示如何使用 `createDomainMapping` API 來建立新的 CDN 對映。它採用 `stdClass` 物件的單一參數。應該使用 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 類別來起始設定 SoapClient，如此範例所示。
 
-**附註**：如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)。
+如果您選擇提供自訂 CNAME，則其結尾**必須**是 `.cdnedge.bluemix.net`，否則將會擲出錯誤。如需提供您專屬 CNAME 的規則，請參閱[本說明](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-)。
+{: important}
 
 ```php
 
@@ -261,6 +273,7 @@ Array
 {: codeblock}
 
 ## 驗證網域對映的程式碼範例
+{: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping 會檢查 CNAME 配置是否完成，如果完成，則會將 CDN 狀態移至 RUNNING 狀態。呼叫 `verifyDomainMapping` 之前，您必須先將自訂「主機名稱」的 CNAME 記錄新增至 DNS 伺服器。
 
@@ -308,7 +321,8 @@ try {
 
 如果您的 CNAME 記錄尚未新增至 DNS 伺服器，或尚未更新您的伺服器，則 CDN 的 `status` 將會是 CNAME_CONFIGURATION，如下列範例所示。
 
-**附註** 可能需要幾分鐘（最多 30）的時間，CNAME 鏈結才會完成。
+可能需要幾分鐘（最多 30 分鐘）的時間，CNAME 鏈結才會完成。
+{: note}
 
 ```php
 Array

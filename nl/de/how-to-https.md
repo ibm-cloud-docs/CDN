@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+
+subcollection: CDN
 
 ---
 
@@ -17,11 +21,12 @@ lastupdated: "2019-02-19"
 # Validierung der Domänensteuerung für HTTPS mit DV-SAN-Zertifikat durchführen
 {: #completing-domain-control-validation-for-https-with-dv-san}
 
-Das folgende Diagramm veranschaulicht die verschiedenen Stufen, die eine CDN-Instanz vom Erstellen bis zum aktiven Status durchläuft. 
+Das folgende Diagramm veranschaulicht die verschiedenen Stufen, die eine CDN-Instanz vom Erstellen bis zum aktiven Status durchläuft.
 
   ![SAN-Zustandsdiagramm](images/state-diagram-san.png)
 
 ## Erste Schritte für die Validierung der Domänensteuerung
+{: #initial-steps-to-domain-control-validation}
 
 **Schritt 1:**
 
@@ -49,15 +54,17 @@ Klicken Sie auf den Namen der CDN-Instanz, die validiert werden soll. Die Seite 
 
   * Wenn dieser Prozess abgeschlossen ist, wechselt der Status aller Domänen unabhängig von der jeweils verwendeten Validierungsmethode zu **CNAME-Konfiguration**.
 
-Weitere Informationen zur CNAME-Konfiguration sowie zur Überwachung der CDN-Instanz finden Sie auf der Seite [In den Ausführungsstatus wechseln](/docs/infrastructure/CDN/basic-functions.html#get-to-running).
+Weitere Informationen zur CNAME-Konfiguration sowie zur Überwachung der CDN-Instanz finden Sie auf der Seite [In den Ausführungsstatus wechseln](/docs/infrastructure/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running).
 
 
-## Validierung der Domänensteuerung 
+## Validierung der Domänensteuerung
+{: #domain-control-validation}
 
 Um den CDN-Domänennamen, der dem SAN-Zertifikat hinzugefügt wurde, abrufen zu können, müssen Sie nachweisen, dass Sie über eine Verwaltungsberechtigung für Ihre Domäne verfügen. Dieser Prozess zum Erbringen des Nachweises wird als Validierung der Domänensteuerung bezeichnet. Sie müssen die Validierung der Domänensteuerung innerhalb von 48 Stunden durchführen. Wenn Sie diese Frist nicht einhalten, verfällt Ihre Anforderung und Sie müssen den Bestellprozess erneut durchführen. In den folgenden Abschnitten werden die drei Methoden beschrieben, die bei der Validierung der Domänensteuerung zur Auswahl stehen.
 
 
 ### CNAME
+{: #cname}
 
 Die im Folgenden beschriebene Methode ist **NUR** empfehlenswert, wenn Ihr CDN **nicht** für Live-Datenverkehr vorgesehen ist. Stellt Ihre Domäne Live-Datenverkehr bereit, ist die Standardmethode oder die Weiterleitungsmethode besser zur Validierung der Domäne geeignet.
 
@@ -72,6 +79,7 @@ Anweisungen zum Festlegen oder Ändern von CNAME erhalten Sie in der Regel beim 
 
 ---
 ### Standard
+{: #standard}
 
 Falls Sie die Standardmethode zur Domänenvalidierung verwenden, werden im Fenster für die Validierung der Domäne **Abfrage-URL** und **Abfrageantwort** angezeigt. Fügen Sie für den Prozess der Domänenvalidierung die angegebene **Abfrageantwort** zum Ursprungsserver hinzu. Nach dem Hinzufügen kann die Zertifizierungsstelle die **Abfrageantwort** vom Ursprungsserver mithilfe der URL abrufen, die in der **Abfrage-URL** angegeben ist. Wenn der Ursprungsserver ordnungsgemäß konfiguriert ist, kann die Validierung der Domäne zwischen zwei und vier Stunden dauern.
 
@@ -86,6 +94,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
 * Abfrageantwort: `examplechallenge`
 
 #### Apache-Konfiguration
+{: #apache-configuration}
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Apache2-Server ausgeführt wird.
 
@@ -109,6 +118,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
   * **Schritt 6:** Erstellen Sie einen A-Datensatz im DNS zwischen der CDN-Domäne und der IP-Adresse des Ursprungsservers.
 
 #### Nginx-Konfiguration
+{: #nginx-configuration}
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Nginx-Server ausgeführt wird.
 
@@ -131,6 +141,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
   * **Schritt 6:** Erstellen Sie einen A-Datensatz im DNS zwischen der CDN-Domäne und der IP-Adresse des Ursprungsservers.
 
 #### Stellen Sie sicher, dass diese Standardmethode zur Ausführung der Domänenvalidierung von der Zertifizierungsstelle verwendet werden kann.
+{: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * Stellen Sie mit einem `curl`-Befehl sicher, dass diese Methode funktioniert, indem Sie den betreffenden Befehl für die Abfrage-URL ausführen.
     ```
@@ -141,6 +152,7 @@ Damit die Ausführung der Domänenvalidierung über die Standardmethode erfolgre
 In beiden Fällen müssen Sie in der Lage sein, die Kopie des Dateiobjekts für die Abfrage der Domänenvalidierung abrufen zu können, die auf dem Ursprungsserver gespeichert ist.
 
 #### Bereinigung für die Standardmethode
+{: #clean-up-for-the-standard-method}
 
 Gehen Sie wie folgt vor, wenn für die CDN-Instanz der Status **Zertifikat wird bereitgestellt** angezeigt wird:
 1. Entfernen Sie die Datei `examplechallenge-fileobject` (optional).
@@ -149,6 +161,7 @@ Gehen Sie wie folgt vor, wenn für die CDN-Instanz der Status **Zertifikat wird 
 
 ---
 ### Weiterleitung
+{: #redirect}
 
 Wenn Sie auf die Registerkarte **Weiterleiten** klicken, werden alle Informationen angezeigt, die für die Verarbeitung der Domänenvalidierung über die Weiterleitung erforderlich sind. Anhand dieser Informationen kann die Zertifizierungsstelle eine Kopie der **Abfrageantwort** von Akamai über den Ursprungsserver abrufen. Wenn der Server ordnungsgemäß konfiguriert ist, kann die Validierung der Domäne zwischen zwei und vier Stunden dauern.
 
@@ -163,6 +176,7 @@ Damit die Ausführung der Domänenvalidierung unter Verwendung der Weiterleitung
 * URL-Weiterleitung: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
 #### Konfiguration der Apache-Weiterleitung
+{: #apache-redirect-configuration}
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Apache2-Server ausgeführt wird.
 
@@ -183,6 +197,7 @@ Damit die Ausführung der Domänenvalidierung unter Verwendung der Weiterleitung
   * **Schritt 5:** Erstellen Sie einen A-Datensatz im DNS zwischen der CDN-Domäne und der IP-Adresse des Ursprungsservers.
 
 #### Konfiguration der Nginx-Weiterleitung
+{: #nginx-redirect-confguration}
 
   * **Schritt 1:** Melden Sie sich an dem System an, auf dem der Nginx-Server ausgeführt wird.
 
@@ -235,6 +250,7 @@ Damit die Ausführung der Domänenvalidierung unter Verwendung der Weiterleitung
   * **Schritt 5:** Erstellen Sie einen A-Datensatz im DNS zwischen der CDN-Domäne und der IP-Adresse des Ursprungsservers.
 
 #### Funktion der Weiterleitung sicherstellen
+{: #verify-that-the-redirect-is-occurring}
 
 Mit diesen Schritten wird _ausschließlich_ der Datenverkehr für eine bestimmte Abfrage-URL zur URL-Weiterleitung umgeleitet. Sie können mithilfe von `curl` oder über den Browser überprüfen, ob die Weiterleitung ordnungsgemäß funktioniert.
 
@@ -249,6 +265,7 @@ Mit diesen Schritten wird _ausschließlich_ der Datenverkehr für eine bestimmte
 In beiden Fällen sollten Sie in der Lage sein, die Kopie des Dateiobjekts für die Abfrage der Domänenvalidierung von Akamai unter der Domäne `dcv.akamai.com` abzurufen, zu der die ursprüngliche Anforderung weitergeleitet wurde.
 
 #### Bereinigung für Weiterleitungsmethode
+{: #clean-up-for-the-redirect-method}
 
 Gehen Sie wie folgt vor, wenn für die CDN-Instanz der Status **Zertifikat wird bereitgestellt** angezeigt wird:
 1. Entfernen Sie die Weiterleitungsanweisungen aus der Konfigurationsdatei (optional).

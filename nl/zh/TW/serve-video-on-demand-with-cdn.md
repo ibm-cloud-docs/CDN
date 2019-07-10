@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -21,6 +25,7 @@ lastupdated: "2019-02-19"
 在本手冊中將探索一個範例，說明如何利用 {{site.data.keyword.cloud}} CDN，將 `.mp4` 內容透過 **HLS**（作為隨選視訊），從 Linux-Nginx 原點串流至瀏覽器。 
 
 ## 簡介
+{: #introduction}
 
 串流視訊可使用許多格式，例如，HLS、MPEG-DASH 等等。 
 
@@ -36,6 +41,8 @@ $ sudo apt-get update
 ```
 
 ## 準備視訊檔案
+{: #prepare-video-files}
+
 在本手冊中，將使用 `ffmpeg` 來準備視訊檔案。其為適用於多媒體檔案的強大工具，可透過其各種指令來進行轉換、多工、解多工、過濾等等。
 
 首先，取得 `ffmpeg`。
@@ -135,10 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 如需更複雜的使用案例（例如，調整視訊解析度、使用字幕、基於安全及授權，在視訊片段上新增 HLS AES 加密，等等），`ffmpeg` 有許多其他引數選項可處理更複雜及特定的特性。您可以在 [ffmpeg 的一般文件](https://ffmpeg.org/ffmpeg.html)以及在其[特定格式（例如，HLS）的文件](https://ffmpeg.org/ffmpeg-formats.html#hls)中，找到這些引數的說明。
 
 ## 準備原點
+{: #prepare-the-origin}
+
 ### 伺服器
+{: #server}
+
 如果您將這個伺服器當作從中串流這些 HLS 之第二個網域下的其他原點使用，則可能需要將伺服器配置成傳回 CORS 回應標頭，以進行可能的瀏覽器存取。
 
 您可以將 HLS 檔案放在您喜歡的任何目錄或子目錄之下。此範例將 HLS 檔案放在 `/usr/share/nginx/hls/` 之下。
@@ -190,8 +203,10 @@ http {
 
 # Some more configurations for this main context...
 ```
+{: screen}
 
 ### 網頁上的視訊播放程式
+{: #video-player-on-the-webpage}
 
 並非所有多媒體串流視訊格式都可以在所有應用程式上原生播放。本手冊中的範例使用 HLS 及 CDN 來設定多媒體串流。
 
@@ -207,15 +222,18 @@ http {
   <!-- Some more HTML elements... -->
 </html>
 ```
+{: screen}
 
 然而，桌面裝置上的其他瀏覽器可能也需要附加 JavaScript [媒體源擴充](https://www.w3.org/TR/media-source/)的支援（不論是內部開發或來自具公信力的第三者），才能產生可透過 HTML5 播放的內容串流。
 
 ## 配置 CDN
+{: #configure-the-cdn}
+
 現在，將原點連接至 CDN，以最佳傳輸量、最小延遲以及提高的效能，向全球提供內容。
 
 首先，[訂購](/docs/infrastructure/CDN?topic=CDN-order-a-cdn)一個 CDN。
 
-接下來，[配置您的 CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn)，或者[新增原點](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin)。
+接下來，[配置您的 CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn)，或者[新增原點](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin)。
 
 最後，在`最佳化`之下，選取`隨選視訊最佳化`。
 

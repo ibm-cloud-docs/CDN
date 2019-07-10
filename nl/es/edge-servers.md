@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-02-25"
+
+keywords: edge servers, POPs, Akamai servers, list of servers, list of countries
+
+subcollection: CDN
 
 ---
 

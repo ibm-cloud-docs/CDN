@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-06-11"
+
+keywords: customer portal, Softlayer, login, legacy
+
+subcollection: CDN
 
 ---
 
@@ -15,7 +19,7 @@ lastupdated: "2019-02-19"
 {:download: .download}
 
 # Traditionelles Kundenportal
-{ #legacy-customer-portal}
+{: #legacy-customer-portal}
 
 Einige Kunden, die mit früheren Versionen arbeiten, können nur über `https://control.softlayer.com/` auf das {{site.data.keyword.cloud}}-Kundenportal zugreifen. Melden Sie sich wie im Folgenden beschrieben an und führen Sie dann die gewünschten Aktivitäten wie in der CDN-Dokumentation beschrieben aus.
 

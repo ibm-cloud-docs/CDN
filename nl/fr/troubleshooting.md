@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
+
+subcollection: CDN
 
 ---
 
@@ -20,6 +24,8 @@ lastupdated: "2019-02-19"
 Ce document présente différentes méthodes permettant de traiter les incidents liés à votre {{site.data.keyword.cloud}} CDN. Si vous avez besoin de contacter le support, prenez soin d'indiquer le numéro de référence de votre CDN.
 
 ## Comment savoir que mon CDN fonctionne correctement ?
+{: #how-do-I-know-my-cdn-is-working}
+
 Exécutez la commande `curl` suivante en remplaçant `http://your.cdn.domain/uri` par le chemin de fichier respectif sur votre CDN :
 
 `curl -I -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" http://your.cdn.domain/uri`
@@ -51,8 +57,10 @@ Si le résultat de la commande `curl` est semblable à l'exemple de format suiva
 
     X-Check-Cacheable: YES
 ```
+{: screen}
 
 ## J'ai reçu une erreur 503. Pourquoi ?
+{: #i-received-a-503-error-why}
 
 Le plus souvent, l'erreur 503 est générée lorsqu'il existe un problème lié à un certificat de la chaîne de certificats SSL.
 
@@ -66,17 +74,20 @@ Pour remédier au problème, assurez-vous que les certificats SSL de votre serve
   * Il ne doit **pas** être auto-signé
   * Il ne doit **pas** être arrivé à expiration
 
-Si vous avez vérifié la chaîne de certificats de votre serveur d'origine à l'aide des critères précédents et que l'erreur persiste, consultez la rubrique [Aide et support](/docs/infrastructure/CDN/getting-help.html#gettinghelp). Notez la chaîne d'erreur de référence et mentionnez-la lorsque vous communiquez avec nous.
+Si vous avez vérifié la chaîne de certificats de votre serveur d'origine à l'aide des critères précédents et que l'erreur persiste, consultez la rubrique [Aide et support](/docs/infrastructure/CDN?topic=CDN-gettinghelp). Notez la chaîne d'erreur de référence et mentionnez-la lorsque vous communiquez avec nous.
 
 ## Mon nom d'hôte n'est pas chargé sur le navigateur lorsqu'IBM Cloud Object Storage (COS) est le serveur d'origine
+{: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}
 
-Lorsque votre CDN IBM Cloud est configuré pour utiliser IBM COS comme stockage d'objets, l'accès direct au site Web ne fonctionne pas. Vous devez spécifier le chemin de demande complet dans la barre d'adresse du navigateur (par exemple, `www.example.com/index.html`). Ce comportement est provoqué par une limitation du document d'index dans IBM COS.
+Lorsque votre CDN {{site.data.keyword.cloud_notm}} est configuré pour utiliser COS comme stockage d'objets, l'accès direct au site Web ne fonctionne pas. Vous devez spécifier le chemin de demande complet dans la barre d'adresse du navigateur (par exemple, `www.example.com/index.html`). Ce comportement est provoqué par une limitation du document d'index dans IBM COS.
 
 ## Je ne parviens pas à me connecter via une commande `curl` ou un navigateur à l'aide du nom d'hôte avec HTTPS.
+{: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
 
 Si votre CDN a été créé en utilisant HTTPS avec un certificat générique, la connexion doit être établie à l'aide de l'enregistrement CNAME ; par exemple, `https://www.exampleCname.cdnedge.bluemix.net`. Cela inclut **tous** les CDN créés à l'aide de HTTPS avant le 18 juin 2018. Si vous essayez de vous connecter à l'aide du nom d'hôte, une erreur sera générée.
 
 ## Quel est le comportement attendu lors du chargement de l'enregistrement CNAME ou du nom d'hôte sur votre navigateur pour les protocoles pris en charge ?
+{: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
 
 Ce tableau présente le comportement attendu pour les protocoles pris en charge lors du chargement du **nom d'hôte** ou de l'enregistrement **CNAME** à partir de votre navigateur Web.
 
@@ -132,7 +143,7 @@ Ce tableau présente le comportement attendu pour les protocoles pris en charge 
 </tbody>
 </table>
 
-**Remarques :**
+**Messages d'erreur courants :**
 
 La plupart du temps, un message `301 Moved permanently` indique que vous tentez d'atteindre un CDN avec un protocole `HTTPS` ou `HTTP_AND_HTTPS` en utilisant le nom d'hôte. En raison d'une limitation du certificat générique HTTPS, vous **devez** utiliser l'enregistrement CNAME pour accéder à votre CDN.
 
@@ -140,6 +151,8 @@ Avec un protocole HTTP **uniquement**, vous recevez le message `301 Moved perman
 
 Le message `Access denied` s'affiche lorsque vous tentez d'atteindre un CDN à l'aide d'un protocole incorrecte. Vérifiez que vous utilisez `http` pour les CDN créés avec le protocole HTTP ou `https` pour les CDN créés avec le protocole HTTPS.
 
-Lorsqu'une URL est redirigée vers la page Web CD IBM Cloud, cela signifie le plus souvent que l'URL est incorrecte pour le protocole. Si votre CDN est créé avec un protocole HTTPS ou HTTPS_AND_HTTPS, vous devez utiliser l'enregistrement CNAME pour accéder à votre CDN. Par exemple : `https://examplecname.cdnedge.bluemix.net` pour les mappages HTTPS ou `http://examplecname.cdnedge.bluemix.net` ou `https://examplecname.cdnedge.bluemix.net` pour les mappages HTTP_AND_HTTPS.
+**Erreur de redirection possible :**
 
-L'URL est redirigée vers la page Web CDN IBM Cloud dans ce cas car le protocole et le domaine sont incorrects pour le protocole du CDN. Lorsqu'il est créé avec HTTP comme protocole _unique_, le CDN peut être atteint _uniquement_ via le nom d'hôte. Par exemple, `http://example.com`.
+Lorsqu'une URL est redirigée vers la page Web CDN {{site.data.keyword.cloud_notm}}, cela signifie le plus souvent que l'URL est incorrecte pour le protocole. Si votre CDN est créé avec un protocole HTTPS ou HTTPS_AND_HTTPS, vous devez utiliser l'enregistrement CNAME pour accéder à votre CDN. Par exemple : `https://examplecname.cdnedge.bluemix.net` pour les mappages HTTPS ou `http://examplecname.cdnedge.bluemix.net` ou `https://examplecname.cdnedge.bluemix.net` pour les mappages HTTP_AND_HTTPS.
+
+Dans ce cas, l'URL est redirigée vers la page Web CDN {{site.data.keyword.cloud_notm}} car le protocole et le domaine sont incorrects pour le protocole du CDN. Lorsqu'il est créé avec HTTP comme protocole _unique_, le CDN peut être atteint _uniquement_ via le nom d'hôte. Par exemple, `http://example.com`.

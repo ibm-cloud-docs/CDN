@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-05-21"
+
+keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
+
+subcollection: CDN
 
 ---
 
@@ -12,6 +16,7 @@ lastupdated: "2019-02-19"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -21,6 +26,7 @@ lastupdated: "2019-02-19"
 In diesem Dokument werden allgemeine Tasks für die Verwaltung Ihres CDN beschrieben.
 
 ## Zeitdauer für Inhalts-Caching mit 'Time To Live' festlegen
+{: #setting-content-caching-time-using-time-to-live}
 
 Wenn Ihr CDN aktiv ist, können Sie die Zeitdauer für das Inhalts-Caching über die Lebensdauer (Time To Live, TTL) festlegen. Die Lebensdauer für eine bestimmte Datei bzw. einen bestimmten Verzeichnispfad gibt an, wie lange der zugehörige Inhalt im Cache gespeichert werden soll. Beim Erstellen der CDN-Zuordnung wurde für die Lebensdauer (TTL) ein globaler Standardwert von 3600 Sekunden (1 Stunde) erstellt.
 
@@ -45,10 +51,12 @@ Nach dem Speichern können Sie die Einstellung für TTL mit den Optionen **Bearb
   * TTL-Werte können nur für einen bestimmten Dateinamen oder ein bestimmtes Verzeichnis festgelegt werden. Reguläre Ausdrücke werden nicht unterstützt, da sie zu unvorhersehbarem Verhalten führen können.
 
 ## Details für Ursprungspfad hinzufügen
+{: #adding-origin-path-details}
 
 Wenn Ihr CDN den Status *CNAME_Configuration* (CNAME wird konfiguriert) oder *Running* (Aktiv) aufweist, können Sie Details für den Ursprungspfad hinzufügen. Sie können angeben, dass Inhalte von mehreren Ursprungsservern bereitgestellt werden sollen. Zum Beispiel können Fotos von einem anderen Server bereitgestellt werden als Videos. Als Ursprung kann ein Host-Server oder ein Objektspeicher dienen.
 
-**Hinweis:** Das CDN führt eine URL-Umsetzung für den Ursprungsserver durch. Beispiel: Wenn der Ursprungsserver `xyz.example.com` mit dem Pfad `/example/*` hinzugefügt wurde und ein Benutzer die URL `www.example.com/example/*` öffnet ruft der CDN-Edge-Server den Inhalt von `xyz.example.com/*` ab.
+Das CDN führt eine URL-Umsetzung für den Ursprungsserver durch. Beispiel: Wenn der Ursprungsserver `xyz.example.com` mit dem Pfad `/example/*` hinzugefügt wurde und ein Benutzer die URL `www.example.com/example/*` öffnet ruft der CDN-Edge-Server den Inhalt von `xyz.example.com/*` ab.
+{: note}
 
 **Schritt 1:**
 
@@ -80,21 +88,23 @@ Wählen Sie entweder **Server** oder **Objektspeicher** aus.
 
   * Die Optionen **Optimierung** und **Cacheschlüssel** sind für die Serverkonfiguration und die Objektspeicherkonfiguration (Object Storage) gleich.
 
-    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](/docs/infrastructure/CDN/feature-descriptions.html#large-file-optimization) und [Video-on-Demand](/docs/infrastructure/CDN/feature-descriptions.html#video-on-demand) enthalten weitere Informationen.
+    * Wählen Sie Optionen für **Optimierung** im Dropdown-Menü aus. **Allgemeine Webbereitstellung** ist die Standardoption. Sie können auch die Optimierungen **Große Datei** oder **Video-on-Demand** auswählen. Die Option **Allgemeine Webbereitstellung** gibt dem CDN die Möglichkeit, Inhalt bis zu einer Größe von 1,8 GB zu bedienen, während die Optimierung **Große Datei** Downloads von Dateien mit Größen zwischen 1,8 GB und 320 GB zulässt. **Video-on-Demand** optimiert Ihr CDN für die Bereitstellung von segmentierten Streamingformaten. Die Funktionsbeschreibungen für [Optimierung für große Dateien](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization) und [Video-on-Demand](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand) enthalten weitere Informationen.
 
         ![Optionen für die Leistungskonfiguration](images/performance-config-options.png)
 
-    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](/docs/infrastructure/CDN/feature-descriptions.html#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
+    * Wählen Sie Optionen für **Cacheschlüssel** im Dropdown-Menü aus. Die Standardoption ist **Alle einschließen** (Include-all). Wenn Sie die Option **Angegebene einschließen** oder **Angegebene ignorieren** auswählen, **müssen** Sie durch Leerzeichen getrennte Abfragezeichenfolgen für einzuschließende oder zu ignorierende Inhalte eingeben. Beispiel: Geben Sie als einzelne Abfragezeichenfolge `uuid=123456` oder zwei Abfragezeichenfolgen wie `uuid=123456 issue=important` ein.  Weitere Informationen zu [Abfrageargumenten im Cacheschlüssel](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-query-args) finden Sie in der Funktionsbeschreibung.
 
         ![Optionen für Cacheschlüssel](images/cache-key-options.png)
 
-**Hinweis:** Die Optionen für Protokoll und Port, die in der Benutzerschnittstelle angezeigt werden, entsprechen der Auswahl, die Sie bei der Bestellung des CDN angegeben haben. Beispiel: Wenn **HTTP-Port** bei der Bestellung eines CDN ausgewählt wurde, wird nur die Option **HTTP-Port** für die Funktion 'Ursprung hinzufügen' angezeigt.
+Die Optionen für Protokoll und Port, die in der Benutzerschnittstelle angezeigt werden, entsprechen der Auswahl, die Sie bei der Bestellung des CDN angegeben haben. Beispiel: Wenn **HTTP-Port** bei der Bestellung eines CDN ausgewählt wurde, wird nur die Option **HTTP-Port** für die Funktion 'Ursprung hinzufügen' angezeigt.
+{: note}
 
 **Schritt 5:**
 
 Wählen Sie die Schaltfläche **Hinzufügen** aus, um Ihren Ursprungspfad hinzuzufügen.
 
-  **Hinweis:** Wenn Sie Dateierweiterungen für einen Objektspeicherursprungspfad angeben, wird der Geltungsbereich der TTL-Einstellung mit derselben URL wie der Ursprungspfad angepasst, um alle Dateien einzuschließen, die diese angegebenen Dateierweiterungen haben. Beispiel: Wenn Sie den Ursprungspfad `/example` erstellen und die Dateierweiterungen "jpg png gif" angeben, hat der TTL-Wert des TTL-Pfads `/example` einen Geltungsbereich, der alle Dateien mit den Erweiterungen JPG/PNG/GIF unter dem Verzeichnis `/example` und den zugehörigen Unterverzeichnissen einschließt.
+Wenn Sie Dateierweiterungen für einen Objektspeicherursprungspfad angeben, wird der Geltungsbereich der TTL-Einstellung mit derselben URL wie der Ursprungspfad angepasst, um alle Dateien einzuschließen, die diese angegebenen Dateierweiterungen haben. Beispiel: Wenn Sie den Ursprungspfad `/example` erstellen und die Dateierweiterungen "jpg png gif" angeben, hat der TTL-Wert des TTL-Pfads `/example` einen Geltungsbereich, der alle Dateien mit den Erweiterungen JPG/PNG/GIF unter dem Verzeichnis `/example` und den zugehörigen Unterverzeichnissen einschließt.
+{: note}
 
 **Schritt 6:**
 
@@ -103,6 +113,7 @@ Nach dem Hinzufügen können Sie die den Ursprung mit den Optionen **Bearbeiten*
   ![Ursprung bearbeiten oder löschen](images/edit-delete-origin.png)
 
 ## Cacheinhalt bereinigen
+{: #purging-cached-content}
 
 Wenn Ihr CDN aktiv ist, können Sie Cacheinhalte auf dem Server des Anbieters bereinigen.
 
@@ -118,7 +129,7 @@ Wählen Sie die Registerkarte **Bereinigen** aus.
 
 **Schritt 3:**
 
-Geben Sie unter Verwendung der UNIX-Standardpfadsyntax an, welche Datei bereinigt werden soll, und wählen Sie anschließend die Schaltfläche **Bereinigen** aus. Das Bereinigungen ist gegenwärtig nur für eine einzelne Datei zulässig. Weitere Details zur zulässigen Syntax für den Bereinigungspfad finden Sie auf der Seite [Regeln und Namenskonventionen](/docs/infrastructure/CDN/rules-and-naming-conventions.html#what-are-the-rules-for-the-path-string-for-purge-).
+Geben Sie unter Verwendung der UNIX-Standardpfadsyntax an, welche Datei bereinigt werden soll, und wählen Sie anschließend die Schaltfläche **Bereinigen** aus. Das Bereinigungen ist gegenwärtig nur für eine einzelne Datei zulässig. Weitere Details zur zulässigen Syntax für den Bereinigungspfad finden Sie auf der Seite [Regeln und Namenskonventionen](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-).
 
 **Schritt 4:**
 
@@ -126,9 +137,11 @@ Nach dem Bereinigen wird die Aktivität unter **Bereinigungsaktivität** aufgeli
 
    ![Bereinigungsaktivität](images/purge-activity.png)
 
-   **Hinweis:** Wenn mehr als 15 Bereinigungsaktionen vorhanden sind wird die Liste 'Bereinigungsaktivität' alle 15 Tage automatisch abgeschnitten.
+Wenn mehr als 15 Bereinigungsaktionen vorhanden sind wird die Liste 'Bereinigungsaktivität' alle 15 Tage automatisch abgeschnitten.
+{: note}
 
 ## CDN-Konfigurationsdetails aktualisieren
+{: #updating-cdn-configuration-details}
 
 Wenn Ihr CDN aktiv ist, können Sie die CDN-Konfigurationsdetails ändern.
 
@@ -141,7 +154,9 @@ Wählen Sie auf der Seite 'CDN' Ihr CDN aus, um die Seite **Übersicht** zu öff
 Wählen Sie die Registerkarte **Einstellungen** aus. Die Konfigurationsdetails für Ihr CDN werden angezeigt.
 
    ![Registerkarte 'Einstellungen'](images/settings-tab.png)  
-   **HINWEIS:** SSL-Zertifikate werden nur angezeigt, wenn CDN mit HTTPS konfiguriert wurde.
+
+SSL-Zertifikate werden nur angezeigt, wenn CDN mit HTTPS konfiguriert wurde.
+{: note}
 
 Für **Server** können die folgenden Felder geändert werden:
   * Host-Header
@@ -168,21 +183,3 @@ Für **Objektspeicher** (Object Storage) können die folgenden Felder geändert 
 Aktualisieren Sie bei Bedarf die Details für **Ursprung** oder **Weitere Optionen** und klicken Sie anschließend auf die Schaltfläche **Speichern** in der rechten unteren Ecke, um Ihre CDN-Konfigurationsdetails zu aktualisieren.
 
    ![Schaltfläche 'Speichern'](images/save-button.png)
-
-## IBM Cloud Object Storage für CDN konfigurieren
-
-Um in IBM Cloud Object Storage gespeicherte Objekte zu verwenden, müssen Sie als Wert für die Eigenschaft 'acl' (Access Control List, Zugriffssteuerungsliste) für jedes Objekt in Ihrem Bucket den Zugriff 'public-read' festlegen.
-
-Informationen zum Installieren der erforderlichen Clients oder Tools finden Sie im Abschnitt für [IBM Cloud Object Storage-Entwickler](https://{DomainName}/docs/services/cloud-object-storage/basics/developers.html#for-developers). Diese Anleitung geht davon aus, dass Sie die offizielle Befehlszeilenschnittstelle AWS installiert haben, die mit der IBM Cloud Object Storage S3-API kompatibel ist.
-
-Der folgende Beispielcode zeigt, wie der Zugriff 'public-read' für alle Objekt in Ihrem Bucket über die Befehlszeilenschnittstelle festgelegt wird.
-
-```
-$ export ENDPOINT="YOUR_ENDPOINT"
-$ export BUCKET="IHR_BUCKET"
-$ KEYS=( "$(aws --endpoint-url "$ENDPOINT" s3api list-objects --no-paginate --query 'Contents[].{key: Key}' --output text --bucket "$BUCKET")" )
-$ for KEY in "${KEYS[@]}"
-  > do
-  >   aws --endpoint-url "$ENDPOINT" s3api put-object-acl --bucket "$BUCKET" --key "$KEY" --acl "public-read"
-  > done
-```

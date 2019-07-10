@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+
+subcollection: CDN
 
 ---
 
@@ -21,6 +25,7 @@ lastupdated: "2019-02-19"
 Dans ce guide, nous examinerons un exemple d'optimisation d'{{site.data.keyword.cloud}} CDN afin de diffuser du contenu `.mp4` via **HLS** en vidéo à la demande sur un navigateur à partir d'un serveur d'origine Linux-Nginx. 
 
 ## Introduction
+{: #introduction}
 
 De nombreux formats, tels que HLS, MPEG-DASH, etc., sont disponibles pour diffuser de la vidéo. 
 
@@ -36,6 +41,8 @@ $ sudo apt-get update
 ```
 
 ## Préparation des fichiers vidéo
+{: #prepare-video-files}
+
 Dans ce guide, nous utiliserons `ffmpeg` pour préparer les fichiers vidéo. C'est un outil puissant dont les diverses commandes permettent de convertir, mutiplexer, démultiplexer, filtrer, etc., des fichiers multimédia.
 
 Procurons-nous d'abord `ffmpeg`.
@@ -45,7 +52,7 @@ $ sudo apt-get -y install ffmpeg
 
 HLS travaille avec deux types de fichier : `.m3u8` et `.ts`. Vous pouvez considérer le fichier `.m3u8` comme la "liste de lecture". Lorsque commence la diffusion vidéo, ce fichier est le premier extrait.  La liste de lecture indique ensuite au lecteur vidéo les fragments vidéo qu'il doit extraire et fournit d'autres données sur la manière de lire avec succès le contenu diffusé. Les fichiers `.ts` sont les "fragments" vidéo. Ces fragments sont extraits et lus par le lecteur vidéo selon les informations fournies dans la "liste de lecture".
 
-Maintenant, vérifions et examinons le format, le débit binaire et d'autres informations, concernant les flux vidéo et audio de votre vidéo `.mp4` source.
+A présent, vérifions et examinons le format, le débit binaire et d'autres informations, concernant les flux vidéo et audio de votre vidéo `.mp4` source.
 
 ```
 $ ffprobe test-video.mp4 
@@ -80,15 +87,15 @@ Voici le détail de ce que cette commande a effectué :
 | -b:a 128k | Définition du débit binaire audio sur 128000 octets par seconde pour la sortie. |
 | -c:v h264 | Utilisation du codec vidéo `h.264` pour la sortie. |
 | -profile:v main | Utilisation du profil de format "main" du codec sélectionné pour la plus large prise en charge de périphériques. |
-| -crf 23 | Tentative de conservation de la qualité vidéo avec des tailles de fichier et débits binaires variables.<br/>  Plus la valeur de CRF est élevée, plus la qualité est bonne et la taille de fichier élevée. |
-| -g 61 -keyint_min 61 | Définition d'un maximum et d'un minimum.<br/> Avec une fréquence des images source dans l'exemple de 30,30, une image clé devrait être <br/> insérée toutes les 2 secondes (61 trames). |
+| -crf 23 | Tentative de conservation de la qualité vidéo avec des tailles de fichier et débits binaires variables.<br/> Plus la valeur de CRF est élevée, plus la qualité est bonne et la taille de fichier élevée. |
+| -g 61 -keyint_min 61 | Définition d'un maximum et d'un minimum.<br/> Avec une fréquence des images source dans l'exemple de 30,30, une image clé devrait être<br/> insérée toutes les 2 secondes (61 images). |
 | -sc_threshold 0 | Désactivation de la détection des scènes par `ffmpeg`.<br/> Evite un second traitement qui pourrait insérer des images clés superflues dans la sortie. |
 | -b:v 5300k | Définition du débit binaire cible du flux vidéo de sortie à 5300000 octets/seconde. |
 | -maxrate 5300k | Limitation du débit binaire vidéo de sortie maximum au niveau<br/> du décodeur à 5300000 octets/seconde, au cas où il varie. |
-| -bufsize 10600k | Définition de la taille de la mémoire tampon du décodeur vidéo `ffmpeg` sur 10600000 octets.<br/>  Avec un débit binaire de 5300k, le décodeur `ffmpeg` devrait vérifier et tenter de réajuster le <br/> débit binaire de sortie au niveau du débit binaire cible toutes les 2 secondes de vidéo. |
+| -bufsize 10600k | Définition de la taille de la mémoire tampon du décodeur vidéo `ffmpeg` sur 10600000 octets.<br/> Avec un débit binaire de 5300k, le décodeur `ffmpeg` devrait vérifier et tenter de réajuster <br/> le débit binaire de sortie au niveau du débit binaire cible toutes les 2 secondes de vidéo. |
 | -hls_time 6 | Tentative de ciblage de la longueur de chaque fragment vidéo en sortie à 6 secondes.<br/> Accumule des trames pour au moins 6 secondes de vidéo, puis<br/> arrête de séparer un fragment vidéo lorsqu'il arrive à l'image clé suivante. |
 | -hls_playlist_type vod | Préparation du fichier de liste de lecture `.m3u8` de sortie pour la vidéo à la demande (VOD). |
-| test-video.m3u8 | Nom du fichier de liste de lecture/manifeste de sortie `test-video.m3u8`.<br/> Par conséquent, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., et noms similaires,<br/> seront les noms de fragment vidéo par défaut.|
+| test-video.m3u8 | Nom du fichier de liste de lecture/manifeste de sortie `test-video.m3u8`.<br/> Par conséquent, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., et similaires<br/> seront les noms de fragment vidéo par défaut.|
 
 Pour les options `-`, à moins qu'un flux soit spécifié, le "meilleur" de sa catégorie est sélectionné.
 
@@ -135,10 +142,16 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
+{: screen}
+
 Pour les cas d'utilisation plus complexes (par exemple, la mise à l'échelle de résolution vidéo, l'utilisation de sous-titres, le chiffrement AES HLS sur des fragments vidéo pour la sécurité et les autorisations, etc.) `ffmpeg` dispose de nombreuses autres options d'argument à même de prendre en charge les fonctionnalités les plus complexes et spécifiques. Vous trouverez la description de ces arguments dans la [documentation générale de ffmpeg](https://ffmpeg.org/ffmpeg.html) et dans sa [documentation sur les formats spécifiques tels que HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Préparation du serveur d'origine
+{: #prepare-the-origin}
+
 ### Serveur
+{: #server}
+
 Si vous utilisez ce serveur en tant que serveur d'origine supplémentaire sous un second domaine à partir duquel diffuser ces fichiers HLS, vous devrez sans doute configurer le serveur de manière à renvoyer des en-têtes de réponse CORS pour les accès à des navigateurs potentiels.
 
 Vous pouvez placer les fichiers HLS dans n'importe quel répertoire ou sous-répertoire qui vous convient. Pour cet exemple, plaçons les fichiers HLS dans `/usr/share/nginx/hls/`.
@@ -190,8 +203,10 @@ http {
 
 # Some more configurations for this main context...
 ```
+{: screen}
 
 ### Lecteur vidéo sur la page Web
+{: #video-player-on-the-webpage}
 
 Il est possible que les formats de flux vidéo ne soient pas tous lisibles en natif sur toutes les applications. L'exemple donné dans ce guide configure le flux à l'aide de HLS et CDN.
 
@@ -207,15 +222,18 @@ Par exemple, Safari prend en charge la relecture HLS native. Ainsi, le lecteur v
   <!-- Some more HTML elements... -->
 </html>
 ```
+{: screen}
 
 Toutefois, d'autres navigateurs sur des périphériques de bureau peuvent également nécessiter une prise en charge depuis un JavaScript ajouté d'[extensions de source média](https://www.w3.org/TR/media-source/), développé en interne ou par un tiers de confiance, afin de générer des flux de contenu lisibles via HTML5.
 
 ## Configuration du CDN
+{: #configure-the-cdn}
+
 Connectons maintenant le serveur d'origine au CDN afin de diffuser du contenu dans le monde entier avec débit optimal, une latence réduite et de meilleures performances.
 
 Tout d'abord, [commandez](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) un CDN.
 
-Ensuite, [configurez votre CDN](/docs/infrastructure/CDN?topic=CDN-step-2-name-your-cdn) ou [ajoutez un serveur d'origine](/docs/infrastructure/CDN?topic=CDN-step-3-configure-your-origin).
+Ensuite, [configurez votre CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) ou [ajoutez un serveur d'origine](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
 Enfin, sous `Optimize For`, sélectionnez `Video on demand optimization`.
 

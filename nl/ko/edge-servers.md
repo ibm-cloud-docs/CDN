@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2018, 2019
+lastupdated: "2019-02-25"
+
+keywords: edge servers, POPs, Akamai servers, list of servers, list of countries
+
+subcollection: CDN
 
 ---
 
@@ -14,6 +18,7 @@ lastupdated: "2018-09-05"
 {:tip: .tip}
 
 # 에지 서버의 목록
+{: #list-of-edge-servers}
 
 다음은 사용 중인 Akamai의 POP를 사용하는 국가 목록입니다.
 

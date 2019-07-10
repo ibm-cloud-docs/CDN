@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-04"
+
+keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
+
+subcollection: CDN
 
 ---
 
@@ -20,6 +24,8 @@ lastupdated: "2019-02-19"
 在本文件中，您將找到進行 {{site.data.keyword.cloud}} CDN 疑難排解的各種方式。如果您需要與支援中心聯絡，請務必提供 CDN 的參照號碼。
 
 ## 如何知道 CDN 正常運作？
+{: #how-do-I-know-my-cdn-is-working}
+
 請將 `http://your.cdn.domain/uri` 取代為 CDN 上的個別檔案路徑，以執行下列 `curl` 指令：
 
 `curl -I -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" http://your.cdn.domain/uri`
@@ -51,8 +57,10 @@ lastupdated: "2019-02-19"
 
     X-Check-Cacheable: YES
 ```
+{: screen}
 
 ## 我收到 503 錯誤。為什麼？
+{: #i-received-a-503-error-why}
 
 我們最常看見的 503 錯誤原因，是因為 SSL 憑證鏈中的憑證問題。
 
@@ -66,17 +74,20 @@ lastupdated: "2019-02-19"
   * 它**不得**為自簽
   * 它**不得**過期
 
-如果您已使用先前的準則驗證原點的憑證鏈，而仍然遇到相同的錯誤，請參閱[取得協助及支援](/docs/infrastructure/CDN/getting-help.html#gettinghelp)頁面。請記下參照錯誤字串，並將它包含在與我們的任何通訊裡。
+如果您已使用先前的準則驗證原點的憑證鏈，而仍然遇到相同的錯誤，請參閱[取得協助及支援](/docs/infrastructure/CDN?topic=CDN-gettinghelp)頁面。請記下參照錯誤字串，並將它包含在與我們的任何通訊裡。
 
 ## IBM Cloud Object Storage (COS) 為原點時，我的主機名稱無法在瀏覽器上載入。
+{: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}
 
-當您的 IBM Cloud CDN 配置為使用 IBM COS 作為物件儲存空間時，將無法直接存取網站。您必須在瀏覽器的位址列指定完整要求路徑（例如 `www.example.com/index.html`）。此行為是由 IBM COS 中的索引文件限制所導致。
+當您的 {{site.data.keyword.cloud_notm}} CDN 配置為使用 COS 作為物件儲存空間時，將無法直接存取網站。您必須在瀏覽器的位址列指定完整要求路徑（例如 `www.example.com/index.html`）。此行為是由 IBM COS 中的索引文件限制所導致。
 
 ## 我無法透過 `curl` 指令或瀏覽器，使用主機名稱搭配 HTTPS 來連接。
+{: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
 
 如果您的 CDN 建立時是使用 HTTPS 搭配萬用字元憑證，則必須使用 CNAME 來建立連線，例如 `https://www.exampleCname.cdnedge.bluemix.net`。這包括**所有**在 2018 年 6 月 18 日之前使用 HTTPS 建立的 CDN。嘗試使用主機名稱連接會導致錯誤。
 
 ## 在您的瀏覽器上針對支援的通訊協定載入 CNAME 或主機名稱時，預期的行為為何？
+{: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
 
 此表格顯示在從 Web 瀏覽器載入**主機名稱**或 **CNAME** 時，針對支援通訊協定的預期行為。
 
@@ -132,7 +143,7 @@ lastupdated: "2019-02-19"
 </tbody>
 </table>
 
-**附註：**
+**一般錯誤訊息：**
 
 `301 Moved permanently` 訊息最可能表示您正在嘗試使用 `HTTPS` 或 `HTTP_AND_HTTPS` 通訊協定搭配主機名稱呼叫到 CDN。由於 HTTPS 萬用字元憑證的限制，您**必須**使用 CNAME 來存取 CDN。
 
@@ -140,6 +151,8 @@ lastupdated: "2019-02-19"
 
 當您嘗試使用不正確的通訊協定呼叫到 CDN 時，會看到 `Access denied` 訊息。請確定您針對以 HTTP 通訊協定建立的 CDN 使用 `http`，或是針對以 HTTPS 通訊協定建立的 CDN 使用 `https`。
 
-將 URL 重新導向至 IBM Cloud CDN 網頁的行為，最常在 URL 對通訊協定而言不正確的時候看到。如果您的 CDN 是使用 HTTPS 或 HTTPS_AND_HTTPS 通訊協定建立，您必須使用 CNAME 來存取 CDN。例如：`https://examplecname.cdnedge.bluemix.net` 適用於 HTTPS 對映，`http://examplecname.cdnedge.bluemix.net` 或 `https://examplecname.cdnedge.bluemix.net` 則適用於 HTTP_AND_HTTPS 對映。
+**可能的重新導向錯誤：**
 
-在此情況下，URL 會重新導向至 IBM Cloud CDN 網頁，因為通訊協定及網域對於 CDN 的通訊協定而言都不正確。對以使用 HTTP 作為_唯一_ 通訊協定建立的 CDN，_只能_ 藉由主機名稱呼叫到它。例如 `http://example.com`。
+將 URL 重新導向至 {{site.data.keyword.cloud_notm}} CDN 網頁的行為，最常在 URL 對通訊協定而言不正確的時候看到。如果您的 CDN 是使用 HTTPS 或 HTTPS_AND_HTTPS 通訊協定建立，您必須使用 CNAME 來存取 CDN。例如：`https://examplecname.cdnedge.bluemix.net` 適用於 HTTPS 對映，`http://examplecname.cdnedge.bluemix.net` 或 `https://examplecname.cdnedge.bluemix.net` 則適用於 HTTP_AND_HTTPS 對映。
+
+在此情況下，URL 會重新導向至 {{site.data.keyword.cloud_notm}} CDN 網頁，因為通訊協定和網域兩者對於 CDN 的通訊協定而言都不正確。對以使用 HTTP 作為_唯一_ 通訊協定建立的 CDN，_只能_ 藉由主機名稱呼叫到它。例如 `http://example.com`。

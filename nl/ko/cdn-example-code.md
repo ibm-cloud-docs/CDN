@@ -1,8 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-07-13"
+  years: 2017, 2018, 2019
+lastupdated: "2019-05-21"
+
+keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+
+subcollection: CDN
 
 ---
 
@@ -12,15 +16,19 @@ lastupdated: "2018-07-13"
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
 
 # CDN API를 사용하는 코드 예제
+{: #code-examples-using-the-cdn-api}
 
 이 문서에는 다양한 CDN API의 결과 출력과 예제 API 호출이 포함되어 있습니다.
 
 ## 모든 API 호출에 필요한 일반 단계
+{: #general-steps-needed-for-all-api-calls}
 
-전제조건은 https://github.com/softlayer/softlayer-api-php-client 에서 Soap 클라이언트를 다운로드해서 설치하는 것입니다.
+전제조건을 보려면 [https://github.com/softlayer/softlayer-api-php-client ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/softlayer/softlayer-api-php-client)에서 Soap 클라이언트를 다운로드하여 설치하십시오.
 
   * `vendor/autoload`를 통해 SoapClient에 액세스해야 합니다. 경로는 스크립트가 실행되는 위치에 상대적이며 적절하게 수정해야 할 수 있습니다. PHP에서 명령문은 다음과 비슷합니다. `require_once './../vendor/autoload.php';`
 
@@ -28,7 +36,7 @@ lastupdated: "2018-07-13"
       require_once __DIR__.'/vendor/autoload.php';
       ```
 
-  * 모든 API 호출은 사용자 이름과 apiKey를 사용하여 인증됩니다. apiKey를 생성하는 방법에 대한 자세한 정보는 [시작하기](https://softlayer.github.io/article/getting-started/) 페이지의 "API 키 가져오기"에 있습니다.
+  * 모든 API 호출은 사용자 이름과 apiKey를 사용하여 인증됩니다. apiKey를 생성하는 방법에 대한 자세한 정보는 [Softlayer API 시작하기 페이지 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://softlayer.github.io/article/getting-started/) 페이지의 "API 키 가져오기"에 있습니다.
 
       ```php
       $apiUsername = '<Your username>' ;
@@ -37,6 +45,7 @@ lastupdated: "2018-07-13"
   * 해당 클래스의 SoapClient를 초기화하십시오.
 
 ## 벤더 나열의 예제 코드
+{: #example-code-for-listing-vendors}
 
 이 경우 `listVendors` API를 정의하는 SoftLayer_Network_CdnMarketplace_Vendor 클래스이고 매개변수로 `\SoftLayer\SoapClient::getClient()`에 전달해야 합니다. 도메인 맵핑을 작성할 때 활성 벤더의 이름이 필요합니다.
 
@@ -70,8 +79,9 @@ Array
 {: codeblock}
 
 ## 주문 확인을 위한 예제 코드
+{: #example-code-to-verify-order}
 
-주문하기 전에 `verifyOrder`를 호출하는 것이 권장되지만 필수는 아닙니다. `placeOrder`이 후속 호출이 성공적인지 확인하는 데 사용할 수 있습니다. `verifyOrder`에 대한 자세한 정보는 [SoftLayer API 문서](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/)에 있습니다.
+주문하기 전에 `verifyOrder`를 호출하는 것이 권장되지만 필수는 아닙니다. `placeOrder`이 후속 호출이 성공적인지 확인하는 데 사용할 수 있습니다. `verifyOrder`에 대한 자세한 정보는 [SoftLayer API 문서![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/)에 있습니다.
 
 이 경우 verifyOrder 메소드를 정의하는 `SoftLayer_Product_Order` 클래스이고 매개변수로 `\SoftLayer\SoapClient::getClient()`에 전달해야 합니다. `verifyOrder`를 호출하기 전에 `SoftLayer_Product_Package`를 사용하여 `$orderObject`를 빌드해야 합니다.
 
@@ -125,8 +135,9 @@ catch (\Exception $e) {
 
 
 ## 주문 배치를 위한 예제 코드
+{: #example-code-to-place-order}
 
-이 API 호출은 `verifyOrder`가 아니라 `placeOrder`를 호출한다는 점을 제외하고는 이전 코드 예제와 동일합니다. `placeOrder`에 대한 자세한 정보는 [SoftLayer API 문서](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/)에 있습니다.
+이 API 호출은 `verifyOrder`가 아니라 `placeOrder`를 호출한다는 점을 제외하고는 이전 코드 예제와 동일합니다. `placeOrder`에 대한 자세한 정보는 [SoftLayer API 문서![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/)에 있습니다.
 
 ```php
 
@@ -179,10 +190,12 @@ catch (\Exception $e) {
 
 
 ## CDN 작성 또는 도메인 맵핑 작성을 위한 예제 코드
+{: #example-code-to-create-cdn-or-create-domain-mapping}
 
 이 예에서는 `createDomainMapping` API를 사용하여 새로운 CDN 맵핑을 작성하는 방법을 보여줍니다. `stdClass` 오브젝트의 매개변수 하나를 사용합니다. SoapClient는 다음 예에 표시된 대로 `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` 클래스를 사용하여 초기화해야 합니다.
 
-**참고**: 사용자 정의 CNAME을 제공하도록 선택하는 경우 `.cdnedge.bluemix.net`으로 종료**되어야** 합니다. 그렇지 않으면 오류로 처리됩니다. 고유 CNAME을 제공하는 데 관한 규칙은 [이 설명](rules-and-naming-conventions.html#what-are-the-custom-cname-naming-conventions-)을 참조하십시오.
+사용자 정의 CNAME을 제공하도록 선택하는 경우 `.cdnedge.bluemix.net`으로 종료**되어야** 합니다. 그렇지 않으면 오류로 처리됩니다. 고유 CNAME을 제공하는 데 관한 규칙은 [이 설명](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-)을 참조하십시오.
+{: important}
 
 ```php
 
@@ -259,6 +272,7 @@ Array
 {: codeblock}
 
 ## 도메인 맵핑 확인을 위한 예제 코드
+{: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping에서는 CNAME 구성이 완료되었는지 확인하고, 그런 경우 CDN 상태를 RUNNING 상태로 이동합니다. `verifyDomainMapping`을 호출하기 전에 사용자 정의 호스트 이름의 CNAME 레코드를 DNS 서버에 추가해야 합니다.
 
@@ -286,8 +300,7 @@ try {
 ```
 {: codeblock}
 
-CNAME 레코드가 DNS 서버에 추가된 경우
-다음 예에 표시된 대로 `verifyDomainMapping`을 호출한 후 CDN의 `status`가 RUNNING으로 변경됩니다.
+CNAME 레코드가 DNS 서버에 추가된 경우 다음 예에 표시된 대로 `verifyDomainMapping`을 호출한 후 CDN의 `status`가 RUNNING으로 변경됩니다.
 
 ```php
 
@@ -306,7 +319,8 @@ CNAME 레코드가 DNS 서버에 추가된 경우
 
 CNAME 레코드가 DNS 서버에 추가되지 않거나 서버가 아직 업데이트되지 않은 경우 다음 예에 표시된 대로 CDN의 `status`가 CNAME_CONFIGURATION이 됩니다.
 
-**참고** CNAME 체인이 완료되려면 몇 분(최대 30분)이 소요될 수 있습니다.
+CNAME 체인이 완료되려면 몇 분(최대 30분)이 소요될 수 있습니다.
+{: note}
 
 ```php
 Array
@@ -325,7 +339,7 @@ Array
 ```
 {: codeblock}
 
-CNAME 레코드가 올바르게 구성되었는지 확인하려면 명령행에서 `dig <your domain>`를 실행하십시오. 출력은 다음과 비슷해야 합니다.
+CNAME 레코드가 올바르게 구성되었는지 확인하려면 명령행에서 `dig <your domain>`을 실행하십시오. 출력은 다음과 같습니다.
 
 ```
 ;; ANSWER SECTION:

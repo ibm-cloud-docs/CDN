@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-19"
+lastupdated: "2019-04-03"
+
+keywords: content delivery network, web content, caching, edge servers, streaming content
+
+subcollection: CDN
 
 ---
 
@@ -22,15 +26,16 @@ que solicita o conteúdo. Essa técnica permite que seus usuários finais receba
 experiência geral melhor para seus clientes.
 
 ## Como um CDN funciona?
+{: #how-does-a-cdn-work}
 
 Um CDN atinge o seu propósito armazenando em cache o conteúdo da web em servidores de ponta ao redor do mundo. Quando um
 cliente solicita o conteúdo da web, a solicitação de conteúdo é roteada para o servidor de borda que estiver geograficamente mais
-próximo a esse cliente. Reduzindo a distância que o conteúdo deve viajar, o CDN oferece rendimento otimizado, latência minimizada e aumento de desempenho. Usando o IBM Cloud Content Delivery Network com o Akamai, os provedores de conteúdo podem realizar a entrega eficiente do conteúdo
-solicitado de todo o mundo, com configuração mínima.
+próximo a esse cliente. Reduzindo a distância que o conteúdo deve viajar, o CDN oferece rendimento otimizado, latência minimizada e aumento de desempenho. Usando o {{site.data.keyword.cloud}} Content Delivery Network com o Akamai, os provedores de conteúdo podem realizar entrega eficiente de conteúdo solicitado de todo o mundo, com configuração mínima.
 
 ![Diagrama CDN de alto nível](images/high-level-cdn-diagram.png)
 
 ## Recursos
+{: #features}
 
 Os recursos-chave do serviço {{site.data.keyword.cloud}} Content Delivery Network incluem:
   * Suporte de origem do servidor host
@@ -50,9 +55,10 @@ Os recursos-chave do serviço {{site.data.keyword.cloud}} Content Delivery Netwo
   * Controle de acesso geográfico
   * Hotlink Protection
 
-Consulte [o documento de descrições do recurso](/docs/infrastructure/CDN/feature-descriptions.html#feature-descriptions) para ver as descrições completas do recurso.
+Consulte [o documento de descrições do recurso](/docs/infrastructure/CDN?topic=CDN-feature-descriptions) para ver as descrições completas do recurso.
 
 ## Diagrama Arquitetural
+{: #architectural-diagram}
 
 O diagrama a seguir oferece uma visão geral esquemática da arquitetura de três camadas do IBM Cloud CDN.
 
