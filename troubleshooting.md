@@ -112,7 +112,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <td> `http://hostname` </td>
 <td> Successful load </td>
 <td> 301 Moved permanently </td>
-<td> Access denied<sup>*</sup> </td>
+<td> Access denied<sup>&#42;</sup> </td>
 <td> 301 Moved permanently </td>
 <td> Successful load </td>
 </tr>
@@ -127,7 +127,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <tr>
 		<td> `http://cname` </td>
 		<td> 301 Moved permanently </td>
-		<td> Access denied<sup>*</sup> </td>
+		<td> Access denied<sup>&#42;</sup> </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
