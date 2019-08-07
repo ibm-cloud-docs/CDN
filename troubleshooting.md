@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-08-06"
 
 keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
 
@@ -112,7 +112,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <td> `http://hostname` </td>
 <td> Successful load </td>
 <td> 301 Moved permanently </td>
-<td> Successful load </td>
+<td> Access denied<sup>*</sup> </td>
 <td> 301 Moved permanently </td>
 <td> Successful load </td>
 </tr>
@@ -127,7 +127,7 @@ This table shows the behavior expected for the supported protocols when loading 
 <tr>
 		<td> `http://cname` </td>
 		<td> 301 Moved permanently </td>
-		<td> Successful load </td>
+		<td> Access denied<sup>*</sup> </td>
 		<td> 301 Moved permanently </td>
 		<td> Successful load </td>
 		<td> 301 Moved permanently </td>
@@ -142,6 +142,8 @@ This table shows the behavior expected for the supported protocols when loading 
 </tr>
 </tbody>
 </table>
+
+<small>\* The expected behavior was changed to `Access denied` for the domain mappings created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.</small>
 
 **Common error messages:**
 
