@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-15"
+lastupdated: "2019-08-09"
 
 keywords: help, support, troubleshooting, stack overflow, forum, ticket, questions
 
@@ -19,6 +19,7 @@ subcollection: CDN
 {:tsResolve: .tsResolve} 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:external: target="_blank" .external}
 {:DomainName: data-hd-keyref="DomainName"}
 
 <!-- # {{site.data.keyword.blockstorageshort}} troubleshooting
@@ -44,10 +45,10 @@ If you have problems or questions when using CDN, you can get help by searching 
 
 When using the forums to ask a question, tag your question so that it is seen by the {{site.data.keyword.cloud_notm}} development teams.
 
-* If you have technical questions about CDN, post your question on [Stack Overflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://stackoverflow.com/search?q=cdn+ibm-cloud){:new_window} and tag your question with "cdn" and "ibm-cloud".
+* If you have technical questions about CDN, post your question on [Stack Overflow](https://stackoverflow.com/search?q=cdn+ibm-cloud){:external} and tag your question with "cdn" and "ibm-cloud".
 <!--Insert the appropriate dW Answers tag for your service for <service_keyword> in URL below:  -->
-* For questions about the service and getting started instructions, use the [IBM developerWorks dW Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:new_window} forum. Include the  "cdn" and "ibm-cloud" tags.
+* For questions about the service and getting started instructions, use the [IBM developerWorks dW Answers](https://developer.ibm.com/answers/topics/cdn.html?smartspace=bluemix){:external} forum. Include the  "cdn" and "ibm-cloud" tags.
 
-See [Getting help](/docs/get-support?topic=get-support-using-avatar#using-avatar) for more details about using the forums.
+See [Getting help](/docs/get-support?topic=get-support-getting-customer-support#using-avatar) for more details about using the forums.
 
 For information about opening an {{site.data.keyword.cloud}} support ticket, or about support levels and ticket severities, see [Contacting support](/docs/get-support?topic=get-support-getting-customer-support).

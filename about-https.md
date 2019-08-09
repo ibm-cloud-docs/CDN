@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-08-09"
 
 keywords: wildcard certificate, https, san certificate
 
@@ -22,7 +22,7 @@ subcollection: CDN
 # About HTTPS
 {: #about-https}
 
-{{site.data.keyword.cloud}} offers two ways to secure your CDN with HTTPS - Wildcard Certificate and Domain Validation (DV) SAN Certificate. Both HTTPS options can be configured by selecting **HTTPS Port** when configuring your CDN. The default HTTPS Port is 443, or you can choose a different port number to route your HTTPS traffic through. A list of allowed port numbers can be found in the [FAQ](docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
+{{site.data.keyword.cloud}} offers two ways to secure your CDN with HTTPS - Wildcard Certificate and Domain Validation (DV) SAN Certificate. Both HTTPS options can be configured by selecting **HTTPS Port** when configuring your CDN. The default HTTPS Port is 443, or you can choose a different port number to route your HTTPS traffic through. A list of allowed port numbers can be found in the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-).
 
 To decide between using **Wildcard Certificate** and **SAN Certificate** for HTTPS, answer this question: Do you want to serve HTTPS traffic from the CDN CNAME or the CDN Domain Name? If you would like to serve HTTPS traffic from the CNAME, select **Wildcard Certificate**. If you want to serve HTTPS traffic from the CDN Domain Name, select **SAN certificate**.
 
