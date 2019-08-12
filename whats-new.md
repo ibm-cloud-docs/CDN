@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-08-06"
 
 keywords: new, features, hotlink, Akamai, enhancements, geographical access, cache, key, optimization, video on demand, feature, descriptions, protection, vendor
 
@@ -22,6 +22,11 @@ subcollection: CDN
 {: #what-s-new}
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
+
+## August 2019
+{: #august-2019}
+
+* Move to the new IBM CNAME suffix `.cdn.appdomain.cloud` from `.cdnedge.bluemix.net` to unify user experience (Existing CDNs that are mapped to `.cdnedge.bluemix.net` will NOT be impacted).
 
 ## March 2019
 {: #march-2019}

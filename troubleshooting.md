@@ -84,7 +84,7 @@ When your I{{site.data.keyword.cloud_notm}} CDN is configured to use COS as the 
 ## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
 {: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
 
-If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdnedge.bluemix.net`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
+If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdn.appdomain.cloud`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
 
 ## What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?
 {: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
@@ -155,6 +155,6 @@ The `Access denied` message is seen when you're trying to reach a CDN using an i
 
 **A possible redirect error:**
 
-The behavior of a URL redirecting to {{site.data.keyword.cloud_notm}} CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdnedge.bluemix.net` for HTTPS mappings or `http://examplecname.cdnedge.bluemix.net` or `https://examplecname.cdnedge.bluemix.net` for HTTP_AND_HTTPS mappings.
+The behavior of a URL redirecting to {{site.data.keyword.cloud_notm}} CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdn.appdomain.cloud` for HTTPS mappings or `http://examplecname.cdn.appdomain.cloud` or `https://examplecname.cdn.appdomain.cloud` for HTTP_AND_HTTPS mappings.
 
 The URL redirects to {{site.data.keyword.cloud_notm}} CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by means of the hostname. For example, `http://example.com`.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-08-06"
 
 keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
 
@@ -68,13 +68,13 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 
 This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
-To use this method, you'll add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdnedge.bluemix.net` domain. No other action is required from you. The DCV will progress automatically from this point. Validation can take 2 to 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
+To use this method, you'll add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdn.appdomain.cloud` domain. No other action is required from you. The DCV will progress automatically from this point. Validation can take 2 to 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
 
 Most DNS providers can give you instructions on setting or changing the CNAME. Here an example of a typical CNAME record:
 
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
-| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
+| CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
 
 
 ---

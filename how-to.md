@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-08-06"
 
 keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
 

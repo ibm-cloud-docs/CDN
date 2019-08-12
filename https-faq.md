@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-05"
+lastupdated: "2019-08-06"
 
 keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -26,7 +26,7 @@ subcollection: CDN
 {: #for-my-cdn-what-is-the-difference-between-https-with-wildcard-certificate-and-https-with-san-certificate}
 {:faq}
 
-With Wildcard certificates, all customers use the same certificate deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdnedge.bluemix.net`, must be used for access to the service. For example, `https://www.example-cname.cdnedge.bluemix.net`
+With Wildcard certificates, all customers use the same certificate deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdn.appdomain.cloud`, must be used for access to the service. For example, `https://www.example-cname.cdn.appdomain.cloud`
 
 In the case of SAN certificate, multiple customer domains share a single SAN certificate by adding their domain names into the SAN entries. The service can then be accesses using the hostname, for instance `https://www.example.com`
 
@@ -102,7 +102,7 @@ If the mapping's state is in DOMAIN_VALIDATION_PENDING state for more than 48 ho
 {: #does-a-wildcard-certificate-need-to-validate-a-domain-for-my-cdn}
 {:faq}
 
-No, but you can only use the CNAME to retrieve content from your origin. `https://www.example-cname.cdnedge.bluemix.net`
+No, but you can only use the CNAME to retrieve content from your origin. `https://www.example-cname.cdn.appdomain.cloud`
 
 ## I received an email indicating that my domains is not pointed to IBM CDN CNAME. What do I do now?
 {: #i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME}

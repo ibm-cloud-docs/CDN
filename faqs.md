@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-08-06"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -53,13 +53,13 @@ For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that you
 {: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
 {: faq}
 
-In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdnedge.bluemix.net`.
+In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdn.appdomain.cloud`.
 
 A typical CNAME record would look like the following on the DNS configuration page:
 
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
-| CNAME | www.example.com | example.cdnedge.bluemix.net | 15 minutes |
+| CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
 
 
 ## What will I be billed for in my CDN

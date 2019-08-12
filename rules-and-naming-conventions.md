@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-08-06"
 
 keywords: rules, naming, conventions, hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain, valid, string
 
@@ -30,7 +30,7 @@ The CDN `Hostname` input string **must**:
   * be less than 254 characters
   * end with a valid top-level domain name
   * must **not** contain more than 10 labels
-  * must **not** end in `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
+  * must **not** end in `cdn.appdomain.cloud` or `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
 Please refer to RFC 1035, section 2.3.4 for more details. 
 

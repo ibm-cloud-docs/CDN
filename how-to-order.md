@@ -64,7 +64,7 @@ Click **Create** at the bottom right, which creates your CDN account if you don'
 Fill out the **Configure Name** field:  
 
   * Specify the **Hostname** (**required**), which serves as the primary identifier for your CDN (for example, `example.testingcdn.net`).  
-  * Optionally, you may provide a custom **CNAME** (such as `myfirstcdn.cdnedge.bluemix.net`). If no CNAME is provided, one will be created for you. The suffix `cdnedge.bluemix.net` is automatically appended to the CNAME. Use of an inappropriate CNAME may lead to termination of services.
+  * Optionally, you may provide a custom **CNAME** (such as `myfirstcdn.cdn.appdomain.cloud`). If no CNAME is provided, one will be created for you. The suffix `cdn.appdomain.cloud` is automatically appended to the CNAME. Use of an inappropriate CNAME may lead to termination of services.
 
        ![Configure Name](images/configure-hostname-cname.png)  
 

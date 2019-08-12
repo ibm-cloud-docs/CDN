@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-08-06"
 
 keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
@@ -194,7 +194,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it **must** end with `.cdnedge.bluemix.net` or an error will be thrown. See [this description](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
 {: important}
 
 ```php
@@ -222,7 +222,7 @@ try {
     $inputObject->certificateType = "SHARED_SAN_CERT";
 
     // The following values are optional
-    $inputObject->cname = "api-testing.cdnedge.bluemix.net";
+    $inputObject->cname = "api-testing.cdn.appdomain.cloud";
     $inputObject->path = "/media";
     $inputObject->header = '';
     $inputObject->respectHeader = true;
@@ -250,7 +250,7 @@ Array
             [bucketName] => mybucket
             [cacheKeyQueryRule] => include-all
             [certificateType] => SHARED_SAN_CERT
-            [cname] => api-testing.cdnedge.bluemix.net
+            [cname] => api-testing.cdn.appdomain.cloud
             [domain] => api-testing.cdntesting.net
             [header] => origin.cdntesting.net
             [httpPort] => 80
@@ -343,7 +343,7 @@ To be sure your CNAME record is configured correctly, run `dig <your domain>` on
 
 ```
 ;; ANSWER SECTION:
-api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdnedge.bluemix.net.
+api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
 ```
 {: codeblock}
 

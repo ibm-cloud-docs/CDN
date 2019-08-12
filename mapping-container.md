@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-08-06"
 
 keywords: mapping, container, class, collection, object, API
 
@@ -61,7 +61,7 @@ will return an object to similar to this one:
         (
             [cacheKeyQueryRule] => include-all
             [certificateType] => NO_CERT
-            [cname] => api-testing.cdnedge.bluemix.net
+            [cname] => api-testing.cdn.appdomain.cloud
             [domain] => api-testing.cdntesting.net
             [header] => origin.cdntesting.net
             [httpPort] => 80
