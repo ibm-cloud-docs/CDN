@@ -212,3 +212,8 @@ No, Brotli feature is not supported with our CDN service with Akamai.
 {: faq}
 
 You can create a CDN endpoint without using the Domain, but ONLY for a CDN of type **Wildcard HTTPS**. While creating a CDN of type **Wildcard HTTPS**, your **CNAME** acts as the CDN endpoint, and the **CNAME** is used to serve the traffic.
+
+## Is HTTP/2 supported with the IBM Cloud Content Delivery Network service?
+{: faq}
+
+Yes, HTTP/2 is supported by Akamai's Edge servers.
