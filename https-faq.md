@@ -76,7 +76,7 @@ A Certificate Authority (CA) is an entity that issues Digital Certificates.
 {: #which-ca-does-ibm-cloud-cdn-service-use-for-issuing-a-dv-san-certificate}
 {:faq}
 
-IBM Cloud CDN service uses LetsEncrypt Certficate Authority.
+IBM Cloud CDN service uses LetsEncrypt Certificate Authority.
 
 ## What SSL certificates are supported for IBM Cloud CDN?
 {: #what-ssl-certificates-are-supported-for-ibm-cloud-cdn}

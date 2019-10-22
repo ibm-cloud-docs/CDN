@@ -26,11 +26,11 @@ Cross Origin Resource Sharing (CORS) is a mechanism used by browsers, primarily 
 ## What is CORS?
 {: #what-is-cors}
 
-When a browser loads a webpage, it enforces the **Same-origin Policy**, which means that it only allows content to be fetched from the same origin as the webpage. However, in some cases a webpage may need access to assets from multiple origins that trust that website. This is where CORS comes in. 
+When a browser loads a webpage, it enforces the **Same-origin Policy**, which means that it only allows content to be fetched from the same origin as the webpage. However, in some cases a webpage may need access to assets from multiple origins that trust that website. This is where CORS comes in.
 
 This security mechanism exists only if an application has or is an HTTP client, and if that application implements CORS. Nearly all modern browsers, such as Chrome, Firefox, and Safari,  implement CORS.
 
-To clarify, **an origin with respect to CORS does not have to be the same as a CDN origin**. An origin in CORS is defined by a URI scheme, domain, and any possible port number. For example `https://www.example.com:1443` is different origin than `http://www.example.com`. And so, a CDN can also be considered as a CORS origin from a browser's perspective.
+To clarify, **an origin with respect to CORS does not have to be the same as a CDN origin**. An origin in CORS is defined by a URI scheme, domain, and any possible port number. For example `https://www.example.com:1443` is a different origin than `http://www.example.com`. And so, a CDN can also be considered as a CORS origin from a browser's perspective.
 
 ## How CORS works
 
@@ -66,9 +66,9 @@ For more complex CORS communication between the browser and a CORS origin that's
 
 If a preflight request is needed, here's how the events unfold:
 
-* The browser sends a request using the HTTP OPTIONS method to the server with all of the intended CORS request headers. 
-* The server processes those CORS request headers, and may respond with CORS response headers containing no actual content data. 
-* The browser checks those CORS response headers to make sure that the CORS request is allowed. 
+* The browser sends a request using the HTTP OPTIONS method to the server with all of the intended CORS request headers.
+* The server processes those CORS request headers, and may respond with CORS response headers containing no actual content data.
+* The browser checks those CORS response headers to make sure that the CORS request is allowed.
 * If the browser sees that the intended resource request should be allowed by the server, it makes a second request to the browser with the intended HTTP method, whether `GET`, `POST`, `PUT`, etc., with the same CORS request headers.
 
 Afterward, the communication between the browser and CORS origin (different than that of the webpage) will proceed as if it was a simple CORS request. Similar to a simple CORS request, content and resources are accessible and can be loaded if this second CORS request also is allowed.
@@ -89,43 +89,43 @@ http {
 
         # URI path to some content
         location /my-static-content {
-        
+
             # some location context configs
-        
+
             # Handle simple requests
             #
             # Consider only "HTTP GET" requests (content fetching)
             if ($request_method = 'GET') {
-                
+
                 # Allows the browser to access data from this server during CORS,
                 # only if the request comes from a webpage from the following origin
                 add_header 'Access-Control-Allow-Origin' 'https://www.example.com';
             }
-            
+
             # Handle preflight requests
             if ($request_method = 'OPTIONS') {
-                
+
                 # Allows the browser to access data from this server during CORS,
                 # only if the request comes from a webpage from the following origin
                 add_header 'Access-Control-Allow-Origin' 'https://www.example.com';
-                
-                # Allows only GET requests 
+
+                # Allows only GET requests
                 add_header 'Access-Control-Allow-Methods' 'GET';
-                
+
                 # Allows the following headers in the browser's request headers
                 # that may have been added by anything other than what the browser had added automatically
                 add_header 'Access-Control-Allow-Headers' 'pragma';
-                
+
                 # Specifies to the browser how long it should cache this preflight response
                 add_header 'Access-Control-Max-Age' 1728000;
-                
+
                 # HTTP 204 response code means success,
                 # but also that it should expect no content from this (preflight) response
                 return 204;
             }
-            
+
             # more location context configs
-            
+
             # If it is not a complex CORS situation requiring a preflight response,
             # then finally attempt to serve the file whose path falls under this location block's URI path match
             #
@@ -163,30 +163,30 @@ http {
         default '';
         ~^http(s)?://(www|www2|cdn|dev)\.example\.com$ $http_origin;
     }
-    
+
     server {
         # some server context configs
 
         # URI path to some content
         location /my-static-content {
-        
+
             # some location context configs
-        
+
             # Handle simple requests
             if ($request_method = 'GET') {
                 add_header 'Access-Control-Allow-Origin' $cors_allowed_origin;
             }
-            
+
             # Handle preflight requests
             if ($request_method = 'OPTIONS') {
                 add_header 'Access-Control-Allow-Origin' '$cors_allowed_origin;
                 add_header 'Access-Control-Allow-Methods' 'GET';
                 add_header 'Access-Control-Allow-Headers' 'pragma';
                 add_header 'Access-Control-Max-Age' 1728000;
-                
+
                 return 204;
             }
-            
+
             # more location context configs
 
             try_files $uri =404;

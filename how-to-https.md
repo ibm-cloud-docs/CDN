@@ -60,7 +60,7 @@ Additional information regarding completing your CNAME Configuration and oversee
 ## Domain Control Validation
 {: #domain-control-validation}
 
-To get your CDN domain name added to the SAN certificate, you must prove that you have adminitrative control over your domain. This process of proof is referred to as addressing the Domain Control Validation (DCV). You must address the DCV within 48 hours. If you fail to do so, your request expires, and you must begin the order process again. The three different ways to address DCV are described in the sections that follow.
+To get your CDN domain name added to the SAN certificate, you must prove that you have administrative control over your domain. This process of proof is referred to as addressing the Domain Control Validation (DCV). You must address the DCV within 48 hours. If you fail to do so, your request expires, and you must begin the order process again. The three different ways to address DCV are described in the sections that follow.
 
 
 ### CNAME

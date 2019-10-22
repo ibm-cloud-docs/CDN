@@ -102,7 +102,7 @@ A CDN can be stopped only when in `Running` state.
 Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Certificate, because HTTPS traffic may not work when you move the CDN back to `Running` status.
 {: important}
 
-Stopping a CDN for a Wildcard domain is **NOT** allowed at this time.
+Stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** allowed at this time.
 {: important}
 
 **Step 1:**

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-08-06"
+lastupdated: "2019-10-21"
 
 keywords: new, features, hotlink, Akamai, enhancements, geographical access, cache, key, optimization, video on demand, feature, descriptions, protection, vendor
 
@@ -23,6 +23,12 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 
+## October 2019
+{: #october-2019}
+
+* Dynamic Content Acceleration [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
+* [Metrics Reports](/docs/infrastructure/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
+
 ## August 2019
 {: #august-2019}
 
@@ -37,7 +43,7 @@ subcollection: CDN
 {: #november-2018}
 
   * Hotlink Protection [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through the API)
-  
+
 ## October 2018
 {: #december-2018}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-06-19"
+lastupdated: "2019-10-21"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -105,6 +105,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
@@ -176,6 +177,7 @@ Enables the user to update properties of the mapping identified by the `uniqueId
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
 * **Return** a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
   [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
@@ -228,6 +230,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
@@ -256,7 +259,7 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
-
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
   [View the Origin Path Container](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
@@ -393,8 +396,21 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 ## API for Metrics
 {: #api-for-metrics}
 
-[View the Metrics Container](/docs/infrastructure/CDN?topic=CDN-container-class-for-metrics)
+[View the Metrics Container](/docs/infrastructure/CDN?topic=CDN-metrics-container)
 
+### getCustomerInvoicingMetrics
+Returns all mappings' bandwidth and hits (including static and dynamic separately) of predetermined statistics for direct display for a customer's account, over a given period of time with granularity of day.
+
+ * **Parameters**:
+   * `vendorName`: Provide the name of the CDN provider for this customer
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+
+ * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
 ### getCustomerUsageMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
@@ -578,7 +594,7 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
 
     The following attributes are part of the Input Container and are **required** when updating an existing Hotlink Protection:
     * `uniqueId`: the uniqueId of the mapping to which the existing behavior belongs
-    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues 
+    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
     * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.

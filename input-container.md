@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-10-21"
 
 keywords: input, container, class, API, mapping, origin, path, provider, hotlink
 
@@ -57,3 +57,6 @@ The following attributes are related to Cloud Object Storage (COS):
 
 The following attribute is related to configuring Hotlink Protection:
 * `hotlinkProtection`: Please see the [hotlink protection class](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) for more details.
+
+The following attribute is related to Dynamic Content Acceleration (DCA):
+* `dynamicContentAcceleration`: Please see the [Dynamic Content Acceleration class](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container) for more details.

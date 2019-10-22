@@ -10,8 +10,8 @@ subcollection: CDN
 
 ---
 
-# Container class for Metrics
-{: #container-class-for-metrics}
+# Metrics Container
+{: #metrics-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the attributes used by our Metrics APIs. There are three possible values for the `type` attribute: PIECHART, LINEGRAPH, or TOTALS. The output for the rest of the attributes in this container depend on the `type`, which is described in further detail below. All attributes except `type` are arrays. Not all attributes are used for all types.
 

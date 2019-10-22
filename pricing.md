@@ -30,11 +30,15 @@ Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN)
 
 {{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
 
+You are using the [static bandwidth](/docs/infrastructure/CDN?topic=CDN-pricing#cdn-static-bandwidth) by default. If you have enabled the Dynamic Content Acceleration (DCA) feature, you will also pay for the [dynamic bandwidth](/docs/infrastructure/CDN?topic=CDN-pricing#cdn-dynamic-bandwidth). 
+
 Pricing is shown per GB of monthly usage.
 {:note}
 
 Select a region to see a list of countries or territories in that region.
 
+### Static Bandwidth Pricing
+{: #cdn-static-bandwidth}
 
 |Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
 |-------|-----|-----|-----|-----|-----|----|-----|
@@ -43,3 +47,14 @@ Select a region to see a list of countries or territories in that region.
 |250 - 500 TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
 |500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
 |\>3 PB| [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) |
+
+### Dynamic Bandwidth Pricing
+{: #cdn-dynamic-bandwidth}
+
+|Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
+|-------|-----|-----|-----|-----|-----|----|-----|
+|First 10 TB| 0.175 | 0.175 | 0.175 | 0.175 | 0.177 | 0.177 | 0.177 |
+|10 - 250 TB | 0.16 | 0.16 | 0.16 | 0.16 | 0.161 | 0.161 | 0.161 |
+|250 - 500 TB| 0.14 | 0.14 | 0.14 | 0.14 | 0.14 | 0.14 | 0.14 |
+|500 TB - 3 PB| 0.121 | 0.121| 0.121 | 0.121 | 0.121 | 0.121 | 0.121 |
+|\>3 PB| 0.1|0.1|0.1|0.1|0.1|0.1|0.1|

@@ -21,6 +21,18 @@ subcollection: CDN
 # Metrics
 {: #metrics}
 
+## Metrics Report
+{: #metrics-report}
+
+You may view the overall metrics reports by clicking the link of *View CDN Reports* at the right corner of CDN Domain Mapping list page. 
+
+ ![Metrics Overview](images/metrics-reports.png)
+
+**NOTE**: The maximum number of days for which you can view metrics reports is 90 days. The latest date for which you can view metrics reports is 3 days ago.
+
+## Domain Mapping Metrics 
+{: #domain-mapping-metrics}
+
 When you first select your CDN from the list, the Overview page opens. Here you can see the Total Bandwidth, Total Hits and Hit Ratio for the selected time period (default is 30 days).
 
   ![Metrics Overview](images/metrics-overview.png)
@@ -31,11 +43,11 @@ Directly beneath the overview, you will see a graphical representation of Total 
 
 **NOTE**: After you create your CDN, it may take up to 48 hours for metrics to appear.
 
-## Is there a minimum number of days for which I can view metrics? Is there a maximum?
+### Is there a minimum number of days for which I can view metrics? Is there a maximum?
 
 There are a minimum and a maximum number of days for which you can view metrics using {{site.data.keyword.cloud}} Content Delivery Network with Akamai. Metrics can be gathered for a minimum of 7 days. Metrics can be viewed for a maximum of 90 days. For those using the API, it is recommended to use 89 days as the maximum, to account for any differences in time zones.
 
-## Why is the hit ratio non-zero when total hits are zero?
+### Why is the hit ratio non-zero when total hits are zero?
 Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
 
 `((Edge hits - Ingress hits)/Edge hits) * 100`
@@ -47,6 +59,6 @@ _Ingress hits_ is defined as "Origin or Ingress hits are for traffic from your o
 
 Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
 
-## Are metrics updated in real-time?
+### Are metrics updated in real-time?
 
 No. Metrics are updated every 24 hours.
