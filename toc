@@ -10,7 +10,12 @@ Content Delivery Network (CDN)
     feature-descriptions.md
     about-https.md
     naas-video.md
-    [Use CDN with Cloud Object Storage to deliver your static files faster](https://cloud.ibm.com/docs/tutorials/static-files-cdn.html#accelerate-delivery-of-static-files-using-a-cdn)
+
+    {: .topicgroup}
+    Tutorials
+        /tutorials/solution-tutorials-static-files-cdn
+        /tutorials/solution-tutorials-dynamic-content-cdn
+    
     whats-new.md
     pricing.md
     {: .navgroup-end}
@@ -42,7 +47,7 @@ Content Delivery Network (CDN)
     {: .navgroup id="reference"}
     api.md
 
- {: .topicgroup}
+    {: .topicgroup}
     API Class Containers
         dynamic-content-acceleration-container.md
         geoblock-behavior.md
