@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-08-06"
+lastupdated: "2019-11-15"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -45,7 +45,9 @@ Your account is created during the CDN order process. If you are creating a CDN 
 {: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
-For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed.
+For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. 
+
+For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you will access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
 **Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
 
