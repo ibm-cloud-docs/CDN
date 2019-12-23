@@ -19,25 +19,24 @@ subcollection: CDN
 {:note: .note}
 {:download: .download}
 
-# Dynamic Content Acceleration
+# Configuring Dynamic Content Acceleration
 {: #dynamic-content-acceleration}
 
 Dynamic Content Acceleration (DCA) is a technology to accelerate the dynamic web content.
-It provides improved reliability, offload, and network performance over your original web infrastructure,
-while handling the specific requirements of dynamically generated content — without a costly hardware build-out.
+It provides improved reliability, offload, and network performance over your original web infrastructure, while handling the specific requirements of dynamically generated content — without a costly hardware build-out.
 Using real-time network optimizations and advanced caching techniques, it speeds and secures interactive websites.
 
-## DCA Configurations
+## Working with DCA configurations
 {: #dca-configurations}
 
-### Step 1: Open Settings
+### Step 1: Opening settings
 {: #step-1-open-settings}
 
-Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then select **Dynamic content acceleration** from the dropdown menu **Optimize for**.
+Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then select **Dynamic content acceleration** from the **Optimize for** list menu.
 
    ![Configure Origin](images/settings-dca-switch.png)
 
-### Step 2: Enable DCA
+### Step 2: Enabling DCA
 {: #step-2-enable-dca}
 
 - Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection Path](#detection-path).
@@ -46,7 +45,7 @@ Open the page of a specified CDN mapping, click **Settings** from the navigation
 
    ![Configure Origin](images/settings-dca-input.png)
 
-### Step 3: Save Settings
+### Step 3: Saving settings
 {: #step-3-save-settings}
 
 Click the **Save** button to save the settings.
@@ -55,7 +54,7 @@ If the **`Detection path`** is unreachable, you will be prompted by a warning li
 
    ![Configure Origin](images/settings-dca-save.png)
 
-## DCA Concepts
+## Understanding DCA concepts
 {: #dca-concepts}
 
 ### Detection Path
@@ -85,7 +84,7 @@ A valid test object must:
 **`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
 aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, and zip.
 
-### Image Compression
+### Image compression
 {: #image-compression}
 
 Serving compressed images reduces the amount of content required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and may affect the quality of the images on your site.  

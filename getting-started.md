@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-11-01"
+lastupdated: "2019-12-11"
 
 keywords: tutorial, Akamai, edge servers, pricing, content delivery network, comprehensive, account
 
@@ -11,11 +11,17 @@ subcollection: CDN
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="blank"}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -27,12 +33,11 @@ subcollection: CDN
 ## Before you begin
 {: #before-you-begin}
 
-Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the [IBM Cloud CDN Console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
+Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the [IBM Cloud CDN console](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
 
-If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative ![External link icon](../../icons/launch-glyph.svg "External link icon")]](https://www.ibm.com/cloud-computing/bluemix/contact-us) for additional guidance on getting started.
+If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative ](https://www.ibm.com/cloud/contact-us/){:external} for additional guidance on getting started.
 
 ## Next steps
 {: #next-steps}
 
 Check out our [pricing](/docs/infrastructure/CDN?topic=CDN-pricing#pricing), and then [order your CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn).
-

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018, 2019
-lastupdated: "2019-08-09"
+lastupdated: "2019-12-03"
 
 keywords: order, create, configure, console, origin, preparation, bucket
 
@@ -19,12 +19,12 @@ subcollection: CDN
 {:note: .note}
 {:download: .download}
 
-# Order a CDN
+# Ordering a CDN
 {: #order-a-cdn}
 
 Here you'll learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Console](https://cloud.ibm.com/login).
 
-## Preparation for ordering
+## Preparing to order
 {: #preparation-for-ordering}
 
 Here's how to navigate to the CDN page to place your order.
@@ -46,19 +46,19 @@ Click on the **CDN Tile**.
    ![IBM Cloud CDN Icon](images/bluemix_tile.png)
 
 
-## Order a new CDN
+## Ordering a new CDN
 {: #order-a-new-cdn}
 
 Once you're on the ordering page, here's how to proceed to create and configure your CDN.
 
-### Step 1: Create your CDN account
+### Step 1: Creating your CDN account
 {: #create-your-cdn-account}
 
 Click **Create** at the bottom right, which creates your CDN account if you don't have one already and redirects you to the CDN Configure screen.
 
    ![CDN overview](images/content-delivery.png)
 
-### Step 2: Name your CDN
+### Step 2: Naming your CDN
 {: #step-2-name-your-cdn}
 
 Fill out the **Configure Name** field:  
@@ -70,7 +70,7 @@ Fill out the **Configure Name** field:
 
 After provisioning your new CDN, you **must** configure the CNAME with your DNS provider.
 {: note}
-### Step 3: Configure your origin
+### Step 3: Configuring your origin
 {: #step-3-configure-your-origin}
 
 Fill out the **Configure Your Origin** field: To configure this field, you must select either the **Server** or the **Object Storage** option.  
@@ -115,8 +115,8 @@ Fill out the **Configure Your Origin** field: To configure this field, you must 
 
 You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your cloud object storage provider.
 {: note}
-      
-### Step 4
+
+### Step 4 Accepting the Agreement terms
 {: #step-4}
 
 * You must select **I have read the Master Service Agreement and agree to the terms therein** at the bottom right, above the **Create** button.

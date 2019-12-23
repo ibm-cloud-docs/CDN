@@ -26,10 +26,10 @@ These resources are created by {{site.data.keyword.cloud}} and some of our partn
 {: #ibm-tech-blogs}
 
  * [How to deliver great performance for global apps on IBM Cloud CDN, by Ketan Pancholi and Nikhil Gupta](https://www.ibm.com/w3-techblog/use-cases/2018/05/content-delivery-service/)
- 
+
  * [Where's My Kill Switch? Migrating Network Services to the Cloud](https://www.ibm.com/w3-techblog/wcp/2018/09/migrating-network-services/), by Chris Dotson
- 
-   A good overview about datacenter security and SDN.
+
+   A good overview about data center security and SDN.
 
 
 ## External Blogs

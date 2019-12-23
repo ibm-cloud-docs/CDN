@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-10-21"
+lastupdated: "2019-12-05"
 
 keywords: features, descriptions, metrics, multiple, origins, mapping, time to live, purge, cached, content, key, stale, https, geographical, access, protocol, compression, video, hotlink
 
@@ -66,7 +66,7 @@ For metrics that display the change over a period of time as a graph, you can se
 
 Metrics shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates the percentage of times content is delivered by the Edge server, _not_ through its Origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
 
-By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you have the ability to change this through the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/). Both categories are capable of displaying metrics for 7-, 15-, 30-, 60-, or 90-day periods.
+By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you have the ability to change this through the [{{site.data.keyword.cloud_notm}} console](https://{DomainName/}). Both categories are capable of displaying metrics for 7-, 15-, 30-, 60-, or 90-day periods.
 
 ## Host Header support
 {: #host-header-support}
@@ -132,7 +132,7 @@ When this feature is enabled, there is a slight performance cost associated with
 
 **Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging pre-configured cache control settings and the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
-**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the drop-down menu under **Optimize for** on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
+**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
 
 ## Dynamic Content Acceleration
 {: #dynamic-content-acceleration-description}

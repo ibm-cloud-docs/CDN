@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+lastupdated: "2019-12-09"
 
 keywords: hotlink, protection, class, behavior, API, valid string
 
@@ -15,8 +15,15 @@ subcollection: CDN
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Hotlink Protection class
 {: #hotlink-protection-class}
@@ -44,13 +51,13 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     * `https*www.example.com`
   * Some examples of an **invalid** string for `refererValues`:
    
-      |**Description of invalid Example**| Example
-      |-------|-----|
-      | Contains more than 2100 characters, total| `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...|
-      |Contains at least one URL match term that has greater than 255 characters | `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org` |
-      |Contains duplicates in the list | `domain1.example.com domain1.example.com`|
-      |Empty refererValues | ` `|
-      |Using character(s) not specified in [RFC-3986 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc3986#section-2) | `domain1.exa}mple.com domain1.example.com`|
-      |`&` character is not supported| `www.example.com/path&`|
-      |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
+    |**Description of invalid Example**|Example|
+    |-------|-----|
+    |Contains more than 2100 characters, total| `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...|
+    |Contains at least one URL match term that has greater than 255 characters | `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org` |
+    |Contains duplicates in the list | `domain1.example.com domain1.example.com`|
+    |Empty refererValues | ` `|
+    |Using character(s) not specified in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2){:external} | `domain1.exa}mple.com domain1.example.com`|
+    |`&` character is not supported| `www.example.com/path&`|
+    |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
 

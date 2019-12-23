@@ -15,7 +15,13 @@ subcollection: CDN
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external:target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
 {:faq: data-hd-content-type='faq'}
 {:DomainName: data-hd-keyref="DomainName"}
@@ -45,7 +51,7 @@ Your account is created during the CDN order process. If you are creating a CDN 
 {: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
 {: faq}
 
-For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping. 
+For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
 
 For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you will access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
@@ -74,7 +80,7 @@ You are only billed for bandwidth used per IBM Cloud Content Delivery Network in
 {: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 
-IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.BluSoftlayer_notm}} Account.
+IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.cloud_notm}} Account.
 
 ## If I select `delete` from the CDN's overflow menu, does that delete my account?
 {: faq}
@@ -102,7 +108,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 ## My CDN is in an Error State. What do I do now?
 {: faq}
 
-Please refer to the [Troubleshooting](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting Help and Support](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a ticket in the [Customer Portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/).
+Please refer to the [Troubleshooting](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
 {: faq}
@@ -141,7 +147,7 @@ Omitting the slash, for example, using `www.example.com/images` will result in a
 ## I received notification that my Origin Certificate is expiring. What do I do now?
 {: faq}
 
-Follow the steps outlined in [this article ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://community.akamai.com/docs/DOC-7708) from Akamai.
+Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){:external} from Akamai.
 
 ## What security is included with the IBM CDN solution with Akamai?
 {: faq}
