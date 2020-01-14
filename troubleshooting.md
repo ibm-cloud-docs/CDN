@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-08-06"
+lastupdated: "2020-01-08"
 
 keywords: troubleshooting, support, reference, number, error, 503, 301, redirects, https, moved, akamai-x-cache, cloud object storage
 
@@ -79,7 +79,7 @@ If you have verified your Origin's certificate chain using the previous criteria
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
 {: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}
 
-When your I{{site.data.keyword.cloud_notm}} CDN is configured to use COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
+When your {{site.data.keyword.cloud_notm}} CDN is configured to use COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
 
 ## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
 {: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
@@ -91,65 +91,49 @@ If your CDN was created using HTTPS with a Wildcard certificate, the connection 
 
 This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
 
-<table>
-<caption caption-side=“top”>Table of Expected Behaviors</caption>
-<thead>
-<tr>
-<th rowspan=2 scope="col">Browser URL</th>
-<th rowspan=2 scope="col">CDN with HTTP protocol only</th>
-<th colspan=2 scope="col">CDN with HTTPS protocol only</th>
-<th colspan=2 scope="col">CDN with both HTTP and HTTPS protocols</th>
-</tr>
-<tr>
-<th scope="col"> Wildcard </th>
-<th scope="col"> Shared SAN </th>
-<th scope="col"> Wildcard </th>
-<th scope="col"> Shared SAN </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> `http://hostname` </td>
-<td> Successful load </td>
-<td> 301 Moved permanently </td>
-<td> Access denied<sup>&#42;</sup> </td>
-<td> 301 Moved permanently </td>
-<td> Successful load </td>
-</tr>
-<tr>
-<td> `https://hostname`</td>
-<td> Access denied </td>
-<td> Redirects to IBM Cloud Webpage </td>
-<td> Successful load </td>
-<td> Redirects to IBM Cloud Webpage </td>
-<td> Successful load </td>
-</tr>
-<tr>
-		<td> `http://cname` </td>
-		<td> 301 Moved permanently </td>
-		<td> Access denied<sup>&#42;</sup> </td>
-		<td> 301 Moved permanently </td>
-		<td> Successful load </td>
-		<td> 301 Moved permanently </td>
-</tr>
-<tr>
-		<td> `https://cname` </td>
-		<td> Redirects to IBM Cloud Webpage </td>
-		<td> Successful load </td>
-		<td> 301 Moved permanently </td>
-		<td> Successful load </td>
-		<td> Redirects to IBM Cloud Webpage </td>
-</tr>
-</tbody>
-</table>
+| Browser URL | CDN with HTTP protocol only |
+|:-----|:-----|
+| `http://hostname` | Successful load |
+| `https://hostname` | Access denied&#8902; |
+| `http://cname` | 301 Moved Permanently |
+| `https://cname` | Redirects to IBM Cloud webpage |
+{: caption="Table 1. Expected behavior for CDN with HTTP protocol only" caption-side="left"}
+{: #simpletabtable1}
+{: tab-title="HTTP only"}
+{: tab-group="cdr-troubleshooting"}
+{: class="simple-tab-table"}
 
-<small>\* The expected behavior was changed to `Access denied` for the domain mappings created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.</small>
+| Browser URL | Wildcard | Shared SAN |
+|-----|-----|-----|  
+| `http://hostname` | 301 Moved Permanently | Access denied&#8902; |
+| `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
+| `http://cname` | Access denied&#8902; | 301 Moved Permanently |
+| `https://cname` | Successful load | 301 Moved Permanently |
+{: caption="Table 2. Expected behavior for CDN with HTTPS protocol only" caption-side="left"}
+{: #simpletabtable2}
+{: tab-title="HTTPS only"}
+{: tab-group="cdr-troubleshooting"}
+{: class="simple-tab-table"}
+
+| Browser URL | Wildcard | Shared SAN |
+|-----|-----|-----|  
+| `http://hostname` | 301 Moved Permanently | Successful load |
+| `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
+| `http://cname` | Successful load | 301 Moved Permanently |
+| `https://cname` | Successful load | Redirects to IBM Cloud webpage |
+{: caption="Table 3. Expected behavior for CDN with both HTTP and HTTPS protocol" caption-side="left"}
+{: #simpletabtable3}
+{: tab-title="HTTP and HTTPS"}
+{: tab-group="cdr-troubleshooting"}
+{: class="simple-tab-table"}
+
+*&#8902;* The expected behavior was changed to `Access denied` for the domain mappings created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 **Common error messages:**
 
-A `301 Moved permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
+A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
 
-With an HTTP **only** protocol, you will receive the `301 Moved permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
+With an HTTP **only** protocol, you will receive the `301 Moved Permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
 
 The `Access denied` message is seen when you're trying to reach a CDN using an incorrect protocol. Ensure that you're using `http` for CDNs created with HTTP protocol, or `https` for CDNs created with HTTPS protocol.
 
