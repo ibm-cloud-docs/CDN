@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-10-21"
+  years: 2017, 2020
+lastupdated: "2020-01-06"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -109,7 +109,8 @@ Using the provided inputs, this function creates a domain mapping for the given 
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
-  **NOTE**: The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
+  The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
+  {: note}
 
   [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
 
@@ -398,83 +399,102 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 
 [View the Metrics Container](/docs/infrastructure/CDN?topic=CDN-metrics-container)
 
+All metrics data are UTC+0.
+{:note}
+
 ### getCustomerInvoicingMetrics
 Returns all mappings' bandwidth and hits (including static and dynamic separately) of predetermined statistics for direct display for a customer's account, over a given period of time with granularity of day.
 
  * **Parameters**:
-   * `vendorName`: Provide the name of the CDN provider for this customer
+   * `vendorName`: Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
    * `startDate`: Provide the start date timestamp (UTC+0) for query
    * `endDate`: Provide the end date timestamp (UTC+0) for query
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getCustomerUsageMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
  * **Parameters**:
-   * `vendorName`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `vendorName`: Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
-Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is 'aggregate' by default.
+Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
-Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be 'day', 'week', and 'month', where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is 'aggregate' by default.
+Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     * `week` - weekly metrics data from startDate to endDate
+     * `month` - monthly metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
-Returns the total number of hits at a certain frequency over a given range of time. Frequency can be 'day', 'week', and 'month', where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is 'aggregate' by default.
+Returns the total number of hits at a certain frequency over a given range of time. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     * `week` - weekly metrics data from startDate to endDate
+     * `month` - monthly metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
-Returns the number of edge hits for an individual CDN. Regions may differ for each vendor. Per mapping.
+Returns the quantity of bandwidth in GB for an individual CDN. Regions may differ for each vendor. Per mapping.
 
  * **Parameters**:  
-   * `mappingUniqueId`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
-Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is 'aggregate' by default.
+Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`
-   * `startDate`
-   * `endDate`
-   * `frequency`
-
+   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
+   * `startDate`: Provide the start date timestamp (UTC+0) for query
+   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
+     * `aggregate` - aggregated metrics data from startDate to endDate **default**
+     * `day` - daily metrics data from startDate to endDate
+     
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 
 ----
@@ -511,10 +531,10 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
     [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and may be provided when updating a  Geographical Access Control rule (parameters are optional unless otherwise noted):
-    * `uniqueId`: **required** uniqueId of the mapping the rule to be updated belongs
+    * `uniqueId`: **required** uniqueId of the mapping the rule to be updated belongs.
     * `accessType`: specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
-    * `regionType`: the type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`
-    * `regions`: an array listing the locations that the `accessType` will apply to
+    * `regionType`: the type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
+    * `regions`: an array listing the locations that the `accessType` will apply to.
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
 

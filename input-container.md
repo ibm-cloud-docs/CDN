@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-10-21"
+  years: 2017, 2020
+lastupdated: "2020-01-06"
 
 keywords: input, container, class, API, mapping, origin, path, provider, hotlink
 
@@ -33,7 +33,11 @@ The following attributes are common to the Mapping and (Origin) Path classes:
 * `httpsPort`: Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 * `status`:  The status of the mapping or path. Status can be CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED, or ERROR.
 * `path`: Path from which the cached content will be served. The default path is /\* When used by the `updateOriginPath` API, this attribute refers to the new path to be added.
-* `performanceConfiguration`: Specifications for the performance configuration of the mapping.
+* `performanceConfiguration`: Specifications for the performance configuration of the mapping. We support the following performance configurations:
+  * `General web delivery`: The default performance option to optimize the general web page contents, such as the HTML, pictures, CSS, JS files, and so on.
+  * `Dynamic content acceleration`: Optimizes the forward path to the origin server using Akamai’s “SureRoute” feature, and supports embedded object pre-fetching and situational image compression.
+  * `Video on demand optimization`: Optimizes cache/offload and media retrieval path through the Akamai network, MIME types, network timeout conditions.
+  * `Large file optimization`: Optimizes for delivery of very large file downloads with improved cache/offload (partial object caching with pre-fetched object data), object retrieval path.  
 * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
   * `include-all`: Include all query arguments
   * `ignore-all`: Ignore all query arguments

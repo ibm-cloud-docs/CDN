@@ -15,8 +15,15 @@ subcollection: CDN
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # Troubleshooting
 {: #troubleshooting}
@@ -69,7 +76,8 @@ This is the error you may see: `503 Service Unavailable`.
 In conjunction with the 503 error, you may also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number may vary). In this case, the reference number in the error string translates to a SSL handshake failure.
 
 To correct the issue, ensure that your Origin server's SSL certificate(s) meets the following criteria:
-  * The certificate **must** be issued by a Certification Authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link ![External link icon](../../icons/launch-glyph.svg "External link icon")]](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates)
+  * The certificate **must** be issued by a Certification Authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
+  * It **must** have a complete certificate chain (leaf, intermediate, root).
   * It **must** match the *Host header* configured on the CDN
   * It must **not** be self-signed
   * It must **not** be expired

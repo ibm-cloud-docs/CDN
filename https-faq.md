@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2018, 2020
+lastupdated: "2020-01-29"
 
 keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -129,3 +129,9 @@ Not necessarily. Certificate selection is handled by Akamai, in order to ensure 
 {:faq}
 
 During the DV SAN certificate requesting process, the DNS record chain for your CDN is chained to a wildcard certificate, temporarily. Until the process is complete, content temporarily is served through this wildcard certificate. Once the requesting process is complete, the DNS record chain is updated to chain to your CDN's DV SAN certificate.
+
+## Is HTTP2 protocol supported for HTTPS requests?
+{: #is-http2-supported}
+{:faq}
+
+CDNs created with HTTPS protocol support HTTP2 for TLS secured traffic.

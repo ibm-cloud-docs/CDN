@@ -19,7 +19,7 @@ subcollection: CDN
 {:note: .note}
 {:download: .download}
 
-# Rules and Naming Conventions
+# FAQs for Rules and Naming Conventions
 {: #rules-and-naming-conventions}
 
 ## What are the rules for the CDN Hostname?

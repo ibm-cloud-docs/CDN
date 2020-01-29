@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# Limits and Maximum Values
+# FAQ for Limits and Maximum Values
 {: #limits-and-maximum-values}
 
 ## Is there a maximum value for Time To Live? A minimum?
