@@ -30,7 +30,7 @@ Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN)
 
 {{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
 
-You are using the [static bandwidth](/docs/infrastructure/CDN?topic=CDN-pricing#cdn-static-bandwidth) by default. If you have enabled the Dynamic Content Acceleration (DCA) feature, you will also pay for the [dynamic bandwidth](/docs/infrastructure/CDN?topic=CDN-pricing#cdn-dynamic-bandwidth). 
+You are using the [static bandwidth](/docs/CDN?topic=CDN-pricing#cdn-static-bandwidth) by default. If you have enabled the Dynamic Content Acceleration (DCA) feature, you will also pay for the [dynamic bandwidth](/docs/CDN?topic=CDN-pricing#cdn-dynamic-bandwidth).
 
 Pricing is shown per GB of monthly usage.
 {:note}
@@ -40,7 +40,7 @@ Select a region to see a list of countries or territories in that region.
 ### Static Bandwidth Pricing
 {: #cdn-static-bandwidth}
 
-|Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
+|Per Month| [North America](/docs/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/CDN?topic=CDN-emea-region) | [Asia](/docs/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
 |-------|-----|-----|-----|-----|-----|----|-----|
 |First 10 TB| 0.085 | 0.085 | 0.14 | 0.14 | 0.25 | 0.14 | 0.17 |
 |10 - 250 TB | 0.05 | 0.05 | 0.12 | 0.12 | 0.18 | 0.12 | 0.11 |
@@ -51,7 +51,7 @@ Select a region to see a list of countries or territories in that region.
 ### Dynamic Bandwidth Pricing
 {: #cdn-dynamic-bandwidth}
 
-|Per Month| [North America](/docs/infrastructure/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/infrastructure/CDN?topic=CDN-emea-region) | [Asia](/docs/infrastructure/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/infrastructure/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
+|Per Month| [North America](/docs/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/CDN?topic=CDN-emea-region) | [Asia](/docs/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
 |-------|-----|-----|-----|-----|-----|----|-----|
 |First 10 TB| 0.175 | 0.175 | 0.175 | 0.175 | 0.177 | 0.177 | 0.177 |
 |10 - 250 TB | 0.16 | 0.16 | 0.16 | 0.16 | 0.161 | 0.161 | 0.161 |

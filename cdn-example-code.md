@@ -194,7 +194,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
 {: important}
 
 ```php

@@ -22,12 +22,12 @@ subcollection: CDN
 # How to serve video on demand with CDN
 {: #how-to-serve-video-on-demand-with-cdn}
 
-In this guide, we'll explore an example of how to leverage {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin. 
+In this guide, we'll explore an example of how to leverage {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
 
 ## Introduction
 {: #introduction}
 
-A number of formats, such as HLS, MPEG-DASH, and so forth, are available to stream video. 
+A number of formats, such as HLS, MPEG-DASH, and so forth, are available to stream video.
 
 Conceptually, the setup we're using is shown in the following diagram:
 
@@ -55,7 +55,7 @@ HLS works with two types of files: `.m3u8` and `.ts`. You can think of the `.m3u
 Now, let's check and see the format, bit rate, and other information, for the video and audio streams of our source `.mp4` video.
 
 ```
-$ ffprobe test-video.mp4 
+$ ffprobe test-video.mp4
 ```
 
 In this example, let's consider the following stream information for `test-video.mp4`:
@@ -110,7 +110,7 @@ In this guide, only 1 audio stream and 1 video stream make up the example `test-
 Afterward, you can expect to see a number of `.ts` files.  Additionally, you can expect to see a `.m3u8` file that looks something like the following:
 
 ```
-$ cat test-video.m3u8 
+$ cat test-video.m3u8
 #EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-TARGETDURATION:7
@@ -216,9 +216,9 @@ For example, Safari would support native, HLS playback. And so, the video player
 <!DOCTYPE html>
 <html>
   <!-- Some HTML elements... -->
-  
+
   <video src="https://cdn.example.com/hls/test-video.m3u8"></video>
-  
+
   <!-- Some more HTML elements... -->
 </html>
 ```
@@ -231,9 +231,9 @@ However, other browsers on desktop devices may also need support from added Java
 
 Now, let's connect the origin to the CDN to serve content worldwide with optimized throughput, minimized latency, and increased performance.
 
-First, [order](/docs/infrastructure/CDN?topic=CDN-order-a-cdn) a CDN.
+First, [order](/docs/CDN?topic=CDN-order-a-cdn) a CDN.
 
-Next, either [configure your CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
+Next, either [configure your CDN](/docs/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
 Finally, under `Optimize For`, select `Video on demand optimization`.
 

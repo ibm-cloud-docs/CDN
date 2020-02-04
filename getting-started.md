@@ -28,7 +28,7 @@ subcollection: CDN
 # Getting started with Content Delivery Network
 {: #getting-started}
 
-{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/infrastructure/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers), to bring the content closest to where you need it most--your users.
+{{site.data.keyword.cloud}} Content Delivery Network (CDN) can be used for a variety of industry solutions--including media, entertainment, software, gaming, banking, and e-commerce--to meet the needs of your businesses. IBM Cloud has partnered with Akamai to offer the most comprehensive Content Delivery Network features, while maintaining affordability. This partnership features edge servers in over [50 countries](/docs/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers), to bring the content closest to where you need it most--your users.
 
 ## Before you begin
 {: #before-you-begin}
@@ -40,4 +40,4 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 ## Next steps
 {: #next-steps}
 
-Check out our [pricing](/docs/infrastructure/CDN?topic=CDN-pricing#pricing), and then [order your CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn).
+Check out our [pricing](/docs/CDN?topic=CDN-pricing#pricing), and then [order your CDN](/docs/CDN?topic=CDN-order-a-cdn).

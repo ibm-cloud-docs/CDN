@@ -47,7 +47,7 @@ To get started, here is a recommended API call sequence to follow:
 
 You can use the other APIs after you've followed the previous sequence.
 
-[Example Code is available for each step in this call sequence.](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api)
+[Example Code is available for each step in this call sequence.](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api)
 
 You **must** use the API username and API Key of a user with `CDN_ACCOUNT_MANAGE` permission for most of the API calls shown in this document. Please check with your account's Master user if you require this permission to be enabled for you. (Each IBM Cloud customer account is provided with one Master user.)
 {: note}
@@ -62,7 +62,7 @@ This API allows the user to list the supported CDN Vendors. The `vendorName` is 
 * **Required Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Vendor`
 
-  The Vendor Container and a usage example can be viewed here: [Vendor Container](/docs/infrastructure/CDN?topic=CDN-vendor-container)
+  The Vendor Container and a usage example can be viewed here: [Vendor Container](/docs/CDN?topic=CDN-vendor-container)
 
 ----
 ## API for Account
@@ -79,12 +79,12 @@ Checks whether a CDN account exists for the user calling the API, for the given 
 {: #api-for-domain-mapping}
 
 ### createDomainMapping
-Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code Examples](/docs/infrastructure/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
+Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code Examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
 
-  [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+  [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
   The following attributes are part of the Input Container and may be provided when creating a domain mapping (attributes are optional unless otherwise noted):
     * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
@@ -94,7 +94,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
     * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
     * `certificateType`: **required** for HTTPS protocol. `SHARED_SAN_CERT` or `WILDCARD_CERT`
     * `path`: Path from which the cached content will be served. Default path is `/*`
-    * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
     * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
     * `cname`: Provide an alias to the hostname. Will be generated if one is not provided.
@@ -105,14 +105,14 @@ Using the provided inputs, this function creates a domain mapping for the given 
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
-    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
   The collection provides a `uniqueId` value, which needs to be sent as input for subsequent API calls related to Mapping and Origin Path.
   {: note}
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### deleteDomainMapping
@@ -120,7 +120,7 @@ Deletes the domain mapping based on the `uniqueId`. The domain mapping must be i
 
 * **Required Parameters**: `uniqueId`: the uniqueId of the mapping to be deleted
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### verifyDomainMapping
@@ -131,7 +131,7 @@ This API can be called at any time to get the latest CDN mapping status. The dom
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping you want to verify
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### startDomainMapping
@@ -140,7 +140,7 @@ Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain m
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping to be started
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### stopDomainMapping
@@ -149,7 +149,7 @@ Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the do
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping to be stopped
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### updateDomainMapping
@@ -157,7 +157,7 @@ Enables the user to update properties of the mapping identified by the `uniqueId
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
-  [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+  [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
   The following attributes are part of the Input Container and are **required** to be provided when updating a domain mapping:
     * `vendorName`: Provide the name of the CDN provider for this mapping.
@@ -166,7 +166,7 @@ Enables the user to update properties of the mapping identified by the `uniqueId
     * `originType`: Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `domain`: Provide your host name.
     * `protocol`: Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
     * `respectHeader`: A Boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
     * `uniqueId`: Generated after the mapping is created.
@@ -178,10 +178,10 @@ Enables the user to update properties of the mapping identified by the `uniqueId
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
-    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 * **Return** a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappings
@@ -190,7 +190,7 @@ Returns a collection of all domain mappings for current customer.
 * **Required Parameters**: None
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ### listDomainMappingByUniqueId
@@ -199,7 +199,7 @@ Returns a collection with a single domain object based on a CDN's `uniqueId`.
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping to be returned
 * **Return**: a single-object collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
 
-  [View the Mapping Container](/docs/infrastructure/CDN?topic=CDN-mapping-container)
+  [View the Mapping Container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
 ## APIs for Origin
@@ -211,7 +211,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
 
-  [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+  [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
   The following attributes are part of the Input Container and may be provided when creating an Origin Path (attributes are optional unless otherwise noted):
     * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
@@ -220,7 +220,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
     * `domain`: **required** Provide your host name as a string.
     * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
     * `path`: Path from which the cached content will be served. Must begin with the mapping path. For example, if the mapping path is `/test`, then your Origin Path may be `/test/media`
-    * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `header`: Specifies host header information used by the Origin Server
     * `uniqueId`: **required** Generated after the mapping is created.
     * `cname`: Provide an alias to the hostname. If you did not provide a unique cname, one was generated for you when the mapping was created.
@@ -231,11 +231,11 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
-    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [View the Origin Path Container](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
+  [View the Origin Path Container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
 ### updateOriginPath
@@ -244,14 +244,14 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
 
-  [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+  [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
   The following attributes are part of the Input Container and may be provided when updating an Origin Path (attributes are optional unless otherwise noted):
     * `oldPath`: **required** Current path to be changed
     * `origin`: (**required** if being updated) Provide the Origin server address as a string.
     * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `path`: **required** New path to be added. Relative to the mapping path.
-    * `httpPort` and/or `httpsPort`: (**required** for Host Server, if being updated) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server, if being updated) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `uniqueId`: **required** uniqueId of the mapping to which this Origin belongs
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
@@ -260,10 +260,10 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
       * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
-    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration-container)
+    * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [View the Origin Path Container](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
+  [View the Origin Path Container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
 ### deleteOriginPath
@@ -283,7 +283,7 @@ Lists the Origin Paths for an existing mapping based on the `uniqueId`.
   * `uniqueId`: provide the uniqueId of the mapping for which you want to list Origin Paths.
 * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
 
-  [View the Origin Path Container](/docs/infrastructure/CDN?topic=CDN-path-origin-container)
+  [View the Origin Path Container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
 ## API for Purge
@@ -397,7 +397,7 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 ## API for Metrics
 {: #api-for-metrics}
 
-[View the Metrics Container](/docs/infrastructure/CDN?topic=CDN-metrics-container)
+[View the Metrics Container](/docs/CDN?topic=CDN-metrics-container)
 
 All metrics data are UTC+0.
 {:note}
@@ -412,7 +412,7 @@ Returns all mappings' bandwidth and hits (including static and dynamic separatel
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getCustomerUsageMetrics
@@ -425,7 +425,7 @@ Returns the total number of predetermined statistics for direct display (no grap
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingUsageMetrics
@@ -438,7 +438,7 @@ Returns the total number of predetermined statistics for direct display for the 
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsMetrics
@@ -453,7 +453,7 @@ Returns the total number of hits at a certain frequency over a given range of ti
      * `day` - daily metrics data from startDate to endDate
      * `week` - weekly metrics data from startDate to endDate
      * `month` - monthly metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingHitsByTypeMetrics
@@ -468,7 +468,7 @@ Returns the total number of hits at a certain frequency over a given range of ti
      * `day` - daily metrics data from startDate to endDate
      * `week` - weekly metrics data from startDate to endDate
      * `month` - monthly metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
@@ -481,7 +481,7 @@ Returns the quantity of bandwidth in GB for an individual CDN. Regions may diffe
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthByRegionMetrics
@@ -494,7 +494,7 @@ Returns the total number of predetermined statistics for direct display (no grap
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
-     
+
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 
 ----
@@ -507,7 +507,7 @@ Creates a new Geographical Access Control rule, and returns the newly created ru
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Geographical Access Control rule:
     * `uniqueId`: uniqueId of the mapping to assign the rule
@@ -515,11 +515,11 @@ Creates a new Geographical Access Control rule, and returns the newly created ru
     * `regionType`: the type of region to apply the Geographical Access Control rule to, either `CONTINENT` or `COUNTRY_OR_REGION`
     * `regions`: an array listing the locations that the `accessType` will apply to
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [View the Geo-blocking class](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
+    [View the Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### updateGeoblocking
@@ -528,7 +528,7 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and may be provided when updating a  Geographical Access Control rule (parameters are optional unless otherwise noted):
     * `uniqueId`: **required** uniqueId of the mapping the rule to be updated belongs.
@@ -536,11 +536,11 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
     * `regionType`: the type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
     * `regions`: an array listing the locations that the `accessType` will apply to.
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/infrastructure/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [View the Geo-blocking class](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
+    [View the Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### deleteGeoblocking
@@ -549,14 +549,14 @@ Removes an existing Geographical Access Control rule from an existing domain map
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attribute is part of the Input Container and is **required** when deleting a Geographical Access Control rule:
     * `uniqueId`: provide the uniqueId of the mapping that the rule to be deleted belongs to.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [View the Geo-blocking class](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
+    [View the Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblocking
@@ -568,7 +568,7 @@ Retrieves a mapping's Geographical Access Control behavior from the database.
   * **Returns**: an object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
 
-    [View the Geo-blocking class](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
+    [View the Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
 ### getGeoblockingAllowedTypesAndRegions
@@ -579,7 +579,7 @@ Returns a list of the types and regions that are allowed for creating Geographic
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
-    [View the Geo-blocking class](/docs/infrastructure/CDN?topic=CDN-geoblocking-class)
+    [View the Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 ----
 ## API for Hotlink Protection
 {: #api-for-hotlink-protection}
@@ -590,18 +590,18 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
     * `uniqueId`: uniqueId of the mapping to which to assign the behavior
     * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
     * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
+    [View the Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### updateHotlinkProtection
@@ -610,18 +610,18 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when updating an existing Hotlink Protection:
     * `uniqueId`: the uniqueId of the mapping to which the existing behavior belongs
     * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
     * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
 
-      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
+      See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
+    [View the Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)
 
 ----
 ### deleteHotlinkProtection
@@ -630,7 +630,7 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
   * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
-    [View the Input Container](/docs/infrastructure/CDN?topic=CDN-input-container)
+    [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
     * `uniqueId`: uniqueId of the mapping from which to remove the behavior
@@ -647,4 +647,4 @@ Retrieves a mapping's current Hotlink Protection behavior.
   * **Returns**: an object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
 
-    [View the Hotlink Protection class](/docs/infrastructure/CDN?topic=CDN-hotlink-protection-class)
+    [View the Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)

@@ -88,11 +88,11 @@ Select either **Server** or **Object Storage**.
 
   * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
 
-    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization) and [Video on Demand](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand) provide further information.
+    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/CDN?topic=CDN-feature-descriptions#large-file-optimization) and [Video on Demand](/docs/CDN?topic=CDN-feature-descriptions#video-on-demand) provide further information.
 
         ![Performance configuration options](images/performance-config-options.png)
 
-    * Choose **Cache Key** options from the list menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-query-args) in the feature description.
+    * Choose **Cache Key** options from the list menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](/docs/CDN?topic=CDN-feature-descriptions#cache-key-query-args) in the feature description.
 
         ![Cache key options](images/cache-key-options.png)
 
@@ -129,7 +129,7 @@ Select the **Purge** tab.
 
 **Step 3:**
 
-Enter standard Unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at a time. Please see the [Rules and Naming Conventions](/docs/infrastructure/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
+Enter standard Unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at a time. Please see the [Rules and Naming Conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
 
 **Step 4:**
 

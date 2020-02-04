@@ -74,7 +74,7 @@ A typical CNAME record would look like the following on the DNS configuration pa
 {: #what-will-i-be-billed-for-in-my-cdn}
 {: faq}
 
-You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/infrastructure/CDN?topic=CDN-pricing) for this service.
+You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
 
 ## When will I be billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}
@@ -108,7 +108,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 ## My CDN is in an Error State. What do I do now?
 {: faq}
 
-Please refer to the [Troubleshooting](/docs/infrastructure/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/infrastructure/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
+Please refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
 {: faq}

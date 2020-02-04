@@ -26,8 +26,8 @@ subcollection: CDN
 ## October 2019
 {: #october-2019}
 
-* Dynamic Content Acceleration [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
-* [Metrics Reports](/docs/infrastructure/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
+* Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
+* [Metrics Reports](/docs/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
 
 ## August 2019
 {: #august-2019}
@@ -37,46 +37,46 @@ subcollection: CDN
 ## March 2019
 {: #march-2019}
 
-* Hotlink Protection [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
+* Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
 
 ## November 2018
 {: #november-2018}
 
-  * Hotlink Protection [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through the API)
+  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through the API)
 
 ## October 2018
 {: #december-2018}
 
-  * Increased the [maximum number of supported Origins Paths](/docs/infrastructure/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
-  * [Origin Paths](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details) no longer need to start with Mapping Path Prefix.
-  * The minimum possible [TTL](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
+  * Increased the [maximum number of supported Origins Paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
+  * [Origin Paths](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details) no longer need to start with Mapping Path Prefix.
+  * The minimum possible [TTL](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
 
 ## September 2018
 {: #september-2018}
 
-  * We now have POPs in these newly added locations: Bahrain, Belgium, Colombia, Ecuador, Finland, Greece, Hong Kong, Indonesia, Macau, Norway, Oman, Romania, South Korea, Sri Lanka, United Arab Emirates, and Uruguay. Look at the complete list of countries [here](/docs/infrastructure/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers).
+  * We now have POPs in these newly added locations: Bahrain, Belgium, Colombia, Ecuador, Finland, Greece, Hong Kong, Indonesia, Macau, Norway, Oman, Romania, South Korea, Sri Lanka, United Arab Emirates, and Uruguay. Look at the complete list of countries [here](/docs/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers).
   * Ability to specify TTL of 0 seconds for a given path
 
 ## August 2018
 {: #august-2018}
 
-  * Geographical Access Control [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through UI)
-  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/infrastructure/CDN?topic=CDN-order-a-cdn#order-a-new-cdn-)
+  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through UI)
+  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn#order-a-new-cdn-)
 
 ## July 2018
 {: #july-2018}
 
-  * Geographical Access Control [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through the API)
+  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through the API)
 
 ## June 2018
 {: #june-2018}
 
-* HTTPS with DV SAN support [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#https-protocol-support)
+* HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-feature-descriptions#https-protocol-support)
 * IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
 
 ## March 2018
 {: #march-2018}
 
-  * Large File Optimization [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#large-file-optimization)
-  * Cache Key Optimization [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#cache-key-optimization)
-  * Video On Demand Optimization [feature description](/docs/infrastructure/CDN?topic=CDN-feature-descriptions#video-on-demand)
+  * Large File Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#large-file-optimization)
+  * Cache Key Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#cache-key-optimization)
+  * Video On Demand Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#video-on-demand)

@@ -82,7 +82,7 @@ To correct the issue, ensure that your Origin server's SSL certificate(s) meets 
   * It must **not** be self-signed
   * It must **not** be expired
 
-If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/infrastructure/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
+If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
 {: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}

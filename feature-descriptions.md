@@ -28,7 +28,7 @@ This page highlights many of the features included with {{site.data.keyword.clou
 ## Host Server Origin support
 {: #host-server-origin-support}
 
-IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/infrastructure/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for supported port numbers/ranges.
+IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for supported port numbers/ranges.
 
 ## Object Storage Origin support
 {: #object-storage-file-support}
@@ -76,9 +76,9 @@ The Edge server uses the **Host Header** when communicating with the Origin host
 ## HTTPS Protocol support
 {: #https-protocol-support}
 
-CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/infrastructure/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/infrastructure/CDN?topic=CDN-about-https#san-certificate-suport). This type will be referred to also as a _SAN certificate_ in this documentation.
+CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-suport). This type will be referred to also as a _SAN certificate_ in this documentation.
 
-The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to the [Troubleshooting document](/docs/infrastructure/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) to understand the implication of selecting a given Certificate type.
+The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to the [Troubleshooting document](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols-) to understand the implication of selecting a given Certificate type.
 
 The Origin Host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized Certificate Authority (CA).
 
@@ -137,7 +137,7 @@ When this feature is enabled, there is a slight performance cost associated with
 ## Dynamic Content Acceleration
 {: #dynamic-content-acceleration-description}
 
-IBM Cloud Content Delivery Network (CDN) can be configured to serve content with Dynamic Content Acceleration (DCA) optimization, the performance of web pages with dynamic content can be measurably improved. See the [Dynamic Content Acceleration](/docs/infrastructure/CDN?topic=CDN-dynamic-content-acceleration) for more details.
+IBM Cloud Content Delivery Network (CDN) can be configured to serve content with Dynamic Content Acceleration (DCA) optimization, the performance of web pages with dynamic content can be measurably improved. See the [Dynamic Content Acceleration](/docs/CDN?topic=CDN-dynamic-content-acceleration) for more details.
 
 ## Geographical Access Control
 {: #geographical-access-control}

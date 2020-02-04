@@ -51,7 +51,7 @@ The key features of the {{site.data.keyword.cloud}} Content Delivery Network ser
   * Geographical Access Control
   * Hotlink Protection
 
-Please see [the feature descriptions document](/docs/infrastructure/CDN?topic=CDN-feature-descriptions) for full feature descriptions.
+Please see [the feature descriptions document](/docs/CDN?topic=CDN-feature-descriptions) for full feature descriptions.
 
 ## Architectural Diagram
 {: #architectural-diagram}

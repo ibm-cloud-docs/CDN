@@ -28,7 +28,7 @@ When using a CDN, two levels of caching are available:
 
 The method you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
 
-  * Whether the [Respect Header setting](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
+  * Whether the [Respect Header setting](/docs/CDN?topic=CDN-manage-your-cdn#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the edge, if you want edge servers to send HTTP responses with the Cache-Control header for that content.
@@ -66,5 +66,5 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 ## More information on cache control
 {: #more-information-on-cache-control}
 
-* How to [manage your CDN](/docs/infrastructure/CDN?topic=CDN-manage-your-cdn)
+* How to [manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn)
 * Cache-Control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt)

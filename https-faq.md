@@ -34,7 +34,7 @@ In the case of SAN certificate, multiple customer domains share a single SAN cer
 {: #how-is-domain-validation-with-redirect-accomplished}
 {:faq}
 
-It depends on your server. The procedure for completing Domain Validation for Apache and Nginx servers can be found on the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#redirect) page.
+It depends on your server. The procedure for completing Domain Validation for Apache and Nginx servers can be found on the [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#redirect) page.
 
 ## How long does Domain Validation take?
 {: #how-long-does-domain-validation-take}
@@ -90,7 +90,7 @@ The SSL certificates that are supported are Wildcard certificate and Domain Vali
 
 Domain Validation can be addressed in one of three ways: CNAME, Standard or Direct.
 
-For details on how to address any of these, please refer to the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#initial-steps-to-domain-control-validation) document.
+For details on how to address any of these, please refer to the [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#initial-steps-to-domain-control-validation) document.
 
 ## What will happen if I don't address the challenge for domain validation of my CDN?
 {: #what-will-happen-if-i-dont-address-the-challenge-for-domain-validation-of-my-cdn}
@@ -110,7 +110,7 @@ No, but you can only use the CNAME to retrieve content from your origin. `https:
 
 This email means that your CDN is not being used. To use the CDN and make the domain(s) active in the certificate(s), you must set the listed CNAME DNS record(s) in your DNS provider system.
 If you complete this action within 7 days, both HTTP and HTTPS traffic will be restored for your CDN and the CDN will go to RUNNING status. If the CDN is still unused after 7 days, we must permanently disable HTTPS for your CDN domain, to prevent your unused domain from blocking new CDN domain requests to be added to the Shared SAN certificate. HTTP traffic access through the CDN could still be restored later by adding a CNAME record for your domain.
-For details on how to address this situation, please refer to the [Completing Domain Control Validation for HTTPS](/docs/infrastructure/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#cname) document.
+For details on how to address this situation, please refer to the [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#cname) document.
 
 ## If I use the SAN certificate type for my CDN, can I still use the CNAME for access to my service?
 {: #if-i-use-a-san-certificate-type-for-my-cdn-can-i-still-use-the-cname-for-access-to-my-service}
