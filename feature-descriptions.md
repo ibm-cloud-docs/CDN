@@ -9,14 +9,18 @@ keywords: features, descriptions, metrics, multiple, origins, mapping, time to l
 subcollection: CDN
 
 ---
-
 {:shortdesc: .shortdesc}
 {:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
 {:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -66,7 +70,7 @@ For metrics that display the change over a period of time as a graph, you can se
 
 Metrics shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates the percentage of times content is delivered by the Edge server, _not_ through its Origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
 
-By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you have the ability to change this through the [{{site.data.keyword.cloud_notm}} console](https://{DomainName/}). Both categories are capable of displaying metrics for 7-, 15-, 30-, 60-, or 90-day periods.
+By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you have the ability to change this through the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/){: external}. Both categories are capable of displaying metrics for 7-, 15-, 30-, 60-, or 90-day periods.
 
 ## Host Header support
 {: #host-header-support}

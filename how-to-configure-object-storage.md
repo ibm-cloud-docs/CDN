@@ -24,7 +24,7 @@ subcollection: CDN
 
 To make use of objects stored in {{site.data.keyword.cloud}} Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
 
-To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-gs-dev#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
+To install any necessary clients or tools, please refer to the [IBM Cloud Object Storage Developer section](/docs/cloud-object-storage/basics?topic=cloud-object-storage-gs-dev#for-developers). This guide assumes you have installed the official AWS command line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
 
 The example code below shows how to set "public-read" access for all the objects in your bucket, using the command line interface.
 

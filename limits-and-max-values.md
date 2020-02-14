@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-05-31"
+  years: 2018, 2020
+lastupdated: "2020-02-07"
 
 keywords: limits, maximum, values, time to live, entries, large file, size, optimization, downloads, years
 
@@ -45,3 +45,8 @@ The maximum response header size is 16KB. In case certain origins try to set coo
 {: #what-is-the-maximum-size-for-the-client-request-headers}
 
 The maximum request headers size is 32KB. If the request headers are larger than 32KB, the Akamai edge server will return a `400 Bad Request` response.
+
+## How long do configuration changes take before they become active on the Akamai side?
+{: #how-long-do-configuration-changes-take-active-in-akamai}
+
+You can expect changes to become active on Akamai in 10 minutes.

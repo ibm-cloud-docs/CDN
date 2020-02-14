@@ -1,41 +1,44 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-25"
+  years: 2017, 2020
+lastupdated: "2020-02-10"
 
 keywords: edge servers, POPs, Akamai servers, list of servers, list of countries
 
 subcollection: CDN
 
 ---
-
 {:shortdesc: .shortdesc}
 {:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
+{:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
 # List of Edge Servers
 {: #list-of-edge-servers}
 
-Here is the list of countries with POPs from Akamai that we're using:
+Here is the list of countries with PoPs from Akamai that we're using:
 
 * Argentina
 * Australia
 * Austria
-* Bahrain
 * Belgium
 * Brazil
-* Bulgaria
 * Canada
 * Chile
 * Colombia
 * Czech Republic
 * Denmark
-* Ecuador
-* Finland
 * France
 * Germany
 * Greece
@@ -43,33 +46,25 @@ Here is the list of countries with POPs from Akamai that we're using:
 * India
 * Indonesia
 * Ireland
-* Israel
 * Italy
 * Japan
-* Macau
 * Malaysia
 * Mexico
 * Netherlands
 * New Zealand
-* Norway
-* Oman
-* Peru
-* Philippines
 * Poland
-* Qatar
+* Portugal
 * Romania
+* Russian Federation
 * Singapore
 * South Africa
 * South Korea
 * Spain
-* Sri Lanka
 * Sweden
 * Switzerland
 * Taiwan, Province of China
 * Thailand
-* Turkey
+* Ukraine
 * United Arab Emirates
 * United Kingdom
 * United States
-* Uruguay
-* Viet Nam
