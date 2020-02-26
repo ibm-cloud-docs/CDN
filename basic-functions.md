@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-05-21"
+  years: 2018, 2020
+lastupdated: "2020-02-21"
 
 keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
 
@@ -34,7 +34,7 @@ Once you've created a CDN, it appears on your CDN dashboard. Here you'll see the
  ![Mapping list screenshot](images/mapping-list.png)
 
 
-If you ordered your CDN with HTTP or HTTPS with Wildcard certificate, you can proceed to Step 1.
+If you ordered your CDN HTTPS with Wildcard certificate, you can proceed to Step 2.
 
 If you created a CDN with HTTPS DV SAN certificate, additional steps may be needed to verify your domain and can be found on the [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#completing-domain-control-validation-for-https) page.
 
@@ -44,7 +44,10 @@ After you've ordered a CDN, you'll need to configure the **CNAME** with your DNS
 
    * During this time, your CDN's status will show as **CNAME Configuration**. Check with your DNS provider to find out when the changes will become active.
 
-   ![CNAME config](images/cname-config.png)  
+   ![CNAME config](images/cname-config.png)
+
+If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=verify-cdn-before-pointing-domain-to-ibm-cname).
+{: note}
 
 **Step 2:**
 
@@ -108,6 +111,7 @@ Stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** 
 **Step 1:**
 
 Click 'Stop CDN' from the Overflow menu (3 vertical dots to the right of the CDN status).
+
   ![Overflow menu](images/stop_cdn.png)
 
 **Step 2:**

@@ -24,6 +24,7 @@ Content Delivery Network (CDN)
     how-to-order.md
     basic-functions.md
     how-to.md
+    verify-cdn-before-running.md
     dynamic-content-acceleration.md
     how-to-https.md
     cors-and-cdn.md

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-29"
+lastupdated: "2020-02-20"
 
 keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -102,7 +102,7 @@ If the mapping's state is in DOMAIN_VALIDATION_PENDING state for more than 48 ho
 {: #does-a-wildcard-certificate-need-to-validate-a-domain-for-my-cdn}
 {:faq}
 
-No, but you can only use the CNAME to retrieve content from your origin. `https://www.example-cname.cdn.appdomain.cloud`
+No, but you can only use the CNAME to retrieve content from your origin. For example `https://www.example-cname.cdn.appdomain.cloud`.
 
 ## I received an email indicating that my domains is not pointed to IBM CDN CNAME. What do I do now?
 {: #i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME}
@@ -135,3 +135,9 @@ During the DV SAN certificate requesting process, the DNS record chain for your 
 {:faq}
 
 CDNs created with HTTPS protocol support HTTP2 for TLS secured traffic.
+
+## Why is the newly created wildcard CDN status `CNAME configuration required` if we don't need to set the DNS record to point the domain to IBM CNAME?
+{: #wildcard-cname-configureation-needed}
+{:faq}
+
+For the wildcard CDN, you don't need to set the DNS record to point to domain to IBM CNAME.  As you create the CDN, the system creates an new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get Status` button. The CDN status then changes to `Running`.
