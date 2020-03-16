@@ -50,3 +50,20 @@ The maximum request headers size is 32KB. If the request headers are larger than
 {: #how-long-do-configuration-changes-take-active-in-akamai}
 
 You can expect changes to become active on Akamai in 10 minutes.
+
+## What's the rate limit for the multiple file purge?
+{: #purge-rate-limit}
+
+For the multiple file purge, there is a limit on the file number in the purge actions. The limiting algorithm used for sustained rate and burst follows a Token Bucket model.  
+There is one bucket applied for all the purge paths under your account. The total token number in the bucket represents burst file numbers can be purged. In the following table, the X-RateLimit-Purge-Paths-Limit-Burst represents how many tokens the bucket can hold. The bucket starts with a full of tokens. Tokens are constantly added to the bucket based on the sustained rate (X-RateLimit-Purge-Paths-Limit-Per-Second). If the bucket is full, no more tokens can be added.  
+When a mutiple file purge request is made, the remaining tokens number is checked against the number of file path. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens, then tokens are removed from the bucket and the request is accepted. If there are not enough tokens in the purge bucket, no tokens are removed, and the request is denied.  
+
+This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#rate-limit-header) shows the rate limiting response headers returned by the purge group API.
+
+Here is default value for rate limit headers:
+
+|  Rate Header   | value  | Description |
+|  ----  | ----  | ----  |
+| X-RateLimit-Purge-Paths-Limit-Per-Second  | 20 | The token number added into bucket per second. |
+| X-RateLimit-Purge-Paths-Limit-Burst | 1000 | The maximum paths can be purged in a burst. Capability of the bucket. |
+| X-RateLimit-Purge-Paths-Remaining| N/A | Number of paths remaining before the rate limit is exceeded. |

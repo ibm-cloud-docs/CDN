@@ -58,11 +58,14 @@ Content Delivery Network (CDN)
         metrics-container.md
         path-container.md
         vendor-container.md
+        purge-group-container.md
+        purge-history-container.md
         
     cdn-example-code.md
     legacy-portal.md
     edge-servers.md
-    
+    at-events.md
+
     {: .topicgroup}
     Regions
         asia-region.md

@@ -2,7 +2,8 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-28"
+lastupdated: "2020-03-11"
+
 
 keywords: new, features, hotlink, Akamai, enhancements, geographical access, cache, key, optimization, video on demand, feature, descriptions, protection, vendor
 
@@ -23,21 +24,28 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 
+## March 2020
+{: #march-2020}
+
+  * Multi Paths Purge [feature description](/docs/CDN?topic=CDN-feature-descriptions#purge-cached-content) (available through the API)
+  * Real-time metrics API [API Reference](/docs/CDN?topic=CDN-cdn-api-reference#getcustomerrealtimemetrics) (available through the API)
+  * Activity Tracker Events for Audit log [feature description](/docs/infrastructure/CDN?topic=CDN-cdn-activity-tracker-events) (available through UI)
+
 ## October 2019
 {: #october-2019}
 
-* Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
-* [Metrics Reports](/docs/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
+  * Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
+  * [Metrics Reports](/docs/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
 
 ## August 2019
 {: #august-2019}
 
-* Move to the new IBM CNAME suffix `.cdn.appdomain.cloud` from `.cdnedge.bluemix.net` to unify user experience (Existing CDNs that are mapped to `.cdnedge.bluemix.net` will NOT be impacted).
+  * Move to the new IBM CNAME suffix `.cdn.appdomain.cloud` from `.cdnedge.bluemix.net` to unify user experience (Existing CDNs that are mapped to `.cdnedge.bluemix.net` will NOT be impacted).
 
 ## March 2019
 {: #march-2019}
 
-* Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
+  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
 
 ## November 2018
 {: #november-2018}
@@ -71,8 +79,8 @@ subcollection: CDN
 ## June 2018
 {: #june-2018}
 
-* HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-feature-descriptions#https-protocol-support)
-* IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
+  * HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-feature-descriptions#https-protocol-support)
+  * IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
 
 ## March 2018
 {: #march-2018}

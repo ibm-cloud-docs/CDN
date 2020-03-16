@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-11-15"
+  years: 2017, 2020
+lastupdated: "2020-03-16"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -55,7 +55,8 @@ For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that you
 
 For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you will access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
-**Note**: It may take up to 15-30 minutes for the update to become active. Check with your DNS provider to obtain an accurate time estimate.
+It may take up to 15-30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
+{:note}
 
 ## How do I add a CNAME record for my CDN domain in DNS?
 {: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
@@ -115,7 +116,8 @@ Please refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubl
 
 Click on your CDN to access the **Overview** Page in the Portal. On the right corner you can see a **Details** section with the `CName` information.
 
-## My Purge Request for a given file path is in progress. Can I submit a new request for the same file path?
+## My single file purge request for a given file path is in progress. Can I submit a new request for the same file path?
+{: faq}
 
 No. There can only be one active Purge request for a given file path at a time.
 
@@ -124,7 +126,8 @@ No. There can only be one active Purge request for a given file path at a time.
 
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
 
-**NOTE:** Creating an IBM Cloud CDN using an IPv6 address as the Origin Server Address is not supported.
+Creating an IBM Cloud CDN using an IPv6 address as the Origin Server Address is not supported.
+{:note}
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
 {: faq}
@@ -225,3 +228,13 @@ You can create a CDN endpoint without using the Domain, but ONLY for a CDN of ty
 {: faq}
 
 Yes, HTTP/2 is supported by Akamai's Edge servers.
+
+## With multiple file purge, what's the difference between a favorite group and an unfavorite group?
+{: #what-different-two-type-favorite-group}
+{: faq}
+
+* A favorite is a permanent group, which means that it will never be deleted unless you change it to an unfavorite group.
+* An unfavorite group is a temporary group. This type of group is automatically deleted after 15 days of inactivity. 
+
+Favorite groups names must be unique. Unfavorite groups do not have this limitation.
+{:note}

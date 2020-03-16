@@ -49,21 +49,21 @@ For this example, we created the following CDN mapping:
 
 The domain `ibm-test.cdn-demo.com` is pointing to the origin server:
 
-```
-    $ dig +short ibm-test.cdn-demo.com
-    119.xx.xx.xx
+```shell
+dig +short ibm-test.cdn-demo.com
+119.xx.xx.xx
 ```
 {:pre}
 
 and a service is running on it:
 
-```
-    $ curl -s -o origin-index.html -D - https://ibm-test.cdn-demo.com/index.html
-    HTTP/1.1 200 OK
-    Server: nginx/1.14.0
-    Date: Tue, 18 Feb 2020 05:40:45 GMT
-    Content-Type: text/html
-    ...
+```shell
+curl -s -o origin-index.html -D - https://ibm-test.cdn-demo.com/index.html
+HTTP/1.1 200 OK
+Server: nginx/1.14.0
+Date: Tue, 18 Feb 2020 05:40:45 GMT
+Content-Type: text/html
+...
 ```
 {:pre}
 
@@ -81,13 +81,13 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 
 By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai edge server. The `dig` result will be similar to this one:
 
-```
-    $ dig +short cdnakaotn3exg6px.cdn.appdomain.cloud
-    cdnakaotn3exg6px.akamai.cdn.appdomain.cloud.
-    cert-00033-cdnedge-bluemix.akamaized.net.edgekey.net.
-    e24455.dsce16.akamaiedge.net.
-    104.84.150.124
-    104.84.150.67
+```bash
+dig +short cdnakaotn3exg6px.cdn.appdomain.cloud
+cdnakaotn3exg6px.akamai.cdn.appdomain.cloud.
+cert-00033-cdnedge-bluemix.akamaized.net.edgekey.net.
+e24455.dsce16.akamaiedge.net.
+104.84.150.124
+104.84.150.67
 ```
 {:pre}
 
@@ -105,24 +105,24 @@ Use your favorite editor to open your local hosts file `/etc/hosts`, and add the
 ```
     104.84.150.124 ibm-test.cdn-demo.com
 ```
-{:pre}
+{:screen}
 
 ### Step 3: Verify the hosts change
 {: #verify-hosts-change}
 
 You can use the `ping` command to resolve and test the IP address.
 
-```
-    $ ping ibm-test.cdn-demo.com
-    PING ibm-test.cdn-demo.com (104.84.150.124) 56(84) bytes of data.
-    64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=1 ttl=59 time=1.66 ms
-    64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=2 ttl=59 time=1.42 ms
-    64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=3 ttl=59 time=1.52 ms
-    64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=4 ttl=59 time=1.42 ms
-    ^C
-    --- ibm-test.cdn-demo.com ping statistics ---
-    4 packets transmitted, 4 received, 0% packet loss, time 3005ms
-    rtt min/avg/max/mdev = 1.420/1.507/1.662/0.099 ms
+```bash
+ping ibm-test.cdn-demo.com
+PING ibm-test.cdn-demo.com (104.84.150.124) 56(84) bytes of data.
+64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=1 ttl=59 time=1.66 ms
+64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=2 ttl=59 time=1.42 ms
+64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=3 ttl=59 time=1.52 ms
+64 bytes from ibm-test.cdn-demo.com (104.84.150.124): icmp_seq=4 ttl=59 time=1.42 ms
+^C
+--- ibm-test.cdn-demo.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.420/1.507/1.662/0.099 ms
 ```
 {:pre}
 
@@ -133,17 +133,19 @@ From this result, we can see the IP address of `ibm-test.cdn-demo.com` was resol
 
 You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshooting#how-do-I-know-my-cdn-is-working) to request the domain.
 
-```
-    $ curl -s -o cdn-test-index.html -D - -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id,akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace" https://ibm-test.cdn-demo.com/index.html
-    HTTP/1.1 200 OK
-    Server: nginx/1.14.0
-    Content-Type: text/html
-    ...
-    Date: Tue, 18 Feb 2020 07:16:56 GMT
-    Content-Length: 1524
-    ...
-    ...
-    X-Check-Cacheable: YES
+```bash
+curl -s -o cdn-test-index.html -D - \
+    -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id,akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace" \
+    https://ibm-test.cdn-demo.com/index.html
+HTTP/1.1 200 OK
+Server: nginx/1.14.0
+Content-Type: text/html
+...
+Date: Tue, 18 Feb 2020 07:16:56 GMT
+Content-Length: 1524
+...
+...
+X-Check-Cacheable: YES
 ```
 {:pre}
 
@@ -188,17 +190,19 @@ After creation, follow these steps to [get your CDN to `Running`](/docs/CDN?topi
 
 You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshooting#how-do-I-know-my-cdn-is-working) to request the wildcard CDN's IBM CNAME.
 
-```
-    $ curl -s -o cdn-test-wildcard-index.html -D - -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id,akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace" https://ibm-test-wildcard.cdn.appdomain.cloud/index.html
-    HTTP/1.1 200 OK
-    Server: nginx/1.14.0
-    Content-Type: text/html
-    ...
-    Date: Tue, 18 Feb 2020 07:16:56 GMT
-    Content-Length: 1524
-    ...
-    ...
-    X-Check-Cacheable: YES
+```bash
+curl -s -o cdn-test-wildcard-index.html -D - \
+    -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id,akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace" \
+    https://ibm-test-wildcard.cdn.appdomain.cloud/index.html
+HTTP/1.1 200 OK
+Server: nginx/1.14.0
+Content-Type: text/html
+...
+Date: Tue, 18 Feb 2020 07:16:56 GMT
+Content-Length: 1524
+...
+...
+X-Check-Cacheable: YES
 ```
 {: pre}
 

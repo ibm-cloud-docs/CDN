@@ -348,3 +348,433 @@ api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
 {: codeblock}
 
 Here we see the domain name correctly mapped to the CNAME.
+
+## Example Code for getting real-time metrics
+{: #example-code-for-getting-real-time-metrics}
+
+This example will show you how to get the real-time metrics with `getCustomerRealTimeMetrics` and `getMappingRealTimeMetrics` in the class `SoftLayer_Network_CdnMarketplace_Metrics`.
+
+To get the real-time metrics for a customer, you can call the `getCustomerRealTimeMetrics` API.
+
+```php
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Metrics', null, $apiUsername, $apiKey);
+try {
+    $metrics = $client->getCustomerRealTimeMetrics(
+        'akamai',
+        1576627200,  // Start timestamp, must be later than 48 hours ago
+        1576663200,  // End timestamp, must be later than start time
+        60           // Time interval, must be a multiple of 60 seconds
+    );
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to get customer real-time metrics: ' . $e->getMessage());
+}
+```
+
+The `getCustomerRealTimeMetrics` API returns an array of metrics. The following is an example output:
+
+```php
+
+(
+    [0] => SoftLayer_Container_Network_CdnMarketplace_Metrics: {
+        type: 'REALTIME',
+        names: [
+            'TotalHits',
+            'TotalBandwidth'
+        ],
+        totals: [
+            1301,         # Total hits from the start time to the end time
+            20.05         # Total bandwidth from the start time to the end time
+        ],
+        time: [
+            1576627200,
+            1576630800,
+            1576634400,
+            1576638000,
+            1576641600,
+            1576645200,
+            1576648800,
+            1576652400,
+            1576656000,
+            1576659600,
+            1576663200
+        ],
+        yaxis1: [          # Hits divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis2: [          # Bandwidth divided with the given time interval
+            1.21,
+            2.32,
+            0.45,
+            1.03,
+            3.01,
+            2.55,
+            4.98,
+            2.45,
+            10.23,
+            2.12,
+            8.97
+        ]
+    }
+)
+```
+
+To get the real-time metrics for a domain mapping, you can call the `getMappingRealTimeMetrics` API.
+
+```php
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Metrics', null, $apiUsername, $apiKey);
+try {
+    $metrics = $client->getMappingRealTimeMetrics(
+        123456789123456,    // Mapping unique id
+        1576627200,  // Start timestamp, must be later than 48 hours ago
+        1576663200,  // End timestamp, must be later than start time
+        60           // Time interval, must be a multiple of 60 seconds
+    );
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to get mapping real-time metrics: ' . $e->getMessage());
+}
+```
+
+The `getMappingRealTimeMetrics` API returns an array of metrics. The following is an example output:
+
+```php
+
+(
+    [0] => SoftLayer_Container_Network_CdnMarketplace_Metrics: {
+        type: 'REALTIME',
+        names: [
+            'TotalHits',
+            'TotalBandwidth',
+            '200',
+            '206',
+            '2XX',
+            '302',
+            '304',
+            '3XX',
+            '401',
+            '403',
+            '404',
+            '412',
+            '4XX',
+            '5XX',
+            'Error',
+            'Others'
+        ],
+        totals: [
+            1301,            # Total hits from the start time to the end time
+            20.05,           # Total bandwidth from the start time to the end time
+            100,             # Total Hits with hits type 200
+            200,             # Total Hits with hits type 206
+            200,             # Total Hits with hits type 2XX
+            300,             # Total Hits with hits type 302
+            100,             # Total Hits with hits type 304
+            200,             # Total Hits with hits type 3XX
+            300,             # Total Hits with hits type 401
+            100,             # Total Hits with hits type 403
+            200,             # Total Hits with hits type 404
+            300,             # Total Hits with hits type 412
+            100,             # Total Hits with hits type 4XX
+            200,             # Total Hits with hits type 5XX
+            200,             # Total Hits with hits type Error
+            200              # Total Hits with hits type Others
+        ],
+        time: [
+            1576627200,
+            1576630800,
+            1576634400,
+            1576638000,
+            1576641600,
+            1576645200,
+            1576648800,
+            1576652400,
+            1576656000,
+            1576659600,
+            1576663200
+        ],
+        yaxis1: [          # Total hits divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis2: [         # Total bandwidth divided with the given time interval
+            1.21,
+            2.32,
+            0.45,
+            1.03,
+            3.01,
+            2.55,
+            4.98,
+            2.45,
+            10.23,
+            2.12,
+            8.97
+        ],
+        yaxis3: [              # Hits with hits type 200 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis4: [             # Hits with hits type 206 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis5: [             # Hits with hits type 2XX divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis6: [             # Hits with hits type 302 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis7: [             # Hits with hits type 304 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis8: [             # Hits with hits type 3XX divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis9: [             # Hits with hits type 401 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis10: [             # Hits with hits type 403 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis11: [             # Hits with hits type 404 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis12: [             # Hits with hits type 412 divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis13: [             # Hits with hits type 4XX divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis14: [             # Hits with hits type 5XX divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis15: [             # Hits with hits type Error divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ],
+        yaxis16: [             # Hits with hits type Others divided with the given time interval
+            123,
+            23,
+            345,
+            12,
+            33,
+            78,
+            89,
+            87,
+            234,
+            12,
+            43
+        ]
+    }
+)
+```
+
+{: codeblock}
+
+
+## Example Code for creating a purge group
+{: #create-group-example}
+
+This example will show how to create a purge group.
+
+```php
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Cache_PurgeGroup',
+    null,
+    $apiUsername,
+    $apiKey
+  );
+
+try {
+    $purgeGroup = $client->createPurgeGroup(
+        '750352919747xxx',
+        'UNIQUE_GROUP_NAME',
+        ['/test1.html', 'test2.html'],
+        3 // save and also purge files during create
+    );
+    print_r($purgeGroup);
+    print_r("\n");
+} catch (\Exception $e) {
+    die('createPurgeGroup failed with an exception: ' . $e->getMessage());
+}
+```
+
+The call returns the following object:
+
+```php
+SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup Object
+    (
+        [uniqueId] => 750352919747xxx,
+        [groupUniqueId] => 618887378480xxx,
+        [lastPurge] => '1582188622',
+        [name] => 'UNIQUE_GROUP_NAME',
+        [saved] => 'SAVED',
+        [option] => 3,
+        [pathCount] => 2,
+        [paths] => ['/test1.html', 'test2.html'],
+        [purgeStatus] => 'SUCCESS'
+    )
+```
+{: codeblock}
+
+
+The rate limit related headers also returned: 
+
+{: #rate-limit-header}
+
+```php
+  lastResponseHeaders => 
+    [
+        X-RateLimit-Purge-Paths-Limit-Burst => 1000,
+        X-RateLimit-Purge-Paths-Limit-Per-Second => 20,
+        X-RateLimit-Purge-Paths-Remaining => 998
+    ]
+```
+{: codeblock}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-06"
+lastupdated: "2020-03-12"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -255,7 +255,7 @@ Updates an existing Origin Path for an existing mapping and for a particular cus
     * `uniqueId`: **required** uniqueId of the mapping to which this Origin belongs
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
-    * `cacheKeyQueryRule`: (**required** if being updated) Cache key behavior rules can only be updated for Origin Paths created _after_ 11/16/17.The following options are available to configure Cache Key behavior:
+    * `cacheKeyQueryRule`: (**required** if being updated) Cache key behavior rules can only be updated for Origin Paths created _after_ 11/16/17. The following options are available to configure Cache Key behavior:
       * `include-all` - includes all query arguments **default**
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
@@ -286,10 +286,147 @@ Lists the Origin Paths for an existing mapping based on the `uniqueId`.
   [View the Origin Path Container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
-## API for Purge
+## API for Multiple File Purge
+{: #api-for-multiple-file-purge}
+
+### createPurgeGroup
+{: #api-for-createpurgegroup}
+
+Creates a purge group.  
+Purge group contains multiple file paths, and allows you to purge all of these files in one API call. You can save a purge group to favorite or not. See the [FAQ](/docs/CDN?topic=CDN-faqs#what-different-two-type-favorite-group) for more information about their difference.   
+There's a rate limit to the purge actions. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.  
+An example to [create a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).  
+
+* **Parameters**:
+  * `uniqueId`: uniqueId of the CDN mapping for which the purge group will be created.
+  * `name`: Purge group name. The favorite group name must be unique, but unfavorite groups do not have this limitation.
+  * `paths`: A collection of purge paths.
+  * `option`: The following options are available to create a purge group:
+    * `1`: Create the purge group as favorite group, and do not execute a purge action. **Default**
+    * `2`: Create the purge group as unfavorite group, and execute a purge action.
+    * `3`: Create the purge group as favorite group, and execute a purge action.
+
+* **Return**: `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### getPurgeGroupByGroupId
+{: #api-for-getpurgegroup}
+
+Gets a purge group.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping.
+  * `groupUniqueId`: Unique ID of the purge group.
+
+* **Return**: `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### listFavoriteGroup
+{: #api-for-listfavoritegroup}
+
+Lists favorite purge groups.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### listUnfavoriteGroup
+{: #api-for-listunfavoritegroup}
+
+Lists unfavorite purge groups.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### savePurgeGroupAsFavorite
+{: #save-purgegroup-as-favorite}
+
+Saves a specific purge group as favorite.
+
+* **Parameters**:
+  * `uniqueId`: unique ID of the mapping to which the purge group belongs.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### removePurgeGroupFromFavorite
+{: #remove-purgegroup-as-favorite}
+
+Removes a specific purge group from favorite.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping to which the purge group belongs.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
+
+  [View the Purge Group Container](/docs/CDN?topic=CDN-purge-group-container)
+
+----
+### purgeByGroupIds
+{: #purge-by-group}
+
+Purges all files in purge groups by a collection of group IDs.  
+Purge actions have a rate limit check. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping.
+  * `groupUniqueIds`: A collection of purge group IDs.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`.
+
+  [View the Purge History Container](/docs/CDN?topic=CDN-purge-history-container)
+
+----
+### getPurgeGroupQuota
+{: #get-purgegroupquota}
+
+Returns the file path quota of a purge group.
+
+* **Return**: An int type of quota information.
+
+----
+## API for Purge History
+{: #api-for-purge-history}
+
+----
+### listPurgeGroupHistory
+{: #list-purgegroup-history}
+
+Returns the purge actions history for a domain mapping.  
+The purge history retains the last 15 days of records.
+
+* **Parameters**:
+  * `uniqueId`: Unique ID of the mapping.
+
+* **Return**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`.
+
+  [View the Purge History Container](/docs/CDN?topic=CDN-purge-history-container)
+
+----
+## API for single file Purge (Deprecated)
 {: #api-for-purge}
 
-### Container class for Purge:
+The Purge API for purging a single file has been deprecated. For efficiency, you are strongly recommended to use [Multiple file Purge](#api-for-multiple-file-purge) instead.
+{:deprecated}
+
+### Container class for Purge
+{: #container-class-for-purge}
+
 ```
 class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 {
@@ -316,7 +453,9 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 ```
 
 ### createPurge
-Creates a purge record and inserts it into the database.
+{: #create-purge}
+
+Create a single file purge.
 
 * **Parameters**:
   * `uniqueId`: uniqueId of the mapping to which the Purge will be created
@@ -326,6 +465,8 @@ Creates a purge record and inserts it into the database.
 
 ----
 ### getPurgeHistoryPerMapping
+{: #get-purge-history-per-mapping}
+
 Returns the Purge history for a CDN based on the `uniqueId` and `saved` status. (By default, the value of `saved` is set to _UNSAVED_.)
 
 * **Parameters**:
@@ -336,6 +477,8 @@ Returns the Purge history for a CDN based on the `uniqueId` and `saved` status. 
 
 ----
 ### saveOrUnsavePurgePath
+{: #save-or-unsave-purge-path}
+
 Updates the status of the Purge path entry to indicate whether that Purge path should be saved. Creates a new `saved` Purge if a Purge path is saved. Deletes a saved Purge record if the path is `unsaved`.
 
 * **Parameters**:
@@ -370,7 +513,7 @@ class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
 }
 ```  
 ### createTimeToLive
-Creates a new `TimeToLive` object and inserts it into the database.
+Creates a new `TimeToLive` object.
 
  * **Parameters**: `string` `uniqueId`, `string` `path`, `int` `ttl`
  * **Return**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
@@ -382,7 +525,7 @@ Updates an existing `TimeToLive` object. If the _oldTtl_ and _newTtl_ inputs are
  * **Returs**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
 ### deleteTtl
-Deletes an existing `TimeToLive` object from the database.
+Deletes an existing `TimeToLive` object.
 
  * **Parameters**: `string` `uniqueId`, `string` `pathName`
  * **Return**: a string with the status of the delete
@@ -496,6 +639,30 @@ Returns the total number of predetermined statistics for direct display (no grap
      * `day` - daily metrics data from startDate to endDate
 
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
+### getCustomerRealTimeMetrics
+Returns the real-time metrics for the current account, including the total data (bandwidth and hits) over the given period of time and the detailed data divided with the given time interval. For more details, [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-real-time-metrics).
+
+ * **Parameters**:
+   * `vendorName`: The name of the CDN provider. Currently, only `akamai` is supported.
+   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00am March 06 2020 in the same timezone(The timestamp should be more than 1583485200).
+   * `endTime`: The end time timestamp (UTC+0) for query must be later than the start time.
+   * `timeInterval`: An optional parameter to provide the time interval in seconds.
+        The time interval must be a multiple of 60 and should be less than the time range from start time to end time.
+
+ * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
+### getMappingRealTimeMetrics
+Returns the real-time metrics for the given mapping, including the total data (bandwidth and hits) over the given period of time and the detailed data divided with the given time interval. For more details, [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-real-time-metrics).
+
+ * **Parameters**:
+   * `mappingUniqueId`: Unique id of the mapping for which metrics are queried.
+   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00am March 06 2020 in the same timezone(the timestamp should be more than 1583485200).
+   * `endTime`: The end time timestamp (UTC+0) for query must be later than the start time.
+   * `timeInterval`: An optional parameter to provide the time interval in seconds.
+        The time interval must be a multiple of 60 and should be less than the time range from start time to end time.
+
+ * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 
 ----
 ## API for Geographical Access Control
@@ -560,7 +727,7 @@ Removes an existing Geographical Access Control rule from an existing domain map
 
 ----
 ### getGeoblocking
-Retrieves a mapping's Geographical Access Control behavior from the database.
+Retrieves a mapping's Geographical Access Control behavior.
 
   * **Parameters**:
     * `uniqueId`: the uniqueId of the mapping that the rule belongs to.
