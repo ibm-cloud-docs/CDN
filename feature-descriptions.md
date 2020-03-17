@@ -54,7 +54,7 @@ Your IBM Cloud CDN service can be restricted to a particular directory path on t
 ## Purge cached content
 {: #purge-cached-content}
 
-IBM Cloud CDN provides the capability to conveniently and quickly remove, or "purge", the cached content from the Edge servers. With the introduction of the [purge group](/docs/CDN?topic=cdn-api-reference#api-for-multiple-file-purge) concept, paths can be classified into related groups that can be purged at the same time. Purge groups can include 1000 paths, by default. A Purge operation with Akamai completes in about 5 seconds. You can also view your purge history, and save specific purge groups as favorite.
+IBM Cloud CDN provides the capability to conveniently and quickly remove, or "purge", the cached content from the Edge servers. With the introduction of the [purge group](/docs/CDN?topic=CDN-cdn-api-reference#api-for-multiple-file-purge) concept, paths can be classified into related groups that can be purged at the same time. Purge groups can include 1000 paths, by default. A Purge operation with Akamai completes in about 5 seconds. You can also view your purge history, and save specific purge groups as favorite.
 
 ## Time to Live (TTL)
 {: #time-to-live-ttl}
