@@ -34,15 +34,11 @@ After you've ordered your CDN with a DV SAN Certificate, the certificate request
 
   * During this time, the CDN status shows as **Requesting Certificate**.
 
-    ![Requesting Certificate Status](images/requesting-cert.png)
-
 **Step 2:**
 
 Once the CA receives the request, it issues a Domain Validation Challenge.
 
   * When this happens, your CDN's status will change to **Domain validation needed**.
-
-    ![Domain Validation Needed](images/domain-validation-needed.png)
 
 **Step 3:**
 
