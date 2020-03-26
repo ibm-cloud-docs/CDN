@@ -58,7 +58,7 @@ EMEA is an abbreviation for Europe, Middle East, and Africa.
   * Eritrea
   * Estonia
   * Ethiopia
-  * Faeroe Islands
+  * Faroe Islands
   * Finland
   * France
   * France (European Territory)

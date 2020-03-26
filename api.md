@@ -79,32 +79,32 @@ Checks whether a CDN account exists for the user calling the API, for the given 
 {: #api-for-domain-mapping}
 
 ### createDomainMapping
-Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code Examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
+Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created by using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code Examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
 
   [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
-  The following attributes are part of the Input Container and may be provided when creating a domain mapping (attributes are optional unless otherwise noted):
+  The following attributes are part of the Input Container and can be provided when creating a domain mapping (attributes are optional unless otherwise noted):
     * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
     * `origin`: **required** Provide the Origin server address as a string.
     * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `domain`: **required** Provide your host name as a string.
     * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `certificateType`: **required** for HTTPS protocol. `SHARED_SAN_CERT` or `WILDCARD_CERT`
-    * `path`: Path from which the cached content will be served. Default path is `/*`
-    * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
-    * `header`: Specifies host header information used by the Origin Server
-    * `respectHeader`: A boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `certificateType`: **required** for HTTPS protocol. `SHARED_SAN_CERT` or `WILDCARD_CERT`.
+    * `path`: Path from which the cached content will be served. Default path is `/*`.
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server) These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information that is used by the Origin server.
+    * `respectHeader`: A Boolean value that, if set to `true`, causes TTL settings in the Origin to override CDN TTL settings.
     * `cname`: Provide an alias to the hostname. Will be generated if one is not provided.
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
-    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior. If no `cacheKeyQueryRule` arguments are supplied, it will default to "include-all"
-      * `include-all` - includes all query arguments **default**
-      * `ignore-all` - ignores all query arguments
-      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
-      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
+    * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior. If no `cacheKeyQueryRule` arguments are supplied, it defaults to "include-all".
+      * `include-all` - Includes all query arguments **default**.
+      * `ignore-all` - Ignores all query arguments.
+      * `ignore: space separated query-args` - Ignores those specific query arguments (for example, `ignore: query1 query2`).
+      * `include: space separated query-args`: Includes those specific query arguments (for example, `include: query1 query2`).
     * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
@@ -124,9 +124,9 @@ Deletes the domain mapping based on the `uniqueId`. The domain mapping must be i
 
 ----
 ### verifyDomainMapping
-Verifies the status of the CDN, and updates the `status` of the CDN mapping if it has changed. When a CDN mapping is created initially, its status shows as _CNAME_CONFIGURATION_. At this point, you must update the DNS record so that the CDN mapping points the hostname to the CNAME. Check with your DNS provider if you have questions about how the update is done and how long it might take for the change to propagate on the internet. Typically, it should take 15 to 30 minutes. After that time, this `verifyDomainMapping` API must be called to verify whether the CNAME chain is complete. If the CNAME chain is complete, the CDN mapping status changes to _RUNNING_.
+Verifies the status of the CDN, and updates the `status` of the CDN mapping if it has changed. When a CDN mapping is created initially, its status shows as _CNAME_CONFIGURATION_. At this point, you must update the DNS record so that the CDN mapping points the hostname to the CNAME. Check with your DNS provider if you have questions about how the update is done and how long it might take for the change to propagate on the internet. Typically, it should take 15 - 30 minutes. After that time, this `verifyDomainMapping` API must be called to verify whether the CNAME chain is complete. If the CNAME chain is complete, the CDN-mapping status changes to _RUNNING_.
 
-This API can be called at any time to get the latest CDN mapping status. The domain mapping must be in one of the following states: _RUNNING_ or _CNAME_CONFIGURATION_.
+This API can be called at any time to get the latest CDN-mapping status. The domain mapping must be in one of the following states: _RUNNING_ or _CNAME_CONFIGURATION_.
 
 * **Required Parameters**: `uniqueId`: uniqueId of the mapping you want to verify
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`
@@ -153,7 +153,7 @@ Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the do
 
 ----
 ### updateDomainMapping
-Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields may be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your Origin Type is Object Storage, the `bucketName` and `fileExtension` also may be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
+Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields can be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your Origin Type is Object Storage, the `bucketName` and `fileExtension` also can be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
@@ -164,16 +164,16 @@ Enables the user to update properties of the mapping identified by the `uniqueId
     * `path`: Provide the current path for this mapping
     * `origin`: Provide the Origin server address as a string.
     * `originType`: Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
-    * `domain`: Provide your host name.
+    * `domain`: Provide your hostname.
     * `protocol`: Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `httpPort` and/or `httpsPort`: These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
-    * `header`: Specifies host header information used by the Origin Server
-    * `respectHeader`: A Boolean value that, if set to `true`, will cause TTL settings in the Origin to override CDN TTL settings.
+    * `httpPort` and/or `httpsPort`: These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information that is used by the Origin Server
+    * `respectHeader`: A Boolean value that, if set to `true`, causes TTL settings in the Origin to override CDN TTL settings.
     * `uniqueId`: Generated after the mapping is created.
     * `cname`: Provide the cname. One was generated when the mapping was created if you did not provide one.
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
-    * `cacheKeyQueryRule`: Cache key behavior rules can only be updated for CDN mappings created _after_ 11/16/17. The following options are available to configure Cache Key behavior:
+    * `cacheKeyQueryRule`: Cache key behavior rules can be updated only for CDN mappings created _after_ 11/16/17. The following options are available to configure Cache Key behavior:
       * `include-all` - includes all query arguments **default**
       * `ignore-all` - ignores all query arguments
       * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
@@ -213,24 +213,24 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 
   [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
-  The following attributes are part of the Input Container and may be provided when creating an Origin Path (attributes are optional unless otherwise noted):
+  The following attributes are part of the Input Container and can be provided when creating an Origin Path (attributes are optional unless otherwise noted):
     * `vendorName`: **required** Provide the name of a valid IBM Cloud CDN provider.
     * `origin`: **required** Provide the Origin server address as a string.
     * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
-    * `domain`: **required** Provide your host name as a string.
+    * `domain`: **required** Provide your hostname as a string.
     * `protocol`: **required** Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
-    * `path`: Path from which the cached content will be served. Must begin with the mapping path. For example, if the mapping path is `/test`, then your Origin Path may be `/test/media`
-    * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
-    * `header`: Specifies host header information used by the Origin Server
+    * `path`: Path from which the cached content is served. Must begin with the mapping path. For example, if the mapping path is `/test`, then your Origin Path might be `/test/media`.
+    * `httpPort` and/or `httpsPort`: **required** These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `header`: Specifies host header information that is used by the Origin Server
     * `uniqueId`: **required** Generated after the mapping is created.
     * `cname`: Provide an alias to the hostname. If you did not provide a unique cname, one was generated for you when the mapping was created.
     * `bucketName`: (**required** for Object Storage) Bucket name for your S3 Object Storage.
     * `fileExtension`: (optional for Object Storage) File extensions that are allowed to be cached.
     * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-      * `include-all` - includes all query arguments **default**
-      * `ignore-all` - ignores all query arguments
-      * `ignore: space separated query-args` - ignores those specific query arguments. For example, `ignore: query1 query2`
-      * `include: space separated query-args`: includes those specific query arguments. For example, `include: query1 query2`
+      * `include-all` - Includes all query arguments **default**.
+      * `ignore-all` - Ignores all query arguments.
+      * `ignore: space separated query-args` - Ignores those specific query arguments (for example, `ignore: query1 query2`).
+      * `include: space separated query-args`: Includes those specific query arguments (for example, `include: query1 query2`).
     * `dynamicContentAcceleration`: (**required** for Dynamic Content Acceleration only) Provide the DCA parameters. [View the DCA Container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 
 * **Return**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`
@@ -239,19 +239,19 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 
 ----
 ### updateOriginPath
-Updates an existing Origin Path for an existing mapping and for a particular customer. The Origin type cannot be changed with this API. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`, `header` and `cacheKeyQueryRule` arguments. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
+Updates an existing Origin Path for an existing mapping and for a particular customer. The Origin type cannot be changed with this API. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`, `header` `cacheKeyQueryRule` arguments. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
 * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input Container here:
 
   [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
-  The following attributes are part of the Input Container and may be provided when updating an Origin Path (attributes are optional unless otherwise noted):
+  The following attributes are part of the Input Container and can be provided when updating an Origin Path (attributes are optional unless otherwise noted):
     * `oldPath`: **required** Current path to be changed
     * `origin`: (**required** if being updated) Provide the Origin server address as a string.
     * `originType`: **required** Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `path`: **required** New path to be added. Relative to the mapping path.
-    * `httpPort` and/or `httpsPort`: (**required** for Host Server, if being updated) These two options must correspond to the desired protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. Please see the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: (**required** for Host Server, if being updated) These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
     * `uniqueId`: **required** uniqueId of the mapping to which this Origin belongs
     * `bucketName`: (**required** for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`: (**required** for Object Storage only) File extensions that are allowed to be cached.
@@ -302,9 +302,9 @@ An example to [create a purge group](/docs/CDN?topic=CDN-code-examples-using-the
   * `name`: Purge group name. The favorite group name must be unique, but unfavorite groups do not have this limitation.
   * `paths`: A collection of purge paths.
   * `option`: The following options are available to create a purge group:
-    * `1`: Create the purge group as favorite group, and do not execute a purge action. **Default**
-    * `2`: Create the purge group as unfavorite group, and execute a purge action.
-    * `3`: Create the purge group as favorite group, and execute a purge action.
+    * `1`: Create the purge group as favorite group, and do not run a purge action. **Default**
+    * `2`: Create the purge group as unfavorite group, and run a purge action.
+    * `3`: Create the purge group as favorite group, and run a purge action.
 
 * **Return**: `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -421,7 +421,7 @@ The purge history retains the last 15 days of records.
 ## API for Single File Purge (Deprecated)
 {: #api-for-purge}
 
-The Purge API for purging a single file has been deprecated. For efficiency, you are strongly recommended to use [Multiple file Purge](#api-for-multiple-file-purge) instead.
+The Purge API for purging a single file has been deprecated. For efficiency, it is strongly recommended to use [Multiple file Purge](#api-for-multiple-file-purge) instead.
 {:deprecated}
 
 ### Container class for Purge
@@ -522,7 +522,7 @@ ___
 Updates an existing `TimeToLive` object. If the _oldTtl_ and _newTtl_ inputs are equal, it exits early.
 
  * **Parameters**: `string` `uniqueId`, `string` `oldPath`, `string` `newPath`, `int` `oldTtl`, `int` `newTtl`
- * **Returs**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
+ * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`
 ___
 ### deleteTtl
 Deletes an existing `TimeToLive` object.
@@ -542,7 +542,7 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 
 [View the Metrics Container](/docs/CDN?topic=CDN-metrics-container)
 
-All metrics data are UTC+0.
+All metrics data is UTC+0.
 {:note}
 
 ### getCustomerInvoicingMetrics
@@ -550,8 +550,8 @@ Returns all mappings' bandwidth and hits (including static and dynamic separatel
 
  * **Parameters**:
    * `vendorName`: Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -563,8 +563,8 @@ Returns the total number of predetermined statistics for direct display (no grap
 
  * **Parameters**:
    * `vendorName`: Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -575,9 +575,9 @@ ___
 Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -588,9 +588,9 @@ ___
 Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -603,9 +603,9 @@ ___
 Returns the total number of hits at a certain frequency over a given range of time. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -615,12 +615,12 @@ Returns the total number of hits at a certain frequency over a given range of ti
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingBandwidthMetrics
-Returns the quantity of bandwidth in GB for an individual CDN. Regions may differ for each vendor. Per mapping.
+Returns the quantity of bandwidth in GB for an individual CDN. Regions might differ for each vendor, per mapping.
 
  * **Parameters**:  
-   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -631,9 +631,9 @@ ___
 Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId`: uniqueId of the mapping for which metrics are queried
-   * `startDate`: Provide the start date timestamp (UTC+0) for query
-   * `endDate`: Provide the end date timestamp (UTC+0) for query
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startDate`: Provide the start date timestamp (UTC+0) for query.
+   * `endDate`: Provide the end date timestamp (UTC+0) for query.
    * `frequency`: Provide the data frequency for data format, the following options are available to configure frequency:
      * `aggregate` - aggregated metrics data from startDate to endDate **default**
      * `day` - daily metrics data from startDate to endDate
@@ -645,7 +645,7 @@ Returns the real-time metrics for the current account, including the total data 
 
  * **Parameters**:
    * `vendorName`: The name of the CDN provider. Currently, only `akamai` is supported.
-   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00am March 06 2020 in the same timezone(The timestamp should be more than 1583485200).
+   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00 AM 06 March 2020 in the same timezone(The timestamp should be more than 1583485200).
    * `endTime`: The end time timestamp (UTC+0) for query must be later than the start time.
    * `timeInterval`: An optional parameter to provide the time interval in seconds.
         The time interval must be a multiple of 60 and should be less than the time range from start time to end time.
@@ -657,7 +657,7 @@ Returns the real-time metrics for the given mapping, including the total data (b
 
  * **Parameters**:
    * `mappingUniqueId`: Unique ID of the mapping for which metrics are queried.
-   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00am March 06 2020 in the same timezone(the timestamp should be more than 1583485200).
+   * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00 AM March 08 2020 now, the start time should be later than 9:00 AM March 06 2020 in the same timezone(the timestamp should be more than 1583485200).
    * `endTime`: The end time timestamp (UTC+0) for query must be later than the start time.
    * `timeInterval`: An optional parameter to provide the time interval in seconds.
         The time interval must be a multiple of 60 and should be less than the time range from start time to end time.
@@ -677,10 +677,10 @@ Creates a new Geographical Access Control rule, and returns the newly created ru
     [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Geographical Access Control rule:
-    * `uniqueId`: uniqueId of the mapping to assign the rule
-    * `accessType`: specifies whether the rule will `ALLOW` or `DENY` traffic to the given region
-    * `regionType`: the type of region to apply the Geographical Access Control rule to, either `CONTINENT` or `COUNTRY_OR_REGION`
-    * `regions`: an array listing the locations that the `accessType` will apply to
+    * `uniqueId`: Provide a uniqueId of the mapping to assign the rule.
+    * `accessType`: Specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
+    * `regionType`: The type of region to apply the Geographical Access Control rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
+    * `regions`: An array listing the locations that the `accessType` applies to.
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
 
@@ -697,11 +697,11 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
 
     [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
-    The following attributes are part of the Input Container and may be provided when updating a  Geographical Access Control rule (parameters are optional unless otherwise noted):
-    * `uniqueId`: **required** uniqueId of the mapping the rule to be updated belongs.
+    The following attributes are part of the Input Container and can be provided when updating a GeographicalAccess Control rule (parameters are optional unless otherwise noted):
+    * `uniqueId`:  (Required) Provide a uniqueId of the mapping the rule to be updated belongs.
     * `accessType`: specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
     * `regionType`: the type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
-    * `regions`: an array listing the locations that the `accessType` will apply to.
+    * `regions`: an array listing the locations that the `accessType` applies to.
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`](/docs/CDN?topic=CDN-geoblocking-class) page to see a list of possible regions.
 
@@ -730,7 +730,7 @@ Removes an existing Geographical Access Control rule from an existing domain map
 Retrieves a mapping's Geographical Access Control behavior.
 
   * **Parameters**:
-    * `uniqueId`: the uniqueId of the mapping that the rule belongs to.
+    * `uniqueId`: The uniqueId of the mapping that the rule belongs to.
 
   * **Returns**: an object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`
@@ -742,7 +742,7 @@ Retrieves a mapping's Geographical Access Control behavior.
 Returns a list of the types and regions that are allowed for creating Geographical Access Control rules.
 
   * **Parameters**:
-    * `uniqueId`: the uniqueId of your domain mapping.
+    * `uniqueId`: The uniqueId of your domain mapping.
 
   * **Returns**: an object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`
 
@@ -760,9 +760,9 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
     [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
-    * `uniqueId`: uniqueId of the mapping to which to assign the behavior
-    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
-    * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
+    * `uniqueId`: Provide uniqueId of the mapping to which to assign the behavior.
+    * `protectionType`: Specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referrer header value matching one of the terms in the specified refererValues.
+    * `refererValues`: A single-space-separated list of Referrer URL match terms for which the `protectionType` behavior takes effect.
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
 
@@ -780,9 +780,9 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
     [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when updating an existing Hotlink Protection:
-    * `uniqueId`: the uniqueId of the mapping to which the existing behavior belongs
-    * `protectionType`: specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues
-    * `refererValues`: a single-space-separated list of Referer URL match terms for which the `protectionType` behavior will take effect
+    * `uniqueId`: The uniqueId of the mapping to which the existing behavior belongs.
+    * `protectionType`: Specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referrer header value matching one of the terms in the specified refererValues.
+    * `refererValues`: A single-space-separated list of Referrer URL match terms for which the `protectionType` behavior takes effect.
 
       See the [`SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`](/docs/CDN?topic=CDN-hotlink-protection-class) page to see a list of valid Hotlink Protection values.
 
@@ -794,13 +794,13 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
 ### deleteHotlinkProtection
 Removes an existing Hotlink Protection behavior from an existing domain mapping.
 
-  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  * **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input Container here:
 
     [View the Input Container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input Container and are **required** when creating a new Hotlink Protection:
-    * `uniqueId`: uniqueId of the mapping from which to remove the behavior
+    * `uniqueId`: Provide uniqueId of the mapping from which to remove the behavior.
 
   * **Returns**: null
 
@@ -809,9 +809,9 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
 Retrieves a mapping's current Hotlink Protection behavior.
 
   * **Parameters**:
-    * `uniqueId`: the uniqueId of the mapping to which the behavior belongs
+    * `uniqueId`: Provide the uniqueId of the mapping to which the behavior belongs.
 
-  * **Returns**: an object of type
-     `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`
+  * **Returns**: An object of type
+     `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`.
 
     [View the Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)

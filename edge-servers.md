@@ -42,7 +42,7 @@ Here is the list of countries with PoPs from Akamai that we're using:
 * France
 * Germany
 * Greece
-* Hong Kong
+* Hong Kong S.A.R. of the PRC
 * India
 * Indonesia
 * Ireland

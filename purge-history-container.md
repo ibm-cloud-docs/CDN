@@ -21,7 +21,7 @@ subcollection: CDN
 # Purge History container
 {: #purge-history-container}
 
-The `SoftLayer_Network_CdnMarketplace_Configuration_Cache_PurgeHistory` collection contains the attributes utilized by [Purge Group API](/docs/CDN?topic=CDN-cdn-api-reference#purge-by-group) and [Purge History API](/docs/CDN?topic=CDN-cdn-api-reference#api-for-purge-history).
+The `SoftLayer_Network_CdnMarketplace_Configuration_Cache_PurgeHistory` collection contains the attributes used by [Purge Group API](/docs/CDN?topic=CDN-cdn-api-reference#purge-by-group) and [Purge History API](/docs/CDN?topic=CDN-cdn-api-reference#api-for-purge-history).
 
 **class** `SoftLayer_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`:
 

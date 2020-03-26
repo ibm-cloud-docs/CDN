@@ -23,12 +23,12 @@ subcollection: CDN
 # Pricing
 {: #pricing}
 
-Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table prior to getting started using this service.
+Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table before getting started using this service.
 
 ## CDN Bandwidth Pricing (Rates shown in USD)
 {: #cdn-bandwidth-pricing}
 
-{{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you only pay for the bandwidth that you use.
+{{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you pay only for the bandwidth that you use.
 
 You are using the [static bandwidth](/docs/CDN?topic=CDN-pricing#cdn-static-bandwidth) by default. If you have enabled the Dynamic Content Acceleration (DCA) feature, you will also pay for the [dynamic bandwidth](/docs/CDN?topic=CDN-pricing#cdn-dynamic-bandwidth).
 

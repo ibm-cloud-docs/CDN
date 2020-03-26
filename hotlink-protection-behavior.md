@@ -36,11 +36,11 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
    * **Valid**: `http*www.example.com`
    * **Invalid**: `http://www.example.com`
 
-* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one the of the terms in `refererValues`. The opposite will occur when there is no match.
+* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referrer Header value matching one the of the terms in `refererValues`. The opposite occurs when there is no match.
   * Possible value for protectionType:
     * `ALLOW`
     * `DENY`
-* `refererValues`: is a single-space-separated list of referer URLs, which may also have wildcard matching, in the form of a string.
+* `refererValues`: is a single-space-separated list of referrer URLs, which might also have wildcard matching, in the form of a string.
   * Some examples of a **valid** string for `refererValues`:
     * `alternate-domain.example.com`
     * `www1.example.com www2.example.com www3.example.com`
@@ -57,7 +57,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     |Contains at least one URL match term that has greater than 255 characters | `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org` |
     |Contains duplicates in the list | `domain1.example.com domain1.example.com`|
     |Empty refererValues | ` `|
-    |Using character(s) not specified in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2){:external} | `domain1.exa}mple.com domain1.example.com`|
+    |Using characters not specified in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2){:external} | `domain1.exa}mple.com domain1.example.com`|
     |`&` character is not supported| `www.example.com/path&`|
     |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
 

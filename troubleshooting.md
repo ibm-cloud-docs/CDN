@@ -29,9 +29,9 @@ subcollection: CDN
 # Troubleshooting
 {: #troubleshooting}
 
-In this document, you will find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
+In this document, find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
 
-## How do I know my CDN is working?
+## How do I know that my CDN is working?
 {: #how-do-I-know-my-cdn-is-working}
 {: troubleshoot}
 {: support}
@@ -74,16 +74,16 @@ If the output of the `curl` command is similar to the following example format, 
 {: troubleshoot}
 {: support}
 
-The most common reason we have seen for the 503 error is due to an issue with a certificate in the SSL certificate chain.
+The most common reason observed for the 503 error is due to an issue with a certificate in the SSL certificate chain.
 
-This is the error you may see: `503 Service Unavailable`.  
+This is the error that you might see: `503 Service Unavailable`.  
 
-In conjunction with the 503 error, you may also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number may vary). In this case, the reference number in the error string translates to a SSL handshake failure.
+With the 503 error, you might also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number might vary). In this case, the reference number in the error string translates to an SSL handshake failure.
 
-To correct the issue, ensure that your Origin server's SSL certificate(s) meets the following criteria:
-  * The certificate **must** be issued by a Certification Authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
+To correct the issue, ensure that your Origin server's SSL certificates meets the following criteria:
+  * The certificate **must** be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
   * It **must** have a complete certificate chain (leaf, intermediate, root).
-  * It **must** match the *Host header* configured on the CDN
+  * It **must** match the *Host header that is configured* on the CDN
   * It must **not** be self-signed
   * It must **not** be expired
 
@@ -94,21 +94,21 @@ If you have verified your Origin's certificate chain using the previous criteria
 {: troubleshoot}
 {: support}
 
-When your {{site.data.keyword.cloud_notm}} CDN is configured to use COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
+When your {{site.data.keyword.cloud_notm}} CDN is configured to use Cloud Object Storage (COS) as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
 
-## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
+## I can't connect through a `curl` command or browser using the hostname with HTTPS.
 {: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
 {: troubleshoot}
 {: support}
 
-If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdn.appdomain.cloud`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
+If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdn.appdomain.cloud`. This includes **all** CDNs created with HTTPS before 18 June 2018. Trying to connect using the hostname results in an error.
 
 ## What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?
 {: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
 {: troubleshoot}
 {: support}
 
-This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
+This table shows the behavior that is expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
 
 | Browser URL | CDN with HTTP protocol only |
 |:-----|:-----|
@@ -146,18 +146,18 @@ This table shows the behavior expected for the supported protocols when loading 
 {: tab-group="cdr-troubleshooting"}
 {: class="simple-tab-table"}
 
-*&#8902;* The expected behavior was changed to `Access denied` for the domain mappings created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
+*&#8902;* The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 **Common error messages:** 
 
 A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
 
-With an HTTP **only** protocol, you will receive the `301 Moved Permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
+With an HTTP **only** protocol, you receive the `301 Moved Permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
 
 The `Access denied` message is seen when you're trying to reach a CDN using an incorrect protocol. Ensure that you're using `http` for CDNs created with HTTP protocol, or `https` for CDNs created with HTTPS protocol.
 
 **A possible redirect error:**
 
-The behavior of a URL redirecting to {{site.data.keyword.cloud_notm}} CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example: `https://examplecname.cdn.appdomain.cloud` for HTTPS mappings or `http://examplecname.cdn.appdomain.cloud` or `https://examplecname.cdn.appdomain.cloud` for HTTP_AND_HTTPS mappings.
+The behavior of a URL redirecting to {{site.data.keyword.cloud_notm}} CDN webpage is seen most often when the URL is incorrect for the protocol. If your CDN is created with a protocol of HTTPS or HTTPS_AND_HTTPS, you must use the CNAME for access to your CDN. For example,: `https://examplecname.cdn.appdomain.cloud` for HTTPS mappings or `http://examplecname.cdn.appdomain.cloud` or `https://examplecname.cdn.appdomain.cloud` for HTTP_AND_HTTPS mappings.
 
-The URL redirects to {{site.data.keyword.cloud_notm}} CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by means of the hostname. For example, `http://example.com`.
+The URL redirects to {{site.data.keyword.cloud_notm}} CDN webpage in this case because both the protocol and domain are incorrect for the CDN's protocol. For a CDN created with HTTP as the _only_ protocol, it can be reached _only_ by using the hostname. For example, `http://example.com`.

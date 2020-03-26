@@ -22,16 +22,16 @@ subcollection: CDN
 # Serving Video on Demand with CDN
 {: #how-to-serve-video-on-demand-with-cdn}
 
-In this guide, we'll explore an example of how to leverage {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
+Explore an example of how to use {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
 
 ## Introduction
 {: #introduction}
 
-A number of formats, such as HLS, MPEG-DASH, and so forth, are available to stream video.
+A number of formats, such as HLS, MPEG-DASH, and so on, are available to stream video.
 
 Conceptually, the setup we're using is shown in the following diagram:
 
-![IBM Cloud CDN for Video On Demand](images/ibmcdn-vod-example-model.png)
+![IBM Cloud CDN for Video on Demand](images/ibmcdn-vod-example-model.png)
 
 We'll also use the origin as the place for preparation. On that, we'll also need to obtain a few packages to make this work.
 
@@ -63,7 +63,7 @@ In this example, let's consider the following stream information for `test-video
     * Format: h264
     * Format profile: High
     * Resolution: 1920x1080
-    * Bitrate: 438 kb/s
+    * Bit rate: 438 kb/s
     * Frame rate: 30.30 fps
   * Audio stream 0
     * Format: aac
@@ -84,15 +84,15 @@ Here is the breakdown of what this command did:
 | -i test-video.mp4 | The source video is located at `test-video.mp4`. |
 | -c:a acc | Use the acc audio codec for the output. |
 | -ar 48000 | Set the audio sample rate to 48000 Hz for the output. |
-| -b:a 128k | Set the audio bitrate to 128000 bits/second for the output. |
+| -b:a 128k | Set the audio bit rate to 128000 bits/second for the output. |
 | -c:v h264 | Use the `h.264` video codec for the output. |
 | -profile:v main | Use the "main" format profile of the selected codec for widest device support. |
-| -crf 23 | Attempt to maintain the video quality with varying file size and bitrate.<br/>  The lower the CRF, the higher the quality and file size. |
+| -crf 23 | Attempt to maintain the video quality with varying file size and bit rate.<br/>  The lower the CRF, the higher the quality and file size. |
 | -g 61 -keyint_min 61 | Set a maximum and minimum.<br/> With the example source frame rate as 30.30, a keyframe should be <br/> inserted every 2 seconds (61 frames). |
 | -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that may insert extraneous keyframes into the output. |
 | -b:v 5300k | Sets the output video stream's target bitrate to 5300000 bits/second. |
 | -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
-| -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to re-adjust the output bitrate back to the target bitrate for every 2 seconds of video. |
+| -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to readjust the output bit rate back to the target bit rate for every 2 seconds of video. |
 | -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
 | -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
 | test-video.m3u8 | Name the output playlist/manifest file to `test-video.m3u8`.<br/> As a result, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., and similar,<br/> will be the video fragment's names by default.|
@@ -105,7 +105,7 @@ Such as:
   * `-c:a:0` chooses audio stream 0.
   * `-c:v:0` chooses video stream 0.
 
-In this guide, only 1 audio stream and 1 video stream make up the example `test-video.mp4`. And so, the difference would not be a concern moving forward.
+In this guide, only one audio stream and one video stream make up the example `test-video.mp4`. And so, the difference would not be a concern moving forward.
 
 Afterward, you can expect to see a number of `.ts` files.  Additionally, you can expect to see a `.m3u8` file that looks something like the following:
 
@@ -144,7 +144,7 @@ test-video11.ts
 ```
 {: screen}
 
-For more complex use cases--such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so forth--`ffmpeg` has many more argument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
+For more complex use cases--such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so on--`ffmpeg` has many more argument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
 ## Prepare the Origin
 {: #prepare-the-origin}
@@ -152,9 +152,9 @@ For more complex use cases--such as scaling video resolution, working with subti
 ### Server
 {: #server}
 
-If you're using this server as an additional origin under a second domain from which to stream these HLS, you may need to configure the server to return CORS response headers for potential browser access.
+If you're using this server as an additional origin under a second domain from which to stream these HLS, you might need to configure the server to return CORS response headers for potential browser access.
 
-You can place the HLS files under any directory or sub-directory you like. For this example, let's place the HLS files under `/usr/share/nginx/hls/`.
+You can place the HLS files under any directory or subdirectory you like. For this example, let's place the HLS files under `/usr/share/nginx/hls/`.
 
 The following Nginx configuration would cover that in the basic sense:
 
@@ -208,7 +208,7 @@ http {
 ### Video player on the webpage
 {: #video-player-on-the-webpage}
 
-Not all streaming video formats may be natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
+Not all streaming video formats are natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
 
 For example, Safari would support native, HLS playback. And so, the video player on the webpage may be as simple as the following example using HTML5 `<video>` elements:
 
@@ -224,7 +224,7 @@ For example, Safari would support native, HLS playback. And so, the video player
 ```
 {: screen}
 
-However, other browsers on desktop devices may also need support from added JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/), whether developed in-house or from a trusted third party, to generate content streams playable through HTML5.
+However, other browsers on desktop devices might also need support from added JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/), whether developed in-house or from a trusted third party, to generate content streams playable through HTML5.
 
 ## Configure the CDN
 {: #configure-the-cdn}

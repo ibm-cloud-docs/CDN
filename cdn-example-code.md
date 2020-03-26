@@ -30,12 +30,12 @@ subcollection: CDN
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
 
-## General steps needed for all API calls
+## General steps that are needed for all API calls
 {: #general-steps-needed-for-all-api-calls}
 
 Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}
 
-  * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and may need to be modified appropriately. In PHP the statement will look similar to this: `require_once './../vendor/autoload.php';`
+  * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
@@ -245,7 +245,7 @@ try {
 ```
 {: codeblock}
 
-The `createDomainMapping` example will display the attributes of the newly created CDN. Make note of the `uniqueId`, as you will need to provide it as a parameter for many other APIs. The output should look similar to this:
+The `createDomainMapping` example displays the attributes of the newly created CDN. Make note of the `uniqueId`, as you will need to provide it as a parameter for many other APIs. The output should look similar to this:
 
 ```php
 Array
@@ -279,7 +279,7 @@ Array
 ## Example code to verify a domain mapping
 {: #example-code-to-verify-domain-mapping}
 
-VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status. Before calling `verifyDomainMapping`, you must add a CNAME record of the custom Hostname to your DNS server.
+VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status. Before calling `verifyDomainMapping`, you must add a CNAME record of the custom hostname to your DNS server.
 
 This example calls `verifyDomainMapping` with the UniqueId that was returned as part of `createDomainMapping`. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the following example.
 
@@ -324,7 +324,7 @@ If your CNAME record has been added to your DNS server, the `status` of your CDN
 
 If your CNAME record has not been added to your DNS server, or your server has not yet updated, the `status` of your CDN will be CNAME_CONFIGURATION, as shown in the following example.
 
-It may take several minutes (up to 30) for the CNAME chaining to complete.
+It can take several minutes (up to 30) for the CNAME chaining to complete.
 {: note}
 
 ```php
@@ -344,7 +344,7 @@ Array
 ```
 {: codeblock}
 
-To be sure your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output should look similar to this one:
+To be sure that your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output should look similar to this one:
 
 ```
 ;; ANSWER SECTION:
@@ -352,12 +352,12 @@ api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
 ```
 {: codeblock}
 
-Here we see the domain name correctly mapped to the CNAME.
+Here we see the domain name that is correctly mapped to the CNAME.
 
 ## Example code for getting real-time metrics
 {: #example-code-for-getting-real-time-metrics}
 
-This example will show you how to get the real-time metrics with `getCustomerRealTimeMetrics` and `getMappingRealTimeMetrics` in the class `SoftLayer_Network_CdnMarketplace_Metrics`.
+This example shows you how to get the real-time metrics with `getCustomerRealTimeMetrics` and `getMappingRealTimeMetrics` in the class `SoftLayer_Network_CdnMarketplace_Metrics`.
 
 To get the real-time metrics for a customer, you can call the `getCustomerRealTimeMetrics` API.
 
@@ -727,7 +727,7 @@ The `getMappingRealTimeMetrics` API returns an array of metrics. The following i
 ## Example code for creating a purge group
 {: #create-group-example}
 
-This example will show how to create a purge group.
+This example shows how to create a purge group.
 
 ```php
 $client = \SoftLayer\SoapClient::getClient(

@@ -35,14 +35,14 @@ subcollection: CDN
 {: faq}
 {: support}
 
-A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Their web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay than we could achieve by delivering the content from one centralized location. It delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Their web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay than we might achieve by delivering the content from one centralized location. It delivers a better overall experience for your customers.
 
 ## How does a Content Delivery Network (CDN) work?
 {: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 {: support}
 
-A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
+A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
 
 ## How is my IBM Cloud Content Delivery Network service account created?
 {: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
@@ -56,11 +56,11 @@ Your account is created during the CDN order process. If you are creating a CDN 
 {: faq}
 {: support}
 
-For HTTP and SAN Certificate based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
+For HTTP and SAN Certificate-based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
 
-For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you will access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
+For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
-It may take up to 15-30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
+It can take up to 15 - 30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
 {:note}
 
 ## How do I add a CNAME record for my CDN domain in DNS?
@@ -82,7 +82,7 @@ A typical CNAME record would look like the following on the DNS configuration pa
 {: faq}
 {: support}
 
-You are only billed for bandwidth used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
+You are only billed for bandwidth that is used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
 
 ## When will I be billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}
@@ -118,19 +118,19 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 ## My CDN is in an Error State. What do I do now?
 {: faq}
 
-Please refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
+Refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
 {: faq}
 
-Click on your CDN to access the **Overview** Page in the Portal. On the right corner you can see a **Details** section with the `CName` information.
+Click your CDN to access the **Overview** page in the portal. On the right corner, you can see a **Details** section with the `CName` information.
 
 ## My single file purge request for a given file path is in progress. Can I submit a new request for the same file path?
 {: faq}
 
-No. There can only be one active Purge request for a given file path at a time.
+No. There can be only one active Purge request for a given file path at a time.
 
-## Is Internet Protocol version 6 (IPv6) supported with the IBM Cloud Content Delivery Network service? How does it work?
+## Is Internet Protocol version 6 (IPv6) supported by the IBM Cloud Content Delivery Network service? How does it work?
 {: faq}
 
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
@@ -149,7 +149,7 @@ Yes. For the Akamai vendor, only the following port numbers are allowed:
 
 The path for a CDN mapping or for the origin is treated as a directory. Therefore, users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
 
-Omitting the slash, for example, using `www.example.com/images` will result in a **Page Not Found** error.
+Omitting the slash, for example, using `www.example.com/images` results in a **Page Not Found** error.
 
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
 {: faq}
@@ -164,7 +164,7 @@ Follow the steps outlined in [this article](https://community.akamai.com/docs/DO
 ## What security is included with the IBM CDN solution with Akamai?
 {: faq}
 
-Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your end users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
+Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
 
 ## Are cookies from the origin server preserved by the Akamai CDN?
 {: faq}
@@ -177,46 +177,46 @@ For non-cacheable content, or any content that is not cached, cookies are preser
 The account's Master User can provide other users with permission to create and manage a CDN.
 
 From the IBM Cloud console main page, follow these steps to edit permissions:
- * Select the **Manage** tab
- * Select **Access (IAM)**
- * Click on the **Users** tab from left pane
- * Click on the desired **User**
- * Then select the **Classic infrastructure** tab
- * Then under **Permissions** tab, expand the **Services** category
- * Select **Manage CDN Account**
- * Click **Save** button
+ * Select the **Manage** tab.
+ * Select **Access (IAM)**.
+ * Click the **Users** tab from left pane.
+ * Click the wanted **User**.
+ * Then, select the **Classic infrastructure** tab.
+ * Then, under **Permissions** tab, expand the **Services** category.
+ * Select **Manage CDN Account**.
+ * Click **Save** button.
 
 From the legacy console main page, follow these steps to edit permissions:
- * Select the **Account** tab
- * Select **Users -> User List**
- * Click on the desired **Username**
- * Then select the **Portal Permissions** tab
- * Select the **Services** tab
- * Select **Manage CDN Account**
- * Click the **Edit Portal Permissions** button
+ * Select the **Account** tab.
+ * Select **Users -> User List**.
+ * Click the wanted **Username**.
+ * Then, select the **Portal Permissions** tab.
+ * Select the **Services** tab.
+ * Select **Manage CDN Account**.
+ * Click the **Edit Portal Permissions** button.
 
-## Why is the Create button not shown or disabled on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
+## Why is the Create button not shown or unavailable on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
 {: faq}
 
 If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
- * Open the left navigation pane by clicking the `triple bar` icon in top left corner of web page
- * Select **Classic Infrastructure**
- * Click on **Upgrade Account** button and follow the instructions
+ * Open the left navigation pane by clicking the `triple bar` icon in upper left corner of web page.
+ * Select **Classic Infrastructure**.
+ * Click the **Upgrade Account** button and follow the instructions.
 
 If you are one of the account's secondary Users, then the account's Master User must give you the `Add/Upgrade Services` permission in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, the account's Master User should follow these steps to edit your permissions:
- * Select the **Manage** tab
- * Select **Access (IAM)**
- * Click on the **Users** tab from left pane
- * Click on the desired **User**
- * Then select the **Classic infrastructure** tab
- * Then under **Permissions** tab, expand the **Account** category
- * Select **Add/Upgrade Services**
- * Click **Save** button
+ * Select the **Manage** tab.
+ * Select **Access (IAM)**.
+ * Click the **Users** tab from left pane.
+ * Click the wanted **User**.
+ * Then, select the **Classic infrastructure** tab.
+ * Then, under **Permissions** tab, expand the **Account** category.
+ * Select **Add/Upgrade Services**.
+ * Click **Save** button.
 
 ## Why am I unable to reach my webpage through my CDN after configuring Hotlink Protection with `protectionType` `ALLOW`?
 {: faq}
 
-Let's consider an example in which your website's domain for end-users is configured to be your CDN's domain/host name: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN will deny access, rather than 'ALLOW'.
+Let's consider an example in which your website's domain for users is configured to be your CDN's domain/host name: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referrer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN denies access, rather than 'ALLOW'.
 
 ## Can I use private endpoint of object storage in CDN settings?
 {: faq}
@@ -226,19 +226,19 @@ No, CDN can only connect to Object Storage on Public endpoints.
 ## Can I use Brotli feature in CDN service?
 {: faq}
 
-No, Brotli feature is not supported with our CDN service with Akamai.
+No, Brotli feature is not supported by our CDN service with Akamai.
 
 ## How do I create a CDN endpoint without using the domain?
 {: faq}
 
 You can create a CDN endpoint without using the Domain, but ONLY for a CDN of type **Wildcard HTTPS**. While creating a CDN of type **Wildcard HTTPS**, your **CNAME** acts as the CDN endpoint, and the **CNAME** is used to serve the traffic.
 
-## Is HTTP/2 supported with the IBM Cloud Content Delivery Network service?
+## Is HTTP/2 supported by the IBM Cloud Content Delivery Network service?
 {: faq}
 
 Yes, HTTP/2 is supported by Akamai's Edge servers.
 
-## With multiple file purge, what's the difference between a favorite group and an unfavorite group?
+## With multiple file purges, what's the difference between a favorite group and an unfavorite group?
 {: #what-different-two-type-favorite-group}
 {: faq}
 
@@ -248,7 +248,7 @@ Yes, HTTP/2 is supported by Akamai's Edge servers.
 Favorite groups names must be unique. Unfavorite groups do not have this limitation.
 {:note}
 
-## In what status is a CDN allowed to perform multiple file purge?
+## In what status is a CDN allowed to perform multiple file purges?
 {: #what-status-is-cdn-allowed-for-multiple-file-purge}
 {: faq}
 

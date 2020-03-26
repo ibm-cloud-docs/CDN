@@ -21,7 +21,7 @@ subcollection: CDN
 # Completing Domain Control Validation for HTTPS with DV SAN
 {: #completing-domain-control-validation-for-https-with-dv-san}
 
-The following diagram outlines the various states your CDN will enter from the time it is created, until it gets to running status.
+The following diagram outlines the various states your CDN enters from the time it is created until it gets to running status.
 
   ![SAN state diagram](images/state-diagram-san.png)
 
@@ -30,7 +30,7 @@ The following diagram outlines the various states your CDN will enter from the t
 
 **Step 1:**
 
-After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the Certificate Authority (CA).
+After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
 
   * During this time, the CDN status shows as **Requesting Certificate**.
 
@@ -38,7 +38,7 @@ After you've ordered your CDN with a DV SAN Certificate, the certificate request
 
 Once the CA receives the request, it issues a Domain Validation Challenge.
 
-  * When this happens, your CDN's status will change to **Domain validation needed**.
+  * When this happens, your CDN's status changes to **Domain validation needed**.
 
 **Step 3:**
 
@@ -64,7 +64,7 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 
 This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
-To use this method, you'll add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdn.appdomain.cloud` domain. No other action is required from you. The DCV will progress automatically from this point. Validation can take 2 to 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
+To use this method, add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdn.appdomain.cloud` domain. No other action is required from you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
 
 Most DNS providers can give you instructions on setting or changing the CNAME. Here an example of a typical CNAME record:
 
@@ -77,7 +77,7 @@ Most DNS providers can give you instructions on setting or changing the CNAME. H
 ### Standard
 {: #standard}
 
-If you choose the Standard method for Domain Validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the Domain Validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, Domain Validation can take 2 to 4 hours.
+If you choose the Standard method for Domain Validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the Domain Validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, Domain Validation can take 2 - 4 hours.
 
    ![Domain Validation Challenge Standard](images/domain-validation-standard.png)
 
@@ -92,7 +92,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 #### Apache Configuration
 {: #apache-configuration}
 
-  * **Step 1:** Log into the machine running the Apache2 server.
+  * **Step 1:** Log in to the machine running the Apache2 server.
 
   * **Step 2:** Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response would be placed in the `/var/www/html/.well-known/acme-challenge/` directory.
 
@@ -116,7 +116,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 #### Nginx Configuration
 {: #nginx-configuration}
 
-  * **Step 1:** Log into the machine running the Nginx server.
+  * **Step 1:** Log in to the machine running the Nginx server.
 
   * **Step 2:** Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
       ```
@@ -139,7 +139,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 #### Verify that this Standard method to address Domain Validation is ready for the CA
 {: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
-* To verify this method works through `curl`, execute that command for the Challenge URL.
+* To verify this method works through `curl`, run that command for the Challenge URL.
     ```
     curl -v http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
@@ -147,7 +147,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 
 In either case, you should be able to retrieve the copy of the Domain Validation Challenge file object stored on your origin server.
 
-#### Clean-up for the Standard method
+#### Clean up for the Standard method
 {: #clean-up-for-the-standard-method}
 
 After your CDN has reached **Certificate deploying** status:
@@ -159,11 +159,11 @@ After your CDN has reached **Certificate deploying** status:
 ### Redirect
 {: #redirect}
 
-Clicking on the **Redirect** tab displays all the information needed to address the Domain Validation through redirect. This information allows the CA to retrieve a copy of the **Challenge response** from Akamai through your origin server. After your server is configured correctly, Domain Validation can take 2 to 4 hours.
+Clicking the **Redirect** tab displays all the information that is needed to address the Domain Validation through redirect. This information allows the CA to retrieve a copy of the **Challenge response** from Akamai through your origin server. After your server is configured correctly, Domain Validation can take 2 - 4 hours.
 
    ![Domain Validation Challenge Redirect](images/domain-validation-redirect.png)
 
-To successfully complete the Domain Validation through the Redirect method, you may need to configure your web server in a particular way. The example procedures for Apache and Nginx servers are outlined in the sections that follow.
+To successfully complete the Domain Validation through the Redirect method, you might need to configure your web server in a particular way. The example procedures for Apache and Nginx servers are outlined in the sections that follow.
 
 **Example situation**
 * Origin server: `www.example.com`
@@ -174,7 +174,7 @@ To successfully complete the Domain Validation through the Redirect method, you 
 #### Apache Redirect Configuration
 {: #apache-redirect-configuration}
 
-  * **Step 1:** Log into the machine running the Apache2 server.
+  * **Step 1:** Log in to the machine running the Apache2 server.
 
   * **Step 2:** Open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for the configuration file.
 
@@ -196,7 +196,7 @@ Create an A record in your DNS between the CDN domain and the origin server's IP
 #### Nginx Redirect Configuration
 {: #nginx-redirect-confguration}
 
-  * **Step 1:** Log into the machine running the Nginx server.
+  * **Step 1:** Log in to the machine running the Nginx server.
 
   * **Step 2:** Open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for the configuration files.
 
@@ -249,9 +249,9 @@ Create an A record in your DNS between the CDN domain and the origin server's IP
 #### Verify that the redirect is occurring
 {: #verify-that-the-redirect-is-occurring}
 
-Completing these steps redirects _only_ the traffic for the specific Challenge URL to the URL Redirect. You can verify that the redirect worked appropriately either through `curl` or through the browser.
+Completing these steps redirects _only_ the traffic for the specific Challenge URL to the URL Redirect. You can verify that the redirect worked either through `curl` or through the browser.
 
-* To verify that redirect works through `curl`, execute that command for the Challenge URL.
+* To verify that redirect works through `curl`, run that command for the Challenge URL.
 
     ```
     curl -vL http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
@@ -261,10 +261,10 @@ Completing these steps redirects _only_ the traffic for the specific Challenge U
 
 In either case, you should be able to retrieve the copy of the Domain Validation Challenge file object from Akamai at the `dcv.akamai.com` domain, to which the original request was redirected.
 
-#### Clean-up for the Redirect method
+#### Clean up for the Redirect method
 {: #clean-up-for-the-redirect-method}
 
-After your CDN has reached **Certificate deploying** status:
+After your CDN indicates **Certificate deploying** status:
 1. Remove the redirect statements or blocks from the configuration file. (optional)
 1. Remove the added ServerAlias (Apache2) or the server_name (Nginx) from your server configuration, if needed. (optional)
 1. Remove the A record between the CDN domain and the origin server IP.

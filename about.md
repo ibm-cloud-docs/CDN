@@ -21,14 +21,14 @@ subcollection: CDN
 # About Content Delivery Networks (CDN)
 {: #about-content-delivery-networks-cdn-}
 
-A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your end-users receive the content with less delay, and it delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your users receive the content with less delay, and it delivers a better overall experience for your customers.
 
 ## How does a CDN work?
 {: #how-does-a-cdn-work}
 
-A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using {{site.data.keyword.cloud}} Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
+A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using {{site.data.keyword.cloud}} Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
 
-![High level CDN diagram](images/high-level-cdn-diagram.png)
+![High-level CDN diagram](images/high-level-cdn-diagram.png)
 
 ## Architectural diagram
 {: #architectural-diagram}
@@ -40,7 +40,7 @@ The following diagram offers a schematic overview of the three-tier architecture
 ## Features
 {: #features}
 
-The key features of the {{site.data.keyword.cloud}} Content Delivery Network service include:
+{{site.data.keyword.cloud}} Content Delivery Network service includes the following key features.
   * [Host Server Origin support](#host-server-origin-support)
   * [Object Storage Origin support](#object-storage-file-support)
   * [Support for Multiple Origins with distinct paths](#support-for-multiple-origins-with-distinct-paths)
@@ -60,7 +60,7 @@ The key features of the {{site.data.keyword.cloud}} Content Delivery Network ser
   * [Hotlink Protection](#hotlink-protection)
 
 
-Features included with {{site.data.keyword.cloud}} CDN powered by Akamai are described as follows.
+Features that are included with {{site.data.keyword.cloud}} CDN powered by Akamai are described as follows.
 
 ### Host Server Origin support
 {: #host-server-origin-support}
@@ -70,19 +70,19 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 ### Object Storage Origin support
 {: #object-storage-file-support}
 
-IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to only allow caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access.
+IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to allow only caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access.
 
 This tutorial on [How to set up IBM Cloud Object Storage with CDN](/docs/tutorials?topic=solution-tutorials-static-files-cdn#static-files-cdn) provides more detailed information.
 
 ### Support for Multiple Origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
 
-In certain cases, you may want to deliver certain content from a different Origin server. For example, you may want certain photos or videos served from different Origin servers. IBM Cloud CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility regarding how and where the data is stored. The path provided for the Origin server should be unique with respect to the CDN. The Origin server itself does not need to be unique.
+In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. IBM Cloud CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility regarding how and where the data is stored. The path that is provided for the Origin server should be unique regarding the CDN. The Origin server itself does not need to be unique.
 
 ### Path-based CDN mappings
 {: #path-based-cdn-mappings}
 
-Your IBM Cloud CDN service can be restricted to a particular directory path on the Origin server by providing the path when creating the CDN. An end-user is allowed access only to those contents in that directory path. For example if a CDN `www.example.com` is created with Path `/videos`, it is accessible **only** through `www.example.com/videos/*`.
+Your IBM Cloud CDN service can be restricted to a particular directory path on the Origin server by providing the path when creating the CDN. A user is allowed access only to those contents in that directory path. For example, if a CDN `www.example.com` is created with Path `/videos`, it is accessible **only** through `www.example.com/videos/*`.
 
 ### Purge-cached content
 {: #purge-cached-content}
@@ -92,34 +92,34 @@ IBM Cloud CDN provides the capability to conveniently and quickly remove, or "pu
 ### Time to Live (TTL)
 {: #time-to-live-ttl}
 
-The Time To Live indicates the amount of time (in seconds) the Edge server will retain the cached content for that particular file or directory path. When a CDN is first created, a global Time To Live (TTL) is created for path `/\*` with a default time of 3600 seconds. The minimum value for TTL is 0 seconds, and the maximum value is 2147483647 seconds. For each entry, the TTL path should be unique for the CDN. If multiple paths match a given content, the most recently configured path match applies to that content. For example, consider two TTLs, `/example/file` created first with a time to live value of 3000 seconds and `/example/*` is created later, with a value of 4000 seconds. Although `/example/file` is more specific, `/example/*` was created most recently, so the TTL for `/example/file` will be 4000 seconds. Once created, TTL entries can be edited for path and/or time. They can be deleted as well.
+The Time To Live indicates the amount of time (in seconds) the Edge server retains the cached content for that particular file or directory path. When a CDN is first created, a global Time To Live (TTL) is created for path `/\*` with a default time of 3600 seconds. The minimum value for TTL is 0 seconds, and the maximum value is 2147483647 seconds. For each entry, the TTL path should be unique for the CDN. If multiple paths match a given content, the most recently configured path match applies to that content. For example, consider two TTLs, `/example/file` created first with a time to live value of 3000 seconds and `/example/*` is created later, with a value of 4000 seconds. Although `/example/file` is more specific, `/example/*` was created most recently, so the TTL for `/example/file` will be 4000 seconds. Once created, TTL entries can be edited for path and/or time. They can be deleted as well.
 
 ### Metrics with graphical views
 {: #metrics-with-graphical-views}
 
 Metrics for an individual CDN are provided on the Overview tab of the Customer Portal for that CDN Mapping. Two types of metrics are calculated from the CDN's usage: those that show the metrics over a time period as a graph; and those that are shown as aggregate values.
 
-For metrics that display the change over a period of time as a graph, you can see three line graphs and a pie chart. The three line graphs are: **Bandwidth**, **Hits by Mapping**, and **Hits by Type**. They display the activity on a daily basis over the course of your specified time-frame. The graphs for **Bandwidth** and **Hits by Mapping** are single-line graphs, whereas the breakdown of **Hits by Type** shows a line for each of the hit types provided. The pie chart displays a regional breakdown of the bandwidth for a CDN mapping on a percentage basis.
+For metrics that display the change over a period of time as a graph, you can see three line graphs and a pie chart. The three line graphs are: **Bandwidth**, **Hits by Mapping**, and **Hits by Type**. They display the activity daily over the course of your specified timeframe. The graphs for **Bandwidth** and **Hits by Mapping** are single-line graphs, whereas the breakdown of **Hits by Type** shows a line for each of the hit types provided. The pie chart displays a regional breakdown of the bandwidth for a CDN mapping on a percentage basis.
 
-Metrics shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates the percentage of times content is delivered by the Edge server, _not_ through its Origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
+Metrics that are shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates that the percentage of times content is delivered by the Edge server, _not_ through its Origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
 
 By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you have the ability to change this through the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/){: external}. Both categories are capable of displaying metrics for 7-, 15-, 30-, 60-, or 90-day periods.
 
 ### Host Header support
 {: #host-header-support}
 
-The Edge server uses the **Host Header** when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically it enables a use case where a client has multiple web servers configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin Server Hostname as default HTTP Host Header if the Origin Server is specified as Hostname (rather than as an IP address). If Host header is not provided as input AND the Origin Server is provided as an IP address, the CDN Hostname (also called the CDN Domain Name) is used as the default HTTP Host Header.
+The Edge server uses the **Host Header** when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin Server Hostname as default HTTP Host Header if the Origin Server is specified as Hostname (rather than as an IP address). If Host header is not provided as input AND the Origin Server is provided as an IP address, the CDN hostname (also called the CDN Domain Name) is used as the default HTTP Host Header.
 
 ### HTTPS Protocol support
 {: #https-protocol-support}
 
-CDN can be configured to use HTTPS protocol to serve the content securely to the end users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-suport). This type will be referred to also as a _SAN certificate_ in this documentation.
+CDN can be configured to use HTTPS protocol to serve the content securely to the users. This configuration requires that an SSL certificate must be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-suport). This type is referred to also as a _SAN certificate_ in this documentation.
 
-The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by means of a CNAME. The SAN certificate process takes 4 to 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the Hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to the [Troubleshooting document](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols) to understand the implication of selecting a given Certificate type.
+The type of SSL Certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration setup is fast, but it has the downside that the CDN is accessible only by using a CNAME. The SAN certificate process takes 4 - 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the hostname). The SAN Certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols) to understand the implication of selecting a given Certificate type.
 
-The Origin Host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized Certificate Authority (CA).
+The Origin Host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized certificate authority (CA).
 
-As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates, because the set of intermediary certificates that is trusted changes frequently. You can find the Akamai trusted certificates [on the Web at this location](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
+As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates because the set of intermediary certificates that is trusted changes frequently. You can find the Akamai trusted certificates [on the web at this location](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
 
 ### Respect Headers
 {: #respect-headers}
@@ -134,7 +134,7 @@ When the CDN Edge server receives a user request, and the requested content is n
 ### Cache Key optimization
 {: #cache-key-optimization}
 
-Akamai Edge servers cache content on a **Cache Store**. To use the content from the **Cache Store**, Edge servers use a **Cache Key**. Typically, a **Cache Key** is generated based on a portion of an end-user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content delivered is the same. By default, Akamai uses the query function's arguments to generate the Cache Key, and therefore, to generate a unique Cache Key for each user. This method is not optimal, because it causes the Edge server to contact the Origin server for content that is already cached, but using a different Cache Key. The **Cache Key Optimization** feature allows you to specify which query args to include or ignore when generating a Cache Key. This feature applies to any `create` or `update` of a CDN Mapping configuration, as well as for any `create` or `update` of an Origin path.
+Akamai Edge servers cache content on a **Cache Store**. To use the content from the **Cache Store**, Edge servers use a **Cache Key**. Typically, a **Cache Key** is generated based on a portion of a user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content that is delivered is the same. By default, Akamai uses the query function's arguments to generate the Cache Key, and therefore, to generate a unique Cache Key for each user. This method is not optimal because it causes the Edge server to contact the Origin server for content that is already cached, but that uses a different Cache Key. The **Cache Key Optimization** feature allows you to specify which query args to include or ignore when generating a Cache Key. This feature applies to any `create` or `update` of a CDN-Mapping configuration, as well as for any `create` or `update` of an Origin path.
 
 The value of **Cache Key Optimization** can be configured from the **Settings** tab after creation of a CDN mapping. For Origin path, they can be configured during the `create` or `update` operations of an Origin path.
 {: note}
@@ -142,7 +142,7 @@ The value of **Cache Key Optimization** can be configured from the **Settings** 
 ### Content Compression
 {: #content-compression}
 
-**Content Compression** is enabled in Akamai CDN by default for the following content types:
+**Content Compression** is enabled in Akamai CDN by default for the following content types.
 * text/html*
 * text/css*
 * text/xml*
@@ -153,23 +153,23 @@ The value of **Cache Key Optimization** can be configured from the **Settings** 
 * application/json
 * application/xml*
 
-When compression is handled by the Edge Server, then the content must be at least 10kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
+When compression is handled by the Edge Server, then the content must be at least 10 kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
 
 ### Large file optimization
 {: #large-file-optimization}
 
-Large file optimization allows the CDN network to optimize the delivery of content greater than 10MB. This enablement increases performance for large files and reduces latency and download times. Without this feature, the CDN cannot service files greater than 1.8GB in size. This feature allows file downloads greater than 1.8GB, up to a maximum of 320GB.
+Large file optimization allows the CDN network to optimize the delivery of content greater than 10 MB. This enablement increases performance for large files and reduces latency and download times. Without this feature, the CDN cannot service files greater than 1.8 GB. This feature allows file downloads greater than 1.8 GB, up to a maximum of 320 GB.
 
-For Large File Optimization to work, byte-range requests **must** be enabled on the Origin server. Akamai CDN employs a technique called _Partial Object Caching_ for this optimization. When a large file is requested, the edge server checks whether the file meets the size requirements. This means that files larger than 10MB will be requested from the Origin server in chunks. Once the chunk arrives at the edge server, it is cached and immediately served to the user. The next chunk is pre-fetched in parallel by the edge server, thus reducing latency. This process continues until the entire file is retrieved, or the connection is terminated.
+For Large File Optimization to work, byte-range requests **must** be enabled on the Origin server. Akamai CDN employs a technique that is called _Partial Object Caching_ for this optimization. When a large file is requested, the edge server checks whether the file meets the size requirements. This means that files larger than 10 MB will be requested from the Origin server in chunks. Once the chunk arrives at the edge server, it is cached and immediately served to the user. The next chunk is pre-fetched in parallel by the edge server, thus reducing latency. This process continues until the entire file is retrieved, or the connection is terminated.
 
-When this feature is enabled, there is a slight performance cost associated with serving content smaller than 10MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new Origin Path in the CDN configuration and enable Large File Optimization for that path.
+When this feature is enabled, there is a slight performance cost that is associated with serving content smaller than 10 MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new Origin Path in the CDN configuration and enable Large File Optimization for that path.
 
-### Video on Demand
+### Video-on-Demand
 {: #video-on-demand}
 
-**Video on Demand** performance optimization delivers high-quality streaming across a variety of network types. By leveraging pre-configured cache control settings and the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
+**Video-on-Demand** performance optimization delivers high-quality streaming across various network types. By using pre-configured cache control settings and the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
-**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live video streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
+**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live Video Streaming is **not** supported at this time. You can enable the **Video-on-Demand** feature by selecting the option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
 
 ### Dynamic Content Acceleration
 {: #dynamic-content-acceleration-description}
@@ -183,7 +183,7 @@ Geographical Access Control is a rule-based behavior that lets you set the `acce
 
 The access-type `Allow` lets you specifically allow traffic to selected regions, based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to `Allow` traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
 
-On the other hand, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified, regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents will **not** be able to use your service, whereas users on all other continents will have access to it.
+On the other hand, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified, regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents will **not** be able to use your service, whereas users on all other continents have access to it.
 
 This feature is accessible from the **Settings** page of your CDN Configuration.
 
@@ -192,10 +192,12 @@ This feature is accessible from the **Settings** page of your CDN Configuration.
 
 Hotlink Protection is a rules-based behavior that lets you control whether certain websites are allowed access to your content from your CDN. The browser typically includes a `Referer` Header when an HTTP request is made from a link on a webpage, and when that link points to a remote asset. The link that one website uses for access to an asset from another website is called a _hotlink_.  Two types of behaviors are available: **ALLOW** and **DENY**.
 
-If your `protectionType` is set to `ALLOW`:
+If your `protectionType` is set to `ALLOW`
+
 * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN **will** serve the content requested.
 * Otherwise, your CDN will **not** serve the content.
 
-If your `protectionType` is set to `DENY`:
+If your `protectionType` is set to `DENY`
+
 * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN **will not** serve the content requested.
-* Otherwise, your CDN will serve the content.
+* Otherwise, your CDN serves the content.

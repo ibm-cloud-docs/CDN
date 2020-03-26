@@ -38,11 +38,11 @@ subcollection: CDN
 * Montserrat
 * Netherlands Antilles
 * Nicaragua
-* USA
+* US
 * Canada
 * Panama
 * Puerto Rico
-* St Kitts and Nevis
+* St. Kitts and Nevis
 * St Lucia
 * St Pierre and Miquelon
 * St Vincent and The Grenadines

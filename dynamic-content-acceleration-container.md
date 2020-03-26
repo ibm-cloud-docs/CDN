@@ -21,10 +21,10 @@ subcollection: CDN
 # Dynamic Content Acceleration container
 {: #dynamic-content-acceleration-container}
 
-The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_DynamicContentAcceleration container` contains the attributes utilized by both the Mapping and (Origin) Path classes. This object is used to set the Dynamic Content Acceleration (DCA) behavior for a CDN by calling the API.
+The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_DynamicContentAcceleration container` contains the attributes that are used by both the Mapping and (Origin) Path classes. This object is used to set the Dynamic Content Acceleration (DCA) behavior for a CDN by calling the API.
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_DynamicContentAcceleration`:
 
-* `detectionPath`: A string value, will be used by CDN edge servers to find the best optimized route from edge to the origin server.
-* `prefetchEnabled`: A boolean value that, if set to 'true', will inspects HTML responses and pre-fetches embedded objects in HTML files. The value is 'true' by default.
-* `mobileImageCompressionEnabled`: A boolean value that, if set to 'true', will compress images to reduce the amount of content for mobile devices. The value is 'true' by default.
+* `detectionPath`: A string value is used by CDN edge servers to find the best optimized route from edge to the origin server.
+* `prefetchEnabled`: A Boolean value that, if set to 'true', will inspects HTML responses and pre-fetches embedded objects in HTML files. The value is 'true' by default.
+* `mobileImageCompressionEnabled`: A Boolean value that, if set to 'true', compresses images to reduce the amount of content for mobile devices. The value is 'true' by default.

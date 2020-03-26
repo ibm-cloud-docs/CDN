@@ -13,7 +13,7 @@ subcollection: CDN
 # Metrics container
 {: #metrics-container}
 
-The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the attributes used by our Metrics APIs. There are three possible values for the `type` attribute: PIECHART, LINEGRAPH, or TOTALS. The output for the rest of the attributes in this container depend on the `type`, which is described in further detail below. All attributes except `type` are arrays. Not all attributes are used for all types.
+The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the attributes that are used by our Metrics APIs. There are three possible values for the `type` attribute: PIECHART, LINEGRAPH, or TOTALS. The output for the rest of the attributes in this container depend on the `type`, which is described in further detail. All attributes except `type` are arrays. Not all attributes are used for all types.
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Metrics`:
 * `type`
@@ -43,10 +43,10 @@ The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the
 * `yaxis19`
 * `yaxis20`
 
-The PIECHART type is for data that will be sent to a pie chart. In this case, the only attributes used are: `names`, `xaxis`, and `yaxis`. The `names` attribute is an array containing the region names. The `xaxis` attribute contains the usage in GB, and `yaxis1` is the test percentage.
+The PIECHART type is for data that is sent to a pie chart. In this case, the only attributes that are used are: `names`, `xaxis`, and `yaxis`. The `names` attribute is an array containing the region names. The `xaxis` attribute contains the usage in GB, and `yaxis1` is the test percentage.
 
 
-The LINEGRAPH type is for data that will be sent to a line graph. In this case, the `names` array will contain the names of the metrics that are found in the `xaxis`, `yaxis`, `yaxis2`...`yaxis20` attributes, and the actual data will be in the corresponding arrays.
+The LINEGRAPH type is for data that will be sent to a line graph. In this case, the `names` array ontains the names of the metrics that are found in the `xaxis`, `yaxis`, `yaxis2`...`yaxis20` attributes, and the actual data is in the corresponding arrays.
 
 
-If `type` is TOTALS, the `names` array will contain the names of the metrics found in the corresponding `totals` array, and the actual data is contained in the `totals` array.
+If `type` is TOTALS, the `names` array contains the names of the metrics that are found in the corresponding `totals` array, and the actual data is contained in the `totals` array.

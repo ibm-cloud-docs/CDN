@@ -33,7 +33,7 @@ subcollection: CDN
 * Georgia (country)
 * Guam
 * Heard and McDonald Islands
-* Hong Kong
+* Hong Kong S.A.R. of the PRC
 * Indonesia
 * Kazakhstan
 * Kiribati

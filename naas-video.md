@@ -20,7 +20,7 @@ subcollection: CDN
 # Video: Network as a Service
 {: #naas-video}
 
-{{site.data.keyword.cloud}} Network services, including Load Balancers, Security Groups, and CDN make it easy to build cloud-native applications with greater security, performance, and resiliency. In this demo, you’ll learn how you can use these services to create a simple three-tiered web app in a matter of clicks.
+{{site.data.keyword.cloud}} Network services, including Load Balancers, Security Groups, and CDN make it easy to build cloud-native applications with greater security, performance, and resiliency. In this demonstration, learn how you can use these services to create a simple three-tiered web app in a matter of clicks.
 
 <p>
   <div class="embed-responsive embed-responsive-16by9">

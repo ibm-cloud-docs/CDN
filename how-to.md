@@ -48,12 +48,12 @@ After saving, you can **Edit** or **Delete** the TTL setting using the overflow 
 
   * When the content matches multiple rules, the most recently added configuration takes precedence.
 
-  * TTL values can be set only for a specific file name or directory. Regular expressions are not supported, because they may create unpredictable behavior.
+  * TTL values can be set only for a specific file name or directory. Regular expressions are not supported because they might create unpredictable behavior.
 
 ## Adding Origin Path details
 {: #adding-origin-path-details}
 
-When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based upon a Host Server or Object Storage.
+When your CDN is in *CNAME_Configuration* or *Running* status, you can add Origin Path details. You can choose to provide content from multiple Origin Servers. For example, photos can be delivered from a different server than videos. The Origin can be based on a Host Server or Object Storage.
 
 The CDN makes a URL transformation for the origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server retrieves the content from `xyz.example.com/*`.
 {: note}
@@ -88,7 +88,7 @@ Select either **Server** or **Object Storage**.
 
   * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
 
-    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization) and [Video on Demand](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand) provide further information.
+    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on Demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8 GB, while **Large file** optimization allows downloads of files from 1.8 GB to 320 GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization) and [Video on Demand](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand) provide further information.
 
         ![Performance configuration options](images/performance-config-options.png)
 
@@ -96,19 +96,19 @@ Select either **Server** or **Object Storage**.
 
         ![Cache key options](images/cache-key-options.png)
 
-The Protocol and Port options shown by the UI will match what was selected when you ordered the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option is shown as part of Add Origin.
+The Protocol and Port options that are shown by the UI match what was selected when you ordered the CDN. For example, if **HTTP port** was selected as part of ordering a CDN, only the **HTTP port** option is shown as part of Add Origin.
 {: note}
 
 **Step 5:**
 
 Select the **Add** button to add your Origin Path.
 
-When you provide file extensions for an Object Storage origin path, the TTL setting with the same URL as the origin path is scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and you specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its sub-directories.
+When you provide file extensions for an Object Storage origin path, the TTL setting with the same URL as the origin path is scoped to include all files that have those specified file extensions. For example, if you create an origin path of `/example` and you specify file extensions of "jpg png gif", the TTL value of the TTL path `/example` will have a scope that includes all JPG/PNG/GIF files under the `/example` directory and its subdirectories.
 {: note}
 
 **Step 6:**
 
-After adding, you can  **Edit** or **Delete** the Origin using the overflow menu options.
+After adding, you can Edit**** or **Delete** the Origin using the overflow menu options.
 
   ![Edit or delete Origin](images/edit-delete-origin.png)
 
@@ -133,13 +133,13 @@ Click the **Create purge** button.
 
 **Step 4:**
 
-Enter standard Unix path syntax or upload a local purge file to indicate which paths you want to purge, then click the **Purge** button. You can purge multiple paths at a time. See [FAQs for rules and naming conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge) for more details on what syntax or a local file is allowed for the Purge paths.
+Enter standard UNIX path syntax or upload a local purge file to indicate which paths you want to purge, then click the **Purge** button. You can purge multiple paths at a time. See [FAQs for rules and naming conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge) for more details on what syntax or a local file is allowed for the Purge paths.
 
    ![Purge page](images/purge-create-dialog.png)
 
 **Step 5:**
 
-After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the edge server are cleared. If you just want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
+After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the edge server are cleared. If you want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
 
    ![Purge page](images/purge-history-list.png)
 
@@ -151,7 +151,7 @@ With a specified group you can **Redo purge**, **View purge paths**, or **Add to
 
 By default, the purge groups in the **Purge history** are not saved to favorites and trimmed every 15 days automatically. To save purge groups for future use, you can save them as favorites by choosing the **Add to favorites** option. When a purge group is saved, it is not be automatically trimmed.
 
-The name and path list for a purge group listed in **Favorite paths** and **Purge history** cannot be updated at present.
+The name and path list for a purge group that is listed in **Favorite paths** and **Purge history** cannot be updated at present.
 {:note}
 
 

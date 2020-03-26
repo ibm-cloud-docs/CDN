@@ -31,19 +31,19 @@ For the **HTTP only** and **SAN HTTPS** CDN mapping, when the CDN mapping status
 
 We'll use the following example to show you how to verify CDN before changing your domain's record.
 
-All the commands, tools, and files used in this document are based on the `Ubuntu 16.04.5 LTS` system. Your examples may vary if you are using another OS or different Ubuntu versions.
+All the commands, tools, and files that are used in this document are based on the `Ubuntu 16.04.5 LTS` system. Your examples might vary if you are using another OS or different Ubuntu versions.
 {: note}
 
 For this example, we created the following CDN mapping:
 
 ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com.png)
 
-* CDN Hostname: `ibm-test.cdn-demo.com`
+* CDN hostname: `ibm-test.cdn-demo.com`
 * CDN CNAME: `cdnakaotn3exg6px.cdn.appdomain.cloud`
 * Origin path: `/*`
 * Origin port: `80` & `443`
 * Origin IP address: `119.xx.xx.xx`
-* Origin hostheader: `ibm-test.cdn-demo.com`
+* Origin host header: `ibm-test.cdn-demo.com`
 * Certificate type: `SAN HTTPS`
 * The current CDN status: `CNAME configuration required`
 
@@ -79,7 +79,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 ### Step 1: Get the Akamai edge server's IP address
 {: #get-edge-server-ip-address}
 
-By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai edge server. The `dig` result will be similar to this one:
+By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai edge server. The `dig` result is similar to this one:
 
 ```bash
 dig +short cdnakaotn3exg6px.cdn.appdomain.cloud
@@ -91,7 +91,7 @@ e24455.dsce16.akamaiedge.net.
 ```
 {:pre}
 
-The DNS chain and the IP addresses resolved on your machine may be different.
+The DNS chain and the IP addresses resolved on your machine might be different.
 {: tip}
 
 ### Step 2: Edit your local hosts file
@@ -126,7 +126,7 @@ rtt min/avg/max/mdev = 1.420/1.507/1.662/0.099 ms
 ```
 {:pre}
 
-From this result, we can see the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai edge server's IP address (`104.84.150.124`) that was just added into the local hosts file. This means that the `/etc/hosts` file change took effect.
+From this result, we can see the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai edge server's IP address (`104.84.150.124`) that was added into the local hosts file. This means that the `/etc/hosts` file change took effect.
 
 ### Step 4: Verify the CDN traffic
 {: #verify-cdn-traffic}
@@ -154,10 +154,10 @@ If Akamai debug headers are returned, and the response code and content are the 
 ### Step 5: Point the domain to IBM CNAME
 {: #point-to-ibm-cdn-cname}
 
-Along with the basic function verification, we recommend that you verify more functions that you plan to use, for example, caching, multiple origins, purge, and so on.
+Along with the basic function verification, it is recommended that you verify more functions that you plan to use, for example, caching, multiple origins, purge, and so on.
 {: important}
 
-After verifying that all the functions worked as expected, you may change your DNS to [point to your domain to IBM CNAME](/docs/CDN?topic=CDN-faqs#how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns), and [get the CDN to Running status](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status).
+After verifying that all the functions worked as expected, you can change your DNS to [point to your domain to IBM CNAME](/docs/CDN?topic=CDN-faqs#how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns), and [get the CDN to Running status](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status).
 
 ### Step 6: Restore your original local hosts file
 {: #restore-original-local-hosts}
@@ -174,7 +174,7 @@ Take the following steps to verify CDN with wildcard certificate.
 ### Step 1: Create a new wildcard CDN mapping
 {: #create-new-wildcard-cdn-mapping}
 
-Create a new wildcard CDN mapping with a new temporary domain (for example `ibm-test-wildcard.cdn-demo.com`). This wildcard CDN is only for testing, and it must have the same configuration as the desired CDN `ibm-test.cdn-demo.com`. The following configurations, at a minimum, must be the same:
+Create a new wildcard CDN mapping with a new temporary domain (for example `ibm-test-wildcard.cdn-demo.com`). This wildcard CDN is only for testing, and it must have the same configuration as the wanted CDN `ibm-test.cdn-demo.com`. The following configurations, at a minimum, must be the same:
 
   * Origin path
   * Origin port type and number
@@ -206,7 +206,7 @@ X-Check-Cacheable: YES
 ```
 {: pre}
 
-If Akamai debug headers are returned, and the response code and content match the content returned from the desired domain, then it means the wildcard CDN traffic works. Refer to the [troubleshooting](/docs/CDN?topic=CDN-troubleshooting) to further debug.
+If Akamai debug headers are returned, and the response code and content match the content that is returned from the wanted domain, then it means the wildcard CDN traffic works. Refer to the [troubleshooting](/docs/CDN?topic=CDN-troubleshooting) to further debug.
 
 ### Step 3: Point the domain to IBM CNAME
 {: #point-domain-to-ibm-cdn-cname}
@@ -214,4 +214,4 @@ If Akamai debug headers are returned, and the response code and content match th
 Along with the basic function verification, we recommend that you verify more functions that you plan to use, for example, caching, multiple origins, purge, and so on.
 {: important}
 
-After verifying that all the functions worked as expected, you may change your DNS to [point to your domain to IBM CNAME](/docs/CDN?topic=CDN-faqs#how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns), and [get the CDN to Running status](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status).
+After verifying that all the functions worked as expected, you can change your DNS to [point to your domain to IBM CNAME](/docs/CDN?topic=CDN-faqs#how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns), and [get the CDN to Running status](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status).

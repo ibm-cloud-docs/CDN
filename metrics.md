@@ -45,7 +45,7 @@ You can view the metrics reports for account. Click the *CDN Overview Report* ta
 ### Historical Metrics Report
 {: #historical-metrics-report}
 
-You can view the overall metric reports over a custom time period. Select *Custom time frame* item from *View* list on the *CDN Overview Report* page. Here you can find the total **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits** and **Dynamic Hits**, as well as graphical representation of **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits** and **Dynamic Hits**.
+You can view the overall metric reports over a custom time period. Select *Custom time frame* item from *View* list on the *CDN Overview Report* page. Here you can find the total **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits** and **Dynamic Hits**, as well as graphical representation of **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits, and** **Dynamic Hits**.
 
  ![Metrics Overview](images/metrics-custom-time-report.png)
 
@@ -70,7 +70,7 @@ You can view the metrics reports for domain mapping by opening Overview mapping 
 ### Historical Metrics Report
 {: #domain-mapping-historical-metrics-report}
 
-You can see the **Total Bandwidth**, **Total Hits** and **Hit Ratio** for the selected time period (default is Last 30 days) on the Overview page. Other items such as *Last 90/7/1 days* and *Custom time frame* are available in the *View* list.
+You can see the **Total Bandwidth**, **Total Hits** and **Hit Ratio** for the selected time period (default is Last 30 days) on the Overview page. Other items such as *Last 90/7/1 days* and *Custom timeframe* are available in the *View* list.
 
   ![Metrics Overview](images/metrics-custom-time-overview.png)
 
@@ -101,26 +101,26 @@ You can view data for the past 48 hours only.
 
 There are a minimum and a maximum number of days for which you can view metrics using {{site.data.keyword.cloud}} Content Delivery Network with Akamai. Historical metrics can be gathered for a minimum of 1 day and a maximum of 90 days. Most recent metrics can be gathered for a minimum of 1 minute and a maximum of 48 hours.
 
-### Why is the hit ratio non-zero when total hits are zero?
+### Why is the hit ratio nonzero when total hits are zero?
 
 Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
 
 `((Edge hits - Ingress hits)/Edge hits) * 100`
 
-where:
+Where:
 
-_Edge hits_ is defined as "All hits to the edge servers from the end-users."  
+_Edge hits_ defined as "All hits to the edge servers from the users."  
 _Ingress hits_ is defined as "Origin or Ingress hits are for traffic from your origin to Akamai edge servers."
 
-Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio will be the same for all the CDNs in your account. This fact also explains why the Hit Ratio may be non-zero when the number of Edge hits for a particular CDN is zero.
+Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio is the same for all the CDNs in your account. This fact also explains why the Hit Ratio might be nonzero when the number of Edge hits for a particular CDN is zero.
 
-### Are metrics updated in real-time?
+### Are metrics updated in real time?
 
 For the most recent metrics it can be updated every 5 minutes, while others are updated every 24 hours.
 
 ### What is the time interval when you select *Most recent* item from *View* list?
 
-The time range and time interval relationships are shown below:  
+The time range and time interval relationships are shown. 
 
 |Time range| Time interval (minutes)   |
 |-----------------|--------------------|
@@ -140,10 +140,10 @@ Example:
 Start Date timestamp: 1583910900  
 End Date timestamp: 1583916300  
 Time range = (End Date timestamp - Start Date timestamp) / 60 = 90   
-Refer to the table above, the time interval is 5 minutes.  
+Referring to the preceding table, the time interval is 5 minutes.  
 
 ### Why does the last point sometimes drop suddenly in Most Recent Metrics Report?
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 
-In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the above table. But for the last point, the internal may be smaller than others. For example, in the above bandwidth most recent report, the time internal is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1 minute bandwidth (Mar 13 05:40 am to Mar 13 05:41am).
+In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the internal might be smaller than others. For example, in the above bandwidth most recent report, the time internal is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).

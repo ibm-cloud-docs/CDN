@@ -32,7 +32,7 @@ Using real-time network optimizations and advanced caching techniques, it speeds
 ### Step 1: Opening settings
 {: #step-1-open-settings}
 
-Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then select **Dynamic content acceleration** from the **Optimize for** list menu.
+Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
 
    ![Configure Origin](images/settings-dca-switch.png)
 
@@ -50,7 +50,7 @@ Open the page of a specified CDN mapping, click **Settings** from the navigation
 
 Click the **Save** button to save the settings.
 
-If the **`Detection path`** is unreachable, you will be prompted by a warning like the following. You can continue to save your settings and update the **`Detection path`** later.
+If the **`Detection path`** is unreachable, you are prompted by a warning like the following. You can continue to save your settings and update the **`Detection path`** later.
 
    ![Configure Origin](images/settings-dca-save.png)
 
@@ -60,10 +60,10 @@ If the **`Detection path`** is unreachable, you will be prompted by a warning li
 ### Detection Path
 {: #detection-path}
 
-**`Detection Path`** is used by Akamai Edge servers to find the best optimized route from edge servers to origin.
-The best path to origin must be known at the time a user’s request arrives at an edge server, because any in-line analysis or detection would defeat the purpose of speeding things up.
+**`Detection Path`** Is used by Akamai Edge servers to find the best optimized route from edge servers to origin.
+The best path to origin must be known at the time a user’s request arrives at an edge server because any inline analysis or detection would defeat the purpose of speeding up things.
 
-To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the Internet from Edge to Origin).
+To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the internet from Edge to Origin).
 
 The fetches of the test object are called the races. When a real request comes in, the edge consults the most recent race data to send that request over the fastest path to the origin.
 You can download the provided [test object](https://public.dhe.ibm.com/cloud/bluemix/network/cdn/route-detection-test-object.html){:external} and upload it to the origin server, or you can use your own test object.
@@ -75,29 +75,29 @@ A valid test object must:
 * Be approximately the size of an average page, but no less than 8 KB
 
 
-**`Detection Path`** is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
+**`Detection Path`** Is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
 {:note}
 
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
+**`Prefetching`** Is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
 aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, and zip.
 
 ### Image compression
 {: #image-compression}
 
-Serving compressed images reduces the amount of content required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and may affect the quality of the images on your site.  
+Serving compressed images reduces the amount of content that is required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and might affect the quality of the images on your site.  
 
 Image Compression supported file extensions: .jpg, .jpeg, .jpe, .jif, .jfif, and .jfi
 
-In order for the feature **`Image Compression`** to work for DCA, you need to make sure the path of the image files is cacheable. You can refer to the [Caching](#caching-cache-content) to set the images cacheable.
+In order for the feature **`Image Compression`** to work for DCA, you need to make sure that the path of the image files is cacheable. You can refer to the [Caching](#caching-cache-content) to set the images cacheable.
 {:note}
 
 ## Caching
 {: #caching}
 
-When the DCA is enabled for your CDN mapping or origin, it does not mean the Akamai edge servers will not cache your contents under the path. It still depends on your caching settings. With the default setting, **`Respect header`** is **`ON`**, and if your origin set cacheable related headers for the contents, for example **`Cache-Control:public, max-age=31536000`**, then the edge server will respect this header to cache the contents.
+When the DCA is enabled for your CDN mapping or origin, it does not mean the Akamai edge servers will not cache your contents under the path. It still depends on your caching settings. With the default setting, **`Respect header`** is **`ON`**, and if your origin set cacheable related headers for the contents, for example, **`Cache-Control:public, max-age=31536000`**, then the edge server respects this header to cache the contents.
 
 If you want dynamic contents not cacheable, you can prevent caching with the following options:
 {: #caching-prevent-caching}
@@ -105,8 +105,8 @@ If you want dynamic contents not cacheable, you can prevent caching with the fol
 - With **`Respect header`** as **`ON`**, set the preventing caching headers in your origin, like **`Cache-Control: no-cache, no-store`**;
 - With **`Respect header`** as **`OFF`**, create a TTL with path to match your dynamic contents, and set the value as 0;
 
-In some cases, you may mix the static (e.g. Images, css, js etc) and dynamic assets under the same path, so you may need some assets to be cacheable. You can do with the following options:
+In some cases, you might mix the static (for example, Images, css, js) and dynamic assets under the same path, so you might need some assets to be cacheable. You can do with the following options:
 {: #caching-cache-content}
 
 - With **`Respect header`** as **`ON`**, set the caching headers in your origin, like **`Cache-Control:public, max-age=31536000`**;
-- With **`Respect header`** as **`OFF`**, create a TTL with path to match your static contents, and set the value as the desired caching time you want;
+- With **`Respect header`** as **`OFF`**, create a TTL with path to match your static contents, and set the value as the wanted caching time you want;

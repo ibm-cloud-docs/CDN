@@ -62,7 +62,7 @@ subcollection: CDN
 ## September 2018
 {: #september-2018}
 
-  * We now have POPs in these newly added locations: Bahrain, Belgium, Colombia, Ecuador, Finland, Greece, Hong Kong, Indonesia, Macau, Norway, Oman, Romania, South Korea, Sri Lanka, United Arab Emirates, and Uruguay. Look at the complete list of countries [here](/docs/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers).
+  * We now have POPs in these newly added locations: Bahrain, Belgium, Colombia, Ecuador, Finland, Greece, Hong Kong S.A.R. of the PRC, Indonesia, Macau, Norway, Oman, Romania, South Korea, Sri Lanka, United Arab Emirates, and Uruguay. Look at the complete list of countries [here](/docs/CDN?topic=CDN-list-of-edge-servers#list-of-edge-servers).
   * Ability to specify TTL of 0 seconds for a given path
 
 ## August 2018
