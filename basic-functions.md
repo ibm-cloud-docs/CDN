@@ -41,9 +41,7 @@ If you created a CDN with HTTPS DV SAN certificate, additional steps may be need
 
 After you've ordered a CDN, you'll need to configure the **CNAME** with your DNS provider. Most DNS providers can give you instructions on setting or changing the CNAME.
 
-   * During this time, your CDN's status will show as **CNAME Configuration**. Check with your DNS provider to find out when the changes will become active.
-
-   ![CNAME config](images/cname-config.png)
+   * During this time, your CDN's status will show as **CNAME configuration required**. Check with your DNS provider to find out when the changes will become active.
 
 If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 {: note}
