@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# Vendor Container
+# Vendor container
 {: #vendor-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Vendor` collection contains the attributes utilized by our Vendor APIs.

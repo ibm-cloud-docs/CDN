@@ -20,7 +20,7 @@ subcollection: CDN
 {:download: .download}
 
 
-# CDN API Reference
+# CDN API reference
 {: #cdn-api-reference}
 
 The SoftLayer Application Programming Interface (commonly called the SLAPI), provided by {{site.data.keyword.cloud}}, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.cloud_notm}} Infrastructure backend system.
@@ -418,7 +418,7 @@ The purge history retains the last 15 days of records.
   [View the Purge History Container](/docs/CDN?topic=CDN-purge-history-container)
 
 ----
-## API for single file Purge (Deprecated)
+## API for Single File Purge (Deprecated)
 {: #api-for-purge}
 
 The Purge API for purging a single file has been deprecated. For efficiency, you are strongly recommended to use [Multiple file Purge](#api-for-multiple-file-purge) instead.

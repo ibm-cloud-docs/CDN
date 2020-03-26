@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# Dynamic Content Acceleration Container
+# Dynamic Content Acceleration container
 {: #dynamic-content-acceleration-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_DynamicContentAcceleration container` contains the attributes utilized by both the Mapping and (Origin) Path classes. This object is used to set the Dynamic Content Acceleration (DCA) behavior for a CDN by calling the API.

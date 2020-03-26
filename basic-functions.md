@@ -21,7 +21,7 @@ subcollection: CDN
 {:warning: .warning}
 {:download: .download}
 
-# Getting your CDN to Running Status
+# Getting your CDN to Running status
 {: #getting-your-cdn-to-running-status}
 
 Learn how to get your CDN to a RUNNING state by following these guidelines. This document also tells you how to start and stop your CDN.
@@ -32,7 +32,6 @@ Learn how to get your CDN to a RUNNING state by following these guidelines. This
 Once you've created a CDN, it appears on your CDN dashboard. Here you'll see the name of your CDN, the Origin, the Provider, and the status.  
 
  ![Mapping list screenshot](images/mapping-list.png)
-
 
 If you ordered your CDN HTTPS with Wildcard certificate, you can proceed to Step 2.
 
@@ -46,7 +45,7 @@ After you've ordered a CDN, you'll need to configure the **CNAME** with your DNS
 
    ![CNAME config](images/cname-config.png)
 
-If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=verify-cdn-before-pointing-domain-to-ibm-cname).
+If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 {: note}
 
 **Step 2:**
@@ -59,7 +58,7 @@ Any time after you've configured the CNAME with your DNS provider, you may check
 
 When the CNAME chaining is complete, selecting **Get Status** will change the status to *RUNNING*, and the CDN is ready to use.
 
-Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-), [Purging Cached Content](/docs/CDN?topic=CDN-manage-your-cdn#purging-cached-content), and [Adding Origin Path details](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details).
+Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live), [Purging Cached Content](/docs/CDN?topic=CDN-manage-your-cdn#purging-cached-content), and [Adding Origin Path details](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details).
 
 ## Starting CDN
 {: #starting-cdn}

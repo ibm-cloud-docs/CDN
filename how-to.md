@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2017, 2020
+lastupdated: "2020-03-27"
 
 keywords: manage, time to live, origin path, cache key, server, object storage, bucket, configuration, details, updating
 
@@ -88,11 +88,11 @@ Select either **Server** or **Object Storage**.
 
   * **Optimization** and **Cache Key** options are the same for the Server and the Object Storage configurations.
 
-    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/CDN?topic=CDN-feature-descriptions#large-file-optimization) and [Video on Demand](/docs/CDN?topic=CDN-feature-descriptions#video-on-demand) provide further information.
+    * Choose **Optimization** options from the list menu. **General web delivery** is the default option, or you can choose **Large file** or **Video on demand** optimizations. **General web delivery** allows the CDN to serve content up to 1.8GB, while **Large file** optimization allows downloads of files from 1.8GB to 320GB. **Video on demand** optimizes your CDN for delivery of segmented streaming formats. The Feature descriptions for [Large file optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization) and [Video on Demand](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand) provide further information.
 
         ![Performance configuration options](images/performance-config-options.png)
 
-    * Choose **Cache Key** options from the list menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Query Args](/docs/CDN?topic=CDN-feature-descriptions#cache-key-query-args) in the feature description.
+    * Choose **Cache Key** options from the list menu. The default option is **Include-all**. If you select **Include specified** or **Ignore specified**, you **must** enter query strings to be included or ignored, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings.  You can find out more about [Cache Key Optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization) in the feature description.
 
         ![Cache key options](images/cache-key-options.png)
 
@@ -115,7 +115,7 @@ After adding, you can  **Edit** or **Delete** the Origin using the overflow menu
 ## Purging Cached Content
 {: #purging-cached-content}
 
-After your CDN is running, you can purge cached content from the Vendor's server.
+When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-allowed-for-multiple-file-purge), you can purge the cached contents in multiple paths from the vendor's server.
 
 **Step 1:**
 
@@ -125,20 +125,35 @@ On the CDN page, select your CDN, which takes you to the **Overview** page.
 
 Select the **Purge** tab.
 
-   ![Purge page](images/purge_tab.png)
+   ![Purge page](images/purge-tab.png)
 
 **Step 3:**
 
-Enter standard Unix path syntax to indicate which file you would like to purge, then select the **Purge** button. Purge is allowed only for a single file at a time. Please see the [Rules and Naming Conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge-) page for more details on what syntax is allowed for the Purge path.
+Click the **Create purge** button.
 
 **Step 4:**
 
-After purging, the activity is listed under **Purge Activity**. You can **Redo purge** or **Favorite** the path using the overflow menu options.
+Enter standard Unix path syntax or upload a local purge file to indicate which paths you want to purge, then click the **Purge** button. You can purge multiple paths at a time. See [FAQs for rules and naming conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge) for more details on what syntax or a local file is allowed for the Purge paths.
 
-   ![Purge activity](images/purge-activity.png)
+   ![Purge page](images/purge-create-dialog.png)
 
-If there are more than 15 purges, Purge Activity is trimmed every 15 days automatically.
-{: note}
+**Step 5:**
+
+After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the edge server are cleared. If you just want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
+
+   ![Purge page](images/purge-history-list.png)
+
+**Step 6:**
+
+With a specified group you can **Redo purge**, **View purge paths**, or **Add to favorites** using the overflow menu options.
+
+   ![Purge page](images/purge-history-options.png)
+
+By default, the purge groups in the **Purge history** are not saved to favorites and trimmed every 15 days automatically. To save purge groups for future use, you can save them as favorites by choosing the **Add to favorites** option. When a purge group is saved, it is not be automatically trimmed.
+
+The name and path list for a purge group listed in **Favorite paths** and **Purge history** cannot be updated at present.
+{:note}
+
 
 ## Updating CDN Configuration details
 {: #updating-cdn-configuration-details}
@@ -181,5 +196,3 @@ For **Object Storage**, the following fields can be changed:
 **Step 3:**
 
 Update the **Origin** or **Other Options** details if needed, then click the **Save** button in the bottom right corner to update your CDN configuration details.
-
-   ![Save button](images/save-button.png)

@@ -1,23 +1,23 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" category="network" audience="service" href="/docs/CDN?topic=CDN-getting-started" path="CDN"}
-Content Delivery Network (CDN)
+{: .toc subcollection="CDN" category="network" audience="service" href="/docs/CDN?topic=CDN-getting-started" console-page="/classic/network/cdn" product-page="https://www.ibm.com/cloud/cdn" path="CDN"}
+Content Delivery Network
 
     {: .navgroup id="learn"}
     getting-started.md
-    about.md
-    feature-descriptions.md
-    about-https.md
-    naas-video.md
-
-    {: .topicgroup}
-    Tutorials
-        /tutorials/solution-tutorials-static-files-cdn
-        /tutorials/solution-tutorials-dynamic-content-cdn
-    
+    about.md 
     whats-new.md
     pricing.md
+    about-https.md
+
+    {: .topicgroup}
+    Tutorials & video
+        /tutorials/solution-tutorials-static-files-cdn
+        /tutorials/solution-tutorials-dynamic-content-cdn  
+        naas-video.md
+        
+    [What are content delivery networks?](https://www.ibm.com/cloud/learn/content-delivery-networks)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
@@ -35,21 +35,11 @@ Content Delivery Network (CDN)
     metrics.md
     {: .navgroup-end}
 
-    {: .navgroup id="help"}
-    faqs.md
-    https-faq.md
-    rules-and-naming-conventions.md
-    limits-and-max-values.md
-    known-limitations.md
-    troubleshooting.md
-    getting-help.md
-    {: .navgroup-end}
-
     {: .navgroup id="reference"}
     api.md
 
     {: .topicgroup}
-    API Class Containers
+    API class containers
         dynamic-content-acceleration-container.md
         geoblock-behavior.md
         hotlink-protection-behavior.md
@@ -62,9 +52,9 @@ Content Delivery Network (CDN)
         purge-history-container.md
         
     cdn-example-code.md
-    legacy-portal.md
     edge-servers.md
-    at-events.md
+    at-events.md    
+    legacy-portal.md
 
     {: .topicgroup}
     Regions
@@ -72,4 +62,18 @@ Content Delivery Network (CDN)
         emea-region.md
         north-america-region.md
         south-america-region.md
+    {: .navgroup-end}
+    
+    {: .navgroup id="help"}    
+    known-limitations.md
+    
+    {: .topicgroup}
+    FAQs
+        faqs.md
+        https-faq.md
+        rules-and-naming-conventions.md
+        limits-and-max-values.md
+           
+    troubleshooting.md
+    getting-help.md
     {: .navgroup-end}

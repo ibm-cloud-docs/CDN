@@ -25,7 +25,7 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-# Purge Group Container
+# Purge Group container
 {: #purge-group-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup` collection contains the attributes utilized by our Purge Group APIs. Each of the Purge Group APIs returns a collection of this type.

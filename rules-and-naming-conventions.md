@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2018, 2020
+lastupdated: "2020-03-27"
 
 keywords: rules, naming, conventions, hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain, valid, string
 
@@ -19,10 +19,10 @@ subcollection: CDN
 {:note: .note}
 {:download: .download}
 
-# FAQs for Rules and Naming Conventions
+# FAQs for rules and naming conventions
 {: #rules-and-naming-conventions}
 
-## What are the rules for the CDN Hostname?
+## What are the rules for the CDN hostname?
 {: #what-are-the-rules-for-the-cdn-hostname}
 
 The CDN `Hostname` input string **must**:
@@ -32,7 +32,7 @@ The CDN `Hostname` input string **must**:
   * must **not** contain more than 10 labels
   * must **not** end in `cdn.appdomain.cloud` or `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
-Please refer to RFC 1035, section 2.3.4 for more details. 
+Refer to RFC 1035, section 2.3.4 for more details. 
 
 Furthermore, we highly recommend using a fully-qualified domain name as your CDN Hostname. Choose a name of the form `www.example.com` rather than a root domain name (also referred as Zone Apex or Naked domain), of the form `example.com`. You'll need to create a CNAME Record for the CDN Hostname you use, and the DNS RFC 1033 requires the root domain record to be an A Record, not a CNAME. Further clarification is provided in RFC 2181, section 10.1
 
@@ -72,15 +72,18 @@ The Path is optional when creating your CDN. However, if provided, the Path **mu
 ## What are the rules for the Path string for Purge?
 {: #what-are-the-rules-for-the-path-string-for-purge}
 
-The Purge path:
-  * must be less than 1000 characters in length
-  * must begin with `/`
-  * cannot end with `/`
-  * cannot end with a period (.)
+The purge path:
   * cannot contain `*`
+  * cannot contain spaces
+  * cannot end with a period (.)
+  * must begin with `/`
+  * must be English characters
+  * must separated by line breaks
+  * must be less than 1000 characters in length
+  * must be less than 2M characters in total
+  * no duplicate paths
 
-Purge is allowed for single files only. Directory-level purge is not supported at this time.
-{; note}
+For the imported purge file, we recommend to use `txt` file extension, and all paths in the file follow above rules.
 
 ## For the **Add Origin** command, are there any rules to follow for the Path string?
 {: #for-the-add-origin-command-are-there-any-rules-to-follow-for-the-path-string}

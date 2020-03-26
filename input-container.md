@@ -18,10 +18,10 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# Input Container
+# Input container
 {: #input-container}
 
-The Input Container is a collection utilized by both the Mapping and (Origin) Path classes. It provides a consistent set of input attributes for both classes.
+The Input container is a collection utilized by both the Mapping and (Origin) Path classes. It provides a consistent set of input attributes for both classes.
 
 * `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.

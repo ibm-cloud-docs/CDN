@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# FAQ for Limits and Maximum Values
+# FAQs for limits and maximum values
 {: #limits-and-maximum-values}
 
 ## Is there a maximum value for Time To Live? A minimum?
@@ -58,7 +58,7 @@ For the multiple file purge, there is a limit on the file number in the purge ac
 There is one bucket applied for all the purge paths under your account. The total token number in the bucket represents burst file numbers can be purged. In the following table, the X-RateLimit-Purge-Paths-Limit-Burst represents how many tokens the bucket can hold. The bucket starts with a full of tokens. Tokens are constantly added to the bucket based on the sustained rate (X-RateLimit-Purge-Paths-Limit-Per-Second). If the bucket is full, no more tokens can be added.  
 When a mutiple file purge request is made, the remaining tokens number is checked against the number of file path. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens, then tokens are removed from the bucket and the request is accepted. If there are not enough tokens in the purge bucket, no tokens are removed, and the request is denied.  
 
-This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#rate-limit-header) shows the rate limiting response headers returned by the purge group API.
+This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example) shows the rate limiting response headers returned by the purge group API.
 
 Here is default value for rate limit headers:
 

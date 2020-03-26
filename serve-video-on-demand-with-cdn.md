@@ -19,7 +19,7 @@ subcollection: CDN
 {:download: .download}
 
 
-# How to serve video on demand with CDN
+# Serving Video on Demand with CDN
 {: #how-to-serve-video-on-demand-with-cdn}
 
 In this guide, we'll explore an example of how to leverage {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
@@ -40,7 +40,7 @@ And so, let's start by updating the origin's package list.
 $ sudo apt-get update
 ```
 
-## Prepare Video Files
+## Prepare video files
 {: #prepare-video-files}
 
 In this guide, we'll use `ffmpeg` to prepare the video files. It is a powerful tool for multimedia files that can convert, mux, demux, filter, and so forth, through its various commands.
@@ -205,7 +205,7 @@ http {
 ```
 {: screen}
 
-### Video Player on the Webpage
+### Video player on the webpage
 {: #video-player-on-the-webpage}
 
 Not all streaming video formats may be natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
@@ -235,6 +235,4 @@ First, [order](/docs/CDN?topic=CDN-order-a-cdn) a CDN.
 
 Next, either [configure your CDN](/docs/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
-Finally, under `Optimize For`, select `Video on demand optimization`.
-
-![Optimize for Video on Demand](images/optimize-for-video-on-demand.png)
+Finally, under **Optimize for**, select **Video on demand optimization**. 

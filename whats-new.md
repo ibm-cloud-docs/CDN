@@ -27,15 +27,15 @@ subcollection: CDN
 ## March 2020
 {: #march-2020}
 
-  * Multi Paths Purge [feature description](/docs/CDN?topic=CDN-feature-descriptions#purge-cached-content) (available through the API)
+  * Multi Paths Purge [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#purge-cached-content) (available through the API)
   * Real-time metrics API [API Reference](/docs/CDN?topic=CDN-cdn-api-reference#getcustomerrealtimemetrics) (available through the API)
-  * Activity Tracker Events for Audit log [feature description](/docs/infrastructure/CDN?topic=CDN-cdn-activity-tracker-events) (available through UI)
+  * Activity Tracker Events for Audit log [feature description](/docs/CDN?topic=CDN-at_events) (available through UI)
 
 ## October 2019
 {: #october-2019}
 
-  * Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-feature-descriptions#dynamic-content-acceleration) (available through UI and API)
-  * [Metrics Reports](/docs/CDN?topic=CDN-metrics#metrics-reports) for overall CDN mappings (available through UI and API)
+  * Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#dynamic-content-acceleration-description) (available through UI and API)
+  * [Metrics reports](/docs/CDN?topic=CDN-metrics#metrics-report) for overall CDN mappings (available through UI and API)
 
 ## August 2019
 {: #august-2019}
@@ -45,19 +45,19 @@ subcollection: CDN
 ## March 2019
 {: #march-2019}
 
-  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through UI)
+  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#hotlink-protection) (available through UI)
 
 ## November 2018
 {: #november-2018}
 
-  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-feature-descriptions#hotlink-protection) (available through the API)
+  * Hotlink Protection [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#hotlink-protection) (available through the API)
 
 ## October 2018
 {: #december-2018}
 
   * Increased the [maximum number of supported Origins Paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
   * [Origin Paths](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details) no longer need to start with Mapping Path Prefix.
-  * The minimum possible [TTL](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live-) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
+  * The minimum possible [TTL](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
 
 ## September 2018
 {: #september-2018}
@@ -68,23 +68,23 @@ subcollection: CDN
 ## August 2018
 {: #august-2018}
 
-  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through UI)
-  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn#order-a-new-cdn-)
+  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control) (available through UI)
+  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn#order-a-new-cdn)
 
 ## July 2018
 {: #july-2018}
 
-  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-feature-descriptions#geographical-access-control) (available through the API)
+  * Geographical Access Control [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control) (available through the API)
 
 ## June 2018
 {: #june-2018}
 
-  * HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-feature-descriptions#https-protocol-support)
+  * HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#https-protocol-support)
   * IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
 
 ## March 2018
 {: #march-2018}
 
-  * Large File Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#large-file-optimization)
-  * Cache Key Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#cache-key-optimization)
-  * Video On Demand Optimization [feature description](/docs/CDN?topic=CDN-feature-descriptions#video-on-demand)
+  * Large File Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization)
+  * Cache Key Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization)
+  * Video On Demand Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand)

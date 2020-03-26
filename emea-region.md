@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# EMEA Region
+# EMEA region
 {: #emea-region}
 
 EMEA is an abbreviation for Europe, Middle East, and Africa.

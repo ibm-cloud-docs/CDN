@@ -19,7 +19,7 @@ subcollection: CDN
 {:download: .download}
 
 
-# Working with Byte-range Requests
+# Working with byte-range requests
 {: #working-with-byte-range-requests}
 
 Using a byte-range request, you can retrieve partial content from an origin server. This document can help you understand the response status codes you might see.

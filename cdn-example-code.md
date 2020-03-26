@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2017, 2020
+lastupdated: "2020-03-23"
 
 keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
@@ -11,16 +11,21 @@ subcollection: CDN
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="blank"}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:term: .term}
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
+{:deprecated: .deprecated}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic"}
 {:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
 
-# Code Examples Using the CDN API
+# Code examples using the CDN API
 {: #code-examples-using-the-cdn-api}
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
@@ -28,7 +33,7 @@ This document contains example API calls and the resulting output for numerous C
 ## General steps needed for all API calls
 {: #general-steps-needed-for-all-api-calls}
 
-The pre-requisite is to download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/softlayer/softlayer-api-php-client)
+Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}
 
   * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and may need to be modified appropriately. In PHP the statement will look similar to this: `require_once './../vendor/autoload.php';`
 
@@ -36,7 +41,7 @@ The pre-requisite is to download and install the Soap Client from [https://githu
       require_once __DIR__.'/vendor/autoload.php';
       ```
 
-  * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/article/getting-started/) page, under "Getting Your API Key".
+  * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){:external} page, under "Getting Your API Key".
 
       ```php
       $apiUsername = '<Your username>' ;
@@ -44,7 +49,7 @@ The pre-requisite is to download and install the Soap Client from [https://githu
       ```
   * Initialize SoapClient for the appropriate class.
 
-## Example Code for Listing Vendors
+## Example code for listing vendors
 {: #example-code-for-listing-vendors}
 
 In this case, it is the SoftLayer_Network_CdnMarketplace_Vendor class which defines the `listVendors` API and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. You will need the name of an active vendor later, when you create a Domain Mapping
@@ -78,10 +83,10 @@ Array
 
 {: codeblock}
 
-## Example Code to Verify Order
+## Example code to verify an order
 {: #example-code-to-verify-order}
 
-The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` will be successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/).
+The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
 
 In this case, it is the `SoftLayer_Product_Order` class which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Prior to the call to `verifyOrder`, you need to build the `$orderObject` using the `SoftLayer_Product_Package`.
 
@@ -134,10 +139,10 @@ catch (\Exception $e) {
 {: codeblock}
 
 
-## Example code to Place Order
+## Example code to place an order
 {: #example-code-to-place-order}
 
-This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/).
+This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/){:external}.
 
 ```php
 
@@ -189,12 +194,12 @@ catch (\Exception $e) {
 {: codeblock}
 
 
-## Example code to create CDN or Create Domain Mapping
+## Example code to create a CDN or create a domain mapping
 {: #example-code-to-create-cdn-or-create-domain-mapping}
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions-) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
 {: important}
 
 ```php
@@ -271,7 +276,7 @@ Array
 ```
 {: codeblock}
 
-## Example Code to Verify Domain Mapping
+## Example code to verify a domain mapping
 {: #example-code-to-verify-domain-mapping}
 
 VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status. Before calling `verifyDomainMapping`, you must add a CNAME record of the custom Hostname to your DNS server.
@@ -349,7 +354,7 @@ api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
 
 Here we see the domain name correctly mapped to the CNAME.
 
-## Example Code for getting real-time metrics
+## Example code for getting real-time metrics
 {: #example-code-for-getting-real-time-metrics}
 
 This example will show you how to get the real-time metrics with `getCustomerRealTimeMetrics` and `getMappingRealTimeMetrics` in the class `SoftLayer_Network_CdnMarketplace_Metrics`.
@@ -719,7 +724,7 @@ The `getMappingRealTimeMetrics` API returns an array of metrics. The following i
 {: codeblock}
 
 
-## Example Code for creating a purge group
+## Example code for creating a purge group
 {: #create-group-example}
 
 This example will show how to create a purge group.

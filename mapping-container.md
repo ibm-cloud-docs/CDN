@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}  
 
-# Mapping Container
+# Mapping container
 {: #mapping-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collection contains the attributes utilized by our Mapping APIs. Each of the Mapping APIs returns a collection of this type.

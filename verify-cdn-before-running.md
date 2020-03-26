@@ -24,7 +24,7 @@ subcollection: CDN
 {:screen: .screen}
 {:download: .download}
 
-# Verify CDN before pointing domain to IBM CNAME
+# Verifying CDN before pointing domain to IBM CNAME
 {: #verify-cdn-before-pointing-domain-to-ibm-cname}
 
 For the **HTTP only** and **SAN HTTPS** CDN mapping, when the CDN mapping status is `CNAME configuration required`, you must change your DNS record to point the CDN hostname to IBM CNAME. This gets your CDN to `Running` status. However, if the domain is already serving traffic, switching directly to CDN without verifying the CDN functionality may cause unexpected behavior. A best practice is to verify that the CDN functionality is working correctly before switching the domain to use the CDN.

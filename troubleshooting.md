@@ -24,6 +24,7 @@ subcollection: CDN
 {:generic: data-hd-programlang="generic"}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
+{:support: data-reuse='support'}
 
 # Troubleshooting
 {: #troubleshooting}
@@ -32,6 +33,8 @@ In this document, you will find various ways to troubleshoot your {{site.data.ke
 
 ## How do I know my CDN is working?
 {: #how-do-I-know-my-cdn-is-working}
+{: troubleshoot}
+{: support}
 
 Run the following `curl` command by replacing `http://your.cdn.domain/uri` with the respective file path on your CDN:
 
@@ -68,6 +71,8 @@ If the output of the `curl` command is similar to the following example format, 
 
 ## I received a 503 error. Why?
 {: #i-received-a-503-error-why}
+{: troubleshoot}
+{: support}
 
 The most common reason we have seen for the 503 error is due to an issue with a certificate in the SSL certificate chain.
 
@@ -86,16 +91,22 @@ If you have verified your Origin's certificate chain using the previous criteria
 
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
 {: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}
+{: troubleshoot}
+{: support}
 
 When your {{site.data.keyword.cloud_notm}} CDN is configured to use COS as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
 
 ## I can't connect through a `curl` command or browser using the Hostname with HTTPS.
 {: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
+{: troubleshoot}
+{: support}
 
 If your CDN was created using HTTPS with a Wildcard certificate, the connection must be made using the CNAME; for example, `https://www.exampleCname.cdn.appdomain.cloud`. This includes **all** CDNs created with HTTPS prior to 18 June 2018. Trying to connect using the Hostname will result in an error.
 
 ## What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?
 {: #what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols}
+{: troubleshoot}
+{: support}
 
 This table shows the behavior expected for the supported protocols when loading either the **hostname** or **CNAME** from your web browser.
 
@@ -137,7 +148,7 @@ This table shows the behavior expected for the supported protocols when loading 
 
 *&#8902;* The expected behavior was changed to `Access denied` for the domain mappings created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
-**Common error messages:**
+**Common error messages:** 
 
 A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
 

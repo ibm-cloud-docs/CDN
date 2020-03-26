@@ -24,7 +24,7 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-# List of Edge Servers
+# List of edge servers
 {: #list-of-edge-servers}
 
 Here is the list of countries with PoPs from Akamai that we're using:

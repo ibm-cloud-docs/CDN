@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# Using Cache Control to control an HTTP client's cache duration
+# Controlling an HTTP client's cache duration
 {: #using-cache-control-to-control-an-http-client-s-cache-duration}
 
 When using a CDN, two levels of caching are available:

@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# CORS and CORS Requests Through Your CDN
+# CORS and CORS requests through your CDN
 {: #cors-and-cors-requests-through-your-cdn}
 
 Cross Origin Resource Sharing (CORS) is a mechanism used by browsers, primarily to validate permissions for access to content from a different origin.
