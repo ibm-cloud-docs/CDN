@@ -22,13 +22,13 @@ subcollection: CDN
 # Ordering a CDN
 {: #order-a-cdn}
 
-Learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} Console](https://cloud.ibm.com/login).
+Learn how to order a Content Delivery Network (CDN). Your CDN can be ordered from the [{{site.data.keyword.cloud}} console](https://cloud.ibm.com/login).
 
 ## Preparing to order
 {: #preparation-for-ordering}
 
 Here's how to navigate to the CDN page to place your order.
-1. Log in to your account from the [IBM Cloud Console](https://cloud.ibm.com/login).
+1. Log in to your account from the [IBM Cloud console](https://cloud.ibm.com/login).
 1. Click [IBM Cloud catalog](https://cloud.ibm.com/catalog/).
 1. From the left navigation bar, select **Network**.
 1. Click the **CDN Tile**.

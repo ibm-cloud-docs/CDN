@@ -171,7 +171,7 @@ Using the distributed Akamai platform, you get unparalleled scale and resiliency
 
 For non-cacheable content, or any content that is not cached, cookies are preserved from the origin. For content that is cached by Edge servers, cookies are not preserved.
 
-## How do I use the IBM Cloud Console to give other users permission to create or manage a CDN?
+## How do I use the IBM Cloud console to give other users permission to create or manage a CDN?
 {: faq}
 
 The account's Master User can provide other users with permission to create and manage a CDN.
