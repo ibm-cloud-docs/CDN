@@ -41,7 +41,7 @@ Once you're on the ordering page, here's how to proceed to create and configure 
 ### Step 1: Creating your CDN account
 {: #create-your-cdn-account}
 
-Click **Create** at the bottom right, which creates your CDN account if you don't have one already and redirects you to the CDN Configure screen.
+Click **Create** at the lower right, which creates your CDN account if you don't have one already and redirects you to the CDN Configure screen.
 
    ![CDN overview](images/content-delivery.png)
 
@@ -106,6 +106,6 @@ You must set the **Access Control List** (ACL) for each Object in your Bucket to
 ### Step 4 Accepting the Agreement terms
 {: #step-4}
 
-* You must select **I have read the Master Service Agreement and agree to the terms therein** at the bottom right, above the **Create** button.
+* You must select **I have read the Master Service Agreement and agree to the terms therein** at the lower right, above the **Create** button.
 
-* Then select the **Create** button in the bottom right corner to create your CDN.
+* Then select the **Create** button in the lower right corner to create your CDN.

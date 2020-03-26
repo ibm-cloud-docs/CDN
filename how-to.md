@@ -195,4 +195,4 @@ For **Object Storage**, the following fields can be changed:
 
 **Step 3:**
 
-Update the **Origin** or **Other Options** details if needed, then click the **Save** button in the bottom right corner to update your CDN configuration details.
+Update the **Origin** or **Other Options** details if needed, then click the **Save** button in the lower right corner to update your CDN configuration details.
