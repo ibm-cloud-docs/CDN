@@ -35,7 +35,7 @@ Once you've created a CDN, it appears on your CDN dashboard. Here, the name of y
 
 If you ordered your CDN HTTPS with Wildcard certificate, you can proceed to Step 2.
 
-If you created a CDN with HTTPS DV SAN certificate, additional steps might be needed to verify your domain and can be found on the [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#completing-domain-control-validation-for-https) page.
+If you created a CDN with HTTPS DV SAN certificate, additional steps might be needed to verify your domain and can be found in [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san).
 
 **Step 1:**
 
@@ -144,4 +144,4 @@ If your CDN is configured with HTTPS with DV SAN Certificate, it might take up t
 
 **Step 3:**
 
-After completing steps 1 and 2, your CDN's status will be `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
+After completing steps 1 and 2, your CDN's status is `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
