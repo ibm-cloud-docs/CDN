@@ -29,7 +29,7 @@ Learn how to order a Content Delivery Network (CDN). Your CDN can be ordered fro
 
 Here's how to navigate to the CDN page to place your order.
 1. Log in to your account from the [IBM Cloud console](https://cloud.ibm.com/login).
-1. Click [IBM Cloud catalog](https://cloud.ibm.com/catalog/).
+1. Click [Catalog](https://cloud.ibm.com/catalog/).
 1. From the left navigation bar, select **Network**.
 1. Click the **CDN Tile**.
 
@@ -103,9 +103,9 @@ Complete the **Configure Your Origin** field: To configure this field, you must 
 You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider.
 {: note}
 
-### Step 4 Accepting the Agreement terms
+### Step 4 Accepting the agreement
 {: #step-4}
 
-* You must select **I have read the Master Service Agreement and agree to the terms therein** at the lower right of the pane.
+* Select **I have read the Master Service Agreement and agree to the terms therein**.
 
-* Then, select the **Create** button to create your CDN.
+* Then, click the **Create** button to create your CDN.
