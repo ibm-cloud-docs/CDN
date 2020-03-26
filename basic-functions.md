@@ -84,7 +84,7 @@ If the action was successful, a dialog box appears in the upper right corner of 
 
 **Step 4:**
 
-This step changes the Status to `CNAME Configuration`
+This step changes the Status to `CNAME Configuration`.
 
 **Step 5:**
 
@@ -109,7 +109,7 @@ Stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** 
 
 **Step 1:**
 
-Click 'Stop CDN' from the Overflow menu (3 vertical dots to the right of the CDN status).
+Click **Stop CDN** from the Overflow menu (3 vertical dots to the right of the CDN status).
 
   ![Overflow menu](images/stop_cdn.png)
 
@@ -126,12 +126,12 @@ After about 5 to 15 seconds, the status should change to 'Stopped'
 
 To delete a CDN follow these steps:
 
-Selecting `Delete` from the overflow menu only deletes the CDN; it does not delete your account.
+Selecting **Delete** from the overflow menu only deletes the CDN; it does not delete your account.
 {: note}
 
 **Step 1:**
 
-Click 'Delete' from the overflow menu.
+Click **Delete** from the overflow menu.
 
  ![Delete CDN Overflow menu](images/delete_cdn.png)
 
@@ -146,4 +146,4 @@ If your CDN is configured using HTTPS with DV SAN Certificate, it may take up to
 
 **Step 3:**
 
-After completing steps 1 and 2, your CDN's status will be `Deleting`. When the delete process is complete, click 'Get Status' from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action will have no effect.
+After completing steps 1 and 2, your CDN's status will be `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action will have no effect.
