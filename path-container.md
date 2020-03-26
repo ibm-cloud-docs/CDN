@@ -25,7 +25,7 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` coll
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
-* `mappingUniqueId`: The unique id of the mapping to which this Origin Path belongs.  
+* `mappingUniqueId`: The unique ID of the mapping to which this Origin Path belongs.  
 * `path`:  Path relative to the domain that can be used to reach this Origin.  
 * `originType`: Type of the Origin host, currently ‘HOST\_SERVER’ or ‘OBJECT\_STORAGE’.  
 * `httpPort`: Number of the port used for HTTP protocol.  

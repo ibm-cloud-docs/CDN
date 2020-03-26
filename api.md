@@ -656,7 +656,7 @@ ___
 Returns the real-time metrics for the given mapping, including the total data (bandwidth and hits) over the given period of time and the detailed data divided with the given time interval. For more details, [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-real-time-metrics).
 
  * **Parameters**:
-   * `mappingUniqueId`: Unique id of the mapping for which metrics are queried.
+   * `mappingUniqueId`: Unique ID of the mapping for which metrics are queried.
    * `startTime`: The start time timestamp (UTC+0) for query. The start time must be later than 48 hours ago. For example, if it's 9:00am March 08 2020 now, the start time should be later than 9:00am March 06 2020 in the same timezone(the timestamp should be more than 1583485200).
    * `endTime`: The end time timestamp (UTC+0) for query must be later than the start time.
    * `timeInterval`: An optional parameter to provide the time interval in seconds.
