@@ -29,7 +29,7 @@ subcollection: CDN
 # Troubleshooting
 {: #troubleshooting}
 
-In this document, find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you need to contact support, be sure to provide your CDN's reference number.
+In this document, find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you must contact support, be sure to provide your CDN's reference number.
 
 ## How do I know that my CDN is working?
 {: #how-do-I-know-my-cdn-is-working}

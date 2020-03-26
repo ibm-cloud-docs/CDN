@@ -101,7 +101,7 @@ No, if you select 'delete' from the CDN overflow menu, only that CDN is deleted.
 {: #does-content-caching-use-push-or-pull}
 {: faq}
 
-Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the edge server from the Origin Server, as opposed to manually uploading the content onto the edge server.
+Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the edge server from the Origin server, as opposed to manually uploading the content onto the edge server.
 
 ## Is there a recommended browser to use for CDN service configuration?
 {: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
@@ -113,7 +113,7 @@ Yes, Firefox and Chrome are the recommended browsers. It is recommended that you
 {: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
-If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin Server.
+If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin server.
 
 ## My CDN is in an Error State. What do I do now?
 {: faq}
@@ -195,7 +195,7 @@ From the legacy console main page, follow these steps to edit permissions:
  * Select **Manage CDN Account**.
  * Click the **Edit Portal Permissions** button.
 
-## Why is the Create button not shown or unavailable on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
+## Why is the Create button not shown or disabled on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
 {: faq}
 
 If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
@@ -216,7 +216,7 @@ If you are one of the account's secondary Users, then the account's Master User 
 ## Why am I unable to reach my webpage through my CDN after configuring Hotlink Protection with `protectionType` `ALLOW`?
 {: faq}
 
-Let's consider an example in which your website's domain for users is configured to be your CDN's domain/host name: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referrer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN denies access, rather than 'ALLOW'.
+Let's consider an example in which your website's domain for users is configured to be your CDN's domain/hostname: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN denies access, rather than 'ALLOW'.
 
 ## Can I use private endpoint of object storage in CDN settings?
 {: faq}
@@ -243,7 +243,7 @@ Yes, HTTP/2 is supported by Akamai's Edge servers.
 {: faq}
 
 * A favorite is a permanent group, which means that it will never be deleted unless you change it to an unfavorite group.
-* An unfavorite group is a temporary group. This type of group is automatically deleted after 15 days of inactivity. 
+* An unfavorite group is a temporary group. This type of group is automatically deleted after 15 days of inactivity.
 
 Favorite groups names must be unique. Unfavorite groups do not have this limitation.
 {:note}
@@ -256,4 +256,3 @@ Favorite groups names must be unique. Unfavorite groups do not have this limitat
  * Running - HTTP only
  * CNAME configuration required
  * Stopped
-

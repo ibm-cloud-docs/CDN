@@ -81,7 +81,7 @@ If you choose the Standard method for Domain Validation, the Domain Validation w
 
    ![Domain Validation Challenge Standard](images/domain-validation-standard.png)
 
-To successfully complete the Domain Validation through the Standard method, you must configure your origin server in a particular way. The example procedures for _Apache(TM)_ and _Nginx(TM)_ servers are outlined below.
+To successfully complete the Domain Validation through the Standard method, you must configure your origin server in a particular way. The example procedures for _Apache(TM)_ and _Nginx(TM)_ servers are outlined as follows.
 
 **Example situation**
 * Origin server: `www.example.com`

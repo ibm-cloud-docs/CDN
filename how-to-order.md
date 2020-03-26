@@ -72,7 +72,7 @@ Complete the **Configure Your Origin** field: To configure this field, you must 
 
       * Provide a **Path** where content can be retrieved from on the Origin (optional). See the feature description for [Path-based CDN mappings](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
-      * You can also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, refer to [the FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * You can also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [the FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
          * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
@@ -92,7 +92,7 @@ Complete the **Configure Your Origin** field: To configure this field, you must 
 
       * You **must** provide the name of the **Bucket** in which your content is stored.
 
-      * You can also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin Server. For non-default port numbers, refer to [the FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+      * You can also provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [the FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       * **SSL Certificate** This option appears _only_ when HTTPS Port is selected. If you select **HTTPS Port** for either Server or Object Storage, you can choose **Wildcard** or **DV SAN Certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
          * **Wildcard Certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part
@@ -106,6 +106,6 @@ You must set the **Access Control List** (ACL) for each Object in your Bucket to
 ### Step 4 Accepting the Agreement terms
 {: #step-4}
 
-* You must select **I have read the Master Service Agreement and agree to the terms therein** at the lower right, above the **Create** button.
+* You must select **I have read the Master Service Agreement and agree to the terms therein** at the lower right of the pane.
 
-* Then, select the **Create** button in the lower right corner to create your CDN.
+* Then, select the **Create** button to create your CDN.

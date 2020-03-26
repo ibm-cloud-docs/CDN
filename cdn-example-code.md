@@ -88,7 +88,7 @@ Array
 
 The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
 
-In this case, it is the `SoftLayer_Product_Order` class which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Prior to the call to `verifyOrder`, you need to build the `$orderObject` using the `SoftLayer_Product_Package`.
+In this case, it is the `SoftLayer_Product_Order` class which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Prior to the call to `verifyOrder`, you must build the `$orderObject` using the `SoftLayer_Product_Package`.
 
 ```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
@@ -245,7 +245,7 @@ try {
 ```
 {: codeblock}
 
-The `createDomainMapping` example displays the attributes of the newly created CDN. Make note of the `uniqueId`, as you will need to provide it as a parameter for many other APIs. The output should look similar to this:
+The `createDomainMapping` example displays the attributes of the newly created CDN. Make note of the `uniqueId`, as you must provide it as a parameter for many other APIs. The output should look similar to this:
 
 ```php
 Array
@@ -770,12 +770,12 @@ SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup Object
 {: codeblock}
 
 
-The rate limit related headers also returned: 
+The rate limit related headers also returned:
 
 {: #rate-limit-header}
 
 ```php
-  lastResponseHeaders => 
+  lastResponseHeaders =>
     [
         X-RateLimit-Purge-Paths-Limit-Burst => 1000,
         X-RateLimit-Purge-Paths-Limit-Per-Second => 20,

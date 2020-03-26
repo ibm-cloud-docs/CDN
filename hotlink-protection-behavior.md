@@ -36,11 +36,11 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
    * **Valid**: `http*www.example.com`
    * **Invalid**: `http://www.example.com`
 
-* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referrer Header value matching one the of the terms in `refererValues`. The opposite occurs when there is no match.
+* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one the of the terms in `refererValues`. The opposite occurs when there is no match.
   * Possible value for protectionType:
     * `ALLOW`
     * `DENY`
-* `refererValues`: is a single-space-separated list of referrer URLs, which might also have wildcard matching, in the form of a string.
+* `refererValues`: is a single-space-separated list of referer URLs, which might also have wildcard matching, in the form of a string.
   * Some examples of a **valid** string for `refererValues`:
     * `alternate-domain.example.com`
     * `www1.example.com www2.example.com www3.example.com`

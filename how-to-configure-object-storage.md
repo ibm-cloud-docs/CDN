@@ -32,7 +32,7 @@ To make use of objects stored in {{site.data.keyword.cloud}} Object Storage, you
 
 To install any necessary clients or tools, refer to [For developers of IBM Cloud Object Storage](/docs/cloud-object-storage/basics?topic=cloud-object-storage-gs-dev). This guide assumes you have installed the official AWS command line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
 
-The example code below shows how to set "public-read" access for all the objects in your bucket, using the command-line interface.
+The following example code shows how to set "public-read" access for all the objects in your bucket, using the command-line interface.
 
 ```
 $ export ENDPOINT="YOUR_ENDPOINT"

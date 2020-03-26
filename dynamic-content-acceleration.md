@@ -91,7 +91,7 @@ Serving compressed images reduces the amount of content that is required to load
 
 Image Compression supported file extensions: .jpg, .jpeg, .jpe, .jif, .jfif, and .jfi
 
-In order for the feature **`Image Compression`** to work for DCA, you need to make sure that the path of the image files is cacheable. You can refer to the [Caching](#caching-cache-content) to set the images cacheable.
+In order for the feature **`Image Compression`** to work for DCA, you must make sure that the path of the image files is cacheable. You can refer to the [Caching](#caching-cache-content) to set the images cacheable.
 {:note}
 
 ## Caching

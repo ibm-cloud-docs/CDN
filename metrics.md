@@ -103,7 +103,7 @@ There are a minimum and a maximum number of days for which you can view metrics 
 
 ### Why is the hit ratio nonzero when total hits are zero?
 
-Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin Server. It is calculated as follows:
+Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin server. It is calculated as follows:
 
 `((Edge hits - Ingress hits)/Edge hits) * 100`
 
@@ -120,7 +120,7 @@ For the most recent metrics it can be updated every 5 minutes, while others are 
 
 ### What is the time interval when you select *Most recent* item from *View* list?
 
-The time range and time interval relationships are shown. 
+The time range and time interval relationships are shown.
 
 |Time range| Time interval (minutes)   |
 |-----------------|--------------------|
@@ -146,4 +146,4 @@ Referring to the preceding table, the time interval is 5 minutes.
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 
-In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the internal might be smaller than others. For example, in the above bandwidth most recent report, the time internal is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).
+In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the internal might be smaller than others. For example, in the bandwidth most recent report, the time internal is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).

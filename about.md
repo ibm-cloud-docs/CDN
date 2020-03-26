@@ -70,7 +70,7 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 ### Object Storage Origin support
 {: #object-storage-file-support}
 
-IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to allow only caching for files with those extensions. All objects in the bucket need to be set with anonymous read or public read access.
+IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to allow only caching for files with those extensions. All objects in the bucket must be set with anonymous read or public read access.
 
 This tutorial on [How to set up IBM Cloud Object Storage with CDN](/docs/tutorials?topic=solution-tutorials-static-files-cdn#static-files-cdn) provides more detailed information.
 
@@ -108,7 +108,7 @@ By default, both the aggregate numbers and the graphs default to show metrics fo
 ### Host Header support
 {: #host-header-support}
 
-The Edge server uses the **Host Header** when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin Server Hostname as default HTTP Host Header if the Origin Server is specified as Hostname (rather than as an IP address). If Host header is not provided as input AND the Origin Server is provided as an IP address, the CDN hostname (also called the CDN Domain Name) is used as the default HTTP Host Header.
+The Edge server uses the **Host Header** when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin Server hostname as default HTTP Host Header if the Origin Server is specified as Hostname (rather than as an IP address). If Host header is not provided as input AND the Origin Server is provided as an IP address, the CDN hostname (also called the CDN Domain Name) is used as the default HTTP Host Header.
 
 ### HTTPS Protocol support
 {: #https-protocol-support}
@@ -153,7 +153,7 @@ The value of **Cache Key Optimization** can be configured from the **Settings** 
 * application/json
 * application/xml*
 
-When compression is handled by the Edge Server, then the content must be at least 10 kB.  In some cases, compression is taken care of by the Origin Server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin Server, it will not be compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
+When compression is handled by the Edge Server, then the content must be at least 10 kB.  In some cases, compression is taken care of by the Origin server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin server, it is not compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
 
 ### Large file optimization
 {: #large-file-optimization}
@@ -167,9 +167,9 @@ When this feature is enabled, there is a slight performance cost that is associa
 ### Video-on-Demand
 {: #video-on-demand}
 
-**Video-on-Demand** performance optimization delivers high-quality streaming across various network types. By using pre-configured cache control settings and the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
+**Video on Demand** performance optimization delivers high-quality streaming across various network types. By using pre-configured cache control settings and the distributed network's ability to distribute the load dynamically, IBM Cloud CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
-**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live Video Streaming is **not** supported at this time. You can enable the **Video-on-Demand** feature by selecting the option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
+**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Live Video Streaming is **not** supported at this time. You can enable the **Video on Demand** feature by selecting the option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
 
 ### Dynamic Content Acceleration
 {: #dynamic-content-acceleration-description}

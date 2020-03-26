@@ -94,7 +94,7 @@ Here is the breakdown of what this command did:
 | -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
 | -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to readjust the output bit rate back to the target bit rate for every 2 seconds of video. |
 | -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.<br/> Accumulates frames for at least 6 seconds of video, and then<br/> stops to break off a video fragment when it encounters the next keyframe. |
-| -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for video-on-demand (vod). |
+| -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for Video on Demand (VOD). |
 | test-video.m3u8 | Name the output playlist/manifest file to `test-video.m3u8`.<br/> As a result, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., and similar,<br/> will be the video fragment's names by default.|
 
 Note, for the `-` options, unless a stream is specified, the "best" one for its category is chosen.
@@ -235,4 +235,4 @@ First, [order](/docs/CDN?topic=CDN-order-a-cdn) a CDN.
 
 Next, either [configure your CDN](/docs/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
 
-Finally, under **Optimize for**, select **Video on demand optimization**. 
+Finally, under **Optimize for**, select **Video on demand optimization**.

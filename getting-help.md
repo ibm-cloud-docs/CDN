@@ -22,9 +22,9 @@ subcollection: CDN
 
 
 # Getting help and support
-{: #gettinghelp} 
+{: #gettinghelp}
 
-If you have problems or questions when using CDN, you can get help by searching for information or by asking questions through one of the forums listed below. You can also open an {{site.data.keyword.IBM_notm}} Support case.
+If you have problems or questions when using CDN, you can get help by searching for information or by asking questions through a forum. You can also open an {{site.data.keyword.IBM_notm}} Support case.
 {:shortdesc}
 
 When using the forum to ask a question, tag your question so that it is seen by the {{site.data.keyword.cloud_notm}} development teams. If you have technical questions about CDN, post your question on [Stack Overflow](https://stackoverflow.com/search?q=cdn+ibm-cloud){:external} and tag your question with "cdn" and "ibm-cloud".

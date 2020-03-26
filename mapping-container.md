@@ -30,7 +30,7 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collectio
 * `domain`: Primary CDN name. Also referred to as `hostname`.
 * `protocol`: Protocol used to set up services. It can be HTTP, HTTPS, or a combination of the two, HTTP_AND_HTTPS.
 * `originType`: Type of the Origin host, currently 'HOST_SERVER' or 'OBJECT_STORAGE'.
-* `originHost`: Origin server address (either the hostname or the IPv4 address of the Origin Server), which is the endpoint from which to fetch content, or the name of the Bucket where content is stored. It must be fewer than 511 characters.
+* `originHost`: Origin server address (either the hostname or the IPv4 address of the Origin server), which is the endpoint from which to fetch content, or the name of the Bucket where content is stored. It must be fewer than 511 characters.
 * `httpPort`:  Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
 * `httpsPort`:  Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
 * `certificateType`: Type of certificate being used by a mapping. Can be `WILDCARD_CERT` or `SHARED_SAN_CERT`. Value is 0 for HTTP mappings.
