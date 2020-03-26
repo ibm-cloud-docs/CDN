@@ -17,7 +17,7 @@ Content Delivery Network
         /tutorials/solution-tutorials-dynamic-content-cdn  
         naas-video.md
         
-    [What are content delivery networks?](https://www.ibm.com/cloud/learn/content-delivery-networks)
+    [What are Content Delivery Networks?](https://www.ibm.com/cloud/learn/content-delivery-networks)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}

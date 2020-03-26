@@ -18,7 +18,7 @@ subcollection: CDN
 {:tip: .tip}
 {:download: .download}
 
-# About Content Delivery Networks (CDN)
+# About Content Delivery Networks
 {: #about-content-delivery-networks-cdn-}
 
 A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your users receive the content with less delay, and it delivers a better overall experience for your customers.
