@@ -120,4 +120,4 @@ Selecting **Delete** from the overflow menu deletes only the CDN; it does not de
 
   ![Delete with Warning](images/delete-with-warning.png)
 
-3. After completing steps 1 and 2, your CDN's status shows `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
+3. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.

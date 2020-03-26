@@ -87,52 +87,56 @@ To successfully complete the Domain Validation through the Standard method, you 
 * Challenge URL: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
 * Challenge Response: `examplechallenge`
 
-#### Apache Configuration
+#### Apache configuration
 {: #apache-configuration}
 
-  * **Step 1:** Log in to the machine running the Apache2 server.
+To configure Apache, follow these steps:
 
-  * **Step 2:** Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response would be placed in the `/var/www/html/.well-known/acme-challenge/` directory.
+1. Log in to the machine running the Apache2 server.
+
+2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response would be placed in the `/var/www/html/.well-known/acme-challenge/` directory.
 
       ```
       mkdir -p /var/www/html/.well-known/acme-challenge
       printf "examplechallenge" > /var/www/html/.well-known/acme-challenge/examplechallenge-fileobject
       ```
 
-  * **Step 3:** If needed, open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for configuration files.
+3. If needed, open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for configuration files.
 
-  * **Step 4:** If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
+4. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
 
-  * **Step 5:** If you had to modify your Apache2 server configuration, restart the Apache2 server with minimal downtime by using the following command:
+5. If you had to modify your Apache2 server configuration, restart the Apache2 server with minimal downtime by using the following command:
 
       ```
       apachectl -k graceful
       ```
 
-  * **Step 6:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
+ 6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
-#### Nginx Configuration
+#### Nginx configuration
 {: #nginx-configuration}
 
-  * **Step 1:** Log in to the machine running the Nginx server.
+To configure Nginx, follow these steps:
 
-  * **Step 2:** Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
+ 1. Log in to the machine running the Nginx server.
+
+ 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
       ```
       mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
       printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
       ```
 
-  * **Step 3:** If needed, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
+3. If needed, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
 
-  * **Step 4:** If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
+4. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-  * **Step 5:** If you had to modify your Nginx server configuration, restart the Nginx server with minimal downtime by using the following command:
+5. If you had to modify your Nginx server configuration, restart the Nginx server with minimal downtime by using the following command:
 
       ```
       nginx -s reload
       ```
 
-  * **Step 6:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
+6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Verify that this Standard method to address Domain Validation is ready for the CA
 {: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
@@ -169,36 +173,39 @@ To successfully complete the Domain Validation through the Redirect method, you 
 * Challenge URL: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
 * URL Redirect: `http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject`
 
-#### Apache Redirect Configuration
+#### Apache redirect configuration
 {: #apache-redirect-configuration}
 
-  * **Step 1:** Log in to the machine running the Apache2 server.
+To configure an Apache redirect, follow these steps:
 
-  * **Step 2:** Open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for the configuration file.
+1. Log in to the machine running the Apache2 server.
 
-  * **Step 3:** Add a redirect statement in the appropriate location within the configuration file. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
+2. Open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for the configuration file.
+
+3. Add a redirect statement in the appropriate location within the configuration file. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
 
     ```
     Redirect /.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 
-  * **Step 4:** Restart the Apache2 server with minimal downtime by using the following command:
+4. Restart the Apache2 server with minimal downtime by using the following command:
 
     ```
     apachectl -k graceful
     ```
 
-  * **Step 5:**
-Create an A record in your DNS between the CDN domain and the origin server's IP address.
+5. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
-#### Nginx Redirect Configuration
+#### Nginx redirect configuration
 {: #nginx-redirect-confguration}
 
-  * **Step 1:** Log in to the machine running the Nginx server.
+To configure an Nginx redirect, follow these steps:
 
-  * **Step 2:** Open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for the configuration files.
+ 1. Log in to the machine running the Nginx server.
 
-  * **Step 3:** There are two equally valid methods for this step.
+ 2. Open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for the configuration files.
+
+3. There are two equally valid methods for this step.
 
     * Option 1: (recommended) Add a `location` block with a `return` directive to perform the redirect within the appropriate `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
@@ -236,13 +243,13 @@ Create an A record in your DNS between the CDN domain and the origin server's IP
     }
     ```
 
-  * **Step 4:** Restart the Nginx server with minimal downtime by using the following command:
+4. Restart the Nginx server with minimal downtime by using the following command:
 
     ```
     nginx -s reload
     ```
 
-  * **Step 5:** Create an A record in your DNS between the CDN domain and the origin server's IP address.
+5. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Verify that the redirect is occurring
 {: #verify-that-the-redirect-is-occurring}
