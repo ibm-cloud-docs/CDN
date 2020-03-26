@@ -18,9 +18,13 @@ subcollection: CDN
 {:tip: .tip}
 {:note: .note}
 {:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Ordering a CDN
 {: #order-a-cdn}
+{: help}
+{: support}
 
 To order an IBM Cloud Content Delivery Network (CDN), follow these steps.
 
@@ -46,12 +50,11 @@ To order an IBM Cloud Content Delivery Network (CDN), follow these steps.
           You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider.
 {: note}
 
-   * You can provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
+   * Provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
       An **SSL certificate** option appears if you select HTTPS port. You can choose **Wildcard** or **DV SAN certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
 
 	  * **DV SAN certificate** (default) allows HTTPS traffic over your domain, but requires additional steps to verify. See [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) to understand the steps that are required and time constraints that are involved with choosing this option.
-
 	  * **Wildcard certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part.
 
 1. Review pricing estimates in the right pane.

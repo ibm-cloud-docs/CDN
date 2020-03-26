@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-03-26"
 
 keywords: running status, additional steps, stop cdn, learn, configure cname, delete cdn, start cdn
 
@@ -20,16 +20,20 @@ subcollection: CDN
 {:important: .important}
 {:warning: .warning}
 {:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Getting your CDN to Running status
 {: #getting-your-cdn-to-running-status}
+{: help}
+{: support}
 
 Learn how to get your CDN to a RUNNING state by following these guidelines. This document also tells you how to start and stop your CDN.
 
 ## Get to Running
 {: #get-to-running}
 
-Once you've created a CDN, it appears on your CDN dashboard. Here, the name of your CDN is shown, the Origin, the Provider, and the status.  
+After you've created a CDN, it appears on your CDN dashboard. Here, the name of your CDN is shown, the Origin, the Provider, and the status.  
 
  ![Mapping list screen capture](images/mapping-list.png)
 
@@ -37,26 +41,20 @@ If you ordered your CDN HTTPS with Wildcard certificate, you can proceed to Step
 
 If you created a CDN with HTTPS DV SAN certificate, additional steps might be needed to verify your domain and can be found in [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san).
 
-**Step 1:**
+1. After you've ordered a CDN, you must configure the **CNAME** with your DNS provider. Most DNS providers can give you instructions on setting or changing the CNAME.
 
-After you've ordered a CDN, you must configure the **CNAME** with your DNS provider. Most DNS providers can give you instructions on setting or changing the CNAME.
+   During this time, your CDN's status shows as **CNAME configuration required**. Check with your DNS provider to find out when the changes become active.
 
-   * During this time, your CDN's status shows as **CNAME configuration required**. Check with your DNS provider to find out when the changes become active.
-
-If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
+   If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 {: note}
 
-**Step 2:**
-
-Anytime after you've configured the CNAME with your DNS provider, you can check the status by selecting **Get Status** from the overflow menu to the right of the CDN's status.
+2. Any time after you've configured the CNAME with your DNS provider, you can check the status by selecting **Get Status** from the overflow menu to the right of the CDN's status.
 
   ![CNAME getStatus](images/cname-getstatus.png)  
 
-**Step 3:**
+3. When the CNAME chaining is complete, selecting **Get Status** changes the status to *RUNNING*, and the CDN is ready to use.
 
-When the CNAME chaining is complete, selecting **Get Status** changes the status to *RUNNING*, and the CDN is ready to use.
-
-Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live), [Purging Cached Content](/docs/CDN?topic=CDN-manage-your-cdn#purging-cached-content), and [Adding Origin Path details](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details).
+   Congratulations! Your CDN is now running. From here, the [Manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn#manage-your-cdn) page has additional information on configuring options, such as [Time to Live](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live), [Purging Cached Content](/docs/CDN?topic=CDN-manage-your-cdn#purging-cached-content), and [Adding Origin Path details](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details).
 
 ## Starting CDN
 {: #starting-cdn}
@@ -66,27 +64,17 @@ Starting your CDN informs the DNS to direct traffic from your origin to the Akam
 A CDN can be started only when it is in `Stopped` status.
 {: note}
 
-**Step 1:**
-
-Click **Start CDN** from the Overflow menu, which appears as three dots to the right side of the CDN row.
+1. Click **Start CDN** from the Overflow menu, which appears as three dots to the right side of the CDN row.
 
   ![Overflow menu](images/start_cdn.png)
 
-**Step 2:**
+2. A larger window appears, asking to confirm that you want to start the service. Select **Confirm** to proceed.
 
-A larger window appears, asking to confirm that you want to start the service. Select **Confirm** to proceed.
+3. If the action was successful, a dialog box appears in the upper right corner of your screen, letting you know that it was successful, along with the time.
 
-**Step 3:**
+   This step changes the Status to `CNAME Configuration`.
 
-If the action was successful, a dialog box appears in the upper right corner of your screen, letting you know that it was successful, along with the time.
-
-**Step 4:**
-
-This step changes the Status to `CNAME Configuration`.
-
-**Step 5:**
-
-Click **Get Status** from Overflow menu. This step changes the status to `Running`. Your CDN becomes operational.
+4. Click **Get Status** from Overflow menu. This step changes the status to `Running`. Your CDN becomes operational.
 
 ## Stopping a CDN
 {: #stopping-a-cdn}
@@ -105,19 +93,13 @@ Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Cer
 Currently, stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** allowed.
 {: important}
 
-**Step 1:**
-
-Click **Stop CDN** from the Overflow menu (3 vertical dots to the right of the CDN status).
+1. Click **Stop CDN** from the Overflow menu (3 vertical dots to the right of the CDN status).
 
   ![Overflow menu](images/stop_cdn.png)
 
-**Step 2:**
+2. A window appears, asking you to confirm that you want to stop the service. Select **Confirm** to proceed.
 
-A larger dialog window appears, asking you to confirm that you want to stop the service. Select **Confirm** to proceed.
-
-**Step 3:**
-
-After about 5 to 15 seconds, the status should change to 'Stopped'
+   After about 5 to 15 seconds, the status changes to 'Stopped'.
 
 ## Deleting a CDN
 {: #deleting-a-cdn}
@@ -127,21 +109,15 @@ To delete a CDN, follow these steps:
 Selecting **Delete** from the overflow menu deletes only the CDN; it does not delete your account.
 {: note}
 
-**Step 1:**
-
-Click **Delete** from the overflow menu.
+1. Click **Delete** from the overflow menu.
 
  ![Delete CDN Overflow menu](images/delete_cdn.png)
 
-**Step 2:**
+2. A window appears, asking to confirm that you want to delete. Click **Delete** to proceed.
 
-A larger window appears, asking to confirm that you want to delete. Click **Delete** to proceed.
-
-If your CDN is configured with HTTPS with DV SAN Certificate, it might take up to 5 hours to complete the delete process.
-{: note}
+   If your CDN is configured with HTTPS with DV SAN Certificate, it might take up to 5 hours to complete the delete process.
+   {: note}
 
   ![Delete with Warning](images/delete-with-warning.png)
 
-**Step 3:**
-
-After completing steps 1 and 2, your CDN's status is `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
+3. After completing steps 1 and 2, your CDN's status shows `Deleting`. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.

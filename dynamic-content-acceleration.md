@@ -18,9 +18,13 @@ subcollection: CDN
 {:tip: .tip}
 {:note: .note}
 {:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Configuring Dynamic Content Acceleration
 {: #dynamic-content-acceleration}
+{: help}
+{: support}
 
 Dynamic Content Acceleration (DCA) is a technology to accelerate the dynamic web content.
 It provides improved reliability, offload, and network performance over your original web infrastructure, while handling the specific requirements of dynamically generated content — without a costly hardware build-out.

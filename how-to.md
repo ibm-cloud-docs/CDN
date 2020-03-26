@@ -19,9 +19,13 @@ subcollection: CDN
 {:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Managing your CDN
 {: #manage-your-cdn}
+{: help}
+{: support}
 
 This document describes common tasks for managing your CDN.
 

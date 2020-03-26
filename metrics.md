@@ -37,12 +37,12 @@ The metrics report supports Account level and CDN mapping level, and they have d
 |Mapping     | [Historical metrics report](/docs/CDN?topic=CDN-metrics#domain-mapping-historical-metrics-report)  |Bandwidth, Hits, Hit Ratio, Hits By Type, Bandwidth per Region|
 |Mapping     | [Most recent metrics report](/docs/CDN?topic=CDN-metrics#domain-mapping-most-recent-metrics-report) |Bandwidth, Hits, Hits By Type|
 
-## Metrics Report for Account
+## Metrics report for account
 {: #metrics-report-for-account}
 
 You can view the metrics reports for account. Click the *CDN Overview Report* tab next to the *All CDNs* tab on the CDN Domain Mapping list page.
 
-### Historical Metrics Report
+### Historical metrics report
 {: #historical-metrics-report}
 
 You can view the overall metric reports over a custom time period. Select *Custom time frame* item from *View* list on the *CDN Overview Report* page. Here you can find the total **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits** and **Dynamic Hits**, as well as graphical representation of **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits, and** **Dynamic Hits**.
@@ -52,7 +52,7 @@ You can view the overall metric reports over a custom time period. Select *Custo
 The maximum number of days for which you can view metrics reports is 90 days. The latest date for which you can view metrics reports is 3 days ago. Start and end time for the historical time range is fixed.
 {:note}
 
-### Most Recent Metrics Report
+### Most recent metrics report
 {: #most-recent-metrics-report}
 
 You can view the overall metric reports for a recent time. Select *Most recent* item from *View* list on the *CDN Overview Report* page. Here you can find the total **Bandwidth** and **Hits**, as well as graphical representation of **Bandwidth** and **Hits**.
@@ -62,12 +62,12 @@ You can view the overall metric reports for a recent time. Select *Most recent* 
 You can view data for the past 48 hours only.
 {:note}
 
-## Metrics Report for Domain Mapping
+## Metrics report for domain mapping
 {: #metrics-report-for-domain-mapping}
 
 You can view the metrics reports for domain mapping by opening Overview mapping page. Click the domain mapping hostname on the CDN Domain Mapping list page to open the Overview page.
 
-### Historical Metrics Report
+### Historical metrics report
 {: #domain-mapping-historical-metrics-report}
 
 You can see the **Total Bandwidth**, **Total Hits** and **Hit Ratio** for the selected time period (default is Last 30 days) on the Overview page. Other items such as *Last 90/7/1 days* and *Custom timeframe* are available in the *View* list.
@@ -81,7 +81,7 @@ In the overview, you can find a graphical representation of the **Total Bandwidt
 The maximum number of days for which you can view metrics reports is 90 days. Start and end time for the historical time range is fixed.
 {: note}
 
-### Most Recent Metrics Report
+### Most recent metrics report
 {: #domain-mapping-most-recent-metrics-report}
 
 Select *Most recent* item from *View* list on the Overview page. Here you can see the **Total Bandwidth**, **Total Hits** for the selected time period *Most recent*.
@@ -95,13 +95,18 @@ In the overview, you can find a graphical representation of **Total Bandwidth**,
 You can view data for the past 48 hours only.
 {:note}
 
-## FAQs for Metrics Report
+## FAQs for metrics report
+{: #faqs-for-metrics-report}
 
 ### Is there a minimum number of days for which I can view metrics? Is there a maximum?
+{: #min-number-days-for-which-i-can-view-metrics}
+{: troubleshoot}
 
 There are a minimum and a maximum number of days for which you can view metrics using {{site.data.keyword.cloud}} Content Delivery Network with Akamai. Historical metrics can be gathered for a minimum of 1 day and a maximum of 90 days. Most recent metrics can be gathered for a minimum of 1 minute and a maximum of 48 hours.
 
 ### Why is the hit ratio nonzero when total hits are zero?
+{: #why-is-the-hit-ratio-nonzero-when-total-hits-are-zero}
+{: troubleshoot}
 
 Hit ratio represents the percentage of times the content was delivered from the Edge Server Cache, rather than being delivered from the Origin server. It is calculated as follows:
 
@@ -115,10 +120,14 @@ _Ingress hits_ is defined as "Origin or Ingress hits are for traffic from your o
 Because Hit Ratio is calculated at the Account level and not per CDN, the Hit Ratio is the same for all the CDNs in your account. This fact also explains why the Hit Ratio might be nonzero when the number of Edge hits for a particular CDN is zero.
 
 ### Are metrics updated in real time?
+{: #are-metrics-updated-in-real-time}
+{: troubleshoot}
 
 For the most recent metrics it can be updated every 5 minutes, while others are updated every 24 hours.
 
 ### What is the time interval when you select *Most recent* item from *View* list?
+{: #what-is-the-time-interval-when-you-select-most-recent-item}
+{: troubleshoot}
 
 The time range and time interval relationships are shown.
 
@@ -143,6 +152,8 @@ Time range = (End Date timestamp - Start Date timestamp) / 60 = 90
 Referring to the preceding table, the time interval is 5 minutes.  
 
 ### Why does the last point sometimes drop suddenly in Most Recent Metrics Report?
+{: #why-does-last-point-sometimes-drop-suddenly}
+{: troubleshoot}
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 

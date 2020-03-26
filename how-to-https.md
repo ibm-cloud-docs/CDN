@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2018, 2020
+lastupdated: "2020-03-26"
 
 keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
 
@@ -17,9 +17,13 @@ subcollection: CDN
 {:screen: .screen}
 {:tip: .tip}
 {:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Completing Domain Control Validation for HTTPS with DV SAN
 {: #completing-domain-control-validation-for-https-with-dv-san}
+{: help}
+{: support}
 
 The following diagram outlines the various states your CDN enters from the time it is created until it gets to running status.
 
@@ -28,25 +32,19 @@ The following diagram outlines the various states your CDN enters from the time 
 ## Initial steps to Domain Control Validation
 {: #initial-steps-to-domain-control-validation}
 
-**Step 1:**
+1. After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
 
-After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
+   During this time, the CDN status shows as `Requesting certificate`.
 
-  * During this time, the CDN status shows as **Requesting Certificate**.
+1. After the CA receives the request, it issues a Domain Validation Challenge.
 
-**Step 2:**
+   When this happens, your CDN's status changes to `Domain validation needed`.
 
-Once the CA receives the request, it issues a Domain Validation Challenge.
-
-  * When this happens, your CDN's status changes to **Domain validation needed**.
-
-**Step 3:**
-
-Click on the name of the CDN that needs to be validated. The Overview page opens, where you can see the overall status of your CDN. At the top of the page, an alert appears, reminding you that domain validation is needed. Select the **View domain validation** button to open a window that shows you the challenge information you need, to complete the validation process.
+1. Click the name of the CDN that needs to be validated. The Overview page opens, where you can see the overall status of your CDN. At the top of the page, an alert appears, reminding you that domain validation is needed. Select the **View domain validation** button to open a window that shows you the challenge information you need, to complete the validation process.
 
    ![Domain Validation Needed](images/view-domain-validation.png)
 
-**Step 4:** Once you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 to 4 hours.
+1. After you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 - 4 hours.
 
   * When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
 
