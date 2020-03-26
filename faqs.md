@@ -49,7 +49,7 @@ A CDN achieves its purpose by caching web content on edge servers around the wor
 {: faq}
 {: support}
 
-Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network -> CDN page**, your account is created. If you are creating a CDN from the {{site.data.keyword.cloud}} portal, when you click the **Create** button, under the **Catalog -> Network -> Content Delivery Network** page, your account is created.
+Your account is created during the CDN order process. If you are creating a CDN from the Legacy portal, when you click the **Order CDN** button, under the **Network > CDN page**, your account is created. If you are creating a CDN from the {{site.data.keyword.cloud}} portal, when you click the **Create** button, under the **Catalog > Network > Content Delivery Network** page, your account is created.
 
 ## What do I do when my CDN is in CNAME Configuration Status?
 {: #what-do-i-do-when-my-cdn-is-in-cname-configuratione-status}
@@ -188,7 +188,7 @@ From the IBM Cloud console main page, follow these steps to edit permissions:
 
 From the legacy console main page, follow these steps to edit permissions:
  * Select the **Account** tab.
- * Select **Users -> User List**.
+ * Select **Users > User List**.
  * Click the wanted **Username**.
  * Then, select the **Portal Permissions** tab.
  * Select the **Services** tab.
