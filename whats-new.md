@@ -35,7 +35,7 @@ subcollection: CDN
 {: #october-2019}
 
   * Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#dynamic-content-acceleration-description) (available through UI and API)
-  * [Metrics reports](/docs/CDN?topic=CDN-metrics#metrics-report) for overall CDN mappings (available through UI and API)
+  * [Metrics reports](/docs/CDN?topic=CDN-metrics) for overall CDN mappings (available through UI and API)
 
 ## August 2019
 {: #august-2019}
