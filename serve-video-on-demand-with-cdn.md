@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2020-03-27"
 
 keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
 
@@ -40,7 +40,7 @@ And so, let's start by updating the origin's package list.
 $ sudo apt-get update
 ```
 
-## Prepare video files
+## Preparing video files
 {: #prepare-video-files}
 
 In this guide, we'll use `ffmpeg` to prepare the video files. It is a powerful tool for multimedia files that can convert, mux, demux, filter, and so forth, through its various commands.
@@ -59,6 +59,7 @@ $ ffprobe test-video.mp4
 ```
 
 In this example, let's consider the following stream information for `test-video.mp4`:
+
   * Video stream 0
     * Format: h264
     * Format profile: High
@@ -78,7 +79,7 @@ $ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v mai
 
 Here is the breakdown of what this command did:
 
-|Argument(s)|Effect|
+|Arguments|Effect|
 |:---|:---|
 | ffmpeg | Use the `ffmpeg` tool. |
 | -i test-video.mp4 | The source video is located at `test-video.mp4`. |
@@ -144,9 +145,9 @@ test-video11.ts
 ```
 {: screen}
 
-For more complex use cases--such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so on--`ffmpeg` has many more argument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
+For more complex use cases, such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so on--`ffmpeg` has many  moreargument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
-## Prepare the Origin
+## Preparing the Origin
 {: #prepare-the-origin}
 
 ### Server
@@ -226,13 +227,11 @@ For example, Safari would support native, HLS playback. And so, the video player
 
 However, other browsers on desktop devices might also need support from added JavaScript [Media Source Extensions](https://www.w3.org/TR/media-source/), whether developed in-house or from a trusted third party, to generate content streams playable through HTML5.
 
-## Configure the CDN
+## Configuring the CDN
 {: #configure-the-cdn}
 
 Now, let's connect the origin to the CDN to serve content worldwide with optimized throughput, minimized latency, and increased performance.
 
-First, [order](/docs/CDN?topic=CDN-order-a-cdn) a CDN.
+First, [order and configure a CDN](/docs/CDN?topic=CDN-order-a-cdn).
 
-Next, either [configure your CDN](/docs/CDN?topic=CDN-order-a-cdn#step-2-name-your-cdn) or [add an origin](/docs/CDN?topic=CDN-order-a-cdn#step-3-configure-your-origin).
-
-Finally, under **Optimize for**, select **Video on demand optimization**.
+Then, under **Optimize for**, select **Video on demand optimization**.

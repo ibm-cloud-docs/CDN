@@ -69,7 +69,7 @@ subcollection: CDN
 {: #august-2018}
 
   * Geographical Access Control [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control) (available through UI)
-  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn#order-a-new-cdn)
+  * Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn)
 
 ## July 2018
 {: #july-2018}
