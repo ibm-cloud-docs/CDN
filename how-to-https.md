@@ -50,12 +50,10 @@ The following diagram outlines the various states your CDN enters from the time 
 
 Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running) page.
 
-
 ## Domain Control Validation
 {: #domain-control-validation}
 
 To get your CDN domain name added to the SAN certificate, you must prove that you have administrative control over your domain. This process of proof is referred to as addressing the Domain Control Validation (DCV). You must address the DCV within 48 hours. If you fail to do so, your request expires, and you must begin the order process again. The three different ways to address DCV are described in the sections that follow.
-
 
 ### CNAME
 {: #cname}
@@ -66,10 +64,9 @@ To use this method, add a CNAME record for your CDN domain into your DNS configu
 
 Most DNS providers can give you instructions on setting or changing the CNAME. Here an example of a typical CNAME record:
 
-| **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
+| Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
 | CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
-
 
 ---
 ### Standard
@@ -87,7 +84,7 @@ To successfully complete the Domain Validation through the Standard method, you 
 * Challenge URL: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
 * Challenge Response: `examplechallenge`
 
-#### Apache configuration
+#### Configuring Apache
 {: #apache-configuration}
 
 To configure Apache, follow these steps:
@@ -96,24 +93,22 @@ To configure Apache, follow these steps:
 
 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response would be placed in the `/var/www/html/.well-known/acme-challenge/` directory.
 
-      ```
-      mkdir -p /var/www/html/.well-known/acme-challenge
-      printf "examplechallenge" > /var/www/html/.well-known/acme-challenge/examplechallenge-fileobject
-      ```
-
+   ```
+   mkdir -p /var/www/html/.well-known/acme-challenge
+   printf "examplechallenge" > /var/www/html/.well-known/acme-challenge/examplechallenge-fileobject
+   ```
 3. If needed, open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for configuration files.
 
 4. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
 
 5. If you had to modify your Apache2 server configuration, restart the Apache2 server with minimal downtime by using the following command:
 
-      ```
-      apachectl -k graceful
-      ```
-
+   ```
+   apachectl -k graceful
+   ```
  6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
-#### Nginx configuration
+#### Configuring Nginx
 {: #nginx-configuration}
 
 To configure Nginx, follow these steps:
@@ -121,10 +116,11 @@ To configure Nginx, follow these steps:
  1. Log in to the machine running the Nginx server.
 
  2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
-      ```
-      mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
-      printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
-      ```
+ 
+   ```
+   mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
+   printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
+   ```
 
 3. If needed, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
 
@@ -149,7 +145,7 @@ To configure Nginx, follow these steps:
 
 In either case, you should be able to retrieve the copy of the Domain Validation Challenge file object stored on your origin server.
 
-#### Clean up for the Standard method
+#### Cleaning up for the Standard method
 {: #clean-up-for-the-standard-method}
 
 After your CDN has reached **Certificate deploying** status:

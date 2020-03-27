@@ -25,7 +25,7 @@ subcollection: CDN
 
 Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table before getting started using this service.
 
-## CDN Bandwidth Pricing (Rates shown in USD)
+## CDN bandwidth pricing (rates shown in USD)
 {: #cdn-bandwidth-pricing}
 
 {{site.data.keyword.cloud_notm}} Content Delivery Network with Akamai includes no extra storage fees, and you pay only for the bandwidth that you use.
@@ -37,7 +37,7 @@ Pricing is shown per GB of monthly usage.
 
 Select a region to see a list of countries or territories in that region.
 
-### Static Bandwidth Pricing
+### Static bandwidth pricing
 {: #cdn-static-bandwidth}
 
 |Per Month| [North America](/docs/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/CDN?topic=CDN-emea-region) | [Asia](/docs/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |
@@ -48,7 +48,7 @@ Select a region to see a list of countries or territories in that region.
 |500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
 |\>3 PB| [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) |
 
-### Dynamic Bandwidth Pricing
+### Dynamic bandwidth pricing
 {: #cdn-dynamic-bandwidth}
 
 |Per Month| [North America](/docs/CDN?topic=CDN-north-american-region) | [Europe, Middle East, Africa](/docs/CDN?topic=CDN-emea-region) | [Asia](/docs/CDN?topic=CDN-asia-region) | Japan | [South America](/docs/CDN?topic=CDN-south-american-region) | Australia, New Zealand | India |

@@ -33,28 +33,21 @@ Using real-time network optimizations and advanced caching techniques, it speeds
 ## Working with DCA configurations
 {: #dca-configurations}
 
-### Step 1: Opening settings
-{: #step-1-open-settings}
+To enable DCA, follow these steps:
 
-Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
+1. Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
 
    ![Configure Origin](images/settings-dca-switch.png)
 
-### Step 2: Enabling DCA
-{: #step-2-enable-dca}
+2. Enable DCA:
 
-- Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection Path](#detection-path).
-- Type the path of the object in the **Detection path** field. Click **Test** to verify that the object can be reached.
-- Enable/Disable [Prefetching](#prefetching) and [Image compression](#image-compression).
+   - Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection Path](#detection-path).
+   - Type the path of the object in the **Detection path** field. Click **Test** to verify that the object can be reached.
+   - Enable/Disable [Prefetching](#prefetching) and [Image compression](#image-compression).
 
    ![Configure Origin](images/settings-dca-input.png)
 
-### Step 3: Saving settings
-{: #step-3-save-settings}
-
-Click the **Save** button to save the settings.
-
-If the **`Detection path`** is unreachable, you are prompted by a warning like the following. You can continue to save your settings and update the **`Detection path`** later.
+3. Click the **Save** button to save the settings. If the **`Detection path`** is unreachable, you are prompted by a warning like the following. You can continue to save your settings and update the **`Detection path`** later.
 
    ![Configure Origin](images/settings-dca-save.png)
 
@@ -64,7 +57,7 @@ If the **`Detection path`** is unreachable, you are prompted by a warning like t
 ### Detection Path
 {: #detection-path}
 
-**`Detection Path`** Is used by Akamai Edge servers to find the best optimized route from edge servers to origin.
+**`Detection Path`** is used by Akamai Edge servers to find the best optimized route from edge servers to origin.
 The best path to origin must be known at the time a user’s request arrives at an edge server because any inline analysis or detection would defeat the purpose of speeding up things.
 
 To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the internet from Edge to Origin).

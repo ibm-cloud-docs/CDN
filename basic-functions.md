@@ -48,7 +48,7 @@ If you created a CDN with HTTPS DV SAN certificate, additional steps might be ne
    If your domain is already serving traffic, and you want to verify CDN before changing the DNS record, refer to [Verify CDN before pointing domain to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 {: note}
 
-2. Any time after you've configured the CNAME with your DNS provider, you can check the status by selecting **Get Status** from the overflow menu to the right of the CDN's status.
+2. Any time after you've configured the CNAME with your DNS provider, you can check the status by selecting **Get Status** from the Overflow menu to the right of the CDN's status.
 
   ![CNAME getStatus](images/cname-getstatus.png)  
 
@@ -93,7 +93,7 @@ Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN Cer
 Currently, stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** allowed.
 {: important}
 
-1. Click **Stop CDN** from the Overflow menu (3 vertical dots to the right of the CDN status).
+1. Click **Stop CDN** from the Overflow menu.
 
   ![Overflow menu](images/stop_cdn.png)
 
@@ -106,18 +106,13 @@ Currently, stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` 
 
 To delete a CDN, follow these steps:
 
-Selecting **Delete** from the overflow menu deletes only the CDN; it does not delete your account.
+Selecting **Delete** from the Overflow menu deletes only the CDN; it does not delete your account.
 {: note}
 
-1. Click **Delete** from the overflow menu.
-
- ![Delete CDN Overflow menu](images/delete_cdn.png)
-
+1. Click **Delete** from the Overflow menu.
 2. A window appears, asking to confirm that you want to delete. Click **Delete** to proceed.
 
    If your CDN is configured with HTTPS with DV SAN Certificate, it might take up to 5 hours to complete the delete process.
    {: note}
 
-  ![Delete with Warning](images/delete-with-warning.png)
-
-3. When the delete process is complete, click **Get Status** from the overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
+3. When the delete process is complete, click **Get Status** from the Overflow menu again to remove the row from the CDN list. If the delete process has not completed, this action has no effect.
