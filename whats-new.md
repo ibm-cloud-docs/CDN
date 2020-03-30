@@ -27,8 +27,8 @@ subcollection: CDN
 ## March 2020
 {: #march-2020}
 
-  * Multi Paths Purge [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#purge-cached-content) (available through the API)
-  * Real-time metrics API [API Reference](/docs/CDN?topic=CDN-cdn-api-reference#getcustomerrealtimemetrics) (available through the API)
+  * Multiple files purge [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#purge-cached-content) (available through UI and API)
+  * Real-time metrics API [feature description](/docs/CDN?topic=CDN-metrics) (available through UI and API)
   * Activity Tracker Events for Audit log [feature description](/docs/CDN?topic=CDN-at_events) (available through UI)
 
 ## October 2019
@@ -56,8 +56,8 @@ subcollection: CDN
 {: #december-2018}
 
   * Increased the [maximum number of supported Origins Paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
-  * [Origin Paths](/docs/CDN?topic=CDN-manage-your-cdn#adding-origin-path-details) no longer need to start with Mapping Path Prefix.
-  * The minimum possible [TTL](/docs/CDN?topic=CDN-manage-your-cdn#setting-content-caching-time-using-time-to-live) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
+  * [Origin Paths](/docs/CDN?topic=CDN-adding-origin-path-details) no longer need to start with Mapping Path Prefix.
+  * The minimum possible [TTL](/docs/CDN?topic=CDN-setting-content-caching-time-using-time-to-live) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
 
 ## September 2018
 {: #september-2018}
