@@ -25,12 +25,12 @@ subcollection: CDN
 ## What are the rules for the CDN hostname?
 {: #what-are-the-rules-for-the-cdn-hostname}
 
-The CDN `Hostname` input string **must**:
+The CDN `Hostname` input string must:
   * Consist of alphanumeric characters
   * Be fewer than 254 characters
   * End with a valid top-level domain name
-  * Must **not** contain more than 10 labels
-  * Must **not** end in `cdn.appdomain.cloud` or `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
+  * Must not contain more than 10 labels
+  * Must not end in `cdn.appdomain.cloud` or `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
 
 Refer to RFC 1035, section 2.3.4 for more details. 
 

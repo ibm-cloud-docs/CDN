@@ -81,11 +81,11 @@ This is the error that you might see: `503 Service Unavailable`.
 With the 503 error, you might also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number might vary). In this case, the reference number in the error string translates to an SSL handshake failure.
 
 To correct the issue, ensure that your Origin server's SSL certificates meets the following criteria:
-  * The certificate **must** be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
-  * It **must** have a complete certificate chain (leaf, intermediate, root).
-  * It **must** match the *Host header that is configured* on the CDN
-  * It must **not** be self-signed
-  * It must **not** be expired
+  * The certificate must be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
+  * It must have a complete certificate chain (leaf, intermediate, root).
+  * It must match the *Host header that is configured* on the CDN
+  * It must not be self-signed
+  * It must not be expired
 
 If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
@@ -113,7 +113,7 @@ This table shows the behavior that is expected for the supported protocols when 
 | Browser URL | CDN with HTTP protocol only |
 |:-----|:-----|
 | `http://hostname` | Successful load |
-| `https://hostname` | Access denied&#8902; |
+| `https://hostname` | Access denied<sup>1</sup> |
 | `http://cname` | 301 Moved Permanently |
 | `https://cname` | Redirects to IBM Cloud webpage |
 {: caption="Table 1. Expected behavior for CDN with HTTP protocol only" caption-side="left"}
@@ -124,9 +124,9 @@ This table shows the behavior that is expected for the supported protocols when 
 
 | Browser URL | Wildcard | Shared SAN |
 |-----|-----|-----|  
-| `http://hostname` | 301 Moved Permanently | Access denied&#8902; |
+| `http://hostname` | 301 Moved Permanently | Access denied<sup>1</sup> |
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
-| `http://cname` | Access denied&#8902; | 301 Moved Permanently |
+| `http://cname` | Access denied<sup>1</sup> | 301 Moved Permanently |
 | `https://cname` | Successful load | 301 Moved Permanently |
 {: caption="Table 2. Expected behavior for CDN with HTTPS protocol only" caption-side="left"}
 {: #simpletabtable2}
@@ -146,11 +146,11 @@ This table shows the behavior that is expected for the supported protocols when 
 {: tab-group="cdr-troubleshooting"}
 {: class="simple-tab-table"}
 
-*&#8902;* The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
+<sup>1</sup> The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 **Common error messages:** 
 
-A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you **must** use the CNAME for access to your CDN.
+A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you must use the CNAME for access to your CDN.
 
 With an HTTP **only** protocol, you receive the `301 Moved Permanently` message if you try to reach your CDN using the CNAME. In this case, you can _only_ gain access to your CDN using the hostname.
 

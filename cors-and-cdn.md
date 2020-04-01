@@ -47,7 +47,7 @@ CORS can handle two types of requests: _simple requests_ and _preflighted reques
 
 When making such a request, the browser automatically sets CORS request headers. Primarily, it sets the origin of the webpage making the request in the `Origin` HTTP header, automatically. The CORS request also can contain a set of [certain, standard HTTP headers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#simple-header), while maintaining its status as a simple CORS request, from the browser's perspective.
 
-The server that receives the CORS request processes the request, and may (or may not) send a set of CORS response headers back to the browser, with the requested content. These CORS response headers contain values specifying whether the current webpage is allowed access to those resources, whether the headers sent are acceptable for that request, and so forth.
+The server that receives the CORS request processes the request, and might send a set of CORS response headers back to the browser, with the requested content. These CORS response headers contain values specifying whether the current webpage is allowed access to those resources, whether the headers sent are acceptable for that request, and so forth.
 
 If the browser is unable to see its CORS request satisfied by the CORS response headers, it automatically prevents the access to and loading of the content. Otherwise, it sees that the CORS origin is giving permission to use the resource, and it allows the access to and loading of the requested content.
 
@@ -62,7 +62,7 @@ Second request (resource access):
 
 ![cors-after-preflight](/images/cors-after-preflight.png)
 
-For more complex CORS communication between the browser and a CORS origin that's different than the requesting webpage, a [preflight request ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0) would be required before an actual resource access. Certain situations may require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
+For more complex CORS communication between the browser and a CORS origin that's different than the requesting webpage, a [preflight request ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0) would be required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
 
 If a preflight request is needed, here's how the events unfold:
 
@@ -73,7 +73,7 @@ If a preflight request is needed, here's how the events unfold:
 
 Afterward, the communication between the browser and CORS origin (different than that of the webpage) will proceed as if it was a simple CORS request. Similar to a simple CORS request, content and resources are accessible and can be loaded if this second CORS request also is allowed.
 
-## How to set up CORS at your origin
+## Setting up CORS at your origin
 {: #how-to-set-up-cors-at-your-origin}
 
 As shown in the previous diagrams, CORS is initiated by the requesting HTTP client. However, the effects depend on the requested origin. For your content to be ready for CORS requests, your origin must be configured correctly to respond with the correct CORS response headers and the correct access permissions.
@@ -202,7 +202,7 @@ http {
 
 The previous example uses the `map` directive to avoid overusing the `if` Nginx statement. Now, when a CORS request is made to this server and matches that URI path, the server responds with the `Access-Control-Allow-Origin` header containing the value `http://www.example.com`, `https://cdn.example.com`, or `http://dev.example.com`, etc. when the content is requested from `http://www.example.com`, `https://cdn.example.com`, `http://dev.example.com`, and so forth.
 
-## How to set up CORS for CDN
+## Setting up CORS for CDN
 {: #how-to-set-up-cors-for-cdn}
 
 ![cors-through-cdn](/images/cors-through-cdn.png)

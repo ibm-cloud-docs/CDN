@@ -56,9 +56,9 @@ Your account is created during the CDN order process. If you are creating a CDN 
 {: faq}
 {: support}
 
-For HTTP and SAN Certificate-based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
+For HTTP and SAN certificate-based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
 
-For Wildcard Certificate based HTTPS CDN, this DNS update is **NOT** needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
+For Wildcard certificate-based HTTPS CDN, this DNS update is not needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
 It can take up to 15 - 30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
 {:note}
@@ -91,11 +91,11 @@ You are only billed for bandwidth that is used per IBM Cloud Content Delivery Ne
 
 IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.cloud_notm}} Account.
 
-## If I select `delete` from the CDN's Overflow menu, does that delete my account?
+## If I select `Delete` from the Overflow ![Overflow menu](images/overflow.png) menu, does that delete my account?
 {: faq}
 {: support}
 
-No, if you select 'delete' from the CDN Overflow menu, only that CDN is deleted. Your account still exists, and you can create additional CDNs.
+No, if you select 'Delete' from the Overflow ![Overflow menu](images/overflow.png) menu, only that CDN is deleted. Your account still exists, and you can create additional CDNs.
 
 ## Does content caching use push or pull?
 {: #does-content-caching-use-push-or-pull}
@@ -135,7 +135,7 @@ No. There can be only one active Purge request for a given file path at a time.
 
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
 
-Creating an IBM Cloud CDN using an IPv6 address as the Origin Server Address is not supported.
+Creating an IBM Cloud CDN using an IPv6 address as the Origin server address is not supported.
 {:note}
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
@@ -156,7 +156,7 @@ Omitting the slash, for example, using `www.example.com/images` results in a **P
 
 [Here's a tutorial](/docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
-## I received notification that my Origin Certificate is expiring. What do I do now?
+## I received notification that my Origin certificate is expiring. What do I do now?
 {: faq}
 
 Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){:external} from Akamai.

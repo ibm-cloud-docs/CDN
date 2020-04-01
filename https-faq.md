@@ -19,10 +19,10 @@ subcollection: CDN
 {:download: .download}
 {:faq: data-hd-content-type='faq'}
 
-# FAQ for HTTPS
+# FAQs for HTTPS
 {: #faq-for-https}
 
-## For my CDN, what is the difference between HTTPS with Wildcard Certificate and HTTPS with SAN certificate?
+## For my CDN, what is the difference between HTTPS with a Wildcard certificate and HTTPS with SAN certificate?
 {: #for-my-cdn-what-is-the-difference-between-https-with-wildcard-certificate-and-https-with-san-certificate}
 {:faq}
 
@@ -58,7 +58,7 @@ Deleting your CDN requires that your domain be removed from the certificate on a
 {: #is-there-any-additional-cost-associated-with-using-a-dv-san-certificate-for-my-cdn}
 {:faq}
 
-No. DV SAN certificate configurations are provided to you at no additional charge that is compared with HTTP or HTTPS with Wildcard Certificate.
+No. DV SAN certificate configurations are provided to you at no additional charge that is compared with HTTP or HTTPS with a Wildcard certificate.
 
 ## Can my CDN created using HTTPS with Wildcard be updated to use a DV SAN certificate?
 {: #can-my-cdn-created-using-https-with-wildcard-be-updated-to-use-a-dv-san-certificate}
@@ -70,7 +70,7 @@ No, a wildcard mapping cannot be changed to SAN certificate.
 {: #what-is-a-certificate-authority}
 {:faq}
 
-A certificate authority (CA) is an entity that issues Digital Certificates.
+A certificate authority (CA) is an entity that issues digital certificates.
 
 ## Which CA does {{site.data.keyword.cloud}} CDN service use for issuing a DV SAN certificate?
 {: #which-ca-does-ibm-cloud-cdn-service-use-for-issuing-a-dv-san-certificate}
@@ -140,4 +140,4 @@ CDNs created with HTTPS protocol support HTTP2 for TLS secured traffic.
 {: #wildcard-cname-configureation-needed}
 {:faq}
 
-For the wildcard CDN, you don't need to set the DNS record to point to domain to IBM CNAME.  As you create the CDN, the system creates a new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get Status` button. The CDN status then changes to `Running`.
+For the wildcard CDN, you don't need to set the DNS record to point to domain to IBM CNAME.  As you create the CDN, the system creates a new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get status` button. The CDN status then changes to `Running`.

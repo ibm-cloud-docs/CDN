@@ -27,7 +27,7 @@ The Input container is a collection used by both the Mapping and (Origin) Path c
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.
 
 The following attributes are common to the Mapping and (Origin) Path classes:
-* `originType`: Type of the Origin host, currently 'HOST_SERVER' or 'OBJECT_STORAGE'.
+* `originType`: Type of the Origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`.
 * `origin`: Origin server address (either the hostname or the IPv4 address of the Origin server), the endpoint from which to fetch content, or the name of the bucket where content is stored. Must be fewer than 511 characters.
 * `httpPort`: Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 * `httpsPort`: Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.

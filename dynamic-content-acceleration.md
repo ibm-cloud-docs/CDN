@@ -47,7 +47,7 @@ To enable DCA, follow these steps:
 
    ![Configure Origin](images/settings-dca-input.png)
 
-3. Click the **Save** button to save the settings. If the **`Detection path`** is unreachable, you are prompted by a warning like the following. You can continue to save your settings and update the **`Detection path`** later.
+3. Click the **Save** button to save the settings. If the **`Detection path`** is unreachable, you are prompted by a warning. You can continue to save your settings and update the **`Detection path`** later.
 
    ![Configure Origin](images/settings-dca-save.png)
 
@@ -106,4 +106,4 @@ In some cases, you might mix the static (for example, Images, css, js) and dynam
 {: #caching-cache-content}
 
 - With **`Respect header`** as **`ON`**, set the caching headers in your origin, like **`Cache-Control:public, max-age=31536000`**;
-- With **`Respect header`** as **`OFF`**, create a TTL with path to match your static contents, and set the value as the wanted caching time you want;
+- With **`Respect header`** as **`OFF`**, create a TTL with path to match your static contents, and set the value as the wanted caching time you want.

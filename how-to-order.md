@@ -26,7 +26,8 @@ subcollection: CDN
 {: help}
 {: support}
 
-To order an IBM Cloud Content Delivery Network (CDN), follow these steps.
+To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must first create your CDN through the {{site.data.keyword.cloud_notm}} catalog. Depending on the configuration you select, then complete instructions in [Getting to Running status](/docs/CDN?topic=CDN-getting-to-running-status).
+{: shortdesc}
 
 1. From your browser, open the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog){: external} and log in to your account.
 1. Select **Networking** in the navigation pane, then click the **Content Delivery Network** tile.
@@ -52,7 +53,7 @@ To order an IBM Cloud Content Delivery Network (CDN), follow these steps.
 
    * Provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for a list of allowed port numbers.
 
-      An **SSL certificate** option appears if you select HTTPS port. You can choose **Wildcard** or **DV SAN certificate** as your SSL Certificate option. Both offer the enhanced security provided by HTTPS.
+      An **SSL certificate** option appears if you select HTTPS port. You can choose **Wildcard** or **DV SAN certificate** as your SSL certificate option. Both offer the enhanced security provided by HTTPS.
 
 	  * **DV SAN certificate** (default) allows HTTPS traffic over your domain, but requires additional steps to verify. See [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) to understand the steps that are required and time constraints that are involved with choosing this option.
 	  * **Wildcard certificate** allows HTTPS traffic only when using the **CNAME** and requires no further action on your part.
@@ -60,6 +61,4 @@ To order an IBM Cloud Content Delivery Network (CDN), follow these steps.
 1. Review pricing estimates in the right pane.
 1. Agree to the terms of the Master Service Agreement.
 1. Click the **Create** button to create your CDN.
-
-After provisioning your new CDN, you **must** configure the CNAME with your DNS provider.
-{: note}
+1. Follow steps for your specific configuration in [Getting to Running status](/docs/CDN?topic=CDN-getting-to-running-status).

@@ -34,7 +34,7 @@ Yes, the combined limit is 75 entries per CDN.
 ## What is the largest file size that can be delivered through Akamai CDN?
 {: #what-is-the-largest-file-size-that-can-be-delivered-through-akamai-cdn}
 
-Attempts to retrieve or deliver files larger than 1.8 GB eceive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320 GB are possible.
+Attempts to retrieve or deliver files larger than 1.8 GB receive a `403 Access Forbidden` response for the default performance configuration. If Large File Optimization is enabled, file downloads up to 320 GB are possible.
 
 ## What is the maximum size for the origin response headers?
 {: #what-is-the-maximum-size-for-the-orignin-response-headers}

@@ -6,31 +6,48 @@ Content Delivery Network
 
     {: .navgroup id="learn"}
     getting-started.md
-    about.md 
+    about.md
     whats-new.md
     pricing.md
     about-https.md
 
     {: .topicgroup}
-    Tutorials & video
+    Videos & tutorials
+        [Video: IBM Cloud Networking Overview](https://www.youtube.com/watch?v=KMRAXSu6KJ8)
+        [Video: What is Content Delivery Network?](https://www.youtube.com/watch?v=Bsq5cKkS33I)
+        [Video: How to set up a web app with security groups, load balancers, and CDN](https://www.youtube.com/watch?time_continue=1&v=LRvNCXvtkX0&)      
         /tutorials/solution-tutorials-static-files-cdn
-        /tutorials/solution-tutorials-dynamic-content-cdn  
-        naas-video.md
-        
+        /tutorials/solution-tutorials-dynamic-content-cdn
+
     [What are Content Delivery Networks?](https://www.ibm.com/cloud/learn/content-delivery-networks)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
-    how-to-order.md
-    basic-functions.md
-    how-to.md
-    verify-cdn-before-running.md
-    dynamic-content-acceleration.md
-    how-to-https.md
+    {: .topicgroup}
+    Creating a CDN
+        how-to-order.md
+        running-status.md        
+        how-to-https.md
+        verify-cdn-before-running.md
+
+    {: .topicgroup}
+    Managing a CDN
+        starting_cdn.md
+        stopping_cdn.md
+        deleting_cdn.md
+        adding-origin-path-details.md
+        dynamic-content-acceleration.md
+        how-to-configure-object-storage.md
+        serve-video-on-demand-with-cdn.md
+
+     {: .topicgroup}
+    Configuring caching behavior
+        control-http-client-cache-duration.md
+        setting-content-caching-time-using-ttl.md
+        how-to.md
+
+    at-events.md
     cors-and-cdn.md
-    control-http-client-cache-duration.md
-    how-to-configure-object-storage.md
-    serve-video-on-demand-with-cdn.md
     byte-range-request.md
     metrics.md
     {: .navgroup-end}
@@ -50,10 +67,9 @@ Content Delivery Network
         vendor-container.md
         purge-group-container.md
         purge-history-container.md
-        
+
     cdn-example-code.md
     edge-servers.md
-    at-events.md    
     legacy-portal.md
 
     {: .topicgroup}
@@ -63,17 +79,16 @@ Content Delivery Network
         north-america-region.md
         south-america-region.md
     {: .navgroup-end}
-    
-    {: .navgroup id="help"}    
-    known-limitations.md
-    
+
+    {: .navgroup id="help"}     
     {: .topicgroup}
     FAQs
         faqs.md
         https-faq.md
         rules-and-naming-conventions.md
         limits-and-max-values.md
-           
+     
+    known-limitations.md
     troubleshooting.md
     getting-help.md
     {: .navgroup-end}

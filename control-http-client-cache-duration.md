@@ -28,8 +28,8 @@ When using a CDN, two levels of caching are available:
 
 The method that you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
 
-  * Whether the [Respect Header setting](/docs/CDN?topic=CDN-manage-your-cdn#updating-cdn-configuration-details) is ON or OFF. By default it is set to ON.
-  * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
+  * Whether the Respect Header setting is ON or OFF. By default it is set to ON.
+  * Whether the Origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the edge, if you want edge servers to send HTTP responses with the Cache-Control header for that content.
 
@@ -63,8 +63,7 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 |Off|Yes, but origin does not specify a `max-age`|Edge cache duration based on the CDN's TTL configuration|Yes, edge also provides a `max-age` that is the time before the edge needs to refresh the content from the origin|
 |Off|No|Edge cache duration based on the CDN's TTL configuration|No|
 
-## More information on cache control
+## More information 
 {: #more-information-on-cache-control}
 
-* How to [manage your CDN](/docs/CDN?topic=CDN-manage-your-cdn)
-* Cache-Control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt)
+See cache-control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt).

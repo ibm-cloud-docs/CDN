@@ -25,14 +25,18 @@ subcollection: CDN
 {: help}
 {: support}
 
-The following diagram outlines the various states your CDN enters from the time it is created until it gets to running status.
+Complete the following steps after ordering your CDN with a DV SAN certificate.
+
+The following diagram outlines the various states your CDN enters from the time it is created until it gets to `Running` status.
 
   ![SAN state diagram](images/state-diagram-san.png)
 
 ## Initial steps to Domain Control Validation
 {: #initial-steps-to-domain-control-validation}
 
-1. After you've ordered your CDN with a DV SAN Certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
+Complete these steps:
+
+1. After you've ordered your CDN with a DV SAN certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
 
    During this time, the CDN status shows as `Requesting certificate`.
 
@@ -46,9 +50,7 @@ The following diagram outlines the various states your CDN enters from the time 
 
 1. After you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 - 4 hours.
 
-  * When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
-
-Additional information regarding completing your CNAME Configuration and overseeing your CDN can be found on the [Getting to Running](/docs/CDN?topic=CDN-getting-your-cdn-to-running-status#get-to-running) page.
+   When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
 
 ## Domain Control Validation
 {: #domain-control-validation}
@@ -58,7 +60,7 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 ### CNAME
 {: #cname}
 
-This method is recommended **ONLY** if your CDN is **not** serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
+This method is recommended **ONLY** if your CDN is not serving live traffic. If your domain is serving live traffic, we recommended using either the Standard or Redirect method to validate your domain.
 
 To use this method, add a CNAME record for your CDN domain into your DNS configuration. The CNAME value to use is the CNAME you used when you created the CDN. It should end with the `cdn.appdomain.cloud` domain. No other action is required from you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. Once the certificate is deployed, your CDN moves directly to RUNNING status.
 
@@ -76,7 +78,7 @@ If you choose the Standard method for Domain Validation, the Domain Validation w
 
    ![Domain Validation Challenge Standard](images/domain-validation-standard.png)
 
-To successfully complete the Domain Validation through the Standard method, you must configure your origin server in a particular way. The example procedures for _Apache(TM)_ and _Nginx(TM)_ servers are outlined as follows.
+To successfully complete the Domain Validation through the Standard method, you must configure your origin server in a particular way. The example procedures for Apache and Nginx servers are outlined here.
 
 **Example situation**
 * Origin server: `www.example.com`
@@ -116,7 +118,7 @@ To configure Nginx, follow these steps:
  1. Log in to the machine running the Nginx server.
 
  2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
- 
+
    ```
    mkdir -p /usr/share/nginx/html/.well-known/acme-challenge
    printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
@@ -265,7 +267,11 @@ In either case, you should be able to retrieve the copy of the Domain Validation
 #### Clean up for the Redirect method
 {: #clean-up-for-the-redirect-method}
 
-After your CDN indicates **Certificate deploying** status:
-1. Remove the redirect statements or blocks from the configuration file. (optional)
-1. Remove the added ServerAlias (Apache2) or the server_name (Nginx) from your server configuration, if needed. (optional)
+After your CDN indicates **Certificate deploying** status, you can:
+1. (Optional) Remove the redirect statements or blocks from the configuration file.  
+1. (Optional) Remove the added ServerAlias (Apache2) or the server_name (Nginx) from your server configuration, if needed.  
 1. Remove the A record between the CDN domain and the origin server IP.
+
+## Next steps
+
+Continue following instructions to [get to `Running` status](/docs/CDN?topic=CDN-getting-to-running-status#for-a-san-https-cdn).

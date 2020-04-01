@@ -33,7 +33,7 @@ This document contains example API calls and the resulting output for numerous C
 ## General steps that are needed for all API calls
 {: #general-steps-needed-for-all-api-calls}
 
-Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}
+Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}.
 
   * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
 
@@ -199,7 +199,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it **must** end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
 {: important}
 
 ```php

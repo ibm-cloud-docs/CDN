@@ -90,7 +90,7 @@ Here is the breakdown of what this command did:
 | -profile:v main | Use the "main" format profile of the selected codec for widest device support. |
 | -crf 23 | Attempt to maintain the video quality with varying file size and bit rate.<br/>  The lower the CRF, the higher the quality and file size. |
 | -g 61 -keyint_min 61 | Set a maximum and minimum.<br/> With the example source frame rate as 30.30, a keyframe should be <br/> inserted every 2 seconds (61 frames). |
-| -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that may insert extraneous keyframes into the output. |
+| -sc_threshold 0 | Disable scene detection by `ffmpeg`.<br/> Prevents a second process that might insert extraneous keyframes into the output. |
 | -b:v 5300k | Sets the output video stream's target bitrate to 5300000 bits/second. |
 | -maxrate 5300k | Limits the maximum output video bitrate at<br/> the encoder to 5300000 bits/second, in case it varies. |
 | -bufsize 10600k | Sets the `ffmpeg` video decoder buffer size to 10600000 bits.<br/>  With 5300k bitrate, the `ffmpeg` encoder should check and <br/> attempt to readjust the output bit rate back to the target bit rate for every 2 seconds of video. |
@@ -211,7 +211,7 @@ http {
 
 Not all streaming video formats are natively playable on all applications. The example in this guide sets up streaming using HLS and CDN.
 
-For example, Safari would support native, HLS playback. And so, the video player on the webpage may be as simple as the following example using HTML5 `<video>` elements:
+For example, Safari would support native, HLS playback. And so, the video player on the webpage might be as simple as the following example using HTML5 `<video>` elements:
 
 ```
 <!DOCTYPE html>
@@ -232,6 +232,4 @@ However, other browsers on desktop devices might also need support from added Ja
 
 Now, let's connect the origin to the CDN to serve content worldwide with optimized throughput, minimized latency, and increased performance.
 
-First, [order and configure a CDN](/docs/CDN?topic=CDN-order-a-cdn).
-
-Then, under **Optimize for**, select **Video on demand optimization**.
+First, [order and configure a CDN](/docs/CDN?topic=CDN-order-a-cdn). Then, under **Optimize for**, select **Video on demand optimization**.

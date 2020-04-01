@@ -32,7 +32,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
 
 **class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`:
 
-* `://` in the first label of the URL is **not** supported.
+* `://` in the first label of the URL is not supported.
    * **Valid**: `http*www.example.com`
    * **Invalid**: `http://www.example.com`
 
@@ -50,7 +50,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     * `*.example.com *.example.net`
     * `https*www.example.com`
   * Some examples of an **invalid** string for `refererValues`:
-   
+
     |**Description of invalid Example**|Example|
     |-------|-----|
     |Contains more than 2100 characters, total| `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...|
@@ -60,4 +60,3 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     |Using characters not specified in [RFC-3986](https://tools.ietf.org/html/rfc3986#section-2){:external} | `domain1.exa}mple.com domain1.example.com`|
     |`&` character is not supported| `www.example.com/path&`|
     |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
-
