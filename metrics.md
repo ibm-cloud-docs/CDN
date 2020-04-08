@@ -159,4 +159,4 @@ Referring to the preceding table, the time interval is 5 minutes.
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 
-In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the internal might be smaller than others. For example, in the bandwidth most recent report, the time internal is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).
+In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the interval might be smaller than others. For example, in the bandwidth most recent report, the time interval is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).
