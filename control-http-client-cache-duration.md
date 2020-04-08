@@ -49,7 +49,7 @@ However, if your origin does not provide a Cache-Control header to the edge serv
 
 If your origin does provide a Cache-Control header with `max-age` for a specific piece of content, the origin's Cache-Control `max-age` value becomes the cache duration for that specific piece of content cached on the edge, overriding any applicable TTL settings for that piece of content. Additionally, the edge responds to the requester with a Cache-Control `max-age` value equal to the remaining time left until the content goes stale on the edge server.
 
-However, if your origin does not provide a Cache-Control header to the edge server, then the edge server will not provide a Cache-Control header to the requester. The edge cache duration for your content is still derived from your CDN's TTL Settings.
+However, if your origin does not provide a Cache-Control header to the edge server, then the edge server will not provide a Cache-Control header to the requester. The edge cache duration for your content is still derived from your CDN's TTL settings.
 
 ## Summary
 {: #summary}

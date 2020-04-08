@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-11-06"
+lastupdated: "2020-04-08"
 
 keywords: DCA, dynamic, detection path, prefetching, image compression, ttl, cache
 
@@ -35,7 +35,7 @@ Using real-time network optimizations and advanced caching techniques, it speeds
 
 To enable DCA, follow these steps:
 
-1. Open the page of a specified CDN mapping, click **Settings** from the navigation bar. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
+1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
 
    ![Configure Origin](images/settings-dca-switch.png)
 
@@ -72,13 +72,13 @@ A valid test object must:
 * Be approximately the size of an average page, but no less than 8 KB
 
 
-**`Detection Path`** Is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
+**`Detection Path`** is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
 {:note}
 
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** Is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
+**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
 aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, and zip.
 
 ### Image compression
@@ -88,22 +88,22 @@ Serving compressed images reduces the amount of content that is required to load
 
 Image Compression supported file extensions: .jpg, .jpeg, .jpe, .jif, .jfif, and .jfi
 
-In order for the feature **`Image Compression`** to work for DCA, you must make sure that the path of the image files is cacheable. You can refer to the [Caching](#caching-cache-content) to set the images cacheable.
+In order for the feature **`Image Compression`** to work for DCA, you must make sure that the path of the image files is cacheable. See [Caching](#caching-cache-content) to set the images cacheable.
 {:note}
 
 ## Caching
 {: #caching}
 
-When the DCA is enabled for your CDN mapping or origin, it does not mean the Akamai edge servers will not cache your contents under the path. It still depends on your caching settings. With the default setting, **`Respect header`** is **`ON`**, and if your origin set cacheable related headers for the contents, for example, **`Cache-Control:public, max-age=31536000`**, then the edge server respects this header to cache the contents.
+When DCA is enabled for your CDN mapping or origin, the Akamai edge servers cache (or prevent caching of) contents based on your settings:
 
-If you want dynamic contents not cacheable, you can prevent caching with the following options:
-{: #caching-prevent-caching}
+* To enable caching of contents under the path, set `Respect header` to `ON` and set the caching headers in your origin (for example, `Cache-Control:public, max-age=31536000`).
 
-- With **`Respect header`** as **`ON`**, set the preventing caching headers in your origin, like **`Cache-Control: no-cache, no-store`**;
-- With **`Respect header`** as **`OFF`**, create a TTL with path to match your dynamic contents, and set the value as 0;
+* To prevent caching of contents, do one of the following:
 
-In some cases, you might mix the static (for example, Images, css, js) and dynamic assets under the same path, so you might need some assets to be cacheable. You can do with the following options:
-{: #caching-cache-content}
+   - Set `Respect header` to `ON` (default) and include headers in your origin, which prevents caching (for example, `Cache-Control: no-cache, no-store`).
+   - Set `Respect header` to `OFF`, create a TTL with a path to match your contents, and set a `0` value.
 
-- With **`Respect header`** as **`ON`**, set the caching headers in your origin, like **`Cache-Control:public, max-age=31536000`**;
-- With **`Respect header`** as **`OFF`**, create a TTL with path to match your static contents, and set the value as the wanted caching time you want.
+In some cases, you might want to mix static (for example, images, CSS, JS) and dynamic assets under the same path, so you might need to make some assets cacheable. You can do this with the following options: 
+
+- Set `Respect header` to `ON` and set the caching headers in your origin (for example, `Cache-Control:public, max-age=31536000`).
+- Set `Respect header` to `OFF`, create a TTL with path to match your static contents, and set the value as the wanted caching time.
