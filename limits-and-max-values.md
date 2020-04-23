@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-04-21"
 
 keywords: limits, maximum, values, time to live, entries, large file, size, optimization, downloads, years
 
@@ -20,6 +20,9 @@ subcollection: CDN
 
 # FAQs for limits and maximum values
 {: #limits-and-maximum-values}
+
+Have a question about CDN and limits or maximum? Review these frequently asked questions, which provide answers to common inquiries.
+{:shortdesc}
 
 ## Is there a maximum value for Time To Live? A minimum?
 {: #is-there-a-maximum-value-for-time-to-live}
@@ -51,19 +54,42 @@ The maximum request headers size is 32 KB. If the request headers are larger tha
 
 You can expect changes to become active on Akamai in 10 minutes.
 
-## What's the rate limit for the multiple file purge?
+## What's the rate limit for a multiple file purge?
 {: #purge-rate-limit}
 
-For the multiple file purge, there is a limit on the file number in the purge actions. The limiting algorithm that is used for sustained rate and burst follows a Token Bucket model.  
-There is one bucket that is applied for all the purge paths under your account. The total token number in the bucket represents burst file numbers can be purged. In the following table, the X-RateLimit-Purge-Paths-Limit-Burst represents how many tokens the bucket can hold. The bucket starts with a full of tokens. Tokens are constantly added to the bucket based on the sustained rate (X-RateLimit-Purge-Paths-Limit-Per-Second). If the bucket is full, no more tokens can be added.  
-When a multiple file purge request is made, the remaining tokens number is checked against the number of file paths. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens, then tokens are removed from the bucket and the request is accepted. If there are not enough tokens in the purge bucket, no tokens are removed, and the request is denied.  
+For a multiple file purge, there is a limit on the number of files that can be purged at a given time. The limiting algorithm that is used for the sustained rate and burstiness follows the Token Bucket model, where there is one fixed-capacity bucket that is applied for all the purge paths in your account. The total number of tokens in the bucket represents the number of paths that can be purged in a burst. 
 
-This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example) shows that the rate limiting response headers returned by the purge group API.
+In the following table, `X-RateLimit-Purge-Paths-Limit-Burst` represents the number of tokens that the bucket can hold. The initial token bucket is full. Tokens are constantly added to this bucket based on the sustained rate (`X-RateLimit-Purge-Paths-Limit-Per-Second`). However, if the bucket is full, no more tokens can be added.
 
-Here is default value for rate limit headers:
+When a multiple file purge request is made, the remaining number of tokens is checked against the number of file paths. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens in the purge bucket, the tokens are removed from the bucket and the request is accepted. If there are not enough tokens, tokens are not removed, and the request is denied.  
+
+This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example) shows the rate limiting response headers returned by the purge group API.
+
+The following table lists the default values for rate limit headers:
 
 |  Rate Header   | Value  | Description |
 |  ----  | ----  | ----  |
-| X-RateLimit-Purge-Paths-Limit-Per-Second  | 20 | The token number added into bucket per second. |
-| X-RateLimit-Purge-Paths-Limit-Burst | 1000 | The maximum paths can be purged in a burst. Capability of the bucket. |
-| X-RateLimit-Purge-Paths-Remaining| N/A | Number of paths remaining before the rate limit is exceeded. |
+| `X-RateLimit-Purge-Paths-Limit-Per-Second`  | 20 | The token number added into the bucket per second. |
+| `X-RateLimit-Purge-Paths-Limit-Burst` | 1000 | The maximum paths can be purged in a burst. Capability of the bucket. |
+| `X-RateLimit-Purge-Paths-Remaining` | N/A | Number of paths remaining before the rate limit is exceeded. |
+
+## Is there a limit on the number of purge group entries?
+{: #is-there-a-limit-on-the-number-of-purge-group-entries}
+
+The number of purge group entries doesn't have any restrictions.
+
+## What is the maximum size for purge group name?
+{: #what-is-the-maximum-size-for-purge-group-name}
+
+The maximum purge group name size is 999 characters.
+
+## I received an error similar to `"Could not allocate more resource to build new rule in Akamai: x behaviors are needed while only x can be used."` What should I do?
+{: #error-max-resource-limit}
+{: faq}
+
+When you reach the maximum resource limit, the console shows this error message. To resolve this issue, you can:
+
+* Delete unused resources (TTL, origin, and so on).
+* Create a domain to store new resources.
+
+
