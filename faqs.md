@@ -195,7 +195,7 @@ From the legacy console main page, follow these steps to edit permissions:
  * Select **Manage CDN Account**.
  * Click the **Edit Portal Permissions** button.
 
-## Why is the Create button not shown or disabled on https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai page?
+## Why is the Create button not shown or disabled on the [Content Delivery Network](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai) page?
 {: faq}
 
 If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
