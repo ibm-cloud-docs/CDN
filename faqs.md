@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27"
+lastupdated: "2020-05-14"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -29,6 +29,8 @@ subcollection: CDN
 
 # FAQs for CDN
 {: #faqs}
+Have a question about CDN? Review frequently asked questions, which provide answers to provisioning concerns, application access, and other common inquiries.
+{:shortdesc}
 
 ## What is a Content Delivery Network (CDN)?
 {: #what-is-a-content-delivery-network-cdn}
@@ -92,6 +94,7 @@ You are only billed for bandwidth that is used per IBM Cloud Content Delivery Ne
 IBM Cloud Content Delivery Network billing occurs according to the billing period established in your {{site.data.keyword.cloud_notm}} Account.
 
 ## If I select `Delete` from the Overflow ![Overflow menu](images/overflow.png) menu, does that delete my account?
+{: #if-i-select-delete-does-that-delete-my-account}
 {: faq}
 {: support}
 
@@ -116,21 +119,25 @@ Yes, Firefox and Chrome are the recommended browsers. It is recommended that you
 If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin server.
 
 ## My CDN is in an Error State. What do I do now?
+{: #my-cdn-is-in-an-error-state}
 {: faq}
 
 Refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
+{: #where-do-i-find-the-cname-for-my-cdn}
 {: faq}
 
 Click your CDN to access the **Overview** page in the portal. On the right corner, you can see a **Details** section with the `CName` information.
 
 ## My single file purge request for a given file path is in progress. Can I submit a new request for the same file path?
+{: #my-single-file-purge-request-for-a-given-file-path}
 {: faq}
 
 No. There can be only one active Purge request for a given file path at a time.
 
 ## Is Internet Protocol version 6 (IPv6) supported by the IBM Cloud Content Delivery Network service? How does it work?
+{: #is-ip-version-6-supported}
 {: faq}
 
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
@@ -139,12 +146,14 @@ Creating an IBM Cloud CDN using an IPv6 address as the Origin server address is 
 {:note}
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
+{: #are-there-any-restrictions-on-what-port-numbers-are-allowed}
 {: faq}
 
 Yes. For the Akamai vendor, only the following port numbers are allowed:
 72, 80-89, 443, 488, 591, 777, 1080, 1088, 1111, 1443, 2080, 7001, 7070, 7612, 7777, 8000-9001, 9090, 9901-9908, 11080-11110, 12900-12949, 20410, and 45002.
 
 ## What URL should be used for access to data under the CDN or Origin Path?
+{: #what-url-should-be-used-for-access-to-data}
 {: faq}
 
 The path for a CDN mapping or for the origin is treated as a directory. Therefore, users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
@@ -152,26 +161,31 @@ The path for a CDN mapping or for the origin is treated as a directory. Therefor
 Omitting the slash, for example, using `www.example.com/images` results in a **Page Not Found** error.
 
 ## How do I set up my Content Delivery Network for IBM Cloud Object Storage (COS)?
+{: #how-do-i-set-up-my-cdn-for-cos}
 {: faq}
 
 [Here's a tutorial](/docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## I received notification that my Origin certificate is expiring. What do I do now?
+{: #notification-that-origin-cert-is-expiring}
 {: faq}
 
 Follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){:external} from Akamai.
 
 ## What security is included with the IBM CDN solution with Akamai?
+{: #what-security-is-included-with-cdn-with-akamai}
 {: faq}
 
 Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
 
 ## Are cookies from the origin server preserved by the Akamai CDN?
+{: #are-cookies-preserved-by-the-akamai-cdn}
 {: faq}
 
 For non-cacheable content, or any content that is not cached, cookies are preserved from the origin. For content that is cached by Edge servers, cookies are not preserved.
 
 ## How do I use the IBM Cloud console to give other users permission to create or manage a CDN?
+{: #how-do-i-use-cloud-to-give-users-permission-to-create-or-manage-cdn}
 {: faq}
 
 The account's Master User can provide other users with permission to create and manage a CDN.
@@ -196,6 +210,7 @@ From the legacy console main page, follow these steps to edit permissions:
  * Click the **Edit Portal Permissions** button.
 
 ## Why is the Create button not shown or disabled on the [Content Delivery Network](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai) page?
+{: #why-is-create-button-not-showing}
 {: faq}
 
 If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
@@ -214,29 +229,40 @@ If you are one of the account's secondary Users, then the account's Master User 
  * Click **Save** button.
 
 ## Why am I unable to reach my webpage through my CDN after configuring Hotlink Protection with `protectionType` `ALLOW`?
+{: #why-am-i-unable-to-reach-webpage-through-my-cdn}
 {: faq}
 
 Let's consider an example in which your website's domain for users is configured to be your CDN's domain/hostname: `cdn.example.com`. When someone attempts to reach a webpage by navigating directly from the browser's navigation bar, the browser typically does not send Referer headers in its HTTP request. For example, when you directly navigate in this way to `https://cdn.example.com/`, your CDN considers that the request contains a non-match against the specified `refererValues`. When the CDN evaluates the appropriate effect or response through your Hotlink Protection, it determines that a non-match occurred. Therefore, your CDN denies access, rather than 'ALLOW'.
 
 ## Can I use private endpoint of object storage in CDN settings?
+{: #can-i-use-private-endpoint-of-object-storage-in-cdn-setting}
 {: faq}
 
 No, CDN can only connect to Object Storage on Public endpoints.
 
 ## Can I use Brotli feature in CDN service?
+{: #can-i-use-brotli}
 {: faq}
 
 No, Brotli feature is not supported by our CDN service with Akamai.
 
 ## How do I create a CDN endpoint without using the domain?
+{: #how-do-i-create-a-cdn-endpoint-without-using-the-domain}
 {: faq}
 
 You can create a CDN endpoint without using the Domain, but ONLY for a CDN of type **Wildcard HTTPS**. While creating a CDN of type **Wildcard HTTPS**, your **CNAME** acts as the CDN endpoint, and the **CNAME** is used to serve the traffic.
 
 ## Is HTTP/2 supported by the IBM Cloud Content Delivery Network service?
+{: #is-http2-supported-by-cdn}
 {: faq}
 
 Yes, HTTP/2 is supported by Akamai's Edge servers.
+
+## Is WebSocket supported by the Content Delivery Network service?
+{: #is-websocket-supported}
+{: faq}
+
+No, WebSocket is not supported by Akamai's Edge servers.
 
 ## With multiple file purges, what's the difference between a favorite group and an unfavorite group?
 {: #what-different-two-type-favorite-group}
