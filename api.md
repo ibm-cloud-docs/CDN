@@ -24,6 +24,7 @@ subcollection: CDN
 {: #cdn-api-reference}
 
 The SoftLayer Application Programming Interface (commonly called the SLAPI), provided by {{site.data.keyword.cloud}}, is the development interface that gives developers and system administrators direct interaction with the {{site.data.keyword.cloud_notm}} Infrastructure backend system.
+{:shortdesc}
 
 The SLAPI implements many of the features in the Customer Portal: if an interaction is possible in the Customer Portal, it also can be accomplished in the SLAPI. Because you can interact with all portions of the {{site.data.keyword.cloud_notm}} Infrastructure environment programmatically, within the SLAPI, you can use the API to automate tasks.
 
@@ -94,7 +95,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
     * `protocol`: (Required) Supported protocols are `HTTP`, `HTTPS`, or `HTTP_AND_HTTPS`.
     * `certificateType`: (Required) for HTTPS protocol. `SHARED_SAN_CERT` or `WILDCARD_CERT`.
     * `path`: Path from which the cached content will be served. Default path is `/*`.
-    * `httpPort` and/or `httpsPort`: (Required for Host Server) These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+    * `httpPort` and/or `httpsPort`: (Required for Host Server) These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for allowed port numbers.
     * `header`: Specifies host header information that is used by the Origin server.
     * `respectHeader`: A Boolean value that, if set to `true`, causes TTL settings in the Origin to override CDN TTL settings.
     * `cname`: Provide an alias to the hostname. Will be generated if one is not provided.

@@ -22,6 +22,7 @@ subcollection: CDN
 {: #about-content-delivery-networks-cdn-}
 
 A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your users receive the content with less delay, and it delivers a better overall experience for your customers.
+{:shortdesc}
 
 ## How does a CDN work?
 {: #how-does-a-cdn-work}
@@ -65,7 +66,7 @@ Features that are included with {{site.data.keyword.cloud}} CDN powered by Akama
 ### Host Server Origin support
 {: #host-server-origin-support}
 
-IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for supported port numbers/ranges.
+IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for supported port numbers/ranges.
 
 ### Object Storage Origin support
 {: #object-storage-file-support}

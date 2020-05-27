@@ -22,6 +22,7 @@ subcollection: CDN
 {: #mapping-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collection contains the attributes that are used by our Mapping APIs. Each of the Mapping APIs returns a collection of this type.
+{:shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 
@@ -31,8 +32,8 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collectio
 * `protocol`: Protocol used to set up services. It can be HTTP, HTTPS, or a combination of the two, HTTP_AND_HTTPS.
 * `originType`: Type of the Origin host, currently 'HOST_SERVER' or 'OBJECT_STORAGE'.
 * `originHost`: Origin server address (either the hostname or the IPv4 address of the Origin server), which is the endpoint from which to fetch content, or the name of the Bucket where content is stored. It must be fewer than 511 characters.
-* `httpPort`:  Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
-* `httpsPort`:  Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-http-and-https-port-numbers-are-allowed-for-akamai-) for allowed port numbers.
+* `httpPort`:  Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for allowed port numbers.
+* `httpsPort`:  Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for allowed port numbers.
 * `certificateType`: Type of certificate being used by a mapping. Can be `WILDCARD_CERT` or `SHARED_SAN_CERT`. Value is 0 for HTTP mappings.
 * `cname`: Canonical name record that aliases the hostname. It can be provided by the user, or system-generated. If user-provided, it should be less than 64 alphanumeric characters, and it must be unique. If not provided, one is generated when the mapping is created.
 * `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the Origin to override CDN TTL settings.
