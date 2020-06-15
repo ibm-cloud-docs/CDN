@@ -282,3 +282,9 @@ Favorite groups names must be unique. Unfavorite groups do not have this limitat
  * Running - HTTP only
  * CNAME configuration required
  * Stopped
+
+## Is IBM CDN compliant with Payment Card Industry Data Security Standard (PCI DSS)?
+{: #is-cdn-pci-dss-compliant}
+{: faq}
+
+Yes, IBM CDN is PCI DSS 3.2.1 compliant through our partner Akamai's certification. See the Akamai [Attestation of Compliance](https://www.akamai.com/uk/en/multimedia/documents/infosec/pci-dss-3.2-attestation-of-compliance.pdf){:external} for more details.
