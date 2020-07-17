@@ -15,9 +15,9 @@ Content Delivery Network
     Videos & tutorials
         [Video: IBM Cloud Networking Overview](https://www.youtube.com/watch?v=KMRAXSu6KJ8)
         [Video: What is Content Delivery Network?](https://www.youtube.com/watch?v=Bsq5cKkS33I)
-        [Video: How to set up a web app with security groups, load balancers, and CDN](https://www.youtube.com/watch?time_continue=1&v=LRvNCXvtkX0&)      
-        /tutorials/solution-tutorials-static-files-cdn
-        /tutorials/solution-tutorials-dynamic-content-cdn
+        [Video: How to set up a web app with security groups, load balancers, and CDN](https://www.youtube.com/watch?time_continue=1&v=LRvNCXvtkX0&)
+        /solution-tutorials/solution-tutorials-static-files-cdn
+        /solution-tutorials/solution-tutorials-dynamic-content-cdn
 
     [What are Content Delivery Networks?](https://www.ibm.com/cloud/learn/content-delivery-networks)
     {: .navgroup-end}
@@ -26,7 +26,7 @@ Content Delivery Network
     {: .topicgroup}
     Creating a CDN
         how-to-order.md
-        running-status.md        
+        running-status.md
         how-to-https.md
         verify-cdn-before-running.md
 
@@ -80,14 +80,14 @@ Content Delivery Network
         south-america-region.md
     {: .navgroup-end}
 
-    {: .navgroup id="help"}     
+    {: .navgroup id="help"}
     {: .topicgroup}
     FAQs
         faqs.md
         https-faq.md
         rules-and-naming-conventions.md
         limits-and-max-values.md
-     
+
     known-limitations.md
     troubleshooting.md
     getting-help.md
