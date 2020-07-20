@@ -73,7 +73,7 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to allow only caching for files with those extensions. All objects in the bucket must be set with anonymous read or public read access.
 
-This tutorial on [Setting up IBM Cloud Object Storage with CDN](/docs/tutorials?topic=solution-tutorials-static-files-cdn#static-files-cdn) provides more detailed information.
+This tutorial on [Setting up IBM Cloud Object Storage with CDN](/docs/tutorials?topic=solution-tutorials-static-files-cdn) provides more detailed information.
 
 ### Support for Multiple Origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
