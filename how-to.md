@@ -26,6 +26,7 @@ subcollection: CDN
 {: #purging-cached-content}
 
 When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-allowed-for-multiple-file-purge), you can purge the cached contents in multiple paths from the vendor's server.
+{:shortdesc}
 
 1. On the CDN page, select your CDN, which takes you to the **Overview** page.
 2. Select the **Purge** tab.

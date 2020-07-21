@@ -62,7 +62,7 @@ Returns an object similar to this one:
         (
             [cacheKeyQueryRule] => include-all
             [certificateType] => NO_CERT
-            [cname] => api-testing.cdn.appdomain.cloud
+            [cname] => api-testing.cdn.appdomain.cloud.
             [domain] => api-testing.cdntesting.net
             [header] => origin.cdntesting.net
             [httpPort] => 80

@@ -29,6 +29,7 @@ subcollection: CDN
 {: #purge-group-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup` collection contains the attributes used by our Purge Group APIs. Each of the Purge Group APIs returns a collection of this type.
+{:shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`:
 

@@ -27,8 +27,8 @@ subcollection: CDN
 {: support}
 
 Dynamic Content Acceleration (DCA) is a technology to accelerate the dynamic web content.
-It provides improved reliability, offload, and network performance over your original web infrastructure, while handling the specific requirements of dynamically generated content — without a costly hardware build-out.
-Using real-time network optimizations and advanced caching techniques, it speeds and secures interactive websites.
+It provides improved reliability, offload, and network performance over your original web infrastructure, while handling the specific requirements of dynamically generated content — without a costly hardware build-out. Using real-time network optimizations and advanced caching techniques, it speeds and secures interactive websites.
+{:shortdesc}
 
 ## Working with DCA configurations
 {: #dca-configurations}
@@ -103,7 +103,7 @@ When DCA is enabled for your CDN mapping or origin, the Akamai edge servers cach
    - Set `Respect header` to `ON` (default) and include headers in your origin, which prevents caching (for example, `Cache-Control: no-cache, no-store`).
    - Set `Respect header` to `OFF`, create a TTL with a path to match your contents, and set a `0` value.
 
-In some cases, you might want to mix static (for example, images, CSS, JS) and dynamic assets under the same path, so you might need to make some assets cacheable. You can do this with the following options: 
+In some cases, you might want to mix static (for example, images, CSS, JS) and dynamic assets under the same path, so you might need to make some assets cacheable. You can do this with the following options:
 
 - Set `Respect header` to `ON` and set the caching headers in your origin (for example, `Cache-Control:public, max-age=31536000`).
 - Set `Respect header` to `OFF`, create a TTL with path to match your static contents, and set the value as the wanted caching time.

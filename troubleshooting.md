@@ -25,11 +25,16 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 {:support: data-reuse='support'}
+{:tsSymptoms: .tsSymptoms}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
 
 # Troubleshooting
 {: #troubleshooting}
 
 In this document, find various ways to troubleshoot your {{site.data.keyword.cloud}} CDN. If you must contact support, be sure to provide your CDN's reference number.
+{:shortdesc}
 
 ## How do I know that my CDN is working?
 {: #how-do-I-know-my-cdn-is-working}
@@ -75,8 +80,10 @@ If the output of the `curl` command is similar to the following example format, 
 {: support}
 
 The most common reason observed for the 503 error is due to an issue with a certificate in the SSL certificate chain.
+{:tsCauses}
 
-This is the error that you might see: `503 Service Unavailable`.  
+This is the error that you might see: `503 Service Unavailable`.
+{:tsSymptoms}
 
 With the 503 error, you might also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number might vary). In this case, the reference number in the error string translates to an SSL handshake failure.
 
@@ -86,6 +93,7 @@ To correct the issue, ensure that your Origin server's SSL certificates meets th
   * It must match the *Host header that is configured* on the CDN
   * It must not be self-signed
   * It must not be expired
+  {:tsResolve}
 
 If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
@@ -94,7 +102,14 @@ If you have verified your Origin's certificate chain using the previous criteria
 {: troubleshoot}
 {: support}
 
-When your {{site.data.keyword.cloud_notm}} CDN is configured to use Cloud Object Storage (COS) as the object storage, direct access to the website will not work. You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). This behavior is caused by the index document limitation in IBM COS.
+When your {{site.data.keyword.cloud_notm}} CDN is configured to use Cloud Object Storage (COS) as the object storage, direct access to the website will not work.
+{:tsSymptoms}
+
+You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`).
+{:tsResolve}
+
+This behavior is caused by the index document limitation in IBM COS.
+{:tsCauses}
 
 ## I can't connect through a `curl` command or browser using the hostname with HTTPS.
 {: #i-cant-conect-through-a-curl-command-or-browser-using-the-hostname-with-https}
@@ -148,7 +163,7 @@ This table shows the behavior that is expected for the supported protocols when 
 
 <sup>1</sup> The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
-**Common error messages:** 
+**Common error messages:**
 
 A `301 Moved Permanently` message most likely indicates you are attempting to reach a CDN with an `HTTPS` or `HTTP_AND_HTTPS` protocol using the hostname. Due to a limitation with the HTTPS wildcard certificate, you must use the CNAME for access to your CDN.
 

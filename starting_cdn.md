@@ -29,11 +29,12 @@ subcollection: CDN
 {: #starting-cdn}
 
 Starting your CDN informs the DNS to direct traffic from your origin to the Akamai edge server. After the mapping is started, the DNS cache can still direct traffic to the origin so the functionality might not be seen by the domain immediately after the mapping is started. The time it takes to update depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
+{:shortdesc}
 
 You can start a CDN only when it is in `Stopped` status.
 {: note}
 
-1. Click **Start CDN** from the Overflow ![Overflow menu](images/overflow.png) menu. 
+1. Click **Start CDN** from the Overflow ![Overflow menu](images/overflow.png) menu.
 
    You are prompted if you want to start the service.
 2.  Select **Confirm** to proceed.

@@ -24,6 +24,7 @@ subcollection: CDN
 {: #pricing}
 
 Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table before getting started using this service.
+{:shortdesc}
 
 ## CDN bandwidth pricing (rates shown in USD)
 {: #cdn-bandwidth-pricing}

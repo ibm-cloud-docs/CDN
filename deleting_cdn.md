@@ -28,6 +28,7 @@ subcollection: CDN
 {: #deleting-a-cdn}
 
 To delete a CDN, follow these steps:
+{:shortdesc}
 
 1. Click **Delete** from the Overflow ![Overflow menu](images/overflow.png) menu. A window appears, asking to confirm that you want to delete.
 2. Click **Delete** to proceed.

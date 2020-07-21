@@ -22,6 +22,9 @@ subcollection: CDN
 # FAQs for rules and naming conventions
 {: #rules-and-naming-conventions}
 
+Have a question about CDN rules and naming conventions? Review these frequently asked questions, which provide answers to common inquiries.
+{:shortdesc}
+
 ## What are the rules for the CDN hostname?
 {: #what-are-the-rules-for-the-cdn-hostname}
 
@@ -30,9 +33,9 @@ The CDN `Hostname` input string must:
   * Be fewer than 254 characters
   * End with a valid top-level domain name
   * Must not contain more than 10 labels
-  * Must not end in `cdn.appdomain.cloud` or `cdnedge.bluemix.net` (that ending is used for CNAMES and is reserved)
+  * Must not end in `cdn.appdomain.cloud.` or `cdnedge.bluemix.net.` (that ending is used for CNAMES and is reserved)
 
-Refer to RFC 1035, section 2.3.4 for more details. 
+Refer to RFC 1035, section 2.3.4 for more details.
 
 Furthermore, we highly recommend the use of a fully qualified domain name as your CDN hostname. Choose a name of the form `www.example.com` rather than a root domain name (also referred as Zone Apex or Naked domain), of the form `example.com`. You must create a CNAME Record for the CDN hostname you use, and the DNS RFC 1033 requires the root domain record to be an A Record, not a CNAME. Further clarification is provided in RFC 2181, section 10.1
 

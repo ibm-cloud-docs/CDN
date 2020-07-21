@@ -35,7 +35,7 @@ To decide between using **Wildcard Certificate** and **SAN Certificate** for HTT
 
 The Wildcard certificate is the simplest way to deliver web content to your users securely. The full CDN CNAME, including the Wildcard certificate suffix, must be used as the service entry point (for example, `https://example.cdn.appdomain.cloud`) to use the Wildcard certificate.
 
-IBM Cloud CDN uses the Wildcard certificate `*.cdn.appdomain.cloud`. The CNAME, regardless of whether it was created for you or provided by you, and ending in suffix `*.cdn.appdomain.cloud` is added to the wildcard certificate maintained on the CDN Edge server. And thus CNAME becomes the only way for users to use HTTPS for your CDN.
+IBM Cloud CDN uses the Wildcard certificate `*.cdn.appdomain.cloud.`. The CNAME, regardless of whether it was created for you or provided by you, and ending in suffix `*.cdn.appdomain.cloud.` is added to the wildcard certificate maintained on the CDN Edge server. And thus CNAME becomes the only way for users to use HTTPS for your CDN.
 
 ![Diagram for HTTP and Wildcard](images/state-diagram-wildcard.png)
 

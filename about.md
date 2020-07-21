@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-04-03"
+  years: 2017, 2020
+lastupdated: "2020-07-20"
 
 keywords: content delivery network, web content, caching, edge servers, streaming content
 
@@ -73,9 +73,9 @@ IBM Cloud Content Delivery Network (CDN) can be configured to serve content from
 
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the Bucket name, protocol, and port. Optionally, a list of file extensions can be specified to allow only caching for files with those extensions. All objects in the bucket must be set with anonymous read or public read access.
 
-This tutorial on [Setting up IBM Cloud Object Storage with CDN](/docs/tutorials?topic=solution-tutorials-static-files-cdn) provides more detailed information.
+This tutorial on [Setting up IBM Cloud Object Storage with CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn) provides more detailed information.
 
-### Support for Multiple Origins with distinct paths
+### Support for multiple Origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
 
 In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. IBM Cloud CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility regarding how and where the data is stored. The path that is provided for the Origin server should be unique regarding the CDN. The Origin server itself does not need to be unique.

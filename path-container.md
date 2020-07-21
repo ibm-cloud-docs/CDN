@@ -22,6 +22,7 @@ subcollection: CDN
 {: #path-origin-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` collection contains the attributes used by our (Origin) Path APIs. Each of the Path APIs returns a collection of this type.
+{:shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 

@@ -23,6 +23,7 @@ subcollection: CDN
 {: #working-with-byte-range-requests}
 
 Using a byte-range request, you can retrieve partial content from an origin server. This document can help you understand the response status codes you might see.
+{:shortdesc}
 
 When a **Byte-range request** is sent by using {{site.data.keyword.cloud}} CDN with Akamai, the user might receive a `200 (OK)` response code for the first request, and a `206` response code for all subsequent requests, because Akamai edge servers request content from the origin in compressed format. Therefore, when an edge server doesn't have an object in its cache, nor does it have any information regarding the content length of the object, it forwards to the origin and requests the entire object. In return the origin serves the object without the content length header to Akamai, and the user is served the whole object even though it was a byte-range request. Thus the `200` Status code. On subsequent requests, the edge server has the object in its cache and serves the `206` status code.
 

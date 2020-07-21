@@ -35,7 +35,7 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
 1. On the CDN Configure page, complete the **Configure name** section.
 
    * Type the required **Hostname**, which serves as the primary identifier for your CDN (for example, `example.testingcdn.net`).  
-   * Optionally, provide a custom **CNAME**, such as `myfirstcdn.cdn.appdomain.cloud`. If no CNAME is provided, one is created for you. The suffix `cdn.appdomain.cloud` is automatically appended to the CNAME. Use of an inappropriate CNAME can lead to end of services.
+   * Optionally, provide a custom **CNAME**, such as `myfirstcdn.cdn.appdomain.cloud.`. If no CNAME is provided, one is created for you. The suffix `cdn.appdomain.cloud.` is automatically appended to the CNAME. Use of an inappropriate CNAME can lead to end of services.
 
 1. Complete the **Configure origin** section. You must select either the **Server** or the **Object Storage** tab.
 

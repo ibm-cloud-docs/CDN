@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-20"
+lastupdated: "2020-04-13"
 
 keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -22,11 +22,14 @@ subcollection: CDN
 # FAQs for HTTPS
 {: #faq-for-https}
 
+Have a question about CDN and HTTPS? Review these frequently asked questions, which provide answers to common inquiries.
+{:shortdesc}
+
 ## For my CDN, what is the difference between HTTPS with a Wildcard certificate and HTTPS with SAN certificate?
 {: #for-my-cdn-what-is-the-difference-between-https-with-wildcard-certificate-and-https-with-san-certificate}
 {:faq}
 
-With Wildcard certificates, all customers use the same certificate that is deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdn.appdomain.cloud`, must be used for access to the service. For example, `https://www.example-cname.cdn.appdomain.cloud`
+With Wildcard certificates, all customers use the same certificate that is deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdn.appdomain.cloud.`, must be used for access to the service. For example, `https://www.example-cname.cdn.appdomain.cloud`
 
 In the case of SAN certificate, multiple customer domains share a single SAN certificate by adding their domain names into the SAN entries. The service can then be accesses using the hostname, for instance `https://www.example.com`
 
@@ -116,7 +119,7 @@ For details on how to address this situation, refer to the [Completing Domain Co
 {: #if-i-use-a-san-certificate-type-for-my-cdn-can-i-still-use-the-cname-for-access-to-my-service}
 {:faq}
 
-No. For the SAN certificate,, you can use only the custom domain to access the content from the origin.
+No. For the SAN certificate, you can use only the custom domain to access the content from the origin.
 
 ## Are all of my IBM Cloud CDN domains added into one certificate?
 {: #are-all-of-my-ibm-cloud-cdn-domains-added-into-one-certificate}
@@ -140,4 +143,4 @@ CDNs created with HTTPS protocol support HTTP2 for TLS secured traffic.
 {: #wildcard-cname-configureation-needed}
 {:faq}
 
-For the wildcard CDN, you don't need to set the DNS record to point to domain to IBM CNAME.  As you create the CDN, the system creates a new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get status` button. The CDN status then changes to `Running`.
+For the wildcard CDN, you don't need to set the DNS record to point the domain to IBM CNAME.  As you create the CDN, the system creates a new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud.`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get status` button. The CDN status then changes to `Running`.

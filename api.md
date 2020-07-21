@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-12"
+lastupdated: "2020-07-20"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -40,9 +40,9 @@ For more information about SLAPI, or about the {{site.data.keyword.cloud_notm}} 
 ----
 
 To get started, here is a recommended API call sequence to follow:
-* `listVendors` - Provides the list of supported vendors
-* `verifyOrder` - Verifies whether the order can be placed
-* `placeOrder` - Creates the CDN account with a given vendor. Up to 10 CDN Mappings can be created after a successful placeOrder call.
+* `listVendors` - Provides the list of supported vendors.
+* `verifyOrder` - Verifies whether or not the order can be placed.
+* `placeOrder` - Creates the CDN account with a given vendor. Up to 10 CDN mappings can be created after a successful placeOrder call.
 * `createDomainMapping` - Creates the CDN Mappings
 * `verifyDomainMapping` - Changes CDN status to _RUNNING_
 
@@ -50,7 +50,7 @@ You can use the other APIs after you've followed the previous sequence.
 
 [Example Code is available for each step in this call sequence.](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api)
 
-You must use the API username and API Key of a user with `CDN_ACCOUNT_MANAGE` permission for most of the API calls shown in this document. Please check with your account's Master user if you require this permission to be enabled for you. (Each IBM Cloud customer account is provided with one Master user.)
+You must use the API username and API Key of a user with `CDN_ACCOUNT_MANAGE` permission for most of the API calls shown in this document. Check with your account's Master user if you require this permission to be enabled for you. (Each IBM Cloud customer account is provided with one Master user.)
 {: note}
 
 ----
@@ -80,9 +80,10 @@ Checks whether a CDN account exists for the user calling the API, for the given 
 {: #api-for-domain-mapping}
 
 ### createDomainMapping
+{: #create-domain-mapping}
 Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created by using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input container here:
 
   [Input container](/docs/CDN?topic=CDN-input-container)
@@ -156,7 +157,7 @@ Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the do
 ### updateDomainMapping
 Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields can be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your Origin Type is Object Storage, the `bucketName` and `fileExtension` also can be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input container here:
   [Input container](/docs/CDN?topic=CDN-input-container)
 
@@ -209,7 +210,7 @@ Returns a collection with a single domain object based on a CDN's `uniqueId`.
 ### createOriginPath
 Creates an Origin Path for an existing CDN and for a particular customer. The Origin Path can be based on a Host Server or Object Storage. To create the Origin Path, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input container here:
 
   [Input container](/docs/CDN?topic=CDN-input-container)
@@ -242,7 +243,7 @@ Creates an Origin Path for an existing CDN and for a particular customer. The Or
 ### updateOriginPath
 Updates an existing Origin Path for an existing mapping and for a particular customer. The Origin type cannot be changed with this API. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`, `header` `cacheKeyQueryRule` arguments. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
-* **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+* **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input container here:
 
   [Input container](/docs/CDN?topic=CDN-input-container)
@@ -543,7 +544,7 @@ Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 
 [Metrics container](/docs/CDN?topic=CDN-metrics-container)
 
-All metrics data is UTC+0.
+All metrics time is UTC+0.
 {:note}
 
 ### getCustomerInvoicingMetrics
@@ -571,6 +572,20 @@ Returns the total number of predetermined statistics for direct display (no grap
      * `day` - daily metrics data from startDate to endDate
 
  * **Return**: a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
+___
+### getMappingIntegratedMetrics
+(: #get-mapping-tegrated-metrics)
+Returns the integrated metrics data for the given mapping, which includes the total number of predetermined statistics, detailed hits and bandwidth, hits by type, and the bandwidth by region. The value of `frequency` is `day` by default. For more details, see [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-integrated-metrics).
+
+ * **Parameters**:
+   * `mappingUniqueId`: Provide a uniqueId of the mapping for which metrics are queried.
+   * `startTime`: Provide the start date timestamp (UTC+0) for query.
+   * `endTime`: Provide the end date timestamp (UTC+0) for query.
+   * `frequency`: Provide the data frequency for data format. The following options are available to configure frequency:
+     * `aggregate` - Aggregated metrics data from startDate to endDate.
+     * `day` - Daily metrics data from startDate to endDate **default**.
+
+ * **Return**: A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
 ### getMappingUsageMetrics
 Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is `aggregate` by default.
@@ -672,7 +687,7 @@ Returns the real-time metrics for the given mapping, including the total data (b
 ### createGeoblocking
 Creates a new Geographical Access Control rule, and returns the newly created rule.
 
-  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  * **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input container here:
 
     [Input container](/docs/CDN?topic=CDN-input-container)
@@ -714,7 +729,7 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
 ### deleteGeoblocking
 Removes an existing Geographical Access Control rule from an existing domain mapping.
 
-  * **Parameters**: a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
+  * **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
     You can view all of the attributes in the Input container here:
 
     [Input container](/docs/CDN?topic=CDN-input-container)

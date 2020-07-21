@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-07-20"
 
 keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
 
@@ -70,13 +70,13 @@ It can take up to 15 - 30 minutes for the update to take effect. Check with your
 {: faq}
 {: support}
 
-In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdn.appdomain.cloud`.
+In your DNS configuration page for your CDN domain, you can create a CNAME record with CDN Domain name as the Host and the IBM CNAME you used to configure the CDN, as the CNAME. The IBM CNAME ends with `cdn.appdomain.cloud.`.
 
 A typical CNAME record would look like the following on the DNS configuration page:
 
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
-| CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
+| CNAME | www.example.com | example.cdn.appdomain.cloud. | 15 minutes |
 
 
 ## What will I be billed for in my CDN
@@ -164,7 +164,7 @@ Omitting the slash, for example, using `www.example.com/images` results in a **P
 {: #how-do-i-set-up-my-cdn-for-cos}
 {: faq}
 
-[Here's a tutorial](/docs/tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
+[Here's a tutorial](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
 ## I received notification that my Origin certificate is expiring. What do I do now?
 {: #notification-that-origin-cert-is-expiring}

@@ -25,8 +25,8 @@ subcollection: CDN
 # Adding Origin Path details
 {: #adding-origin-path-details}
 
-When your CDN is in `CNAME_Configuration` or `Running` status, you can add Origin Path details. You can choose to provide content from multiple
-Origin servers. For example, photos can be delivered from a different server than videos. The Origin can be based on a Host Server or Object Storage.
+When your CDN is in `CNAME_Configuration` or `Running` status, you can add Origin Path details. You can choose to provide content from multiple Origin servers. For example, photos can be delivered from a different server than videos. The Origin can be based on a Host Server or Object Storage.
+{:shortdesc}
 
 The CDN makes a URL transformation for the Origin server. For example, if origin `xyz.example.com` is added with path `/example/*` when a user opens the URL `www.example.com/example/*`, the CDN edge server retrieves the content from `xyz.example.com/*`.
 {: note}

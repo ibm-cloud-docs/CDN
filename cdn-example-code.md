@@ -29,6 +29,7 @@ subcollection: CDN
 {: #code-examples-using-the-cdn-api}
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
+{:shortdesc}
 
 ## General steps that are needed for all API calls
 {: #general-steps-needed-for-all-api-calls}
@@ -199,7 +200,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud.` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
 {: important}
 
 ```php
@@ -227,7 +228,7 @@ try {
     $inputObject->certificateType = "SHARED_SAN_CERT";
 
     // The following values are optional
-    $inputObject->cname = "api-testing.cdn.appdomain.cloud";
+    $inputObject->cname = "api-testing.cdn.appdomain.cloud.";
     $inputObject->path = "/media";
     $inputObject->header = '';
     $inputObject->respectHeader = true;
@@ -255,7 +256,7 @@ Array
             [bucketName] => mybucket
             [cacheKeyQueryRule] => include-all
             [certificateType] => SHARED_SAN_CERT
-            [cname] => api-testing.cdn.appdomain.cloud
+            [cname] => api-testing.cdn.appdomain.cloud.
             [domain] => api-testing.cdntesting.net
             [header] => origin.cdntesting.net
             [httpPort] => 80
@@ -353,6 +354,218 @@ api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
 {: codeblock}
 
 Here we see the domain name that is correctly mapped to the CNAME.
+
+## Example code for getting integrated metrics
+{: #example-code-for-getting-integrated-metrics}
+
+This example shows you how to get the integrated metrics for a domain mapping with `getMappingIntegratedMetrics` API in the class `SoftLayer_Network_CdnMarketplace_Metrics`.
+
+```php
+
+$client = \SoftLayer\SoapClient::getClient('SoftLayer_Network_CdnMarketplace_Metrics', null, $apiUsername, $apiKey);
+try {
+    $metrics = $client->getMappingIntegratedMetrics(
+        123456789123456,    // Mapping unique id
+        1590969600,         // Start timestamp, must be later than 90 days ago
+        1591315200,         // End timestamp, must be later than start time
+        'day'               // The data frequency, can be 'aggregate' and 'day', default is 'day'.
+    );
+    print_r($vendors);
+} catch (\Exception $e) {
+    die('Unable to get mapping integrated metrics: ' . $e->getMessage());
+}
+```
+
+The `getMappingIntegratedMetrics` API returns an array of metrics. The following is an example output:
+
+```php
+
+{
+    "0": {
+        "type": "INTEGRATED",
+        "names": [
+            "TotalHits",
+            "TotalBandwidth",
+            "0XX",
+            "200",
+            "206",
+            "2XX",
+            "302",
+            "304",
+            "3XX",
+            "404",
+            "4XX",
+            "5XX",
+            "Other",
+            "Australasia",
+            "EMEA",
+            "India",
+            "Japan",
+            "North America",
+            "Rest Of APAC",
+            "South America"
+        ],
+        "descriptions": [
+            "All hits to the edge servers from the end-users.",
+            "Total number of megabytes transferred between the edge to the end user.",
+            "Number of hits that returned response code - 0XX",
+            "Number of hits that returned response code - 200",
+            "Number of hits that returned response code - 206",
+            "Number of hits that returned response code - 2XX",
+            "Number of hits that returned response code - 302",
+            "Number of hits that returned response code - 304",
+            "Number of hits that returned response code - 3XX",
+            "Number of hits that returned response code - 404",
+            "Number of hits that returned response code - 4XX",
+            "Number of hits that returned response code - 5XX",
+            "Number of hits that returned response code not within 2XX to 5XX",
+            "Total number of megabytes transferred between the edge to the end user in the region - Australasia",
+            "Total number of megabytes transferred between the edge to the end user in the region - EMEA",
+            "Total number of megabytes transferred between the edge to the end user in the region - India",
+            "Total number of megabytes transferred between the edge to the end user in the region - Japan",
+            "Total number of megabytes transferred between the edge to the end user in the region - North America",
+            "Total number of megabytes transferred between the edge to the end user in the region - Rest Of APAC",
+            "Total number of megabytes transferred between the edge to the end user in the region - South America"
+        ],
+        "totals": [
+            15,             // Total Hits from start time to end time.
+            4.9301e-5,      // Total Bandwidth from start time to end time.
+            0,              // Hits by type 0XX
+            0,              // Hits by type 200
+            0,              // Hits by type 206
+            0,              // Hits by type 2XX
+            0,              // Hits by type 302
+            0,              // Hits by type 304
+            0,              // Hits by type 3XX
+            0,              // Hits by type 404
+            13,             // Hits by type 4XX
+            2,              // Hits by type 5XX
+            0,              // Hits by type Other
+            0,              // Bandwidth by region Australasia
+            3.6554e-5,      // Bandwidth by region EMEA
+            0,              // Bandwidth by region India
+            0,              // Bandwidth by region Japan
+            1.1524e-5,      // Bandwidth by region North America
+            1.223e-6,       // Bandwidth by region Rest Of APAC
+            0               // Bandwidth by region South America
+        ],
+        "percentage": [ // The percentage of the bandwidth by regions
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0,                  // Australasia
+            74.14454067868806,  // EMEA
+            0,                  // India
+            0,                  // Japan
+            23.374779416239022, // North America
+            2.480679905072919,  // Rest Of APAC
+            0                   // South America
+        ],
+        "time": [
+            "1590969600",
+            "1591142400",
+            "1591228800",
+            "1591315200"
+        ],
+        "xaxis": null,
+        "yaxis1": [     // TotalHits per day
+            4,
+            1,
+            6,
+            4
+        ],
+        "yaxis2": [     // TotalBandwidth per day
+            6.371999999999999e-6,
+            4.525e-6,
+            2.7596e-5,
+            1.0808e-5
+        ],
+        "yaxis3": [     // Hits by type 0XX per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis4": [     // Hits by type 200 per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis5": [     // Hits by type 206 per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis6": [     // Hits by type 2XX per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis7": [     // Hits by type 302 per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis8": [     // Hits by type 304 per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis9": [     // Hits by type 3XX per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis10": [    // Hits by type 404 per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis11": [    // Hits by type 4XX per day
+            2,
+            1,
+            6,
+            4
+        ],
+        "yaxis12": [    // Hits by type 5XX per day
+            2,
+            0,
+            0,
+            0
+        ],
+        "yaxis13": [    // Hits by type Other per day
+            0,
+            0,
+            0,
+            0
+        ],
+        "yaxis14": null,
+        "yaxis15": null,
+        "yaxis16": null,
+        "yaxis17": null,
+        "yaxis18": null,
+        "yaxis19": null,
+        "yaxis20": null
+    }
+}
+```
 
 ## Example code for getting real-time metrics
 {: #example-code-for-getting-real-time-metrics}

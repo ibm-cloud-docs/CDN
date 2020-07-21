@@ -22,6 +22,7 @@ subcollection: CDN
 {: #emea-region}
 
 EMEA is an abbreviation for Europe, Middle East, and Africa.
+{:shortdesc}
 
 ## Europe, Middle East, and Africa region
   * Albania

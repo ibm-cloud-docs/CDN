@@ -31,7 +31,8 @@ subcollection: CDN
 {: help}
 {: support}
 
-For **HTTP only** and **SAN HTTPS** CDN mappings only, you must verify that your CDN is working before switching the domain to use the CDN. 
+For **HTTP only** and **SAN HTTPS** CDN mappings only, you must verify that your CDN is working before switching the domain to use the CDN.
+{:shortdesc}
 
 All the commands, tools, and files that are used in this example are based on the `Ubuntu 16.04.5 LTS` system. Your examples might vary if you are using another OS or different Ubuntu versions.
 {: note}
@@ -41,7 +42,7 @@ For this example, we created the following CDN mapping:
 ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com.png)
 
 * CDN hostname: `ibm-test.cdn-demo.com`
-* CDN CNAME: `cdnakaotn3exg6px.cdn.appdomain.cloud`
+* CDN CNAME: `cdnakaotn3exg6px.cdn.appdomain.cloud.`
 * Origin path: `/*`
 * Origin port: `80` & `443`
 * Origin IP address: `119.xx.xx.xx`
@@ -83,7 +84,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai edge server. The `dig` result is similar to this one:
 
    ```bash
-   dig +short cdnakaotn3exg6px.cdn.appdomain.cloud
+   dig +short cdnakaotn3exg6px.cdn.appdomain.cloud.
    cdnakaotn3exg6px.akamai.cdn.appdomain.cloud.
    cert-00033-cdnedge-bluemix.akamaized.net.edgekey.net.
    e24455.dsce16.akamaiedge.net.

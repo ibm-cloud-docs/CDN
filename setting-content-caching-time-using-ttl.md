@@ -26,6 +26,7 @@ subcollection: CDN
 {: #setting-content-caching-time-using-time-to-live}
 
 After your CDN is running, you can set your content caching time using Time To Live (TTL). The Time To Live for a particular file or directory path indicates how long that content should be cached. When you created the CDN Mapping, a default global TTL of 3600 seconds (1 hour) was created.
+{:shortdesc}
 
 To set the content caching time using TTL, follow these steps:
 

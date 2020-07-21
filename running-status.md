@@ -25,6 +25,7 @@ subcollection: CDN
 {: next-steps-after-ordering}
 
 After you've ordered a CDN, it appears on your CDN dashboard. To get your CDN to `Running` status, complete the steps for your particular CDN configuration.
+{:shortdesc}
 
 You might need to click the **Get status** button a few times before your CDN shows `Running` status.
 {: note}
@@ -43,7 +44,7 @@ Follow these steps to get your CDN up & running:
 2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to IBM CNAME. Most DNS providers can give you instructions on setting up or changing the CNAME.
 3. Configure the IBM CNAME with your DNS provider. Until you configure the IBM CNAME, your CDN's status shows as `CNAME configuration required`.
 
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. The IBM CNAME ends with `cdn.appdomain.cloud`.
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. The IBM CNAME ends with `cdn.appdomain.cloud.`.
 
    A typical CNAME record looks similar to the following:
 
@@ -63,7 +64,7 @@ Follow these steps to get your CDN up & running:
 3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to the IBM CNAME. Most DNS providers can give you instructions on setting up or changing the CNAME.
 4. Configure the IBM CNAME with your DNS provider. Until you configure the IBM CNAME, your CDN's status shows as `CNAME configuration required`.
 
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. The IBM CNAME ends with `cdn.appdomain.cloud`.
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. The IBM CNAME ends with `cdn.appdomain.cloud.`.
 
    A typical CNAME record looks similar to the following:
 

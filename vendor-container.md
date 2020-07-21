@@ -22,6 +22,7 @@ subcollection: CDN
 {: #vendor-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Vendor` collection contains the attributes used by our Vendor APIs.
+{:shortdesc}
 
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  

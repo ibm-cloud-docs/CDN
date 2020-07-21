@@ -29,6 +29,7 @@ subcollection: CDN
 {: #metrics}
 
 The metrics report supports Account level and CDN mapping level, and they have different report types:
+{:shortdesc}
 
 |Report level| Report type                | Metrics available|
 |------------|----------------------------|------------------|
@@ -145,7 +146,7 @@ The time range and time interval relationships are shown.
 |(2400, 2700]     | 45 |
 |(2700, 2880]     | 50 |
 
-Math notation `( ` means does not include and `]` means include.  
+Math notation `( ` means "does not include" and `]` means "include".  
 
 Example:   
 Start Date timestamp: 1583910900  
@@ -159,4 +160,4 @@ Referring to the preceding table, the time interval is 5 minutes.
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 
-In the report, each point expect is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the interval might be smaller than others. For example, in the bandwidth most recent report, the time interval is 5 minutes, and all the points expect the last one is sum bandwidth over 5 minutes, but the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).
+In the report, each point is a sum of metric data over a time interval, and the interval is calculated by the preceding table. But for the last point, the interval might be smaller than others. For example, in the bandwidth "most recent" report, the time interval is 5 minutes, and all the points are the sum of bandwidth over 5 minutes, except the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).

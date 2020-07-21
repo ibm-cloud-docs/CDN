@@ -29,6 +29,7 @@ subcollection: CDN
 {: #hotlink-protection-class}
 
 The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
+{:shortdesc}
 
 **class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`:
 

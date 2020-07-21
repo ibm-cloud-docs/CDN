@@ -23,6 +23,7 @@ subcollection: CDN
 {: #how-to-serve-video-on-demand-with-cdn}
 
 Explore an example of how to use {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
+{:shortdesc}
 
 ## Introduction
 {: #introduction}

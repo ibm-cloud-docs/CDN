@@ -22,5 +22,6 @@ subcollection: CDN
 {: #legacy-customer-portal}
 
 Some legacy customers only have access to the {{site.data.keyword.cloud}} customer portal through `https://control.softlayer.com/`. Follow these instructions to log in, then perform any of the activities as described in CDN documentation.
+{:shortdesc}
 
 From your browser, open the [customer portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.softlayer.com/){: new_window} and log in to your account.
