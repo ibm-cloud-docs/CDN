@@ -3,8 +3,8 @@
 
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-08-09"
+  years: 2017, 2020
+lastupdated: "2020-08-04"
 
 keywords: help, support, troubleshooting, stack overflow, forum, ticket, case, questions
 
