@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-07-15"
+lastupdated: "2020-08-04"
 
 
 keywords: new, features, hotlink, Akamai, enhancements, geographical access, cache, key, optimization, video on demand, feature, descriptions, protection, vendor
@@ -28,7 +28,7 @@ subcollection: CDN
 ## July 2020
 {: #july-2020}
 
-  * Integrated CDN mapping metrics API support [API reference](/docs/CDN?topic=CDN-cdn-api-reference#getMappingIntegratedMetrics)
+  * Integrated CDN mapping metrics API support [API reference](/docs/CDN?topic=CDN-cdn-api-reference#getmappingintegratedmetrics)
 
 ## March 2020
 {: #march-2020}
