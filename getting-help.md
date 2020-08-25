@@ -29,6 +29,4 @@ If you have problems or questions when using CDN, you can get help by searching 
 
 When using the forum to ask a question, tag your question so that it is seen by the {{site.data.keyword.cloud_notm}} development teams. If you have technical questions about CDN, post your question on [Stack Overflow](https://stackoverflow.com/search?q=cdn+ibm-cloud){:external} and tag your question with "cdn" and "ibm-cloud".
 
-See [Getting help](/docs/get-support?topic=get-support-using-avatar#using-avatar) for more details about using the forum.
-
-For information about opening an IBM Support case, or about support levels and case severities, see [Contacting support](/docs/get-support?topic=get-support-using-avatar#getting-support).
+You can also open an IBM Support case in the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/unifiedsupport/cases/add){: external}. For more information about opening an IBM Support case, or about support levels and case severities, see [Contacting support](/docs/get-support?topic=get-support-getting-customer-support). For IBM Support plans, see [Basic, Advanced, and Premium Support plans](/docs/get-support?topic=get-support-support-plans#support-plans).
