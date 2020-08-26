@@ -52,7 +52,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     * `https*www.example.com`
   * Some examples of an **invalid** string for `refererValues`:
 
-| Description of invalid Example | Example |
+| Description of invalid example | Example |
 |-----------|-----|
 |Contains more than 2100 characters, total| `www1.example.com www2.example.com www3.example.com www4.example.com www5.example.com`...|
 |Contains at least one URL match term that has greater than 255 characters | `www1.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.example.com www.example.org` |
