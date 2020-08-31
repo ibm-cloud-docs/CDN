@@ -64,6 +64,7 @@ Content Delivery Network
         mapping-container.md
         metrics-container.md
         path-container.md
+        token-auth-container.md
         vendor-container.md
         purge-group-container.md
         purge-history-container.md

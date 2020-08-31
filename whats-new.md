@@ -2,10 +2,9 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-08-04"
+lastupdated: "2020-09-01"
 
-
-keywords: new, features, hotlink, Akamai, enhancements, geographical access, cache, key, optimization, video on demand, feature, descriptions, protection, vendor
+keywords: 
 
 subcollection: CDN
 
@@ -24,6 +23,11 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 {:shortdesc}
+
+## August 2020
+{: #august-2020}
+
+  * Token authentication support [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#token-authentication) (available through API)
 
 ## July 2020
 {: #july-2020}

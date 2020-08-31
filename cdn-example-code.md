@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-08-31"
 
 keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
@@ -25,7 +25,7 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-# Code examples using the CDN API
+# Code examples that use the CDN API
 {: #code-examples-using-the-cdn-api}
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
@@ -53,7 +53,7 @@ Before you begin, you must download and install the Soap Client from [https://gi
 ## Example code for listing vendors
 {: #example-code-for-listing-vendors}
 
-In this case, it is the SoftLayer_Network_CdnMarketplace_Vendor class which defines the `listVendors` API and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. You will need the name of an active vendor later, when you create a Domain Mapping
+In this case, it is the SoftLayer_Network_CdnMarketplace_Vendor class, which defines the `listVendors` API and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. You need the name of an active vendor later, when you create a Domain Mapping
 
 ```php
 
@@ -66,7 +66,7 @@ try {
 }
 ```
 
-The `listVendor` code will display an array of vendors, as well as their status and features. The example output shows one active vendor, Akamai.
+The `listVendor` code displays an array of vendors, their status, and features. The example output shows one active vendor, Akamai.
 
 ```php
 Array
@@ -87,9 +87,9 @@ Array
 ## Example code to verify an order
 {: #example-code-to-verify-order}
 
-The call to `verifyOrder` is not mandatory prior to placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
+The call to `verifyOrder` is not mandatory before placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
 
-In this case, it is the `SoftLayer_Product_Order` class which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Prior to the call to `verifyOrder`, you must build the `$orderObject` using the `SoftLayer_Product_Package`.
+In this case, it is the `SoftLayer_Product_Order` class, which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Before the call to `verifyOrder`, you must build the `$orderObject` using the `SoftLayer_Product_Package`.
 
 ```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
@@ -198,7 +198,7 @@ catch (\Exception $e) {
 ## Example code to create a CDN or create a domain mapping
 {: #example-code-to-create-cdn-or-create-domain-mapping}
 
-This example shows you how to create a new CDN mapping using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
+This example shows you how to create a new CDN mapping by using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized by using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
 If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud.` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
 {: important}
@@ -282,7 +282,7 @@ Array
 
 VerifyDomainMapping checks if the CNAME configuration is complete and if so, moves the CDN status to RUNNING status. Before calling `verifyDomainMapping`, you must add a CNAME record of the custom hostname to your DNS server.
 
-This example calls `verifyDomainMapping` with the UniqueId that was returned as part of `createDomainMapping`. The SoapClient should be initialized using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the following example.
+This example calls `verifyDomainMapping` with the UniqueId that was returned as part of `createDomainMapping`. The SoapClient should be initialized by using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the following example.
 
 ```php
 
@@ -306,7 +306,7 @@ try {
 ```
 {: codeblock}
 
-If your CNAME record has been added to your DNS server, the `status` of your CDN will change to RUNNING after the call to `verifyDomainMapping`, as shown in the following example.
+If your CNAME record was added to your DNS server, the `status` of your CDN will change to RUNNING after the call to `verifyDomainMapping`, as shown in the following example.
 
 ```php
 
@@ -323,7 +323,7 @@ If your CNAME record has been added to your DNS server, the `status` of your CDN
 {: codeblock}
 
 
-If your CNAME record has not been added to your DNS server, or your server has not yet updated, the `status` of your CDN will be CNAME_CONFIGURATION, as shown in the following example.
+If your CNAME record was not added to your DNS server, or your server has not yet updated, the `status` of your CDN is CNAME_CONFIGURATION, as shown in the following example.
 
 It can take several minutes (up to 30) for the CNAME chaining to complete.
 {: note}
@@ -994,5 +994,52 @@ The rate limit related headers also returned:
         X-RateLimit-Purge-Paths-Limit-Per-Second => 20,
         X-RateLimit-Purge-Paths-Remaining => 998
     ]
+```
+{: codeblock}
+
+## Example code for creating a token authentication
+{: #create-token-auth-example}
+
+This example shows how to create a token authentication.
+
+```php
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Behavior_TokenAuth',
+    null,
+    $apiUsername,
+    $apiKey
+  );
+
+try {
+    $inputObject = new stdClass();
+
+    $inputObject->uniqueId = "351752925563xxx"; // CDN Domain mapping unique ID
+    $inputObject->path = "/path/to/protect/*"; // Path you want to protect
+
+    // CDN Token authentication configurations
+    $inputObject->tokenKey = "abc123"; // Primary encryption key
+    $inputObject->transitionKey = "def987"; // Transition encryption key (optional)
+    $inputObject->name = "__token__"; // Token name (optional)
+
+    $tokenAuth = $client->createTokenAuth($inputObject);
+    print_r($tokenAuth);
+    print_r("\n");
+} catch (\Exception $e) {
+    die('createTokenAuth failed with an exception: ' . $e->getMessage());
+}
+```
+{: codeblock}
+
+The call returns the following object:
+
+```php
+SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth Object
+    (
+        [mappingId] => '351752925563xxx',
+        [path] => '/private/*',
+        [tokenKey] => 'abc123',
+        [transitionKey] => 'def987',
+        [name] => '__token__'
+    )
 ```
 {: codeblock}
