@@ -50,7 +50,7 @@ When the client requests the CDN contents, they must pass the token in a cookie,
 
 With token authentication, request verification occurs only in the CDN edge servers, your back end application server isn't needed. This can reduce the network latency and offload to your server.
 
-### Generate the access token
+### Generating the access token
 {: #generate-the-access-token}
 
 Generate an access token and apply it to content you want to protect. The token is a delimited list of string fields, with an HMAC to prevent tampering with the strings. Each field consists of a value that is verified by CDN edge servers when a request is made.
@@ -70,7 +70,7 @@ See the following readme file pages for details on how to use the SDK of your ch
 
 You can refer to Step 2 in [Example to set token authentication](/docs/CDN?topic=CDN-working-with-token-authentication#example-to-set-token-authentication).
 
-### Apply the token
+### Applying the token
 {: #apply-the-token}
 
 Attach the completed token to the URL for your target content as a query string parameter, cookie, or request header.
@@ -84,7 +84,7 @@ While users can manually enable cookies on any browser, Safari users must manual
 
 The following example illustrates how to set token authentication. One customer wants to protect resources under the path `/private/*` of `www.cdn-domain.com`, and the following steps show you how to set the token authentication.
 
-1. Create encryption key
+1. Create the encryption key.
 {: #create-encryption-key}
 
     The key is an even number of hex digits for the token key. An entry can be up to 64 characters in length. To ensure that your key is random, it is recommended that you create the key by using the [OpenSSL tool](https://www.openssl.org/){:external}
@@ -106,7 +106,7 @@ The following example illustrates how to set token authentication. One customer 
     This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
     {:note}
 
-2. Generate the token
+2. Generate the token.
 {: #generate-the-token}
 
     The following is an example that uses [Python SDK](https://github.com/akamai/EdgeAuth-Token-Python){:external} to generate the token with the primary or the transition key that is generated in [step 1](#create-encryption-key).
@@ -141,7 +141,7 @@ The following example illustrates how to set token authentication. One customer 
 
     You can set the token string as cookie to the client.
 
-3. Set token authentication in CDN
+3. Set token authentication in CDN.
 {: #set-token-authentication-in-cdn}
 
     You can refer to this [example to create a token authentication](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-token-auth-example) by [token authentication API](/docs/CDN?topic=CDN-cdn-api-reference#api-for-token-authentication).
@@ -149,7 +149,7 @@ The following example illustrates how to set token authentication. One customer 
     You need to replace the parameter values in the example to the correct ones you're using, and ensure the token authentication values (encryption key(s), token name, ...) match the values in the token generation code in [step 2](#generate-the-token).
     {:note}
 
-4. Verify the token authentication function
+4. Verify the token authentication function.
 {: #verify-the-token-authentication-function}
 
     First, access the contents without token.
