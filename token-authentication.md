@@ -91,17 +91,15 @@ The following example illustrates how to set token authentication. One customer 
 
     For example:
 
-    ```shell
+    ```sh
     openssl rand -hex 32
     ```
-    {:codeblock}
-
+    
     The output looks like:
 
     ```
     87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
     ```
-    {:pre}
 
     You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the Edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
 
@@ -111,7 +109,7 @@ The following example illustrates how to set token authentication. One customer 
 2. Generate the token.
 {: #generate-the-token}
 
-    The following is an example that uses [Python SDK](https://github.com/akamai/EdgeAuth-Token-Python){:external} to generate the token with the primary or the transition key that is generated in [step 1](#create-encryption-key).
+    The following is an example that uses [Python SDK](https://github.com/akamai/EdgeAuth-Token-Python){:external} to generate the token with the primary or the transition key that is generated in step 1.
 
     ```python
     #!/usr/bin/python
@@ -148,7 +146,7 @@ The following example illustrates how to set token authentication. One customer 
 
     You can refer to this [example to create a token authentication](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-token-auth-example) by [token authentication API](/docs/CDN?topic=CDN-cdn-api-reference#api-for-token-authentication).
 
-    You need to replace the parameter values in the example to the correct ones you're using, and ensure the token authentication values (encryption key(s), token name, ...) match the values in the token generation code in [step 2](#generate-the-token).
+    You need to replace the parameter values in the example to the correct ones you're using, and ensure the token authentication values (encryption key(s), token name, ...) match the values in the token generation code in step 2.
     {:note}
 
 4. Verify the token authentication function.
