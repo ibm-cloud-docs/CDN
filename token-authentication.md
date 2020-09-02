@@ -156,7 +156,7 @@ The following example illustrates how to set token authentication. One customer 
 4. Verify the token authentication function.
 {: #verify-the-token-authentication-function}
 
-    First, access the contents without token.
+    First, access the contents without the token.
 
     ```shell
     curl -i "http://www.cdn-domain.com/private/test.txt"
