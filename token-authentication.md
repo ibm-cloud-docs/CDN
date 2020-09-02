@@ -68,7 +68,7 @@ See the following readme file pages for details on how to use the SDK of your ch
 - [Python](https://github.com/akamai/EdgeAuth-Token-Python){:external}
 - [Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby){:external}
 
-You can refer to Step 2 in [Example to set token authentication](/docs/CDN?topic=CDN-working-with-token-authentication#example-to-set-token-authentication).
+You can refer to step 2 in [Example to set token authentication](/docs/CDN?topic=CDN-working-with-token-authentication#example-to-set-token-authentication).
 
 ### Applying the token
 {: #apply-the-token}
@@ -105,7 +105,7 @@ The following example illustrates how to set token authentication. One customer 
     ```
     {:pre}
 
-    You can also generate a second transition encryption key to serve as a backup "trusted shared secret". If the token provided by the user is not valid based on the primary encryption key, the edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
+    You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
 
     This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
     {:note}
