@@ -31,7 +31,7 @@ subcollection: CDN
 # About Content Delivery Networks
 {: #about-content-delivery-networks-cdn-}
 
-A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets your users receive the content with less delay, and it delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique allows your users to receive the content with less delay, and delivers a better overall experience for your customers.
 {:shortdesc}
 
 ## How does a CDN work?
@@ -89,7 +89,7 @@ For more information, see [Setting up IBM Cloud Object Storage with CDN](/docs/s
 ### Support for multiple Origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
 
-In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility regarding how and where the data is stored. 
+In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility with regards to how and where the data is stored. 
 
 The path that is specified for the Origin server must be unique regarding the CDN. The Origin server itself does not need to be unique.
 {: note}
@@ -123,14 +123,14 @@ By default, both the aggregate numbers and the graphs default to show metrics fo
 ### Host Header support
 {: #host-header-support}
 
-The Edge server uses the **Host Header** when communicating with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin server hostname as default HTTP Host Header if the Origin server is specified as Hostname (rather than as an IP address). If Host header is not provided as input and the Origin server is provided as an IP address, the CDN hostname (also called the CDN domain name) is used as the default HTTP Host Header.
+The Edge server uses the **Host Header** when the server communicates with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin server hostname as default HTTP Host Header if the Origin server is specified as Hostname (rather than as an IP address). If Host header is not provided as input and the Origin server is provided as an IP address, the CDN hostname (also called the CDN domain name) is used as the default HTTP Host Header.
 
 ### HTTPS protocol support
 {: #https-protocol-support}
 
 You can configure CDN to use HTTPS protocol to serve the content securely to the users. This configuration requires that an SSL certificate be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-suport). This type is also referred to as a _SAN certificate_.
 
-The type of SSL certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration is fast, but it has the downside that the CDN is accessible only by using a CNAME. The SAN certificate process takes 4 - 8 hours to complete, but it provides the ability to use the CDN with the CDN Domain (that is, the hostname). The SAN certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols) to understand the implication of selecting a given certificate type.
+The type of SSL certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration is fast, but it has the downside that the CDN is accessible only by using a CNAME. The SAN certificate process takes 4 - 8 hours to complete, but it allows you to use the CDN with the CDN Domain (that is, the hostname). The SAN certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols) to understand the implication of selecting a given certificate type.
 
 The Origin host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized certificate authority.
 
@@ -220,4 +220,4 @@ If your `protectionType` is set to `DENY`:
 ### Token authentication
 {: #token-authentication}
 
-Token authentication is the process of generating tokens, associating them with an authenticated user session, and validating the request using these tokens to prevent unauthorized sharing of links to your content. For more information, see [Working with token authentication](/docs/CDN?topic=CDN-working-with-token-authentication).
+Token authentication is the process of generating tokens, associating them with an authenticated user session, and validating the request by using these tokens to prevent unauthorized sharing of links to your content. For more information, see [Working with token authentication](/docs/CDN?topic=CDN-working-with-token-authentication).

@@ -851,7 +851,7 @@ Creates a Token Authentication path for a domain mapping and returns the newly c
 
     [Token authentication input container](/docs/CDN?topic=CDN-token-auth-container)
 
-    The following attributes are part of the Token Authentication container input which can be provided when creating a new Token Authentication. Attributes are optional unless otherwise noted.
+    The following attributes are part of the Token Authentication container input, which can be provided when creating a new Token Authentication. Attributes are optional unless otherwise noted.
     * `uniqueId` - (Required) The uniqueId of the mapping to which the existing behavior belongs.
     * `path` - (Required) The path, relative to the domain that is accessed through token authentication.
     * `name` - The token name. If this value is empty, then it is set to the default value `__token__`.

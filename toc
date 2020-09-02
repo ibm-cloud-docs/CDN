@@ -7,7 +7,6 @@ Content Delivery Network
     {: .navgroup id="learn"}
     getting-started.md
     about.md
-    whats-new.md
     pricing.md
     about-https.md
 
@@ -50,6 +49,7 @@ Content Delivery Network
     cors-and-cdn.md
     byte-range-request.md
     metrics.md
+    token-authentication.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
@@ -89,7 +89,8 @@ Content Delivery Network
         rules-and-naming-conventions.md
         limits-and-max-values.md
      
-    known-limitations.md
+    known-limitations.md    
+    whats-new.md
     troubleshooting.md
     getting-help.md
     {: .navgroup-end}

@@ -87,9 +87,9 @@ Array
 ## Example code to verify an order
 {: #example-code-to-verify-order}
 
-The call to `verifyOrder` is not mandatory before placing an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. More information about `verifyOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
+The call to `verifyOrder` is not mandatory before you place an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. For more information, see [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
 
-In this case, it is the `SoftLayer_Product_Order` class, which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Before the call to `verifyOrder`, you must build the `$orderObject` using the `SoftLayer_Product_Package`.
+In this case, it is the `SoftLayer_Product_Order` class, which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Before the call to `verifyOrder`, you must build the `$orderObject` by using the `SoftLayer_Product_Package`.
 
 ```php
 $client = \SoftLayer\SoapClient::getClient('SoftLayer_Product_Package', null, $apiUsername, $apiKey);
@@ -200,7 +200,7 @@ catch (\Exception $e) {
 
 This example shows you how to create a new CDN mapping by using the `createDomainMapping` API. It takes a single parameter of a `stdClass` object. The SoapClient should be initialized by using the `SoftLayer_Network_CdnMarketplace_Configuration_Mapping` class as shown in the example.
 
-If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud.` or an error will be thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
+If you choose to provide a custom CNAME, it must end with `.cdn.appdomain.cloud.` or an error is thrown. See [this description](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-custom-cname-naming-conventions) for rules on providing your own CNAME.
 {: important}
 
 ```php
@@ -323,7 +323,7 @@ If your CNAME record was added to your DNS server, the `status` of your CDN will
 {: codeblock}
 
 
-If your CNAME record was not added to your DNS server, or your server has not yet updated, the `status` of your CDN is CNAME_CONFIGURATION, as shown in the following example.
+If your CNAME record was not added to your DNS server, or your server isn't updated yet, the `status` of your CDN is CNAME_CONFIGURATION, as shown in the following example.
 
 It can take several minutes (up to 30) for the CNAME chaining to complete.
 {: note}
@@ -345,7 +345,7 @@ Array
 ```
 {: codeblock}
 
-To be sure that your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output should look similar to this one:
+To be sure that your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output looks similar to the following:
 
 ```
 ;; ANSWER SECTION:
@@ -376,7 +376,7 @@ try {
 }
 ```
 
-The `getMappingIntegratedMetrics` API returns an array of metrics. The following is an example output:
+The `getMappingIntegratedMetrics` API returns an array of metrics. Example output is as follows:
 
 ```php
 
@@ -590,7 +590,7 @@ try {
 }
 ```
 
-The `getCustomerRealTimeMetrics` API returns an array of metrics. The following is an example output:
+The `getCustomerRealTimeMetrics` API returns an array of metrics. Example output is as follows:
 
 ```php
 
@@ -666,7 +666,7 @@ try {
 }
 ```
 
-The `getMappingRealTimeMetrics` API returns an array of metrics. The following is an example output:
+The `getMappingRealTimeMetrics` API returns an array of metrics. Example output is as follows:
 
 ```php
 
