@@ -91,8 +91,6 @@ The following example illustrates how to set token authentication. One customer 
 
     For example:
 
-    For example:
-
     ```shell
     openssl rand -hex 32
     ```
