@@ -49,7 +49,7 @@ Complete these steps:
 
    ![Domain Validation Needed](images/view-domain-validation.png)
 
-1. After you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 - 4 hours.
+1. After you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their Edge servers. Deploying a certificate can take 2 - 4 hours.
 
    When this process is complete, all domains, regardless of the validation method used, move into a **CNAME Configuration** state.
 

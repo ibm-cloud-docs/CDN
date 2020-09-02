@@ -28,7 +28,7 @@ subcollection: CDN
 # Starting a CDN
 {: #starting-cdn}
 
-Starting your CDN informs the DNS to direct traffic from your origin to the Akamai edge server. After the mapping is started, the DNS cache can still direct traffic to the origin so the functionality might not be seen by the domain immediately after the mapping is started. The time it takes to update depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
+Starting your CDN informs the DNS to direct traffic from your origin to the Akamai Edge server. After the mapping is started, the DNS cache can still direct traffic to the origin so the functionality might not be seen by the domain immediately after the mapping is started. The time it takes to update depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 {:shortdesc}
 
 You can start a CDN only when it is in `Stopped` status.

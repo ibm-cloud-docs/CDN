@@ -57,12 +57,12 @@ To enable DCA, follow these steps:
 ### Detection Path
 {: #detection-path}
 
-**`Detection Path`** is used by Akamai Edge servers to find the best optimized route from edge servers to origin.
-The best path to origin must be known at the time a user’s request arrives at an edge server because any inline analysis or detection would defeat the purpose of speeding up things.
+**`Detection Path`** is used by Akamai Edge servers to find the best optimized route from Edge servers to origin.
+The best path to origin must be known at the time a user’s request arrives at an Edge server because any inline analysis or detection would defeat the purpose of speeding up things.
 
 To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the internet from Edge to Origin).
 
-The fetches of the test object are called the races. When a real request comes in, the edge consults the most recent race data to send that request over the fastest path to the origin.
+The fetches of the test object are called the races. When a real request comes in, the Edge consults the most recent race data to send that request over the fastest path to the origin.
 You can download the provided [test object](https://public.dhe.ibm.com/cloud/bluemix/network/cdn/route-detection-test-object.html){:external} and upload it to the origin server, or you can use your own test object.
 
 A valid test object must:
@@ -78,7 +78,7 @@ A valid test object must:
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, edge servers prefetch objects with the following file extensions:  
+**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:  
 aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, and zip.
 
 ### Image compression
@@ -94,7 +94,7 @@ In order for the feature **`Image Compression`** to work for DCA, you must make 
 ## Caching
 {: #caching}
 
-When DCA is enabled for your CDN mapping or origin, the Akamai edge servers cache (or prevent caching of) contents based on your settings:
+When DCA is enabled for your CDN mapping or origin, the Akamai Edge servers cache (or prevent caching of) contents based on your settings:
 
 * To enable caching of contents under the path, set `Respect header` to `ON` and set the caching headers in your origin (for example, `Cache-Control:public, max-age=31536000`).
 

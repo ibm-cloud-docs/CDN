@@ -26,6 +26,6 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_Dynami
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Performance_DynamicContentAcceleration`:
 
-* `detectionPath`: A string value is used by CDN edge servers to find the best optimized route from edge to the origin server.
+* `detectionPath`: A string value is used by CDN Edge servers to find the best optimized route from Edge to the origin server.
 * `prefetchEnabled`: A Boolean value that, if set to 'true', will inspects HTML responses and pre-fetches embedded objects in HTML files. The value is 'true' by default.
 * `mobileImageCompressionEnabled`: A Boolean value that, if set to 'true', compresses images to reduce the amount of content for mobile devices. The value is 'true' by default.

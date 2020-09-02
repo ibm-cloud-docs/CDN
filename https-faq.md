@@ -55,7 +55,7 @@ A normal request to enable HTTPS takes an average of 3 - 9 hours, from the initi
 {: #how-long-does-it-take-to-delete-a-cdn-with-a-dv-san-certificate}
 {:faq}
 
-Deleting your CDN requires that your domain be removed from the certificate on all of the edge servers. This process can take up to 8 hours to complete.
+Deleting your CDN requires that your domain be removed from the certificate on all of the Edge servers. This process can take up to 8 hours to complete.
 
 ## Is there any additional cost associated with using a DV SAN certificate for my CDN?
 {: #is-there-any-additional-cost-associated-with-using-a-dv-san-certificate-for-my-cdn}

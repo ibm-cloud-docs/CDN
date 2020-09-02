@@ -27,7 +27,7 @@ subcollection: CDN
 # Stopping a CDN
 {: #stopping-a-cdn}
 
-After a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN edge servers and content is fetched directly from the origin. After a mapping is stopped, there might be a brief period of time where your content is not accessible. This is because the DNS cache might still be directing traffic to the Akamai edge servers. However, during this time, the Akamai edge server denies traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
+After a mapping is stopped, the DNS lookup is switched to the origin. Traffic skips the CDN Edge servers and content is fetched directly from the origin. After a mapping is stopped, there might be a brief period of time where your content is not accessible. This is because the DNS cache might still be directing traffic to the Akamai Edge servers. However, during this time, the Akamai Edge server denies traffic for the domain. How long this period lasts depends on how often the DNS cache is refreshed, and varies depending on your DNS provider.
 {: shortdesc}
 
 **Important**:

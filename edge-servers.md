@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-02-10"
 
-keywords: edge servers, POPs, Akamai servers, list of servers, list of countries
+keywords: Edge servers, POPs, Akamai servers, list of servers, list of countries
 
 subcollection: CDN
 
@@ -24,7 +24,7 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-# List of edge servers
+# List of Edge servers
 {: #list-of-edge-servers}
 
 Here is the list of countries with PoPs from Akamai that we're using:

@@ -37,14 +37,14 @@ Have a question about CDN? Review frequently asked questions, which provide answ
 {: faq}
 {: support}
 
-A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Their web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay than we might achieve by delivering the content from one centralized location. It delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of Edge servers that are distributed through various parts of the country or the world. Their web content is served from an Edge server, which is located in the geographic area closest to the customer who requests the content. This technique lets the users receive the content with less delay than we might achieve by delivering the content from one centralized location. It delivers a better overall experience for your customers.
 
 ## How does a Content Delivery Network (CDN) work?
 {: #how-does-a-content-delivery-network-cdn-work}
 {: faq}
 {: support}
 
-A CDN achieves its purpose by caching web content on edge servers around the world. When a user requests web content, the content request is routed to the edge server that is geographically closest to that user. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
+A CDN achieves its purpose by caching web content on Edge servers around the world. When a user requests web content, the content request is routed to the Edge server that is geographically closest to that user. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
 
 ## How is my IBM Cloud Content Delivery Network service account created?
 {: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
@@ -84,7 +84,7 @@ A typical CNAME record would look like the following on the DNS configuration pa
 {: faq}
 {: support}
 
-You are only billed for bandwidth that is used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
+You are only billed for bandwidth that is used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the Edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
 
 ## When will I be billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}
@@ -104,7 +104,7 @@ No, if you select 'Delete' from the Overflow ![Overflow menu](images/overflow.pn
 {: #does-content-caching-use-push-or-pull}
 {: faq}
 
-Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the edge server from the Origin server, as opposed to manually uploading the content onto the edge server.
+Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the Edge server from the Origin server, as opposed to manually uploading the content onto the Edge server.
 
 ## Is there a recommended browser to use for CDN service configuration?
 {: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
@@ -176,7 +176,7 @@ Follow the steps outlined in [this article](https://community.akamai.com/docs/DO
 {: #what-security-is-included-with-cdn-with-akamai}
 {: faq}
 
-Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the edge without being forwarded to your infrastructure.
+Using the distributed Akamai platform, you get unparalleled scale and resiliency with thousands of servers in over 50 countries. The Akamai Platform stands between your infrastructure and your users, and it acts as first level of defense for sudden surges in traffic. Akamai Intelligent Platform also is a reverse proxy that listens and responds to requests on ports 80 and 443 only, which means that traffic on other ports is dropped at the Edge without being forwarded to your infrastructure.
 
 ## Are cookies from the origin server preserved by the Akamai CDN?
 {: #are-cookies-preserved-by-the-akamai-cdn}

@@ -79,9 +79,9 @@ When CDN mapping status is in `CNAME configuration required`, all the configurat
 
 In almost all operating systems, there is a local hosts file that maps hostnames to IP addresses, and changes there only affect your own computer without affecting how the domain is resolved worldwide. It's safe to point the domain to IBM CNAME by changing the local hosts file. See the following steps for how to do this.
 
-1. Get the Akamai edge server's IP address.
+1. Get the Akamai Edge server's IP address.
 
-   By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai edge server. The `dig` result is similar to this one:
+   By performing name resolution of IBM CNAME, you can easily get IP addresses of Akamai Edge server. The `dig` result is similar to this one:
 
    ```bash
    dig +short cdnakaotn3exg6px.cdn.appdomain.cloud.
@@ -121,7 +121,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    ```
    {:pre}
 
-   From this result, we can see the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai edge server's IP address (`104.84.150.124`) that was added into the local hosts file. This means that the `/etc/hosts` file change took effect.
+   From this result, we can see the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai Edge server's IP address (`104.84.150.124`) that was added into the local hosts file. This means that the `/etc/hosts` file change took effect.
 
 4. Verify the CDN traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshooting#how-do-I-know-my-cdn-is-working) to request the domain.
 

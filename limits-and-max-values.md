@@ -42,12 +42,12 @@ Attempts to retrieve or deliver files larger than 1.8 GB receive a `403 Access F
 ## What is the maximum size for the origin response headers?
 {: #what-is-the-maximum-size-for-the-orignin-response-headers}
 
-The maximum response header size is 16 KB. In case certain origins try to set cookies that are too large for the client to return in subsequent requests, Akamai sets this limit in the edge servers. If the response headers are larger than 16 KB, the request gets a `502 Bad Gateway` response.
+The maximum response header size is 16 KB. In case certain origins try to set cookies that are too large for the client to return in subsequent requests, Akamai sets this limit in the Edge servers. If the response headers are larger than 16 KB, the request gets a `502 Bad Gateway` response.
 
 ## What is the maximum size for the client's request headers?
 {: #what-is-the-maximum-size-for-the-client-request-headers}
 
-The maximum request headers size is 32 KB. If the request headers are larger than 32 KB, the Akamai edge server returns a `400 Bad Request` response.
+The maximum request headers size is 32 KB. If the request headers are larger than 32 KB, the Akamai Edge server returns a `400 Bad Request` response.
 
 ## How long do configuration changes take before they become active on the Akamai side?
 {: #how-long-do-configuration-changes-take-active-in-akamai}

@@ -406,8 +406,8 @@ The `getMappingIntegratedMetrics` API returns an array of metrics. Example outpu
             "South America"
         ],
         "descriptions": [
-            "All hits to the edge servers from the end-users.",
-            "Total number of megabytes transferred between the edge to the end user.",
+            "All hits to the Edge servers from the end-users.",
+            "Total number of megabytes transferred between the Edge to the end user.",
             "Number of hits that returned response code - 0XX",
             "Number of hits that returned response code - 200",
             "Number of hits that returned response code - 206",
@@ -419,13 +419,13 @@ The `getMappingIntegratedMetrics` API returns an array of metrics. Example outpu
             "Number of hits that returned response code - 4XX",
             "Number of hits that returned response code - 5XX",
             "Number of hits that returned response code not within 2XX to 5XX",
-            "Total number of megabytes transferred between the edge to the end user in the region - Australasia",
-            "Total number of megabytes transferred between the edge to the end user in the region - EMEA",
-            "Total number of megabytes transferred between the edge to the end user in the region - India",
-            "Total number of megabytes transferred between the edge to the end user in the region - Japan",
-            "Total number of megabytes transferred between the edge to the end user in the region - North America",
-            "Total number of megabytes transferred between the edge to the end user in the region - Rest Of APAC",
-            "Total number of megabytes transferred between the edge to the end user in the region - South America"
+            "Total number of megabytes transferred between the Edge to the end user in the region - Australasia",
+            "Total number of megabytes transferred between the Edge to the end user in the region - EMEA",
+            "Total number of megabytes transferred between the Edge to the end user in the region - India",
+            "Total number of megabytes transferred between the Edge to the end user in the region - Japan",
+            "Total number of megabytes transferred between the Edge to the end user in the region - North America",
+            "Total number of megabytes transferred between the Edge to the end user in the region - Rest Of APAC",
+            "Total number of megabytes transferred between the Edge to the end user in the region - South America"
         ],
         "totals": [
             15,             // Total Hits from start time to end time.

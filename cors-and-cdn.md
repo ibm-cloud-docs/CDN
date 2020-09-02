@@ -207,7 +207,7 @@ The previous example uses the `map` directive to avoid overusing the `if` Nginx 
 {: #how-to-set-up-cors-for-cdn}
 
 ![cors-through-cdn](/images/cors-through-cdn.png)
-CDN is largely transparent to the CORS setup of the Origin, so it does not require a specific CDN configuration. If the CDN edge cannot find a cached response for the first request for some content, it forwards the request to the Origin Host. If the Origin Host is set up to handle CORS requests and this request has the `Origin` header, then it should respond back to the edge with a CORS header of `Access-Control-Allow-Origin` and the associated value. The overall response, including that header and value, will be cached in the CDN. Any subsequent request for the object at the same URI path is served from the cache and includes the `Access-Control-Allow-Origin` header value that was originally received from the Origin.
+CDN is largely transparent to the CORS setup of the Origin, so it does not require a specific CDN configuration. If the CDN Edge server cannot find a cached response for the first request for some content, it forwards the request to the Origin Host. If the Origin Host is set up to handle CORS requests and this request has the `Origin` header, then it should respond back to the Edge with a CORS header of `Access-Control-Allow-Origin` and the associated value. The overall response, including that header and value, will be cached in the CDN. Any subsequent request for the object at the same URI path is served from the cache and includes the `Access-Control-Allow-Origin` header value that was originally received from the Origin.
 
 ## Troubleshooting CORS and CORS requests
 {: #troubleshooting-cors-and-cors-requests}

@@ -38,7 +38,7 @@ When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-al
 
    ![Purge page](images/purge-create-dialog.png)
 
-5. After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the edge server are cleared. If you want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
+5. After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the Edge server are cleared. If you want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
 
    ![Purge page](images/purge-history-list.png)
 

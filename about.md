@@ -31,13 +31,13 @@ subcollection: CDN
 # About Content Delivery Networks
 {: #about-content-delivery-networks-cdn-}
 
-A Content Delivery Network (CDN) is a collection of edge servers that are distributed through various parts of the country or the world. Web content is served from an edge server, which is located in the geographic area closest to the customer who requests the content. This technique allows your users to receive the content with less delay, and delivers a better overall experience for your customers.
+A Content Delivery Network (CDN) is a collection of Edge servers that are distributed through various parts of the country or the world. Web content is served from an Edge server, which is located in the geographic area closest to the customer who requests the content. This technique allows your users to receive the content with less delay, and delivers a better overall experience for your customers.
 {:shortdesc}
 
 ## How does a CDN work?
 {: #how-does-a-cdn-work}
 
-A CDN achieves its purpose by caching web content on edge servers around the world. When a customer requests web content, the content request is routed to the edge server that is geographically closest to that customer. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using {{site.data.keyword.cloud}} Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
+A CDN achieves its purpose by caching web content on Edge servers around the world. When a customer requests web content, the content request is routed to the Edge server that is geographically closest to that customer. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance. Using {{site.data.keyword.cloud}} Content Delivery Network with Akamai, content providers can realize efficient delivery of requested content from around the globe, with minimal configuration.
 
 ![High-level CDN diagram](images/high-level-cdn-diagram.png)
 
@@ -89,7 +89,7 @@ For more information, see [Setting up IBM Cloud Object Storage with CDN](/docs/s
 ### Support for multiple Origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
 
-In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility with regards to how and where the data is stored. 
+In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility with regards to how and where the data is stored.
 
 The path that is specified for the Origin server must be unique regarding the CDN. The Origin server itself does not need to be unique.
 {: note}
