@@ -34,7 +34,7 @@ subcollection: CDN
 {: help}
 {: support}
 
-Token authentication can stop unauthorized clients from accessing your sensitive content, and protects your content from _hotlinking_. By enabling token authentication on CDN, requests are authenticated by CDN edge servers before the CDN delivers the content. 
+Token authentication can stop unauthorized clients from accessing your sensitive content, and protects your content from _hotlinking_. By enabling token authentication on CDN, requests are authenticated by CDN edge servers before the CDN delivers the content.
 {:shortdesc}
 
 ## How it works
@@ -53,7 +53,7 @@ With token authentication, request verification occurs only in the CDN edge serv
 ### Generate the access token
 {: #generate-the-access-token}
 
-Generate an access token and apply it to content you want to protect. The token is a delimited list of string fields, with an HMAC to prevent tampering with the strings. Each field consists of a value that is verified by CDN edge servers when a request is made. 
+Generate an access token and apply it to content you want to protect. The token is a delimited list of string fields, with an HMAC to prevent tampering with the strings. Each field consists of a value that is verified by CDN edge servers when a request is made.
 
 It is recommended that you set up your origin server to dynamically generate these tokens for each client request for the protected content. This way, you can include the IP address (IP) as a parameter and restrict access to protected content to that specific authorized user.
 
@@ -68,7 +68,7 @@ See the following readme file pages for details on how to use the SDK of your ch
 - [Python](https://github.com/akamai/EdgeAuth-Token-Python){:external}
 - [Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby){:external}
 
-You can refer to the following [example to generate a token](#generate-the-token).
+You can refer to Step 2 in [Example to set token authentication](/docs/CDN?topic=CDN-working-with-token-authentication#example-to-set-token-authentication).
 
 ### Apply the token
 {: #apply-the-token}
@@ -101,7 +101,7 @@ The following example illustrates how to set token authentication. One customer 
     ```
     {:pre}
 
-    You can also generate a second transition encryption key to serve as a backup "trusted shared secret". If the token provided by the user is not valid based on the primary encryption key, the edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key. 
+    You can also generate a second transition encryption key to serve as a backup "trusted shared secret". If the token provided by the user is not valid based on the primary encryption key, the edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
 
     This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
     {:note}
@@ -119,7 +119,7 @@ The following example illustrates how to set token authentication. One customer 
 
     ET_TOKEN_NAME = '__token__' # token name
     ET_ENCRYPTION_KEY = '87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381' # Encryption key
-    DEFAULT_WINDOW_SECONDS = 5000 # The token valid time in seconds 
+    DEFAULT_WINDOW_SECONDS = 5000 # The token valid time in seconds
 
     et = EdgeAuth(**{'token_name': ET_TOKEN_NAME,
                      'key': ET_ENCRYPTION_KEY,
@@ -139,7 +139,7 @@ The following example illustrates how to set token authentication. One customer 
     ```
     {:pre}
 
-    You can set the token string as cookie to the client. 
+    You can set the token string as cookie to the client.
 
 3. Set token authentication in CDN
 {: #set-token-authentication-in-cdn}
@@ -170,7 +170,7 @@ The following example illustrates how to set token authentication. One customer 
     </HTML>
     ```
     {:codeblock}
-    
+
     Without the token, the edge server returns a `403` response code that indicates the user has no permission to access the content.
 
     Next, pass the token in a cookie and make the request again.
@@ -181,5 +181,5 @@ The following example illustrates how to set token authentication. One customer 
     ...
     ```
     {:codeblock}
-    
+
     `200` response code is returned and the content is successfully returned by the CDN edge server.
