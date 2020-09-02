@@ -87,15 +87,19 @@ The following example illustrates how to set token authentication. One customer 
 1. Create the encryption key.
 {: #create-encryption-key}
 
-    The key is an even number of hex digits for the token key. An entry can be up to 64 characters in length. To ensure that your key is random, it is recommended that you create the key by using the [OpenSSL tool](https://www.openssl.org/){:external}
+    The key is an even number of hex digits for the token key. An entry can be up to 64 characters in length. To ensure that your key is random, it is recommended that you create the key by using the [OpenSSL tool](https://www.openssl.org/){:external}.
 
-    For example,:
+    For example:
+
+    For example:
 
     ```shell
     openssl rand -hex 32
     ```
     {:codeblock}
+
     The output looks like:
+
     ```
     87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
     ```
