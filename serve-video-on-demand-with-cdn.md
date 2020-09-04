@@ -185,7 +185,7 @@ http {
                 add_header 'Access-Control-Allow-Origin' '*';
                 add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS';
 
-                # Note: wildcard `Access-Control-Allow-Headers` may not be supported by all browsers, yet.
+                # Note: wildcard `Access-Control-Allow-Headers` might not be supported by all browsers, yet.
                 add_header 'Access-Control-Allow-Headers' '*';
 
                 add_header 'Access-Control-Max-Age' 1728000;

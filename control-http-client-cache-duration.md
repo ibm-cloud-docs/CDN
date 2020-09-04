@@ -41,14 +41,14 @@ Essentially, Cache-Control headers sent from an Edge server downstream ask the r
 
 If your origin does provide a Cache-Control header with a `max-age` directive and value for a specific piece of content, then the cache duration for the specific piece of content that is cached on the Edge is still derived from your CDN's TTL settings. Additionally, the Edge server responds to the requester downstream with a Cache-Control `max-age` value equal to the lesser of:
   * The origin's Cache-Control `max-age` value.
-  * The remaining time left until the content goes stale on the Edge.
+  * The remaining time until the content goes stale on the Edge.
 
 However, if your origin does not provide a Cache-Control header to the Edge server, then Edge servers will not provide a Cache-Control header to the requester. The Edge cache duration for your content is still derived from your CDN's TTL Settings.
 
 ## Respect Header: On
 {: #respect-header-on}
 
-If your origin does provide a Cache-Control header with `max-age` for a specific piece of content, the origin's Cache-Control `max-age` value becomes the cache duration for that specific piece of content cached on the Edge, overriding any applicable TTL settings for that piece of content. Additionally, the Edge responds to the requester with a Cache-Control `max-age` value equal to the remaining time left until the content goes stale on the Edge server.
+If your origin does provide a Cache-Control header with `max-age` for a specific piece of content, the origin's Cache-Control `max-age` value becomes the cache duration for that specific piece of content cached on the Edge, overriding any applicable TTL settings for that piece of content. Additionally, the Edge responds to the requester with a Cache-Control `max-age` value equal to the remaining time until the content goes stale on the Edge server.
 
 However, if your origin does not provide a Cache-Control header to the Edge server, then the Edge server will not provide a Cache-Control header to the requester. The Edge cache duration for your content is still derived from your CDN's TTL settings.
 

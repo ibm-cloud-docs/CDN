@@ -33,7 +33,7 @@ You might need to click the **Get status** button a few times before your CDN sh
 ## For a Wildcard HTTPS CDN
 {: for-a-wildcard-https-cdn}
 
-From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status** until your CDN shows `RUNNING` status. You don't need to configure any other settings or verify that CDN traffic works as expected. From here, you can review HOW TO topics (see contents on left) to configure and manage your CDN.
+From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status** until your CDN shows `RUNNING` status. You don't need to configure any other settings or verify that CDN traffic works as expected. From here, you can review HOW TO topics (see the table of contents) to configure and manage your CDN.
 
 ## For an HTTPS-only CDN
 {: for-a-https-only-cdn}
@@ -72,4 +72,4 @@ Follow these steps to get your CDN up & running:
 
 5. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `RUNNING` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
-Your CDN is now running. From here, you can review HOW TO topics (see contents on left) to further configure and manage your CDN.
+Your CDN is now running. From here, you can review HOW TO topics (see the table of contents) to further configure and manage your CDN.

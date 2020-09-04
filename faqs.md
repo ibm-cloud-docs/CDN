@@ -193,7 +193,7 @@ The account's Master User can provide other users with permission to create and 
 From the IBM Cloud console main page, follow these steps to edit permissions:
  * Select the **Manage** tab.
  * Select **Access (IAM)**.
- * Click the **Users** tab from left pane.
+ * Click the **Users** tab in the navigation pane.
  * Click the wanted **User**.
  * Then, select the **Classic infrastructure** tab.
  * Then, under **Permissions** tab, expand the **Services** category.
@@ -214,14 +214,14 @@ From the legacy console main page, follow these steps to edit permissions:
 {: faq}
 
 If you are the account's Master User, then you must upgrade the account in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, follow these steps as the account's Master User:
- * Open the left navigation pane by clicking the `triple bar` icon in upper left corner of web page.
+ * Open the navigation pane by clicking the `triple bar` icon in the upper left corner of web page.
  * Select **Classic Infrastructure**.
  * Click the **Upgrade Account** button and follow the instructions.
 
 If you are one of the account's secondary Users, then the account's Master User must give you the `Add/Upgrade Services` permission in order for the Create button to appear or be enabled on this page. From the IBM Cloud console page, the account's Master User should follow these steps to edit your permissions:
  * Select the **Manage** tab.
  * Select **Access (IAM)**.
- * Click the **Users** tab from left pane.
+ * Click the **Users** tab from navigation pane.
  * Click the wanted **User**.
  * Then, select the **Classic infrastructure** tab.
  * Then, under **Permissions** tab, expand the **Account** category.
