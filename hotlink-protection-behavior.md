@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
+  years: 2017, 2019
 lastupdated: "2019-12-09"
 
 keywords: hotlink, protection, class, behavior, API, valid string
@@ -28,7 +28,7 @@ subcollection: CDN
 # Hotlink Protection class
 {: #hotlink-protection-class}
 
-The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection class` contains the attributes utilized by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API.  It is also returned by Hotlink Protection APIs after a successful API call.
+The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection class` contains the attributes that are used by our Hotlink Protection APIs. This object is used to set the Hotlink Protection behavior for a CDN by calling the API. It is also returned by Hotlink Protection APIs after a successful API call.
 {:shortdesc}
 
 **class** `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`:
@@ -37,7 +37,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
    * **Valid**: `http*www.example.com`
    * **Invalid**: `http://www.example.com`
 
-* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one the of the terms in `refererValues`. The opposite occurs when there is no match.
+* `protectionType`: specifies to allow or deny access to content when an HTTP request has a Referer Header value matching one of the terms in `refererValues`. The opposite occurs when there is no match.
   * Possible value for protectionType:
     * `ALLOW`
     * `DENY`

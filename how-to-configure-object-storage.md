@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
+  years: 2017, 2019
 lastupdated: "2019-05-21"
 
 keywords: object storage, bucket, configuration, details, updating
@@ -28,12 +28,12 @@ subcollection: CDN
 # Configuring IBM Cloud Object Storage for CDN
 {: #configure-ibm-cloud-object-storage-for-cdn}
 
-To make use of objects stored in {{site.data.keyword.cloud}} Object Storage, you must set the value of the "acl" property (that is, the access control list) for each object in your bucket for "public-read" access.
+To make use of objects stored in {{site.data.keyword.cloud}} Object Storage, you must set the value of the ACL property for each object in your bucket for "public-read" access.
 {:shortdesc}
 
-To install any necessary clients or tools, refer to [For developers of IBM Cloud Object Storage](/docs/cloud-object-storage/basics?topic=cloud-object-storage-gs-dev). This guide assumes you have installed the official AWS command line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
+To install any necessary clients or tools, refer to [For developers of IBM Cloud Object Storage](/docs/cloud-object-storage/basics?topic=cloud-object-storage-gs-dev). This topic assumes you installed the official AWS command-line interface, which is compatible with {{site.data.keyword.cloud_notm}} Object Storage S3 API.
 
-The following example code shows how to set "public-read" access for all the objects in your bucket, using the command-line interface.
+The following example code shows how to set "public-read" access for all the objects in your bucket by using the command-line interface.
 
 ```
 $ export ENDPOINT="YOUR_ENDPOINT"
@@ -45,4 +45,4 @@ $ for KEY in "${KEYS[@]}"
   > done
 ```
 
-For more information on how to use {{site.data.keyword.cloud_notm}} Object Storage, refer to [Accelerate delivery of static files using a CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn).
+For more information, see [Accelerate delivery of static files using a CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn).
