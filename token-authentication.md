@@ -34,7 +34,7 @@ subcollection: CDN
 {: help}
 {: support}
 
-Token authentication can stop unauthorized clients from accessing your sensitive content, and protects your content from _hotlinking_. By enabling token authentication on CDN, requests are authenticated by CDN edge servers before the CDN delivers the content.
+Token authentication can stop unauthorized clients from accessing your sensitive content, and protects your content from _hotlinking_. By enabling token authentication on CDN, requests are authenticated by CDN Edge servers before the CDN delivers the content.
 {:shortdesc}
 
 ## How it works
@@ -46,14 +46,14 @@ The following diagram shows how the CDN token authentication works with your web
 
 In the diagram, before a client requests the protected contents, they must get a token from your web application. Your web application logic (for instance, username and password) validates the request. If the validation passes, it generates a one-time token and returns it to the client.
 
-When the client requests the CDN contents, they must pass the token in a cookie, query string parameter, or request header. The request goes to the CDN edge server, and the edge server attempts to match it with the local token-auth setting. If the token is a verified match, the content is returned to the client. If the token doesn't match, the edge server returns a `403` response.
+When the client requests the CDN contents, they must pass the token in a cookie, query string parameter, or request header. The request goes to the CDN Edge server, and the Edge server attempts to match it with the local token-auth setting. If the token is a verified match, the content is returned to the client. If the token doesn't match, the Edge server returns a `403` response.
 
-With token authentication, request verification occurs only in the CDN edge servers, your back end application server isn't needed. This can reduce the network latency and offload to your server.
+With token authentication, request verification occurs only in the CDN Edge servers, your back end application server isn't needed. This can reduce the network latency and offload to your server.
 
 ### Generating the access token
 {: #generate-the-access-token}
 
-Generate an access token and apply it to content you want to protect. The token is a delimited list of string fields, with an HMAC to prevent tampering with the strings. Each field consists of a value that is verified by CDN edge servers when a request is made.
+Generate an access token and apply it to content you want to protect. The token is a delimited list of string fields, with an HMAC to prevent tampering with the strings. Each field consists of a value that is verified by CDN Edge servers when a request is made.
 
 It is recommended that you set up your origin server to dynamically generate these tokens for each client request for the protected content. This way, you can include the IP address (IP) as a parameter and restrict access to protected content to that specific authorized user.
 
@@ -101,9 +101,9 @@ The following example illustrates how to set token authentication. One customer 
 
     ```
     87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
-    ``` 
+    ```
 
-   You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
+   You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the Edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
 
    This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
    {:note}
@@ -138,7 +138,7 @@ The following example illustrates how to set token authentication. One customer 
 
     ```
     exp=1598342003~acl=/private/*~hmac=73cbcba0137b4875b10a3264d4c24189a91825e51f2764af0891a854d015dd08
-    ``` 
+    ```
 
    You can set the token string as cookie to the client.
 
@@ -169,9 +169,9 @@ The following example illustrates how to set token authentication. One customer 
     Reference #18.ef3ce17.1598346101.6c7c336e
     </BODY>
     </HTML>
-    ``` 
+    ```
 
-   Without the token, the edge server returns a `403` response code that indicates the user has no permission to access the content.
+   Without the token, the Edge server returns a `403` response code that indicates the user has no permission to access the content.
 
    Next, pass the token in a cookie and make the request again.
 
@@ -180,6 +180,6 @@ The following example illustrates how to set token authentication. One customer 
          --cookie "__token__=exp=1598348288~acl=/private/*~hmac=73cbcba0137b4875b10a3264d4c24189a91825e51f2764af0891a854d015dd08"
     HTTP/1.1 200 OK
     ...
-    ``` 
-    
-   `200` response code is returned and the content is successfully returned by the CDN edge server.
+    ```
+
+   `200` response code is returned and the content is successfully returned by the CDN Edge server.
