@@ -104,7 +104,7 @@ No, if you select 'Delete' from the Overflow ![Overflow menu](images/overflow.pn
 {: #does-content-caching-use-push-or-pull}
 {: faq}
 
-Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the Edge server from the Origin server, as opposed to manually uploading the content onto the Edge server.
+Content Caching is done using an _origin pull_ model. Origin Pull is a method by which data is "pulled" by the Edge server from the origin server, as opposed to manually uploading the content onto the Edge server.
 
 ## Is there a recommended browser to use for CDN service configuration?
 {: #is-there-a-recommended-browser-to-use-for-cdn-service-configuration}
@@ -116,7 +116,7 @@ Yes, Firefox and Chrome are the recommended browsers. It is recommended that you
 {: #what-is-the-purpose-of-providing-a-path-when-creating-my-cdn}
 {: faq}
 
-If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular Origin server.
+If you provide a path while creating your CDN, it allows you to isolate the files that can be served through CDN from a particular origin server.
 
 ## My CDN is in an Error State. What do I do now?
 {: #my-cdn-is-in-an-error-state}
@@ -142,7 +142,7 @@ No. There can be only one active Purge request for a given file path at a time.
 
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with IPv4 only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge and go forward to the origin with IPv4.
 
-Creating an IBM Cloud CDN using an IPv6 address as the Origin server address is not supported.
+Creating an IBM Cloud CDN using an IPv6 address as the origin server address is not supported.
 {:note}
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
@@ -152,7 +152,7 @@ Creating an IBM Cloud CDN using an IPv6 address as the Origin server address is 
 Yes. For the Akamai vendor, only the following port numbers are allowed:
 72, 80-89, 443, 488, 591, 777, 1080, 1088, 1111, 1443, 2080, 7001, 7070, 7612, 7777, 8000-9001, 9090, 9901-9908, 11080-11110, 12900-12949, 20410, and 45002.
 
-## What URL should be used for access to data under the CDN or Origin Path?
+## What URL should I use for access to data under the CDN or origin path?
 {: #what-url-should-be-used-for-access-to-data}
 {: faq}
 
@@ -166,7 +166,7 @@ Omitting the slash, for example, using `www.example.com/images` results in a **P
 
 [Here's a tutorial](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn) on creating a Content Delivery Network for IBM Cloud Object Storage.
 
-## I received notification that my Origin certificate is expiring. What do I do now?
+## I received notification that my origin certificate is expiring. What do I do now?
 {: #notification-that-origin-cert-is-expiring}
 {: faq}
 

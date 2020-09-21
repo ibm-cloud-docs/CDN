@@ -52,9 +52,9 @@ The following diagram offers a schematic overview of the three-tier architecture
 {: #features}
 
 {{site.data.keyword.cloud}} Content Delivery Network service includes the following key features.
-  * [Host Server Origin support](#host-server-origin-support)
-  * [Object Storage Origin support](#object-storage-file-support)
-  * [Support for multiple Origins with distinct paths](#support-for-multiple-origins-with-distinct-paths)
+  * [Host server origin support](#host-server-origin-support)
+  * [Object storage origin support](#object-storage-file-support)
+  * [Support for multiple origins with distinct paths](#support-for-multiple-origins-with-distinct-paths)
   * [Path-based CDN mappings](#path-based-cdn-mappings)
   * [Purge cached content](#purge-cached-content)
   * [Time to Live (TTL)](#time-to-live-ttl)
@@ -74,30 +74,30 @@ The following diagram offers a schematic overview of the three-tier architecture
 
 Features that are included with {{site.data.keyword.cloud}} CDN powered by Akamai are described as follows.
 
-### Host Server Origin support
+### Host server origin support
 {: #host-server-origin-support}
 
-IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a Host Server Origin by providing the Origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for supported port numbers and ranges.
+IBM Cloud Content Delivery Network (CDN) can be configured to serve content from a host server origin by providing the origin hostname, protocol, port number, and optionally, the path from which to serve the content. The default path is `/*`. Protocol can be HTTP, HTTPS, or both. Only certain port numbers are supported by Akamai. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for supported port numbers and ranges.
 
-### Object Storage Origin support
+### Object storage origin support
 {: #object-storage-file-support}
 
 IBM Cloud CDN can be configured to serve content from an Object Storage endpoint by providing the endpoint, the bucket name, protocol, and port. Optionally, you can specify a list of file extensions to allow caching for files only with those extensions. All objects in the bucket must be set with anonymous read or public read access.
 
 For more information, see [Setting up IBM Cloud Object Storage with CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn).
 
-### Support for multiple Origins with distinct paths
+### Support for multiple origins with distinct paths
 {: #support-for-multiple-origins-with-distinct-paths}
 
-In certain cases, you might want to deliver certain content from a different Origin server. For example, you might want certain photos or videos that are served from different Origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple Origin servers with multiple paths. This allows flexibility with regards to how and where the data is stored.
+In certain cases, you might want to deliver certain content from a different origin server. For example, you might want certain photos or videos that are served from different origin servers. {{site.data.keyword.cloud_notm}} CDN provides the option to set up multiple origin servers with multiple paths. This allows flexibility with regards to how and where the data is stored.
 
-The path that is specified for the Origin server must be unique regarding the CDN. The Origin server itself does not need to be unique.
+The path that is specified for the origin server must be unique regarding the CDN. The origin server itself does not need to be unique.
 {: note}
 
 ### Path-based CDN mappings
 {: #path-based-cdn-mappings}
 
-Your {{site.data.keyword.cloud_notm}} CDN service can be restricted to a particular directory path on the Origin server by providing the path when you create the CDN. A user is allowed access only to those contents in that directory path. For example, if a CDN `www.example.com` is created with path `/videos`, it is accessible **only** through `www.example.com/videos/*`.
+Your {{site.data.keyword.cloud_notm}} CDN service can be restricted to a particular directory path on the origin server by providing the path when you create the CDN. A user is allowed access only to those contents in that directory path. For example, if a CDN `www.example.com` is created with path `/videos`, it is accessible **only** through `www.example.com/videos/*`.
 
 ### Purge-cached content
 {: #purge-cached-content}
@@ -116,14 +116,14 @@ Metrics for an individual CDN are provided on the Overview tab of the customer p
 
 For metrics that display the change over a period of time as a graph, you can see three line graphs and a pie chart. The three line graphs are: **Bandwidth**, **Hits by Mapping**, and **Hits by Type**. They display the activity daily over the course of your specified timeframe. The graphs for **Bandwidth** and **Hits by Mapping** are single-line graphs, whereas the breakdown of **Hits by Type** shows a line for each of the hit types provided. The pie chart displays a regional breakdown of the bandwidth for a CDN mapping on a percentage basis.
 
-Metrics that are shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates that the percentage of times content is delivered by the Edge server, _not_ through its Origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
+Metrics that are shown for aggregate values include **Bandwidth Usage** in GB, **Total Hits** to the CDN Edge server, and the **Hit Ratio**. Hit Ratio indicates that the percentage of times content is delivered by the Edge server, _not_ through its origin. Hit ratio currently is shown as a function of all your CDN mappings, not just the one being viewed.
 
 By default, both the aggregate numbers and the graphs default to show metrics for the last 30 days, but you can change this through the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/){: external}. Both categories can display metrics for 7-, 15-, 30-, 60-, or 90-day periods.
 
 ### Host Header support
 {: #host-header-support}
 
-The Edge server uses the **Host Header** when the server communicates with the Origin host. This feature provides flexibility in how the web service is configured on the Origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same Origin Host. If Host Header input is not provided, the service uses the Origin server hostname as default HTTP Host Header if the Origin server is specified as Hostname (rather than as an IP address). If Host header is not provided as input and the Origin server is provided as an IP address, the CDN hostname (also called the CDN domain name) is used as the default HTTP Host Header.
+The Edge server uses the **Host Header** when the server communicates with the origin host. This feature provides flexibility in how the web service is configured on the origin host. Specifically, it enables a use case where a client has multiple web servers that are configured on the same origin host. If host header input is not provided, the service uses the origin server hostname as the default HTTP host header if the origin server is specified as the hostname (rather than as an IP address). If a host header is not provided as input and the origin server is provided as an IP address, the CDN hostname (also called the CDN domain name) is used as the default HTTP host header.
 
 ### HTTPS protocol support
 {: #https-protocol-support}
@@ -132,26 +132,26 @@ You can configure CDN to use HTTPS protocol to serve the content securely to the
 
 The type of SSL certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration is fast, but it has the downside that the CDN is accessible only by using a CNAME. The SAN certificate process takes 4 - 8 hours to complete, but it allows you to use the CDN with the CDN Domain (that is, the hostname). The SAN certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. Refer to [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#what-is-the-expected-behavior-when-loading-the-cname-or-hostname-on-your-browser-for-the-supported-protocols) to understand the implication of selecting a given certificate type.
 
-The Origin host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized certificate authority.
+The origin host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized certificate authority.
 
 As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates because the set of intermediary certificates that is trusted changes frequently. You can find the Akamai trusted certificates on the Akamai community site at [SSL/TLS certificate chains for Akamai-managed certificates](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
 
 ### Respect Headers
 {: #respect-headers}
 
-The **Respect Headers** option allows the HTTP header configuration in the Origin to override the CDN configuration. This feature is ON by default.
+The **Respect Headers** option allows the HTTP header configuration in the origin to override the CDN configuration. This feature is ON by default.
 
 ### Serve Stale content
 {: #serve-stale-content}
 
-When the CDN Edge server receives a user request, and the requested content is not cached, the Edge server reaches out to the Origin host to fetch the content. That content is then cached for the TTL duration specified for the content. If a user request is received after the TTL has expired, the Edge server reaches out to the Origin host to fetch the content. If the Origin server cannot be reached for some reason (for instance, the Origin host is down, or there is a network issue), the Edge server serves the expired (stale) content to the request. This feature is supported by Akamai and **cannot** be turned off.
+When the CDN Edge server receives a user request, and the requested content is not cached, the Edge server reaches out to the origin host to fetch the content. That content is then cached for the TTL duration specified for the content. If a user request is received after the TTL has expired, the Edge server reaches out to the origin host to fetch the content. If the origin server cannot be reached for some reason (for instance, the origin host is down, or there is a network issue), the Edge server serves the expired (stale) content to the request. This feature is supported by Akamai and **cannot** be turned off.
 
 ### Cache Key optimization
 {: #cache-key-optimization}
 
-Akamai Edge servers cache content on a **Cache Store**. To use the content from the **Cache Store**, Edge servers use a **Cache Key**. Typically, a cache key is generated based on a portion of a user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content that is delivered is the same. By default, Akamai uses the query function's arguments to generate the cache key, and therefore, to generate a unique Cache Key for each user. This method is not optimal because it causes the Edge server to contact the Origin server for content that is already cached, but that uses a different cache key. You can use the **Cache Key Optimization** feature to specify which query args to include or ignore when generating a Cache Key. This feature applies to any `create` or `update` of a CDN-Mapping configuration, as well as any `create` or `update` of an Origin Path.
+Akamai Edge servers cache content on a **Cache Store**. To use the content from the **Cache Store**, Edge servers use a **Cache Key**. Typically, a cache key is generated based on a portion of a user's URL. In some cases, the URL contains query function arguments that are different for individual users, but the content that is delivered is the same. By default, Akamai uses the query function's arguments to generate the cache key, and therefore, to generate a unique Cache Key for each user. This method is not optimal because it causes the Edge server to contact the origin server for content that is already cached, but that uses a different cache key. You can use the **Cache Key Optimization** feature to specify which query args to include or ignore when generating a Cache Key. This feature applies to any `create` or `update` of a CDN-Mapping configuration, as well as any `create` or `update` of an origin path.
 
-You can configure the value of **Cache Key Optimization** from the **Settings** tab after creation of a CDN mapping. An Origin path can be configured during the `create` or `update` operations of an Origin path.
+You can configure the value of **Cache Key Optimization** from the **Settings** tab after creation of a CDN mapping. An origin path can be configured during the `create` or `update` operations of an origin path.
 {: note}
 
 ### Content Compression
@@ -169,23 +169,23 @@ By default, **Content Compression** is enabled in Akamai CDN for the following c
 * application/json
 * application/xml*
 
-When compression is handled by the Edge server, then the content must be at least 10 KB. In some cases, compression is taken care of by the Origin server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the Origin server, it is not compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
+When compression is handled by the Edge server, then the content must be at least 10 KB. In some cases, compression is taken care of by the origin server, and in those cases, there is no limit on the size of the files to be compressed. If the content is already being compressed by the origin server, it is not compressed again. To enable Content Compression, the request header must define `Accept-Encoding: gzip`.
 
 ### Large file optimization
 {: #large-file-optimization}
 
 Large file optimization allows the CDN network to optimize the delivery of content greater than 10 MB. This enablement increases performance for large files and reduces latency and download times. Without this feature, the CDN cannot service files greater than 1.8 GB. This feature allows file downloads greater than 1.8 GB, up to a maximum of 320 GB.
 
-For large file optimization to work, byte-range requests must be enabled on the Origin server. Akamai CDN employs a technique that is called _Partial Object Caching_ for this optimization. When a large file is requested, the Edge server checks whether the file meets the size requirements. This means that files larger than 10 MB are requested from the Origin server in chunks. After the chunk arrives at the Edge server, it is cached and immediately served to the user. The next chunk is pre-fetched in parallel by the Edge server, thus reducing latency. This process continues until the entire file is retrieved, or the connection is terminated.
+For large file optimization to work, byte-range requests must be enabled on the origin server. Akamai CDN employs a technique that is called _Partial Object Caching_ for this optimization. When a large file is requested, the Edge server checks whether the file meets the size requirements. This means that files larger than 10 MB are requested from the origin server in chunks. After the chunk arrives at the Edge server, it is cached and immediately served to the user. The next chunk is pre-fetched in parallel by the Edge server, thus reducing latency. This process continues until the entire file is retrieved, or the connection is terminated.
 
-When this feature is enabled, there is a slight performance cost that is associated with serving content smaller than 10 MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new Origin Path in the CDN configuration and enable large file optimization for that path.
+When this feature is enabled, there is a slight performance cost that is associated with serving content smaller than 10 MB. Therefore, this feature is recommended only for serving large files. A typical use case would be to create a new origin path in the CDN configuration and enable large file optimization for that path.
 
 ### Video on Demand
 {: #video-on-demand}
 
 **Video on Demand** performance optimization delivers high-quality streaming across various network types. By using preconfigured cache control settings and the distributed network's ability to distribute the load dynamically, {{site.data.keyword.cloud_notm}} CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
-**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Currrently, live video streaming is not supported. You can enable the **Video on Demand** feature by selecting this option from the **Optimize for** list menu on the Settings tab, or while creating a new Origin Path. You should enable this feature only when optimizing delivery of video files.
+**Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Currrently, live video streaming is not supported. You can enable the **Video on Demand** feature by selecting this option from the **Optimize for** list menu on the Settings tab, or while creating a new origin path. You should enable this feature only when optimizing delivery of video files.
 
 ### Dynamic Content Acceleration
 {: #dynamic-content-acceleration-description}

@@ -28,8 +28,8 @@ The Input container is a collection used by both the Mapping and (Origin) Path c
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.
 
 The following attributes are common to the Mapping and (Origin) Path classes:
-* `originType`: Type of the Origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`.
-* `origin`: Origin server address (either the hostname or the IPv4 address of the Origin server), the endpoint from which to fetch content, or the name of the bucket where content is stored. Must be fewer than 511 characters.
+* `originType`: Type of the origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`.
+* `origin`: Origin server address (either the hostname or the IPv4 address of the origin server), the endpoint from which to fetch content, or the name of the bucket where content is stored. Must be fewer than 511 characters.
 * `httpPort`: Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.
 * `httpsPort`: Number of the port used for HTTPS protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.
 * `status`:  The status of the mapping or path. Status can be CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED, or ERROR.
@@ -53,8 +53,8 @@ The following attributes are specific to the Mapping class:
 * `protocol`: Protocol used to set up services. Can be HTTP, HTTPS, or a combination of the two, HTTP_AND_HTTPS.
 * `cname`: Canonical name record aliases the hostname. Can be provided by the user, or system-generated. If user-provided, it should be less than 64 alphanumeric characters and must be unique. If not provided, one is generated when the mapping is created.
 * `certificateType`: Type of certificate being used by a mapping. Can be `WILDCARD_CERT` or `SHARED_SAN_CERT`. Value is 0 for HTTP mappings.
-* `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the Origin to override CDN TTL settings.
-* `header`: Specifies host header information that is used by the Origin.
+* `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the origin to override CDN TTL settings.
+* `header`: Specifies host header information that is used by the origin.
 
 The following attributes are related to Cloud Object Storage (COS):  
 * `bucketName`: Unique name of your bucket for S3 object storage.  

@@ -29,7 +29,7 @@ Have a question about CDN and limits or maximum? Review these frequently asked q
 
 The maximum value for Time To Live is 2,147,483,647 seconds, which equates to roughly 68 years! The minimum value is 0 seconds.
 
-## Is there a limit on the number of Origin and TTL entries?
+## Is there a limit on the number of origin and TTL entries?
 {: #is-there-a-limit-on-the-number-of-origin-and-ttl-entries}
 
 Yes, the combined limit is 75 entries per CDN.
@@ -57,7 +57,7 @@ You can expect changes to become active on Akamai in 10 minutes.
 ## What's the rate limit for a multiple file purge?
 {: #purge-rate-limit}
 
-For a multiple file purge, there is a limit on the number of files that can be purged at a given time. The limiting algorithm that is used for the sustained rate and burstiness follows the Token Bucket model, where there is one fixed-capacity bucket that is applied for all the purge paths in your account. The total number of tokens in the bucket represents the number of paths that can be purged in a burst. 
+For a multiple file purge, there is a limit on the number of files that can be purged at a given time. The limiting algorithm that is used for the sustained rate and burstiness follows the Token Bucket model, where there is one fixed-capacity bucket that is applied for all the purge paths in your account. The total number of tokens in the bucket represents the number of paths that can be purged in a burst.
 
 In the following table, `X-RateLimit-Purge-Paths-Limit-Burst` represents the number of tokens that the bucket can hold. The initial token bucket is full. Tokens are constantly added to this bucket based on the sustained rate (`X-RateLimit-Purge-Paths-Limit-Per-Second`). However, if the bucket is full, no more tokens can be added.
 
@@ -91,5 +91,3 @@ When you reach the maximum resource limit, the console shows this error message.
 
 * Delete unused resources (TTL, origin, and so on).
 * Create a domain to store new resources.
-
-

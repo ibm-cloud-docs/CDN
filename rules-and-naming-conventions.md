@@ -65,7 +65,7 @@ Bucket names:
 Although uppercase letters and periods can pass validation, we suggest that you always use DNS-compliant Bucket names.
 {: note}
 
-## What are the rules for the Path string for the Origin?
+## What are the rules for the Path string for the origin?
 {: #what-are-the-rules-for-the-path-string-for-the-origin}
 
 The Path is optional when creating your CDN. However, if provided, the Path:
@@ -96,4 +96,4 @@ For **Add Origin**, the path is **mandatory**. Also, if your CDN was created wit
 ## What are the rules for providing file extensions?
 {: #what-are-the-rules-for-providing-file-extensions}
 
-When creating an Origin with Object Storage, file extensions should be comma that is separated. For example, `txt, jpg, xml` is a valid list. Any one particular extension cannot be longer than 10 characters.
+When creating an origin with Object Storage, file extensions should be comma that is separated. For example, `txt, jpg, xml` is a valid list. Any one particular extension cannot be longer than 10 characters.

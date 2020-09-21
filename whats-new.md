@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2020
 lastupdated: "2020-09-01"
 
-keywords: 
+keywords:
 
 subcollection: CDN
 
@@ -65,9 +65,9 @@ subcollection: CDN
 ## October 2018
 {: #december-2018}
 
-  * Increased the [maximum number of supported Origins Paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
-  * [Origin Paths](/docs/CDN?topic=CDN-adding-origin-path-details) no longer need to start with Mapping Path Prefix.
-  * The minimum possible [TTL](/docs/CDN?topic=CDN-setting-content-caching-time-using-time-to-live) time value is now 0. This would preserve the cookies from the Origin for content under the associated TTL path.
+  * Increased the [maximum number of supported origins paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75
+  * [Origin paths](/docs/CDN?topic=CDN-adding-origin-path-details) no longer need to start with Mapping Path Prefix.
+  * The minimum possible [TTL](/docs/CDN?topic=CDN-setting-content-caching-time-using-time-to-live) time value is now 0. This would preserve the cookies from the origin for content under the associated TTL path.
 
 ## September 2018
 {: #september-2018}

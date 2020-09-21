@@ -34,7 +34,7 @@ After a mapping is stopped, the DNS lookup is switched to the origin. Traffic sk
 
    * You can only stop a CDN when in `Running` state.
    * Stopping a CDN is **NOT** recommended for a CDN configured with an HTTPS SAN certificate because HTTPS traffic might not work when you move the CDN back to `Running` status.
-   * Stop CDN functionality is intended for maintenance windows not exceeding seven days. After seven days, the CDN must be started, or it is disabled and traffic to the CDN CNAME is not redirected to the Origin server.
+   * Stop CDN functionality is intended for maintenance windows not exceeding seven days. After seven days, the CDN must be started, or it is disabled and traffic to the CDN CNAME is not redirected to the origin server.
    * Currently, stopping a Wildcard CDN with the CNAME suffix `.cdnedge.bluemix.net` is **NOT** allowed.
 
 

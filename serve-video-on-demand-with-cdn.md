@@ -148,7 +148,7 @@ test-video11.ts
 
 For more complex use cases, such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so on--`ffmpeg` has many  moreargument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
-## Preparing the Origin
+## Preparing the origin
 {: #prepare-the-origin}
 
 ### Server

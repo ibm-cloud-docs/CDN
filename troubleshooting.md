@@ -87,7 +87,7 @@ This is the error that you might see: `503 Service Unavailable`.
 
 With the 503 error, you might also see a message similar to the following: `An error occurred while processing your request. Reference #30.3598c0ba.1521745157.87201fff` (the actual reference number might vary). In this case, the reference number in the error string translates to an SSL handshake failure.
 
-To correct the issue, ensure that your Origin server's SSL certificates meets the following criteria:
+To correct the issue, ensure that your origin server's SSL certificates meets the following criteria:
   * The certificate must be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){:external}.
   * It must have a complete certificate chain (leaf, intermediate, root).
   * It must match the *Host header that is configured* on the CDN
@@ -95,7 +95,7 @@ To correct the issue, ensure that your Origin server's SSL certificates meets th
   * It must not be expired
   {:tsResolve}
 
-If you have verified your Origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
+If you have verified your origin's certificate chain using the previous criteria and you are still encountering the same error, please see our [Getting help and support](/docs/CDN?topic=CDN-gettinghelp) page. Make note of the Reference error string and include it in any communication with us.
 
 ## My hostname doesn't load on the browser when IBM Cloud Object Storage (COS) is the origin.
 {: #my-hostname-doesnt-load-on-the-browser-when-ibm-cloud-object-storage-cos-is-the-origin}

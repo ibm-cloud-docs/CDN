@@ -40,10 +40,10 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
 1. Complete the **Configure origin** section. You must select either the **Server** or the **Object Storage** tab.
 
     * Type the optional **Host header**. If one is not provided, it defaults to the **hostname**. See [Host header support](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#host-header-support) for more information.  
-    * Provide an optional **Path** where content can be retrieved from on the Origin. See [Path-based CDN mappings](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#path-based-cdn-mappings) to understand the implications of adding a path at this time.
+    * Provide an optional **Path** where content can be retrieved from on the origin. See [Path-based CDN mappings](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
       For **Server**:  
-       * Type the **Origin server address** (hostname or IPv4 address of the Origin server). If **HTTPS port** is also selected, the **Origin server address** must be the hostname, not the IP address.
+       * Type the **Origin server address** (hostname or IPv4 address of the origin server). If **HTTPS port** is also selected, the **Origin server address** must be the hostname, not the IP address.
 
       For **Object Storage**:
        * Type the required **Endpoint** from which to fetch the object.
@@ -51,7 +51,7 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
          You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider.
          {: note}
 
-    * Provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the Origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.
+    * Provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.
 
       An **SSL certificate** option appears if you select HTTPS port. You can choose **Wildcard** or **DV SAN certificate** as your SSL certificate option. Both offer the enhanced security provided by HTTPS.
     * **DV SAN certificate** (default) allows HTTPS traffic over your domain, but requires additional steps to verify. See [Completing Domain Control Validation for HTTPS](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) to understand the steps that are required and time constraints that are involved with choosing this option.

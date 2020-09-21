@@ -47,10 +47,10 @@ The following table lists the actions taken related to Domain Mappings. With eac
 | cdn-powered-by-akamai.domain-mapping.start | Start a domain mapping.     |
 | cdn-powered-by-akamai.domain-mapping.status | Domain mapping status change.     |
 
-## List of Origin Path Action events
+## List of origin path action events
 {: #events_origin_path}
 
-The following table lists the actions taken related to Origin Path Actions. With each of these actions, an event was generated:
+The following table lists the actions taken related to origin path actions. With each of these actions, an event was generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
