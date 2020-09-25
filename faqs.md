@@ -79,14 +79,14 @@ A typical CNAME record would look like the following on the DNS configuration pa
 | CNAME | www.example.com | example.cdn.appdomain.cloud. | 15 minutes |
 
 
-## What will I be billed for in my CDN
-{: #what-will-i-be-billed-for-in-my-cdn}
+## What am I billed for my CDN?
+{: #what-will-i-be-billed-for-my-cdn}
 {: faq}
 {: support}
 
 You are only billed for bandwidth that is used per IBM Cloud Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the Edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
 
-## When will I be billed for my CDN?
+## When am I billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}
 {: faq}
 {: support}

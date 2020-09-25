@@ -140,7 +140,7 @@ During the DV SAN certificate requesting process, the DNS record chain for your 
 CDNs created with HTTPS protocol support HTTP2 for TLS secured traffic.
 
 ## Why is the newly created wildcard CDN status `CNAME configuration required` if we don't need to set the DNS record to point the domain to IBM CNAME?
-{: #wildcard-cname-configureation-needed}
+{: #wildcard-cname-configuration-needed}
 {:faq}
 
 For the wildcard CDN, you don't need to set the DNS record to point the domain to IBM CNAME.  As you create the CDN, the system creates a new DNS record to point the IBM CNAME (`xxx.cdn.appdomain.cloud.`) to Akamai endpoint (`wildcard.appdomain.mdc.edgekey.net.`), and it needs some time to finish the record propagation. The CDN status is shown as `CNAME configuration required` until the record is propagated. After the propagation is done, refresh the mapping status by clicking the `Get status` button. The CDN status then changes to `Running`.
