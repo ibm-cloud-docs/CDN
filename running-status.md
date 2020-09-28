@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-28"
 
 keywords: 
 
@@ -22,12 +22,63 @@ subcollection: CDN
 {:support: data-reuse='support'}
 {:faq: data-hd-content-type='faq'}
 
-# CDN CNAME
+# Getting to Running status
+{: next-steps-after-ordering}
+
+After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain. 
+{:shortdesc}
+
+You might need to click the **Get status** button a few times before your CDN shows `Running` status.
+{: note}
+
+## For a Wildcard HTTPS CDN
+{: for-a-wildcard-https-cdn}
+
+From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status** until your CDN shows `Running` status. It isn't necessary to configure any other settings or verify that CDN traffic works as expected. From here, you can review "How to" topics in the table of contents to configure and manage your CDN.
+
+## For an HTTP-only CDN
+{: for-an-http-only-cdn}
+
+Follow these steps to get your CDN up and running:
+
+1. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
+2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
+
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**. 
+
+   A typical CNAME record looks similar to the following:
+
+   ![CNAME record](images/cname.png)
+
+3. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
+
+Your CDN is now running. From here, you can review the "How to" topics to further configure and manage your CDN.
+
+## For a SAN HTTPS CDN
+{: for-a-san-https-cdn}
+
+Follow these steps to get your CDN up and running:
+
+1. Address the domain validation challenge. For instructions, see [Completing Domain Control Validation for HTTPS with DV SAN](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san).
+2. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
+3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
+
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. 
+
+   A typical CNAME record looks similar to the following:
+
+   ![CNAME record](images/cname.png)
+
+4. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
+
+Your CDN is now running. From here, you can review the "How to" topics in the table of contents to further configure and manage your CDN.
+
+## CDN CNAME
 {: cdn-cname}
 
 IBM CDN CNAME (also called an endpoint) can make your CDN mapping status to `Running` because it can resolve your domain to Akamai edge servers if you cname your domain to it. IBM provides two CNAMEs, and you can create CNAME record in your DNS system to point your CDN domain to one of the CNAMEs. 
 
-## IBM CNAME
+### IBM CNAME
 {: ibm-cname}
 IBM CNAME is the default CNAME. It is suffixed with `cdn.appdomain.cloud.` or `cdnedge.bluemix.net.` (The old mapping created before 08/05/2019), and you can define the prefix during [creating new CDN mapping](/docs/CDN?topic=CDN-order-a-cdn).
 
@@ -67,7 +118,7 @@ Now the IBM CNAME is pointing to your own origin's hostname. By switching the DN
 
 For more informtion about IBM CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cname).
 
-## Akamai CNAME
+### Akamai CNAME
 {: akamai-cname}
 Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to the Akamai CNAME, it can resovle your domain to Akamai edge servers, and because it has fewer DNS chain nodes, it has a shorter DNS lookup time than the IBM CNAME. 
 
@@ -102,56 +153,6 @@ For the Akamai CNAME, it's important to consider the following:
 
 For more information about Akamai CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cname).
 
-## Getting to Running status
-{: next-steps-after-ordering}
-
-After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain. 
-
-You might need to click the **Get status** button a few times before your CDN shows `Running` status.
-{: note}
-
-### For a Wildcard HTTPS CDN
-{: for-a-wildcard-https-cdn}
-
-From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status** until your CDN shows `Running` status. It isn't necessary to configure any other settings or verify that CDN traffic works as expected. From here, you can review the "How To" topics in the table of contents to configure and manage your CDN.
-
-### For an HTTP-only CDN
-{: for-an-http-only-cdn}
-
-Follow these steps to get your CDN up and running:
-
-1. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
-2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to IBM CNAME or Akamai CNAME. Most DNS providers can give you instructions on setting up or changing the CNAME.
-
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**. 
-
-   A typical CNAME record looks similar to the following:
-
-   ![CNAME record](images/cname.png)
-
-3. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
-
-Your CDN is now running. From here, you can review the "How To" topics to further configure and manage your CDN.
-
-### For a SAN HTTPS CDN
-{: for-a-san-https-cdn}
-
-Follow these steps to get your CDN up and running:
-
-1. Address the domain validation challenge. For instructions, see [Completing Domain Control Validation for HTTPS with DV SAN](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san).
-2. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
-3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to IBM CNAME or Akamai CNAME. Most DNS providers can give you instructions on setting up or changing the CNAME.
-
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. 
-
-   A typical CNAME record looks similar to the following:
-
-   ![CNAME record](images/cname.png)
-
-4. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
-
-Your CDN is now running. From here, you can review the "How To" topics in the table of contents to further configure and manage your CDN.
-
 ## FAQ for CDN CNAME
 {: #faq-for-cdn-cname}
 
@@ -168,7 +169,7 @@ The IP addresses of an Akamai edge server are changed dynamically; therefore, se
 {: #can-i-edit-cdn-cname}
 {: faq}
 
-No, you can not update the IBM CNAME or Akamai CNAME. You can only define the prefix of the IBM CNAME when you're creating the CDN. The Akamai CNAME is generated automatically by Akamai and you do not have to define or edit it.
+No, you can't update the IBM CNAME or Akamai CNAME. You can only define the prefix of the IBM CNAME when you're creating the CDN. The Akamai CNAME is generated automatically by Akamai and you do not have to define or edit it.
 
 ### When should I use the Akamai CNAME instead of IBM CNAME?
 {: #when-to-use-akamai-or-ibm-cname}
@@ -208,7 +209,7 @@ Reference&#32;&#35;18&#46;9df02817&#46;1600156471&#46;bf3f7f1
 {: faq}
 
 You can find the Akamai CNAME in the following ways:
-- From the portal, you can click into the CDN domain, and view the Akamai CNAME in **Overview > Details**.
+- From the console, you can click into the CDN domain, and view the Akamai CNAME in **Overview > Details**.
 - From the API, use the [list domain mapping by uniqueid](https://cloud.ibm.com/docs/CDN?topic=CDN-cdn-api-reference#listdomainmappingbyuniqueid) or the [list all domain mapping](https://cloud.ibm.com/docs/CDN?topic=CDN-cdn-api-reference#listdomainmappings) commands to get the Akamai CNAME.
 
 ### Why is the Akamai CNAME empty or shown as `-`?

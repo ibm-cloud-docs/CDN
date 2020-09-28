@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-09-01"
+lastupdated: "2020-09-28"
 
 keywords:
 
@@ -23,6 +23,12 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 {:shortdesc}
+
+## September 2020
+{: #september-2020}
+
+  * Performance optimization [Akamai CNAME](/docs/CDN?topic=CDN-cdn-cname#akamai-cname) support
+  * Added a DNS based [challenge domain](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#challenge-domain) validation method for SAN HTTPS
 
 ## August 2020
 {: #august-2020}
