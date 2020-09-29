@@ -27,7 +27,7 @@ subcollection: CDN
 ## September 2020
 {: #september-2020}
 
-  * Performance optimization [Akamai CNAME](/docs/CDN?topic=CDN-cdn-cname#akamai-cname) support
+  * Performance optimization [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) support
   * Added a DNS based [challenge domain](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#challenge-domain) validation method for SAN HTTPS
 
 ## August 2020
