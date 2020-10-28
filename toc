@@ -45,7 +45,6 @@ Content Delivery Network (CDN)
         setting-content-caching-time-using-ttl.md
         how-to.md
 
-    at-events.md
     cors-and-cdn.md
     byte-range-request.md
     metrics.md
@@ -69,6 +68,7 @@ Content Delivery Network (CDN)
         purge-group-container.md
         purge-history-container.md
 
+    at-events.md
     cdn-example-code.md
     edge-servers.md
     legacy-portal.md
