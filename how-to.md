@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27"
+lastupdated: "2020-11-12"
 
 keywords: manage, purge cache content
 
@@ -49,40 +49,4 @@ When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-al
    By default, the purge groups in the **Purge history** are not saved to favorites and trimmed every 15 days automatically. To save purge groups for future use, you can save them as favorites by choosing the **Add to favorites** option. When a purge group is saved, it is not be automatically trimmed.
 
    The name and path list for a purge group that is listed in **Favorite paths** and **Purge history** cannot be updated at present.
-{:note}
-
-
-## Updating CDN configuration details
-{: #updating-cdn-configuration-details}
-
-After your CDN is running, you can update CDN configuration details. Follow these steps.
-
-1. On the CDN page, select your CDN, which takes you to the **Overview** page.
-2. Select the **Settings** tab. Your CDN configuration details are displayed.
-
-   ![Settings tab](images/settings-tab.png)  
-
-   You only see **SSL Certificate** if your CDN was configured with HTTPS.
-   {: note}
-
-   For **Server**, the following fields can be changed:
-      * Host header
-      * Origin server address
-      * HTTP/HTTPS Port
-      * Serve Stale Content
-      * Respect Headers
-      * Optimization options
-      * Cache-query    
-
-   For **Object Storage**, the following fields can be changed:
-      * Host header
-      * Endpoint
-      * Bucket name
-      * HTTPS Port
-      * Allowed file extensions
-      * Serve Stale Content
-      * Respect Headers
-      * Optimization options
-      * Cache-query
-
-3. Update the **Origin** or **Other Options** details if needed, then click the **Save** button in the lower right corner to update your CDN configuration details.
+   {:note}

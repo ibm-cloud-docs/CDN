@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-11"
+lastupdated: "2020-11-17"
 
 keywords: IBM, Content Delivery Network, CDN, Audit log, activity tracker, LogDNA, event
 
@@ -36,7 +36,7 @@ Use the Activity Tracker service to track how users and applications interact wi
 ## List of Domain Mapping events
 {: #events_domain_mapping}
 
-The following table lists the actions taken related to Domain Mappings. With each of these actions, an event was generated:
+The following table lists the actions taken related to Domain Mappings. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -50,7 +50,7 @@ The following table lists the actions taken related to Domain Mappings. With eac
 ## List of origin path action events
 {: #events_origin_path}
 
-The following table lists the actions taken related to origin path actions. With each of these actions, an event was generated:
+The following table lists the actions taken related to origin path actions. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -61,7 +61,7 @@ The following table lists the actions taken related to origin path actions. With
 ## List of Time To Live events
 {: #events_ttl}
 
-The following table lists the actions taken related to TTL. With each of these actions, an event was generated:
+The following table lists the actions taken related to TTL. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -72,7 +72,7 @@ The following table lists the actions taken related to TTL. With each of these a
 ## List of Purge events
 {: #events_purge}
 
-The following table lists the actions taken related to purge. With each of these actions, an event was generated:
+The following table lists the actions taken related to purge. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -83,7 +83,7 @@ The following table lists the actions taken related to purge. With each of these
 ## List of CDN Account events
 {: #events_account}
 
-The following table lists the actions taken related to CDN account. With each of these actions, an event was generated:
+The following table lists the actions taken related to CDN account. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -94,7 +94,7 @@ The following table lists the actions taken related to CDN account. With each of
 ## List of Geolocation events
 {: #events_geo}
 
-The following table lists the actions taken related to geolocation. With each of these actions, an event was generated:
+The following table lists the actions taken related to geolocation. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -105,7 +105,7 @@ The following table lists the actions taken related to geolocation. With each of
 ## List of Hotlink events
 {: #events_hotlink}
 
-The following table lists the actions taken related to hotlink. With each of these actions, an event was generated:
+The following table lists the actions taken related to hotlink. With each of these actions, an event is generated:
 
 | Action                                              | Description                                            |
 |:-----------------------------------------------|:----------------------------------------------------|
@@ -113,6 +113,18 @@ The following table lists the actions taken related to hotlink. With each of the
 | cdn-powered-by-akamai.hotlink.update | Update hotlink.     |
 | cdn-powered-by-akamai.hotlink.delete | Delete hotlink.     |
 
+## List of Token Authentication events
+{: #events_token_authentication}
+
+The following table lists the actions taken related to token authentication. With each of these actions, an event is generated:
+
+| Action                                              | Description                                            |
+|:-----------------------------------------------|:----------------------------------------------------|
+| cdn-powered-by-akamai.token-auth.create | Create token authentication.     |
+| cdn-powered-by-akamai.token-auth.update | Update token authentication.     |
+| cdn-powered-by-akamai.token-auth.delete | Delete token authentication.     |
+
+For more details about token authentication, refer to [Working with token authentication](/docs/CDN?topic=CDN-working-with-token-authentication).
 
 ## Viewing events
 {: #ui}
