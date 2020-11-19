@@ -34,6 +34,7 @@ Content Delivery Network (CDN)
         starting_cdn.md
         stopping_cdn.md
         deleting_cdn.md
+        updating-config-details.md
         adding-origin-path-details.md
         dynamic-content-acceleration.md
         how-to-configure-object-storage.md
