@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-04-04"
+  years: 2017, 2020
+lastupdated: "2020-12-03"
 
 keywords: cache control, cache-control, cache duration, max-age,  Edge server, edge-level, respect header, HTTP client
 
@@ -28,7 +28,7 @@ When using a CDN, two levels of caching are available:
 
 The method that you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
 
-  * Whether the Respect Header setting is ON or OFF. By default it is set to ON.
+  * Whether the Respect Header setting is `ON` or `OFF` (default).
   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the Edge, if you want Edge servers to send HTTP responses with the Cache-Control header for that content.

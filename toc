@@ -12,9 +12,9 @@ Content Delivery Network (CDN)
 
     {: .topicgroup}
     Videos & tutorials
-        [Video: IBM Cloud Networking Overview](https://www.youtube.com/watch?v=KMRAXSu6KJ8)
-        [Video: What is Content Delivery Network?](https://www.youtube.com/watch?v=Bsq5cKkS33I)
-        [Video: How to set up a web app with security groups, load balancers, and CDN](https://www.youtube.com/watch?time_continue=1&v=LRvNCXvtkX0&)
+        video-networking-overview.md
+        video-what-is-cdn.md
+        video-set-up-web-app.md
         /solution-tutorials/solution-tutorials-static-files-cdn
         /solution-tutorials/solution-tutorials-dynamic-content-cdn
 
@@ -92,6 +92,14 @@ Content Delivery Network (CDN)
 
     known-limitations.md
     whats-new.md
-    troubleshooting.md
+
+    {: .topicgroup}
+    Troubleshooting
+        ts-cdn-working.md
+        ts-503-error.md
+        ts-hostname-does-not-load.md
+        ts-cannot-connect-https.md
+        ts-loading-cname-hostname.md
+    
     getting-help.md
     {: .navgroup-end}

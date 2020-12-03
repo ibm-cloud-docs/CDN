@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-08-06"
+  years: 2017, 2020
+lastupdated: "2020-12-03"
 
 keywords: mapping, container, class, collection, object, API
 
@@ -74,7 +74,7 @@ Returns an object similar to this one:
             [path] => /media/
             [performanceConfiguration] => General web delivery
             [protocol] => HTTP
-            [respectHeaders] => 1
+            [respectHeaders] => 0
             [serveStale] => 1
             [status] => RUNNING
             [uniqueId] => 750352919747xxx

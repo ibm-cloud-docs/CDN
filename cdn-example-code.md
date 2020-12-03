@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-31"
+lastupdated: "2020-12-03"
 
 keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
@@ -231,7 +231,7 @@ try {
     $inputObject->cname = "api-testing.cdn.appdomain.cloud.";
     $inputObject->path = "/media";
     $inputObject->header = '';
-    $inputObject->respectHeader = true;
+    $inputObject->respectHeader = false;
     $inputObject->bucketName = 'mybucket';
     $inputObject->fileExtension = "txt, jpeg";
     $inputObject->cacheKeyQueryRule = "include-all";
@@ -266,7 +266,7 @@ Array
             [path] => /media/
             [performanceConfiguration] => General web delivery
             [protocol] => HTTP
-            [respectHeaders] => 1
+            [respectHeaders] => 0
             [serveStale] => 1
             [status] => CNAME_CONFIGURATION
             [uniqueId] => 610345992629xxx

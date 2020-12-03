@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019
-lastupdated: "2020-04-08"
+  years: 2019, 2020
+lastupdated: "2020-12-03"
 
 keywords: DCA, dynamic, detection path, prefetching, image compression, ttl, cache
 
@@ -100,10 +100,10 @@ When DCA is enabled for your CDN mapping or origin, the Akamai Edge servers cach
 
 * To prevent caching of contents, do one of the following:
 
-   - Set `Respect header` to `ON` (default) and include headers in your origin, which prevents caching (for example, `Cache-Control: no-cache, no-store`).
-   - Set `Respect header` to `OFF`, create a TTL with a path to match your contents, and set a `0` value.
+   - Set `Respect header` to `ON` and include headers in your origin, which prevents caching (for example, `Cache-Control: no-cache, no-store`).
+   - Set `Respect header` to `OFF` (default), create a TTL with a path to match your contents, and set a `0` value.
 
 In some cases, you might want to mix static (for example, images, CSS, JS) and dynamic assets under the same path, so you might need to make some assets cacheable. You can do this with the following options:
 
 - Set `Respect header` to `ON` and set the caching headers in your origin (for example, `Cache-Control:public, max-age=31536000`).
-- Set `Respect header` to `OFF`, create a TTL with path to match your static contents, and set the value as the wanted caching time.
+- Set `Respect header` to `OFF` (default), create a TTL with path to match your static contents, and set the value as the wanted caching time.
