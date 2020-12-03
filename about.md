@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-06"
+lastupdated: "2020-12-03"
 
 keywords: content delivery network, CDN
 
@@ -137,7 +137,7 @@ As an industry best practice, Akamai only trusts the root certificates and not t
 ### Respect Headers
 {: #respect-headers}
 
-The **Respect Headers** option allows the HTTP header configuration in the origin to override the CDN configuration. This feature is ON by default.
+The **Respect Headers** option allows the HTTP header configuration in the origin to override the CDN configuration. The default value for respect header is `OFF`, which means the CDN caches your contents by default. For more information, see [Controlling an HTTP client's cache duration](/docs/CDN?topic=CDN-using-cache-control-to-control-an-http-client-s-cache-duration).
 
 ### Serve Stale content
 {: #serve-stale-content}
