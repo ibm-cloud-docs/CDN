@@ -122,7 +122,7 @@ If you provide a path while creating your CDN, it allows you to isolate the file
 {: #my-cdn-is-in-an-error-state}
 {: faq}
 
-Refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting#troubleshooting) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) pages, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
+Refer to the [Troubleshooting](/docs/CDN?topic=CDN-troubleshoot-cdn-working) or [Getting help and support](/docs/CDN?topic=CDN-gettinghelp#gettinghelp) topics, or open a case in the [{{site.data.keyword.cloud_notm}} console](https://{DomainName}/).
 
 ## Where do I find the CNAME for my CDN if I didn't provide one?
 {: #where-do-i-find-the-cname-for-my-cdn}
