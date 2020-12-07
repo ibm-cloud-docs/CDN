@@ -63,7 +63,7 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 
 This method is recommended **ONLY** if your CDN is not serving live traffic. If your domain is serving live traffic, we recommended using other three methods to validate your domain.
 
-To use this method, add a CNAME record for your CDN domain into your DNS configuration. Either the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cdn) or the [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cdn) can be used as the record value. No other action is required from you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
+To use this method, add a CNAME record for your CDN domain into your DNS configuration. Either the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or the [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) can be used as the record value. No other action is required from you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
 
    ![Domain Validation CNAME](images/domain-validation-cname.png)
 
@@ -90,7 +90,7 @@ For example, the CDN domain is `cdn.example.com`, then the challenge domain CNAM
 |------------------|---------|-------------|----------------|
 | *CNAME* | *_acme-challenge.cdn.example.com* | *cdn.example.com.ak-acme-challenge.cdn.appdomain.cloud.* | *15 minutes* |
 
-Using Challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. While in other methods, you would receive a [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others. 
+Using Challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. While in other methods, you would receive a [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others.
 {: note}
 
 ---
