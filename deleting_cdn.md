@@ -44,7 +44,7 @@ To delete a CDN, follow these steps:
 No. Selecting **Delete** deletes only the CDN; it does not delete your account.
 
 ### Why is the DV SAN certificate CDN still there after I deleted it?
-{: #delete-cdn-account}
+{: #dv-san-certificate}
 {: faq}
 
 If your CDN is configured with HTTPS with DV SAN certificate, it can take up to five hours to complete the deletion process.
