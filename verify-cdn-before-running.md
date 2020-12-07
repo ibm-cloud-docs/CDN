@@ -85,7 +85,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 1. Get the Akamai Edge server's IP address.
 
    If the CDN certificate type is SAN HTTPS, then you can get the Edge server IP address by performing name resolution of [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). If the CDN type is HTTP only, then you can use the fixed domain `wildcard.cdnedge.bluemix.net.edgekey.net` to get the IP address. You can use the `dig` command to perform the resolution.
-   
+
    In this example, the CDN is a SAN HTTPS mapping, so its IBM CNAME is used to do the resolution. The `dig` result is similar to the following:
 
    ```bash
@@ -128,7 +128,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 
    This result shows that the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai Edge server's IP address (`104.84.150.124`)and that the `/etc/hosts` file change took effect.
 
-4. Verify the CDN traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshooting#how-do-I-know-my-cdn-is-working) to request the domain.
+4. Verify the CDN traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshoot-cdn-working) to request the domain.
 
    ```bash
    curl -s -o cdn-test-index.html -D - \
@@ -146,7 +146,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    ```
    {:pre}
 
-   If Akamai debug headers are returned, and the response code and content are the same as before, then the CDN traffic works. See [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting) for further debugging tips.
+   If Akamai debug headers are returned, and the response code and content are the same as before, then the CDN traffic works. See [Troubleshooting](/docs/CDN?topic=CDN-troubleshoot-cdn-working) for further debugging tips.
 
    Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins and purge.
    {: important}
