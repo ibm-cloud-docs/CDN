@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-08"
+lastupdated: "2020-12-23"
 
 keywords: troubleshooting
 
@@ -32,5 +32,5 @@ When your {{site.data.keyword.cloud}} CDN is configured to use COS as the object
 This behavior is caused by the index document limitation in IBM COS.
 {: tsCauses}
 
-You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`).
+You must specify the complete request path in the browser's address bar (for example, `www.example.com/index.html`). For an alternative solution, see [How do I use the ICOS default index page with CDN](/docs/CDN?topic=configure-cdn-with-ibm-cloud-object-storage#using-icos-default-index-with-cdn).
 {: tsResolve}

@@ -72,9 +72,9 @@ When your CDN is in `CNAME Configuration required` or `Running` state, you can a
 {: #how-cdn-edge-server-retrieves-content-from-origin-server}
 {:faq}
 
-* For the **Server** type origin, the CDN keeps the origin path in the URL. For example, if you add origin `origin.example.com` in path `/example/*`, when a user opens the CDN URL `cdn.example.com/example/*`, the CDN edge server retrieves the content from `origin.example.com/example/*`.
+* For the **Server** type of origin, the CDN keeps the origin path in the URL. For example, if you add origin `origin.example.com` in path `/example/*`, when a user opens the CDN URL `cdn.example.com/example/*`, the CDN edge server retrieves the content from `origin.example.com/example/*`.
 
-* For the **Object Storage** type origin, the CDN makes a URL transformation. For example, if object storage origin `s3-example.object-storage.com` with bucket name `xyz-bucket-name` is added in path `/example-cos/*`, when a user opens the CDN URL `cdn.example.com/example-cos/*`, the CDN edge server retrieves the content from `s3-example.object-storage.com/xyz-bucket-name/*`.
+* For the **Object Storage** type of origin, the CDN makes a URL transformation. For example, if object storage origin `s3-example.object-storage.com` with bucket name `xyz-bucket-name` is added in path `/example-cos/*`, when a user opens the CDN URL `cdn.example.com/example-cos/*`, the CDN edge server retrieves the content from `s3-example.object-storage.com/xyz-bucket-name/*`.
 
 ### What's the difference between the origin on the Settings page and the origins on the Origins page?
 {: #how-is-it-different-from-the-cdn-origin}
