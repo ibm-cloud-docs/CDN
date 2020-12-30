@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-12-03"
+lastupdated: "2020-12-29"
 
 keywords:
 
@@ -27,8 +27,9 @@ subcollection: CDN
 ## December 2020
 {: #december-2020}
 
-  * Change the default [respect header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#respect-headers) value from `ON` to `OFF`.
-  * Add [Feedback widget](/docs/overview?topic=overview-feedback) for CDN service.
+  * New API are available for the [Modify Response Header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#modify-response-header), which can modify the outgoing response headers that are sent from the Edge server back to the client. 
+  * Changed the default [respect header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#respect-headers) value from `ON` to `OFF`.
+  * Added a [feedback widget](/docs/overview?topic=overview-feedback) for the CDN service.
 
 ## September 2020
 {: #september-2020}

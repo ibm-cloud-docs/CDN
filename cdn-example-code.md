@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-03"
+lastupdated: "2020-12-29"
 
 keywords: code examples, example API calls, CDN API, Soap, client, apiKey
 
@@ -36,7 +36,7 @@ This document contains example API calls and the resulting output for numerous C
 
 Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}.
 
-  * You must get access to the SoapClient via `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
+  * You must get access to the SoapClient through `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
@@ -306,7 +306,7 @@ try {
 ```
 {: codeblock}
 
-If your CNAME record was added to your DNS server, the `status` of your CDN will change to RUNNING after the call to `verifyDomainMapping`, as shown in the following example.
+If your CNAME record was added to your DNS server, the `status` of your CDN changes to `RUNNING` after the call to `verifyDomainMapping`, as shown in the following example.
 
 ```php
 
@@ -322,8 +322,7 @@ If your CNAME record was added to your DNS server, the `status` of your CDN will
 ```
 {: codeblock}
 
-
-If your CNAME record was not added to your DNS server, or your server isn't updated yet, the `status` of your CDN is CNAME_CONFIGURATION, as shown in the following example.
+If your CNAME record was not added to your DNS server, or your server isn't updated yet, the status of your CDN is `CNAME_CONFIGURATION`, as shown in the following example.
 
 It can take several minutes (up to 30) for the CNAME chaining to complete.
 {: note}
@@ -1040,6 +1039,56 @@ SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth Obje
         [tokenKey] => 'abc123',
         [transitionKey] => 'def987',
         [name] => '__token__'
+    )
+```
+{: codeblock}
+
+## Example code for creating a modify-response-header
+{: #create-modify-response-header-example}
+
+This example shows how to create a `modify-response-header`.
+
+```php
+$client = \SoftLayer\SoapClient::getClient(
+    'SoftLayer_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader',
+    null,
+    $apiUsername,
+    $apiKey
+  );
+
+try {
+    $inputObject = new stdClass();
+
+    $inputObject->uniqueId = "351752925563xxx"; // CDN Domain mapping unique ID
+    $inputObject->path = "/path/to/test/*"; // Path you want to modify-response-header
+
+    // CDN modify-response-header configurations
+    $inputObject->type = "append"; // Primary encryption key
+    $inputObject->headers = ["header1:value1", "header2:value2"]; // Headers list 
+    $inputObject->delimiter = ";"; // Multiple header value's delimiter (optional)
+
+    $modifyResponseHeader = $client->createModifyResponseHeader($inputObject);
+    print_r($modifyResponseHeader);
+    print_r("\n");
+} catch (\Exception $e) {
+    die('createModifyResponseHeader failed with an exception: ' . $e->getMessage());
+}
+```
+{: codeblock}
+
+The call returns the following object:
+
+```php
+SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader Object
+    (
+        [modResHeaderUniqueId] => '351752925563xxx',
+        [path] => '/private/*',
+        [type] => 'append',
+        [headers] => [
+            'header1' => 'value1',
+            'header2' => 'value2',
+        ],
+        [delimiter] => ';'
     )
 ```
 {: codeblock}

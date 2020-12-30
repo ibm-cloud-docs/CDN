@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-31"
+lastupdated: "2020-12-29"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -127,7 +127,7 @@ Using the provided inputs, this function creates a domain mapping for the given 
 ### deleteDomainMapping
 Deletes the domain mapping based on the `uniqueId`. The domain mapping must be in one of the following states: _RUNNING_, _STOPPED_, _DELETED_, _ERROR_, _CNAME_CONFIGURATION_, or _SSL_CONFIGURATION_.
 
-* **Parameters**- `uniqueId`- (Required) the uniqueId of the mapping to be deleted
+* **Parameters**- `uniqueId`- (Required) the unique ID of the mapping to be deleted.
 * **Return**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
@@ -137,7 +137,7 @@ Verifies the status of the CDN, and updates the `status` of the CDN mapping if i
 
 This API can be called at any time to get the latest CDN-mapping status. The domain mapping must be in one of the following states: _RUNNING_ or _CNAME_CONFIGURATION_.
 
-* **Parameters**- `uniqueId` - (Required) uniqueId of the mapping you want to verify
+* **Parameters**- `uniqueId` - (Required) The unique ID of the mapping that you want to verify.
 * **Return**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
@@ -146,7 +146,7 @@ This API can be called at any time to get the latest CDN-mapping status. The dom
 ### startDomainMapping
 Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain mapping must be in a _STOPPED_ state.
 
-* **Parameters**- `uniqueId` - (Required) Provide uniqueId of the mapping to be started.
+* **Parameters**- `uniqueId` - (Required) Provide the unique ID of the mapping to be started.
 * **Return**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
@@ -155,7 +155,7 @@ Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain m
 ### stopDomainMapping
 Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the domain mapping must be in a _RUNNING_ state.
 
-* **Parameters**- (Required) Provide `uniqueId` - uniqueId of the mapping to be stopped.
+* **Parameters**- `uniqueId` - (Required) Provide the unique ID of the mapping to be stopped.
 * **Return**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
@@ -205,7 +205,7 @@ Returns a collection of all domain mappings for current customer.
 ### listDomainMappingByUniqueId
 Returns a collection with a single domain object based on a CDN's `uniqueId`.
 
-* **Parameters**- `uniqueId`- Provide uniqueId of the mapping to be returned.
+* **Parameters**- `uniqueId`- Provide the unique ID of the mapping to be returned.
 * **Return**- A single-object collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
 
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
@@ -261,7 +261,7 @@ Updates an existing origin path for an existing mapping and for a particular cus
     * `originType`- (Required) Origin type can be `HOST_SERVER` or `OBJECT_STORAGE`.
     * `path`- (Required) New path to be added. Relative to the mapping path.
     * `httpPort`, `httpsPort`, or both - (Required for Host Server, if being updated) These two options must correspond to the wanted protocol. If the protocol is `HTTP`, then `httpPort` must be set, and `httpsPort` must _not_ be set. Likewise, if the protocol is `HTTPS`, then `httpsPort` must be set, and `httpPort` must _not_ be set. If the protocol is `HTTP_AND_HTTPS`, then _both_ `httpPort` and `httpsPort` _must_ be set. Akamai has certain limitations on port numbers. See the [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for allowed port numbers.
-    * `uniqueId`- (Required) uniqueId of the mapping to which this origin belongs.
+    * `uniqueId`- (Required) the unique ID of the mapping to which this origin belongs.
     * `bucketName`- (Required for Object Storage only) Bucket name for your S3 Object Storage.
     * `fileExtension`- (Required for Object Storage only) File extensions that are allowed to be cached.
     * `cacheKeyQueryRule`- (Required if being updated) Cache key behavior rules can be updated only for origin paths created _after_ 11/16/17. The following options are available to configure Cache Key behavior:
@@ -279,7 +279,7 @@ Updates an existing origin path for an existing mapping and for a particular cus
 Deletes and existing origin path for an existing CDN, and for a particular customer. To be deleted, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
 * **Parameters**:
-  * `uniqueId`- (Required) The uniqueId of the mapping to which this origin path belongs.
+  * `uniqueId`- (Required) The unique ID of the mapping to which this origin path belongs.
   * `path`- (Required) Path to be deleted.
 
 * **Return** - A status message if the delete was successful, otherwise an exception is thrown.
@@ -289,7 +289,7 @@ Deletes and existing origin path for an existing CDN, and for a particular custo
 Lists the origin paths for an existing mapping based on the `uniqueId`.
 
 * **Parameters**:
-  * `uniqueId`- (Required) Provide the uniqueId of the mapping for which you want to list origin paths.
+  * `uniqueId`- (Required) Provide the unique ID of the mapping for which you want to list origin paths.
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`.
 
   [Origin path container](/docs/CDN?topic=CDN-path-origin-container)
@@ -307,7 +307,7 @@ There's a rate limit to the purge actions. See the [FAQ](/docs/CDN?topic=CDN-lim
 An example to [create a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).  
 
 * **Parameters**:
-  * `uniqueId` - uniqueId of the CDN mapping for which the purge group was created.
+  * `uniqueId` - The unique ID of the CDN mapping for which the purge group was created.
   * `name` - Purge group name. The favorite group name must be unique, but unfavorite groups do not have this limitation.
   * `paths` - A collection of purge paths.
   * `option` - The following options are available to create a purge group:
@@ -326,8 +326,8 @@ An example to [create a purge group](/docs/CDN?topic=CDN-code-examples-using-the
 Gets a purge group.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping.
-  * `groupUniqueId` - Unique ID of the purge group.
+  * `uniqueId` - The unique ID of the mapping.
+  * `groupUniqueId` - The unique ID of the purge group.
 
 * **Return** - `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -340,7 +340,7 @@ Gets a purge group.
 Lists favorite purge groups.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping.
+  * `uniqueId` - The unique ID of the mapping.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -353,7 +353,7 @@ Lists favorite purge groups.
 Lists unfavorite purge groups.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping.
+  * `uniqueId` - The unique ID of the mapping.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -366,7 +366,7 @@ Lists unfavorite purge groups.
 Saves a specific purge group as favorite.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping to which the purge group belongs.
+  * `uniqueId` - The unique ID of the mapping to which the purge group belongs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -379,7 +379,7 @@ Saves a specific purge group as favorite.
 Removes a specific purge group from favorite.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping to which the purge group belongs.
+  * `uniqueId` - The unique ID of the mapping to which the purge group belongs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
@@ -393,7 +393,7 @@ Purges all files in purge groups by a collection of group IDs.
 Purge actions have a rate limit check. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping.
+  * `uniqueId` - The unique ID of the mapping.
   * `groupUniqueIds` - A collection of purge group IDs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`.
@@ -420,7 +420,7 @@ Returns the purge actions history for a domain mapping.
 The purge history retains the last 15 days of records.
 
 * **Parameters**:
-  * `uniqueId` - Unique ID of the mapping.
+  * `uniqueId` - The unique ID of the mapping.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`.
 
@@ -467,7 +467,7 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 Create a single file purge.
 
 * **Parameters**:
-  * `uniqueId` - uniqueId of the mapping to which the Purge is created.
+  * `uniqueId` - The unique ID of the mapping to which the Purge is created.
   * `path` - Path of the Purge to be created.
 
 * **Return** - a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
@@ -479,7 +479,7 @@ Create a single file purge.
 Returns the Purge history for a CDN based on the `uniqueId` and `saved` status. (By default, the value of `saved` is set to _UNSAVED_.)
 
 * **Parameters**:
-  * `uniqueId` - uniqueId of the mapping for which retrieve Purge history.
+  * `uniqueId` - The unique ID of the mapping for which retrieve Purge history.
   * `saved` - Return Purges that were _SAVED_ or _UNSAVED_.
 
 * **Return** - a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
@@ -491,7 +491,7 @@ Returns the Purge history for a CDN based on the `uniqueId` and `saved` status. 
 Updates the status of the Purge path entry to indicate whether that Purge path should be saved. Creates a new `saved` Purge if a Purge path is saved. Deletes a saved Purge record if the path is `unsaved`.
 
 * **Parameters**:
-  * `uniqueId` - uniqueId of the mapping to which the Purge belongs.
+  * `uniqueId` - The unique ID of the mapping to which the Purge belongs.
   * `path` - Path of the Purge to be saved or unsaved.
   * `saved` - _SAVED_ or _UNSAVED_
 
@@ -502,6 +502,7 @@ Updates the status of the Purge path entry to indicate whether that Purge path s
 {: #api-for-time-to-live}
 
 ### TimeToLive class variables:  
+
 ```  
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
 {
@@ -521,6 +522,7 @@ class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
     public $createDate;
 }
 ```  
+
 ### createTimeToLive
 Creates a `TimeToLive` object.
 
@@ -558,12 +560,12 @@ All metrics time is UTC+0.
 Returns all mappings' bandwidth and hits (including static and dynamic separately) of predetermined statistics for direct display for a customer's account, over a given period of time with granularity of day.
 
  * **Parameters**:
-   * `vendorName` - Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
+   * `vendorName` - Provide the name of the CDN provider for this customer. Currently, only `akamai` is supported.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -571,12 +573,12 @@ ___
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
  * **Parameters**:
-   * `vendorName` - Provide the name of the CDN provider for this customer. Currently, only `akamai`is supported.
+   * `vendorName` - Provide the name of the CDN provider for this customer. Currently, only `akamai` is supported.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - aggregated metrics data from startDate to endDate **default**
-     * `day` - daily metrics data from startDate to endDate
+      * `aggregate` - aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - daily metrics data from `startDate` to `endDate`.
 
  * **Return** - a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
@@ -585,12 +587,12 @@ ___
 Returns the integrated metrics data for the given mapping, which includes the total number of predetermined statistics, detailed hits and bandwidth, hits by type, and the bandwidth by region. The value of `frequency` is `day` by default. For more details, see [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-integrated-metrics).
 
  * **Parameters**:
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startTime` - Provide the start date timestamp (UTC+0) for query.
    * `endTime` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format. The following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate.
-     * `day` - Daily metrics data from startDate to endDate **default**.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate`.
+      * `day` - Daily metrics data from `startDate` to `endDate` **default**.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -598,12 +600,12 @@ ___
 Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -611,14 +613,14 @@ ___
 Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
-     * `week` - Weekly metrics data from startDate to endDate.
-     * `month` - Monthly metrics data from startDate to endDate.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
+      * `week` - Weekly metrics data from `startDate` to `endDate`.
+      * `month` - Monthly metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
@@ -626,14 +628,14 @@ ___
 Returns the total number of hits at a certain frequency over a given range of time. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
-     * `week` - Weekly metrics data from startDate to endDate.
-     * `month` - Monthly metrics data from startDate to endDate.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
+      * `week` - Weekly metrics data from `startDate` to `endDate`.
+      * `month` - Monthly metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -641,12 +643,12 @@ ___
 Returns the quantity of bandwidth in GB for an individual CDN. Regions might differ for each vendor, per mapping.
 
  * **Parameters**:  
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
-   * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
+   * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:   
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -654,12 +656,12 @@ ___
 Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is `aggregate` by default.
 
  * **Parameters**:
-   * `mappingUniqueId` - Provide a uniqueId of the mapping for which metrics are queried.
+   * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
    * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
-     * `aggregate` - Aggregated metrics data from startDate to endDate **default**.
-     * `day` - Daily metrics data from startDate to endDate.
+      * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
+      * `day` - Daily metrics data from `startDate` to `endDate`.
 
  * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 ___
@@ -700,7 +702,7 @@ Creates a new Geographical Access Control rule, and returns the newly created ru
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input container and are **required** when creating a new Geographical Access Control rule:
-    * `uniqueId` - Provide a uniqueId of the mapping to assign the rule.
+    * `uniqueId` - Provide a unique ID of the mapping to assign the rule.
     * `accessType` - Specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
     * `regionType` - The type of region to apply the Geographical Access Control rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
     * `regions` - An array listing the locations that the `accessType` applies to.
@@ -721,7 +723,7 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input container and can be provided when updating a GeographicalAccess Control rule (parameters are optional unless otherwise noted):
-    * `uniqueId` -  (Required) Provide a uniqueId of the mapping the rule to be updated belongs.
+    * `uniqueId` -  (Required) Provide a unique ID of the mapping the rule to be updated belongs.
     * `accessType` - Specifies whether the rule will `ALLOW` or `DENY` traffic to the given region.
     * `regionType` - The type of region to apply the rule to, either `CONTINENT` or `COUNTRY_OR_REGION`.
     * `regions` - An array listing the locations that the `accessType` applies to.
@@ -742,7 +744,7 @@ Removes an existing Geographical Access Control rule from an existing domain map
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attribute is part of the Input container and is **required** when deleting a Geographical Access Control rule:
-    * `uniqueId` - provide the uniqueId of the mapping that the rule to be deleted belongs to.
+    * `uniqueId` - Provide a unique ID of the mapping that the rule to be deleted belongs to.
 
   * **Returns** - An object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`.
 
@@ -753,7 +755,7 @@ Removes an existing Geographical Access Control rule from an existing domain map
 Retrieves a mapping's Geographical Access Control behavior.
 
   * **Parameters**:
-    * `uniqueId` - The uniqueId of the mapping that the rule belongs to.
+    * `uniqueId` - The unique ID of the mapping that the rule belongs to.
 
   * **Returns** - An object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking`.
@@ -765,7 +767,7 @@ Retrieves a mapping's Geographical Access Control behavior.
 Returns a list of the types and regions that are allowed for creating Geographical Access Control rules.
 
   * **Parameters**:
-    * `uniqueId`: The uniqueId of your domain mapping.
+    * `uniqueId`: The unique ID of your domain mapping.
 
   * **Returns**: An object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`.
 
@@ -783,7 +785,7 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input container and are **required** when creating a new Hotlink Protection:
-    * `uniqueId` - Provide uniqueId of the mapping to which to assign the behavior.
+    * `uniqueId` - Provide the unique ID of the mapping to which to assign the behavior.
     * `protectionType` - Specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified referer values.
     * `refererValues` - A single-space-separated list of Referer URL match terms for which the `protectionType` behavior takes effect.
 
@@ -803,7 +805,7 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input container and are **required** when updating an existing Hotlink Protection:
-    * `uniqueId` - The uniqueId of the mapping to which the existing behavior belongs.
+    * `uniqueId` - The unique ID of the mapping to which the existing behavior belongs.
     * `protectionType` - Specifies whether to "ALLOW" or "DENY" access to your content when a webpage makes a request for content with a Referer header value matching one of the terms in the specified refererValues.
     * `refererValues` - A single-space-separated list of Referer URL match terms for which the `protectionType` behavior takes effect.
 
@@ -823,7 +825,7 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
     [Input container](/docs/CDN?topic=CDN-input-container)
 
     The following attributes are part of the Input container and are **required** when creating a new Hotlink Protection:
-    * `uniqueId` - Provide uniqueId of the mapping from which to remove the behavior.
+    * `uniqueId` - Provide the unique ID of the mapping from which to remove the behavior.
 
   * **Returns** - null
 
@@ -832,7 +834,7 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
 Retrieves a mapping's current Hotlink Protection behavior.
 
   * **Parameters**:
-    * `uniqueId` - Provide the uniqueId of the mapping to which the behavior belongs.
+    * `uniqueId` - Provide the unique ID of the mapping to which the behavior belongs.
 
   * **Returns** - An object of type
      `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection`.
@@ -852,7 +854,7 @@ Creates a Token Authentication path for a domain mapping and returns the newly c
     [Token authentication input container](/docs/CDN?topic=CDN-token-auth-container)
 
     The following attributes are part of the Token Authentication container input, which can be provided when creating a new Token Authentication. Attributes are optional unless otherwise noted.
-    * `uniqueId` - (Required) The uniqueId of the mapping to which the existing behavior belongs.
+    * `uniqueId` - (Required) The unique ID of the mapping to which the existing behavior belongs.
     * `path` - (Required) The path, relative to the domain that is accessed through token authentication.
     * `name` - The token name. If this value is empty, then it is set to the default value `__token__`.
     * `tokenKey` - (Required) The token encryption key, which specifies an even number of hex digits for the token key. An entry can be up to 64 characters in length.
@@ -876,17 +878,17 @@ Updates an existing Token Authentication path for an existing domain mapping and
 
     [Token authentication input container](/docs/CDN?topic=CDN-token-auth-container)
 
-    The following attributes are part of the Token Authentication container input, which can be provided when creating a new Token Authentication. Attributes are optional unless otherwise noted.
-        * `uniqueId` - (Required) The uniqueId of the mapping to which the existing behavior belongs.
-        * `path` - (Required) The path, relative to the domain that is accessed via token authentication.
-        * `name` - The token name.
-        * `tokenKey` - The token key, which specifies an even number of hex digits for the token key. An entry can be up to 64 characters in length.
-        * `escapeTokenInputs` - Possible values `0` and `1`. If set to `1`, input values are escaped before adding them to the token. Default value is `1`.
-        * `ignoreQueryString` - Possible values `0` and `1`. If set to `1`, query strings are removed from a URL when computing the token’s HMAC algorithm. Default value is `0`.
-        * `tokenDelimiter` - Specifies a single character to separate the individual token fields.
-        * `aclDelimiter` - Specifies a single character to separate access control list (ACL) fields.
-        * `hmacAlgorithm` - Specifies the algorithm to use for the token’s hash-based message authentication code (HMAC) field.
-        * `transitionKey` - The token transition key, which specifies an even number of hex digits for the token transition key. An entry can be up to 64 characters in length.
+    The following attributes are part of the Token Authentication container input, which can be provided when updating a Token Authentication. Attributes are optional unless otherwise noted.
+    * `uniqueId` - (Required) The unique ID of the mapping to which the existing behavior belongs.
+    * `path` - (Required) The path, relative to the domain that is accessed via token authentication.
+    * `name` - The token name.
+    * `tokenKey` - The token key, which specifies an even number of hex digits for the token key. An entry can be up to 64 characters in length.
+    * `escapeTokenInputs` - Possible values `0` and `1`. If set to `1`, input values are escaped before adding them to the token. Default value is `1`.
+    * `ignoreQueryString` - Possible values `0` and `1`. If set to `1`, query strings are removed from a URL when computing the token’s HMAC algorithm. Default value is `0`.
+    * `tokenDelimiter` - Specifies a single character to separate the individual token fields.
+    * `aclDelimiter` - Specifies a single character to separate access control list (ACL) fields.
+    * `hmacAlgorithm` - Specifies the algorithm to use for the token’s hash-based message authentication code (HMAC) field.
+    * `transitionKey` - The token transition key, which specifies an even number of hex digits for the token transition key. An entry can be up to 64 characters in length.
 
   * **Returns** - An object of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`.
 
@@ -895,7 +897,68 @@ Updates an existing Token Authentication path for an existing domain mapping and
 Delete an existing Token Authentication behavior for an existing domain mapping and returns the updated behavior.
 
   * **Parameters**:
-    * `uniqueId` - (Required) The uniqueId of the mapping to which this origin path belongs.
+    * `uniqueId` - (Required) The unique ID of the mapping to which this origin path belongs.
     * `path` - (Required) Token Authentication Path to be deleted.
 
-  * **Return** - A status message if the delete was successful, otherwise an exception is thrown.
+  * **Return** - A status message if the deletion was successful; otherwise, an exception is thrown.
+----
+## API for modify-response-header
+{: #api-for-modify-response-header}
+
+### listModifyResponseHeader
+Returns a collection of `modify-response-header` behaviors for a domain mapping.
+
+  * **Parameters**:
+    * `uniqueId` - (Required) The unique ID of the mapping to which the `modify-response-header` belongs.
+
+  * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
+---
+### createModifyResponseHeader
+Creates a `modify-response-header` behavior for a domain mapping and returns the newly created behavior.
+
+  * **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
+    You can view the input attributes in the [Modify-response-header input container](/docs/CDN?topic=CDN-modify-response-header-container).
+
+    The following attributes are part of `modify-response-header` container input, which can be provided when creating a `modify-response-header`. Attributes are optional unless otherwise noted.
+
+    * `uniqueId` - (Required) The unique ID of the mapping to which the existing behavior belongs.
+    * `path` - (Required) The path from which the `modify-response-header` is served.
+    * `type` - (Required) The type of `modify-response-header`. Types are `append`, `modify` or `delete`.
+    * `headers` - (Required) A collection of key-value pairs that specify the headers and associated values to be modified. The header name and header value must be separated by a colon (:). For example: ['header1:value1','header2:Value2']
+    * `delimiter` - The delimiter to be used when indicating multiple values for a header. Valid values are a space, comma (default), semicolon, comma followed by a space, or a semicolon followed by a space.
+    * `description` - The description of `modify-response-header`.
+
+  * **Returns** - An object of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
+
+See this example to [create a `modify-response-header`](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-modify-response-header-example).
+
+----
+### updateModifyResponseHeader
+Updates an existing `modify-response-header` for an existing domain mapping and returns the updated behavior.
+
+  * **Parameters**: A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
+    You can view all of the attributes in the Input container here:
+
+    [`Modify-response-header` input container](/docs/CDN?topic=CDN-modify-response-header-container)
+
+    The following attributes are part of the `modify-response-header` container input, which can be provided when a `modify-response-header` is updated. Attributes are optional unless otherwise noted.
+
+    * `uniqueId` - (Required) The unique ID of the mapping to which the existing behavior belongs.
+    * `modResHeaderUniqueId` - (Required) The unique ID of the existing `modify-response-header`.
+    * `path` - The path from which the `modify-response-header` is served.
+    * `type` - (Required) The type of `modify-response-header`. Values are `append`, `modify` or `delete`.
+    * `headers` - A collection of key-value pairs that specify the headers and associated values to be modified. The header name and header value must be separated by a colon (:). For example: ['header1:value1','header2:Value2'].
+    * `delimiter` - The delimiter to be used when indicating multiple values for a header. Valid values are a space, comma (default), semicolon, comma followed by a space, or a semicolon followed by a space.
+    * `description` - The description of modify-response-header.
+
+  * **Returns** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
+
+----
+### deleteModifyResponseHeader
+Deletes an existing modify-response-header behavior for an existing domain mapping and returns the updated behavior.
+
+  * **Parameters**:
+    * `uniqueId` - (Required) The unique ID of the mapping to which the existing behavior belongs.
+    * `modResHeaderUniqueId` - (Required) The unique ID of the existing `modify-response-header`.
+
+  * **Return** - A status message if the deletion was successful; otherwise, an exception is thrown.
