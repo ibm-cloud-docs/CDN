@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-12-29"
+lastupdated: "2020-01-06"
 
 keywords:
 
@@ -23,6 +23,13 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 {:shortdesc}
+
+## January 2020
+{: #january-2020}
+
+  * New API are available for the [Modify Response Header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#modify-response-header), which can modify the outgoing response headers that are sent from the Edge server back to the client.
+  * Changed the default [respect header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#respect-headers) value from `ON` to `OFF`.
+  * Added a [feedback widget](/docs/overview?topic=overview-feedback) for the CDN service.
 
 ## September 2020
 {: #september-2020}
