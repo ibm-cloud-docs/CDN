@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-29"
+  years: 2017, 2021
+lastupdated: "2021-01-19"
 
 keywords: application programming interface, api, slapi, reference, development interface
 
@@ -301,19 +301,20 @@ Lists the origin paths for an existing mapping based on the `uniqueId`.
 ### createPurgeGroup
 {: #api-for-createpurgegroup}
 
-Creates a purge group.  
-Purge group contains multiple file paths, and allows you to purge all of these files in one API call. You can save a purge group to favorite or not. For more information, see the [FAQs](/docs/CDN?topic=CDN-faqs#what-different-two-type-favorite-group).   
-There's a rate limit to the purge actions. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.  
-An example to [create a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).  
+Creates a purge group. A purge group contains multiple file paths and allows you to purge all of these files in one API call. You can save a purge group to be a favorite (permanent) group or not. For more information, see [With multiple file purges, what's the difference between a favorite group and an unfavorite group?](/docs/CDN?topic=CDN-faqs#what-different-two-type-favorite-group).   
+
+There's also a rate limit to the purge actions. For more information, see [What's the rate limit for a multiple file purge?](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit).  
+
+For an example of how to create a purge group, see [Example code for creating a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).  
 
 * **Parameters**:
-  * `uniqueId` - The unique ID of the CDN mapping for which the purge group was created.
-  * `name` - Purge group name. The favorite group name must be unique, but unfavorite groups do not have this limitation.
-  * `paths` - A collection of purge paths.
-  * `option` - The following options are available to create a purge group:
-    * `1` - Create the purge group as favorite group, and do not run a purge action. **Default**
-    * `2` - Create the purge group as unfavorite group, and run a purge action.
-    * `3` - Create the purge group as favorite group, and run a purge action.
+   * `uniqueId` - The unique ID of the CDN mapping for which the purge group was created.
+   * `name` - Purge group name. The favorite group name must be unique. Unfavorite groups do not have this limitation.
+   * `paths` - A collection of purge paths.
+   * `option` - The following options are available to create a purge group:
+      * `1` - Create the purge group as an unfavorite group, and run a purge action. **Default**
+      * `2` - Create the purge group as a favorite group, and do not run a purge action.
+      * `3` - Create the purge group as a favorite group, and run a purge action.
 
 * **Return** - `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
