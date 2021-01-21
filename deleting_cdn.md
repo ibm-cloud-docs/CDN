@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-10-26"
+  years: 2020, 2021
+lastupdated: "2021-1-20"
 
 keywords: delete CDN
 
@@ -53,4 +53,7 @@ If your CDN is configured with HTTPS with DV SAN certificate, it can take up to 
 {: #delete-cdn-failed}
 {: faq}
 
-If your CDN is configured with DV SAN certificate HTTPS, you must remove the DNS record that points your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) before deleting your CDN. Otherwise, the deletion fails with the error message 'Delete CDN failed: the xxxxxx is still live on network, please remove the DNS record pointing to Akamai.'
+If your CDN is configured with DV SAN certificate HTTPS, you must remove the DNS record that points your domain to the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or the [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) before deleting your CDN. Otherwise, the deletion fails with the error message 'Delete CDN failed: the xxxxxx is still live on network, please remove the DNS record pointing to Akamai.'
+
+If you already deleted the DNS record that points your domain to the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or the [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) and you still get an error, wait 15 - 30 minutes for the DNS update to take effect.
+{:note}
