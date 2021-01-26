@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-25"
 
-keywords: Europe, Middle East, Africa, servers, EMEA, region
+keywords:  
 
 subcollection: CDN
 

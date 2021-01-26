@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2020
 lastupdated: "2020-03-27"
 
-keywords: rules, naming, conventions, hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain, valid, string
+keywords: hostname, cname, RFC, 1033, 1035, bucket, path, origin, purge, alphanumeric, top-level domain
 
 subcollection: CDN
 

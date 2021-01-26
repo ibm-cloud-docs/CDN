@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-25"
 
-keywords: byte range request, byte-range request, origin server, range HTTP request, transfer-encoding
+keywords: range HTTP request, transfer-encoding
 
 subcollection: CDN
 

@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-05-21"
 
-keywords: cross origin resource sharing, CORS, CORS request, same-origin policy, simple request, preflighted request
+keywords: cross origin resource sharing, same-origin policy, simple request, preflighted request
 
 subcollection: CDN
 

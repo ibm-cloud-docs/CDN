@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2021
 lastupdated: "2021-01-19"
 
-keywords: application programming interface, api, slapi, reference, development interface
+keywords: slapi
 
 subcollection: CDN
 

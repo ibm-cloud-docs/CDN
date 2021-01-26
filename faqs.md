@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-07-20"
 
-keywords: faqs, content delivery network, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security, console, main page, create
+keywords: faqs, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security
 
 subcollection: CDN
 

@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-02-29"
 
-keywords: purge history, container, class, collection, object, API
+keywords: class, collection, object, API
 
 subcollection: CDN
 

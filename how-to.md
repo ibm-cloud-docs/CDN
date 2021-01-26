@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-11-12"
 
-keywords: manage, purge cache content
+keywords:
 
 subcollection: CDN
 

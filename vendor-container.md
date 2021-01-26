@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
+  years: 2017, 2019
 lastupdated: "2019-02-25"
 
-keywords: vendor, container, collection, class, API, attributes, provider
+keywords: collection, class, API, attributes, provider
 
 subcollection: CDN
 

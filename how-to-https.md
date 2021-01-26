@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2020
 lastupdated: "2020-03-26"
 
-keywords: domain, control, validation, https, san certificate, challenge, apache, nginx, redirect
+keywords: https, san certificate, apache, nginx, redirect
 
 subcollection: CDN
 

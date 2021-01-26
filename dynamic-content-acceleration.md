@@ -4,7 +4,7 @@ copyright:
   years: 2019, 2020
 lastupdated: "2020-12-03"
 
-keywords: DCA, dynamic, detection path, prefetching, image compression, ttl, cache
+keywords: detection path, prefetching, image compression, ttl, cache
 
 subcollection: CDN
 

@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2020
 lastupdated: "2020-04-21"
 
-keywords: limits, maximum, values, time to live, entries, large file, size, optimization, downloads, years
+keywords: time to live, entries, large file, size, optimization, downloads, years
 
 subcollection: CDN
 

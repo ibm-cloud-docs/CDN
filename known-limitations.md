@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-02-28"
 
-keywords: limitations, Akamai, multiple files, purge, hotlink, limit
+keywords:  
 
 subcollection: CDN
 

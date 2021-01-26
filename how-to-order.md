@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-12-23"
 
-keywords: order, create, configure, console, origin, preparation, bucket
+keywords: order, create, configure
 
 subcollection: CDN
 

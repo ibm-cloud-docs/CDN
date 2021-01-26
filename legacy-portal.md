@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-06-11"
 
-keywords: customer portal, Softlayer, login, legacy
+keywords: Softlayer, login
 
 subcollection: CDN
 

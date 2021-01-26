@@ -4,7 +4,7 @@ copyright:
   years: 2020
 lastupdated: "2020-09-03"
 
-keywords: token authentication
+keywords:
 
 subcollection: CDN
 

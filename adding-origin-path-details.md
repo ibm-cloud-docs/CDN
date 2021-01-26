@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-09-21"
 
-keywords: manage, origin path
+keywords:
 
 subcollection: CDN
 
@@ -80,7 +80,7 @@ When your CDN is in `CNAME Configuration required` or `Running` state, you can a
 {: #how-is-it-different-from-the-cdn-origin}
 {:faq}
 
-The Settings page shows the origin path created during CDN provisioning. You cannot edit or delete it. However, on the Origins page, you can configure different types of origins (COS or origin server). You can also edit or delete origins on this page. 
+The Settings page shows the origin path created during CDN provisioning. You cannot edit or delete it. However, on the Origins page, you can configure different types of origins (COS or origin server). You can also edit or delete origins on this page.
 
 ### Why can't I change the protocol and port for an origin?
 {: #why-protocol-and-port-can-not-be-changed}

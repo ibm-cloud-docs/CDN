@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-02-10"
 
-keywords: Edge servers, POPs, Akamai servers, list of servers, list of countries
+keywords: POPs, Akamai servers, list of servers, list of countries
 
 subcollection: CDN
 

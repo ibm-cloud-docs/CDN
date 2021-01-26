@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-08-10"
 
-keywords: help, support, troubleshooting, stack overflow, forum, ticket, case, questions
+keywords: troubleshooting, case, questions
 
 subcollection: CDN
 

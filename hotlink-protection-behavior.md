@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-12-09"
 
-keywords: hotlink, protection, class, behavior, API, valid string
+keywords:
 
 subcollection: CDN
 

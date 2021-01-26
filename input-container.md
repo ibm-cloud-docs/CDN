@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-01-06"
 
-keywords: input, container, class, API, mapping, origin, path, provider, hotlink
+keywords:
 
 subcollection: CDN
 

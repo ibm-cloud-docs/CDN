@@ -4,7 +4,7 @@ copyright:
   years: 2019, 2020
 lastupdated: "2020-11-17"
 
-keywords: IBM, Content Delivery Network, CDN, Audit log, activity tracker, LogDNA, event
+keywords:  
 
 subcollection: CDN
 

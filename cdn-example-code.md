@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-12-29"
 
-keywords: code examples, example API calls, CDN API, Soap, client, apiKey
+keywords: code examples, example API calls, Soap
 
 subcollection: CDN
 
@@ -1064,7 +1064,7 @@ try {
 
     // CDN modify-response-header configurations
     $inputObject->type = "append"; // Primary encryption key
-    $inputObject->headers = ["header1:value1", "header2:value2"]; // Headers list 
+    $inputObject->headers = ["header1:value1", "header2:value2"]; // Headers list
     $inputObject->delimiter = ";"; // Multiple header value's delimiter (optional)
 
     $modifyResponseHeader = $client->createModifyResponseHeader($inputObject);

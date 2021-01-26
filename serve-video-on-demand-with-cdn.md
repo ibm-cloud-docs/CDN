@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2020-03-27"
 
-keywords: video, mp4, formats, MPEG, nginx, player, configuration, streaming, stream, files, demand, ffmpeg
+keywords: mp4, MPEG, nginx, streaming, ffmpeg
 
 subcollection: CDN
 

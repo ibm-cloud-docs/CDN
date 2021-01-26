@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-25"
 
-keywords: geoblocking, class, API, attributes, object, region
+keywords: attributes, object, region
 
 subcollection: CDN
 

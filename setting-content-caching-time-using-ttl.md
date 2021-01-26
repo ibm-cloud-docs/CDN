@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-03-29"
 
-keywords: manage, time to live
+keywords:
 
 subcollection: CDN
 

@@ -4,7 +4,7 @@ copyright:
   years: 2019, 2020
 lastupdated: "2020-10-12"
 
-keywords: traffic, verify, hostname, hosts file, dns, cname, record, CNAME configuration required, wildcard
+keywords: traffic, hosts file, dns, cname, record, CNAME configuration required, wildcard
 
 subcollection: CDN
 

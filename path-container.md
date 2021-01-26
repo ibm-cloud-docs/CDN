@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-25"
 
-keywords: origin, path, container, collection, attributes, query, arguments, class, API
+keywords: collection, attributes, query, arguments, class, API
 
 subcollection: CDN
 

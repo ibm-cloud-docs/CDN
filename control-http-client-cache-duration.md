@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-12-03"
 
-keywords: cache control, cache-control, cache duration, max-age,  Edge server, edge-level, respect header, HTTP client
+keywords: cache control, max-age, respect header, HTTP client
 
 subcollection: CDN
 

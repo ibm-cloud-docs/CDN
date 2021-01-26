@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-12-29"
 
-keywords: content delivery network, CDN
+keywords: overview
 
 subcollection: CDN
 
@@ -224,12 +224,12 @@ Token authentication is the process of generating tokens, associating them with 
 ### Modify Response Header
 {: #modify-response-header}
 
-`Modify-response-header` can modify the outgoing response headers that are sent from the Edge server back to the client. There are three types for the `modify-response-header`: 
+`Modify-response-header` can modify the outgoing response headers that are sent from the Edge server back to the client. There are three types for the `modify-response-header`:
 
   - `append` - Add a given header value to a header name set in the headerList.
   - `overwrite` -  Match a specified header name and replace its existing header value with a new one that you specify.
   - `delete` - Remove a given header value from a header name set in the headerList.
-  
+
 For more parameters, refer to the [Modify Response Header Container](/docs/CDN?topic=CDN-modify-response-header-container).
 
 Note the following when using `modify-response-header`:
@@ -263,7 +263,7 @@ Note the following when using `modify-response-header`:
     - `Transfer-Encoding`
     - `Connection`
 
-  * Valid delimiters are: 
+  * Valid delimiters are:
 
     - ` ` (space)
     - `,` (comma)

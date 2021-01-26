@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2020
 lastupdated: "2020-04-13"
 
-keywords: faq, https, wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
+keywords: wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
 subcollection: CDN
 

@@ -4,7 +4,7 @@ copyright:
   years: 2019
 lastupdated: "2019-10-21"
 
-keywords: input, container, class, API, mapping, origin, path, DCA
+keywords:  
 
 subcollection: CDN
 
