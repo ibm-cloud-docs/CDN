@@ -31,7 +31,7 @@ subcollection: CDN
 You can use {{site.data.keyword.cloud}} Content Delivery Network (CDN) to quickly and securely deliver the website assets (images, videos, documents) hosted and served on the IBM Cloud Object Storage to users around the world.
 
 ## Before you begin
-{: #before-you-begin}
+{: #cos-before-you-begin}
 
 Before you begin using CDN with IBM Cloud Object Storage (ICOS), you'll first need to store objects with [public access](/docs/cloud-object-storage?topic=cloud-object-storage-iam-public-access) in {{site.data.keyword.cloud_notm}} Object Storage.
 
