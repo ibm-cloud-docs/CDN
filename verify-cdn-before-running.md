@@ -171,7 +171,7 @@ To verify CDN traffic using a wildcard certificate, follow these steps:
 
    ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com-wildcard-test.png)
 
-2. Verify the wildcard traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshooting#how-do-I-know-my-cdn-is-working) to request the wildcard CDN's IBM CNAME.
+2. Verify the wildcard traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshoot-cdn-working) to request the wildcard CDN's IBM CNAME.
 
    ```bash
    curl -s -o cdn-test-wildcard-index.html -D - \
@@ -189,7 +189,7 @@ To verify CDN traffic using a wildcard certificate, follow these steps:
    ```
    {: pre}
 
-   If Akamai debug headers are returned, and the response code and content match the content that is returned from the wanted domain, the wildcard CDN traffic works. See [Troubleshooting](/docs/CDN?topic=CDN-troubleshooting) for further debugging tips.
+   If Akamai debug headers are returned, and the response code and content match the content that is returned from the wanted domain, the wildcard CDN traffic works. See the Troubleshooting section for further debugging tips.
 
      Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins, purge, and so on.
      {: important}

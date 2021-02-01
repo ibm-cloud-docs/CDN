@@ -63,6 +63,7 @@ Content Delivery Network (CDN)
         input-container.md
         mapping-container.md
         metrics-container.md
+        modify-response-header-container.md
         path-container.md
         token-auth-container.md
         vendor-container.md
