@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-29"
+  years: 2017, 2021
+lastupdated: "2021-02-01"
 
 keywords: overview
 
@@ -230,7 +230,7 @@ Token authentication is the process of generating tokens, associating them with 
   - `overwrite` -  Match a specified header name and replace its existing header value with a new one that you specify.
   - `delete` - Remove a given header value from a header name set in the headerList.
 
-For more parameters, refer to the [Modify Response Header Container](/docs/CDN?topic=CDN-modify-response-header-container).
+For more parameters, see the [Modify Response Header container](/docs/CDN?topic=CDN-modify-response-header-container).
 
 Note the following when using `modify-response-header`:
 
