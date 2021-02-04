@@ -81,6 +81,8 @@ Content Delivery Network (CDN)
         emea-region.md
         north-america-region.md
         south-america-region.md
+        
+    [Terraform](https://cloud.ibm.com/docs/terraform?topic=terraform-getting-started)
     {: .navgroup-end}
 
     {: .navgroup id="help"}
