@@ -1,0 +1,217 @@
+{
+  "what-do-i-do-when-my-cdn-is-in-cname-configuration-status": [
+    "my CDN is in CNAME configuration status",
+    "why is Content Delivery Network in CNAME configuration status",
+    "how to change CNAME configuration status",
+    "to update CNAME configuration status",
+    "update CNAME configuration status in CDN",
+    "changing CNAME configuration status within Content Delivery Network",
+    "changing CNAME configuration status",
+    "my CNAME has configuration status"
+  ],
+  "how-is-my-ibm-cloud-content-delivery-network-service-account-created": [
+    "I am looking to sign up for CDN",
+    "sign up for Content Delivery Network",
+    "getting started with ordering CDN",
+    "how do I get to use CDN service",
+    "order CDN",
+    "CDN",
+    "process to order a CDN",
+    "create Content Delivery Management",
+    "Add the Content Delivery Management Service",
+    "how to start CDN instance",
+    "how to order CDN service"
+  ],
+  "what-will-i-be-billed-for-my-cdn": [
+    "static bandwidth pricing",
+    "dynamic bandwidth pricing",
+    "CDN static bandwidth price",
+    "dynamic bandwidth price for CDN",
+    "CDN Pricing",
+    "show me the cdn total bandwidth fee",
+    "cdn total bandwidth fee",
+    "cdn total bandwidth price",
+    "cost for CDN",
+    "get CDN for free",
+    "how much is content delivery network"
+  ],
+  "how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns": [
+    "add a CNAME record for my CDN domain in DNS",
+    "add a CNAME record for CDN",
+    "adding CNAME records in CDN domain",
+    "create a CNAME record with the CDN domain name",
+    "creating CNAME record in CDN"
+  ],
+  "if-i-select-delete-does-that-delete-my-account": [
+    "select Delete from the Overflow menu does that delete my account",
+    "select Delete from the CDN Overflow menu does that remove my account",
+    "using delete in overflow remove CDN and also account",
+    "delete in overflow remove both CDN and my account",
+    "delete in overflow delete both CDN and my account",
+    "delete in CDN overflow menu delete my account"
+  ],
+  "my-cdn-is-in-an-error-state": [
+    "CDN is in error",
+    "I have some problem with CDN",
+    "have an issue with CDN",
+    "have a Content Delivery Network problem",
+    "ibm cdn error",
+    "I have some problem with CDN",
+    "problems with CDN",
+    "error in Content Delivery Network",
+    "help with Content Delivery Network issue",
+    "Content Delivery Network issue",
+    "CDN has an error",
+    "error with CDN"
+  ],
+  "what-url-should-be-used-for-access-to-data": [
+    "the URL to access my data in CDN is not working",
+    "getting a Page Not Found error trying to access CDN data",
+    "open CDN data gives a Page Not Found error",
+    "cant access my CDN data",
+    "getting an error accessing CDN data",
+    "URL to acces CDN data incorrect",
+    "URL not working to open CDN data"
+  ],
+  "how-do-i-set-up-my-cdn-for-cos": [
+    "set up my Content Delivery Network for IBM Cloud Object Storage",
+    "I need configure object storage and cdn",
+    "Object Storage and CDN",
+    "need to configure cloud object storage with cdn",
+    "want to distribute our content on IBM COS with IBM CDN",
+    "set up my CDN for COS",
+    "integrate CDN with object storage",
+    "configuring CDN with COS",
+    "setting up COS with content delivery network"
+  ],
+  "notification-that-origin-cert-is-expiring": [
+    "notification that my origin certificate is expiring",
+    "email that my origin certificate is expiring",
+    "message that my origin certificate will expire for CDN",
+    "update the origin certificate for CDN",
+    "message that my origin certificate will expire for content delivery network",
+    "update my content delivery network origin certificate",
+    "renew the origin certificate for CDN",
+    "renewing origin certificate for Akamai",
+    "CDN cert set to expire soon",
+    "give users permission to create or manage a CDN",
+    "give someone the access to create a CDN",
+    "get permission to create CDN",
+    "give permission to create a content delivery network",
+    "content delivery network permissions",
+    "use the Cloud console to give permission to manage CDN",
+    "steps to edit permissions for CDN",
+    "upgrade my access for content delivery network"
+  ],
+  "how-long-does-domain-validation-take": [
+    "How long does Domain Validation take",
+    "how long does DV with CNAME validation take",
+    "how long with DV using the Standard method take",
+    "length of time that domain validation will take",
+    "how many hours is domain validation in CDN",
+    "CDN's domain validation time in hours",
+    "how long for DV",
+    "how long is domain validation"
+  ],
+  "what-ssl-certificates-are-supported-for-ibm-cloud-cdn": [
+    "SSL certificates are supported for IBM Cloud CDN",
+    "SSL certificates that are supported for CDN",
+    "what SSL certs can I use in CDN",
+    "use a custom certificate in content delivery network",
+    "which certificates can be used for CDN",
+    "certificate use in CDN",
+    "what SSL certificates used in CDN"
+  ],
+  "i-received-an-email-asking-me-to-address-a-domain-validation-challenge-related-to-my-cdn": [
+    "address a Domain Validation challenge that is related to my CDN",
+    "Domain Control Validation for HTTPS",
+    "have a DV issue for my CDN",
+    "how to address Domain Validation in CDN",
+    "how to address DV in CDN",
+    "completing Domain Control Validation for HTTPS document",
+    "how to complete domain validation for HTTPS",
+    "complete Domain Control Validation in CDN"
+  ],
+  "i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME": [
+    "my domains are not pointed to IBM CDN CNAME",
+    "Domain Control Validation",
+    "start domain control validation in CDN",
+    "update my domain to point to CDN CNAME",
+    "domain control validation in CDN",
+    "update domain to CDN CNAME",
+    "domain is not pointed at CNAME in CDN",
+    "get CDN domain name added to the certificate",
+    "add domain name to certificate in CDN"
+  ],
+  "for-the-add-origin-command-are-there-any-rules-to-follow-for-the-path-string": [
+    "for Add Origin is the path is mandatory",
+    "Add Origin command are there any rules to follow for the Path string",
+    "what are the rules for the Add Origin command",
+    "format of the path for Add Origin",
+    "how to create the path for Add Origin command",
+    "rules for path for Add Origin command",
+    "format the path for Add Origin command"
+  ],
+  "what-is-the-maximum-size-for-the-origin-response-headers": [
+    "maximum size for the origin response headers",
+    "max size for the origin response headers in CDN",
+    "502 Bad Gateway response in CDN",
+    "502 Bad Gateway response error for content domain network",
+    "in CDN what is maximum size for the origin response headers",
+    "CDN giving 502 Bad Gateway response in origin headers",
+    "seeing 502 Bad Gateway response for CDN",
+    "for CDN, the max size for the origin response headers"
+  ],
+  "what-is-the-maximum-size-for-the-client-request-headers": [
+    "maximum size for the client's request headers",
+    "max size for the client's request headers in CDN",
+    "400 Bad Request in CDN",
+    "400 Bad Request error for content domain network",
+    "in CDN what is maximum size for the clients request headers",
+    "CDN giving 400 Bad request in client request headers",
+    "seeing 400 Bad request for CDN",
+    "for CDN, the max size for the clients request headers"
+  ],
+  "error-max-resource-limit": [
+    "Could not allocate more resource to build new rule in Akamai: x behaviors are needed while only x can be used",
+    "seeing error: could not allocate more resource to build new rule in Akamai: x behaviors are needed while only x can be used",
+    "error: could not allocate more resource to build new rule in Akamai",
+    "Could not allocate more resource to build new rule in Akamai error for CDN",
+    "Could not allocate more resource to build new rule in Akamai: x behaviors are needed while only x can be used error",
+    "unable to allocate resources in CDN",
+    "error when I try to allocate resources in CDN",
+    "unable to allocate resources in content domain network"
+  ],
+  "troubleshoot-cdn-working": [
+    "How do I know that my CDN is working",
+    "how can I validate that CDN is working",
+    "How do I know that my content domain network is working",
+    "to verify that CDN is working properly",
+    "is my CDN set up correctly",
+    "verifcation steps that CDN is set up correctly",
+    "to verify that content domain network is working properly",
+    "how verify that content domain network is working properly"
+  ],
+  "troubleshoot-cdn-503-error": [
+    "seeing 503 error message for CDN",
+    "why am I getting 503 error",
+    "seeing a 503 error message in CDN",
+    "how can I fix 503 error in CDN",
+    "seeing 503 Service Unavailable error",
+    "503 Service Unavailable message given",
+    "An error occurred while processing your request. Reference in CDN",
+    "seeing in CDN error occurred while processing your request. Reference #",
+    "SSL certificate criteria in CDN",
+    "what are the criteria for SSL certificates"
+  ],
+  "troubleshoot-cdn-hostname-does-not-load": [
+    "hostname load on the browser when IBM Cloud Object Storage (COS) is the origin",
+    "hostname load on the browser when COS is the origin",
+    "CDN is configured to use COS and do not get direct access to the website ",
+    "use ICOS private endpoints for CDN",
+    "how to use COS private endpoints for CDN",
+    "use of the object storage private endpoints in CDN",
+    "my hostname is not loading on the browser in CDN",
+    "ICOS private endpoints"
+  ]
+}
