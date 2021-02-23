@@ -1,5 +1,5 @@
 {
-  "what-do-i-do-when-my-cdn-is-in-cname-configuration-status": [
+  "what-do-i-do-when-my-cdn-is-in-cname-configuratione-status": [
     "my CDN is in CNAME configuration status",
     "why is Content Delivery Network in CNAME configuration status",
     "how to change CNAME configuration status",
@@ -47,6 +47,7 @@
     "select Delete from the CDN Overflow menu does that remove my account",
     "using delete in overflow remove CDN and also account",
     "delete in overflow remove both CDN and my account",
+    "select delete in CDN will this delete my account",
     "delete in overflow delete both CDN and my account",
     "delete in CDN overflow menu delete my account"
   ],
@@ -69,6 +70,7 @@
     "getting a Page Not Found error trying to access CDN data",
     "open CDN data gives a Page Not Found error",
     "cant access my CDN data",
+    "cant access CDN",
     "getting an error accessing CDN data",
     "URL to acces CDN data incorrect",
     "URL not working to open CDN data"
@@ -152,7 +154,7 @@
     "rules for path for Add Origin command",
     "format the path for Add Origin command"
   ],
-  "what-is-the-maximum-size-for-the-origin-response-headers": [
+  "what-is-the-maximum-size-for-the-orignin-response-headers": [
     "maximum size for the origin response headers",
     "max size for the origin response headers in CDN",
     "502 Bad Gateway response in CDN",
