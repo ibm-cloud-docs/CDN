@@ -46,7 +46,7 @@ To view the metrics reports for account, open the **CDN Overview Report** page n
 ### Historical metrics report
 {: #historical-metrics-report}
 
-You can view the overall metric reports over a custom time period. Select **Custom time frame** from the **View** list on the CDN Overview Report page. Here you can find the total **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits**, **Dynamic Hits** and **Hit Ratio**, as well as a graphical representation of **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits**, and **Dynamic Hits**.
+You can view the overall metric reports over a custom time period. Select **Custom time frame** from the **Time frame** list on the CDN Overview Report page. Here you can find the total **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits**, **Dynamic Hits** and **Hit Ratio**, as well as a graphical representation of **Static Bandwidth**, **Dynamic Bandwidth**, **Static Hits**, and **Dynamic Hits**.
 
  ![Metrics Overview](images/metrics-custom-time-report.png)
 
@@ -56,7 +56,7 @@ The maximum number of days that you can view metrics reports is 90 days. The lat
 ### Most recent metrics report
 {: #most-recent-metrics-report}
 
-You can view the overall metric reports for a recent time. Select **Most recent** from the **View** list on the CDN Overview Report page. Here you can find the total **Bandwidth** and **Hits**, as well as a graphical representation of **Bandwidth** and **Hits**.
+You can view the overall metric reports for a recent time. Select **Most recent** from the **Time frame** list on the CDN Overview Report page. Here you can find the total **Bandwidth** and **Hits**, as well as a graphical representation of **Bandwidth** and **Hits**.
 
  ![Metrics Overview](images/metrics-most-recent-report.png)
 
@@ -71,7 +71,7 @@ You can view the metrics reports for domain mapping by opening the Overview page
 ### Historical metrics report
 {: #domain-mapping-historical-metrics-report}
 
-You can see the **Total Bandwidth** and **Total Hits** for the selected time period (default is the last 30 days) on the Overview page. Other items, such as **Last 90/7/1 days** and **Custom timeframe** are available in the **View** list.
+You can see the **Total Bandwidth** and **Total Hits** for the selected time period (default is the last 30 days) on the Overview page. Other items, such as **Last 90/7/1 days** and **Custom timeframe** are available in the **Time frame** list.
 
   ![Metrics Overview](images/metrics-custom-time-overview.png)
 
@@ -85,7 +85,7 @@ The maximum number of days that you can view metrics reports is 90 days. Start a
 ### Most recent metrics report
 {: #domain-mapping-most-recent-metrics-report}
 
-Select **Most recent** from the **View** list on the Overview page. Here you can see the **Total Bandwidth**, **Total Hits** for the selected time period *Most recent*.
+Select **Most recent** from the **Time frame** list on the Overview page. Here you can see the **Total Bandwidth**, **Total Hits** for the selected time period *Most recent*.
 
   ![Metrics Overview](images/metrics-most-recent-overview.png)
 
@@ -126,7 +126,7 @@ Because Hit Ratio is calculated at the account level and not per CDN, the Hit Ra
 
 The most recent metrics can be updated every 5 minutes, while other metrics are updated every 24 hours.
 
-### What is the time interval when you select **Most recent** from the **View** list?
+### What is the time interval when you select **Most recent** from the **Time frame** list?
 {: #what-is-the-time-interval-when-you-select-most-recent-item}
 {: troubleshoot}
 
@@ -149,8 +149,8 @@ The time range and time interval relationships are shown.
 Math notation `( ` means "does not include" and `]` means "include".  
 
 Example:   
-Start Date timestamp: 1583910900  
-End Date timestamp: 1583928900  
+Start Date timestamp: 1611244800  
+End Date timestamp: 1611248400  
 Time range = (End Date timestamp - Start Date timestamp) / 60 = 300   
 Referring to the preceding table, the time interval is 5 minutes.  
 
@@ -160,4 +160,4 @@ Referring to the preceding table, the time interval is 5 minutes.
 
   ![Metrics Overview](images/metrics-most-recent-interval.png)
 
-In the report, each point is a sum of metric data over a time interval, and the interval is calculated by the preceding table. However, for the last point, the interval might be smaller than others. For example, in the bandwidth "most recent" report, the time interval is 5 minutes, and all the points are the sum of bandwidth over 5 minutes, except that the last one is only 1-minute bandwidth (Mar 13 05:40 AM to Mar 13 05:41 AM).
+In the report, each point is a sum of metric data over a time interval, and the interval is calculated by the preceding table. However, for the last point, the interval might be smaller than others. For example, in the bandwidth "most recent" report, the time interval is 5 minutes, and all the points are the sum of bandwidth over 5 minutes, except that the last one is only 1-minute bandwidth (January 21 04:00 PM to January 21 05:00 PM).

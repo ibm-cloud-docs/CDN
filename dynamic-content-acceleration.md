@@ -35,7 +35,7 @@ It provides improved reliability, offload, and network performance over your ori
 
 To enable DCA, follow these steps:
 
-1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. Then, select **Dynamic content acceleration** from the **Optimize for** list menu.
+1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. Click **Edit** from the **Optimization settings**, then select **Dynamic content acceleration** from the **Optimize for** list menu.
 
    ![Configure origin](images/settings-dca-switch.png)
 

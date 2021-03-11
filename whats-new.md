@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-01-06"
+lastupdated: "2021-03-10"
 
 keywords:
 
@@ -23,6 +23,11 @@ subcollection: CDN
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
 {:shortdesc}
+
+## March 2021
+{: #march-2021}
+
+  * Released a new UI portal for the CDN service.
 
 ## January 2021
 {: #january-2021}

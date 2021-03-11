@@ -30,12 +30,13 @@ After your CDN is running, you can set your content caching time using Time To L
 
 To set the content caching time using TTL, follow these steps:
 
-1. On the CDN page, select your CDN, which takes you to the **Overview** page.
-2. Adjust the time using the arrows, or by entering a new time. The time value is specified in seconds. For example, 3600 seconds is equal to 1 hour. The smallest value for `timeToLive` that can be chosen is 0 seconds, while the largest is 2147483647 seconds (approximately 24855 days). Select the **Save** button to set the content caching time.
+1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. 
+2. Click **Add path** from the **TTL settings**.
+3. Adjust the time using the arrows, or by entering a new time. The time value is specified in seconds. For example, 3600 seconds is equal to 1 hour. The smallest value for `timeToLive` that you can choose is 0 seconds, while the largest is 2147483646 seconds (approximately 24855 days). Select the **Save** button to set the content caching time.
 
   ![Adding ttl](images/adding-path.png)
 
-3. After saving, you can **Edit** or **Delete** the TTL setting using the Overflow ![Overflow menu](images/overflow.png) options. (**NOTE**: The path for TTL cannot be changed. If the Mapping path is changed, the TTL path is updated automatically.)
+4. After saving, you can **Edit** or **Delete** the TTL setting using the Overflow ![Overflow menu](images/overflow.png) options. (**NOTE**: The path for TTL cannot be changed. If the Mapping path is changed, the TTL path is updated automatically.)
 
   ![Edit or delete ttl](images/edit-delete-ttl-setting.png)
 

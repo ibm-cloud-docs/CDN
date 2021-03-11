@@ -50,7 +50,7 @@ When your CDN is in `CNAME Configuration required` or `Running` state, you can a
 
   The default selection for the **Cache Key optimization** option is **Include-all**. If you select **Include specified** or **Ignore specified**, you must enter query strings to include or ignore, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings. For more information, see [Cache Key optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization).
 
-      ![Cache key options](images/cache-key-options.png)
+    ![Cache key options](images/cache-key-options.png)
 
 6. Select **Optimize for**.
 
