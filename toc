@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="CDN" category="network_edge" audience="service" href="/docs/CDN?topic=CDN-getting-started" console-page="/classic/network/cdn" product-page="https://www.ibm.com/cloud/cdn" path="CDN"}
+{: .toc subcollection="CDN" category="network_edge" audience="service" href="/docs/CDN?topic=CDN-getting-started" console-page="/cdn" product-page="https://www.ibm.com/cloud/cdn" path="CDN"}
 Content Delivery Network (CDN)
 
     {: .navgroup id="learn"}
