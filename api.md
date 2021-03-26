@@ -584,7 +584,6 @@ Returns the total number of predetermined statistics for direct display (no grap
  * **Return** - a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
 ___
 ### getMappingIntegratedMetrics
-(: #get-mapping-tegrated-metrics)
 Returns the integrated metrics data for the given mapping, which includes the total number of predetermined statistics, detailed hits and bandwidth, hits by type, and the bandwidth by region. The value of `frequency` is `day` by default. For more details, see [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-integrated-metrics).
 
  * **Parameters**:
