@@ -161,8 +161,17 @@ Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the do
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+### retryHttpsActionRequest
+You can attempt to enable the HTTPS `SHARED_SAN_CERT` type mapping again or disable when mapping is in `DELETE_ERROR` state. For the retry or disable request to occur, the specified mapping should be an HTTPS-related error, or in `DELETE_ERROR` state. To re-attempt an enable or disable action, you must specify the `uniqueId` of the HTTPS `SHARED_SAN_CERT` type mapping.
+
+* **Parameters**- `uniqueId` - (Required) Provide the unique ID of the HTTPS mapping to be enabled.
+* **Return**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`.
+
+  [Mapping container](/docs/CDN?topic=CDN-mapping-container)
+
+----
 ### updateDomainMapping
-Enables the user to update properties of the mapping identified by the `uniqueId`. The following fields can be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your origin type is Object Storage, the `bucketName` and `fileExtension` also can be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
+You can update properties of the mapping identified by the `uniqueId`. The following fields can be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your origin type is Object Storage, the `bucketName` and `fileExtension` also can be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
 * **Parameters**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
   You can view all of the attributes in the Input container here:
