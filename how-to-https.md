@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-03-26"
+  years: 2018, 2021
+lastupdated: "2021-06-09"
 
 keywords: https, san certificate, apache, nginx, redirect
 
@@ -28,7 +28,7 @@ subcollection: CDN
 Complete the following steps after ordering your CDN with a DV SAN certificate.
 {:shortdesc}
 
-The following diagram outlines the various states your CDN enters from the time it is created until it gets to `Running` status.
+The following diagram outlines the various states that your CDN enters, from the time it is created until it gets to `Running` status.
 
   ![SAN state diagram](images/state-diagram-san.png)
 
@@ -37,7 +37,7 @@ The following diagram outlines the various states your CDN enters from the time 
 
 Complete these steps:
 
-1. After you've ordered your CDN with a DV SAN certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. Once a certificate becomes available, Akamai issues a request to the certificate authority (CA).
+1. After you've ordered your CDN with a DV SAN certificate, the certificate requesting process begins. During this process, {{site.data.keyword.cloud}} CDN requests a certificate from Akamai. After a certificate becomes available, Akamai issues a request to the certificate authority (CA).
 
    During this time, the CDN status shows as `Requesting certificate`.
 
@@ -45,7 +45,7 @@ Complete these steps:
 
    When this happens, your CDN's status changes to `Domain validation required`.
 
-3. Click the name of the CDN that needs to be validated. The Overview page opens, where you can see the overall status of your CDN. At the top of the page, an alert appears, reminding you that domain validation is needed. Select the **View domain validation** button to open a window that shows you the challenge information you need, to complete the validation process.
+3. Click the name of the CDN that must be validated. The Overview page opens, where you can see the overall status of your CDN. At the top of the page, an alert appears, reminding you that domain validation is needed. Select the **View domain validation** button to open a window that shows you the challenge information that you need to complete the validation process.
 
    ![Domain validation required](images/view-domain-validation.png)
 
@@ -61,23 +61,23 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 ### CNAME
 {: #cname}
 
-This method is recommended **ONLY** if your CDN is not serving live traffic. If your domain is serving live traffic, we recommended using other three methods to validate your domain.
+This method is recommended **ONLY** if your CDN is not serving live traffic. If your domain is serving live traffic, it is recommended to use one of the other three methods to validate your domain.
 
-To use this method, add a CNAME record for your CDN domain into your DNS configuration. Either the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) or the [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) can be used as the record value. No other action is required from you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
+To use this method, add a CNAME record for your CDN domain into your DNS configuration. The [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) can be used as the record value. No other action is required by you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
 
    ![Domain Validation CNAME](images/domain-validation-cname.png)
 
-For the CDN domain `cdn.example.com`, you can add a CNAME type record to point this domain to IBM CNAME or Akamai CNAME:
+For the CDN domain `cdn.example.com`, you can add a CNAME type record to point this domain to IBM CNAME:
 
 | Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
-| *CNAME* | *cdn.example.com* | *example.cdn.appdomain.cloud.* <br/> **or** <br/> *cert-00036-cdnedge-bluemix.akamaized.net.edgekey.net.* | *15 minutes* |
+| *CNAME* | *cdn.example.com* | *example.cdn.appdomain.cloud.* | *15 minutes* |
 
 ---
 ### Challenge domain
 {: #challenge-domain}
 
-The challenge domain is a new domain specific for your CDN domain. By setting a CNAME record in your DNS system for the challenge domain, CA can also validate your CDN domain. If you choose this method, you don't need to change the CDN domain's record, so it has no affect to the traffic if your domain is running service.
+The challenge domain is a new domain, specific for your CDN domain. By setting a CNAME record in your DNS system for the challenge domain, CA can also validate your CDN domain. If you choose this method, you don't need to change the CDN domain's record, therefore it has no effect on the traffic if your domain is running service.
 
    ![Domain Validation Challenge Domain](images/domain-validation-challenge-domain.png)
 
@@ -90,18 +90,18 @@ For example, the CDN domain is `cdn.example.com`, then the challenge domain CNAM
 |------------------|---------|-------------|----------------|
 | *CNAME* | *_acme-challenge.cdn.example.com* | *cdn.example.com.ak-acme-challenge.cdn.appdomain.cloud.* | *15 minutes* |
 
-Using Challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. While in other methods, you would receive a [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others.
+Using the challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. When using other methods, you would receive an [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others.
 {: note}
 
 ---
 ### Standard
 {: #standard}
 
-If you choose the Standard method for Domain Validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the Domain Validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, Domain Validation can take 2 - 4 hours.
+If you choose the Standard method for domain validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the domain validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, domain validation can take 2 - 4 hours.
 
    ![Domain Validation Challenge Standard](images/domain-validation-standard.png)
 
-To successfully complete the Domain Validation through the Standard method, you must configure your origin server in a particular way. The example procedures for Apache and Nginx servers are outlined here.
+To successfully complete the domain validation through the Standard method, you must configure your origin server in a particular way. The example procedures for Apache and Nginx servers are outlined here.
 
 **Example situation**
 * Origin server: `origin.example.com`
@@ -116,7 +116,7 @@ To configure Apache, follow these steps:
 
 1. Log in to the machine running the Apache2 server.
 
-2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response would be placed in the `/var/www/html/.well-known/acme-challenge/` directory.
+2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response is placed in the `/var/www/html/.well-known/acme-challenge/` directory.
 
    ```
    mkdir -p /var/www/html/.well-known/acme-challenge && \
@@ -124,11 +124,11 @@ To configure Apache, follow these steps:
    ```
    {: pre}
 
-3. If needed, open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for configuration files.
+3. Optionally, open your Apache2 server configuration file. `/etc/apache2/apache2.conf` and `/etc/apache2/sites-enabled/` are the default locations for configuration files.
 
-4. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
+4. Optionally, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
 
-5. If you had to modify your Apache2 server configuration, restart the Apache2 server with minimal downtime by using the following command:
+5. If you modified your Apache2 server configuration, restart the Apache2 server with minimal down time by using the following command:
 
    ```
    apachectl -k graceful
@@ -144,7 +144,7 @@ To configure Nginx, follow these steps:
 
  1. Log in to the machine running the Nginx server.
 
- 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response would be placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
+ 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response is placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
 
    ```
    mkdir -p /usr/share/nginx/html/.well-known/acme-challenge && \
@@ -152,11 +152,11 @@ To configure Nginx, follow these steps:
    ```
    {: pre}
 
-3. If needed, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
+3. Optionally, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
 
-4. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
+4. Optionally, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-5. If you had to modify your Nginx server configuration, restart the Nginx server with minimal downtime by using the following command:
+5. If you modified your Nginx server configuration, restart the Nginx server with minimal down time by using the following command:
 
       ```
       nginx -s reload
@@ -165,7 +165,7 @@ To configure Nginx, follow these steps:
 
 6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
-#### Verify that this Standard method to address Domain Validation is ready for the CA
+#### Verify that this Standard method to address domain validation is ready for the CA
 {: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * To verify this method works through `curl`, run that command for the Challenge URL.
@@ -183,7 +183,7 @@ In either case, you should be able to retrieve the copy of the Domain Validation
 
 After your CDN has reached **Certificate deploying** status:
 1. Remove the `examplechallenge-fileobject` file. (optional)
-1. Remove the added ServerAlias (Apache2) or the server_name (Nginx) from your server configuration, if needed. (optional)
+1. Optionally, remove the added ServerAlias (Apache2) or the server_name (Nginx) from your server configuration.
 1. Remove the A record between the CDN domain and the origin server IP.
 
 ---
@@ -256,7 +256,7 @@ To configure an Nginx redirect, follow these steps:
     }
     ```
 
-   * Option 2: Add a `rewrite` directive within the `server` block. If needed, add your CDN domain  as an additional **server_name** to the server block for your origin.
+   * Option 2: Add a `rewrite` directive within the `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
     ```
     server {
