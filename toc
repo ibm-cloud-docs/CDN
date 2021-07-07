@@ -36,6 +36,7 @@ Content Delivery Network (CDN)
         deleting_cdn.md
         updating-config-details.md
         adding-origin-path-details.md
+        setting-advanced-rules.md
         dynamic-content-acceleration.md
         how-to-configure-object-storage.md
         serve-video-on-demand-with-cdn.md

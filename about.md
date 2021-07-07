@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-02-01"
+lastupdated: "2021-07-07"
 
 keywords: overview
 
@@ -67,9 +67,9 @@ The {{site.data.keyword.cloud_notm}} Content Delivery Network service includes t
   * [Large file optimization](#large-file-optimization)
   * [Video on Demand](#video-on-demand)
   * [Dynamic Content Acceleration](#dynamic-content-acceleration-description)
-  * [Geographical Access Control](#geographical-access-control)
-  * [Hotlink Protection](#hotlink-protection)
-  * [Token Authentication](#token-authentication)
+  * [Geographical access control](#geographical-access-control)
+  * [Hotlink protection](#hotlink-protection)
+  * [Token authentication](#token-authentication)
   * [Modify Response Header](#modify-response-header)
 
 Features that are included with {{site.data.keyword.cloud_notm}} CDN powered by Akamai are described as follows.
@@ -192,21 +192,21 @@ When this feature is enabled, there is a slight performance cost that is associa
 
 You can configure {{site.data.keyword.cloud_notm}} CDN to serve content with Dynamic Content Acceleration (DCA) optimization. The performance of web pages with dynamic content can be measurably improved. For more information, see [Configuring Dynamic Content Acceleration](/docs/CDN?topic=CDN-dynamic-content-acceleration).
 
-### Geographical Access Control
+### Geographical access control
 {: #geographical-access-control}
 
-Geographical Access Control is a rule-based behavior that enables you set the `access-type` parameter for a group of users, based on their geographical location. Two types of behaviors are available: **Allow** and **Deny**.
+Geographical access control is a rule-based behavior that enables you set the `access-type` parameter for a group of users, based on their geographical location. Two types of behaviors are available: `ALLOW` and `DENY`.
 
-The access-type `Allow` lets you specifically allow traffic to selected regions, based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to `Allow` traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
+The `access-type` `ALLOW` lets you specifically allow traffic to selected regions, based on the type of region. Allowing traffic for specific regions implicitly blocks traffic for all others. For example, you might choose to allow traffic to selected continents, such as Europe and Oceania, which blocks access for all other continents.
 
-In contrast, the `Deny` behavior blocks access to your service for the specified group, but allows access for all other, non-specified regions. For example, if you set the Geographical Access Control access-type to `Deny` for the continents of Europe and Oceania, users on those continents are not able to use your service, whereas users on all other continents have access to it.
+In contrast, the `DENY` behavior blocks access to your service for the specified group, but allows access for all other, non-specified regions. For example, if you set the geographical access control `access-type` to `DENY` for the continents of Europe and Oceania, users on those continents are not able to use your service, whereas users on all other continents can access it.
 
-This feature is accessible from the **Settings** page of your CDN configuration.
+This feature is accessible from the **Advanced rules** page of your CDN configuration. For more information, see [Setting advanced rules](/docs/CDN?topic=CDN-setting-advanced-rules).
 
-### Hotlink Protection
+### Hotlink protection
 {: #hotlink-protection}
 
-Hotlink Protection is a rules-based behavior that enables you to control whether certain websites are allowed access to your content from your CDN. The browser typically includes a `Referer` header when an HTTP request is made from a link on a web page, and when that link points to a remote asset. The link that one website uses for access to an asset from another website is called a _hotlink_. Two types of behaviors are available: **ALLOW** and **DENY**.
+Hotlink protection is a rules-based behavior that enables you to control whether certain websites are allowed access to content from your CDN. The browser typically includes a `Referer` header when an HTTP request is made from a link on a web page, and when that link points to a remote asset. The link that one website uses for access to an asset from another website is called a _hotlink_. Two types of behaviors are available: `ALLOW` and `DENY`.
 
 If your `protectionType` is set to `ALLOW`:
 
@@ -216,10 +216,14 @@ If your `protectionType` is set to `DENY`:
 
    * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN does not serve the content requested. Otherwise, your CDN serves the content.
 
+This feature is accessible from the **Advanced rules** page of your CDN configuration. For more information, see [Setting advanced rules](/docs/CDN?topic=CDN-setting-advanced-rules).
+
 ### Token authentication
 {: #token-authentication}
 
 Token authentication is the process of generating tokens, associating them with an authenticated user session, and validating the request by using these tokens to prevent unauthorized sharing of links to your content. For more information, see [Working with token authentication](/docs/CDN?topic=CDN-working-with-token-authentication).
+
+This feature is accessible from the **Advanced rules** page of your CDN configuration. For more information, see [Setting advanced rules](/docs/CDN?topic=CDN-setting-advanced-rules).
 
 ### Modify Response Header
 {: #modify-response-header}
