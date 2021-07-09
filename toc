@@ -12,7 +12,6 @@ Content Delivery Network (CDN)
 
     {: .topicgroup}
     Videos & tutorials
-        video-networking-overview.md
         video-what-is-cdn.md
         video-set-up-web-app.md
         /solution-tutorials/solution-tutorials-static-files-cdn
@@ -82,7 +81,7 @@ Content Delivery Network (CDN)
         emea-region.md
         north-america-region.md
         south-america-region.md
-        
+
     [Terraform](https://cloud.ibm.com/docs/terraform?topic=terraform-getting-started)
     {: .navgroup-end}
 
@@ -104,6 +103,6 @@ Content Delivery Network (CDN)
         ts-hostname-does-not-load.md
         ts-cannot-connect-https.md
         ts-loading-cname-hostname.md
-    
+
     getting-help.md
     {: .navgroup-end}
