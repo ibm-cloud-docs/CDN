@@ -1,0 +1,63 @@
+{
+    "title": "Content Delivery Network docs",
+    "lastupdated": "2021-07-08",
+    "introduction": "IBM Content Delivery Network (CDN) provides content caching on the Akamai network, so content is delivered at record speed. Leverage the docs and API reference to plan for and manage your content delivery network.",
+    "section_devtools": {
+      "api": "/docs/CDN?topic=CDN-cdn-api-reference"
+    },
+    "section_recommended": [
+      {
+        "title": "About Content Delivery Networks",
+        "description": "How does a CDN work? View the three-tier architecture of IBM Cloud CDN and read all about its key features.",
+        "href": "/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-"
+      },
+      {
+        "title": "CDN Support Center",
+        "description": "Need assistance? Go here for common tasks, troubleshooting tips, FAQs, and more.",
+        "href": "/unifiedsupport/supportcenter/b6c4a555-5ff6-4e1d-9ce7-0a9976629eab"
+      },
+      {
+        "title": "Ordering a CDN",
+        "description": "You'll first need an IBMid. You can then order your CDN service through the IBM Cloud console.",
+        "href": "/docs/CDN?topic=CDN-order-a-cdn"
+      },
+      {
+        "title": "Accelerate delivery of static files",
+        "description": "Step through this tutorial to learn how to use a CDN and host website assets and user-generated content in IBM Cloud Object Storage.",
+        "href": "/docs/CDN?topic=solution-tutorials-static-files-cdn"
+      },
+      {
+        "title": "Accelerate a dynamic website",
+        "description": "Learn how to use Dynamic Content Acceleration (DCA) to optimize the performance of non-static content.",
+        "href": "/docs/CDN?topic=solution-tutorials-dynamic-content-cdn"
+      }
+    ],
+    "section_videos": [
+      {
+        "title": "What is a Content Delivery Network?",
+        "href": "/docs/CDN?topic=CDN-content-delivery-network-video",
+        "thumbnail": "/images/thumbnail1.png"
+      },
+      {
+        "title": "Setting up a web app with security group, load balancer, and CDN",
+        "href": "/docs/CDN?topic=CDN-set-up-web-app-video",
+        "thumbnail": "/images/thumbnail3.png"
+      }
+    ],
+    "section_learn": {
+      "developer": "https://developer.ibm.com/depmodels/cloud/",
+      "architecture": "https://www.ibm.com/cloud/architecture/architectures/hybrid-messaging/overview/",
+      "training": "https://www.ibm.com/training/cloud",
+      "community": "https://community.ibm.com/community/user/publiccloud"
+    },
+    "section_updates": {
+      "view_more": "/docs/CDN?topic=CDN-what-s-new",
+      "tiles": [
+        {
+          "date": "07 July 2021",
+          "title": "Advanced rule policy",
+          "description": "Set advanced rules to optimize content delivery. Control access through geoblocking and protect your content from hotlinking. You can also set up token authorization to stop unauthorized clients from accessing your sensitive content."
+        }
+      ]
+    }
+  }
