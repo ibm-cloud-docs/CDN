@@ -22,7 +22,7 @@ subcollection: CDN
 {: #token-auth-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth` collection contains the attributes that are used by our Token Authentication APIs. Each of the token authentication APIs returns a collection of this type.
-{:shortdesc}
+{: shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`  
 

@@ -17,14 +17,14 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
-{:note .note}
+{:note: .note}
 {:download: .download}
 
 # About HTTPS
 {: #about-https}
 
 {{site.data.keyword.cloud}} offers two ways to secure your CDN with HTTPS - Wildcard certificate and Domain Validation (DV) SAN certificate. Both HTTPS options can be configured by selecting **HTTPS Port** when configuring your CDN.
-{:shortdesc}
+{: shortdesc}
 
 The default HTTPS Port is 443, or you can choose a different port number to route your HTTPS traffic through. A list of allowed port numbers can be found in the [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed).
 
@@ -49,6 +49,6 @@ With SAN certificate for HTTPS, your primary CDN hostname is added to a certific
 When the CDN order is placed that uses an HTTPS SAN certificate, it goes through the process of requesting a certificate and creating a Domain Control Validation (DCV). DCV is the process a certificate authority uses to establish that you are authorized to access and control the domain. Your action is required to complete this step. After control is established, the certificate is deployed to the CDN Edge servers around the world. After the certificate is successfully deployed, the renewal of the certificate is handled automatically. For more information, see [HTTPS protocol support](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#https-protocol-support). Domain Control Validation methods are explained in more detail in [Initial steps to Domain Control Validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#initial-steps-to-domain-control-validation).
 
 After the CDN reaches RUNNING status, you must keep the CDN hostname CNAME record in your DNS. If the CNAME record is removed, the CDN hostname can be removed from the SAN certificate within three days. If that happens, HTTPS traffic is no longer served with that CDN hostname.
-{:note}
+{: note}
 
 ![Diagram for HTTPS with SAN Cert](images/state-diagram-san.png)

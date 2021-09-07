@@ -24,7 +24,7 @@ subcollection: CDN
 {: #known-limitations}
 
 The following limitations apply to the CDN service for the Akamai vendor:
-{:shortdesc}
+{: shortdesc}
 
 * Purge contents of directory-level and domain-level is not supported.
 * There's a limit of 75 as the total number of origins per CDN.

@@ -22,7 +22,7 @@ subcollection: CDN
 {: #path-origin-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` collection contains the attributes used by our (Origin) Path APIs. Each of the Path APIs returns a collection of this type.
-{:shortdesc}
+{: shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`  
 
@@ -35,7 +35,7 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path` coll
 * `fileExtension`: File extensions that are allowed to be cached.  
 * `header`: Specifies Host header information that is used by the origin server.
 * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-  * `include-all`: Include all query arguments **Default**
-  * `ignore-all`: Ignores all query arguments
-  * `ignore: space separated query-args`: Ignores those specific query arguments. For example, "ignore: query1 query2"
-  * `include: space separated query-args`: Includes those specific query arguments. For example, "include: query1 query2"
+   * `include-all`: Include all query arguments **Default**
+   * `ignore-all`: Ignores all query arguments
+   * `ignore: space separated query-args`: Ignores those specific query arguments. For example, "ignore: query1 query2"
+   * `include: space separated query-args`: Includes those specific query arguments. For example, "include: query1 query2"

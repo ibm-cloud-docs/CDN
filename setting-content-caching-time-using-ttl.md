@@ -26,20 +26,20 @@ subcollection: CDN
 {: #setting-content-caching-time-using-time-to-live}
 
 After your CDN is running, you can set your content caching time using Time To Live (TTL). The Time To Live for a particular file or directory path indicates how long that content should be cached. When you created the CDN Mapping, a default global TTL of 3600 seconds (1 hour) was created.
-{:shortdesc}
+{: shortdesc}
 
 To set the content caching time using TTL, follow these steps:
 
-1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. 
+1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane.
 2. Click **Add path** from the **TTL settings**.
 3. Adjust the time using the arrows, or by entering a new time. The time value is specified in seconds. For example, 3600 seconds is equal to 1 hour. The smallest value for `timeToLive` that you can choose is 0 seconds, while the largest is 2147483646 seconds (approximately 24855 days). Select the **Save** button to set the content caching time.
 
-  ![Adding ttl](images/adding-path.png)
+   ![Adding ttl](images/adding-path.png)
 
 4. After saving, you can **Edit** or **Delete** the TTL setting using the Overflow ![Overflow menu](images/overflow.png) options. (**NOTE**: The path for TTL cannot be changed. If the Mapping path is changed, the TTL path is updated automatically.)
 
-  ![Edit or delete ttl](images/edit-delete-ttl-setting.png)
+   ![Edit or delete ttl](images/edit-delete-ttl-setting.png)
 
-  * When the content matches multiple rules, the most recently added configuration takes precedence.
+   * When the content matches multiple rules, the most recently added configuration takes precedence.
 
-  * TTL values can be set only for a specific file name or directory. Regular expressions are not supported because they might create unpredictable behavior.
+   * TTL values can be set only for a specific file name or directory. Regular expressions are not supported because they might create unpredictable behavior.

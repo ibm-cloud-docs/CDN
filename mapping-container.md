@@ -22,7 +22,7 @@ subcollection: CDN
 {: #mapping-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collection contains the attributes that are used by our Mapping APIs. Each of the Mapping APIs returns a collection of this type.
-{:shortdesc}
+{: shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping`:
 
@@ -44,10 +44,10 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collectio
 * `fileExtension`: File extensions that are allowed to be cached.
 * `path`: The path to your S3 object storage. Usually found in the object store URL or API section of your service.
 * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-  * `include-all`: Include all query arguments **Default**
-  * `ignore-all`: Ignore all query arguments
-  * `ignore: space separated query-args`: Ignores those specific query arguments. For example, "ignore: query1 query2"
-  * `include: space separated query-args`: Includes those specific query arguments. For example, "include: query1 query2"
+   * `include-all`: Include all query arguments **Default**
+   * `ignore-all`: Ignore all query arguments
+   * `ignore: space separated query-args`: Ignores those specific query arguments. For example, "ignore: query1 query2"
+   * `include: space separated query-args`: Includes those specific query arguments. For example, "include: query1 query2"
 
 Of particular note is the `uniqueId`, which is generated when a mapping is created and is used as a parameter to subsequent API calls.
 

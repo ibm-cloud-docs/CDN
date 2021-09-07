@@ -29,26 +29,26 @@ subcollection: CDN
 {: #code-examples-using-the-cdn-api}
 
 This document contains example API calls and the resulting output for numerous CDN APIs.
-{:shortdesc}
+{: shortdesc}
 
 ## General steps that are needed for all API calls
 {: #general-steps-needed-for-all-api-calls}
 
-Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){:external}.
+Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){: external}.
 
-  * You must get access to the SoapClient through `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
+   * You must get access to the SoapClient through `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
 
       ```php
       require_once __DIR__.'/vendor/autoload.php';
       ```
 
-  * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){:external} page, under "Getting Your API Key".
+   * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){: external} page, under "Getting Your API Key".
 
       ```php
       $apiUsername = '<Your username>' ;
       $apiKey = '<Your apiKey>' ;
       ```
-  * Initialize SoapClient for the appropriate class.
+   * Initialize SoapClient for the appropriate class.
 
 ## Example code for listing vendors
 {: #example-code-for-listing-vendors}
@@ -87,7 +87,7 @@ Array
 ## Example code to verify an order
 {: #example-code-to-verify-order}
 
-The call to `verifyOrder` is not mandatory before you place an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. For more information, see [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){:external}.
+The call to `verifyOrder` is not mandatory before you place an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. For more information, see [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){: external}.
 
 In this case, it is the `SoftLayer_Product_Order` class, which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Before the call to `verifyOrder`, you must build the `$orderObject` by using the `SoftLayer_Product_Package`.
 
@@ -143,7 +143,7 @@ catch (\Exception $e) {
 ## Example code to place an order
 {: #example-code-to-place-order}
 
-This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/){:external}.
+This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/){: external}.
 
 ```php
 

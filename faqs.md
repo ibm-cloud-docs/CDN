@@ -30,7 +30,7 @@ subcollection: CDN
 # FAQs for CDN
 {: #faqs}
 Have a question about CDN? Review frequently asked questions, which provide answers to provisioning concerns, application access, and other common inquiries.
-{:shortdesc}
+{: shortdesc}
 
 ## What is a Content Delivery Network (CDN)?
 {: #what-is-a-content-delivery-network-cdn}
@@ -63,7 +63,7 @@ For HTTP and SAN certificate-based HTTPS CDN, update your DNS record so that you
 For wildcard, certificate-based HTTPS CDN, this DNS update is not needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
 
 It can take up to 15 - 30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
-{:note}
+{: note}
 
 ## How do I add a CNAME record for my CDN domain in DNS?
 {: #how-do-i-add-a-cname-record-for-my-cdn-domain-in-dns}
@@ -143,7 +143,7 @@ No. There can be only one active purge request for a given file path at a time.
 IPv6 (or dual stack support) is supported by Akamai's Edge servers. It is designed to help customers with an IPv4-only origin to accept connections from IPv6 clients, convert from IPv6 to IPv4 at the Edge, and go forward to the origin with IPv4.
 
 Creating an {{site.data.keyword.cloud_notm}} CDN using an IPv6 address as the origin server address is not supported.
-{:note}
+{: note}
 
 ## Are there any restrictions on what HTTP and HTTPS port numbers are allowed for Akamai?
 {: #are-there-any-restrictions-on-what-port-numbers-are-allowed}
@@ -170,7 +170,7 @@ See the [Accelerate delivery of static files using a CDN](/docs/solution-tutoria
 {: #notification-that-origin-cert-is-expiring}
 {: faq}
 
-Log in to the Akamai Community and follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){:external}.
+Log in to the Akamai Community and follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){: external}.
 
 ## What security is included with the IBM CDN solution with Akamai?
 {: #what-security-is-included-with-cdn-with-akamai}
@@ -271,7 +271,7 @@ No, WebSocket is not supported by Akamai's Edge servers.
 A favorite is a permanent group, which means that it will never be deleted unless you change it to an unfavorite group. An unfavorite group is a temporary group. This type of group is automatically deleted after 15 days of inactivity.
 
 Favorite groups names must be unique. Unfavorite groups do not have this limitation.
-{:note}
+{: note}
 
 ## In what status is a CDN allowed to perform multiple file purges?
 {: #what-status-is-cdn-allowed-for-multiple-file-purge}
@@ -288,7 +288,7 @@ Multiple file purges are allowed in the following states:
 {: #is-cdn-pci-dss-compliant}
 {: faq}
 
-Yes, IBM CDN is PCI DSS 3.2.1 compliant through our partner Akamai's certification. For more information, see the Akamai [Attestation of Compliance](https://www.akamai.com/uk/en/multimedia/documents/infosec/pci-dss-3.2-attestation-of-compliance.pdf){:external}.
+Yes, IBM CDN is PCI DSS 3.2.1 compliant through our partner Akamai's certification. For more information, see the Akamai [Attestation of Compliance](https://www.akamai.com/uk/en/multimedia/documents/infosec/pci-dss-3.2-attestation-of-compliance.pdf){: external}.
 
 ## How to get the client IP address?
 {: get-client-ip}

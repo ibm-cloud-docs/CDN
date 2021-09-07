@@ -28,7 +28,7 @@ subcollection: CDN
 
 Dynamic Content Acceleration (DCA) is a technology to accelerate the dynamic web content.
 It provides improved reliability, offload, and network performance over your original web infrastructure, while handling the specific requirements of dynamically generated content — without a costly hardware build-out. Using real-time network optimizations and advanced caching techniques, it speeds and secures interactive websites.
-{:shortdesc}
+{: shortdesc}
 
 ## Working with DCA configurations
 {: #dca-configurations}
@@ -63,7 +63,7 @@ The best path to origin must be known at the time a user’s request arrives at 
 To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the internet from Edge to Origin).
 
 The fetches of the test object are called the races. When a real request comes in, the Edge consults the most recent race data to send that request over the fastest path to the origin.
-You can download the provided [test object](https://public.dhe.ibm.com/cloud/bluemix/network/cdn/route-detection-test-object.html){:external} and upload it to the origin server, or you can use your own test object.
+You can download the provided [test object](https://public.dhe.ibm.com/cloud/bluemix/network/cdn/route-detection-test-object.html){: external} and upload it to the origin server, or you can use your own test object.
 
 A valid test object must:
 * Get HTTP 200 response without authentication
@@ -73,7 +73,7 @@ A valid test object must:
 
 
 **`Detection Path`** is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
-{:note}
+{: note}
 
 ### Prefetching
 {: #prefetching}
@@ -89,7 +89,7 @@ Serving compressed images reduces the amount of content that is required to load
 Image Compression supported file extensions: .jpg, .jpeg, .jpe, .jif, .jfif, and .jfi
 
 In order for the feature **`Image Compression`** to work for DCA, you must make sure that the path of the image files is cacheable. See [Caching](#caching-cache-content) to set the images cacheable.
-{:note}
+{: note}
 
 ## Caching
 {: #caching}

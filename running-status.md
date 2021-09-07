@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2021
 lastupdated: "2021-06-09"
 
-keywords: 
+keywords:
 
 subcollection: CDN
 
@@ -25,8 +25,8 @@ subcollection: CDN
 # Getting to Running status
 {: next-steps-after-ordering}
 
-After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain. 
-{:shortdesc}
+After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain.
+{: shortdesc}
 
 You might need to click the **Get status** button a few times before your CDN shows `Running` status.
 {: note}
@@ -44,7 +44,7 @@ Follow these steps to get your CDN up and running:
 1. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
 
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**. 
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**.
 
    A typical CNAME record looks similar to the following:
 
@@ -63,7 +63,7 @@ Follow these steps to get your CDN up and running:
 2. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
 3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
 
-   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**. 
+   Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**.
 
    A typical CNAME record looks similar to the following:
 
@@ -76,7 +76,7 @@ Your CDN is now running. From here, you can review the "How to" topics in the ta
 ## CDN CNAME
 {: cdn-cname}
 
-IBM CDN CNAME (also called an endpoint) can make your CDN mapping status to `Running` because it can resolve your domain to Akamai edge servers if you cname your domain to it. IBM provides two CNAMEs, and you can create CNAME record in your DNS system to point your CDN domain to one of the CNAMEs. 
+IBM CDN CNAME (also called an endpoint) can make your CDN mapping status to `Running` because it can resolve your domain to Akamai edge servers if you cname your domain to it. IBM provides two CNAMEs, and you can create CNAME record in your DNS system to point your CDN domain to one of the CNAMEs.
 
 ### IBM CNAME
 {: ibm-cname}
@@ -100,7 +100,7 @@ e24458.dsce16.akamaiedge.net.
 23.xx.xx.xx
 ...
 ```
-{:codeblock}
+{: codeblock}
 
 The IBM CNAME is pointing to the `wildcard.appdomain.mdc.edgekey.net.`, which is the Akamai's endpoint for http-only mapping.
 
@@ -112,15 +112,15 @@ example-cname.cdn.appdomain.cloud.
 origin.example.com
 119.xx.xx.xx
 ```
-{:codeblock}
+{: codeblock}
 
-Now the IBM CNAME is pointing to your own origin's hostname. By switching the DNS CNAME record target value, the IBM CNAME can ensure your domain still reachable even when the CDN is stopped. 
+Now the IBM CNAME is pointing to your own origin's hostname. By switching the DNS CNAME record target value, the IBM CNAME can ensure your domain still reachable even when the CDN is stopped.
 
 For more informtion about IBM CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cname).
 
 ### Akamai CNAME
 {: akamai-cname}
-Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to the Akamai CNAME, it can also resolve your domain to Akamai edge servers, and because it has fewer DNS chain nodes, it has a shorter DNS lookup time than the IBM CNAME. 
+Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to the Akamai CNAME, it can also resolve your domain to Akamai edge servers, and because it has fewer DNS chain nodes, it has a shorter DNS lookup time than the IBM CNAME.
 
 In the previous CDN mapping `example.cdn-demo.com`, for example, the Akamai CNAME is `cert-00036-cdnedge-bluemix.akamaized.net.edgekey.net.`. If the domain is pointed to the Akamai CNAME, then the `dig` result looks like the following example.
 
@@ -131,7 +131,7 @@ e24458.dsce16.akamaiedge.net.
 23.xx.xx.xx
 23.xx.xx.xx
 ```
-{:codeblock}
+{: codeblock}
 
 From this result, there are fewer CNAME nodes resolved in the DNS chain, and the DNS lookup time is much faster because it skips the IBM record.
 
@@ -164,9 +164,9 @@ For more information about Akamai CNAME, see the [FAQ for CDN CNAME](#faq-for-cd
 {: #point-domain-to-none-cdn-cname}
 {: faq}
 
-No, you cannot configure your domain without pointing it to a CDN CNAME. You can point your domain only to a CDN CNAME (IBM CNAME or the Akamai CNAME). This way, you can guarantee that your domain is globally distributed to the closest and most efficient edge server for your clients. 
+No, you cannot configure your domain without pointing it to a CDN CNAME. You can point your domain only to a CDN CNAME (IBM CNAME or the Akamai CNAME). This way, you can guarantee that your domain is globally distributed to the closest and most efficient edge server for your clients.
 
-The IP addresses of an Akamai edge server are changed dynamically; therefore, setting a fixed Akamai IP address for your domain might cause your traffic to fail. 
+The IP addresses of an Akamai edge server are changed dynamically; therefore, setting a fixed Akamai IP address for your domain might cause your traffic to fail.
 {: note}
 
 ### Can I update the IBM CNAME or Akamai CNAME?
@@ -179,7 +179,7 @@ No, you can't update the IBM CNAME or Akamai CNAME. You can only define the pref
 {: #when-to-use-akamai-or-ibm-cname}
 {: faq}
 
-Akamai CNAME provides a shorter DNS lookup time for your domain. The Akamai CNAME improves the performance of your website by shortening the DNS resolution time. 
+Akamai CNAME provides a shorter DNS lookup time for your domain. The Akamai CNAME improves the performance of your website by shortening the DNS resolution time.
 
    You can only point your domain to the Akamai CNAME when the CDN mapping status is in `RUNNING` state.
    {: note}
@@ -208,8 +208,8 @@ You don't have permission to access "http://xxxx;" on this server.<P>
 Reference&#32;&#35;18&#46;9df02817&#46;1600156471&#46;bf3f7f1
 </BODY>
 </HTML>
-``` 
-{:codeblock}
+```
+{: codeblock}
 
 ### Where I can find the Akamai CNAME?
 {: #where-find-akamai-cname}

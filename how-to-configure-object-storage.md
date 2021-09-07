@@ -46,7 +46,7 @@ For more information, see [Accelerate delivery of static files using a CDN](/doc
 
 ## FAQs for CDN with ICOS
 {: #faqs-for-cdn-with-icos}
-{:faq}
+{: faq}
 
 ### Can I use ICOS private endpoints for CDN?
 {:# use-objects-stored-in-icos}

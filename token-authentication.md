@@ -35,7 +35,7 @@ subcollection: CDN
 {: support}
 
 Token authentication can stop unauthorized clients from accessing your sensitive content, and protects your content from _hotlinking_. By enabling token authentication on CDN, requests are authenticated by CDN Edge servers before the CDN delivers the content.
-{:shortdesc}
+{: shortdesc}
 
 ## How it works
 {: #how-it-works-token-authentication}
@@ -61,12 +61,12 @@ Akamai offers Token Auth software development kits (SDK) in multiple programming
 
 See the following readme file pages for details on how to use the SDK of your choice.
 
-- [C Sharp ("C#")](https://github.com/BookBeat/EdgeAuth-Token-CSharp){:external}
-- [Golang ("Go")](https://github.com/mobilerider/EdgeAuth-Token-Golang){:external}
-- [Java](https://github.com/akamai/EdgeAuth-Token-Java){:external}
-- [NodeJS](https://github.com/akamai/EdgeAuth-Token-Node){:external}
-- [Python](https://github.com/akamai/EdgeAuth-Token-Python){:external}
-- [Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby){:external}
+- [C Sharp ("C#")](https://github.com/BookBeat/EdgeAuth-Token-CSharp){: external}
+- [Golang ("Go")](https://github.com/mobilerider/EdgeAuth-Token-Golang){: external}
+- [Java](https://github.com/akamai/EdgeAuth-Token-Java){: external}
+- [NodeJS](https://github.com/akamai/EdgeAuth-Token-Node){: external}
+- [Python](https://github.com/akamai/EdgeAuth-Token-Python){: external}
+- [Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby){: external}
 
 You can refer to step 2 in [Example to set token authentication](/docs/CDN?topic=CDN-working-with-token-authentication#example-to-set-token-authentication).
 
@@ -87,7 +87,7 @@ The following example illustrates how to set token authentication. One customer 
 1. Create the encryption key.
 {: #create-encryption-key}
 
-   The key is an even number of hex digits for the token key. An entry can be up to 64 characters in length. To ensure that your key is random, it is recommended that you create the key by using the [OpenSSL tool](https://www.openssl.org/){:external}.
+   The key is an even number of hex digits for the token key. An entry can be up to 64 characters in length. To ensure that your key is random, it is recommended that you create the key by using the [OpenSSL tool](https://www.openssl.org/){: external}.
 
    For example:
 
@@ -101,17 +101,17 @@ The following example illustrates how to set token authentication. One customer 
     ```
     87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
     ```
-    {:screen}
+    {: screen}
 
    You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the Edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
 
    This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
-   {:note}
+   {: note}
 
 2. Generate the token.
 {: #generate-the-token}
 
-   The following is an example that uses [Python SDK](https://github.com/akamai/EdgeAuth-Token-Python){:external} to generate the token with the primary or the transition key that is generated in [step 1](#create-encryption-key).
+   The following is an example that uses [Python SDK](https://github.com/akamai/EdgeAuth-Token-Python){: external} to generate the token with the primary or the transition key that is generated in [step 1](#create-encryption-key).
 
     ```python
     #!/usr/bin/python
@@ -149,7 +149,7 @@ The following example illustrates how to set token authentication. One customer 
    You can refer to this [example to create a token authentication](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-token-auth-example) by [token authentication API](/docs/CDN?topic=CDN-cdn-api-reference#api-for-token-authentication).
 
    You need to replace the parameter values in the example to the correct ones you're using, and ensure the token authentication values (encryption key(s), token name, ...) match the values in the token generation code in [step 2](#generate-the-token).
-   {:note}
+   {: note}
 
 4. Verify the token authentication function.
 {: #verify-the-token-authentication-function}

@@ -22,7 +22,7 @@ subcollection: CDN
 {: #modify-response-header-container}
 
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader` collection contains attributes that are used by the `modify-response-header` APIs. Each of the `modify-response-header` APIs returns a collection of this type.
-{:shortdesc}
+{: shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`  
 

@@ -26,11 +26,11 @@ subcollection: CDN
 {: support}
 
 Complete the following steps after ordering your CDN with a DV SAN certificate.
-{:shortdesc}
+{: shortdesc}
 
 The following diagram outlines the various states that your CDN enters, from the time it is created until it gets to `Running` status.
 
-  ![SAN state diagram](images/state-diagram-san.png)
+   ![SAN state diagram](images/state-diagram-san.png)
 
 ## Initial steps to Domain Control Validation
 {: #initial-steps-to-domain-control-validation}
@@ -133,7 +133,7 @@ To configure Apache, follow these steps:
    ```
    apachectl -k graceful
    ```
-   {:pre}
+   {: pre}
 
  6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
@@ -144,26 +144,26 @@ To configure Nginx, follow these steps:
 
  1. Log in to the machine running the Nginx server.
 
- 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response is placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
+1. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response is placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
 
-   ```
-   mkdir -p /usr/share/nginx/html/.well-known/acme-challenge && \
-   printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
-   ```
-   {: pre}
+    ```
+    mkdir -p /usr/share/nginx/html/.well-known/acme-challenge && \
+    printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
+    ```
+    {: pre}
 
-3. Optionally, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
+1. Optionally, open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for configuration files.
 
-4. Optionally, add your CDN domain as an additional **server_name** to the server block for your origin.
+1. Optionally, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-5. If you modified your Nginx server configuration, restart the Nginx server with minimal down time by using the following command:
+1. If you modified your Nginx server configuration, restart the Nginx server with minimal down time by using the following command:
 
       ```
       nginx -s reload
       ```
       {: pre}
 
-6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
+1. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Verify that this Standard method to address domain validation is ready for the CA
 {: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}

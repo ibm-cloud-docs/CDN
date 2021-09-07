@@ -22,7 +22,7 @@ subcollection: CDN
 {: #limits-and-maximum-values}
 
 Have a question about CDN and limits or maximum? Review these frequently asked questions, which provide answers to common inquiries.
-{:shortdesc}
+{: shortdesc}
 
 ## Is there a maximum value for Time To Live? A minimum?
 {: #is-there-a-maximum-value-for-time-to-live}

@@ -23,7 +23,7 @@ subcollection: CDN
 {: #how-to-serve-video-on-demand-with-cdn}
 
 Explore an example of how to use {{site.data.keyword.cloud}} CDN to stream `.mp4` content through **HLS** as video on demand, to a browser from a Linux-Nginx origin.
-{:shortdesc}
+{: shortdesc}
 
 ## Introduction
 {: #introduction}
@@ -61,16 +61,16 @@ $ ffprobe test-video.mp4
 
 In this example, let's consider the following stream information for `test-video.mp4`:
 
-  * Video stream 0
-    * Format: h264
-    * Format profile: High
-    * Resolution: 1920x1080
-    * Bit rate: 438 kb/s
-    * Frame rate: 30.30 fps
-  * Audio stream 0
-    * Format: aac
-    * Sample rate: 48000
-    * Bit rate: 128k
+   * Video stream 0
+      * Format: h264
+      * Format profile: High
+      * Resolution: 1920x1080
+      * Bit rate: 438 kb/s
+      * Frame rate: 30.30 fps
+   * Audio stream 0
+      * Format: aac
+      * Sample rate: 48000
+      * Bit rate: 128k
 
 Now, we'll convert our `test-video.mp4` file into the formats for HLS.
 
@@ -102,10 +102,11 @@ Here is the breakdown of what this command did:
 Note, for the `-` options, unless a stream is specified, the "best" one for its category is chosen.
 
 Such as:
-  * `-c:a` chooses the audio stream with the most channels.
-  * `-c:v` chooses the video stream with the highest resolution.
-  * `-c:a:0` chooses audio stream 0.
-  * `-c:v:0` chooses video stream 0.
+
+   * `-c:a` chooses the audio stream with the most channels.
+   * `-c:v` chooses the video stream with the highest resolution.
+   * `-c:a:0` chooses audio stream 0.
+   * `-c:v:0` chooses video stream 0.
 
 In this guide, only one audio stream and one video stream make up the example `test-video.mp4`. And so, the difference would not be a concern moving forward.
 

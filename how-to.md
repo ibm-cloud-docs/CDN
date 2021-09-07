@@ -26,7 +26,7 @@ subcollection: CDN
 {: #purging-cached-content}
 
 When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-allowed-for-multiple-file-purge), you can purge the cached contents in multiple paths from the vendor's server.
-{:shortdesc}
+{: shortdesc}
 
 1. On the CDN page, select your CDN, which takes you to the **Overview** page.
 2. Select the **Purge** tab.
@@ -49,4 +49,4 @@ When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-al
    By default, the purge groups in the **Purge history** are not saved to favorites and trimmed every 15 days automatically. To save purge groups for future use, you can save them as favorites by choosing the **Add to favorites** option. When a purge group is saved, it is not be automatically trimmed.
 
    The name and path list for a purge group that is listed in **Favorite paths** and **Purge history** cannot be updated at present.
-   {:note}
+   {: note}

@@ -28,7 +28,7 @@ subcollection: CDN
 {: #deleting-a-cdn}
 
 To delete a CDN, follow these steps:
-{:shortdesc}
+{: shortdesc}
 
 1. Click **Delete** from the Overflow ![Overflow menu](images/overflow.png) menu. A confirmation window appears.
 1. Click **Delete** to proceed.
@@ -56,4 +56,4 @@ If your CDN is configured with HTTPS with DV SAN certificate, it can take up to 
 If your CDN is configured with DV SAN certificate HTTPS, you must remove the DNS record that points your domain to the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) before deleting your CDN. Otherwise, the deletion fails with the error message 'Delete CDN failed: the xxxxxx is still live on network, please remove the DNS record pointing to Akamai.'
 
 If you already deleted the DNS record that points your domain to the [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) and you still get an error, wait 15 - 30 minutes for the DNS update to take effect.
-{:note}
+{: note}

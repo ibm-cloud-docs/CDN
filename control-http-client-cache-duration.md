@@ -23,25 +23,26 @@ subcollection: CDN
 
 When using a CDN, two levels of caching are available:
 
-  * **Caching at the Edge** occurs when a CDN Edge server caches a piece of content from the origin.
-  * **Caching downstream** from the Edge network of servers occurs when an user or HTTP client, such as a requesting browser, caches a piece of content from an Edge server.
+   * **Caching at the Edge** occurs when a CDN Edge server caches a piece of content from the origin.
+   * **Caching downstream** from the Edge network of servers occurs when an user or HTTP client, such as a requesting browser, caches a piece of content from an Edge server.
 
 The method that you choose to control how long content is cached at the requester, such as a browser, depends on the following factors:
 
-  * Whether the Respect Header setting is `ON` or `OFF` (default).
-  * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
+   * Whether the Respect Header setting is `ON` or `OFF` (default).
+   * Whether the origin server provides a `max-age` value in the Cache-Control header for a particular piece of content.
 
 Regardless of how these factors change, your origin must provide a Cache-Control header for the intended content to the Edge, if you want Edge servers to send HTTP responses with the Cache-Control header for that content.
 
 Essentially, Cache-Control headers sent from an Edge server downstream ask the requester to cache the associated content according to the caching directives or values that are specified by the Edge server.
-{:shortdesc}
+{: shortdesc}
 
 ## Respect Header: Off
 {: #respect-header-off}
 
 If your origin does provide a Cache-Control header with a `max-age` directive and value for a specific piece of content, then the cache duration for the specific piece of content that is cached on the Edge is still derived from your CDN's TTL settings. Additionally, the Edge server responds to the requester downstream with a Cache-Control `max-age` value equal to the lesser of:
-  * The origin's Cache-Control `max-age` value.
-  * The remaining time until the content goes stale on the Edge.
+
+   * The origin's Cache-Control `max-age` value.
+   * The remaining time until the content goes stale on the Edge.
 
 However, if your origin does not provide a Cache-Control header to the Edge server, then Edge servers will not provide a Cache-Control header to the requester. The Edge cache duration for your content is still derived from your CDN's TTL Settings.
 

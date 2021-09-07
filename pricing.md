@@ -16,7 +16,7 @@ subcollection: CDN
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
-{:note .note}
+{:note: .note}
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
@@ -24,7 +24,7 @@ subcollection: CDN
 {: #pricing}
 
 Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN), powered by Akamai, is shown in the table that follows. You can scroll sideways to see the full geographic pricing table before getting started using this service.
-{:shortdesc}
+{: shortdesc}
 
 ## CDN bandwidth pricing (rates shown in USD)
 {: #cdn-bandwidth-pricing}
@@ -34,7 +34,7 @@ Bandwidth pricing for {{site.data.keyword.cloud}} Content Delivery Network (CDN)
 You are using the [static bandwidth](/docs/CDN?topic=CDN-pricing#cdn-static-bandwidth) by default. If you have enabled the Dynamic Content Acceleration (DCA) feature, you will also pay for the [dynamic bandwidth](/docs/CDN?topic=CDN-pricing#cdn-dynamic-bandwidth).
 
 Pricing is shown per GB of monthly usage.
-{:note}
+{: note}
 
 Select a region to see a list of countries or territories in that region.
 

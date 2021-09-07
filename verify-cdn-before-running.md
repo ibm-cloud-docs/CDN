@@ -32,7 +32,7 @@ subcollection: CDN
 {: support}
 
 For **HTTP only** and **SAN HTTPS** CDN mappings only, you must verify that your CDN is working before you switch the domain to use the CDN.
-{:shortdesc}
+{: shortdesc}
 
 All the commands, tools, and files that are used in this example are based on the `Ubuntu 16.04.5 LTS` system. Your examples might vary if you are using another OS or different Ubuntu versions.
 {: note}
@@ -56,7 +56,7 @@ The domain `ibm-test.cdn-demo.com` is pointing to the Origin server:
 dig +short ibm-test.cdn-demo.com
 119.xx.xx.xx
 ```
-{:pre}
+{: pre}
 
 and a service is running on it:
 
@@ -68,7 +68,7 @@ Date: Tue, 18 Feb 2020 05:40:45 GMT
 Content-Type: text/html
 ...
 ```
-{:pre}
+{: pre}
 
 If services are running on your domain, it is recommended to verify CDN functionality before you migrate your domain to CDN. You can use the following methods to verify CDN traffic.  
 
@@ -96,7 +96,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    104.84.150.124
    104.84.150.67
    ```
-   {:pre}
+   {: pre}
 
    The DNS chain and the IP addresses resolved on your machine might be different.
    {: tip}
@@ -108,7 +108,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    ```
    104.84.150.124 ibm-test.cdn-demo.com
    ```
-   {:screen}
+   {: screen}
 
 3. Verify the hosts change. You can use the `ping` command to resolve and test the IP address.
 
@@ -124,7 +124,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    4 packets transmitted, 4 received, 0% packet loss, time 3005ms
    rtt min/avg/max/mdev = 1.420/1.507/1.662/0.099 ms
    ```
-   {:pre}
+   {: pre}
 
    This result shows that the IP address of `ibm-test.cdn-demo.com` was resolved to Akamai Edge server's IP address (`104.84.150.124`)and that the `/etc/hosts` file change took effect.
 
@@ -144,7 +144,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    ...
    X-Check-Cacheable: YES
    ```
-   {:pre}
+   {: pre}
 
    If Akamai debug headers are returned, and the response code and content are the same as before, then the CDN traffic works. See [Troubleshooting](/docs/CDN?topic=CDN-troubleshoot-cdn-working) for further debugging tips.
 

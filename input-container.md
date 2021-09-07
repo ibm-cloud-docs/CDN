@@ -22,7 +22,7 @@ subcollection: CDN
 {: #input-container}
 
 The Input container is a collection used by both the Mapping and (Origin) Path classes. It provides a consistent set of input attributes for both classes.
-{:shortdesc}
+{: shortdesc}
 
 * `vendorName`: The name of a valid {{site.data.keyword.cloud}} CDN provider.
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.
@@ -35,15 +35,15 @@ The following attributes are common to the Mapping and (Origin) Path classes:
 * `status`:  The status of the mapping or path. Status can be CNAME_CONFIGURATION, SSL_CONFIGURATION, RUNNING, STOPPED, DELETED, or ERROR.
 * `path`: Path from which the cached content is served. The default path is /\* When used by the `updateOriginPath` API, this attribute refers to the new path to be added.
 * `performanceConfiguration`: Specifications for the performance configuration of the mapping. We support the following performance configurations:
-  * `General web delivery`: The default performance option to optimize the general web page contents, such as the HTML, pictures, CSS, JS files.
-  * `Dynamic content acceleration`: Optimizes the forward path to the origin server using Akamai’s “SureRoute” feature, and supports embedded object pre-fetching and situational image compression.
-  * `Video on demand optimization`: Optimizes cache/offload and media retrieval path through the Akamai network, MIME types, network timeout conditions.
-  * `Large file optimization`: Optimizes for delivery of large file downloads with improved cache/offload (partial object caching with pre-fetched object data), object retrieval path.  
+   * `General web delivery`: The default performance option to optimize the general web page contents, such as the HTML, pictures, CSS, JS files.
+   * `Dynamic content acceleration`: Optimizes the forward path to the origin server using Akamai’s “SureRoute” feature, and supports embedded object pre-fetching and situational image compression.
+   * `Video on demand optimization`: Optimizes cache/offload and media retrieval path through the Akamai network, MIME types, network timeout conditions.
+   * `Large file optimization`: Optimizes for delivery of large file downloads with improved cache/offload (partial object caching with pre-fetched object data), object retrieval path.  
 * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
-  * `include-all`: Include all query arguments
-  * `ignore-all`: Ignore all query arguments
-  * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
-  * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
+   * `include-all`: Include all query arguments
+   * `ignore-all`: Ignore all query arguments
+   * `ignore: space separated query-args`: Ignores those specific query arguments. For example, `ignore: query1 query2`
+   * `include: space separated query-args`: Includes those specific query arguments. For example, `include: query1 query2`
 * `geoblockingRule`
 
 The following attributes are specific to the Mapping class:
