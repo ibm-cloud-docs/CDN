@@ -130,8 +130,6 @@
     "have a DV issue for my CDN",
     "how to address Domain Validation in CDN",
     "how to address DV in CDN",
-    "completing Domain Control Validation for HTTPS document",
-    "how to complete domain validation for HTTPS",
     "complete Domain Control Validation in CDN"
   ],
   "i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME": [
@@ -196,11 +194,8 @@
   ],
   "troubleshoot-cdn-503-error": [
     "seeing 503 error message for CDN",
-    "why am I getting 503 error",
     "seeing a 503 error message in CDN",
     "how can I fix 503 error in CDN",
-    "seeing 503 Service Unavailable error",
-    "503 Service Unavailable message given",
     "An error occurred while processing your request. Reference in CDN",
     "seeing in CDN error occurred while processing your request. Reference #",
     "SSL certificate criteria in CDN",
