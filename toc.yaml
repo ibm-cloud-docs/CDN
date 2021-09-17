@@ -17,102 +17,102 @@ toc:
 #  List your getting started tutorial (getting-started.md) as the first item in the Get started nav group. See https://test.cloud.ibm.com/docs/writing?topic=writing-navigation for more details on the toc design.
   entries:
     - navgroup:
-      id: learn
-      topics:
-      - getting-started.md
-      - about.md
-      - pricing.md
-      - about-https.md
-      - video-what-is-cdn.md
-      - video-set-up-web-app.md
+       id: learn
+       topics:
+       - getting-started.md
+       - about.md
+       - pricing.md
+       - about-https.md
+       - video-what-is-cdn.md
+       - video-set-up-web-app.md
 
     - navgroup:
-      id: tutorial
-      topics:
-      - topicgroup:
-        label: Tutorials
-        topics:
-        - /solution-tutorials/solution-tutorials-static-files-cdn
-        - /solution-tutorials/solution-tutorials-dynamic-content-cdn
+       id: tutorial
+       topics:
+       - topicgroup:
+          label: Classic infrastructure
+          topics:
+          - /solution-tutorials/solution-tutorials-static-files-cdn
+          - /solution-tutorials/solution-tutorials-dynamic-content-cdn
 
     - navgroup:
-      id: howto
-      topics:
-      - topicgroup:
-        label: Creating a CDN
-        topics:
-        - how-to-order.md
-        - running-status.md
-        - how-to-https.md
-        - verify-cdn-before-running.md
-      - topicgroup:
-        label: Managing a CDN
-        topics:
-        - starting_cdn.md
-        - stopping_cdn.md
-        - deleting_cdn.md
-        - updating-config-details.md
-        - adding-origin-path-details.md
-        - setting-advanced-rules.md
-        - dynamic-content-acceleration.md
-        - how-to-configure-object-storage.md
-        - serve-video-on-demand-with-cdn.md
-      - topicgroup:
-        label: Configuring caching behavior
-        topics:
-        - control-http-client-cache-duration.md
-        - setting-content-caching-time-using-ttl.md
-        - how-to.md
-      - cors-and-cdn.md
-      - byte-range-request.md
-      - metrics.md
-      - token-authentication.md
+       id: howto
+       topics:
+       - topicgroup:
+          label: Creating a CDN
+          topics:
+          - how-to-order.md
+          - running-status.md
+          - how-to-https.md
+          - verify-cdn-before-running.md
+       - topicgroup:
+          label: Managing a CDN
+          topics:
+          - starting_cdn.md
+          - stopping_cdn.md
+          - deleting_cdn.md
+          - updating-config-details.md
+          - adding-origin-path-details.md
+          - setting-advanced-rules.md
+          - dynamic-content-acceleration.md
+          - how-to-configure-object-storage.md
+          - serve-video-on-demand-with-cdn.md
+       - topicgroup:
+          label: Configuring caching behavior
+          topics:
+          - control-http-client-cache-duration.md
+          - setting-content-caching-time-using-ttl.md
+          - how-to.md
+       - cors-and-cdn.md
+       - byte-range-request.md
+       - metrics.md
+       - token-authentication.md
 
 #  Links to your REST API docs should be included in the Reference navigation group. For details on publishing API docs, see https://test.cloud.ibm.com/docs/api-docs.
 #  Links to your command line reference docs should be included in the Reference navigation group.
     - navgroup:
-      id: reference
-      topics:
-      - api.md
-      - link:
-        label: Terraform reference
-        href: https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/cdn
-      - topicgroup:
-        label: API class containers
+        id: reference
         topics:
-        - dynamic-content-acceleration-container.md
-        - geoblock-behavior.md
-        - hotlink-protection-behavior.md
-        - input-container.md
-        - mapping-container.md
-        - metrics-container.md
-        - modify-response-header-container.md
-        - path-container.md
-        - token-auth-container.md
-        - vendor-container.md
-        - purge-group-container.md
-        - purge-history-container.md
-      - at-events.md
-      - cdn-example-code.md
-      - edge-servers.md
-      - legacy-portal.md
-      - topicgroup:
-        label: Regions
-        topics:
-        - asia-region.md
-        - emea-region.md
-        - north-america-region.md
-        - south-america-region.md
+        - api.md
+        - link:
+           label: Terraform reference
+           href: https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/cdn
+        - topicgroup:
+            label: API class containers
+            topics:
+            - dynamic-content-acceleration-container.md
+            - geoblock-behavior.md
+            - hotlink-protection-behavior.md
+            - input-container.md
+            - mapping-container.md
+            - metrics-container.md
+            - modify-response-header-container.md
+            - path-container.md
+            - token-auth-container.md
+            - vendor-container.md
+            - purge-group-container.md
+            - purge-history-container.md
+        - at-events.md
+        - cdn-example-code.md
+        - edge-servers.md
+        - legacy-portal.md
+        - topicgroup:
+           label: Regions
+           topics:
+           - asia-region.md
+           - emea-region.md
+           - north-america-region.md
+           - south-america-region.md
 
     - navgroup:
-      id: help
-      topics:
-      - topicgroup:
-        label: Troubleshooting
-        topics:
-        - ts-cdn-working.md
-        - ts-503-error.md
-        - ts-hostname-does-not-load.md
-        - ts-cannot-connect-https.md
-        - ts-loading-cname-hostname.md
-      - getting-help.md
+       id: help
+       topics:
+       - topicgroup:
+          label: Troubleshooting
+          topics:
+          - ts-cdn-working.md
+          - ts-503-error.md
+          - ts-hostname-does-not-load.md
+          - ts-cannot-connect-https.md
+          - ts-loading-cname-hostname.md
+       - getting-help.md
