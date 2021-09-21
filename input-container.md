@@ -28,6 +28,7 @@ The Input container is a collection used by both the Mapping and (Origin) Path c
 * `oldPath`: Used by updateOriginPath(). This property stores the name of the current, or 'old', path.
 
 The following attributes are common to the Mapping and (Origin) Path classes:
+
 * `originType`: Type of the origin host, currently `HOST_SERVER` or `OBJECT_STORAGE`.
 * `origin`: Origin server address (either the hostname or the IPv4 address of the origin server), the endpoint from which to fetch content, or the name of the bucket where content is stored. Must be fewer than 511 characters.
 * `httpPort`: Number of the port used for HTTP protocol. Akamai has certain limitations on port numbers for HTTP and HTTPS ports. See the [FAQ](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.
@@ -56,12 +57,15 @@ The following attributes are specific to the Mapping class:
 * `respectHeaders`: A Boolean value that, if set to 'true', causes TTL settings in the origin to override CDN TTL settings.
 * `header`: Specifies host header information that is used by the origin.
 
-The following attributes are related to Cloud Object Storage (COS):  
-* `bucketName`: Unique name of your bucket for S3 object storage.  
+The following attributes are related to Cloud Object Storage (COS):
+
+* `bucketName`: Unique name of your bucket for S3 object storage.
 * `fileExtension`: File extensions that are allowed.
 
 The following attribute is related to configuring Hotlink Protection:
+
 * `hotlinkProtection`: See the [hotlink protection class](/docs/CDN?topic=CDN-hotlink-protection-class) for more details.
 
 The following attribute is related to Dynamic Content Acceleration (DCA):
+
 * `dynamicContentAcceleration`: See the [Dynamic Content Acceleration class](/docs/CDN?topic=CDN-dynamic-content-acceleration-container) for more details.

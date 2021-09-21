@@ -171,6 +171,7 @@ The following example illustrates how to set token authentication. One customer 
     </BODY>
     </HTML>
     ```
+    {: codeblock}
 
    Without the token, the Edge server returns a `403` response code that indicates the user has no permission to access the content.
 
@@ -182,5 +183,6 @@ The following example illustrates how to set token authentication. One customer 
     HTTP/1.1 200 OK
     ...
     ```
+    {: codeblock}
 
    `200` response code is returned and the content is successfully returned by the CDN Edge server.

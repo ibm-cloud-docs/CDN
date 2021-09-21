@@ -18,7 +18,6 @@ subcollection: CDN
 {:external: target="_blank" .external}
 {:DomainName: data-hd-keyref="DomainName"}
 
-
 # Getting help and support
 {: #gettinghelp}
 

@@ -74,6 +74,7 @@ For the CDN domain `cdn.example.com`, you can add a CNAME type record to point t
 | *CNAME* | *cdn.example.com* | *example.cdn.appdomain.cloud.* | *15 minutes* |
 
 ---
+
 ### Challenge domain
 {: #challenge-domain}
 
@@ -94,6 +95,7 @@ Using the challenge domain validation method can keep your domain always active 
 {: note}
 
 ---
+
 ### Standard
 {: #standard}
 
@@ -135,14 +137,14 @@ To configure Apache, follow these steps:
    ```
    {: pre}
 
- 6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
+6. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
 #### Configuring Nginx
 {: #nginx-configuration}
 
 To configure Nginx, follow these steps:
 
- 1. Log in to the machine running the Nginx server.
+1. Log in to the machine running the Nginx server.
 
 1. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response is placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
 
@@ -158,10 +160,10 @@ To configure Nginx, follow these steps:
 
 1. If you modified your Nginx server configuration, restart the Nginx server with minimal down time by using the following command:
 
-      ```
-      nginx -s reload
-      ```
-      {: pre}
+    ```
+    nginx -s reload
+    ```
+    {: pre}
 
 1. Create an A record in your DNS between the CDN domain and the origin server's IP address.
 
@@ -169,6 +171,7 @@ To configure Nginx, follow these steps:
 {: #verify-that-this-standard-method-to-address-domain-validation-is-ready-for-the-ca}
 
 * To verify this method works through `curl`, run that command for the Challenge URL.
+
     ```
     curl -v http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
@@ -187,6 +190,7 @@ After your CDN has reached **Certificate deploying** status:
 1. Remove the A record between the CDN domain and the origin server IP.
 
 ---
+
 ### Redirect
 {: #redirect}
 
@@ -231,9 +235,9 @@ To configure an Apache redirect, follow these steps:
 
 To configure an Nginx redirect, follow these steps:
 
- 1. Log in to the machine running the Nginx server.
+1. Log in to the machine running the Nginx server.
 
- 2. Open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for the configuration files.
+2. Open your Nginx server configuration file. `/etc/nginx/nginx.conf` and `/etc/nginx/conf.d/` are the default locations for the configuration files.
 
 3. There are two equally valid methods for this step.
 

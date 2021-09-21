@@ -80,6 +80,7 @@ IBM CDN CNAME (also called an endpoint) can make your CDN mapping status to `Run
 
 ### IBM CNAME
 {: ibm-cname}
+
 IBM CNAME is the default CNAME. It is suffixed with `cdn.appdomain.cloud.` or `cdnedge.bluemix.net.` (The old mapping created before 08/05/2019), and you can define the prefix during [creating new CDN mapping](/docs/CDN?topic=CDN-order-a-cdn).
 
 The IBM CNAME is managed by IBM, and it is pointed to the Akamai's endpoint. The main function of IBM CNAME is ensuring your domain is still accessible when the CDN mapping is [Stopped](/docs/CDN?topic=CDN-stopping-a-cdn) by switching the DNS record to point to the origin.
@@ -120,6 +121,7 @@ For more informtion about IBM CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cn
 
 ### Akamai CNAME
 {: akamai-cname}
+
 Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to the Akamai CNAME, it can also resolve your domain to Akamai edge servers, and because it has fewer DNS chain nodes, it has a shorter DNS lookup time than the IBM CNAME.
 
 In the previous CDN mapping `example.cdn-demo.com`, for example, the Akamai CNAME is `cert-00036-cdnedge-bluemix.akamaized.net.edgekey.net.`. If the domain is pointed to the Akamai CNAME, then the `dig` result looks like the following example.
@@ -148,11 +150,8 @@ For the Akamai CNAME, it's important to consider the following:
 
 
 - The Akamai CNAME is only usable for the HTTP-only and SAN HTTPS mapping. For the Wildcard HTTPS mapping, it's only accessible by the IBM CNAME, so you don't have to set the DNS record for the CDN domain.
-
 - The Akamai CNAME cannot ensure your domain is reachable if you STOPPED your CDN. You must manually set your DNS to point your domain to the origin if your domain is running service.
-
 - For the SAN HTTPS CDN, the Akamai CNAME can only be generated when the CDN status has passed the `Domain validation required`.
-
 - You can only point your domain to Akamai CNAME after the CDN mapping status is `RUNNING`. You cannot use Akamai CNAME to set the DNS record during the process of Domain validation.
 
 For more information about Akamai CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cname).

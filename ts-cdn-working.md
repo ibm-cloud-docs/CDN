@@ -34,7 +34,6 @@ curl -I -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-
 ```
 {: codeblock}
 
-
 If the output of the **curl** command is similar to the following example format, the CDN is working as expected:
 
 ```

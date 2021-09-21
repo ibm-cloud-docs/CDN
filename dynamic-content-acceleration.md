@@ -78,15 +78,15 @@ A valid test object must:
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:  
-aif, aiff, au, avi, bin, bmp, cab, carb, cct, cdf, class, css, doc, dcr, dtd, exe, flv, gcf, gff, gif, grv, hdml, hqx, ico, ini, jpeg, jpg, js, mov, mp3, nc, pct, pdf, png, ppc, pws, swa, swf, txt, vbs, w32, wav, wbmp, wml, wmlc, wmls, wmlsc, xsd, and zip.
+**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:
+`aif`, `aiff`, `au`, `avi`, `bin`, `bmp`, `cab`, `carb`, `cct`, `cdf`, `class`, `css`, `doc`, `dcr`, `dtd`, `exe`, `flv`, `gcf`, `gff`, `gif`, `grv`, `hdml`, `hqx`, `ico`, `ini`, `jpeg`, `jpg`, `js`, `mov`, `mp3`, `nc`, `pct`, `pdf`, `png`, `ppc`, `pws`, `swa`, `swf`, `txt`, `vbs`, `w32`, `wav`, `wbmp`, `wml`, `wmlc`, `wmls`, `wmlsc`, `xsd`, and `zip`.
 
 ### Image compression
 {: #image-compression}
 
 Serving compressed images reduces the amount of content that is required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and might affect the quality of the images on your site.  
 
-Image Compression supported file extensions: .jpg, .jpeg, .jpe, .jif, .jfif, and .jfi
+Image Compression supported file extensions: `.jpg`, `.jpeg`, `.jpe`, `.jif`, `.jfif`, and `.jfi`.
 
 In order for the feature **`Image Compression`** to work for DCA, you must make sure that the path of the image files is cacheable. See [Caching](#caching-cache-content) to set the images cacheable.
 {: note}

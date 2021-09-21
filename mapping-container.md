@@ -51,10 +51,12 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping` collectio
 
 Of particular note is the `uniqueId`, which is generated when a mapping is created and is used as a parameter to subsequent API calls.
 
-For example, this call to `listDomainMappingByUniqueid`  
+For example, this call to `listDomainMappingByUniqueid`
+
 ```php  
 $cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
 ```
+{: pre}
 
 Returns an object similar to this one:
 

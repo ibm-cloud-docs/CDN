@@ -24,7 +24,6 @@ subcollection: CDN
 {:download: .download}
 {:DomainName: data-hd-keyref="DomainName"}
 
-
 # Starting a CDN
 {: #starting-cdn}
 
@@ -36,10 +35,12 @@ You can start a CDN only when it is in `Stopped` status.
 
 1. Click **Start CDN** from the Overflow ![Overflow menu](images/overflow.png) menu.
 
-   You are prompted if you want to start the service.
-2.  Select **Confirm** to proceed.
+    You are prompted if you want to start the service.
 
-   If the action was successful, a message appears in the upper right corner of the page, letting you know that it was successful.
+2. Select **Confirm** to proceed.
 
-   This step changes the status to `CNAME Configuration`.
-4. Click **Get status** from Overflow menu. The status shows `Running`.
+    If the action was successful, a message appears in the upper right corner of the page, letting you know that it was successful.
+
+    This step changes the status to `CNAME Configuration`.
+
+3. Click **Get status** from Overflow menu. The status shows `Running`.

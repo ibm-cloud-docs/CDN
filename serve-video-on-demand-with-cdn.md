@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2020-03-27"
+  years: 2018, 2020
+lastupdated: "2020-03-28"
 
 keywords: mp4, MPEG, nginx, streaming, ffmpeg
 
@@ -37,9 +37,11 @@ Conceptually, the setup we're using is shown in the following diagram:
 We'll also use the origin as the place for preparation. On that, we'll also need to obtain a few packages to make this work.
 
 And so, let's start by updating the origin's package list.
+
 ```
 $ sudo apt-get update
 ```
+{: pre}
 
 ## Preparing video files
 {: #prepare-video-files}
@@ -47,9 +49,11 @@ $ sudo apt-get update
 In this guide, we'll use `ffmpeg` to prepare the video files. It is a powerful tool for multimedia files that can convert, mux, demux, filter, and so forth, through its various commands.
 
 First, we'll obtain `ffmpeg`.
+
 ```
 $ sudo apt-get -y install ffmpeg
 ```
+{: pre}
 
 HLS works with two types of files: `.m3u8` and `.ts`. You can think of the `.m3u8` file as the "playlist." At the beginning of the video stream, this file is the first one that is fetched.  The playlist then informs the video player about the video fragments it should fetch, and it provides other data on how to play the streamed content successfully. The `.ts` files are the video "fragments." These fragments are fetched and played by the video player according to details given in the "playlist."
 
@@ -58,25 +62,27 @@ Now, let's check and see the format, bit rate, and other information, for the vi
 ```
 $ ffprobe test-video.mp4
 ```
+{: pre}
 
 In this example, let's consider the following stream information for `test-video.mp4`:
 
-   * Video stream 0
-      * Format: h264
-      * Format profile: High
-      * Resolution: 1920x1080
-      * Bit rate: 438 kb/s
-      * Frame rate: 30.30 fps
-   * Audio stream 0
-      * Format: aac
-      * Sample rate: 48000
-      * Bit rate: 128k
+* Video stream 0
+   * Format: h264
+   * Format profile: High
+   * Resolution: 1920x1080
+   * Bit rate: 438 kb/s
+   * Frame rate: 30.30 fps
+* Audio stream 0
+   * Format: aac
+   * Sample rate: 48000
+   * Bit rate: 128k
 
 Now, we'll convert our `test-video.mp4` file into the formats for HLS.
 
 ```
 $ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod test-video.m3u8
 ```
+{: pre}
 
 Here is the breakdown of what this command did:
 
@@ -103,10 +109,10 @@ Note, for the `-` options, unless a stream is specified, the "best" one for its 
 
 Such as:
 
-   * `-c:a` chooses the audio stream with the most channels.
-   * `-c:v` chooses the video stream with the highest resolution.
-   * `-c:a:0` chooses audio stream 0.
-   * `-c:v:0` chooses video stream 0.
+* `-c:a` chooses the audio stream with the most channels.
+* `-c:v` chooses the video stream with the highest resolution.
+* `-c:a:0` chooses audio stream 0.
+* `-c:v:0` chooses video stream 0.
 
 In this guide, only one audio stream and one video stream make up the example `test-video.mp4`. And so, the difference would not be a concern moving forward.
 

@@ -29,6 +29,7 @@ subcollection: CDN
 
 # FAQs for CDN
 {: #faqs}
+
 Have a question about CDN? Review frequently asked questions, which provide answers to provisioning concerns, application access, and other common inquiries.
 {: shortdesc}
 
@@ -191,42 +192,46 @@ For non-cacheable content, or any content that is not cached, cookies are preser
 The account's Master user can provide other users with permission to create and manage a CDN.
 
 From the {{site.data.keyword.cloud_notm}} console main page, follow these steps to edit permissions:
- * Select the **Manage** tab.
- * Select **Access (IAM)**.
- * Click the **Users** tab in the navigation pane.
- * Click the wanted **User**.
- * Select the **Classic infrastructure** tab.
- * From the **Permissions** tab, expand the **Services** category.
- * Select **Manage CDN Account**.
- * Click the **Save** button.
+
+* Select the **Manage** tab.
+* Select **Access (IAM)**.
+* Click the **Users** tab in the navigation pane.
+* Click the wanted **User**.
+* Select the **Classic infrastructure** tab.
+* From the **Permissions** tab, expand the **Services** category.
+* Select **Manage CDN Account**.
+* Click the **Save** button.
 
 From the legacy console main page, follow these steps to edit permissions:
- * Select the **Account** tab.
- * Select **Users > User List**.
- * Click the wanted **Username**.
- * Select the **Portal Permissions** tab.
- * Select the **Services** tab.
- * Select **Manage CDN Account**.
- * Click the **Edit Portal Permissions** button.
+
+* Select the **Account** tab.
+* Select **Users > User List**.
+* Click the wanted **Username**.
+* Select the **Portal Permissions** tab.
+* Select the **Services** tab.
+* Select **Manage CDN Account**.
+* Click the **Edit Portal Permissions** button.
 
 ## Why is the Create button not shown or disabled on the [Content Delivery Network](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai) page?
 {: #why-is-create-button-not-showing}
 {: faq}
 
 If you are the account's Master user, you must upgrade the account for the **Create** button to appear or be enabled on this page. From the {{site.data.keyword.cloud_notm}} console page, follow these steps as the account's Master user:
- * Open the navigation pane by clicking the `triple bar` icon in the upper left of the web page.
- * Select **Classic Infrastructure**.
- * Click the **Upgrade Account** button and follow the instructions.
+
+* Open the navigation pane by clicking the `triple bar` icon in the upper left of the web page.
+* Select **Classic Infrastructure**.
+* Click the **Upgrade Account** button and follow the instructions.
 
 If you are one of the account's secondary users, the account's Master user must give you the `Add/Upgrade Services` permission for the **Create** button to appear or be enabled on this page. From the {{site.data.keyword.cloud_notm}} console page, the account's Master user can follow these steps to edit your permissions:
- * Select the **Manage** tab.
- * Select **Access (IAM)**.
- * Click the **Users** tab from navigation pane.
- * Click the wanted **User**.
- * Select the **Classic infrastructure** tab.
- * From the **Permissions** tab, expand the **Account** category.
- * Select **Add/Upgrade Services**.
- * Click the **Save** button.
+
+* Select the **Manage** tab.
+* Select **Access (IAM)**.
+* Click the **Users** tab from navigation pane.
+* Click the wanted **User**.
+* Select the **Classic infrastructure** tab.
+* From the **Permissions** tab, expand the **Account** category.
+* Select **Add/Upgrade Services**.
+* Click the **Save** button.
 
 ## Why am I unable to reach my web page through my CDN after configuring Hotlink Protection with `protectionType` `ALLOW`?
 {: #why-am-i-unable-to-reach-webpage-through-my-cdn}
@@ -279,10 +284,10 @@ Favorite groups names must be unique. Unfavorite groups do not have this limitat
 
 Multiple file purges are allowed in the following states:
 
- * Running
- * Running - HTTP only
- * CNAME configuration required
- * Stopped
+* Running
+* Running - HTTP only
+* CNAME configuration required
+* Stopped
 
 ## Is IBM CDN compliant with Payment Card Industry Data Security Standard (PCI DSS)?
 {: #is-cdn-pci-dss-compliant}

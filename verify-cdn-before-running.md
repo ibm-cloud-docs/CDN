@@ -151,7 +151,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins and purge.
    {: important}
 
-6. Restore your original local hosts file by using the backup copy that was created in Step 2.   
+5. Restore your original local hosts file by using the backup copy that was created in Step 2.   
 
 ## Using wildcard CDN to verify CDN traffic
 {: using-wildcard-cdn-to-verify-cdn-traffic}
@@ -167,7 +167,7 @@ To verify CDN traffic using a wildcard certificate, follow these steps:
    * Origin hostname
    * Origin hostheader
 
-  The wildcard CDN shows a final list similar to the following image.
+   The wildcard CDN shows a final list similar to the following image.
 
    ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com-wildcard-test.png)
 
@@ -191,5 +191,5 @@ To verify CDN traffic using a wildcard certificate, follow these steps:
 
    If Akamai debug headers are returned, and the response code and content match the content that is returned from the wanted domain, the wildcard CDN traffic works. See the Troubleshooting section for further debugging tips.
 
-     Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins, purge, and so on.
-     {: important}
+      Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins, purge, and so on.
+      {: important}

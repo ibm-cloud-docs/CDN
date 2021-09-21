@@ -212,6 +212,7 @@ CDN is largely transparent to the CORS setup of the origin so it does not requir
 
 ## Multiple CORS origin support
 {: #multiple-cors-support}
+
 In some cases, you can allow a list of specific origins (not all) to access your CDN contents, and need CDN to serve different `Access-Control-Allow-Origin` response headers for different origins (not wildcard `*` for any origins). However, CDN caches the headers along with contents, so it might serve the cached `Access-Control-Allow-Origin` header to the request, which might not match.
 
 You can leverage the [Cache Key query optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization) to add different parameters in the URLs for different origins. This way, the content and headers are cached differently.
@@ -219,6 +220,7 @@ You can leverage the [Cache Key query optimization](/docs/CDN?topic=CDN-about-co
 For example, suppose you've set the CDN `cdn.example.com` to serve contents for the two origins (`abc.com` and `123.com`), and want to add different parameters for each origin; for example, `https://cdn.example.com/test.json?domain=abc.com` and `https://cdn.example.com/test.json?domain=123.com`. CDN would return different `Access-Control-Allow-Origin` headers that are served by your back-end server:
 
 Request from `abc.com` origin returns `access-control-allow-origin: https://abc.com`:
+
 ```bash
 # curl -H "Origin: https://abc.com" -H "Referer: https://abc.com/" -i https://cdn.example.com/test.json?domain=abc.com
 HTTP/2 200
@@ -230,6 +232,7 @@ access-control-allow-credentials: true
 {: pre}
 
 Request from `123.com` origin returns `access-control-allow-origin: https://123.com`:
+
 ```bash
 # curl -H "Origin: https://123.com" -H "Referer: https://123.com/" -i https://cdn.example.com/test.json?domain=123.com
 HTTP/2 200

@@ -10,6 +10,22 @@ subcollection: CDN
 
 ---
 
+{:shortdesc: .shortdesc}
+{:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:term: .term}
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
+{:generic: data-hd-programlang="generic”}
+{:download: .download}
+{:DomainName: data-hd-keyref="DomainName"}
+
 # Metrics container
 {: #metrics-container}
 
@@ -17,6 +33,7 @@ The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the
 {: shortdesc}
 
 **class** `SoftLayer_Container_Network_CdnMarketplace_Metrics`:
+
 * `type`
 * `names`
 * `totals`
@@ -46,8 +63,6 @@ The `SoftLayer_Container_Network_CdnMarketplace_Metrics` collection contains the
 
 The PIECHART type is for data that is sent to a pie chart. In this case, the only attributes that are used are: `names`, `xaxis`, and `yaxis`. The `names` attribute is an array containing the region names. The `xaxis` attribute contains the usage in GB, and `yaxis1` is the test percentage.
 
-
 The LINEGRAPH type is for data that will be sent to a line graph. In this case, the `names` array ontains the names of the metrics that are found in the `xaxis`, `yaxis`, `yaxis2`...`yaxis20` attributes, and the actual data is in the corresponding arrays.
-
 
 If `type` is TOTALS, the `names` array contains the names of the metrics that are found in the corresponding `totals` array, and the actual data is contained in the `totals` array.

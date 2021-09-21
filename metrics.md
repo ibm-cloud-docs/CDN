@@ -58,7 +58,7 @@ The maximum number of days that you can view metrics reports is 90 days. The lat
 
 You can view the overall metric reports for a recent time. Select **Most recent** from the **Time frame** list on the CDN Overview Report page. Here you can find the total **Bandwidth** and **Hits**, as well as a graphical representation of **Bandwidth** and **Hits**.
 
- ![Metrics Overview](images/metrics-most-recent-report.png)
+![Metrics Overview](images/metrics-most-recent-report.png)
 
 You can view data for the past 48 hours only.
 {: note}
@@ -146,13 +146,13 @@ The time range and time interval relationships are shown.
 |(2400, 2700]     | 45 |
 |(2700, 2880]     | 50 |
 
-Math notation `( ` means "does not include" and `]` means "include".  
+Math notation `( ` means "does not include" and `]` means "include".
 
-Example:   
-Start Date timestamp: 1611244800  
-End Date timestamp: 1611248400  
-Time range = (End Date timestamp - Start Date timestamp) / 60 = 300   
-Referring to the preceding table, the time interval is 5 minutes.  
+Example:
+Start Date timestamp: 1611244800
+End Date timestamp: 1611248400
+Time range = (End Date timestamp - Start Date timestamp) / 60 = 300 
+Referring to the preceding table, the time interval is 5 minutes.
 
 ### Why does the last point sometimes drop suddenly in the Most Recent Metrics Report?
 {: #why-does-last-point-sometimes-drop-suddenly}

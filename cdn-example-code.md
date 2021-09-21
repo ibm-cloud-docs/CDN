@@ -348,7 +348,7 @@ To be sure that your CNAME record is configured correctly, run `dig <your domain
 
 ```
 ;; ANSWER SECTION:
-api-testing.cdntesting.net. 900	IN	CNAME	api-testing.cdn.appdomain.cloud.
+api-testing.cdntesting.net. 900 IN CNAME api-testing.cdn.appdomain.cloud.
 ```
 {: codeblock}
 

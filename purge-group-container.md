@@ -40,9 +40,9 @@ The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup` 
 * `paths`: A collection of file paths to purge.
 * `pathCount`: Total number of purge paths.
 * `option`: The following options are available to create a Purge Group:
-   * `1`: Create the purge group as a favorite group, and do not run a purge action.
-   * `2`: Create the purge group as an unfavorite group, and run a purge action.
-   * `3`: Create the purge group as a favorite group, and run a purge action.
+    * `1`: Create the purge group as a favorite group, and do not run a purge action.
+    * `2`: Create the purge group as an unfavorite group, and run a purge action.
+    * `3`: Create the purge group as a favorite group, and run a purge action.
 * `lastPurgeDate`: A timestamp to mark last purge time.
 * `purgeStatus`: The purge's status when the input option field is `1` or `3`. Status can be `SUCCESS`, `FAILED`, or `IN_PROGRESS`.
 

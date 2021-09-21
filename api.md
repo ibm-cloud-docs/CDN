@@ -61,6 +61,7 @@ You must use the API username and API Key of a user with `CDN_ACCOUNT_MANAGE` pe
 {: note}
 
 ----
+
 ## API for Vendor
 {: #api-for-vendor}
 
@@ -73,6 +74,7 @@ This API allows the user to list the supported CDN Vendors. The `vendorName` is 
    The Vendor container and a usage example can be viewed here: [Vendor container](/docs/CDN?topic=CDN-vendor-container)
 
 ----
+
 ## API for Account
 {: #api-for-account}
 
@@ -83,11 +85,13 @@ Checks whether a CDN account exists for the user calling the API, for the given 
 * **Return**- `true` if an account exists, else `false`.
 
 ----
+
 ## API for Domain Mapping
 {: #api-for-domain-mapping}
 
 ### createDomainMapping
 {: #create-domain-mapping}
+
 Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created by using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
 * **Parameters**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
@@ -126,6 +130,7 @@ The following attributes are part of the Input container and can be provided whe
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### deleteDomainMapping
 Deletes the domain mapping based on the `uniqueId`. The domain mapping must be in one of the following states: _RUNNING_, _STOPPED_, _DELETED_, _ERROR_, _CNAME_CONFIGURATION_, or _SSL_CONFIGURATION_.
 
@@ -134,6 +139,7 @@ Deletes the domain mapping based on the `uniqueId`. The domain mapping must be i
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### verifyDomainMapping
 Verifies the status of the CDN, and updates the `status` of the CDN mapping if it changed. When a CDN mapping is created initially, its status shows as _CNAME_CONFIGURATION_. At this point, you must update the DNS record so that the CDN mapping points the hostname to the CNAME. Check with your DNS provider if you have questions about how the update is done and how long it might take for the change to propagate on the internet. Typically, it takes 15 - 30 minutes. After that time, this `verifyDomainMapping` API must be called to verify whether the CNAME chain is complete. If the CNAME chain is complete, the CDN-mapping status changes to _RUNNING_.
 
@@ -145,6 +151,7 @@ This API can be called at any time to get the latest CDN-mapping status. The dom
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### startDomainMapping
 Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain mapping must be in a _STOPPED_ state.
 
@@ -154,6 +161,7 @@ Starts a CDN domain mapping based on the `uniqueId`. To be started, the domain m
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### stopDomainMapping
 Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the domain mapping must be in a _RUNNING_ state.
 
@@ -163,6 +171,7 @@ Stops a CDN domain mapping based on the `uniqueId`. To initiate the stop, the do
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### retryHttpsActionRequest
 You can attempt to enable the HTTPS `SHARED_SAN_CERT` type mapping again or disable when mapping is in `DELETE_ERROR` state. For the retry or disable request to occur, the specified mapping should be an HTTPS-related error, or in `DELETE_ERROR` state. To re-attempt an enable or disable action, you must specify the `uniqueId` of the HTTPS `SHARED_SAN_CERT` type mapping.
 
@@ -172,6 +181,7 @@ You can attempt to enable the HTTPS `SHARED_SAN_CERT` type mapping again or disa
   [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### updateDomainMapping
 You can update properties of the mapping identified by the `uniqueId`. The following fields can be changed: `originHost`, `httpPort`, `httpsPort`, `respectHeader`, `header`, `cacheKeyQueryRule` arguments, and if your origin type is Object Storage, the `bucketName` and `fileExtension` also can be changed. For an update to occur, the domain mapping must be in a _RUNNING_ state.
 
@@ -206,6 +216,7 @@ You can update properties of the mapping identified by the `uniqueId`. The follo
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### listDomainMappings
 Returns a collection of all domain mappings for current customer.
 
@@ -215,6 +226,7 @@ Returns a collection of all domain mappings for current customer.
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ### listDomainMappingByUniqueId
 Returns a collection with a single domain object based on a CDN's `uniqueId`.
 
@@ -224,6 +236,7 @@ Returns a collection with a single domain object based on a CDN's `uniqueId`.
    [Mapping container](/docs/CDN?topic=CDN-mapping-container)
 
 ----
+
 ## APIs for origin
 {: #apis-for-origin}
 
@@ -260,6 +273,7 @@ Creates an origin path for an existing CDN and for a particular customer. The or
   [Origin path container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
+
 ### updateOriginPath
 Updates an existing origin path for an existing mapping and for a particular customer. The origin type cannot be changed with this API. The following properties can be changed: `path`, `origin`, `httpPort`, and `httpsPort`, `header` `cacheKeyQueryRule` arguments. To be updated, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
@@ -283,12 +297,13 @@ Updates an existing origin path for an existing mapping and for a particular cus
       * `ignore-all` - Ignores all query arguments.
       * `ignore: space separated query-args` - Ignores those specific query arguments (for example, `ignore: query1 query2`).
       * `include: space separated query-args` - Includes those specific query arguments (for example, `include: query1 query2`).
-    * `dynamicContentAcceleration`- (Required for Dynamic Content Acceleration only) Provide the DCA parameters. [DCA container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
+   * `dynamicContentAcceleration`- (Required for Dynamic Content Acceleration only) Provide the DCA parameters. [DCA container](/docs/CDN?topic=CDN-dynamic-content-acceleration-container)
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping_Path`.
 
    [Origin path container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
+
 ### deleteOriginPath
 Deletes and existing origin path for an existing CDN, and for a particular customer. To be deleted, the domain mapping must be in either a _RUNNING_ or _CNAME_CONFIGURATION_ state.
 
@@ -299,6 +314,7 @@ Deletes and existing origin path for an existing CDN, and for a particular custo
 * **Return** - A status message if the delete was successful, otherwise an exception is thrown.
 
 ----
+
 ### listOriginPath
 Lists the origin paths for an existing mapping based on the `uniqueId`.
 
@@ -309,6 +325,7 @@ Lists the origin paths for an existing mapping based on the `uniqueId`.
    [Origin path container](/docs/CDN?topic=CDN-path-origin-container)
 
 ----
+
 ## API for Multiple File Purge
 {: #api-for-multiple-file-purge}
 
@@ -335,6 +352,7 @@ For an example of how to create a purge group, see [Example code for creating a 
   [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### getPurgeGroupByGroupId
 {: #api-for-getpurgegroup}
 
@@ -349,6 +367,7 @@ Gets a purge group.
    [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### listFavoriteGroup
 {: #api-for-listfavoritegroup}
 
@@ -362,6 +381,7 @@ Lists favorite purge groups.
   [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### listUnfavoriteGroup
 {: #api-for-listunfavoritegroup}
 
@@ -375,6 +395,7 @@ Lists unfavorite purge groups.
    [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### savePurgeGroupAsFavorite
 {: #save-purgegroup-as-favorite}
 
@@ -388,6 +409,7 @@ Saves a specific purge group as favorite.
   [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### removePurgeGroupFromFavorite
 {: #remove-purgegroup-as-favorite}
 
@@ -401,6 +423,7 @@ Removes a specific purge group from favorite.
    [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
+
 ### purgeByGroupIds
 {: #purge-by-group}
 
@@ -416,6 +439,7 @@ Purge actions have a rate limit check. See the [FAQ](/docs/CDN?topic=CDN-limits-
   [Purge History container](/docs/CDN?topic=CDN-purge-history-container)
 
 ----
+
 ### getPurgeGroupQuota
 {: #get-purgegroupquota}
 
@@ -424,10 +448,12 @@ Returns the file path quota of a purge group.
 * **Return** - An int type of quota information.
 
 ----
+
 ## API for Purge History
 {: #api-for-purge-history}
 
 ----
+
 ### listPurgeGroupHistory
 {: #list-purgegroup-history}
 
@@ -442,11 +468,12 @@ The purge history retains the last 15 days of records.
    [Purge History container](/docs/CDN?topic=CDN-purge-history-container)
 
 ----
+
 ## API for Single File Purge (Deprecated)
 {: #api-for-purge}
 
 The Purge API for purging a single file is deprecated. For efficiency, it is recommended to use [Multiple file Purge](#api-for-multiple-file-purge) instead.
-{:deprecated}
+{: deprecated}
 
 ### Container class for Purge
 {: #container-class-for-purge}
@@ -475,6 +502,7 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
     public $date;
 }  
 ```
+{: codeblock}
 
 ### createPurge
 {: #create-purge}
@@ -488,6 +516,7 @@ Create a single file purge.
 * **Return** - a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
 
 ----
+
 ### getPurgeHistoryPerMapping
 {: #get-purge-history-per-mapping}
 
@@ -500,6 +529,7 @@ Returns the Purge history for a CDN based on the `uniqueId` and `saved` status. 
 * **Return** - a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
 
 ----
+
 ### saveOrUnsavePurgePath
 {: #save-or-unsave-purge-path}
 
@@ -513,12 +543,13 @@ Updates the status of the Purge path entry to indicate whether that Purge path s
 * **Return** - a collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge`
 
 ----
+
 ## API for Time to Live
 {: #api-for-time-to-live}
 
 ### TimeToLive class variables:  
 
-```  
+```
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
 {
     /**
@@ -536,33 +567,41 @@ class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
      */
     public $createDate;
 }
-```  
+```
+{: codeblock}
 
 ### createTimeToLive
 Creates a `TimeToLive` object.
 
 * **Parameters** - `string` `uniqueId`, `string` `path`, `int` `ttl`
 * **Return** - An object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`.
-___
+
+----
+
 ### updateTtl
 Updates an existing `TimeToLive` object. If the _oldTtl_ and _newTtl_ inputs are equal, it exits early.
 
 * **Parameters** - `string` `uniqueId`, `string` `oldPath`, `string` `newPath`, `int` `oldTtl`, `int` `newTtl`
 * **Return** - An object of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`.
-___
+
+----
+
 ### deleteTtl
 Deletes an existing `TimeToLive` object.
 
 * **Parameters** - `string` `uniqueId`, `string` `pathName`
 * **Return** - A string with the status of the delete.
-___
+
+----
+
 ### listTtl
 Lists existing `TimeToLive` objects based on a CDN's `uniqueId`.
 
 * **Parameters** - `string` `uniqueId`
 * **Return** - An array of objects of type `SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive`.
 
- ----
+----
+
 ## API for Metrics
 {: #api-for-metrics}
 
@@ -583,7 +622,9 @@ Returns all mappings' bandwidth and hits (including static and dynamic separatel
       * `day` - Daily metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getCustomerUsageMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a customer's account, over a given period of time.
 
@@ -596,7 +637,9 @@ Returns the total number of predetermined statistics for direct display (no grap
       * `day` - daily metrics data from `startDate` to `endDate`.
 
 * **Return** - a collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___
+
+----
+
 ### getMappingIntegratedMetrics
 Returns the integrated metrics data for the given mapping, which includes the total number of predetermined statistics, detailed hits and bandwidth, hits by type, and the bandwidth by region. The value of `frequency` is `day` by default. For more details, see [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-integrated-metrics).
 
@@ -609,7 +652,9 @@ Returns the integrated metrics data for the given mapping, which includes the to
       * `day` - Daily metrics data from `startDate` to `endDate` **default**.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getMappingUsageMetrics
 Returns the total number of predetermined statistics for direct display for the given mapping. The value of `frequency` is `aggregate` by default.
 
@@ -622,7 +667,9 @@ Returns the total number of predetermined statistics for direct display for the 
       * `day` - Daily metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getMappingHitsMetrics
 Returns the total number of hits at a certain frequency over a given range of time, per domain mapping. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data is ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
@@ -637,7 +684,9 @@ Returns the total number of hits at a certain frequency over a given range of ti
       * `month` - Monthly metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`
-___
+
+----
+
 ### getMappingHitsByTypeMetrics
 Returns the total number of hits at a certain frequency over a given range of time. Frequency can be `day`, `week`, and `month`, where each interval is one plot point for a graph. Return data must be ordered based on `startDate`, `endDate`, and `frequency`. The value of `frequency` is `aggregate` by default.
 
@@ -652,7 +701,9 @@ Returns the total number of hits at a certain frequency over a given range of ti
       * `month` - Monthly metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getMappingBandwidthMetrics
 Returns the quantity of bandwidth in GB for an individual CDN. Regions might differ for each vendor, per mapping.
 
@@ -665,7 +716,9 @@ Returns the quantity of bandwidth in GB for an individual CDN. Regions might dif
       * `day` - Daily metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getMappingBandwidthByRegionMetrics
 Returns the total number of predetermined statistics for direct display (no graph) for a given mapping, over a given period of time. The value of `frequency` is `aggregate` by default.
 
@@ -678,7 +731,9 @@ Returns the total number of predetermined statistics for direct display (no grap
       * `day` - Daily metrics data from `startDate` to `endDate`.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getCustomerRealTimeMetrics
 Returns the real-time metrics for the current account, including the total data (bandwidth and hits) over the given period of time and the detailed data divided with the given time interval. For more details, [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-real-time-metrics).
 
@@ -690,7 +745,9 @@ Returns the real-time metrics for the current account, including the total data 
         The time interval must be a multiple of 60 and should be less than the time range from start time to end time.
 
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
-___
+
+----
+
 ### getMappingRealTimeMetrics
 Returns the real-time metrics for the given mapping, including the total data (bandwidth and hits) over the given period of time and the detailed data divided with the given time interval. For more details, [View the examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#example-code-for-getting-real-time-metrics).
 
@@ -704,6 +761,7 @@ Returns the real-time metrics for the given mapping, including the total data (b
 * **Return** - A collection of objects of type `SoftLayer_Container_Network_CdnMarketplace_Metrics`.
 
 ----
+
 ## API for Geographical Access Control
 {: #api-for-geographical-access-control}
 
@@ -729,6 +787,7 @@ Creates a new Geographical Access Control rule, and returns the newly created ru
    [Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
+
 ### updateGeoblocking
 Updates an existing Geographical Access Control rule for an existing domain mapping and returns the updated rule.
 
@@ -751,6 +810,7 @@ Updates an existing Geographical Access Control rule for an existing domain mapp
    [Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
+
 ### deleteGeoblocking
 Removes an existing Geographical Access Control rule from an existing domain mapping.
 
@@ -768,6 +828,7 @@ Removes an existing Geographical Access Control rule from an existing domain map
    [Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
+
 ### getGeoblocking
 Retrieves a mapping's Geographical Access Control behavior.
 
@@ -780,6 +841,7 @@ Retrieves a mapping's Geographical Access Control behavior.
    [Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
 
 ----
+
 ### getGeoblockingAllowedTypesAndRegions
 Returns a list of the types and regions that are allowed for creating Geographical Access Control rules.
 
@@ -789,7 +851,9 @@ Returns a list of the types and regions that are allowed for creating Geographic
 * **Returns**: An object of type `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking_Type`.
 
    [Geo-blocking class](/docs/CDN?topic=CDN-geoblocking-class)
+
 ----
+
 ## API for Hotlink Protection
 {: #api-for-hotlink-protection}
 
@@ -814,6 +878,7 @@ Creates a new Hotlink Protection, and returns the newly created behavior.
    [Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)
 
 ----
+
 ### updateHotlinkProtection
 Updates an existing Hotlink Protection behavior for an existing domain mapping and returns the updated behavior.
 
@@ -835,6 +900,7 @@ Updates an existing Hotlink Protection behavior for an existing domain mapping a
    [Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)
 
 ----
+
 ### deleteHotlinkProtection
 Removes an existing Hotlink Protection behavior from an existing domain mapping.
 
@@ -850,6 +916,7 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
 * **Returns** - null
 
 ----
+
 ### getHotlinkProtection
 Retrieves a mapping's current Hotlink Protection behavior.
 
@@ -862,6 +929,7 @@ Retrieves a mapping's current Hotlink Protection behavior.
    [Hotlink Protection class](/docs/CDN?topic=CDN-hotlink-protection-class)
 
 ----
+
 ## API for Token Authentication
 {: #api-for-token-authentication}
 
@@ -883,14 +951,15 @@ Creates a Token Authentication path for a domain mapping and returns the newly c
     * `ignoreQueryString` - Possible values `0` and `1`. If set to `1`, query strings are removed from a URL when computing the token’s HMAC algorithm. Default value is `0`.
     * `tokenDelimiter` - Specifies a single character to separate the individual token fields. The default value is `~`.
     * `aclDelimiter` - Specifies a single character to separate access control list (ACL) fields. The default value is `!`.
-   * `hmacAlgorithm` - Specifies the algorithm to use for the token’s hash-based message authentication code (HMAC) field. Valid entries are `SHA256`, `SHA1`, or `MD5`. The default value is `SHA256`.
-   * `transitionKey` - The token transition key, which specifies an even number of hex digits for the token transition key. An entry can be up to 64 characters in length.
+    * `hmacAlgorithm` - Specifies the algorithm to use for the token’s hash-based message authentication code (HMAC) field. Valid entries are `SHA256`, `SHA1`, or `MD5`. The default value is `SHA256`.
+    * `transitionKey` - The token transition key, which specifies an even number of hex digits for the token transition key. An entry can be up to 64 characters in length.
 
 * **Returns** - An object of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`.
 
 See this example to [create a token auth](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-token-auth-example).
 
 ----
+
 ### updateTokenAuth
 Updates an existing Token Authentication path for an existing domain mapping and returns the updated behavior.
 
@@ -915,6 +984,7 @@ Updates an existing Token Authentication path for an existing domain mapping and
 * **Returns** - An object of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`.
 
 ----
+
 ### deleteTokenAuth
 Delete an existing Token Authentication behavior for an existing domain mapping and returns the updated behavior.
 
@@ -923,7 +993,9 @@ Delete an existing Token Authentication behavior for an existing domain mapping 
    * `path` - (Required) Token Authentication Path to be deleted.
 
 * **Return** - A status message if the deletion was successful; otherwise, an exception is thrown.
+
 ----
+
 ## API for modify-response-header
 {: #api-for-modify-response-header}
 
@@ -934,7 +1006,9 @@ Returns a collection of `modify-response-header` behaviors for a domain mapping.
    * `uniqueId` - (Required) The unique ID of the mapping to which the `modify-response-header` belongs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
----
+
+----
+
 ### createModifyResponseHeader
 Creates a `modify-response-header` behavior for a domain mapping and returns the newly created behavior.
 
@@ -955,6 +1029,7 @@ Creates a `modify-response-header` behavior for a domain mapping and returns the
 See this example to [create a `modify-response-header`](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-modify-response-header-example).
 
 ----
+
 ### updateModifyResponseHeader
 Updates an existing `modify-response-header` for an existing domain mapping and returns the updated behavior.
 
@@ -976,6 +1051,7 @@ Updates an existing `modify-response-header` for an existing domain mapping and 
 * **Returns** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`.
 
 ----
+
 ### deleteModifyResponseHeader
 Deletes an existing modify-response-header behavior for an existing domain mapping and returns the updated behavior.
 
