@@ -78,7 +78,7 @@ A valid test object must:
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`\<img\>`**, **`\<script\>`**, or **`\<link\>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:
+**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **&lt;img&gt;**, **&lt;script&gt;**, or **&lt;link&gt;** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:
 `aif`, `aiff`, `au`, `avi`, `bin`, `bmp`, `cab`, `carb`, `cct`, `cdf`, `class`, `css`, `doc`, `dcr`, `dtd`, `exe`, `flv`, `gcf`, `gff`, `gif`, `grv`, `hdml`, `hqx`, `ico`, `ini`, `jpeg`, `jpg`, `js`, `mov`, `mp3`, `nc`, `pct`, `pdf`, `png`, `ppc`, `pws`, `swa`, `swf`, `txt`, `vbs`, `w32`, `wav`, `wbmp`, `wml`, `wmlc`, `wmls`, `wmlsc`, `xsd`, and `zip`.
 
 ### Image compression
