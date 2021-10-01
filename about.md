@@ -51,26 +51,26 @@ The following diagram offers a schematic overview of the three-tier architecture
 
 The {{site.data.keyword.cloud_notm}} Content Delivery Network service includes the following key features.
 
-   * [Cache Key query optimization](#cache-key-optimization)
-   * [Content Compression](#content-compression)   
-   * [Dynamic Content Acceleration](#dynamic-content-acceleration-description)
-   * [Geographical access control](#geographical-access-control)
-   * [Host Header support](#host-header-support)     
-   * [Host server origin support](#host-server-origin-support)
-   * [Hotlink protection](#hotlink-protection)
-   * [HTTPS protocol support with Wildcard and DV SAN certificate](#https-protocol-support)
-   * [Large file optimization](#large-file-optimization)
-   * [Metrics with graphical views](#metrics-with-graphical-views)   
-   * [Modify Response Header](#modify-response-header)
-   * [Object storage origin support](#object-storage-file-support)
-   * [Path-based CDN mappings](#path-based-cdn-mappings)
-   * [Purge-cached content](#purge-cached-content)
-   * [Respect Headers](#respect-headers)   
-   * [Serve Stale content](#serve-stale-content)
-   * [Support for multiple origins with distinct paths](#support-for-multiple-origins-with-distinct-paths) 
-   * [Time to Live (TTL)](#time-to-live-ttl)   
-   * [Token authentication](#token-authentication)
-   * [Video on Demand](#video-on-demand)
+* [Cache Key query optimization](#cache-key-optimization)
+* [Content Compression](#content-compression)   
+* [Dynamic Content Acceleration](#dynamic-content-acceleration-description)
+* [Geographical access control](#geographical-access-control)
+* [Host Header support](#host-header-support)     
+* [Host server origin support](#host-server-origin-support)
+* [Hotlink protection](#hotlink-protection)
+* [HTTPS protocol support with Wildcard and DV SAN certificate](#https-protocol-support)
+* [Large file optimization](#large-file-optimization)
+* [Metrics with graphical views](#metrics-with-graphical-views)   
+* [Modify Response Header](#modify-response-header)
+* [Object storage origin support](#object-storage-file-support)
+* [Path-based CDN mappings](#path-based-cdn-mappings)
+* [Purge-cached content](#purge-cached-content)
+* [Respect Headers](#respect-headers)   
+* [Serve Stale content](#serve-stale-content)
+* [Support for multiple origins with distinct paths](#support-for-multiple-origins-with-distinct-paths)
+* [Time to Live (TTL)](#time-to-live-ttl)   
+* [Token authentication](#token-authentication)
+* [Video on Demand](#video-on-demand)
 
 Features that are included with {{site.data.keyword.cloud_notm}} CDN powered by Akamai are described as follows.
 
@@ -132,11 +132,11 @@ Hotlink protection is a rules-based behavior that enables you to control whether
 
 If your `protectionType` is set to `ALLOW`:
 
-   * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN serves the content requested. Otherwise, your CDN does not serve the content.
+* If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN serves the content requested. Otherwise, your CDN does not serve the content.
 
 If your `protectionType` is set to `DENY`:
 
-   * If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN does not serve the content requested. Otherwise, your CDN serves the content.
+* If the `Referer` header value in a request sent to your CDN matches one of your specified `refererValues`, your CDN does not serve the content requested. Otherwise, your CDN serves the content.
 
 This feature is accessible from the **Advanced rules** page of your CDN configuration. For more information, see [Setting advanced rules](/docs/CDN?topic=CDN-setting-advanced-rules).
 
@@ -176,50 +176,50 @@ By default, both the aggregate numbers and the graphs default to show metrics fo
 
 `Modify-response-header` can modify the outgoing response headers that are sent from the Edge server back to the client. There are three types for the `modify-response-header`:
 
-   - `append` - Add a given header value to a header name set in the headerList.
-   - `overwrite` -  Match a specified header name and replace its existing header value with a new one that you specify.
-   - `delete` - Remove a given header value from a header name set in the headerList.
+- `append` - Add a given header value to a header name set in the headerList.
+- `overwrite` -  Match a specified header name and replace its existing header value with a new one that you specify.
+- `delete` - Remove a given header value from a header name set in the headerList.
 
 For more parameters, see the [Modify Response Header container](/docs/CDN?topic=CDN-modify-response-header-container).
 
 Note the following when using `modify-response-header`:
 
-   * You can modify a maximum of 15 headers for a domain mapping.
-   * You can use each `modify-response-header` type (`append`, `overwrite` and `delete`) one time in a path.
-   * You can't modify the same header more than one time for a domain mapping.
-   * You can't use a CRLF or a colon (:) in header names or header values.
-   * The `append` and `overwrite` types create a non-existent header and apply the specified header value.
-   * The `append` type for `modify-response-header` won't append a header value if it exists in the header. If duplicate instances of a header value are identified, no action is taken. Use the `overwrite` type in this scenario to completely replace the header content and remove duplicate values.
-   * If multiple occurrences of a single header are included in a response, an `append` or `delete` type `modify-response-header` applies only to the first occurrence.
-   * The `delete` type can be used to remove an empty header (if it has no header value). Simply include the header name, and leave the header value empty (for example, `"my_header"` or `"my_header:"`).
-   * The `delete` type only removes a value from a header if that value is found. If the value isn't found, it does nothing.
-   * Header names are case-insensitive when matching eligible headers, for all types.
-   * Header values are case-sensitive when matching eligible headers for `append` and `delete`. (Header values are replaced for `overwrite`, so no matching is performed.)
-   * Because header names are case-insensitive, the header name you set in the behavior is used as the header name after the header is modified.
-   * When there are delimiter-separating multiple header values in a `delete`, values are deleted only if they exist in the order specified. For example, if it is set to match and delete `"header1": "value1,value3"`, and the actual response header is `"header1: value1,value2,value3"`, nothing is deleted because the exact match (`"value1,value3"`) wasn’t found. However, if the actual response header is `"header1: value2,value1,value3"`, `value1` and `value3` are deleted because they match the order that is set.
-   * The `overwrite` type overwrites all header value information for the header name it matches.
-   * If you don't include a delimiter object, it defaults to a comma (,).
-   * If you use a delimiter to include a list of header values, it must match what's set for the delimiter member, or you must use commas if you didn't set one. For example, if it is set to match the `"my_header:value1;value2"`, then it must set the delimiter to `;`.
-   * If you include a delimiter when you use the `overwrite` type, the delimiter is ignored. For example, if it is set to overwrite `"my_header:value1,value2"` with the delimiter `;`, the final response header is `"my_header:value1,value2"`.
-   * The following headers can't be modified. If the type criteria set matches one of these headers, an error is revealed. Both header names and values are case-insensitive when matching on these headers. The `*` represents a wildcard.
+* You can modify a maximum of 15 headers for a domain mapping.
+* You can use each `modify-response-header` type (`append`, `overwrite` and `delete`) one time in a path.
+* You can't modify the same header more than one time for a domain mapping.
+* You can't use a CRLF or a colon (:) in header names or header values.
+* The `append` and `overwrite` types create a non-existent header and apply the specified header value.
+* The `append` type for `modify-response-header` won't append a header value if it exists in the header. If duplicate instances of a header value are identified, no action is taken. Use the `overwrite` type in this scenario to completely replace the header content and remove duplicate values.
+* If multiple occurrences of a single header are included in a response, an `append` or `delete` type `modify-response-header` applies only to the first occurrence.
+* The `delete` type can be used to remove an empty header (if it has no header value). Simply include the header name, and leave the header value empty (for example, `"my_header"` or `"my_header:"`).
+* The `delete` type only removes a value from a header if that value is found. If the value isn't found, it does nothing.
+* Header names are case-insensitive when matching eligible headers, for all types.
+* Header values are case-sensitive when matching eligible headers for `append` and `delete`. (Header values are replaced for `overwrite`, so no matching is performed.)
+* Because header names are case-insensitive, the header name you set in the behavior is used as the header name after the header is modified.
+* When there are delimiter-separating multiple header values in a `delete`, values are deleted only if they exist in the order specified. For example, if it is set to match and delete `"header1": "value1,value3"`, and the actual response header is `"header1: value1,value2,value3"`, nothing is deleted because the exact match (`"value1,value3"`) wasn’t found. However, if the actual response header is `"header1: value2,value1,value3"`, `value1` and `value3` are deleted because they match the order that is set.
+* The `overwrite` type overwrites all header value information for the header name it matches.
+* If you don't include a delimiter object, it defaults to a comma (,).
+* If you use a delimiter to include a list of header values, it must match what's set for the delimiter member, or you must use commas if you didn't set one. For example, if it is set to match the `"my_header:value1;value2"`, then it must set the delimiter to `;`.
+* If you include a delimiter when you use the `overwrite` type, the delimiter is ignored. For example, if it is set to overwrite `"my_header:value1,value2"` with the delimiter `;`, the final response header is `"my_header:value1,value2"`.
+* The following headers can't be modified. If the type criteria set matches one of these headers, an error is revealed. Both header names and values are case-insensitive when matching on these headers. The `*` represents a wildcard.
 
-      - `Alt-Svc`
-      - `Content-Length`
-      - `Age`
-      - `Content-Encoding`
-      - `x-akamai*`
-      - `x-cache*`
-      - `Content-Range`
-      - `Transfer-Encoding`
-      - `Connection`
+   - `Alt-Svc`
+   - `Content-Length`
+   - `Age`
+   - `Content-Encoding`
+   - `x-akamai*`
+   - `x-cache*`
+   - `Content-Range`
+   - `Transfer-Encoding`
+   - `Connection`
 
    * Valid delimiters are:
 
-      - ` ` (space)
-      - `,` (comma)
-      - `;` (semicolon)
-      - `, ` (comma and a space)
-      - `; ` (semicolon and a space)
+      - space
+      - comma
+      - semicolon
+      - comma and a space
+      - semicolon and a space
 
    * The header value cannot be empty for `append` or `overwrite` behavior types.
    * When you use the `append` behavior type and include multiple header values, if a header value exists, this behavior duplicates it in the resulting header. For example, assume that you have the existing header, `"header1": "value1;value2"` and you set this behavior to append: `"header1": "value1;value3;value4"`. This results in `"header1: value1;value2;value1;value3;value4"`. This is because the Edge server is trying to match the full value that you specified (`"value1;value3;value4"`) when checking for duplicates. As a best practice, include only multiple header values for an `append` if you're sure one of those values doesn't exist.
@@ -277,4 +277,3 @@ This feature is accessible from the **Advanced rules** page of your CDN configur
 **Video on Demand** performance optimization delivers high-quality streaming across various network types. By using preconfigured cache control settings and the distributed network's ability to distribute the load dynamically, {{site.data.keyword.cloud_notm}} CDN with Akamai gives you the ability to scale rapidly for large audiences, whether you've planned for them or not.
 
 **Video on Demand** is optimized for distribution of segmented streaming formats such as HLS, DASH, HDS, and HSS. Currrently, live video streaming is not supported. You can enable the **Video on Demand** feature by selecting this option from the **Optimize for** menu on the Settings tab, or while creating a new origin path. You should enable this feature only when optimizing delivery of video files.
-

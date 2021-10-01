@@ -30,7 +30,7 @@ Complete the following steps after ordering your CDN with a DV SAN certificate.
 
 The following diagram outlines the various states that your CDN enters, from the time it is created until it gets to `Running` status.
 
-   ![SAN state diagram](images/state-diagram-san.png)
+![SAN state diagram](images/state-diagram-san.png)
 
 ## Initial steps to Domain Control Validation
 {: #initial-steps-to-domain-control-validation}
@@ -105,7 +105,8 @@ If you choose the Standard method for domain validation, the Domain Validation w
 
 To successfully complete the domain validation through the Standard method, you must configure your origin server in a particular way. The example procedures for Apache and Nginx servers are outlined here.
 
-**Example situation**
+Example situation:
+
 * Origin server: `origin.example.com`
 * CDN domain: `cdn.example.com`
 * Challenge URL: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`
@@ -200,7 +201,8 @@ Clicking the **Redirect** tab displays all the information that is needed to add
 
 To successfully complete the Domain Validation through the Redirect method, you might need to configure your web server in a particular way. The example procedures for Apache and Nginx servers are outlined in the sections that follow.
 
-**Example situation**
+Example situation:
+
 * Origin server: `origin.example.com`
 * CDN domain: `cdn.example.com`
 * Challenge URL: `http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject`

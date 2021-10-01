@@ -36,19 +36,19 @@ This document contains example API calls and the resulting output for numerous C
 
 Before you begin, you must download and install the Soap Client from [https://github.com/softlayer/softlayer-api-php-client](https://github.com/softlayer/softlayer-api-php-client){: external}.
 
-   * You must get access to the SoapClient through `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
+* You must get access to the SoapClient through `vendor/autoload`. The path is relative to where the script is run from and might need to be modified.
 
-      ```php
-      require_once __DIR__.'/vendor/autoload.php';
-      ```
+   ```php
+   require_once __DIR__.'/vendor/autoload.php';
+   ```
 
-   * All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){: external} page, under "Getting Your API Key".
+* All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){: external} page, under "Getting Your API Key".
 
-      ```php
-      $apiUsername = '<Your username>' ;
-      $apiKey = '<Your apiKey>' ;
-      ```
-   * Initialize SoapClient for the appropriate class.
+   ```php
+   $apiUsername = '<Your username>' ;
+   $apiKey = '<Your apiKey>' ;
+   ```
+* Initialize SoapClient for the appropriate class.
 
 ## Example code for listing vendors
 {: #example-code-for-listing-vendors}

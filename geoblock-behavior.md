@@ -32,6 +32,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` class 
 * `status` - the status of the current rule, either `ACTIVE` or `INACTIVE`
 
 if `regionType` = `CONTINENT`,
+
 ```
   regions = [
                   Africa,
@@ -45,6 +46,7 @@ if `regionType` = `CONTINENT`,
 ```
 
 if `regionType` = `COUNTRY_OR_REGION`,
+
 ```
   regions = [
                     Andorra,
