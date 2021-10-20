@@ -98,7 +98,7 @@ The following example illustrates how to set token authentication. One customer 
 
    The output looks like:
 
-    ```
+    ```text
     87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
     ```
     {: screen}
