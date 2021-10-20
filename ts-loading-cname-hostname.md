@@ -32,7 +32,7 @@ This table shows the behavior that is expected for the supported protocols when 
 | Browser URL | CDN with HTTP protocol only |
 |:-----|:-----|
 | `http://hostname` | Successful load |
-| `https://hostname` | Access denied **1** |
+| `https://hostname` | Access denied [^A] |
 | `http://cname` | 301 Moved Permanently |
 | `https://cname` | Redirects to IBM Cloud webpage |
 {: caption="Table 1. Expected behavior for CDN with HTTP protocol only" caption-side="left"}
@@ -45,13 +45,17 @@ This table shows the behavior that is expected for the supported protocols when 
 |-----|-----|-----|  
 | `http://hostname` | 301 Moved Permanently | Access denied<sup>1</sup> |
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
-| `http://cname` | Access denied **1** | 301 Moved Permanently |
+| `http://cname` | Access denied [^B] | 301 Moved Permanently |
 | `https://cname` | Successful load | 301 Moved Permanently |
 {: caption="Table 2. Expected behavior for CDN with HTTPS protocol only" caption-side="left"}
 {: #simpletabtable2}
 {: tab-title="HTTPS only"}
 {: tab-group="cdr-troubleshooting"}
 {: class="simple-tab-table"}
+
+[^A] The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
+
+[^B] The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 | Browser URL | Wildcard | Shared SAN |
 |-----|-----|-----|  
@@ -64,8 +68,6 @@ This table shows the behavior that is expected for the supported protocols when 
 {: tab-title="HTTP and HTTPS"}
 {: tab-group="cdr-troubleshooting"}
 {: class="simple-tab-table"}
-
-**1** - The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 **Common error messages:**
 
