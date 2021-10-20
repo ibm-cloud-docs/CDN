@@ -36,7 +36,7 @@ curl -I -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-
 
 If the output of the **curl** command is similar to the following example format, the CDN is working as expected:
 
-```
+```text
    HTTP/1.1 200 OK
 
     Server: nginx/1.13.0

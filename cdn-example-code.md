@@ -346,7 +346,7 @@ Array
 
 To be sure that your CNAME record is configured correctly, run `dig <your domain>` on the command line. The output looks similar to the following:
 
-```
+```text
 ;; ANSWER SECTION:
 api-testing.cdntesting.net. 900 IN CNAME api-testing.cdn.appdomain.cloud.
 ```

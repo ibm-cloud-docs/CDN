@@ -105,7 +105,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 
    For example:
 
-   ```
+   ```text
    104.84.150.124 ibm-test.cdn-demo.com
    ```
    {: screen}

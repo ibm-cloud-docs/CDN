@@ -38,8 +38,8 @@ We'll also use the origin as the place for preparation. On that, we'll also need
 
 And so, let's start by updating the origin's package list.
 
-```
-$ sudo apt-get update
+```sh
+sudo apt-get update
 ```
 {: pre}
 
@@ -50,8 +50,8 @@ In this guide, we'll use `ffmpeg` to prepare the video files. It is a powerful t
 
 First, we'll obtain `ffmpeg`.
 
-```
-$ sudo apt-get -y install ffmpeg
+```sh
+sudo apt-get -y install ffmpeg
 ```
 {: pre}
 
@@ -59,8 +59,8 @@ HLS works with two types of files: `.m3u8` and `.ts`. You can think of the `.m3u
 
 Now, let's check and see the format, bit rate, and other information, for the video and audio streams of our source `.mp4` video.
 
-```
-$ ffprobe test-video.mp4
+```sh
+ffprobe test-video.mp4
 ```
 {: pre}
 
@@ -79,8 +79,8 @@ In this example, let's consider the following stream information for `test-video
 
 Now, we'll convert our `test-video.mp4` file into the formats for HLS.
 
-```
-$ ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod test-video.m3u8
+```sh
+ffmpeg -i test-video.mp4 -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod test-video.m3u8
 ```
 {: pre}
 
@@ -118,8 +118,8 @@ In this guide, only one audio stream and one video stream make up the example `t
 
 Afterward, you can expect to see a number of `.ts` files.  Additionally, you can expect to see a `.m3u8` file that looks something like the following:
 
-```
-$ cat test-video.m3u8
+```sh
+cat test-video.m3u8
 #EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-TARGETDURATION:7
@@ -151,7 +151,7 @@ test-video10.ts
 test-video11.ts
 #EXT-X-ENDLIST
 ```
-{: screen}
+{: pre}
 
 For more complex use cases, such as scaling video resolution, working with subtitles, HLS AES encryption on video fragments for security and authorization, and so on--`ffmpeg` has many  moreargument options that handle the more complex and specific features. You can find descriptions of these arguments in [ffmpeg's general documentation](https://ffmpeg.org/ffmpeg.html) and in its [documentation on specific formats such as HLS](https://ffmpeg.org/ffmpeg-formats.html#hls).
 
@@ -167,7 +167,7 @@ You can place the HLS files under any directory or subdirectory you like. For th
 
 The following Nginx configuration would cover that in the basic sense:
 
-```
+```text
 # Some configurations for this main context...
 
 http {
@@ -221,7 +221,7 @@ Not all streaming video formats are natively playable on all applications. The e
 
 For example, Safari would support native, HLS playback. And so, the video player on the webpage might be as simple as the following example using HTML5 `<video>` elements:
 
-```
+```text
 <!DOCTYPE html>
 <html>
   <!-- Some HTML elements... -->

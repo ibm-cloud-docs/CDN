@@ -478,7 +478,7 @@ The Purge API for purging a single file is deprecated. For efficiency, it is rec
 ### Container class for Purge
 {: #container-class-for-purge}
 
-```
+```text
 class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
 {
     /**
@@ -549,7 +549,7 @@ Updates the status of the Purge path entry to indicate whether that Purge path s
 
 ### TimeToLive class variables:  
 
-```
+```text
 class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
 {
     /**
@@ -911,7 +911,7 @@ Removes an existing Hotlink Protection behavior from an existing domain mapping.
 
    The following attributes are part of the Input container and are **required** when creating a new Hotlink Protection:
 
-      * `uniqueId` - Provide the unique ID of the mapping from which to remove the behavior.
+   * `uniqueId` - Provide the unique ID of the mapping from which to remove the behavior.
 
 * **Returns** - null
 

@@ -91,7 +91,7 @@ Origin's hostname: `origin.example.com.`.
 
 When the mapping is `Running`, the `dig` result of the domain resembles the following:
 
-```
+```sh
 % dig +short example.cdn-demo.com
 example-cname.cdn.appdomain.cloud.
 example-cname.akamai.cdn.appdomain.cloud.
@@ -107,7 +107,7 @@ The IBM CNAME is pointing to the `wildcard.appdomain.mdc.edgekey.net.`, which is
 
 After the CDN is `Stopped`, the dig result of the domain resembles the following:
 
-```
+```sh
 % dig +short example.cdn-demo.co
 example-cname.cdn.appdomain.cloud.
 origin.example.com
@@ -126,7 +126,7 @@ Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to t
 
 In the previous CDN mapping `example.cdn-demo.com`, for example, the Akamai CNAME is `cert-00036-cdnedge-bluemix.akamaized.net.edgekey.net.`. If the domain is pointed to the Akamai CNAME, then the `dig` result looks like the following example.
 
-```
+```sh
 % dig example.cdn-demo.com +short
 cert-00036-cdnedge-bluemix.akamaized.net.edgekey.net.
 e24458.dsce16.akamaiedge.net.
@@ -146,8 +146,6 @@ The following table illustrates the Akamai CNAME for different type CDN mapping:
 | Wildcard HTTPS | N/A |
 
 For the Akamai CNAME, it's important to consider the following:
-
-
 
 - The Akamai CNAME is only usable for the HTTP-only and SAN HTTPS mapping. For the Wildcard HTTPS mapping, it's only accessible by the IBM CNAME, so you don't have to set the DNS record for the CDN domain.
 - The Akamai CNAME cannot ensure your domain is reachable if you STOPPED your CDN. You must manually set your DNS to point your domain to the origin if your domain is running service.
@@ -189,7 +187,7 @@ Akamai CNAME provides a shorter DNS lookup time for your domain. The Akamai CNAM
 
 When the CDN is stopped, a Deny_All rule is added for the domain on the Akamai side. Even if the domain can still be resolved to Akamai by pointing to Akamai CNAME, the traffic for the domain is denied, and the response is similar to the following:
 
-```
+```sh
 HTTP/2 403
 server: AkamaiGHost
 mime-version: 1.0
@@ -203,7 +201,7 @@ date: Tue, 15 Sep 2020 07:54:31 GMT
 </HEAD><BODY>
 <H1>Access Denied</H1>
 
-You don't have permission to access "http://xxxx;" on this server.<P>
+You do not have permission to access "http://xxxx;" on this server.<P>
 Reference&#32;&#35;18&#46;9df02817&#46;1600156471&#46;bf3f7f1
 </BODY>
 </HTML>

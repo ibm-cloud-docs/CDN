@@ -121,7 +121,7 @@ To configure Apache, follow these steps:
 
 2. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Apache2 website content is `/var/www/html/`. For this example, the challenge response is placed in the `/var/www/html/.well-known/acme-challenge/` directory.
 
-   ```
+   ```sh
    mkdir -p /var/www/html/.well-known/acme-challenge && \
    printf "examplechallenge" > /var/www/html/.well-known/acme-challenge/examplechallenge-fileobject
    ```
@@ -133,7 +133,7 @@ To configure Apache, follow these steps:
 
 5. If you modified your Apache2 server configuration, restart the Apache2 server with minimal down time by using the following command:
 
-   ```
+   ```sh
    apachectl -k graceful
    ```
    {: pre}
@@ -149,7 +149,7 @@ To configure Nginx, follow these steps:
 
 1. Create the challenge response file for the challenge response under `.well-known/acme-challenge/` in the directory for your website content.  The default location for Nginx website content is `/usr/share/nginx/html/`.  For this example, the challenge response is placed in the `/usr/share/nginx/html/.well-known/acme-challenge/` directory.
 
-    ```
+    ```sh
     mkdir -p /usr/share/nginx/html/.well-known/acme-challenge && \
     printf "examplechallenge" > /usr/share/nginx/html/.well-known/acme-challenge/examplechallenge-fileobject
     ```
@@ -161,7 +161,7 @@ To configure Nginx, follow these steps:
 
 1. If you modified your Nginx server configuration, restart the Nginx server with minimal down time by using the following command:
 
-    ```
+    ```sh
     nginx -s reload
     ```
     {: pre}
@@ -173,7 +173,7 @@ To configure Nginx, follow these steps:
 
 * To verify this method works through `curl`, run that command for the Challenge URL.
 
-    ```
+    ```sh
     curl -v http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
     {: pre}
@@ -219,13 +219,13 @@ To configure an Apache redirect, follow these steps:
 
 3. Add a redirect statement in the appropriate location within the configuration file. If needed, add your CDN domain as an additional **ServerAlias** to the virtual host for your origin.
 
-    ```
+    ```sh
     Redirect /.well-known/acme-challenge/examplechallenge-fileobject http://dcv.akamai.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 
 4. Restart the Apache2 server with minimal downtime by using the following command:
 
-    ```
+    ```sh
     apachectl -k graceful
     ```
     {: pre}
@@ -245,7 +245,7 @@ To configure an Nginx redirect, follow these steps:
 
     * Option 1: (recommended) Add a `location` block with a `return` directive to perform the redirect within the appropriate `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-    ```
+    ```sh
     server {
       listen 80;
       server_name origin.example.com cdn.example.com;
@@ -264,7 +264,7 @@ To configure an Nginx redirect, follow these steps:
 
    * Option 2: Add a `rewrite` directive within the `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-    ```
+    ```sh
     server {
       listen 80;
       server_name origin.example.com cdn.example.com;
@@ -281,7 +281,7 @@ To configure an Nginx redirect, follow these steps:
 
 4. Restart the Nginx server with minimal downtime by using the following command:
 
-    ```
+    ```sh
     nginx -s reload
     ```
     {: pre}
@@ -295,7 +295,7 @@ Completing these steps redirects _only_ the traffic for the specific Challenge U
 
 * To verify that redirect works through `curl`, run that command for the Challenge URL.
 
-    ```
+    ```sh
     curl -vL http://cdn.example.com/.well-known/acme-challenge/examplechallenge-fileobject
     ```
 

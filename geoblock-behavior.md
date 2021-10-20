@@ -33,7 +33,7 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_Geoblocking` class 
 
 if `regionType` = `CONTINENT`,
 
-```
+```bash
   regions = [
                   Africa,
                   Asia,
@@ -47,7 +47,7 @@ if `regionType` = `CONTINENT`,
 
 if `regionType` = `COUNTRY_OR_REGION`,
 
-```
+```bash
   regions = [
                     Andorra,
                     United Arab Emirates,

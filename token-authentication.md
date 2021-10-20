@@ -96,15 +96,6 @@ The following example illustrates how to set token authentication. One customer 
     ```
     {: pre}
 
-   The output looks like:
-
-    ```
-    87e23a68764b79b4deb46a521ae7a8a49f156460e6461f3b6cc633bf8a548381
-    ```
-    {: screen}
-
-   You can also generate a second transition encryption key to serve as a backup "trusted shared secret." If the token provided by the user is not valid based on the primary encryption key, the Edge server checks the token using the transition key. This ensures that users are not denied access if you are in the process of rotating the primary key.
-
    This assumes that you transitioned to generating your tokens with the transition key for some period of time before updating the encryption key value.
    {: note}
 
@@ -136,7 +127,7 @@ The following example illustrates how to set token authentication. One customer 
 
    This code generates a token that is a string, and looks like the following:
 
-    ```
+    ```text
     exp=1598342003~acl=/private/*~hmac=73cbcba0137b4875b10a3264d4c24189a91825e51f2764af0891a854d015dd08
     ```
     {: screen}

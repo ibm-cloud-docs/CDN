@@ -146,12 +146,12 @@ The time range and time interval relationships are shown.
 |(2400, 2700]     | 45 |
 |(2700, 2880]     | 50 |
 
-Math notation `( ` means "does not include" and `]` means "include".
+Math notation `(` means "does not include" and `]` means "include".
 
 Example:
 Start Date timestamp: 1611244800
 End Date timestamp: 1611248400
-Time range = (End Date timestamp - Start Date timestamp) / 60 = 300 
+Time range = (End Date timestamp - Start Date timestamp) / 60 = 300
 Referring to the preceding table, the time interval is 5 minutes.
 
 ### Why does the last point sometimes drop suddenly in the Most Recent Metrics Report?
