@@ -46,6 +46,7 @@ The following table lists the actions taken related to Domain Mappings. With eac
 | cdn-powered-by-akamai.domain-mapping.stop | Stop a domain mapping.     |
 | cdn-powered-by-akamai.domain-mapping.start | Start a domain mapping.     |
 | cdn-powered-by-akamai.domain-mapping.status | Domain mapping status change.     |
+{: caption="Table 1. Domain Mapping events" caption-side="left"}
 
 ## List of origin path action events
 {: #events_origin_path}
@@ -57,6 +58,7 @@ The following table lists the actions taken related to origin path actions. With
 | cdn-powered-by-akamai.origin-path.create | Create an origin path.     |
 | cdn-powered-by-akamai.origin-path.update | Update an origin path.     |
 | cdn-powered-by-akamai.origin-path.delete | Delete an origin path.     |
+{: caption="Table 2. Origin path action events" caption-side="left"}
 
 ## List of Time To Live events
 {: #events_ttl}
@@ -68,6 +70,7 @@ The following table lists the actions taken related to TTL. With each of these a
 | cdn-powered-by-akamai.ttl.create | Create TTL.     |
 | cdn-powered-by-akamai.ttl.update | Update TTL.     |
 | cdn-powered-by-akamai.ttl.delete | Delete TTL.     |
+{: caption="Table 3. Tive to Live events" caption-side="left"}
 
 ## List of Purge events
 {: #events_purge}
@@ -79,6 +82,7 @@ The following table lists the actions taken related to purge. With each of these
 | cdn-powered-by-akamai.purge.create | Create purge.     |
 | cdn-powered-by-akamai.purge.save | Save purge.     |
 | cdn-powered-by-akamai.purge.unsave | Unsave purge.     |
+{: caption="Table 4. Purge events" caption-side="left"}
 
 ## List of CDN Account events
 {: #events_account}
@@ -90,6 +94,7 @@ The following table lists the actions taken related to CDN account. With each of
 | cdn-powered-by-akamai.account.create | Create CDN account.     |
 | cdn-powered-by-akamai.account.cancel | Cancel CDN account.     |
 | cdn-powered-by-akamai.account.delete | Delete CDN account.     |
+{: caption="Table 5. CDN Account events" caption-side="left"}
 
 ## List of Geolocation events
 {: #events_geo}
@@ -101,6 +106,7 @@ The following table lists the actions taken related to geolocation. With each of
 | cdn-powered-by-akamai.geo.create | Create Geo location.     |
 | cdn-powered-by-akamai.geo.update | Update Geo location.     |
 | cdn-powered-by-akamai.geo.delete | Delete Geo location.     |
+{: caption="Table 6. Geolocation events" caption-side="left"}
 
 ## List of Hotlink events
 {: #events_hotlink}
@@ -112,6 +118,7 @@ The following table lists the actions taken related to hotlink. With each of the
 | cdn-powered-by-akamai.hotlink.create | Create hotlink.     |
 | cdn-powered-by-akamai.hotlink.update | Update hotlink.     |
 | cdn-powered-by-akamai.hotlink.delete | Delete hotlink.     |
+{: caption="Table 7. Hotlink events" caption-side="left"}
 
 ## List of Token Authentication events
 {: #events_token_authentication}
@@ -123,6 +130,7 @@ The following table lists the actions taken related to token authentication. Wit
 | cdn-powered-by-akamai.token-auth.create | Create token authentication.     |
 | cdn-powered-by-akamai.token-auth.update | Update token authentication.     |
 | cdn-powered-by-akamai.token-auth.delete | Delete token authentication.     |
+{: caption="Table 8. Token Authentication events" caption-side="left"}
 
 For more details about token authentication, refer to [Working with token authentication](/docs/CDN?topic=CDN-working-with-token-authentication).
 

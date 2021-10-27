@@ -23,7 +23,7 @@ subcollection: CDN
 {:faq: data-hd-content-type='faq'}
 
 # Getting to Running status
-{: next-steps-after-ordering}
+{: #next-steps-after-ordering}
 
 After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain.
 {: shortdesc}
@@ -32,12 +32,12 @@ You might need to click the **Get status** button a few times before your CDN sh
 {: note}
 
 ## For a Wildcard HTTPS CDN
-{: for-a-wildcard-https-cdn}
+{: #for-a-wildcard-https-cdn}
 
 From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status** until your CDN shows `Running` status. It isn't necessary to configure any other settings or verify that CDN traffic works as expected. From here, you can review "How to" topics in the table of contents to configure and manage your CDN.
 
 ## For an HTTP-only CDN
-{: for-an-http-only-cdn}
+{: #for-an-http-only-cdn}
 
 Follow these steps to get your CDN up and running:
 
@@ -48,14 +48,14 @@ Follow these steps to get your CDN up and running:
 
    A typical CNAME record looks similar to the following:
 
-   ![CNAME record](images/cname.png)
+   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="top"}
 
 3. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
 Your CDN is now running. From here, you can review the "How to" topics to further configure and manage your CDN.
 
 ## For a SAN HTTPS CDN
-{: for-a-san-https-cdn}
+{: #for-a-san-https-cdn}
 
 Follow these steps to get your CDN up and running:
 
@@ -67,19 +67,19 @@ Follow these steps to get your CDN up and running:
 
    A typical CNAME record looks similar to the following:
 
-   ![CNAME record](images/cname.png)
+   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="top"}
 
 4. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
 Your CDN is now running. From here, you can review the "How to" topics in the table of contents to further configure and manage your CDN.
 
 ## CDN CNAME
-{: cdn-cname}
+{: #cdn-cname}
 
 IBM CDN CNAME (also called an endpoint) can make your CDN mapping status to `Running` because it can resolve your domain to Akamai edge servers if you cname your domain to it. IBM provides two CNAMEs, and you can create CNAME record in your DNS system to point your CDN domain to one of the CNAMEs.
 
 ### IBM CNAME
-{: ibm-cname}
+{: #ibm-cname}
 
 IBM CNAME is the default CNAME. It is suffixed with `cdn.appdomain.cloud.` or `cdnedge.bluemix.net.` (The old mapping created before 08/05/2019), and you can define the prefix during [creating new CDN mapping](/docs/CDN?topic=CDN-order-a-cdn).
 
@@ -120,7 +120,7 @@ Now the IBM CNAME is pointing to your own origin's hostname. By switching the DN
 For more informtion about IBM CNAME, see the [FAQ for CDN CNAME](#faq-for-cdn-cname).
 
 ### Akamai CNAME
-{: akamai-cname}
+{: #akamai-cname}
 
 Akamai CNAME is the endpoint provided by Akamai. When your domain is cnamed to the Akamai CNAME, it can also resolve your domain to Akamai edge servers, and because it has fewer DNS chain nodes, it has a shorter DNS lookup time than the IBM CNAME.
 
@@ -144,6 +144,7 @@ The following table illustrates the Akamai CNAME for different type CDN mapping:
 | HTTP-only| wildcard.appdomain.mdc.edgekey.net. |
 | SAN HTTPS| cert-xxxxx-cdnedge-bluemix.akamaized.net.edgekey.net. |
 | Wildcard HTTPS | N/A |
+{: caption="Table 1: Akamai CNAME for CDN mapping" caption-side="top"}
 
 For the Akamai CNAME, it's important to consider the following:
 

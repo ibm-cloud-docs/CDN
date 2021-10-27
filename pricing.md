@@ -48,6 +48,7 @@ Select a region to see a list of countries or territories in that region.
 |250 - 500 TB| 0.04 | 0.04 | 0.10 | 0.10 | 0.16 | 0.10 | 0.10 |
 |500 TB - 3 PB| 0.025 | 0.025| 0.07 | 0.07 | 0.13 | 0.09 | 0.09 |
 |\>3 PB| [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) | [Contact Us](https://www.ibm.com/account/reg/us-en/signup?formid=MAIL-wcp) |
+{: caption="Table 1. Static bandwidth pricing" caption-side="left"}
 
 ### Dynamic bandwidth pricing
 {: #cdn-dynamic-bandwidth}
@@ -59,3 +60,4 @@ Select a region to see a list of countries or territories in that region.
 |250 - 500 TB| 0.14 | 0.14 | 0.14 | 0.14 | 0.14 | 0.14 | 0.14 |
 |500 TB - 3 PB| 0.121 | 0.121| 0.121 | 0.121 | 0.121 | 0.121 | 0.121 |
 |\>3 PB| 0.1|0.1|0.1|0.1|0.1|0.1|0.1|
+{: caption="Table 2. Dynamic bandwidth pricing" caption-side="left"}

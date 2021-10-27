@@ -34,11 +34,11 @@ To set the content caching time using TTL, follow these steps:
 2. Click **Add path** from the **TTL settings**.
 3. Adjust the time using the arrows, or by entering a new time. The time value is specified in seconds. For example, 3600 seconds is equal to 1 hour. The smallest value for `timeToLive` that you can choose is 0 seconds, while the largest is 2147483646 seconds (approximately 24855 days). Select the **Save** button to set the content caching time.
 
-   ![Adding ttl](images/adding-path.png)
+   ![Adding TTL](images/adding-path.png){: caption="Set content caching time" caption-side="top"}
 
 4. After saving, you can **Edit** or **Delete** the TTL setting using the Overflow ![Overflow menu](images/overflow.png) options. (**NOTE**: The path for TTL cannot be changed. If the Mapping path is changed, the TTL path is updated automatically.)
 
-   ![Edit or delete ttl](images/edit-delete-ttl-setting.png)
+   ![Edit or delete TTL](images/edit-delete-ttl-setting.png){: caption="Edit or delete TTL" caption-side="top"}
 
    * When the content matches multiple rules, the most recently added configuration takes precedence.
 

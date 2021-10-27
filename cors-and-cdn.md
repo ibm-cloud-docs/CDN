@@ -43,11 +43,11 @@ CORS can handle two types of requests: _simple requests_ and _preflighted reques
 
 **First request (resource access):**
 
-![cors-simple](/images/cors-simple.png)
+![cors-simple](/images/cors-simple.png){: caption="First request (resource access)" caption-side="top"}
 
-[Simple requests ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#simple-cross-origin-request) through CORS are either `GET` or `POST` requests from the web page of one origin that's attempting to gain access to the URL of another origin for resources.
+[Simple requests](https://www.w3.org/TR/cors/#simple-cross-origin-request){: external} through CORS are either `GET` or `POST` requests from the web page of one origin that's attempting to gain access to the URL of another origin for resources.
 
-When making such a request, the browser automatically sets CORS request headers. Primarily, it sets the origin of the web page making the request in the `Origin` HTTP header, automatically. The CORS request also can contain a set of [certain, standard HTTP headers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#simple-header), while maintaining its status as a simple CORS request, from the browser's perspective.
+When making such a request, the browser automatically sets CORS request headers. Primarily, it sets the origin of the web page making the request in the `Origin` HTTP header, automatically. The CORS request also can contain a set of [certain, standard HTTP headers](https://www.w3.org/TR/cors/#simple-header){: external}, while maintaining its status as a simple CORS request, from the browser's perspective.
 
 The server that receives the CORS request processes the request, and might send a set of CORS response headers back to the browser, with the requested content. These CORS response headers contain values specifying whether the current web page is allowed access to those resources, whether the headers sent are acceptable for that request, and so forth.
 
@@ -58,13 +58,13 @@ If the browser is unable to see its CORS request satisfied by the CORS response 
 
 **First request (preflight):**
 
-![cors-preflight](/images/cors-preflight.png)
+![cors-preflight](/images/cors-preflight.png){: caption="First request (preflight)" caption-side="top"}
 
 Second request (resource access):
 
-![cors-after-preflight](/images/cors-after-preflight.png)
+![cors-after-preflight](/images/cors-after-preflight.png){: caption="Second request (resource access)" caption-side="top"}
 
-For more complex CORS communication between the browser and a CORS origin that's different than the requesting web page, a [preflight request ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0) is required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
+For more complex CORS communication between the browser and a CORS origin that's different than the requesting web page, a [preflight request](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0){: external} is required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
 
 If a preflight request is needed, here's how the events unfold:
 
@@ -143,7 +143,7 @@ http {
 ```
 {: screen}
 
-Generally, the browser should freely load content when it sees a `Access-Control-Allow-Origin: *` in the server's CORS response headers according to the [w3 specification regarding that wildcard value ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/#security). However, not all browsers support `Access-Control-Allow-Origin: *`.
+Generally, the browser should freely load content when it sees a `Access-Control-Allow-Origin: *` in the server's CORS response headers according to the [w3 specification regarding that wildcard value](https://www.w3.org/TR/cors/#security){: external}. However, not all browsers support `Access-Control-Allow-Origin: *`.
 
 If the server must support access from multiple web pages, each served from a different origin, a single origin value for `Access-Control-Allow-Origin` should be dynamically generated per request. The following is a basic example of such a use case for an Nginx server:
 
@@ -207,7 +207,8 @@ The previous example uses the `map` directive to avoid overusing the `if` Nginx 
 ## Setting up CORS for CDN
 {: #how-to-set-up-cors-for-cdn}
 
-![cors-through-cdn](/images/cors-through-cdn.png)
+![cors-through-cdn](/images/cors-through-cdn.png){: caption="CORS for CDN" caption-side="top"}
+
 CDN is largely transparent to the CORS setup of the origin so it does not require a specific CDN configuration. If the CDN Edge server cannot find a cached response for the first request for some content, it forwards the request to the origin host. If the origin host is set up to handle CORS requests, and this request has the `Origin` header, then it should respond back to the Edge with a CORS header of `Access-Control-Allow-Origin` and the associated value. The overall response, including that header and value, is cached in the CDN. Any subsequent request for the object at the same URI path is served from the cache and includes the `Access-Control-Allow-Origin` header value that was originally received from the origin.
 
 ## Multiple CORS origin support
@@ -253,5 +254,5 @@ The `Vary` response header from your origin server can also cause unexpected beh
 ## More information
 {: #more-information}
 
-* [https://www.w3.org/TR/cors/ ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/cors/)
-* [https://w3c.github.io/webappsec-cors-for-developers/ ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://w3c.github.io/webappsec-cors-for-developers/)
+* [https://www.w3.org/TR/cors/](https://www.w3.org/TR/cors/){: external}
+* [https://w3c.github.io/webappsec-cors-for-developers/](https://w3c.github.io/webappsec-cors-for-developers/){: external}

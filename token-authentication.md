@@ -42,9 +42,9 @@ Token authentication can stop unauthorized clients from accessing your sensitive
 
 The following diagram shows how the CDN token authentication works with your web application to validate the client's requests.
 
-   ![Token authentication flow](images/token-authentication-flow.png)
+   ![Token authentication flow](images/token-authentication-flow.png){: caption="Token authentication flow" caption-side="top"}
 
-In the diagram, before a client requests the protected contents, they must get a token from your web application. Your web application logic (for instance, username and password) validates the request. If the validation passes, it generates a one-time token and returns it to the client.
+In this diagram, before a client requests the protected contents, they must get a token from your web application. Your web application logic (for instance, username and password) validates the request. If the validation passes, it generates a one-time token and returns it to the client.
 
 When the client requests the CDN contents, they must pass the token in a cookie, query string parameter, or request header. The request goes to the CDN Edge server, and the Edge server attempts to match it with the local token-auth setting. If the token is a verified match, the content is returned to the client. If the token doesn't match, the Edge server returns a `403` response.
 
@@ -156,7 +156,7 @@ The following example illustrates how to set token authentication. One customer 
 
    First, access the contents without the token.
 
-    ```shell
+    ```sh
     curl -i "http://www.cdn-domain.com/private/test.txt"
     HTTP/1.1 403 Forbidden
     ...

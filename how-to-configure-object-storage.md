@@ -49,7 +49,7 @@ For more information, see [Accelerate delivery of static files using a CDN](/doc
 {: faq}
 
 ### Can I use ICOS private endpoints for CDN?
-{:# use-objects-stored-in-icos}
+{: #use-objects-stored-in-icos}
 
 No. The CDN edge servers can only access the ICOS public endpoints, so objects in the ICOS buckets should provide public access.
 

@@ -39,7 +39,7 @@ All the commands, tools, and files that are used in this example are based on th
 
 This example uses the following CDN mapping:
 
-![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com.png)
+![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com.png){: caption="CDN mapping example" caption-side="left"}
 
 * CDN hostname: `ibm-test.cdn-demo.com`
 * CDN CNAME: `cdnakaotn3exg6px.cdn.appdomain.cloud.`
@@ -154,7 +154,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 5. Restore your original local hosts file by using the backup copy that was created in Step 2.   
 
 ## Using wildcard CDN to verify CDN traffic
-{: using-wildcard-cdn-to-verify-cdn-traffic}
+{: #using-wildcard-cdn-to-verify-cdn-traffic}
 
 The wildcard CDN does not need the DNS record changed to point the domain to the IBM CNAME. The IBM CNAME can be used to access the service, which makes it fast and easy to verify CDN traffic.
 
@@ -169,7 +169,7 @@ To verify CDN traffic using a wildcard certificate, follow these steps:
 
    The wildcard CDN shows a final list similar to the following image.
 
-   ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com-wildcard-test.png)
+   ![CDN list of ibm-test.cdn-demo.com](images/ibm-test.cdn-demo.com-wildcard-test.png){: caption="CDN list" caption-side="top"}
 
 2. Verify the wildcard traffic. You can add the [Akamai debug headers](/docs/CDN?topic=CDN-troubleshoot-cdn-working) to request the wildcard CDN's IBM CNAME.
 

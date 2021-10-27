@@ -48,6 +48,7 @@ Before you begin, you must download and install the Soap Client from [https://gi
    $apiUsername = '<Your username>' ;
    $apiKey = '<Your apiKey>' ;
    ```
+
 * Initialize SoapClient for the appropriate class.
 
 ## Example code for listing vendors
@@ -80,8 +81,7 @@ Array
         )
 
 )
-```
-
+``` 
 {: codeblock}
 
 ## Example code to verify an order
@@ -932,9 +932,7 @@ The `getMappingRealTimeMetrics` API returns an array of metrics. Example output 
     }
 )
 ```
-
 {: codeblock}
-
 
 ## Example code for creating a purge group
 {: #create-group-example}
@@ -981,10 +979,7 @@ SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup Object
 ```
 {: codeblock}
 
-
 The rate limit related headers also returned:
-
-{: #rate-limit-header}
 
 ```php
   lastResponseHeaders =>

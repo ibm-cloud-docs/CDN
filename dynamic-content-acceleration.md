@@ -37,7 +37,7 @@ To enable DCA, follow these steps:
 
 1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. Click **Edit** from the **Optimization settings**, then select **Dynamic content acceleration** from the **Optimize for** list menu.
 
-   ![Configure origin](images/settings-dca-switch.png)
+   ![Configure origin](images/settings-dca-switch.png){: caption="Setting dynamic content acceleration" caption-side="top"}
 
 2. Enable DCA:
 
@@ -45,11 +45,11 @@ To enable DCA, follow these steps:
    - Type the path of the object in the **Detection path** field. Click **Test** to verify that the object can be reached.
    - Enable/Disable [Prefetching](#prefetching) and [Image compression](#image-compression).
 
-   ![Configure origin](images/settings-dca-input.png)
+   ![Configure origin](images/settings-dca-input.png){: caption="Enabling DCA" caption-side="top"}
 
 3. Click the **Save** button to save the settings. If the **`Detection path`** is unreachable, you are prompted by a warning. You can continue to save your settings and update the **`Detection path`** later.
 
-   ![Configure origin](images/settings-dca-save.png)
+   ![Configure origin](images/settings-dca-save.png){: caption="Save settings" caption-side="top"}
 
 ## Understanding DCA concepts
 {: #dca-concepts}

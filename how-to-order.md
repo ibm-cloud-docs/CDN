@@ -48,6 +48,7 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
       For **Object Storage**:
        * Enter the required **S3 Endpoint** ([S3 format public endpoint](/docs/cloud-object-storage/info?topic=cloud-object-storage-advanced-endpoints#advanced-endpoint-reference)) from which to fetch the object.
        * Enter the name of the **Bucket** in which your content is stored.  
+       
        You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider. For more information, see [Allowing public access](/docs/cloud-object-storage?topic=cloud-object-storage-iam-public-access).
        {: note}
 

@@ -64,6 +64,7 @@ However, if your origin does not provide a Cache-Control header to the Edge serv
 |Off|Yes, origin specifies a `max-age`|Edge cache duration base on the CDN's TTL configuration|Yes, Edge also provides a `max-age` value that is the lesser of origin's `max-age` value and the time before the Edge needs to refresh the content from the origin|
 |Off|Yes, but origin does not specify a `max-age`|Edge cache duration based on the CDN's TTL configuration|Yes, Edge also provides a `max-age` that is the time before the Edge needs to refresh the content from the origin|
 |Off|No|Edge cache duration based on the CDN's TTL configuration|No|
+{: caption="Table 1.  Summary: HTTP client's cache duration" caption-side="left"}
 
 ## More information
 {: #more-information-on-cache-control}

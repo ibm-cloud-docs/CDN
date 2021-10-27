@@ -78,7 +78,7 @@ A typical CNAME record looks similar to the following on the DNS configuration p
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
 | CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
-
+{: caption="CNAME record example" caption-side="left"}
 
 ## What am I billed for my CDN?
 {: #what-will-i-be-billed-for-my-cdn}
@@ -296,7 +296,7 @@ Multiple file purges are allowed in the following states:
 Yes, IBM CDN is PCI DSS 3.2.1 compliant through our partner Akamai's certification. For more information, see the Akamai [Attestation of Compliance](https://www.akamai.com/uk/en/multimedia/documents/infosec/pci-dss-3.2-attestation-of-compliance.pdf){: external}.
 
 ## How to get the client IP address?
-{: get-client-ip}
+{: #get-client-ip}
 {: faq}
 
 Akamai Edge servers add the `True-Client-IP` and `X-Forwarded-For` headers in the requests to the origin. Then, in your backend origin server, you can get the client IP address from the value of the `True-Client-IP`, or extract the first IP in the chain of `X-Forwarded-For`.
