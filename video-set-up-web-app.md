@@ -24,5 +24,4 @@ keywords:
 {{site.data.keyword.cloud}} network services, including load balancer, security groups, and CDN make it easy to build cloud-native applications with greater security, performance, and resiliency. In this demo, you'll learn how you can use these services to create a simple three-tiered web app in a matter of clicks.
 {: shortdesc}
 
-<!-- YouTube video -->
 ![Networking overview](https://www.youtube.com/embed/LRvNCXvtkX0){: video output="iframe" data-script="video-script" id="youtubeplayer" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen}

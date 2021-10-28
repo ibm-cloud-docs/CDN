@@ -36,7 +36,7 @@ When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-al
 3. Click the **Create purge** button.
 4. Enter standard UNIX path syntax or upload a local purge file to indicate which paths you want to purge, then click the **Purge** button. You can purge multiple paths at a time. See [FAQs for rules and naming conventions](/docs/CDN?topic=CDN-rules-and-naming-conventions#what-are-the-rules-for-the-path-string-for-purge) for more details on what syntax or a local file is allowed for the Purge paths.
 
-   ![Purge page](images/purge-create-dialog.png){: caption="Purge button" caption-side="bottom"}
+   ![Purge page](images/purge-create-dialog.png){: caption="Create purge" caption-side="bottom"}
 
 5. After purging, the group is listed under **Purge history**. If the process succeeds, the cached contents of the path list in the Edge server are cleared. If you want to save a group for future use without performing a purge operation, click the **Add paths** button instead.
 
@@ -44,7 +44,7 @@ When your CDN in [these statuses](/docs/CDN?topic=CDN-faqs#what-status-is-cdn-al
 
 6. With a specified group you can **Redo purge**, **View purge paths**, or **Add to favorites** using the Overflow ![Overflow menu](images/overflow.png) menu options.
 
-   ![Purge page](images/purge-history-options.png){: caption="Purge history options" caption-side="top}
+   ![Purge page](images/purge-history-options.png){: caption="Purge history options" caption-side="bottom"}
 
    By default, the purge groups in the **Purge history** are not saved to favorites and trimmed every 15 days automatically. To save purge groups for future use, you can save them as favorites by choosing the **Add to favorites** option. When a purge group is saved, it is not be automatically trimmed.
 

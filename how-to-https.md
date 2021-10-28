@@ -47,7 +47,7 @@ Complete these steps:
 
 3. Click the name of the CDN that must be validated. The Overview page opens, where you can see the overall status of your CDN. At the top of the page, an alert appears, reminding you that domain validation is needed. Select the **View domain validation** button to open a window that shows you the challenge information that you need to complete the validation process.
 
-   ![Domain validation required](images/view-domain-validation.png){: caption="Domain validation required" caption-side="bottom"}
+   ![Domain validation required](images/view-domain-validation.png){: caption="Figure 1: Domain validation required" caption-side="bottom"}
 
 4. After you've completed one of the validation steps from the section on how to address a Domain Validation Challenge, your CDN moves into **Deploying certificate** status. During this time, Akamai distributes your validated certificate to their edge servers. Deploying a certificate can take 2 - 4 hours.
 
@@ -65,14 +65,14 @@ This method is recommended **ONLY** if your CDN is not serving live traffic. If 
 
 To use this method, add a CNAME record for your CDN domain into your DNS configuration. The [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) can be used as the record value. No other action is required by you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
 
-   ![Domain Validation CNAME](images/domain-validation-cname.png){: caption="Domain Validation CNAME" caption-side="bottom"}
+   ![Domain Validation CNAME](images/domain-validation-cname.png){: caption="Tabe 1: Domain Validation CNAME" caption-side="bottom"}
 
 For the CDN domain `cdn.example.com`, you can add a CNAME type record to point this domain to IBM CNAME:
 
 | Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
 | *CNAME* | *cdn.example.com* | *example.cdn.appdomain.cloud.* | *15 minutes* |
-{: caption="Table 1. Add CNAME type record to point to CNAME" caption-side="bottom"}
+{: caption="Table 2. Add CNAME type record to point to CNAME" caption-side="bottom"}
 
 ---
 
@@ -81,7 +81,7 @@ For the CDN domain `cdn.example.com`, you can add a CNAME type record to point t
 
 The challenge domain is a new domain, specific for your CDN domain. By setting a CNAME record in your DNS system for the challenge domain, CA can also validate your CDN domain. If you choose this method, you don't need to change the CDN domain's record, therefore it has no effect on the traffic if your domain is running service.
 
-   ![Domain Validation Challenge Domain](images/domain-validation-challenge-domain.png){: caption="Domain Validation Challenge Domain" caption-side="bottom"}
+   ![Domain Validation Challenge Domain](images/domain-validation-challenge-domain.png){: caption="Table 3: Domain Validation Challenge Domain" caption-side="bottom"}
 
 The Challenge domain format is: `_acme-challenge.<CDN domain>`  
 The Challenge CNAME format is: `<CDN domain>.ak-acme-challenge.cdn.appdomain.cloud.`
@@ -91,7 +91,7 @@ For example, the CDN domain is `cdn.example.com`, then the challenge domain CNAM
 | Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
 | *CNAME* | *_acme-challenge.cdn.example.com* | *cdn.example.com.ak-acme-challenge.cdn.appdomain.cloud.* | *15 minutes* |
-{: caption="Table 2. Challenge domain CNAME" caption-side="bottom"}
+{: caption="Table 4. Challenge domain CNAME" caption-side="bottom"}
 
 Using the challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. When using other methods, you would receive an [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others.
 {: note}
@@ -103,7 +103,7 @@ Using the challenge domain validation method can keep your domain always active 
 
 If you choose the Standard method for domain validation, the Domain Validation window shows a **Challenge URL** and a **Challenge response**. To complete the domain validation process, add the provided **Challenge response** to your origin server. After it is added, the CA can retrieve the **Challenge response** from your origin server using the URL specified in the **Challenge URL**. After your origin server is configured correctly, domain validation can take 2 - 4 hours.
 
-   ![Domain Validation Challenge Standard](images/domain-validation-standard.png){: caption="Domain Validation Challenge Standard" caption-side="bottom"}
+   ![Domain Validation Challenge Standard](images/domain-validation-standard.png){: caption="Table 5: Domain Validation Challenge Standard" caption-side="bottom"}
 
 To successfully complete the domain validation through the Standard method, you must configure your origin server in a particular way. The example procedures for Apache and Nginx servers are outlined here.
 
@@ -199,7 +199,7 @@ After your CDN has reached **Certificate deploying** status:
 
 Clicking the **Redirect** tab displays all the information that is needed to address the Domain Validation through redirect. This information allows the CA to retrieve a copy of the **Challenge response** from Akamai through your origin server. After your server is configured correctly, Domain Validation can take 2 - 4 hours.
 
-   ![Domain Validation Challenge Redirect](images/domain-validation-redirect.png){: caption="Domain Validation Challenge Redirect" caption-side="bottom"}
+   ![Domain Validation Challenge Redirect](images/domain-validation-redirect.png){: caption="Table 6: Domain Validation Challenge Redirect" caption-side="bottom"}
 
 To successfully complete the Domain Validation through the Redirect method, you might need to configure your web server in a particular way. The example procedures for Apache and Nginx servers are outlined in the sections that follow.
 
@@ -245,45 +245,45 @@ To configure an Nginx redirect, follow these steps:
 
 3. There are two equally valid methods for this step.
 
-    * Option 1: (recommended) Add a `location` block with a `return` directive to perform the redirect within the appropriate `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
+   * Option 1: (recommended) Add a `location` block with a `return` directive to perform the redirect within the appropriate `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-    ```sh
-    server {
-      listen 80;
-      server_name origin.example.com cdn.example.com;
+      ```sh
+       server {
+         listen 80;
+         server_name origin.example.com cdn.example.com;
 
-      # Some server configuration directives
-      # ...
+         # Some server configuration directives
+         # ...
 
-      location = /.well-known/acme-challenge/examplechallenge-fileobject  {
-          return 302 http://dcv.akamai.com$request_uri;
-      }
+         location = /.well-known/acme-challenge/examplechallenge-fileobject  {
+             return 302 http://dcv.akamai.com$request_uri;
+         }
 
-      # Some more server configuration directives
-      # ...
-    }
-    ```
+         # Some more server configuration directives
+         # ...
+       }
+       ```
 
    * Option 2: Add a `rewrite` directive within the `server` block. If needed, add your CDN domain as an additional **server_name** to the server block for your origin.
 
-    ```sh
-    server {
-      listen 80;
-      server_name origin.example.com cdn.example.com;
+       ```sh
+       server {
+         listen 80;
+         server_name origin.example.com cdn.example.com;
 
-      # Some server configuration directives
-      # ...
+         # Some server configuration directives
+         # ...
 
-      rewrite ^/(\.well-known/acme-challenge/examplechallenge-fileobject)$ http://dcv.akamai.com/$1 redirect;
+         rewrite ^/(\.well-known/acme-challenge/examplechallenge-fileobject)$ http://dcv.akamai.com/$1 redirect;
 
-      # Some more server configuration directives
-      # ...
-    }
-    ```
+         # Some more server configuration directives
+         # ...
+       }
+       ```
 
 4. Restart the Nginx server with minimal downtime by using the following command:
 
-    ```sh
+   ```sh
     nginx -s reload
     ```
     {: pre}

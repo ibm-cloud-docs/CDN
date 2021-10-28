@@ -42,7 +42,7 @@ Token authentication can stop unauthorized clients from accessing your sensitive
 
 The following diagram shows how the CDN token authentication works with your web application to validate the client's requests.
 
-   ![Token authentication flow](images/token-authentication-flow.png){: caption="Token authentication flow" caption-side="bottom"}
+   ![Token authentication flow](images/token-authentication-flow.png){: caption="Figure 1: Token authentication flow" caption-side="bottom"}
 
 In this diagram, before a client requests the protected contents, they must get a token from your web application. Your web application logic (for instance, username and password) validates the request. If the validation passes, it generates a one-time token and returns it to the client.
 

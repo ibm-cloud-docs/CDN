@@ -37,7 +37,7 @@ The Wildcard certificate is the simplest way to deliver web content to your user
 
 IBM Cloud CDN uses the Wildcard certificate `*.cdn.appdomain.cloud.`. The CNAME, regardless of whether it was created for you or provided by you, and ending in suffix `*.cdn.appdomain.cloud.` is added to the wildcard certificate maintained on the CDN Edge server. And thus CNAME becomes the only way for users to use HTTPS for your CDN.
 
-![Diagram for HTTP and Wildcard](images/state-diagram-wildcard.png){: caption="Figure 1: HTTP and Wildcard" caption-side="bottom"}
+![Diagram for HTTP and Wildcard](images/state-diagram-wildcard.png){: caption="Figure 1: Wildlife certificate support" caption-side="bottom"}
 
 ## Subject Alternate Name (SAN) certificate support
 {: #san-certificate-suport}
@@ -51,4 +51,4 @@ When the CDN order is placed that uses an HTTPS SAN certificate, it goes through
 After the CDN reaches RUNNING status, you must keep the CDN hostname CNAME record in your DNS. If the CNAME record is removed, the CDN hostname can be removed from the SAN certificate within three days. If that happens, HTTPS traffic is no longer served with that CDN hostname.
 {: note}
 
-![Diagram for HTTPS with SAN Certificate](images/state-diagram-san.png){: caption="Figure 2: HTTPS with SAN certificate" caption-side="bottom"}
+![Diagram for HTTPS with SAN Certificate](images/state-diagram-san.png){: caption="Figure 2: SAN certificate support" caption-side="bottom"}
