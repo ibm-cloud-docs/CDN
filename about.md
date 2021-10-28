@@ -44,7 +44,7 @@ A CDN achieves its purpose by caching web content on Edge servers around the wor
 
 The following diagram offers a schematic overview of the three-tier architecture of {{site.data.keyword.cloud_notm}} CDN.
 
-![Content Delivery Network architectural diagram](images/3-tier-architecture.png){: caption="Figure 1: CDN architecture" caption-side="top"}
+![Content Delivery Network architectural diagram](images/3-tier-architecture.png){: caption="Figure 1: CDN architecture" caption-side="bottom"}
 
 ## CDN features
 {: #features}

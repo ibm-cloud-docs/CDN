@@ -32,7 +32,7 @@ A number of formats, such as HLS and MPEG-DASH, are available to stream video.
 
 Conceptually, the setup we're using is shown in the following diagram:
 
-![IBM Cloud CDN for Video on Demand](images/ibmcdn-vod-example-model.png){: caption="IBM Cloud CDN for Video on Demand" caption-side="top"}
+![IBM Cloud CDN for Video on Demand](images/ibmcdn-vod-example-model.png){: caption="IBM Cloud CDN for Video on Demand" caption-side="bottom"}
 
 We also use the origin as the place for preparation. On that, we also need to obtain a few packages to make this work.
 
@@ -104,7 +104,7 @@ The following shows the breakdown of what this command did:
 | -hls_time 6 | Attempt to target each output video fragment length to 6 seconds.  \n  Accumulates frames for at least 6 seconds of video, and then  \n  stops to break off a video fragment when it encounters the next keyframe. |
 | -hls_playlist_type vod | Prepares the output `.m3u8` playlist file for Video on Demand (VOD). |
 | test-video.m3u8 | Name the output playlist/manifest file to `test-video.m3u8`.  \n  As a result, `test-video0.ts`, `test-video1.ts`, `test-video2.ts`, ..., and similar,  \n  will be the video fragment's names by default.|
-{: caption="Table 1: ffmpeg arguments and descriptions" caption-side="top"}
+{: caption="Table 1: ffmpeg arguments and descriptions" caption-side="bottom"}
 
 Note, for the `-` options, unless a stream is specified, the "best" one for its category is chosen.
 

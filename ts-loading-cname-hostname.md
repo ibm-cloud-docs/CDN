@@ -35,7 +35,7 @@ This table shows the behavior that is expected for the supported protocols when 
 | `https://hostname` | Access denied [^A] |
 | `http://cname` | 301 Moved Permanently |
 | `https://cname` | Redirects to IBM Cloud webpage |
-{: caption="Table 1. Expected behavior for CDN with HTTP protocol only" caption-side="left"}
+{: caption="Table 1. Expected behavior for CDN with HTTP protocol only" caption-side="bottom"}
 {: #simpletabtable1}
 {: tab-title="HTTP only"}
 {: tab-group="cdr-troubleshooting"}
@@ -47,7 +47,7 @@ This table shows the behavior that is expected for the supported protocols when 
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
 | `http://cname` | Access denied [^C] | 301 Moved Permanently |
 | `https://cname` | Successful load | 301 Moved Permanently |
-{: caption="Table 2. Expected behavior for CDN with HTTPS protocol only" caption-side="left"}
+{: caption="Table 2. Expected behavior for CDN with HTTPS protocol only" caption-side="bottom"}
 {: #simpletabtable2}
 {: tab-title="HTTPS only"}
 {: tab-group="cdr-troubleshooting"}
@@ -65,7 +65,7 @@ This table shows the behavior that is expected for the supported protocols when 
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
 | `http://cname` | Successful load | 301 Moved Permanently |
 | `https://cname` | Successful load | Redirects to IBM Cloud webpage |
-{: caption="Table 3. Expected behavior for CDN with both HTTP and HTTPS protocol" caption-side="left"}
+{: caption="Table 3. Expected behavior for CDN with both HTTP and HTTPS protocol" caption-side="bottom"}
 {: #simpletabtable3}
 {: tab-title="HTTP and HTTPS"}
 {: tab-group="cdr-troubleshooting"}

@@ -48,7 +48,7 @@ Follow these steps to get your CDN up and running:
 
    A typical CNAME record looks similar to the following:
 
-   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="top"}
+   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="bottom"}
 
 3. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
@@ -67,7 +67,7 @@ Follow these steps to get your CDN up and running:
 
    A typical CNAME record looks similar to the following:
 
-   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="top"}
+   ![CNAME record](images/cname.png){: caption="CNAME record" caption-side="bottom"}
 
 4. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
@@ -144,7 +144,7 @@ The following table illustrates the Akamai CNAME for different type CDN mapping:
 | HTTP-only| wildcard.appdomain.mdc.edgekey.net. |
 | SAN HTTPS| cert-xxxxx-cdnedge-bluemix.akamaized.net.edgekey.net. |
 | Wildcard HTTPS | N/A |
-{: caption="Table 1: Akamai CNAME for CDN mapping" caption-side="top"}
+{: caption="Table 1: Akamai CNAME for CDN mapping" caption-side="bottom"}
 
 For the Akamai CNAME, it's important to consider the following:
 

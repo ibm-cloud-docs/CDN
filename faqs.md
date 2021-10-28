@@ -78,7 +78,7 @@ A typical CNAME record looks similar to the following on the DNS configuration p
 | **Resource Type** | **Host** | **Points to (CNAME)** | **TTL** |
 |------------------|---------|-------------|----------------|
 | CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
-{: caption="CNAME record example" caption-side="left"}
+{: caption="CNAME record example" caption-side="bottom"}
 
 ## What am I billed for my CDN?
 {: #what-will-i-be-billed-for-my-cdn}
