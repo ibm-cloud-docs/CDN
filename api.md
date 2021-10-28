@@ -434,11 +434,11 @@ Lists unfavorite purge groups.
 Saves a specific purge group as favorite.
 
 * **Parameters**:
-  * `uniqueId` - The unique ID of the mapping to which the purge group belongs.
+   * `uniqueId` - The unique ID of the mapping to which the purge group belongs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeGroup`.
 
-  [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
+   [Purge Group container](/docs/CDN?topic=CDN-purge-group-container)
 
 ----
 
@@ -463,12 +463,12 @@ Purges all files in purge groups by a collection of group IDs.
 Purge actions have a rate limit check. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.
 
 * **Parameters**:
-  * `uniqueId` - The unique ID of the mapping.
-  * `groupUniqueIds` - A collection of purge group IDs.
+   * `uniqueId` - The unique ID of the mapping.
+   * `groupUniqueIds` - A collection of purge group IDs.
 
 * **Return** - A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_PurgeHistory`.
 
-  [Purge History container](/docs/CDN?topic=CDN-purge-history-container)
+   [Purge History container](/docs/CDN?topic=CDN-purge-history-container)
 
 ----
 
