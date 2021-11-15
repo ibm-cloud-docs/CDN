@@ -10,13 +10,7 @@ subcollection: CDN
 
 ---
 
-{:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:download: .download}
+{{site.data.keyword.attribute-definition-list}}
 
 # FAQs for limits and maximum values
 {: #limits-and-maximum-values}

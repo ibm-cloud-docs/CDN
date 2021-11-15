@@ -10,15 +10,7 @@ subcollection: CDN
 
 ---
 
-{:shortdesc: .shortdesc}
-{:new_window: target="blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:download: .download}
-{:DomainName: data-hd-keyref="DomainName"}
+{{site.data.keyword.attribute-definition-list}}
 
 # Pricing
 {: #pricing}

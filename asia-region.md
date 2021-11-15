@@ -10,6 +10,7 @@ subcollection: CDN
 
 ---
 
+{{site.data.keyword.attribute-definition-list}}
 
 # Asia region
 {: #asia-region}

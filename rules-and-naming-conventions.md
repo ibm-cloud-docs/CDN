@@ -10,14 +10,7 @@ subcollection: CDN
 
 ---
 
-{:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:download: .download}
+{{site.data.keyword.attribute-definition-list}}
 
 # FAQs for rules and naming conventions
 {: #rules-and-naming-conventions}

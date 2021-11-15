@@ -10,13 +10,7 @@ subcollection: CDN
 
 ---
 
-{:tsSymptoms: .tsSymptoms}
-{:tsCauses: .tsCauses}
-{:tsResolve: .tsResolve}
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:DomainName: data-hd-keyref="DomainName"}
+{{site.data.keyword.attribute-definition-list}}
 
 # Getting help and support
 {: #gettinghelp}

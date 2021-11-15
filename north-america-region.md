@@ -10,6 +10,8 @@ subcollection: CDN
 
 ---
 
+{{site.data.keyword.attribute-definition-list}}
+
 # North American region
 {: #north-american-region}
 
