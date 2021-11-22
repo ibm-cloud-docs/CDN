@@ -10,13 +10,7 @@ keywords:
 
 ---
 
-{:shortdesc: .shortdesc}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:external: target="_blank" .external}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
-{:video: .video}
+{{site.data.keyword.attribute-definition-list}}
 
 # Video - Setting up a web app with security groups, load balancer & CDN
 {: #set-up-web-app-video}

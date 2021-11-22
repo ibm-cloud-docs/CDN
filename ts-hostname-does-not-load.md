@@ -10,16 +10,7 @@ subcollection: CDN
 
 ---
 
-{:tsSymptoms: .tsSymptoms}
-{:tsCauses: .tsCauses}
-{:tsResolve: .tsResolve}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:support: data-reuse='support'}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:note:.deprecated}
-{:troubleshoot: data-hd-content-type='troubleshoot'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Why doesn't my hostname load on the browser when {{site.data.keyword.cloud_notm}} Object Storage (COS) is the origin?
 {: #troubleshoot-cdn-hostname-does-not-load}

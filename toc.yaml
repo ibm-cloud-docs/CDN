@@ -108,6 +108,9 @@ toc:
        id: help
        topics:
        - faqs.md
+       - https-faq.md
+       - rules-and-naming-conventions.md
+       - limits-and-max-values.md
        - topicgroup:
           label: Troubleshooting
           topics:
