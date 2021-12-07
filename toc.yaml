@@ -25,6 +25,7 @@ toc:
        - about-https.md
        - video-what-is-cdn.md
        - video-set-up-web-app.md
+       - whats-new.md
 
     - navgroup:
        id: tutorial
@@ -120,4 +121,3 @@ toc:
           - ts-cannot-connect-https.md
           - ts-loading-cname-hostname.md
        - getting-help.md
-       - whats-new.md
