@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-12-03"
+  years: 2019, 2022
+lastupdated: "2022-04-28"
 
 keywords: detection path, prefetching, image compression, ttl, cache
 
@@ -32,23 +32,25 @@ To enable DCA, follow these steps:
 
 2. Enable DCA:
 
-   - Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection Path](#detection-path).
-   - Type the path of the object in the **Detection path** field. Click **Test** to verify that the object can be reached.
+   - Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection path](#detection-path).
+   - Type the path of the object in the **Detection path** field. Click **Test** to open a new browser window to verify that the object can be reached.
+
+     If the window is blocked, update your browser settings to allow pop-up windows, or you can use your own method to check that the detection path is reachable.
+     {: note}
+
    - Enable/Disable [Prefetching](#prefetching) and [Image compression](#image-compression).
 
    ![Configure origin](images/settings-dca-input.png){: caption="Enabling DCA" caption-side="bottom"}
 
-3. Click the **Save** button to save the settings. If the **`Detection path`** is unreachable, you are prompted by a warning. You can continue to save your settings and update the **`Detection path`** later.
-
-   ![Configure origin](images/settings-dca-save.png){: caption="Save settings" caption-side="bottom"}
+3. Click **Save** to save the settings. If the **Detection path** is unreachable, the optimal route for dynamic content acceleration is impacted.
 
 ## Understanding DCA concepts
 {: #dca-concepts}
 
-### Detection Path
+### Detection path
 {: #detection-path}
 
-**`Detection Path`** is used by Akamai Edge servers to find the best optimized route from Edge servers to origin.
+**Detection path** is used by Akamai Edge servers to find the best optimized route from Edge servers to origin.
 The best path to origin must be known at the time a user’s request arrives at an Edge server because any inline analysis or detection would defeat the purpose of speeding up things.
 
 To accomplish this, you are asked to place a test object on your origin. Edge servers periodically fetch the test object from the origin using each of the candidate paths, including the direct path (the default path through the internet from Edge to Origin).
@@ -62,8 +64,7 @@ A valid test object must:
 * Be a static text file of content-type text/HTML
 * Be approximately the size of an average page, but no less than 8 KB
 
-
-**`Detection Path`** is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
+**Detection path** is designed to work only for HTTPS domain mapping (SAN HTTPS or Wildcard HTTPS).
 {: note}
 
 ### Prefetching
