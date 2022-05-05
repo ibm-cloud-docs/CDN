@@ -12,7 +12,7 @@ subcollection: CDN
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes
+# Release notes for CDN
 {: #what-s-new}
 
 {{site.data.keyword.cloud}} launched the CDN service with Akamai in September 2017, but we haven't stopped there. We continue to make enhancements and add new features to the service, in order to better serve you and your end-users. Check back periodically to see what's new.
