@@ -70,7 +70,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
 
 1. Get the Akamai Edge server's IP address.
 
-   If the CDN certificate type is SAN HTTPS, then you can get the Edge server IP address by performing name resolution of [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). If the CDN type is HTTP only, then you can use the fixed domain `wildcard.cdnedge.bluemix.net.edgekey.net` to get the IP address. You can use the `dig` command to perform the resolution.
+   If the CDN certificate type is SAN HTTPS, then you can get the Edge server IP address by performing name resolution of [IBM CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#ibm-cname). If the CDN type is HTTP only, then you can use the fixed domain `wildcard.cdnedge.bluemix.net.edgekey.net` to get the IP address. You can use the `dig` command to perform the resolution.
 
    In this example, the CDN is a SAN HTTPS mapping, so its IBM CNAME is used to do the resolution. The `dig` result is similar to the following:
 

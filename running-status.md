@@ -15,7 +15,7 @@ subcollection: CDN
 # Getting to Running status
 {: #next-steps-after-ordering}
 
-After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-getting-to-running-status#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain.
+After you've ordered a CDN (and [completed the domain validation](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) if the CDN is the SAN HTTPS mapping), the CDN status shows as `Cname configuration required`. To get your CDN to `Running` status, point your domain to [CDN CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#cdn-cname), which allows the Akamai edge servers to serve traffic for your domain.
 {: shortdesc}
 
 You might need to click the **Get status** button a few times before your CDN shows `Running` status.
@@ -32,7 +32,7 @@ From the Overflow ![Overflow menu](images/overflow.png) menu, click **Get status
 Follow these steps to get your CDN up and running:
 
 1. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
-2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
+2. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
 
    Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**.
 
@@ -51,7 +51,7 @@ Follow these steps to get your CDN up and running:
 
 1. Address the domain validation challenge. For instructions, see [Completing Domain Control Validation for HTTPS with DV SAN](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san).
 2. Verify whether CDN traffic works as expected. For instructions, see [Verifying that your CDN is working before pointing to IBM CNAME](/docs/CDN?topic=CDN-verify-cdn-before-pointing-domain-to-ibm-cname).
-3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
+3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
 
    Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**.
 

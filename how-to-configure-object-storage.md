@@ -26,7 +26,7 @@ Before you begin using CDN with IBM Cloud Object Storage (ICOS), you'll first ne
 {: #create-a-cdn-instance-with-icos}
 
 1. Follow the [guidelines to create a CDN instance](/docs/CDN?topic=CDN-order-a-cdn) with **Object Storage** type of origin to configure your S3 **Endpoint** and **Bucket name** with public access objects stored in the ICOS.
-1. Follow the [guidelines to get your CDN instance into RUNNING status](/docs/CDN?topic=CDN-getting-to-running-status).
+1. Follow the [guidelines to get your CDN instance into RUNNING status](/docs/CDN?topic=CDN-next-steps-after-ordering).
 1. Access your ICOS objects with CDN URL: `http://<hostname>/<path>/index.html`.
 
 For more information, see [Accelerate delivery of static files using a CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn).

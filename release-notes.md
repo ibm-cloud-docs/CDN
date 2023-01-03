@@ -8,6 +8,8 @@ keywords:
 
 subcollection: CDN
 
+content-type: release-note
+
 ---
 
 {{site.data.keyword.attribute-definition-list}}
@@ -50,7 +52,7 @@ Added feedback widget
 {: release-note}
 
 Performance optimization
-:    Performance optimization [Akamai CNAME](/docs/CDN?topic=CDN-getting-to-running-status#akamai-cname) support
+:    Performance optimization [Akamai CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#akamai-cname) support
 
 DNS based challenge domain validation method added
 :    Added a DNS based [challenge domain](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san#challenge-domain) validation method for SAN HTTPS.

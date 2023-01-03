@@ -55,9 +55,9 @@ To get your CDN domain name added to the SAN certificate, you must prove that yo
 
 This method is recommended **ONLY** if your CDN is not serving live traffic. If your domain is serving live traffic, it is recommended to use one of the other three methods to validate your domain.
 
-To use this method, add a CNAME record for your CDN domain into your DNS configuration. The [IBM CNAME](/docs/CDN?topic=CDN-getting-to-running-status#ibm-cname) can be used as the record value. No other action is required by you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
+To use this method, add a CNAME record for your CDN domain into your DNS configuration. The [IBM CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#ibm-cname) can be used as the record value. No other action is required by you. The DCV progresses automatically from this point. Validation can take 2 - 4 hours. After the certificate is deployed, your CDN moves directly to `Running` status.
 
-   ![Domain Validation CNAME](images/domain-validation-cname.png){: caption="Tabe 1: Domain Validation CNAME" caption-side="bottom"}
+   ![Domain Validation CNAME](images/domain-validation-cname.png){: caption="Table 1: Domain Validation CNAME" caption-side="bottom"}
 
 For the CDN domain `cdn.example.com`, you can add a CNAME type record to point this domain to IBM CNAME:
 
@@ -308,4 +308,4 @@ After your CDN indicates **Certificate deploying** status, you can:
 ## Next steps
 {: #cdn-next-steps1}
 
-Continue following instructions in [Getting to Running status](/docs/CDN?topic=CDN-getting-to-running-status#for-a-san-https-cdn).
+Continue following instructions in [Getting to Running status](/docs/CDN?topic=CDN-next-steps-after-ordering).

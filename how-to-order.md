@@ -17,7 +17,7 @@ subcollection: CDN
 {: help}
 {: support}
 
-To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must first create your CDN through the {{site.data.keyword.cloud_notm}} catalog. Depending on the configuration you select, then complete instructions in [Getting to Running status](/docs/CDN?topic=CDN-getting-to-running-status).
+To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must first create your CDN through the {{site.data.keyword.cloud_notm}} catalog. Depending on the configuration you select, then complete instructions in [Getting to Running status](/docs/CDN?topic=CDN-next-steps-after-ordering).
 {: shortdesc}
 
 1. From your browser, open the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog){: external} and log in to your account.
@@ -52,4 +52,4 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
 1. Review pricing estimates in the right pane.
 1. Agree to the terms of the Master Service Agreement.
 1. Click the **Create** button to create your CDN.
-1. Follow steps for your specific configuration in [Getting to Running status](/docs/CDN?topic=CDN-getting-to-running-status).
+1. Follow steps for your specific configuration in [Getting to Running status](/docs/CDN?topic=CDN-next-steps-after-ordering).
