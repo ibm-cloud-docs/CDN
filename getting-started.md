@@ -28,7 +28,4 @@ If you need assistance in obtaining an account to use IBM Cloud Content Delivery
 ## Next step
 {: #next-steps1}
 
-## Next step
-{: #next-steps1}
-
 [Order your CDN](/docs/CDN?topic=CDN-order-a-cdn).
