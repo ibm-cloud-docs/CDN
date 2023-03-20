@@ -25,7 +25,10 @@ Before you begin using IBM Cloud Content Delivery Network, you'll first need an 
 
 If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud/contact-us/){: external} for additional guidance on getting started.
 
-## Next steps
+## Next step
 {: #next-steps1}
 
-Check out our [pricing](/docs/CDN?topic=CDN-pricing#pricing), and then [order your CDN](/docs/CDN?topic=CDN-order-a-cdn).
+## Next step
+{: #next-steps1}
+
+[Order your CDN](/docs/CDN?topic=CDN-order-a-cdn).
