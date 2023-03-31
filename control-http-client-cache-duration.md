@@ -63,4 +63,4 @@ However, if your origin does not provide a Cache-Control header to the Edge serv
 ## More information
 {: #more-information-on-cache-control}
 
-See cache-control as defined in section 14.9 of [RFC 2616 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ietf.org/rfc/rfc2616.txt).
+See cache-control as defined in section 14.9 of [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt){: external}.

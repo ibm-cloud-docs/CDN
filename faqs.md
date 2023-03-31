@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2021
-lastupdated: "2021-02-01"
+  years: 2017, 2023
+lastupdated: "2023-03-28"
 
 keywords: faqs, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security
 
@@ -65,12 +65,12 @@ A typical CNAME record looks similar to the following on the DNS configuration p
 | CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
 {: caption="CNAME record example" caption-side="bottom"}
 
-## What am I billed for my CDN?
-{: #what-will-i-be-billed-for-my-cdn}
+## Where do I find cost estimates for CDN?
+{: #where-do-i-find-cost-estimates-for-cdn}
 {: faq}
 {: support}
 
-You are only billed for bandwidth that is used per {{site.data.keyword.cloud_notm}} Content Delivery Network instance. If no bandwidth is used by your CDN, no charges are incurred. Bandwidth prices vary, depending on the regional location of the Edge server. You can see bandwidth pricing by geographic region in the [pricing document](/docs/CDN?topic=CDN-pricing) for this service.
+You can estimate the cost of a service using the cost estimator on the provisioning pages for CDN offerings. For example, log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. As you complete the ordering form, cost estimates appear in the Summary side panel.
 
 ## When am I billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}

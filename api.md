@@ -81,7 +81,7 @@ Checks whether a CDN account exists for the user calling the API, for the given 
 ### createDomainMapping
 {: #create-domain-mapping}
 
-Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created by using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
+Using the provided inputs, this function creates a domain mapping for the given vendor and associates it with the {{site.data.keyword.cloud_notm}} Infrastructure Account ID of the user. The CDN account must first be created by using `placeOrder` for this API to work (see an example of the `placeOrder` API call in the [Code examples](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api)). After successfully creating the CDN, a `defaultTTL` is created with a value of 3600 seconds.
 
 * **Parameters**- A collection of type `SoftLayer_Container_Network_CdnMarketplace_Configuration_Input`.
 

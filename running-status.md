@@ -36,10 +36,6 @@ Follow these steps to get your CDN up and running:
 
    Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the CDN CNAME you used to configure the CDN as the **CNAME**.
 
-   A typical CNAME record looks similar to the following:
-
-   ![CNAME record](images/cname.png){: caption="Table 1: CNAME record for an HTTP-only CDN" caption-side="bottom"}
-
 3. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
 Your CDN is now running. From here, you can review the "How to" topics to further configure and manage your CDN.
@@ -54,10 +50,6 @@ Follow these steps to get your CDN up and running:
 3. After you verify that CDN traffic is working, you must change your DNS record to point your domain to [IBM CNAME](/docs/CDN?topic=CDN-next-steps-after-ordering#ibm-cname). Most DNS providers can give you instructions on setting up or changing the CNAME.
 
    Check with your DNS provider to find out when the changes become active. Then, add a CNAME record for your CDN domain in DNS. To do so, on the DNS configuration page for your CDN domain, create a CNAME record with your CDN domain name as the **Host** and the IBM CNAME you used to configure the CDN as the **CNAME**.
-
-   A typical CNAME record looks similar to the following:
-
-   ![CNAME record](images/cname.png){: caption="Table 2: CNAME record for a SAN HTTPS CDN" caption-side="bottom"}
 
 4. When the CNAME chaining is complete, highlight the table row of the CDN and click **Get status** from the Overflow ![Overflow menu](images/overflow.png) menu until your CDN shows `Running` status. Alternatively, if you are on the CDN's details page, click **Actions > Get status**.
 
@@ -134,7 +126,7 @@ The following table illustrates the Akamai CNAME for different type CDN mapping:
 | HTTP-only| wildcard.appdomain.mdc.edgekey.net. |
 | SAN HTTPS| cert-xxxxx-cdnedge-bluemix.akamaized.net.edgekey.net. |
 | Wildcard HTTPS | N/A |
-{: caption="Table 3: Akamai CNAME for CDN mapping" caption-side="bottom"}
+{: caption="Table 1: Akamai CNAME for CDN mapping" caption-side="bottom"}
 
 For the Akamai CNAME, it's important to consider the following:
 

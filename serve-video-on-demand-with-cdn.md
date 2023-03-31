@@ -25,7 +25,7 @@ A number of formats, such as HLS and MPEG-DASH, are available to stream video.
 
 Conceptually, the setup we're using is shown in Figure 1:
 
-![IBM Cloud CDN for Video on Demand](images/ibmcdn-vod-example-model.png){: caption="Figure 1: IBM Cloud CDN for Video on Demand" caption-side="bottom"}
+![IBM Cloud CDN for Video on Demand](images/ibmcdn-vod-example-model.svg){: caption="Figure 1: IBM Cloud CDN for Video on Demand" caption-side="bottom"}
 
 We also use the origin as the place for preparation. On that, we also need to obtain a few packages to make this work.
 

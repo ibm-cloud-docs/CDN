@@ -37,7 +37,7 @@ CORS can handle two types of requests: _simple requests_ and _preflighted reques
 
 **First request (resource access):**
 
-![cors-simple](/images/cors-simple.png){: caption="Figure 1: First request (resource access)" caption-side="bottom"}
+![cors-simple](/images/cors-simple.svg){: caption="Figure 1: First request (resource access)" caption-side="bottom"}
 
 [Simple requests](https://www.w3.org/TR/cors/#simple-cross-origin-request){: external} through CORS are either `GET` or `POST` requests from the web page of one origin that's attempting to gain access to the URL of another origin for resources.
 
@@ -52,11 +52,11 @@ If the browser is unable to see its CORS request satisfied by the CORS response 
 
 **First request (preflight):**
 
-![cors-preflight](/images/cors-preflight.png){: caption="Figure 2: First request (preflight)" caption-side="bottom"}
+![cors-preflight](/images/cors-preflight.svg){: caption="Figure 2: First request (preflight)" caption-side="bottom"}
 
 Second request (resource access):
 
-![cors-after-preflight](/images/cors-after-preflight.png){: caption="Figure 3: Second request (resource access)" caption-side="bottom"}
+![cors-after-preflight](/images/cors-after-preflight.svg){: caption="Figure 3: Second request (resource access)" caption-side="bottom"}
 
 For more complex CORS communication between the browser and a CORS origin that's different than the requesting web page, a [preflight request](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0){: external} is required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
 
@@ -201,7 +201,7 @@ The previous example uses the `map` directive to avoid overusing the `if` Nginx 
 ## Setting up CORS for CDN
 {: #how-to-set-up-cors-for-cdn}
 
-![cors-through-cdn](/images/cors-through-cdn.png){: caption="Figure 4: CORS for CDN" caption-side="bottom"}
+![cors-through-cdn](/images/cors-through-cdn.svg){: caption="Figure 4: CORS for CDN" caption-side="bottom"}
 
 CDN is largely transparent to the CORS setup of the origin so it does not require a specific CDN configuration. If the CDN Edge server cannot find a cached response for the first request for some content, it forwards the request to the origin host. If the origin host is set up to handle CORS requests, and this request has the `Origin` header, then it should respond back to the Edge with a CORS header of `Access-Control-Allow-Origin` and the associated value. The overall response, including that header and value, is cached in the CDN. Any subsequent request for the object at the same URI path is served from the cache and includes the `Access-Control-Allow-Origin` header value that was originally received from the origin.
 

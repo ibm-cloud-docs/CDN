@@ -21,8 +21,6 @@ After your CDN is running, you can update CDN configuration details. Follow thes
 1. On the CDN page, select your CDN, which takes you to the **Overview** page.
 2. Select the **Settings** tab. Your CDN configuration details are displayed.
 
-   ![Settings tab](images/settings-tab.png){: caption="Setting tab" caption-side="bottom"}
-
    You only see **SSL Certificate** if your CDN was configured with HTTPS.
    {: note}
 

@@ -31,7 +31,7 @@ With the 503 error, you might also see a message similar to the following: `An e
 To correct the issue, ensure that your origin server's SSL certificates meets the following criteria:
 {: tsResolve}
 
-* The certificate must be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/docDOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates){: external}.
+* The certificate must be issued by a certificate authority trusted by Akamai. You can view the list of Akamai trusted certificates at [this link](https://community.akamai.com/customers/s/article/SSL-TLS-certificate-chains-for-Akamai-managed-certificates?language=en_US){: external}.
 * It must have a complete certificate chain (leaf, intermediate, root).
 * It must match the *Host header that is configured* on the CDN
 * It must not be self-signed

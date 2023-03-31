@@ -27,9 +27,6 @@ It provides improved reliability, offload, and network performance over your ori
 To enable DCA, follow these steps:
 
 1. Open the page of a specified CDN mapping, click **Settings** from the navigation pane. Click **Edit** from the **Optimization settings**, then select **Dynamic content acceleration** from the **Optimize for** list menu.
-
-   ![Configure origin](images/settings-dca-switch.png){: caption="Setting dynamic content acceleration" caption-side="bottom"}
-
 2. Enable DCA:
 
    - Download the route detection 'test object', or use your own test file, and upload it to your origin server. For more information about the criteria of the test object, see [Detection path](#detection-path).
@@ -39,8 +36,6 @@ To enable DCA, follow these steps:
      {: note}
 
    - Enable/Disable [Prefetching](#prefetching) and [Image compression](#image-compression).
-
-   ![Configure origin](images/settings-dca-input.png){: caption="Enabling DCA" caption-side="bottom"}
 
 3. Click **Save** to save the settings. If the **Detection path** is unreachable, the optimal route for dynamic content acceleration is impacted.
 
@@ -70,7 +65,7 @@ A valid test object must:
 ### Prefetching
 {: #prefetching}
 
-**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **&lt;img&gt;**, **&lt;script&gt;**, or **&lt;link&gt;** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:
+**`Prefetching`** is to inspect HTML responses and prefetch embedded objects in the HTML files. Prefetch works on any page that includes **`<img>`**, **`<script>`**, or **`<link>`** tags that specify relative paths. It also works when the resource hostname matches the request domain in the HTML file, and it is part of a fully qualified URI. When it is set to **On**, Edge servers prefetch objects with the following file extensions:
 `aif`, `aiff`, `au`, `avi`, `bin`, `bmp`, `cab`, `carb`, `cct`, `cdf`, `class`, `css`, `doc`, `dcr`, `dtd`, `exe`, `flv`, `gcf`, `gff`, `gif`, `grv`, `hdml`, `hqx`, `ico`, `ini`, `jpeg`, `jpg`, `js`, `mov`, `mp3`, `nc`, `pct`, `pdf`, `png`, `ppc`, `pws`, `swa`, `swf`, `txt`, `vbs`, `w32`, `wav`, `wbmp`, `wml`, `wmlc`, `wmls`, `wmlsc`, `xsd`, and `zip`.
 
 ### Image compression
