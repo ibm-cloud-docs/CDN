@@ -32,6 +32,13 @@ A Content Delivery Network (CDN) is a collection of Edge servers that are distri
 
 A CDN achieves its purpose by caching web content on Edge servers around the world. When a user requests web content, the content request is routed to the Edge server that is geographically closest to that user. By reducing the distance that the content must travel, the CDN offers optimized throughput, minimized latency, and increased performance.
 
+## Where do I find cost estimates for CDN?
+{: #where-do-i-find-cost-estimates-for-cdn}
+{: faq}
+{: support}
+
+You can estimate the cost of a service using the cost estimator on the provisioning pages for CDN offerings. For example, log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. As you complete the ordering form, cost estimates appear in the Summary side panel.
+
 ## How is my {{site.data.keyword.cloud}} Content Delivery Network service account created?
 {: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
 {: faq}
@@ -64,13 +71,6 @@ A typical CNAME record looks similar to the following on the DNS configuration p
 |------------------|---------|-------------|----------------|
 | CNAME | www.example.com | example.cdn.appdomain.cloud | 15 minutes |
 {: caption="CNAME record example" caption-side="bottom"}
-
-## Where do I find cost estimates for CDN?
-{: #where-do-i-find-cost-estimates-for-cdn}
-{: faq}
-{: support}
-
-You can estimate the cost of a service using the cost estimator on the provisioning pages for CDN offerings. For example, log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. As you complete the ordering form, cost estimates appear in the Summary side panel.
 
 ## When am I billed for my CDN?
 {: #when-will-i-be-billed-for-my-cdn}
