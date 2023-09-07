@@ -37,7 +37,9 @@ A CDN achieves its purpose by caching web content on Edge servers around the wor
 {: faq}
 {: support}
 
-You can estimate the cost of a service using the cost estimator on the provisioning pages for CDN offerings. For example, log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. As you complete the ordering form, cost estimates appear in the Summary side panel.
+With CDN you pay only for the bandwidth that you use. You are using the static bandwidth by default. If you have enabled the [Dynamic Content Acceleration](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#dynamic-content-acceleration-description) (DCA) feature, you will also pay for the dynamic bandwidth.
+
+You can find the unit prices of the static and dynamic bandwidth on the provisioning pages for CDN. Log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. The unit prices appear in the Summary side panel on the [provisioning page](/cdn/create).
 
 ## How is my {{site.data.keyword.cloud}} Content Delivery Network service account created?
 {: #how-is-my-ibm-cloud-content-delivery-network-service-account-created}
