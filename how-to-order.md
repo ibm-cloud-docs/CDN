@@ -37,10 +37,10 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
        * Enter the **Origin server address** (hostname or IPv4 address of the origin server). If **HTTPS port** is also selected, the **Origin server address** must be the hostname, not the IP address.
 
       For **Object Storage**:
-       * Enter the required **S3 Endpoint** ([S3 format public endpoint](/docs/cloud-object-storage/info?topic=cloud-object-storage-advanced-endpoints#advanced-endpoint-reference)) from which to fetch the object.
+       * Enter the required **S3 Endpoint** ([S3 format public endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-advanced-endpoints&interface=ui#advanced-endpoint-reference)) from which to fetch the object.
        * Enter the name of the **Bucket** in which your content is stored.  
        
-       You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider. For more information, see [Allowing public access](/docs/cloud-object-storage?topic=cloud-object-storage-iam-public-access).
+       You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider. For more information, see [Allowing public access](/docs/cloud-object-storage?topic=cloud-object-storage-allowing-public-access).
        {: note}
 
     * Provide an **HTTP port**, an **HTTPS port**, or both. These fields indicate which protocol and port number can be used to contact the origin server. For non-default port numbers, refer to [FAQs](/docs/CDN?topic=CDN-faqs#are-there-any-restrictions-on-what-port-numbers-are-allowed) for a list of allowed port numbers.

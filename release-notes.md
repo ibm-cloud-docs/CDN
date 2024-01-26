@@ -69,7 +69,7 @@ Token authentication support added
 {: release-note}
 
 Integrated CDN mapping metrics
-:    Integrated CDN mapping metrics API support [API reference](/docs/CDN?topic=CDN-cdn-api-reference#getmappingintegratedmetrics).
+:    Integrated CDN mapping metrics API support [API reference](/docs/CDN?topic=CDN-cdn-api-reference#api-get-mapping-integrated-metrics).
 
 ## March 2020
 {: #CDN-mar-0120}
@@ -120,7 +120,7 @@ Hotlink protection added for API
 {: release-note}
 
 Max number of supported origins paths increased
-:    Increased the [maximum number of supported origins paths](/docs/CDN?topic=CDN-known-limitations#known-limitations) from 25 to 75.
+:    Increased the [maximum number of supported origins paths](/docs/CDN?topic=CDN-limits-and-maximum-values#is-there-a-limit-on-the-number-of-origin-and-ttl-entries) from 25 to 75.
 
 Origin paths prefix change
 :    [Origin paths](/docs/CDN?topic=CDN-adding-origin-path-details) no longer need to start with Mapping Path Prefix.
@@ -163,7 +163,7 @@ Added HTTPS with DV SAN support
 :    HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#https-protocol-support).
 
 GDPR compliance
-:    IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/privacy/us/en/).
+:    IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/us-en/privacy).
 
 ## March 2018
 {: #CDN-mar-0118}

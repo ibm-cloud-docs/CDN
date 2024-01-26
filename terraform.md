@@ -25,7 +25,7 @@ Looking for a managed Terraform on {{site.data.keyword.cloud}} solution? Try out
 Before you begin, make sure that you have the [required access](/docs/account?topic=account-mngclassicinfra) to create and work with Content Delivery Network (CDN) resources.
 
 - Follow the [Terraform on {{site.data.keyword.cloud}} getting started tutorial](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-getting-started) to install the Terraform CLI and configure the {{site.data.keyword.cloud}} Provider plug-in for Terraform. The plug-in abstracts the {{site.data.keyword.cloud}} APIs that are used to provision, update, or delete {{site.data.keyword.cis_full_notm}} service instances and resources.
-- Create a Terraform configuration file that is named `main.tf`. In this file, you add the configuration to create a {{site.data.keyword.cis_short_notm}} service instance and to assign a user an access policy in Identity and Access Management (IAM) for that instance by using HashiCorp Configuration Language (HCL). For more information, see the [Terraform documentation](https://www.terraform.io/docs/language/index.html){: external}.
+- Create a Terraform configuration file that is named `main.tf`. In this file, you add the configuration to create a {{site.data.keyword.cis_short_notm}} service instance and to assign a user an access policy in Identity and Access Management (IAM) for that instance by using HashiCorp Configuration Language (HCL). For more information, see the [Terraform documentation](https://developer.hashicorp.com/terraform/language){: external}.
 
 1. Create a CDN instance by using the `ibm_resource_instance` resource argument in your `main.tf` file.
    The CDN instance in the following example is named `test_cdn1`. The `resource` is `ibm_cdn`, and the `origin_type` property is set to `HOST_SERVER`.
@@ -40,14 +40,14 @@ Before you begin, make sure that you have the [required access](/docs/account?to
    ```
    {: codeblock}
 
-1. After you finish building your configuration file, initialize the Terraform CLI. For more information, see [Initializing Working Directories](https://www.terraform.io/cli/init){: external}.
+1. After you finish building your configuration file, initialize the Terraform CLI. For more information, see [Initializing Working Directories](https://developer.hashicorp.com/terraform/cli/init){: external}.
 
    ```terraform
    terraform init
    ```
    {: pre}
 
-1. Provision the resources from the `main.tf` file. For more information, see [Provisioning Infrastructure with Terraform](https://www.terraform.io/cli/run){: external}.
+1. Provision the resources from the `main.tf` file. For more information, see [Provisioning Infrastructure with Terraform](https://developer.hashicorp.com/terraform/cli/run){: external}.
 
    1. Run `terraform plan` to generate a Terraform execution plan to preview the proposed actions.
 
@@ -64,7 +64,7 @@ Before you begin, make sure that you have the [required access](/docs/account?to
       {: pre}
 
 1. From the [{{site.data.keyword.cloud_notm}} resource list](/resources){: external}, select the CDN instance that you created and note the instance ID.
-1. Verify that the access policy is successfully assigned. For more information, see [Reviewing assigned access in the console](/docs/account?topic=account-assign-access-resources#review-your-access-console).
+1. Verify that the access policy is successfully assigned. For more information, see [Reviewing assigned access in the console](/docs/account?topic=account-assign-access-resources&interface=ui#review-your-access-console).
 
 ## What's next?
 {: #terraform-setup-next}

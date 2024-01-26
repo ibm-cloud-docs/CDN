@@ -128,13 +128,13 @@ This feature is accessible from the **Advanced rules** page of your CDN configur
 ### HTTPS protocol support
 {: #https-protocol-support}
 
-You can configure CDN to use HTTPS protocol to serve the content securely to the users. This configuration requires that an SSL certificate be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-suport). This type is also referred to as a _SAN certificate_.
+You can configure CDN to use HTTPS protocol to serve the content securely to the users. This configuration requires that an SSL certificate be set up as part of the CDN configuration. Two types of SSL certificate options are available for HTTPS: [Wildcard certificate](/docs/CDN?topic=CDN-about-https#wildcard-certificate-support) and [Domain validated (DV) Subject Alternative Name (SAN) certificate](/docs/CDN?topic=CDN-about-https#san-certificate-support). This type is also referred to as a _SAN certificate_.
 
 The type of SSL certificate to use is an important consideration for HTTPS CDN. Wildcard certificate configuration is fast, but it has the downside that the CDN is accessible only by using a CNAME. The SAN certificate process takes 4 - 8 hours to complete, but it allows you to use the CDN with the CDN Domain (that is, the hostname). The SAN certificate also requires an additional step of [**Domain Control Validation**](/docs/CDN?topic=CDN-completing-domain-control-validation-for-https-with-dv-san) during configuration. No cost is associated with using either of these certificates. For more information, see [What is the expected behavior when loading the CNAME or hostname on your browser for the supported protocols?](/docs/CDN?topic=CDN-troubleshoot-cdn-loading-cname-hostname) to understand the implication of selecting a given certificate type.
 
 The origin host also must have its own SSL certificate for the CDN hostname, and it must be signed by a recognized certificate authority.
 
-As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates because the set of intermediary certificates that is trusted changes frequently. You can find the Akamai trusted certificates on the Akamai community site at [SSL/TLS certificate chains for Akamai-managed certificates](https://community.akamai.com/docs/DOC-4447-ssltls-certificate-chains-for-akamai-managed-certificates).
+As an industry best practice, Akamai only trusts the root certificates and not the intermediate certificates because the set of intermediary certificates that is trusted changes frequently. You can find the Akamai trusted certificates on the Akamai community site at [SSL/TLS certificate chains for Akamai-managed certificates](https://community.akamai.com/customers/s/article/SSL-TLS-certificate-chains-for-Akamai-managed-certificates?language=en_US).
 
 ### Large file optimization
 {: #large-file-optimization}

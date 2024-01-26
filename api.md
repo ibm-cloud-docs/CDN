@@ -24,10 +24,10 @@ The SLAPI is a Remote Procedure Call (RPC) system. Each call involves sending da
 
 For more information about SLAPI, or about the {{site.data.keyword.cloud_notm}} Content Delivery Network (CDN) service APIs, see the following resources in the {{site.data.keyword.cloud_notm}} Development Network:
 
-* [SLAPI Overview](https://softlayer.github.io/ ){: external}
-* [Getting Started with SLAPI](https://softlayer.github.io/article/getting-started/ ){: external}
-* [SoftLayer_Product_Package API](https://softlayer.github.io/reference/services/SoftLayer_Product_Package/ ){: external}
-* [PHP Soap API Guide](https://softlayer.github.io/article/php/ ){: external}
+* [SLAPI Overview](https://sldn.softlayer.com/){: external}
+* [Getting Started with SLAPI](https://sldn.softlayer.com/article/getting-started/){: external}
+* [SoftLayer_Product_Package API](https://sldn.softlayer.com/reference/services/SoftLayer_Product_Package/){: external}
+* [PHP Soap API Guide](https://sldn.softlayer.com/article/php/){: external}
 
 ----
 

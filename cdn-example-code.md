@@ -29,7 +29,7 @@ Before you begin, you must download and install the Soap Client from [https://gi
    require_once __DIR__.'/vendor/autoload.php';
    ```
 
-* All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://softlayer.github.io/article/getting-started/){: external} page, under "Getting Your API Key".
+* All API calls are authenticated with your username and an apiKey. More information on how to generate an apiKey can be found on the [Softlayer API Getting Started](https://sldn.softlayer.com/article/getting-started/){: external} page, under "Getting Your API Key".
 
    ```php
    $apiUsername = '<Your username>' ;
@@ -74,7 +74,7 @@ Array
 ## Example code to verify an order
 {: #example-code-to-verify-order}
 
-The call to `verifyOrder` is not mandatory before you place an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. For more information, see [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/verifyOrder/){: external}.
+The call to `verifyOrder` is not mandatory before you place an order, but it is recommended. It can be used to verify that a subsequent call to `placeOrder` is successful. For more information, see [SoftLayer API documentation](https://sldn.softlayer.com/reference/services/SoftLayer_Product_Order/verifyOrder/){: external}.
 
 In this case, it is the `SoftLayer_Product_Order` class, which defines the verifyOrder method and must be passed as a parameter to `\SoftLayer\SoapClient::getClient()`. Before the call to `verifyOrder`, you must build the `$orderObject` by using the `SoftLayer_Product_Package`.
 
@@ -130,7 +130,7 @@ catch (\Exception $e) {
 ## Example code to place an order
 {: #example-code-to-place-order}
 
-This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://softlayer.github.io/reference/services/SoftLayer_Product_Order/placeOrder/){: external}.
+This API call is identical to the previous code example, except it calls `placeOrder`, rather than `verifyOrder.` More information about `placeOrder` can be found in the [SoftLayer API documentation](https://sldn.softlayer.com/reference/services/SoftLayer_Product_Order/placeOrder/){: external}.
 
 ```php
 

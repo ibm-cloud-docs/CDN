@@ -20,7 +20,7 @@ You can use {{site.data.keyword.cloud}} Content Delivery Network (CDN) to quickl
 ## Before you begin
 {: #cos-before-you-begin}
 
-Before you begin using CDN with IBM Cloud Object Storage (ICOS), you'll first need to store objects with [public access](/docs/cloud-object-storage?topic=cloud-object-storage-iam-public-access) in {{site.data.keyword.cloud_notm}} Object Storage.
+Before you begin using CDN with IBM Cloud Object Storage (ICOS), you'll first need to store objects with [public access](/docs/cloud-object-storage?topic=cloud-object-storage-allowing-public-access) in {{site.data.keyword.cloud_notm}} Object Storage.
 
 ## Create a CDN instance with ICOS
 {: #create-a-cdn-instance-with-icos}

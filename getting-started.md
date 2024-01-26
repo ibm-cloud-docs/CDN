@@ -23,7 +23,7 @@ You can use {{site.data.keyword.cloud}} Content Delivery Network (CDN) for vario
 
 Before you begin using IBM Cloud Content Delivery Network, you'll first need an [IBMid](https://www.ibm.com/account/us-en/signup/register.html). You can then order your Content Delivery Network service through the [IBM Cloud CDN console](https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai).
 
-If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud/contact-us/){: external} for additional guidance on getting started.
+If you need assistance in obtaining an account to use IBM Cloud Content Delivery Network, you can [contact your IBM sales representative](https://www.ibm.com/cloud?contactmodule){: external} for additional guidance on getting started.
 
 ## Next step
 {: #next-steps1}

@@ -24,12 +24,12 @@
       {
         "title": "Accelerate delivery of static files",
         "description": "Step through this tutorial to learn how to use a CDN and host website assets and user-generated content in IBM Cloud Object Storage.",
-        "href": "/docs/CDN?topic=solution-tutorials-static-files-cdn"
+        "href": "/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn"
       },
       {
         "title": "Accelerate a dynamic website",
         "description": "Learn how to use Dynamic Content Acceleration (DCA) to optimize the performance of non-static content.",
-        "href": "/docs/CDN?topic=solution-tutorials-dynamic-content-cdn"
+        "href": "/docs/solution-tutorials?topic=solution-tutorials-dynamic-content-cdn"
       }
     ],
     "section_videos": [
@@ -46,7 +46,7 @@
     ],
     "section_learn": {
       "developer": "https://developer.ibm.com/depmodels/cloud/",
-      "architecture": "https://www.ibm.com/cloud/architecture/architectures/hybrid-messaging/overview/",
+      "architecture": "https://www.ibm.com/topics/hybrid-cloud",
       "training": "https://www.ibm.com/training/cloud",
       "community": "https://community.ibm.com/community/user/publiccloud"
     },

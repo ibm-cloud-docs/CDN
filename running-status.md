@@ -197,7 +197,7 @@ Reference&#32;&#35;18&#46;9df02817&#46;1600156471&#46;bf3f7f1
 
 You can find the Akamai CNAME in the following ways:
 - From the console, you can click into the CDN domain, and view the Akamai CNAME in **Overview > Details**.
-- From the API, use the [list domain mapping by uniqueid](https://cloud.ibm.com/docs/CDN?topic=CDN-cdn-api-reference#listdomainmappingbyuniqueid) or the [list all domain mapping](https://cloud.ibm.com/docs/CDN?topic=CDN-cdn-api-reference#listdomainmappings) commands to get the Akamai CNAME.
+- From the API, use the [list domain mapping by uniqueid](/docs/CDN?topic=CDN-cdn-api-reference#api-list-domain-mapping-by-id) or the [list all domain mapping](/docs/CDN?topic=CDN-cdn-api-reference#api-list-domain-mapping) commands to get the Akamai CNAME.
 
 ### Why is the Akamai CNAME empty or shown as `-`?
 {: #why-akamai-cname-none}

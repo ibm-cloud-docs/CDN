@@ -39,9 +39,9 @@ CORS can handle two types of requests: _simple requests_ and _preflighted reques
 
 ![cors-simple](/images/cors-simple.svg){: caption="Figure 1: First request (resource access)" caption-side="bottom"}
 
-[Simple requests](https://www.w3.org/TR/cors/#simple-cross-origin-request){: external} through CORS are either `GET` or `POST` requests from the web page of one origin that's attempting to gain access to the URL of another origin for resources.
+[Simple requests](https://fetch.spec.whatwg.org/#cors-request){: external} through CORS are either `GET` or `POST` requests from the web page of one origin that's attempting to gain access to the URL of another origin for resources.
 
-When making such a request, the browser automatically sets CORS request headers. Primarily, it sets the origin of the web page making the request in the `Origin` HTTP header, automatically. The CORS request also can contain a set of [certain, standard HTTP headers](https://www.w3.org/TR/cors/#simple-header){: external}, while maintaining its status as a simple CORS request, from the browser's perspective.
+When making such a request, the browser automatically sets CORS request headers. Primarily, it sets the origin of the web page making the request in the `Origin` HTTP header, automatically. The CORS request also can contain a set of [certain, standard HTTP headers](https://fetch.spec.whatwg.org/#terminology-headers){: external}, while maintaining its status as a simple CORS request, from the browser's perspective.
 
 The server that receives the CORS request processes the request, and might send a set of CORS response headers back to the browser, with the requested content. These CORS response headers contain values specifying whether the current web page is allowed access to those resources, whether the headers sent are acceptable for that request, and so forth.
 
@@ -58,7 +58,7 @@ Second request (resource access):
 
 ![cors-after-preflight](/images/cors-after-preflight.svg){: caption="Figure 3: Second request (resource access)" caption-side="bottom"}
 
-For more complex CORS communication between the browser and a CORS origin that's different than the requesting web page, a [preflight request](https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0){: external} is required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
+For more complex CORS communication between the browser and a CORS origin that's different than the requesting web page, a [preflight request](https://fetch.spec.whatwg.org/#cors-preflight-fetch){: external} is required before an actual resource access. Certain situations might require preflighting CORS requests, such as HTTP methods that are not `GET` or `POST` methods, or using non-standard HTTP headers with the request - even if it is a `GET` or `POST` request, and so forth.
 
 If a preflight request is needed, here's how the events unfold:
 
@@ -137,7 +137,7 @@ http {
 ```
 {: screen}
 
-Generally, the browser should freely load content when it sees a `Access-Control-Allow-Origin: *` in the server's CORS response headers according to the [w3 specification regarding that wildcard value](https://www.w3.org/TR/cors/#security){: external}. However, not all browsers support `Access-Control-Allow-Origin: *`.
+Generally, the browser should freely load content when it sees a `Access-Control-Allow-Origin: *` in the server's CORS response headers according to the [w3 specification regarding that wildcard value](https://fetch.spec.whatwg.org/#basic-safe-cors-protocol-setup){: external}. However, not all browsers support `Access-Control-Allow-Origin: *`.
 
 If the server must support access from multiple web pages, each served from a different origin, a single origin value for `Access-Control-Allow-Origin` should be dynamically generated per request. The following is a basic example of such a use case for an Nginx server:
 
@@ -248,5 +248,5 @@ The `Vary` response header from your origin server can also cause unexpected beh
 ## More information
 {: #more-information}
 
-* [https://www.w3.org/TR/cors/](https://www.w3.org/TR/cors/){: external}
+* [https://fetch.spec.whatwg.org/](https://fetch.spec.whatwg.org/){: external}
 * [https://w3c.github.io/webappsec-cors-for-developers/](https://w3c.github.io/webappsec-cors-for-developers/){: external}

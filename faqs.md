@@ -158,7 +158,7 @@ See the [Accelerate delivery of static files using a CDN](/docs/solution-tutoria
 {: #notification-that-origin-cert-is-expiring}
 {: faq}
 
-Log in to the Akamai Community and follow the steps outlined in [this article](https://community.akamai.com/docs/DOC-7708){: external}.
+Log in to the Akamai Community and follow the steps outlined in [this article](https://community.akamai.com/customers/s/article/Origin-certificate-expiring-alert-v2?language=en_US){: external}.
 
 ## What security is included with the IBM CDN solution with Akamai?
 {: #what-security-is-included-with-cdn-with-akamai}
