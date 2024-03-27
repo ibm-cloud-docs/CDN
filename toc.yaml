@@ -1,3 +1,4 @@
+
 toc:
   properties:
     subcollection: CDN
@@ -14,6 +15,11 @@ toc:
     - navgroup:
        id: learn
        topics:
+       - topicgroup:
+           label: CDN deprecation
+           topics:
+           - cdn-deprecation.md
+           - migration-options.md
        - getting-started.md
        - about.md
        - about-https.md
@@ -63,10 +69,6 @@ toc:
        - metrics.md
        - token-authentication.md
        - terraform.md
-       - topicgroup:
-          label: Migrating CDN
-          topics:
-          - migrating-cdn-to-cis.md
 
     - navgroup:
         id: reference
