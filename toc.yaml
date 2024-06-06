@@ -10,6 +10,7 @@ toc:
     product-page: https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai
     path: CDN
     label: Content Delivery Network (CDN)
+    release-level: deprecated
 
   entries:
     - navgroup:

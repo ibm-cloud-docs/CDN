@@ -103,8 +103,8 @@ Hit ratio represents the percentage of times the content was delivered from the 
 
 Where:
 
-_Edge hits_ specifies all hits to the Edge servers from the users.
-_Ingress hits_ specifies origin or ingress hits for traffic from your origin server to Akamai Edge servers.
+* _Edge hits_ specifies all hits to the Edge servers from the users.
+* _Ingress hits_ specifies origin or ingress hits for traffic from your origin server to Akamai Edge servers.
 
 Because Hit Ratio is calculated at the account level and not per CDN, the Hit Ratio is the same for all the CDNs in your account. This fact also explains why the Hit Ratio might be nonzero when the number of Edge hits for a particular CDN is zero.
 

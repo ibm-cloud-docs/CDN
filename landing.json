@@ -1,7 +1,7 @@
 {
     "title": "Content Delivery Network docs",
-    "lastupdated": "2021-07-08",
-    "introduction": "IBM Content Delivery Network (CDN) provides content caching on the Akamai network, so content is delivered at record speed. Leverage the docs and API reference to plan for and manage your content delivery network.",
+    "lastupdated": "2024-04-29",
+    "introduction": "Deprecated: Starting 29 April 2024, CDN is no longer available for purchase. After the End of Service date (28 March 2025), CDN will no longer support any orders, updates, and purge, monitoring, or deletion operations.",
     "section_devtools": {
       "api": "/docs/CDN?topic=CDN-cdn-api-reference"
     },

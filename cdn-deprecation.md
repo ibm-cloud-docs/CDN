@@ -17,7 +17,7 @@ subcollection: CDN
 
 
 IBM Cloud Content Delivery Network (CDN) is deprecated. Starting 29 April 2024, CDN is no longer available for purchase. After the End of Service date (28 March 2025), CDN will no longer support any orders, updates, and purge, monitoring, or deletion operations.
-{: shortdesc}
+{: deprecated}
 
 ## Important dates
 {: #deprecation-timeline}
@@ -46,4 +46,3 @@ Review the following details about the SSL Certificates Order deprecation:
 {: #deprecation-next-steps}
 
 For more information about migrating your CDN to Internet Services or Akamai, see [Migration Options](/docs/CDN?topic=CDN-migration-options).
-
