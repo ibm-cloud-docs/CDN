@@ -218,11 +218,11 @@ For example, Safari would support native, HLS playback. And so, the video player
 ```text
 <!DOCTYPE html>
 <html>
-  <!-- Some HTML elements... -->
+  
 
   <video src="https://cdn.example.com/hls/test-video.m3u8"></video>
 
-  <!-- Some more HTML elements... -->
+  
 </html>
 ```
 {: screen}
