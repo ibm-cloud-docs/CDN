@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-03-27"
+lastupdated: "2024-06-27"
 
 keywords: object storage, bucket
 
@@ -12,7 +12,7 @@ subcollection: CDN
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Migration Options
+# Migration options
 {: #migration-options}
 
 CDN is scheduled for End of Marketing and eventually End of Service. In preparation for this transition, it is recommended that you migrate your CDN mapping to {{site.data.keyword.cis_full}} ({{site.data.keyword.cis_short_notm}}) or create an Akamai account if you prefer to continue with Akamai CDN.
@@ -204,7 +204,6 @@ Within {{site.data.keyword.cis_short_notm}}, add another CNAME record for `cos.c
    ibmcloud cis dns-record-create <domain_ID> --type CNAME --name cos.cdn-demo.slcdnservice.net --content <bucketname>.s3-web.<endpoint> --proxied true
    ```
    {: pre}
-
      
 #### Configure page rules with {{site.data.keyword.cis_short_notm}}
 {: #configure-rules-partial-zone}
@@ -242,3 +241,8 @@ With a DV SAN CDN, all the migration steps are the same as a [Wildcard CDN](#mig
 {: #migrating-cdn-to-akamai}
 
 Alternatively, if you prefer to use Akamai CDN after the End of Marketing date, you can migrate to Akamai by creating an Akamai account. You can either inquire on the [Akamai website](https://www.akamai.com/why-akamai/contact-us/contact-sales){: external} to be contacted by sales, or can contact our designated account manager (jomorton@akamai.com) for this migration to be redirected to your assigned account team.
+
+## Migrating CDN to third-party CDN services on {{site.data.keyword.cloud_notm}}
+{: #migrating-cdn-third-party-services}
+
+In addition, if you are looking for more CDN options, navigate to the [IBM Cloud catalog](/catalog) and choose from the third-party [CDN services](/catalog?search=CDN#search_results) for a rich collection of configurable features, for example, [Cloudsway CDN](/catalog/services/cloudsway-cdn).
