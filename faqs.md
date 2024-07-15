@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-03-28"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: faqs, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security
 
@@ -37,7 +37,7 @@ A CDN achieves its purpose by caching web content on Edge servers around the wor
 {: faq}
 {: support}
 
-With CDN you pay only for the bandwidth that you use. You are using the static bandwidth by default. If you have enabled the [Dynamic Content Acceleration](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#dynamic-content-acceleration-description) (DCA) feature, you will also pay for the dynamic bandwidth.
+With CDN you pay only for the bandwidth that you use. You are using the static bandwidth by default. If you have enabled the [Dynamic Content Acceleration](CDN-about-content-delivery-networks#dynamic-content-acceleration-description) (DCA) feature, you will also pay for the dynamic bandwidth.
 
 You can find the unit prices of the static and dynamic bandwidth on the provisioning pages for CDN. Log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. The unit prices appear in the Summary side panel on the [provisioning page](/cdn/create).
 
@@ -55,7 +55,7 @@ Your account is created during the CDN ordering process. If you are creating a C
 
 For HTTP and SAN certificate-based HTTPS CDN, update your DNS record so that your website points to the `CNAME` associated with your new CDN mapping.
 
-For wildcard, certificate-based HTTPS CDN, this DNS update is not needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.  
+For wildcard, certificate-based HTTPS CDN, this DNS update is not needed because you access the website through `https://<CNAME>`. You can refresh your CDN status by clicking **Get status** from the menu of your CDN instance.
 
 It can take up to 15 - 30 minutes for the update to take effect. Check with your DNS provider to obtain an accurate time estimate.
 {: note}

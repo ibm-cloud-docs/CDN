@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-23"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: order, create, configure
 
@@ -25,21 +25,21 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
 1. Click **Create** in the lower right corner of the page to create your CDN account.
 1. On the CDN Configure page, complete the **Configure name** section.
 
-   * Enter the required **Hostname**, which serves as the primary identifier for your CDN (for example, `example.testingcdn.net`).  
+   * Enter the required **Hostname**, which serves as the primary identifier for your CDN (for example, `example.testingcdn.net`).
    * Optionally, provide a custom **CNAME**, such as `myfirstcdn.cdn.appdomain.cloud.`. If no CNAME is provided, one is created for you. The suffix `cdn.appdomain.cloud.` is automatically appended to the CNAME. Use of an inappropriate CNAME can lead to end of services.
 
 1. Complete the **Configure origin** section. You must select either the **Server** or the **Object Storage** tab.
 
-    * Enter the optional **Host header**. If one is not provided, it defaults to the **hostname**. See [Host header support](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#host-header-support) for more information.  
-    * Provide an optional **Path** where content can be retrieved from on the origin. See [Path-based CDN mappings](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#path-based-cdn-mappings) to understand the implications of adding a path at this time.
+    * Enter the optional **Host header**. If one is not provided, it defaults to the **hostname**. See [Host header support](CDN-about-content-delivery-networks#host-header-support) for more information.
+    * Provide an optional **Path** where content can be retrieved from on the origin. See [Path-based CDN mappings](CDN-about-content-delivery-networks#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
-      For **Server**:  
+      For **Server**:
        * Enter the **Origin server address** (hostname or IPv4 address of the origin server). If **HTTPS port** is also selected, the **Origin server address** must be the hostname, not the IP address.
 
       For **Object Storage**:
        * Enter the required **S3 Endpoint** ([S3 format public endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-advanced-endpoints&interface=ui#advanced-endpoint-reference)) from which to fetch the object.
-       * Enter the name of the **Bucket** in which your content is stored.  
-       
+       * Enter the name of the **Bucket** in which your content is stored.
+
        You must set the **Access Control List** (ACL) for each Object in your Bucket to "public-read" with your Cloud Object Storage provider. For more information, see [Allowing public access](/docs/cloud-object-storage?topic=cloud-object-storage-iam-public-access).
        {: note}
 

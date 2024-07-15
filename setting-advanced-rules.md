@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-07-07"
+  years: 2021, 2024
+lastupdated: "2024-07-15"
 
 keywords: hotlink protection, geographical access control, token authentication
 
@@ -25,11 +25,11 @@ After your CDN is running, you can set advanced rules to optimize network perfor
    If using a subpath like `/home/example/*`, token authentication is currently the only supported rule type.
    {: note}
 
-   * **Geographical access control** - Select the filter type, location type, and continents (or countries/regions) that you want to allow or deny access to your domain. If you do not specify a configuration for geographical access control, all countries/regions are allowed. For more information, see [Geographical access control](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control).
+   * **Geographical access control** - Select the filter type, location type, and continents (or countries/regions) that you want to allow or deny access to your domain. If you do not specify a configuration for geographical access control, all countries/regions are allowed. For more information, see [Geographical access control](CDN-about-content-delivery-networks#geographical-access-control).
 
-   * **Hotlink protection** - Select the protection type and provide the referer URLs (separated by a space) that you want to allow or deny website access to your CDN. For more information, see [Hotlink protection](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#hotlink-protection).
+   * **Hotlink protection** - Select the protection type and provide the referer URLs (separated by a space) that you want to allow or deny website access to your CDN. For more information, see [Hotlink protection](CDN-about-content-delivery-networks#hotlink-protection).
 
-   * **Token authentication** - Provide the token key, set the escape input and ignore query string, and then select the HMAC algorithm. Optionally, specify the token name, token delimiter, ACL delimiter, and transition key. If you do not specify a value for an optional parameter, the default value is used. For more information, see [Token authentication](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#token-authentication).
+   * **Token authentication** - Provide the token key, set the escape input and ignore query string, and then select the HMAC algorithm. Optionally, specify the token name, token delimiter, ACL delimiter, and transition key. If you do not specify a value for an optional parameter, the default value is used. For more information, see [Token authentication](CDN-about-content-delivery-networks#token-authentication).
 
       You cannot set the token and ACL delimiters to the same value.
       {: note}

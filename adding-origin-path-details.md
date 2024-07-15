@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-09-21"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -21,7 +21,7 @@ When your CDN is in `CNAME Configuration required` or `Running` state, you can a
 1. On the CDN page, select your CDN. The **Overview** page shows.
 2. Select the **Origins** tab, then select **Add Origin**. A window appears where you can configure your origin server.
 
-3. Provide a path. Optionally, provide a [host header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#host-header-support).
+3. Provide a path. Optionally, provide a [host header](CDN-about-content-delivery-networks#host-header-support).
 4. Select **Server** or **Object Storage**.
 
    * If you select **Server**, enter the origin server address as either an IPv4 address or the hostname. You should provide the hostname and a fully qualified domain name (FQDN). Depending on the protocol you selected when you created the CDN, you should also provide an HTTP port, an HTTPS port, or both. If you use an HTTPS port, and the origin server uses an IP address, then you must set the hostname with a FQDN to match the common name of the certificate installed on this origin.
@@ -33,15 +33,15 @@ When your CDN is in `CNAME Configuration required` or `Running` state, you can a
 
 5. Select **Cache key optimization**.
 
-   The default selection for the **Cache Key optimization** option is **Include-all**. If you select **Include specified** or **Ignore specified**, you must enter query strings to include or ignore, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings. For more information, see [Cache Key optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization).
+   The default selection for the **Cache Key optimization** option is **Include-all**. If you select **Include specified** or **Ignore specified**, you must enter query strings to include or ignore, separated by a space. For example, enter `uuid=123456` for a single query string, or `uuid=123456 issue=important` for two query strings. For more information, see [Cache Key optimization](CDN-about-content-delivery-networks#cache-key-optimization).
 
 6. Select **Optimize for**.
 
    Akamai Edge servers use different optimization methods to deliver different type contents from the origin. You can choose from the following optimization methods:
 
    * **General web delivery** is the default setting. This setting allows the CDN to cache and serve content up to 1.8 GB.
-   * **[Video on Demand optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand)** optimizes the caching and network timeout conditions for on-demand video content.
-   * **[Large file optimization](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization)** optimizes the delivery of large file downloads from 1.8 GB to 320 GB.
+   * **[Video on Demand optimization](CDN-about-content-delivery-networks#video-on-demand)** optimizes the caching and network timeout conditions for on-demand video content.
+   * **[Large file optimization](CDN-about-content-delivery-networks#large-file-optimization)** optimizes the delivery of large file downloads from 1.8 GB to 320 GB.
    * **[Dynamic content acceleration](/docs/CDN?topic=CDN-dynamic-content-acceleration)** optimizes the delivery of the dynamic contents.
 
 7. After you add an origin, you can **Edit** or **Delete** the origin by using the overflow menu ![Overflow menu](images/overflow.png).

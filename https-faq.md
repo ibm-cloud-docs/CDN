@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-04-13"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords: wildcard, certificate, san certificate, domain validation, redirect, domains, challenge
 
@@ -19,7 +19,7 @@ Have a question about CDN and HTTPS? Review these frequently asked questions, wh
 {: shortdesc}
 
 ## For my CDN, what is the difference between HTTPS with a Wildcard certificate and HTTPS with SAN certificate?
-{: #for-my-cdn-what-is-the-difference-between-https-with-wildcard-certificate-and-https-with-san-certificate}
+{: #for-my-cdn-what-is-the-difference}
 {: faq}
 
 With Wildcard certificates, all customers use the same certificate that is deployed on the vendor's CDN networks. The CNAME, including the IBM suffix `.cdn.appdomain.cloud.`, must be used for access to the service. For example, `https://www.example-cname.cdn.appdomain.cloud`
