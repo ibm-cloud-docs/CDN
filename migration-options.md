@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-06-27"
+lastupdated: "2024-07-15"
 
 keywords: object storage, bucket
 
@@ -31,10 +31,10 @@ In this example, an existing Wildcard CDN instance with the following configurat
 * **Hostname**: `cdn-demo.slcdnservice.net`
 * **Current IBM CNAME**: `cdn-demo.cdn.appdomain.cloud`
 
-With the following two different types of origins, part of the configuration steps will be different. 
+With the following two different types of origins, part of the configuration steps will be different.
 
-* A [static website](/docs/cloud-object-storage?topic=cloud-object-storage-static-website-tutorial&interface=ui) hosted on IBM Cloud Object Storage (ICOS) and has a format like `http://<bucketname>.s3-web.<endpoint>/`. 
-* An origin that has a public IP. 
+* A [static website](/docs/cloud-object-storage?topic=cloud-object-storage-static-website-tutorial&interface=ui) hosted on IBM Cloud Object Storage (ICOS) and has a format like `http://<bucketname>.s3-web.<endpoint>/`.
+* An origin that has a public IP.
 
 After migration, the hostname `cdn-demo.slcdnservice.net` is moved to {{site.data.keyword.cis_short_notm}} and can be used to access the website.
 
@@ -45,12 +45,12 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
 {: #prerequisites-migration}
 
 1. Create a {{site.data.keyword.cis_short_notm}} instance on IBM Cloud Catalog. See [Getting Started with {{site.data.keyword.cis_short_notm}}](/docs/cis?topic=cis-getting-started) for more information.
-   
-   To make sure you can utilize the {{site.data.keyword.cis_short_notm}} caching capabilities, choose an Enterprise plan. 
+
+   To make sure you can utilize the {{site.data.keyword.cis_short_notm}} caching capabilities, choose an Enterprise plan.
    {: note}
-   
+
 1. Prepare [IBM Cloud CLI](/docs/cli?topic=cli-getting-started#getting-started).
-1. Log in to IBM Cloud CLI and install {{site.data.keyword.cis_short_notm}} CLI. See [{{site.data.keyword.cis_short_notm}} CLI reference](/docs/cis?topic=cis-cis-cli) for more details about how to log in and access {{site.data.keyword.cis_short_notm}}. 
+1. Log in to IBM Cloud CLI and install {{site.data.keyword.cis_short_notm}} CLI. See [{{site.data.keyword.cis_short_notm}} CLI reference](/docs/cis?topic=cis-cis-cli) for more details about how to log in and access {{site.data.keyword.cis_short_notm}}.
 
 
 #### Set up DNS zone CNAME
@@ -62,16 +62,16 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
    ibmcloud cis instance-set "<your-instance-name>"
    ```
    {: pre}
-  
+
 1. Create a partial type of CNAME zone for your domain (in this example, `cdn-demo.slcdnservice.net`). For more information about adding a partial zone, see [Add a domain](/docs/cis?topic=cis-cis-cli#add-domain) and [DNS zone CNAME partial setup](/docs/cis?topic=cis-cname-setup).
 
    ```sh
    ibmcloud cis domain-add "cdn-demo.slcdnservice.net" --type partial
    ```
    {: pre}
-   
+
 1. Get the TXT record `verification_key` and `cname_suffix` from the response:
-   
+
     ```text
     {
     "result": {
@@ -107,7 +107,7 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
    txt cloudflare-verify.cdn-demo.slcdnservice.net  476754457-428595283
    ```
    {: pre}
-   
+
 #### Set up the DNS records
 {: #verify-partial-zone}
 
@@ -117,39 +117,39 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
    ibmcloud cis domains
    ```
    {: pre}
-   
-1. Depending on your origin type, add a CNAME record or an A record for `cdn-demo.slcdnservice.net` and enable proxy. 
-  
+
+1. Depending on your origin type, add a CNAME record or an A record for `cdn-demo.slcdnservice.net` and enable proxy.
+
    * If your origin is a static website hosted on ICOS: Add A CNAME record to associate the domain `cdn-demo.slcdnservice.net`.
- 
+
    ```sh
    ibmcloud cis dns-record-create <your-domain-ID> --type CNAME --name cdn-demo.slcdnservice.net --content <bucketname>.s3-web.<endpoint> --proxied true
    ```
    {: pre}
-   
-   * If your origin is a website or application with a public IP, add an A record. 
-   
+
+   * If your origin is a website or application with a public IP, add an A record.
+
     ```sh
    ibmcloud cis dns-record-create <your-domain-ID> --type A --name cdn-demo.slcdnservice.net --content <your-origin-public-IP> --proxied true
    ```
    {: pre}
-   
+
 1. Before moving the domain officially to {{site.data.keyword.cis_short_notm}}, verify the subdomain changes on your local server. A typical way of doing this is to add a row to the */etc/hosts* file on your local server.
-   
+
    ```sh
-   <CIS-proxy-IP> cdn-demo.slcdnservice.net 
+   <CIS-proxy-IP> cdn-demo.slcdnservice.net
    ```
    {: pre}
-   
-   Where `<CIS-proxy-IP>` can be retrieved by the following command: 
-   
+
+   Where `<CIS-proxy-IP>` can be retrieved by the following command:
+
    ```sh
    dig cdn-demo.slcdnservice.net.cdn.cloudflare.net a +short
    ```
    {: pre}
-   
-   You can also use the **curl** command to verify the setting on your local server. 
-   
+
+   You can also use the **curl** command to verify the setting on your local server.
+
    ```sh
    curl --resolve cdn-demo.slcdnservice.net:443:<CIS-proxy-IP> https://cdn-demo.slcdnservice.net
    ```
@@ -161,16 +161,16 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
    cdn-demo.slcdnservice.net CNAME cdn-demo.slcdnservice.net.cdn.cloudflare.net
    ```
    {: pre}
-   
+
 1. Verify the CNAME settings.
 
    ```sh
    dig cdn-demo.slcdnservice.net a
    ```
    {: pre}
-   
+
    In the resulting screen, if the domain is migrated successfully, you can see something similar to the following example in the **ANSWER SECTION**:
-   
+
    ``` ...
        ;; ANSWER SECTION:
     cdn-demo.slcdnservice.net. 900	IN	CNAME	cdn-demo.slcdnservice.net.cdn.cloudflare.net.
@@ -179,17 +179,17 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
        ...
    ```
    {: screen}
-   
+
    You can also verify whether the status of the domain has been changed to *active*.
-   
+
    ```sh
    ibmcloud cis domain <your-domain-ID> -i <your-instance-name>
    ```
    {: pre}
-   
-   After this status is verified, if you have changed the */etc/hosts* file in the previous steps for verification purpose, remove the added line. 
+
+   After this status is verified, if you have changed the */etc/hosts* file in the previous steps for verification purpose, remove the added line.
    {: note}
-   
+
 ### Additional steps for an ICOS static website origin
 {: #additional-steps-for-icos}
 
@@ -204,20 +204,20 @@ Within {{site.data.keyword.cis_short_notm}}, add another CNAME record for `cos.c
    ibmcloud cis dns-record-create <domain_ID> --type CNAME --name cos.cdn-demo.slcdnservice.net --content <bucketname>.s3-web.<endpoint> --proxied true
    ```
    {: pre}
-     
+
 #### Configure page rules with {{site.data.keyword.cis_short_notm}}
 {: #configure-rules-partial-zone}
 
-1. Within {{site.data.keyword.cis_short_notm}}, navigate to **Performance** and the **Page Rules** tab. 
-1. Create two rules for URLs that match `cdn-demo.slcdnservice.net/*`. 
+1. Within {{site.data.keyword.cis_short_notm}}, navigate to **Performance** and the **Page Rules** tab.
+1. Create two rules for URLs that match `cdn-demo.slcdnservice.net/*`.
 1. Enable these two rules.
-   
+
 | **Behavior** | **Setting** |
 |--------------|-------------|
 | Resolve Override | `cos.cdn-demo.slcdnservice.net` |
 | Host header override | `<bucketname>.s3-web.<endpoint>`|
 {: caption="Table 1. Page rule configurations" caption-side="bottom"}
-   
+
 ### Verify the configuration and delete the CDN instance
 {: #verify-configuration-delete-cdn}
 
@@ -232,9 +232,9 @@ In this example, an existing DV SAN CDN instance with the following configuratio
 * **Hostname**: `site.slcdnservice.net`
 * **Current IBM CNAME**: `cdn-trial.cdn.appdomain.cloud`
 
-With a DV SAN CDN, all the migration steps are the same as a [Wildcard CDN](#migrating-wildcard). After migration, the hostname `site.slcdnservice.net` is moved to {{site.data.keyword.cis_short_notm}}. 
+With a DV SAN CDN, all the migration steps are the same as a [Wildcard CDN](#migrating-wildcard). After migration, the hostname `site.slcdnservice.net` is moved to {{site.data.keyword.cis_short_notm}}.
 
-* During migration, the domain `site.slcdnservice.net` will experience a CNAME change from an Akamai CNAME to a Cloudflare CNAME. 
+* During migration, the domain `site.slcdnservice.net` will experience a CNAME change from an Akamai CNAME to a Cloudflare CNAME.
 * After migration, a new dedicated certificate issued by {{site.data.keyword.cis_short_notm}} will be associated with your domain replacing the previous shared certificate.
 
 ## Migrating CDN to Akamai

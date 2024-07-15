@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-04-28"
+  years: 2019, 2024
+lastupdated: "2024-07-15"
 
 keywords: detection path, prefetching, image compression, ttl, cache
 
@@ -71,7 +71,7 @@ A valid test object must:
 ### Image compression
 {: #image-compression}
 
-Serving compressed images reduces the amount of content that is required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and might affect the quality of the images on your site.  
+Serving compressed images reduces the amount of content that is required to load a page. This helps offset less robust connections, such as those formed with mobile devices. If your site visitors have slow network speeds, Image Compressing technology can automatically increase compression of JPEG images to speed up loading. However, Image Compressing results in lossy compression or irreversible compression, and might affect the quality of the images on your site.
 
 Image Compression supported file extensions: `.jpg`, `.jpeg`, `.jpe`, `.jif`, `.jfif`, and `.jfi`.
 

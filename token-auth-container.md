@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-08-31"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -18,7 +18,7 @@ subcollection: CDN
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth` collection contains the attributes that are used by our Token Authentication APIs. Each of the token authentication APIs returns a collection of this type.
 {: shortdesc}
 
-**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_TokenAuth`
 
 * `uniqueId` - The unique ID of the mapping to which this token authentication belongs.
 * `path` - The path, relative to the domain that should be accessed using token authentication.

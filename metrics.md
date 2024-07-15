@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-08-07"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords: bandwidth, hit ratio, ingress, hits
 
@@ -103,8 +103,8 @@ Hit ratio represents the percentage of times the content was delivered from the 
 
 Where:
 
-* _Edge hits_ specifies all hits to the Edge servers from the users.
-* _Ingress hits_ specifies origin or ingress hits for traffic from your origin server to Akamai Edge servers.
+* Edge hits specifies all hits to the Edge servers from the users.
+* Ingress hits specifies origin or ingress hits for traffic from your origin server to Akamai Edge servers.
 
 Because Hit Ratio is calculated at the account level and not per CDN, the Hit Ratio is the same for all the CDNs in your account. This fact also explains why the Hit Ratio might be nonzero when the number of Edge hits for a particular CDN is zero.
 
@@ -122,17 +122,17 @@ The time range and time interval relationships are shown.
 
 |Time range| Time interval (minutes)   |
 |-----------------|--------------------|
-|(0, 60]          | 1  |
-|(60, 300]        | 5  |
-|(300, 600]       | 10 |
-|(600, 900]       | 15 |
-|(900, 1200]      | 20 |
-|(1200, 1500]     | 25 |
-|(1500, 1800]     | 30 |
-|(1800, 2100]     | 35 |
-|(2100, 2400]     | 40 |
-|(2400, 2700]     | 45 |
-|(2700, 2880]     | 50 |
+|(0, 60)          | 1  |
+|(60, 300)        | 5  |
+|(300, 600)       | 10 |
+|(600, 900)       | 15 |
+|(900, 1200)      | 20 |
+|(1200, 1500)     | 25 |
+|(1500, 1800)     | 30 |
+|(1800, 2100)     | 35 |
+|(2100, 2400)     | 40 |
+|(2400, 2700)     | 45 |
+|(2700, 2880)     | 50 |
 {: caption="Table 2: Time range and time interval relationships" caption-side="bottom"}
 
 Math notation `(` means "does not include" and `]` means "include".

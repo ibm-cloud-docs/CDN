@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-03"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -47,14 +47,14 @@ Of particular note is the `uniqueId`, which is generated when a mapping is creat
 
 For example, this call to `listDomainMappingByUniqueid`
 
-```php  
-$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');  
+```php
+$cdnMapping = $client->listDomainMappingByUniqueid('750352919747xxx');
 ```
 {: pre}
 
 Returns an object similar to this one:
 
-```php  
+```php
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
         (
             [cacheKeyQueryRule] => include-all
@@ -82,7 +82,7 @@ Returns an object similar to this one:
 
 Calls to `stopDomainMapping` and `startDomainMapping` will return the same Mapping object, with the `status` being the difference.
 
-```php  
+```php
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
         (
           ...
@@ -96,7 +96,7 @@ Calls to `stopDomainMapping` and `startDomainMapping` will return the same Mappi
 ```
 {: codeblock}
 
-```php  
+```php
 [0] => SoftLayer_Container_Network_CdnMarketplace_Configuration_Mapping Object
         (
           ...

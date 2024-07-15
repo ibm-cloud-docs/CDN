@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-02-25"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: collection, class, API, attributes, provider
 
@@ -18,10 +18,10 @@ subcollection: CDN
 The `SoftLayer_Container_Network_CdnMarketplace_Vendor` collection contains the attributes used by our Vendor APIs.
 {: shortdesc}
 
-**class** `SoftLayer_Container_Network_CdnMarketplace_Vendor`  
-* `vendorName`: The name of a current {{site.data.keyword.cloud}} CDN provider.  
-* `featureSummary`: A brief summary of the vendor features.  
-* `features`: A list of features that are supported by the vendor.  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Vendor`
+* `vendorName`: The name of a current {{site.data.keyword.cloud}} CDN provider.
+* `featureSummary`: A brief summary of the vendor features.
+* `features`: A list of features that are supported by the vendor.
 * `status`: Indicates whether a vendor is an available option through IBM Cloud.
 
 Display a list of the available vendors and their features, with a call to the `listVendors` API:

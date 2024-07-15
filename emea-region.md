@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-02-25"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
-keywords:  
+keywords:
 
 subcollection: CDN
 

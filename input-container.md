@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-01-06"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -33,7 +33,7 @@ The following attributes are common to the Mapping and (Origin) Path classes:
    * `General web delivery`: The default performance option to optimize the general web page contents, such as the HTML, pictures, CSS, JS files.
    * `Dynamic content acceleration`: Optimizes the forward path to the origin server using Akamai’s “SureRoute” feature, and supports embedded object pre-fetching and situational image compression.
    * `Video on demand optimization`: Optimizes cache/offload and media retrieval path through the Akamai network, MIME types, network timeout conditions.
-   * `Large file optimization`: Optimizes for delivery of large file downloads with improved cache/offload (partial object caching with pre-fetched object data), object retrieval path.  
+   * `Large file optimization`: Optimizes for delivery of large file downloads with improved cache/offload (partial object caching with pre-fetched object data), object retrieval path.
 * `cacheKeyQueryRule`: The following options are available to configure Cache Key behavior:
    * `include-all`: Include all query arguments
    * `ignore-all`: Ignore all query arguments
