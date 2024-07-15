@@ -1,6 +1,6 @@
 {
     "title": "Content Delivery Network docs",
-    "lastupdated": "2024-04-29",
+    "lastupdated": "2024",
     "introduction": "Deprecated: Starting 29 April 2024, CDN is no longer available for purchase. After the End of Service date (28 March 2025), CDN will no longer support any orders, updates, and purge, monitoring, or deletion operations.",
     "section_devtools": {
       "api": "/docs/CDN?topic=CDN-cdn-api-reference"
@@ -9,7 +9,7 @@
       {
         "title": "About Content Delivery Networks",
         "description": "How does a CDN work? View the three-tier architecture of IBM Cloud CDN and read all about its key features.",
-        "href": "/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-"
+        "href": "/docs/CDN?topic=CDN-about-content-delivery-networks"
       },
       {
         "title": "CDN Support Center",

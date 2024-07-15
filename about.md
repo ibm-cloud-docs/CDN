@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2021
-lastupdated: "2021-07-07"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: overview
 
@@ -14,7 +14,7 @@ subcollection: CDN
 
 
 # About Content Delivery Networks
-{: #about-content-delivery-networks-cdn-}
+{: #about-content-delivery-networks}
 
 A Content Delivery Network (CDN) is a collection of Edge servers that are distributed through various parts of the country or the world. Web content is served from an Edge server, which is located in the geographic area closest to the customer who requests the content. This technique allows your users to receive the content with less delay, and delivers a better overall experience for your customers.
 {: shortdesc}
@@ -37,23 +37,23 @@ The following diagram offers a schematic overview of the three-tier architecture
 The {{site.data.keyword.cloud_notm}} Content Delivery Network service includes the following key features.
 
 * [Cache Key query optimization](#cache-key-optimization)
-* [Content Compression](#content-compression)   
+* [Content Compression](#content-compression)
 * [Dynamic Content Acceleration](#dynamic-content-acceleration-description)
 * [Geographical access control](#geographical-access-control)
-* [Host Header support](#host-header-support)     
+* [Host Header support](#host-header-support)
 * [Host server origin support](#host-server-origin-support)
 * [Hotlink protection](#hotlink-protection)
 * [HTTPS protocol support with Wildcard and DV SAN certificate](#https-protocol-support)
 * [Large file optimization](#large-file-optimization)
-* [Metrics with graphical views](#metrics-with-graphical-views)   
+* [Metrics with graphical views](#metrics-with-graphical-views)
 * [Modify Response Header](#modify-response-header)
 * [Object storage origin support](#object-storage-file-support)
 * [Path-based CDN mappings](#path-based-cdn-mappings)
 * [Purge-cached content](#purge-cached-content)
-* [Respect Headers](#respect-headers)   
+* [Respect Headers](#respect-headers)
 * [Serve Stale content](#serve-stale-content)
 * [Support for multiple origins with distinct paths](#support-for-multiple-origins-with-distinct-paths)
-* [Time to Live (TTL)](#time-to-live-ttl)   
+* [Time to Live (TTL)](#time-to-live-ttl)
 * [Token authentication](#token-authentication)
 * [Video on Demand](#video-on-demand)
 
