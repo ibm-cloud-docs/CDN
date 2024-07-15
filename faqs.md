@@ -37,7 +37,7 @@ A CDN achieves its purpose by caching web content on Edge servers around the wor
 {: faq}
 {: support}
 
-With CDN you pay only for the bandwidth that you use. You are using the static bandwidth by default. If you have enabled the [Dynamic Content Acceleration](CDN-about-content-delivery-networks#dynamic-content-acceleration-description) (DCA) feature, you will also pay for the dynamic bandwidth.
+With CDN you pay only for the bandwidth that you use. You are using the static bandwidth by default. If you have enabled the [Dynamic Content Acceleration](/docs/CDN?topic=CDN-about-content-delivery-networks#dynamic-content-acceleration-description) (DCA) feature, you will also pay for the dynamic bandwidth.
 
 You can find the unit prices of the static and dynamic bandwidth on the provisioning pages for CDN. Log in to the [IBM Cloud Content Delivery Network](/catalog/infrastructure/cdn-powered-by-akamai) console and click **Create**. The unit prices appear in the Summary side panel on the [provisioning page](/cdn/create).
 

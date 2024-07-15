@@ -30,8 +30,8 @@ To order an {{site.data.keyword.cloud}} Content Delivery Network (CDN), you must
 
 1. Complete the **Configure origin** section. You must select either the **Server** or the **Object Storage** tab.
 
-    * Enter the optional **Host header**. If one is not provided, it defaults to the **hostname**. See [Host header support](CDN-about-content-delivery-networks#host-header-support) for more information.
-    * Provide an optional **Path** where content can be retrieved from on the origin. See [Path-based CDN mappings](CDN-about-content-delivery-networks#path-based-cdn-mappings) to understand the implications of adding a path at this time.
+    * Enter the optional **Host header**. If one is not provided, it defaults to the **hostname**. See [Host header support](/docs/CDN?topic=CDN-about-content-delivery-networks#host-header-support) for more information.
+    * Provide an optional **Path** where content can be retrieved from on the origin. See [Path-based CDN mappings](/docs/CDN?topic=CDN-about-content-delivery-networks#path-based-cdn-mappings) to understand the implications of adding a path at this time.
 
       For **Server**:
        * Enter the **Origin server address** (hostname or IPv4 address of the origin server). If **HTTPS port** is also selected, the **Origin server address** must be the hostname, not the IP address.
