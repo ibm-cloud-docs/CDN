@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-10-12"
+  years: 2019, 2024
+lastupdated: "2024-07-15"
 
 keywords: traffic, hosts file, dns, cname, record, CNAME configuration required, wildcard
 
@@ -54,7 +54,7 @@ Content-Type: text/html
 ```
 {: pre}
 
-If services are running on your domain, it is recommended to verify CDN functionality before you migrate your domain to CDN. You can use the following methods to verify CDN traffic.  
+If services are running on your domain, it is recommended to verify CDN functionality before you migrate your domain to CDN. You can use the following methods to verify CDN traffic.
 
 * Changing local hosts to verify CDN traffic
 * Using wildcard CDN to verify CDN traffic
@@ -135,7 +135,7 @@ In almost all operating systems, there is a local hosts file that maps hostnames
    Along with the basic function verification, it is recommended that you verify more functions that you plan to use; for example, caching, multiple origins and purge.
    {: important}
 
-5. Restore your original local hosts file by using the backup copy that was created in Step 2.   
+5. Restore your original local hosts file by using the backup copy that was created in Step 2.
 
 ## Using wildcard CDN to verify CDN traffic
 {: #using-wildcard-cdn-to-verify-cdn-traffic}

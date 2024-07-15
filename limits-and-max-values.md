@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-04-21"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords: time to live, entries, large file, size, optimization, downloads, years
 
@@ -55,7 +55,7 @@ For a multiple file purge, there is a limit on the number of files that can be p
 
 In the following table, `X-RateLimit-Purge-Paths-Limit-Burst` represents the number of tokens that the bucket can hold. The initial token bucket is full. Tokens are constantly added to this bucket based on the sustained rate (`X-RateLimit-Purge-Paths-Limit-Per-Second`). However, if the bucket is full, no more tokens can be added.
 
-When a multiple file purge request is made, the remaining number of tokens is checked against the number of file paths. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens in the purge bucket, the tokens are removed from the bucket and the request is accepted. If there are not enough tokens, tokens are not removed, and the request is denied.  
+When a multiple file purge request is made, the remaining number of tokens is checked against the number of file paths. The paths bucket must contain enough tokens to satisfy all of the paths in the request. If there are enough tokens in the purge bucket, the tokens are removed from the bucket and the request is accepted. If there are not enough tokens, tokens are not removed, and the request is denied.
 
 This [example](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example) shows the rate limiting response headers returned by the purge group API.
 

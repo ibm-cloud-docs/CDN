@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-29"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: code examples, example API calls, Soap
 
@@ -68,7 +68,7 @@ Array
         )
 
 )
-``` 
+```
 {: codeblock}
 
 ## Example code to verify an order

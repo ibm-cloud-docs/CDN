@@ -102,8 +102,8 @@ toc:
     - navgroup:
        id: help
        topics:
-       - faqs.md
        - https-faq.md
+       - faqs.md
        - rules-and-naming-conventions.md
        - limits-and-max-values.md
        - topicgroup:

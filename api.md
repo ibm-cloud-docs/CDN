@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2021
-lastupdated: "2021-01-19"
+  years: 2017, 2024
+lastupdated: "2024-07-15"
 
 keywords: slapi
 
@@ -349,11 +349,11 @@ Lists the origin paths for an existing mapping based on the `uniqueId`.
 ### createPurgeGroup
 {: #api-for-createpurgegroup}
 
-Creates a purge group. A purge group contains multiple file paths and allows you to purge all of these files in one API call. You can save a purge group to be a favorite (permanent) group or not. For more information, see [With multiple file purges, what's the difference between a favorite group and an unfavorite group?](/docs/CDN?topic=CDN-faqs#what-different-two-type-favorite-group).   
+Creates a purge group. A purge group contains multiple file paths and allows you to purge all of these files in one API call. You can save a purge group to be a favorite (permanent) group or not. For more information, see [With multiple file purges, what's the difference between a favorite group and an unfavorite group?](/docs/CDN?topic=CDN-faqs#what-different-two-type-favorite-group).
 
-There's also a rate limit to the purge actions. For more information, see [What's the rate limit for a multiple file purge?](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit).  
+There's also a rate limit to the purge actions. For more information, see [What's the rate limit for a multiple file purge?](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit).
 
-For an example of how to create a purge group, see [Example code for creating a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).  
+For an example of how to create a purge group, see [Example code for creating a purge group](/docs/CDN?topic=CDN-code-examples-using-the-cdn-api#create-group-example).
 
 * **Parameters**:
    * `uniqueId` - The unique ID of the CDN mapping for which the purge group was created.
@@ -444,7 +444,7 @@ Removes a specific purge group from favorite.
 ### purgeByGroupIds
 {: #purge-by-group}
 
-Purges all files in purge groups by a collection of group IDs.  
+Purges all files in purge groups by a collection of group IDs.
 Purge actions have a rate limit check. See the [FAQ](/docs/CDN?topic=CDN-limits-and-maximum-values#purge-rate-limit) for more details.
 
 * **Parameters**:
@@ -474,7 +474,7 @@ Returns the file path quota of a purge group.
 ### listPurgeGroupHistory
 {: #list-purgegroup-history}
 
-Returns the purge actions history for a domain mapping.  
+Returns the purge actions history for a domain mapping.
 The purge history retains the last 15 days of records.
 
 * **Parameters**:
@@ -517,7 +517,7 @@ class SoftLayer_Container_Network_CdnMarketplace_Configuration_Cache_Purge
      * @var string
      */
     public $date;
-}  
+}
 ```
 {: codeblock}
 
@@ -564,11 +564,11 @@ Updates the status of the Purge path entry to indicate whether that Purge path s
 ## API for Time to Live
 {: #api-for-time-to-live}
 
-### TimeToLive class variables:  
+### TimeToLive class variables:
 {: #api-time-to-live-class-variables}
 
 ```text
-class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive  
+class SoftLayer_Network_CdnMarketplace_Configuration_Cache_TimeToLive
 {
     /**
      * @var string
@@ -747,11 +747,11 @@ Returns the total number of hits at a certain frequency over a given range of ti
 
 Returns the quantity of bandwidth in GB for an individual CDN. Regions might differ for each vendor, per mapping.
 
-* **Parameters**:  
+* **Parameters**:
    * `mappingUniqueId` - Provide a unique ID of the mapping for which metrics are queried.
    * `startDate` - Provide the start date timestamp (UTC+0) for query.
    * `endDate` - Provide the end date timestamp (UTC+0) for query.
-   * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:   
+   * `frequency` - Provide the data frequency for data format, the following options are available to configure frequency:
       * `aggregate` - Aggregated metrics data from `startDate` to `endDate` **default**.
       * `day` - Daily metrics data from `startDate` to `endDate`.
 

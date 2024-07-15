@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-01-08"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords: troubleshooting
 
@@ -33,7 +33,7 @@ This table shows the behavior that is expected for the supported protocols when 
 {: class="simple-tab-table"}
 
 | Browser URL | Wildcard | Shared SAN |
-|-----|-----|-----|  
+|-----|-----|-----|
 | `http://hostname` | 301 Moved Permanently | Access denied[^B] |
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
 | `http://cname` | Access denied [^C] | 301 Moved Permanently |
@@ -51,7 +51,7 @@ This table shows the behavior that is expected for the supported protocols when 
 [^C]: The expected behavior was changed to `Access denied` for the domain mappings that are created since 08/05/2019. The expected behavior is keeping `Successful load` for the domain mappings created before 08/05/2019.
 
 | Browser URL | Wildcard | Shared SAN |
-|-----|-----|-----|  
+|-----|-----|-----|
 | `http://hostname` | 301 Moved Permanently | Successful load |
 | `https://hostname` | Redirects to IBM Cloud webpage | Successful load |
 | `http://cname` | Successful load | 301 Moved Permanently |

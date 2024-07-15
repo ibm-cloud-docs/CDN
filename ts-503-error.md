@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-01-08"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords: troubleshooting
 
@@ -20,7 +20,7 @@ subcollection: CDN
 If you received a 503 error message, you must ensure that your origin server's SSL certificates meet certain criteria.
 {: shortdesc}
 
-The most common reason observed for the 503 error is due to an issue with a certificate in the SSL certificate chain.  
+The most common reason observed for the 503 error is due to an issue with a certificate in the SSL certificate chain.
 {: tsCauses}
 
 This is the error that you might see: `503 Service Unavailable`.

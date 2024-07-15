@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-12-29"
+  years: 2020, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -18,7 +18,7 @@ subcollection: CDN
 The `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader` collection contains attributes that are used by the `modify-response-header` APIs. Each of the `modify-response-header` APIs returns a collection of this type.
 {: shortdesc}
 
-**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`  
+**class** `SoftLayer_Container_Network_CdnMarketplace_Configuration_Behavior_ModifyResponseHeader`
 
 * `uniqueId` - The unique ID of the mapping to which `modify-response-header` belongs.
 * `modResHeaderUniqueId` - The unique ID of the `modify-response-header`.
