@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-05-06"
+  years: 2018, 2024
+lastupdated: "2024-07-15"
 
 keywords:
 
@@ -39,10 +39,10 @@ New UI portal
 {: release-note}
 
 New API for Modify Response Header
-:    New API are available for the [Modify Response Header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#modify-response-header), which can modify the outgoing response headersthat are sent from the Edge server back to the client.
+:    New API are available for the [Modify Response Header](CDN-about-content-delivery-networks#modify-response-header), which can modify the outgoing response headersthat are sent from the Edge server back to the client.
 
 Changed default respect header
-:    Changed the default [respect header](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#respect-headers) value from `ON` to `OFF`.
+:    Changed the default [respect header](CDN-about-content-delivery-networks#respect-headers) value from `ON` to `OFF`.
 
 Added feedback widget
 :    Added a [feedback widget](/docs/overview?topic=overview-feedback) for the CDN service.
@@ -62,7 +62,7 @@ DNS based challenge domain validation method added
 {: release-note}
 
 Token authentication support added
-:    Token authentication support [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#token-authentication) (available through API).
+:    Token authentication support [feature description](CDN-about-content-delivery-networks#token-authentication) (available through API).
 
 ## July 2020
 {: #CDN-ju-0120}
@@ -76,7 +76,7 @@ Integrated CDN mapping metrics
 {: release-note}
 
 Added multiple files purge
-:    Multiple files purge [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#purge-cached-content) (available through UI and API).
+:    Multiple files purge [feature description](CDN-about-content-delivery-networks#purge-cached-content) (available through UI and API).
 
 Added real-time metrics
 :    Real-time metrics API [feature description](/docs/CDN?topic=CDN-metrics) (available through UI and API).
@@ -89,7 +89,7 @@ Added activity tracker events for audit log
 {: release-note}
 
 Dynamic content acceleration and metrics report added
-:    Dynamic Content Acceleration [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#dynamic-content-acceleration-description) (available through UI and API).
+:    Dynamic Content Acceleration [feature description](CDN-about-content-delivery-networks#dynamic-content-acceleration-description) (available through UI and API).
 
 Metrics reports for overall CDN mappings added
 :    [Metrics reports](/docs/CDN?topic=CDN-metrics) for overall CDN mappings (available through UI and API).
@@ -106,14 +106,14 @@ New IBM CNAME suffix move
 {: release-note}
 
 Hotlink protection added for UI
-:    Hotlink Protection [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#hotlink-protection) (available through UI).
+:    Hotlink Protection [feature description](CDN-about-content-delivery-networks#hotlink-protection) (available through UI).
 
 ## November 2018
 {: #CDN-nov-0118}
 {: release-note}
 
 Hotlink protection added for API
-:    Hotlink Protection [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#hotlink-protection) (available through the API).
+:    Hotlink Protection [feature description](CDN-about-content-delivery-networks#hotlink-protection) (available through the API).
 
 ## October 2018
 {: #CDN-dec-0118}
@@ -143,7 +143,7 @@ Specify TTL
 {: release-note}
 
 Added Geographical access control to the UI
-:    Geographical Access Control [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control) (available through UI).
+:    Geographical Access Control [feature description](CDN-about-content-delivery-networks#geographical-access-control) (available through UI).
 
 Vendor selection step removed from ordering
 :    Vendor Selection step is not needed anymore for [Ordering a CDN](/docs/CDN?topic=CDN-order-a-cdn).
@@ -153,14 +153,14 @@ Vendor selection step removed from ordering
 {: release-note}
 
 Added Geographical access control to the API
-:    Geographical Access Control [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#geographical-access-control) (available through the API).
+:    Geographical Access Control [feature description](CDN-about-content-delivery-networks#geographical-access-control) (available through the API).
 
 ## June 2018
 {: #CDN-jun-0118}
 {: release-note}
 
 Added HTTPS with DV SAN support
-:    HTTPS with DV SAN support [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#https-protocol-support).
+:    HTTPS with DV SAN support [feature description](CDN-about-content-delivery-networks#https-protocol-support).
 
 GDPR compliance
 :    IBM Content Delivery Network adheres to the EU General Data Protection Regulation (GDPR) and compliance requirements. Our privacy practices are detailed in the [IBM Privacy Statement](https://www.ibm.com/us-en/privacy).
@@ -170,10 +170,10 @@ GDPR compliance
 {: release-note}
 
 Large file optimization
-:    Large File Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#large-file-optimization).
+:    Large File Optimization [feature description](CDN-about-content-delivery-networks#large-file-optimization).
 
 Cache key optimization
-:    Cache Key Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#cache-key-optimization).
+:    Cache Key Optimization [feature description](CDN-about-content-delivery-networks#cache-key-optimization).
 
 Video on demand optimization
-:    Video On Demand Optimization [feature description](/docs/CDN?topic=CDN-about-content-delivery-networks-cdn-#video-on-demand).
+:    Video On Demand Optimization [feature description](CDN-about-content-delivery-networks#video-on-demand).
