@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-07-15"
+lastupdated: "2024-07-25"
 
 keywords: object storage, bucket
 
@@ -15,7 +15,7 @@ subcollection: CDN
 # Migration options
 {: #migration-options}
 
-CDN is scheduled for End of Marketing and eventually End of Service. In preparation for this transition, it is recommended that you migrate your CDN mapping to {{site.data.keyword.cis_full}} ({{site.data.keyword.cis_short_notm}}) or create an Akamai account if you prefer to continue with Akamai CDN.
+CDN is scheduled for End of Marketing and eventually End of Service. In preparation for this transition, it is recommended that you migrate your CDN mapping to {{site.data.keyword.cis_full}} ({{site.data.keyword.cis_short_notm}}, migrate to Akamai if you prefer Akamai CDN, or migrate to other CDN services on the IBM Cloud Catalog.
 {: shortdesc}
 
 ## Migrating CDN to IBM Cloud Internet Services
@@ -44,7 +44,7 @@ This instance is being moved in a non-disruptive way. The IBM provided CDN CNAME
 #### Before you begin
 {: #prerequisites-migration}
 
-1. Create a {{site.data.keyword.cis_short_notm}} instance on IBM Cloud Catalog. See [Getting Started with {{site.data.keyword.cis_short_notm}}](/docs/cis?topic=cis-getting-started) for more information.
+1. Create a {{site.data.keyword.cis_short_notm}} instance on the IBM Cloud Catalog. See [Getting Started with {{site.data.keyword.cis_short_notm}}](/docs/cis?topic=cis-getting-started) for more information.
 
    To make sure you can utilize the {{site.data.keyword.cis_short_notm}} caching capabilities, choose an Enterprise plan.
    {: note}
@@ -245,4 +245,4 @@ Alternatively, if you prefer to use Akamai CDN after the End of Marketing date, 
 ## Migrating CDN to third-party CDN services on {{site.data.keyword.cloud_notm}}
 {: #migrating-cdn-third-party-services}
 
-In addition, if you are looking for more CDN options, navigate to the [IBM Cloud catalog](/catalog) and choose from the third-party [CDN services](/catalog?search=CDN#search_results) for a rich collection of configurable features, for example, [Cloudsway CDN](/catalog/services/cloudsway-cdn).
+In addition, if you are looking for more CDN options, navigate to the [IBM Cloud Catalog](/catalog) and choose from the third-party [CDN services](/catalog?search=CDN#search_results) available for a rich collection of configurable features, for example, Cloudsway CDN.
