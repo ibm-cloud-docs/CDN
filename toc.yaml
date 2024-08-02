@@ -26,14 +26,6 @@ toc:
        - video-set-up-web-app.md
        - release-notes.md
     - navgroup:
-       id: tutorial
-       topics:
-       - topicgroup:
-          label: Classic infrastructure
-          topics:
-          - include: ../solution-tutorials/static-files-cdn.md
-          - include: ../solution-tutorials/dynamic-content-cdn.md
-    - navgroup:
        id: howto
        topics:
        - topicgroup:

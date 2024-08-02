@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2024
-lastupdated: "2024-07-15"
+lastupdated: "2024-08-02"
 
 keywords: overview
 
@@ -213,8 +213,6 @@ Note the following when using `modify-response-header`:
 {: #object-storage-file-support}
 
 {{site.data.keyword.cloud_notm}} CDN can be configured to serve content from an object storage endpoint by providing the endpoint, the bucket name, protocol, and port. Optionally, you can specify a list of file extensions to allow caching for files only with those extensions. All objects in the bucket must be set with anonymous read or public read access.
-
-For more information, see [Accelerate delivery of static files using a CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn).
 
 ### Path-based CDN mappings
 {: #path-based-cdn-mappings}

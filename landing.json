@@ -20,16 +20,6 @@
         "title": "Ordering a CDN",
         "description": "You'll first need an IBMid. You can then order your CDN service through the IBM Cloud console.",
         "href": "/docs/CDN?topic=CDN-order-a-cdn"
-      },
-      {
-        "title": "Accelerate delivery of static files",
-        "description": "Step through this tutorial to learn how to use a CDN and host website assets and user-generated content in IBM Cloud Object Storage.",
-        "href": "/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn"
-      },
-      {
-        "title": "Accelerate a dynamic website",
-        "description": "Learn how to use Dynamic Content Acceleration (DCA) to optimize the performance of non-static content.",
-        "href": "/docs/solution-tutorials?topic=solution-tutorials-dynamic-content-cdn"
       }
     ],
     "section_videos": [
