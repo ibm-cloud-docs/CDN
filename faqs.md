@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2024
-lastupdated: "2024-07-15"
+lastupdated: "2024-08-02"
 
 keywords: faqs, cname, configuration, status, ports, hotlink protection, error state, file path, cloud object storage, security
 
@@ -147,12 +147,6 @@ Yes. For the Akamai vendor, only the following port numbers are allowed:
 The path for a CDN mapping, or for the origin, is treated as a directory. Therefore, users trying to access the origin path should access it as a directory (with a slash). For example, if CDN `www.example.com` is created using the path that includes the `/images` directory, the URL to reach it should be `www.example.com/images/`
 
 Omitting the slash, for example, using `www.example.com/images` results in a **Page Not Found** error.
-
-## How do I set up my Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage (COS)?
-{: #how-do-i-set-up-my-cdn-for-cos}
-{: faq}
-
-See the [Accelerate delivery of static files using a CDN](/docs/solution-tutorials?topic=solution-tutorials-static-files-cdn) tutorial for information about creating a Content Delivery Network for {{site.data.keyword.cloud_notm}} Object Storage.
 
 ## I received notification that my origin certificate is expiring. What do I do now?
 {: #notification-that-origin-cert-is-expiring}
