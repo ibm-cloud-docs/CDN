@@ -94,8 +94,8 @@ toc:
     - navgroup:
        id: help
        topics:
-       - https-faq.md
        - faqs.md
+       - https-faq.md
        - rules-and-naming-conventions.md
        - limits-and-max-values.md
        - topicgroup:
@@ -106,4 +106,5 @@ toc:
           - ts-hostname-does-not-load.md
           - ts-cannot-connect-https.md
           - ts-loading-cname-hostname.md
-       - getting-help.md
+       - topic: getting-help.md
+         navtitle: Getting help and support
