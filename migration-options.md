@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-07-25"
+lastupdated: "2024-10-09"
 
 keywords: object storage, bucket
 
@@ -216,7 +216,7 @@ Within {{site.data.keyword.cis_short_notm}}, add another CNAME record for `cos.c
 |--------------|-------------|
 | Resolve Override | `cos.cdn-demo.slcdnservice.net` |
 | Host header override | `<bucketname>.s3-web.<endpoint>`|
-{: caption="Table 1. Page rule configurations" caption-side="bottom"}
+{: caption="Page rule configurations" caption-side="bottom"}
 
 ### Verify the configuration and delete the CDN instance
 {: #verify-configuration-delete-cdn}

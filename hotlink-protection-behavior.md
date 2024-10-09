@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-12-09"
+  years: 2017, 2024
+lastupdated: "2024-10-09"
 
 keywords:
 
@@ -50,4 +50,4 @@ The `SoftLayer_Network_CdnMarketplace_Configuration_Behavior_HotlinkProtection c
     |Contains duplicates in the list | `domain1.example.com domain1.example.com`|
     |Using characters not specified in [RFC-3986](https://datatracker.ietf.org/doc/html/rfc3986#section-2){: external} | `domain1.exa}mple.com domain1.example.com`|
     |A `refererValues` string with at least one URL match term that has a character set in front of the first `.` character that contains `://` is not supported| `www.example.org http://www.example.com`|
-    {: caption="Table 1. Examples of an invalid string for `refererValues`" caption-side="bottom"}
+    {: caption="Examples of an invalid string for `refererValues`" caption-side="bottom"}

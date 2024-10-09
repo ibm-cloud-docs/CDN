@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-07-15"
+lastupdated: "2024-10-09"
 
 keywords: time to live, entries, large file, size, optimization, downloads, years
 
@@ -66,7 +66,7 @@ The following table lists the default values for rate limit headers:
 | `X-RateLimit-Purge-Paths-Limit-Per-Second`  | 20 | The token number added into the bucket per second. |
 | `X-RateLimit-Purge-Paths-Limit-Burst` | 1000 | The maximum paths can be purged in a burst. Capability of the bucket. |
 | `X-RateLimit-Purge-Paths-Remaining` | N/A | Number of paths remaining before the rate limit is exceeded. |
-{: caption="Table 1. Default values for rate limit headers" caption-side="bottom"}
+{: caption="Default values for rate limit headers" caption-side="bottom"}
 
 ## Is there a limit on the number of purge group entries?
 {: #is-there-a-limit-on-the-number-of-purge-group-entries}

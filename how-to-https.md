@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2021
-lastupdated: "2021-06-09"
+  years: 2018, 2024
+lastupdated: "2024-10-09"
 
 keywords: https, san certificate, apache, nginx, redirect
 
@@ -62,7 +62,7 @@ For the CDN domain `cdn.example.com`, you can add a CNAME type record to point t
 | Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
 | *CNAME* | *cdn.example.com* | *example.cdn.appdomain.cloud.* | *15 minutes* |
-{: caption="Table 1. Add CNAME type record to point to CNAME" caption-side="bottom"}
+{: caption="Add CNAME type record to point to CNAME" caption-side="bottom"}
 
 ---
 
@@ -79,7 +79,7 @@ For example, the CDN domain is `cdn.example.com`, then the challenge domain CNAM
 | Resource Type | Host | Points to (CNAME) | TTL |
 |------------------|---------|-------------|----------------|
 | *CNAME* | *_acme-challenge.cdn.example.com* | *cdn.example.com.ak-acme-challenge.cdn.appdomain.cloud.* | *15 minutes* |
-{: caption="Table 2. Challenge domain CNAME" caption-side="bottom"}
+{: caption="Challenge domain CNAME" caption-side="bottom"}
 
 Using the challenge domain validation method can keep your domain always active in the certificate even after you migrate the CDN domain to others. When using other methods, you would receive an [email alert](/docs/CDN?topic=CDN-faq-for-https#i-received-an-email-indicating-that-my-domain-is-not-pointed-to-IBM-CDN-CNAME) after you migrate to others.
 {: note}
