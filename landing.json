@@ -6,16 +6,16 @@
     "section_topics": {
       "links": [
         {
+          "title": "Deprecation of CDN",
+          "href": "/docs/CDN?topic=CDN-cdn-deprecation"
+        },
+        {
+          "title": "Migration options",
+          "href": "/docs/CDN?topic=CDN-migration-options"
+        },
+        {
           "title": "About Content Delivery Networks",
           "href": "/docs/CDN?topic=CDN-about-content-delivery-networks"
-        },
-        {
-          "title": "CDN Support Center",
-          "href": "/unifiedsupport/supportcenter/b6c4a555-5ff6-4e1d-9ce7-0a9976629eab"
-        },
-        {
-          "title": "Ordering a CDN",
-          "href": "/docs/CDN?topic=CDN-order-a-cdn"
         }
       ]
     },
