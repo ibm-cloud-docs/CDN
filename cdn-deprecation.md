@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-03-27"
+lastupdated: "2024-10-09"
 
 keywords:
 
@@ -31,7 +31,7 @@ The following table describes the details of the deprecation, timeline, and extr
 | 29 April 2024 | End of Marketing (EOM) | CDN end of marketing. After this date, CDN is no longer available for purchase. For more information, see [Deprecation details](#deprecation-details). |
 | Ongoing | Reminders | Periodic reminders are sent to remaining CDN users that the end of support date is coming.|
 | 28 March 2025 | End of Support (EOS) | CDN end of support. For more information, see [Deprecation details](#deprecation-details).|
-{: caption="Table 1. Deprecation timeline" caption-side="bottom"}
+{: caption="Deprecation timeline" caption-side="bottom"}
 
 ## Deprecation details
 {: #deprecation-details}
