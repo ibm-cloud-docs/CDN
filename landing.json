@@ -2,7 +2,6 @@
     "version": 2,
     "title": "Content Delivery Network",
     "introduction": "Deprecated: Starting 29 April 2024, CDN is no longer available for purchase. After the End of Service date (28 March 2025), CDN will no longer support any orders, updates, and purge, monitoring, or deletion operations.",
-    "console_page": "https://cloud.ibm.com/catalog/infrastructure/cdn-powered-by-akamai?mhsrc=ibmsearch_a&mhq=content%20delivery%20network",
     "section_topics": {
       "links": [
         {
@@ -19,15 +18,11 @@
         }
       ]
     },
-    "section_devtools": {
-      "api": "/docs/CDN?topic=CDN-cdn-api-reference"
-    },
     "section_updates": {
       "view_more": "/docs/CDN?topic=CDN-release-notes",
       "tiles": [ {
         "date": "07 July 2021",
-        "title": "Advanced rule policy",
-        "description": "Set advanced rules to optimize content delivery. Control access through geoblocking and protect your content from hotlinking. You can also set up token authorization to stop unauthorized clients from accessing your sensitive content."
+        "title": "Advanced rule policy: et advanced rules to optimize content delivery. Control access through geoblocking and protect your content from hotlinking. You can also set up token authorization to stop unauthorized clients from accessing your sensitive content."
       }
       ]
     }
